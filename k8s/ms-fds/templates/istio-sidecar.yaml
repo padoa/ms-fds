@@ -1,0 +1,16 @@
+{{- if .Values.istio.enabled }}
+# TODO: Deploy this as an app using padoa-charts/sape
+apiVersion: networking.istio.io/v1beta1
+kind: Sidecar
+metadata:
+  name: sape
+spec:
+  egress:
+  - hosts:
+    - '*/*'
+  outboundTrafficPolicy:
+    mode: ALLOW_ANY
+  workloadSelector:
+    labels:
+      app: sape-api
+{{- end }}

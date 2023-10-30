@@ -1,0 +1,162 @@
+{{/*
+Usage: Used in both job / cronjob below to create the job template itself
+---
+Input:
+Name              : string                            -> Name of the container
+Method            : string (e.g. "GET", "POST", ...)  -> HTTP method directly used by curl
+RetryCount        : int                               -> Number of retrials before giving up
+RetryDelaySeconds : int                               -> Delay between retries
+
+*Url     : string                            -> URL to be called
+---
+Output:
+The definition of the job template
+*/}}
+{{- define "curl-job-template" }}
+{{- $name := .Name  -}}
+{{- $method := (.Method | default "GET" | quote) -}}
+{{- $retryCount := (.RetryCount | default 0 | add1 | toString) -}}
+{{- $retryDelaySeconds := (.RetryDelaySeconds | default 10 | toString) -}}
+
+{{- if not .Url -}}
+  {{- fail ".Url needs to be set" -}}
+{{- end -}}
+{{- $url := (.Url | quote) -}}
+
+spec:
+  containers:
+  - name: curl
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args:
+    - |
+      apk add --no-cache curl
+      for n in $(seq {{ $retryCount }}); do
+        code=$(curl -o /dev/null -s -w '%{http_code}\n' -L -X {{ $method }} {{ $url }})
+        if [[ $code -ne "404" ]]; then
+          echo "Responded with code $code, exiting"
+          exit 0
+        fi
+        echo "Responded with code 404, ingress might not exist yet, retrying in {{ $retryDelaySeconds }} s ($n / {{ $retryCount }})"
+        sleep {{ $retryDelaySeconds }}
+      done
+  restartPolicy: OnFailure
+{{- end -}}
+
+{{/*
+Usage: creates a job that will curl a url after the application is synced
+It is used in backend / frontend to refresh on-demand-service key-value store that is made invalid by the sync
+---
+Input:
+Name      : string -> Name of the job
+Suffix    : string -> Suffix to be added to the name of the job (to force job's recreation)
+SyncWave  : int    -> HTTP method directly used by curl
+
++ All curl-job-template inputs
+---
+Output:
+The definition of the job
+*/}}
+{{- define "curl-job" -}}
+
+{{- $name := (.Name | default "curl") -}}
+{{- $syncWave := (.SyncWave | default 0 | toString | quote) -}}
+
+{{- if .Suffix -}}
+  {{- $name = printf "%s-%s" $name .Suffix -}}
+{{- end -}}
+
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: {{ $name }}
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ $syncWave }}
+spec:
+  template:
+    {{- include "curl-job-template" (dict
+      "Name" $name
+      "Method" .Method
+      "RetryCount" .RetryCount
+      "RetryDelaySeconds" .RetryDelaySeconds
+      "Url" .Url
+    ) | nindent 4 -}}
+{{- end -}}
+
+{{/*
+Usage: creates a cronjob that will curl a url after the application is synced
+It is used in backend / frontend to wake up application at a certain time of day
+---
+Input:
+Name     : string -> Name of the cronjob
+Schedule : string -> Schedul of the cronjob
+
++ All curl-job-template inputs
+---
+Output:
+The definition of the cronjob
+*/}}
+{{- define "curl-cron-job" -}}
+
+{{- $name := (.Name | default "curl") -}}
+{{- $schedule := (.Schedule | quote) -}}
+
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: {{ $name }}
+spec:
+  concurrencyPolicy: Replace
+  schedule: {{ $schedule }}
+  jobTemplate:
+    spec:
+      template:
+      {{- include "curl-job-template" ( dict
+          "Name" $name
+          "Method" .Method
+          "RetryCount" .RetryCount
+          "RetryDelaySeconds" .RetryDelaySeconds
+          "Url" .Url
+        ) | nindent 8 -}}
+{{- end -}}
+
+{{/*
+Usage: Wrapper to create a curl cron-job and / or a curl job
+---
+Input:
+Name: Name of the container
+Method            : string (e.g. "GET", "POST", ...)  -> HTTP method directly used by curl
+RetryCount        : int                               -> Number of retrials before giving up
+RetryDelaySeconds : int                               -> Delay between retries
+
++ All curl-job inputs
++ All curl-cronjob inputs
+---
+Output:
+The definition of a cronjob and/or a job
+*/}}
+{{- define "curl-job-or-cronjob" -}}
+  {{- $withSync := .WithSync  -}}
+  {{- $withSchedule := .WithSchedule  -}}
+
+  {{- if $withSync }}
+{{- include "curl-job" (dict
+  "Name"              .Name
+  "SyncWave"          .SyncWave
+  "Url"               .Url
+  "Suffix"            .Suffix
+  "RetryCount"        .RetryCount
+  "RetryDelaySeconds" .RetryDelaySeconds
+) }}
+  {{- end -}}
+  {{- if $withSchedule }}
+---
+{{ include "curl-cron-job" (dict
+  "Name"              .Name
+  "Schedule"          .Schedule
+  "Url"               .Url
+  "RetryCount"        .RetryCount
+  "RetryDelaySeconds" .RetryDelaySeconds
+)  }}
+  {{- end -}}
+{{- end -}}
