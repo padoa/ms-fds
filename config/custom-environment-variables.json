@@ -1,0 +1,48 @@
+{
+  "nodeEnv": "NODE_ENV",
+  "server": {
+    "scope": "API_SCOPE",
+    "port": "PORT"
+  },
+  "sequelize": {
+    "hooks": {
+      "requestIdComments": {
+        "enabled": {
+          "__name": "REQUEST_ID_COMMENTS_HOOKS_ENABLED",
+          "__format": "json"
+        }
+      }
+    },
+    "migrations": {
+      "timeout": {
+        "global": "MIGRATIONS_TIMEOUT",
+        "single": "SINGLE_MIGRATION_TIMEOUT"
+      }
+    },
+    "postgres": {
+      "username": "PGUSER",
+      "password": "PGPASSWORD",
+      "hostname": "PGHOST",
+      "port": "PGPORT",
+      "database": "PGDATABASE",
+      "sslmode": "PGSSLMODE",
+      "ssl": {
+        "rejectUnauthorized": "PGSSLREJECTUNAUTHORIZED",
+        "ca": "PGSSLROOTCERT",
+        "key": "PGSSLKEY",
+        "cert": "PGSSLCERT"
+      },
+      "pool": {
+        "min": "PG_POOL_MIN",
+        "max": "PG_POOL_MAX",
+        "idle": "PG_POOL_IDLE",
+        "acquire": "PG_POOL_ACQUIRE"
+      },
+      "owner": "PGOWNER"
+    },
+    "uniqueTransaction": {
+      "__name": "FORCE_UNIQUE_TRANSACTION",
+      "__format": "json"
+    }
+  }
+}

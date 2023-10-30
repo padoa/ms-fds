@@ -1,0 +1,15 @@
+node_modules
+.idea
+package-lock.json
+dist
+yarn-error.log
+.eslintcache
+generated
+.vscode
+.DS_Store
+
+tsconfig.tsbuildinfo
+/coverage/
+
+# connect-db dump files
+dumps/*
