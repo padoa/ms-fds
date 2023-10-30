@@ -1,7 +1,7 @@
 {
   "server": {
     "scope": "",
-    "port": 14873
+    "port": 14512
   },
   "express": {
     "requestIdHeader": "X-Request-ID",
@@ -34,7 +34,7 @@
       "password": "no_pass",
       "hostname": "localhost",
       "port": 5432,
-      "database": "sape",
+      "database": "fds",
       "sslmode": false,
       "ssl": {
         "rejectUnauthorized": false,

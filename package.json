@@ -9,7 +9,6 @@
     "node": "18"
   },
   "scripts": {
-    "migrate": "echo 'No migrate script.'",
     "check-types": "npx tsc",
     "check-circular": "madge --extensions js,ts --circular ./",
     "------------------ YARN ------------------": "",
@@ -37,7 +36,11 @@
     "create-swagger:dev": "tsx ./src/create-swagger.ts",
     "------------------ HUSKY ------------------": "",
     "pre-commit": "bash ./tools/is_main_branch.sh && lint-staged",
-    "pre-push": "bash ./tools/is_main_branch.sh"
+    "pre-push": "bash ./tools/is_main_branch.sh",
+    "------------------- DB---------------------": "",
+    "migrate": "FORCE_UNIQUE_TRANSACTION=true ./scripts/run-task.sh db.migrate --no-new-transaction",
+    "migration:create": "create-migration --templatePath $(pwd)/node_modules/@padoa/database/resources/template.ts --migrationDirectory src/migrations",
+    "init-db": "./scripts/run-task.sh db.init --no-new-transaction"
   },
   "lint-staged": {
     "*.{ts,js}": [
@@ -62,14 +65,19 @@
   "homepage": "https://github.com/padoa/ms-fds#readme",
   "dependencies": {
     "@padoa/async-local-storage": "^2.0.2",
+    "@padoa/database": "^26.0.1",
     "@padoa/express": "^15.0.2",
     "@padoa/joi": "^5.0.2",
     "@padoa/logger": "^3.0.2",
     "@padoa/meta": "^5.0.2",
+    "@padoa/promise": "^3.0.3",
     "@padoa/sanitizer": "^1.2.6",
     "@padoa/swagger": "^15.0.3",
+    "@padoa/tasks": "^4.0.3",
+    "@padoa/time": "^2.0.3",
     "config": "^3.3.9",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "sequelize": "^6.33.0"
   },
   "devDependencies": {
     "@padoa/eslint-plugin": "^2.0.9",

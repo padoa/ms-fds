@@ -61,7 +61,7 @@ workflows:
           testFilesPattern: '"src/**/*.test.[tj]s" | circleci tests split --split-by=timings'
           resourceClass: medium+
           setupBeforeTests:
-            - run: npm run migrate
+            - run: npm run init-db
           executor:
             name: orb-ms/node-pg
             dbName: "fds"
