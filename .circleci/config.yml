@@ -1,0 +1,103 @@
+version: 2.1
+
+orbs:
+  orb-ms: padoa/orb-ms@13.0.0
+
+workflows:
+  all:
+    jobs:
+      - orb-ms/dependencies:
+          name: Dependencies
+          context:
+            - REGISTRY
+      - orb-ms/circular:
+          name: Circular
+          sourcePath: .
+          nodeImageTag: "18.15.0-alpine"
+          requires:
+            - Dependencies
+          context:
+            - REGISTRY
+      - orb-ms/lint:
+          name: Lint
+          resourceClass: small
+          requires:
+            - Dependencies
+          context:
+            - REGISTRY
+      - orb-ms/build:
+          name: Build
+          imageDirectory: "ms"
+          imageName: "fds/backend-dist"
+          context:
+            - REGISTRY
+            - PUSHGATEWAY
+      # TODO !!
+      # - orb-ms/build-and-publish-swagger-packages:
+      #     matrix:
+      #       parameters:
+      #         packageType: ['client', 'mocker', 'model']
+      #         swaggerScope: ['internal', 'admin']
+      #     name: "Build and publish Swagger-<<matrix.swaggerScope>>-<<matrix.packageType>>"
+      #     npmToken: ${AZDO_NPM_REGISTRY_PUSH_TOKEN}
+      #     packageName: "ms-fds"
+      #     imageDirectory: "ms"
+      #     imageName: "fds/backend-dist"
+      #     openApiMockerGitTag: "200a9c726aa1d22f0fa7ab4df66a63d3768e5ffe"
+      #     requires:
+      #       - Build
+      #     context:
+      #       - REGISTRY
+      - orb-ms/typescript-check:
+          name: Check Types
+          resourceClass: small
+          nodeImageTag: "18.15.0-alpine"
+          requires:
+            - Dependencies
+          context:
+            - REGISTRY
+      - orb-ms/test:
+          name: Test
+          flagName: test-flag
+          testFilesPattern: '"src/**/*.test.[tj]s" | circleci tests split --split-by=timings'
+          resourceClass: medium+
+          # TODO
+          # setupBeforeTests:
+          #   - run: npm run init-db
+          # executor:
+          #   name: orb-ms/node-pg
+          #   dbName: "sape"
+          requires:
+            - Dependencies
+          context:
+            - REGISTRY
+      - orb-ms/coverage-merge:
+          name: Merge Coverage
+          nodeVersion: "18.15.0-alpine"
+          requires:
+            - Test
+          context:
+            - REGISTRY
+      - orb-ms/coverage:
+          name: Coverage
+          nodeVersion: "18.15.0-alpine"
+          requires:
+            - Merge Coverage
+          context:
+            - REGISTRY
+      - orb-ms/git-tag:
+          name: Save Test Success Flag
+          tagName: test-flag
+          requires:
+            - Test
+      - orb-ms/git-tag:
+          name: Tag For Deploy
+          tagName: ${CIRCLE_BRANCH}_deploy
+          requires:
+            - Build
+            - Test
+      - orb-ms/git-tag:
+          name: Tag For Deploy Fast
+          tagName: ${CIRCLE_BRANCH}_deploy-fast
+          requires:
+            - Build

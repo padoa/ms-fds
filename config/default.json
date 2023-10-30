@@ -1,0 +1,61 @@
+{
+  "server": {
+    "scope": "",
+    "port": 14873
+  },
+  "express": {
+    "requestIdHeader": "X-Request-ID",
+    "cookieJwtSecret": "verySecretPhrase"
+  },
+  "logger": {
+    "incoming": false,
+    "level": "info"
+  },
+  "sequelize": {
+    "hooks": {
+      "requestIdComments": {
+        "enabled": false
+      }
+    },
+    "loggingQueriesInfo": {
+      "enabled": false,
+      "relax": true,
+      "maxJoins": 30,
+      "maxAttributes": 100
+    },
+    "migrations": {
+      "timeout": {
+        "global": 90,
+        "single": 60
+      }
+    },
+    "postgres": {
+      "username": "postgres",
+      "password": "no_pass",
+      "hostname": "localhost",
+      "port": 5432,
+      "database": "sape",
+      "sslmode": false,
+      "ssl": {
+        "rejectUnauthorized": false,
+        "ca": "",
+        "key": "",
+        "cert": ""
+      },
+      "pool": {
+        "min": 0,
+        "max": 15,
+        "idle": 30000,
+        "acquire": 5000
+      },
+      "owner": "postgres"
+    },
+    "uniqueTransaction": false
+  },
+  "stackName": "local",
+  "zendesk": {
+    "domain": "vault/common/zendesk/staging/domain",
+    "user": "vault/common/zendesk/staging/user",
+    "token": "vault/common/zendesk/staging/token"
+  }
+}

@@ -1,0 +1,47 @@
+{{- define "ingress-middlewares" }}
+
+{{- $availableMiddlewares:= .availableMiddlewares }}
+{{- $middlewares := .middlewares }}
+{{- $startMiddlewares:= .startMiddlewares }}
+{{- $endMiddlewares:= .endMiddlewares }}
+
+{{- $templatedMiddlewares := list }}
+
+{{- $orderedEnabledStartMiddlewares := list }}
+{{- /* Add all startMiddlewares to the orderedEnabledStartMiddlewares if they are enabled */}}
+{{- range $startMiddlewares }}
+  {{- $matchingMiddleware := (get $middlewares .) }}
+  {{- if $matchingMiddleware }}
+    {{- $orderedEnabledStartMiddlewares = append $orderedEnabledStartMiddlewares . }}
+    {{- $_ := unset $middlewares . }}
+  {{- end }}
+{{- end }}
+
+{{- $orderedEnabledEndMiddlewares := list }}
+{{- /*Add all endMiddlewares to the orderedEnabledEndMiddlewares if they are enabled */}}
+{{- range $endMiddlewares }}
+  {{- $matchingMiddleware := (get $middlewares .) }}
+  {{- if $matchingMiddleware }}
+    {{- $orderedEnabledEndMiddlewares = append $orderedEnabledEndMiddlewares . }}
+    {{- $_ := unset $middlewares . }}
+  {{- end }}
+{{- end }}
+
+{{- $enabledCenterMiddlewares := list}}
+{{- /* Add all other middlewares to the enabledCenterMiddlewares if they are enabled */}}
+{{- range $middlewareName, $middlewareEnabled := $middlewares }}
+  {{- if $middlewareEnabled }}
+    {{- $enabledCenterMiddlewares = append $enabledCenterMiddlewares $middlewareName }}
+  {{- end }}
+{{- end }}
+
+
+{{- range (concat $orderedEnabledStartMiddlewares $enabledCenterMiddlewares $orderedEnabledEndMiddlewares) }}
+  {{- $middleware := get $availableMiddlewares . }}
+
+  {{- $templatedMiddlewares = append $templatedMiddlewares (tpl ( printf "%s-%s@kubernetescrd" $middleware.namespace $middleware.name ) $) }}
+{{- end -}}
+  {{- if (len $templatedMiddlewares) }}
+traefik.ingress.kubernetes.io/router.middlewares: {{ join "," $templatedMiddlewares }}
+  {{- end }}
+{{- end -}}

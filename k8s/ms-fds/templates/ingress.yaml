@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sape-api
+  labels:
+    app: sape-api
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    {{- include "ingress-middlewares"
+      (merge (deepCopy $) (
+        dict
+        "availableMiddlewares" .Values.availableTraefikMiddlewares
+        "middlewares" .Values.middlewares
+      ))
+    | indent 4 }}
+spec:
+  rules:
+  {{- $hostname := "" }}
+  {{- if .Values.override.enabled }}
+    {{- $hostname = .Values.override.hostname }}
+  {{- else }}
+    {{- $hostname = .Values.hostname }}
+  {{- end }}
+  - host: {{ tpl $hostname $ }}
+    http:
+      paths:
+        - path: /api/admin
+          pathType: Prefix
+          backend:
+            service:
+              name: sape-api
+              port:
+                number: {{ .Values.port }}
