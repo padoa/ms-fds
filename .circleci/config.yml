@@ -106,5 +106,5 @@ workflows:
             - Build
       - orb-ms/helm-lint:
           name: Helm Lint
-          chart: k8s/haw-backend-steroids
+          chart: k8s/ms-fds
           valueFiles: '-f "$d/values.yaml" -f "$d/ci.test.yaml"'

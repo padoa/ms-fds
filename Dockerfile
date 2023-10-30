@@ -71,11 +71,11 @@ FROM base as dist
 WORKDIR /data/opt/backend
 
 COPY --from=builder /data/opt/backend/config ./config
-COPY --from=builder /data/opt/backend/resources ./resources
+# COPY --from=builder /data/opt/backend/resources ./resources
 COPY --from=builder /data/opt/backend/dist /data/opt/backend
 COPY --from=builder /data/opt/backend/tools/connect-to-npm-registry-ci.sh ./tools/connect-to-npm-registry-ci.sh
-COPY --from=builder /data/opt/backend/scripts ./scripts
-COPY --from=builder /data/opt/backend/src/migrations/statics ./migrations/statics
+# COPY --from=builder /data/opt/backend/scripts ./scripts
+# COPY --from=builder /data/opt/backend/src/migrations/statics ./migrations/statics
 
 # Cleanup duplicated migration files that will try (and fail) to run
 RUN find ./migrations \( -name "*.d.ts" -o -name "*.js.map" \) -exec rm {} \;
