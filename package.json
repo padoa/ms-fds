@@ -15,7 +15,7 @@
     "------------------ YARN ------------------": "",
     "yarn": "yarn install --frozen-lockfile",
     "yarn:retry": "bash ./ci-tools/scripts/retry_command.sh 'npm run yarn'",
-    "yarn:production": "yarn install --frozen-lockfile --production",
+    "yarn:production": "yarn workspaces focus --production",
     "yarn:retry:production": "bash ./ci-tools/scripts/retry_command.sh 'npm run yarn:production'",
     "------------------ LINT ------------------": "",
     "lint": "eslint --fix --ext .ts --cache .",
@@ -35,7 +35,7 @@
     "----------------- SWAGGER -----------------": "",
     "create-swagger": "node --async-stack-traces ./create-swagger.js",
     "create-swagger:dev": "tsx ./src/create-swagger.ts",
-    "----------------- HUSKY -----------------": "",
+    "------------------ HUSKY ------------------": "",
     "pre-commit": "bash ./tools/is_main_branch.sh && lint-staged",
     "pre-push": "bash ./tools/is_main_branch.sh"
   },

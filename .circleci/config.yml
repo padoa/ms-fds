@@ -104,3 +104,7 @@ workflows:
           tagName: ${CIRCLE_BRANCH}_deploy-fast
           requires:
             - Build
+      - orb-ms/helm-lint:
+        name: Helm Lint
+        chart: k8s/haw-backend-steroids
+        valueFiles: '-f "$d/values.yaml" -f "$d/ci.test.yaml"'

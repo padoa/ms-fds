@@ -62,6 +62,7 @@ RUN ./tools/connect-to-npm-registry-ci.sh $AZDO_NPM_REGISTRY_PULL_TOKEN
 RUN yarn remove typescript
 
 COPY ./ci-tools/scripts/retry_command.sh ./ci-tools/scripts/retry_command.sh
+RUN yarn plugin import workspace-tools
 RUN npm run yarn:retry:production
 
 # Dist image
