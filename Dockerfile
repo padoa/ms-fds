@@ -78,7 +78,7 @@ COPY --from=builder /data/opt/backend/tools/connect-to-npm-registry-ci.sh ./tool
 # COPY --from=builder /data/opt/backend/src/migrations/statics ./migrations/statics
 
 # Cleanup duplicated migration files that will try (and fail) to run
-RUN find ./migrations \( -name "*.d.ts" -o -name "*.js.map" \) -exec rm {} \;
+# RUN find ./migrations \( -name "*.d.ts" -o -name "*.js.map" \) -exec rm {} \;
 
 EXPOSE 14873
 
