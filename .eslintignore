@@ -7,3 +7,4 @@ tools/
 generated/
 .eslintrc.*cjs
 vite.config.ts
+nyc.config.js

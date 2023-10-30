@@ -34,7 +34,7 @@ RUN npm run yarn:retry
 # COPY ./scripts ./scripts
 COPY ./src ./src
 COPY ./config ./config
-COPY ./resources ./resources
+# COPY ./resources ./resources
 
 EXPOSE 14873
 

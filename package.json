@@ -23,7 +23,7 @@
     "lint:circleci": "eslint --quiet --ext .ts --format junit --output-file ./reports/eslint.xml --cache --config .eslintrc.ci.cjs .",
     "------------------ TEST ------------------": "",
     "test": "NODE_ENV=test npm run init-db && npx vitest run --no-threads --no-isolate --coverage",
-    "jest:circleci": "NODE_ENV=test LOG_LEVEL=error node --trace-warnings node_modules/.bin/vitest run --no-threads --no-isolate --bail=1 --logHeapUsage --coverage --reporter junit --outputFile reports/test-results.xml --reporter basic",
+    "jest:circleci": "LOG_LEVEL=error npx vitest run --no-threads --no-isolate --coverage --reporter junit --outputFile reports/test-results.xml",
     "------------------ BUILD -----------------": "",
     "build": "rm -rf ./dist && rm -f tsconfig.tsbuildinfo && npx tsc && npx tsc-alias",
     "------------------- RUN ------------------": "",
