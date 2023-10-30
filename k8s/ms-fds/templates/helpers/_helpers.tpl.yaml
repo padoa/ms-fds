@@ -1,3 +1,0 @@
-{{- define "kube-name" -}}
-{{- lower . | replace "/" "-" | replace "_" "-" }}
-{{- end }}

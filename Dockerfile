@@ -23,19 +23,20 @@ ARG AZDO_NPM_REGISTRY_PULL_TOKEN
 
 WORKDIR /data/opt/backend
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnrc.yml ./
 COPY ./ci-tools/npm-registry/connect-to-npm-registry-ci.sh ./tools/connect-to-npm-registry-ci.sh
 RUN ./tools/connect-to-npm-registry-ci.sh $AZDO_NPM_REGISTRY_PULL_TOKEN
 
 COPY ./ci-tools/scripts/retry_command.sh ./ci-tools/scripts/retry_command.sh
+RUN corepack enable
 RUN npm run yarn:retry
 
-COPY ./scripts ./scripts
+# COPY ./scripts ./scripts
 COPY ./src ./src
 COPY ./config ./config
-COPY ./resources ./resources
+# COPY ./resources ./resources
 
-EXPOSE 14873
+EXPOSE 14512
 
 CMD [ "npm", "run", "start:dev" ]
 
@@ -61,7 +62,8 @@ RUN ./tools/connect-to-npm-registry-ci.sh $AZDO_NPM_REGISTRY_PULL_TOKEN
 RUN yarn remove typescript
 
 COPY ./ci-tools/scripts/retry_command.sh ./ci-tools/scripts/retry_command.sh
-RUN yarn install --production --frozen-lockfile --mutex network
+RUN yarn plugin import workspace-tools
+RUN npm run yarn:retry:production
 
 # Dist image
 FROM base as dist
@@ -69,15 +71,15 @@ FROM base as dist
 WORKDIR /data/opt/backend
 
 COPY --from=builder /data/opt/backend/config ./config
-COPY --from=builder /data/opt/backend/resources ./resources
+# COPY --from=builder /data/opt/backend/resources ./resources
 COPY --from=builder /data/opt/backend/dist /data/opt/backend
 COPY --from=builder /data/opt/backend/tools/connect-to-npm-registry-ci.sh ./tools/connect-to-npm-registry-ci.sh
-COPY --from=builder /data/opt/backend/scripts ./scripts
-COPY --from=builder /data/opt/backend/src/migrations/statics ./migrations/statics
+# COPY --from=builder /data/opt/backend/scripts ./scripts
+# COPY --from=builder /data/opt/backend/src/migrations/statics ./migrations/statics
 
 # Cleanup duplicated migration files that will try (and fail) to run
-RUN find ./migrations \( -name "*.d.ts" -o -name "*.js.map" \) -exec rm {} \;
+# RUN find ./migrations \( -name "*.d.ts" -o -name "*.js.map" \) -exec rm {} \;
 
-EXPOSE 14873
+EXPOSE 14512
 
 CMD [ "npm", "run", "start:compiled" ]
