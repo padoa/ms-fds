@@ -23,11 +23,12 @@ ARG AZDO_NPM_REGISTRY_PULL_TOKEN
 
 WORKDIR /data/opt/backend
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnrc.yml ./
 COPY ./ci-tools/npm-registry/connect-to-npm-registry-ci.sh ./tools/connect-to-npm-registry-ci.sh
 RUN ./tools/connect-to-npm-registry-ci.sh $AZDO_NPM_REGISTRY_PULL_TOKEN
 
 COPY ./ci-tools/scripts/retry_command.sh ./ci-tools/scripts/retry_command.sh
+RUN corepack enable
 RUN npm run yarn:retry
 
 COPY ./scripts ./scripts

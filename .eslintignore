@@ -6,3 +6,4 @@ scripts/
 tools/
 generated/
 .eslintrc.*cjs
+vite.config.ts
