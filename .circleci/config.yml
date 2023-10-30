@@ -105,6 +105,6 @@ workflows:
           requires:
             - Build
       - orb-ms/helm-lint:
-        name: Helm Lint
-        chart: k8s/haw-backend-steroids
-        valueFiles: '-f "$d/values.yaml" -f "$d/ci.test.yaml"'
+          name: Helm Lint
+          chart: k8s/haw-backend-steroids
+          valueFiles: '-f "$d/values.yaml" -f "$d/ci.test.yaml"'
