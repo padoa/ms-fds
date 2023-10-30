@@ -4,7 +4,7 @@ orbs:
   orb-ms: padoa/orb-ms@13.0.0
 
 workflows:
-  backend:
+  all:
     jobs:
       - orb-ms/dependencies:
           name: Dependencies
@@ -61,15 +61,15 @@ workflows:
           flagName: test-flag
           testFilesPattern: '"src/**/*.test.[tj]s" | circleci tests split --split-by=timings'
           resourceClass: medium+
-          setupBeforeTests: []
-          executor:
-            name: test
-          # TODO
-          # setupBeforeTests:
-          #   - run: npm run init-db
+          # setupBeforeTests: []
           # executor:
-          #   name: orb-ms/node-pg
-          #   dbName: "sape"
+          #   name: test
+          # TODO
+          setupBeforeTests:
+            - run: npm run migrate
+          executor:
+            name: orb-ms/node-pg
+            dbName: "fds"
           requires:
             - Dependencies
           context:
