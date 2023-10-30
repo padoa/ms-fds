@@ -29,8 +29,6 @@ workflows:
           name: Build
           imageDirectory: "ms"
           imageName: "fds/backend-dist"
-          requires:
-            - Dependencies
           context:
             - REGISTRY
             - PUSHGATEWAY

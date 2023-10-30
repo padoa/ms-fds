@@ -31,7 +31,7 @@ COPY ./ci-tools/scripts/retry_command.sh ./ci-tools/scripts/retry_command.sh
 RUN corepack enable
 RUN npm run yarn:retry
 
-COPY ./scripts ./scripts
+# COPY ./scripts ./scripts
 COPY ./src ./src
 COPY ./config ./config
 COPY ./resources ./resources
