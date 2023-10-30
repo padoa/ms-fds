@@ -9,6 +9,7 @@
     "node": "18"
   },
   "scripts": {
+    "migrate": "echo 'No migrate script.'",
     "check-types": "npx tsc",
     "check-circular": "madge --extensions js,ts --circular ./",
     "------------------ YARN ------------------": "",
