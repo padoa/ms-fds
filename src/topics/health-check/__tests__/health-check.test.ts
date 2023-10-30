@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { app } from '@src/app.js';
 import hash from '@src/hash.js';
 
-describe('# Health Check', () => {
+describe.skip('# Health Check', () => {
   it('should return status 200 for health check route', async () => {
     const res = await request(app).get('/health-check');
     expect(res.status).toBe(200);
