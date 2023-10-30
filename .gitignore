@@ -8,6 +8,10 @@ generated
 .vscode
 .DS_Store
 
+# yarn
+.yarnrc.yml
+.yarn
+
 tsconfig.tsbuildinfo
 /coverage/
 
