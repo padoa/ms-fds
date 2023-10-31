@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  orb-ms: padoa/orb-ms@dev:243ceb2
+  orb-ms: padoa/orb-ms@dev:5cba0db
 
 workflows:
   Backend pipeline:
