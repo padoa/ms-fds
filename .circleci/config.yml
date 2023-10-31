@@ -1,10 +1,10 @@
 version: 2.1
 
 orbs:
-  orb-ms: padoa/orb-ms@13.0.0
+  orb-ms: padoa/orb-ms@13.0.4
 
 workflows:
-  all:
+  Backend pipeline:
     jobs:
       - orb-ms/dependencies:
           name: Dependencies
@@ -32,22 +32,21 @@ workflows:
           context:
             - REGISTRY
             - PUSHGATEWAY
-      # TODO !!
-      # - orb-ms/build-and-publish-swagger-packages:
-      #     matrix:
-      #       parameters:
-      #         packageType: ['client', 'mocker', 'model']
-      #         swaggerScope: ['internal', 'admin']
-      #     name: "Build and publish Swagger-<<matrix.swaggerScope>>-<<matrix.packageType>>"
-      #     npmToken: ${AZDO_NPM_REGISTRY_PUSH_TOKEN}
-      #     packageName: "ms-fds"
-      #     imageDirectory: "ms"
-      #     imageName: "fds/backend-dist"
-      #     openApiMockerGitTag: "200a9c726aa1d22f0fa7ab4df66a63d3768e5ffe"
-      #     requires:
-      #       - Build
-      #     context:
-      #       - REGISTRY
+      - orb-ms/build-and-publish-swagger-packages:
+          matrix:
+            parameters:
+              packageType: ['client', 'mocker', 'model']
+              swaggerScope: ['api']
+          name: "Build and publish Swagger-<<matrix.packageType>>"
+          npmToken: ${AZDO_NPM_REGISTRY_PUSH_TOKEN}
+          packageName: "ms-fds"
+          imageDirectory: "ms"
+          imageName: "fds/backend-dist"
+          openApiMockerGitTag: "264ffce16a3af972a4493748ea86d1f12b104fad"
+          requires:
+            - Build
+          context:
+            - REGISTRY
       - orb-ms/typescript-check:
           name: Check Types
           resourceClass: small
@@ -61,12 +60,11 @@ workflows:
           flagName: test-flag
           testFilesPattern: '"src/**/*.test.[tj]s" | circleci tests split --split-by=timings'
           resourceClass: medium+
-          # TODO
-          # setupBeforeTests:
-          #   - run: npm run init-db
-          # executor:
-          #   name: orb-ms/node-pg
-          #   dbName: "sape"
+          setupBeforeTests:
+            - run: npm run init-db
+          executor:
+            name: orb-ms/node-pg
+            dbName: "fds"
           requires:
             - Dependencies
           context:

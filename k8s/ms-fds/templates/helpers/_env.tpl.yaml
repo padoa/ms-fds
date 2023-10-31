@@ -1,6 +1,0 @@
-{{- define "padoa.env" }}
-{{- range $name, $value := .env }}
-- name: {{ $name }}
-  value: {{ tpl ($value | toString) $ | quote }}
-{{- end }}
-{{- end }}
