@@ -5,7 +5,7 @@ import Joi from '@helpers/joi.js';
 import hash from '@src/hash.js';
 
 class HealthCheckController extends Controller {
-  @parameters({})
+  @parameters({ query: { env: Joi.string().optional() } })
   @response(200, "Health Check de l'API", joiObject({ msg: Joi.string().required() }))
   @markAuthMiddlewareAsSet()
   @route('/', HttpMethod.GET, "Renvoie ok si l'application express est correctement lancée")
