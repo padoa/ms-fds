@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  orb-ms: padoa/orb-ms@13.0.4
+  orb-ms: padoa/orb-ms@14.0.0
 
 workflows:
   Backend pipeline:
@@ -42,7 +42,6 @@ workflows:
           packageName: "ms-fds"
           imageDirectory: "ms"
           imageName: "fds/backend-dist"
-          openApiGeneratorImageTag: "dc68e1e474a6230b0a4bdbe9bc725f5616407f2b"
           openApiMockerGitTag: "264ffce16a3af972a4493748ea86d1f12b104fad"
           requires:
             - Build
