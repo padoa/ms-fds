@@ -64,6 +64,7 @@ workflows:
             - run: npm run init-db
           executor:
             name: orb-ms/node-pg
+            nodeTag: "18.15.0"
             dbName: "fds"
           requires:
             - Dependencies
