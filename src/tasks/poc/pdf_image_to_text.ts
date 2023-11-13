@@ -4,7 +4,7 @@ import { fromPath } from 'pdf2pic';
 import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 
-import type { ILine, IText } from '@src/tasks/poc/pdf_extracter/build_tree.js';
+import type { IBox, ILine, IText } from '@src/tasks/poc/fds.model.js';
 
 const options = {
   density: 300,
@@ -17,17 +17,12 @@ const options = {
   height: 1485,
 };
 
-const FDS_FOLDER = `/Users/padoa/meta-haw/packages/ms-fds/resources/pdf/apst18`;
-const NUMBER_OF_PAGES = 3;
-
-const FILENAME = '2549_fds_2017_argon.pdf';
-
 export const getTextFromImagePdf = async (
-  fdsFilePath: string = `${FDS_FOLDER}/${FILENAME}`,
-  { numberOfPagesToParse = NUMBER_OF_PAGES }: { numberOfPagesToParse?: number } = {},
+  fdsFilePath: string,
+  { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {},
 ): Promise<ILine[]> => {
   // Starts the time
-  await pdfToImage(fdsFilePath);
+  await pdfToImage(fdsFilePath, { numberOfPagesToParse });
 
   const worker = await createWorker('fra');
   const texts = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (pageNumber) => {
@@ -39,9 +34,9 @@ export const getTextFromImagePdf = async (
   return text;
 };
 
-const pdfToImage = async (pathToFile: string): Promise<void> => {
+const pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<void> => {
   await fromPath(pathToFile, options)
-    .bulk(-1, { responseType: 'image' })
+    .bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' })
     .then((resolve) => {
       return resolve;
     });
@@ -80,10 +75,6 @@ const isHocrElementALine = (hocrElement: string): boolean => {
   return hocrElement.trim().startsWith("<span class='ocr_line'");
 };
 
-// const isHocrElementEndingALine = (hocrElement: string): boolean => {
-//   return hocrElement.trim() === '</span>';
-// };
-
 const isHocrElementAWord = (hocrElement: string): boolean => {
   return hocrElement.trim().startsWith("<span class='ocrx_word'");
 };
@@ -96,5 +87,5 @@ const getTextInHocrWordElement = (hocrWordElement: string): IText => {
 
 const getBoxInHocrElement = (hocrElement: string): IBox => {
   const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
-  return { x, y };
+  return { x: +x, y: +y };
 };

@@ -58,8 +58,3 @@ export const parsePdfWithPdfParser = async (fdsFilePath: string): Promise<string
     return pdfParser.loadPDF(fdsFilePath);
   });
 };
-
-export const getFilesInDirectory = async (directory: string): Promise<string[]> => {
-  const elementsInDirectory = await fs.readdir(directory);
-  return elementsInDirectory;
-};
