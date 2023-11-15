@@ -19,7 +19,7 @@ const main = async (): Promise<void> => {
     .parseAsync();
 
   logger.info(`🔵  Extracting data from ${filename}...`);
-  const data = await extractDataFromFDS();
+  const data = await extractDataFromFDS(filename);
   logger.info(`✅  Data extracted:`, data.dataExtracted);
 };
 
