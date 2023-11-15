@@ -4,15 +4,13 @@ import { fromPath } from 'pdf2pic';
 import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 
-import type { IBox, ILine, IText } from '@src/tasks/poc/fds.model.js';
+import type { IBox, ILine, IText } from '@topics/extractor/model/fds.model.js';
 
 const options = {
   density: 300,
   saveFilename: 'pdf',
   savePath: './images',
   format: 'png',
-  // width: 1654,
-  // height: 2339,
   width: 1050,
   height: 1485,
 };
@@ -21,7 +19,6 @@ export const getTextFromImagePdf = async (
   fdsFilePath: string,
   { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {},
 ): Promise<ILine[]> => {
-  // Starts the time
   await pdfToImage(fdsFilePath, { numberOfPagesToParse });
 
   const worker = await createWorker('fra');

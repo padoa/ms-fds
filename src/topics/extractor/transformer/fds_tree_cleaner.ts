@@ -1,6 +1,10 @@
 import _ from 'lodash';
 
-import type { IFDSTree, ILine, IText, IXCounts } from '@src/tasks/poc/fds.model.js';
+import type { IFDSTree, ILine, IText, IXCounts } from '@topics/extractor/model/fds.model.js';
+
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- CLEANING ---------------------------------------------
+//----------------------------------------------------------------------------------------------
 
 export const cleanFDSTree = (fdsTree: IFDSTree, { xCounts, fromImage }: { xCounts: IXCounts; fromImage: boolean }): IFDSTree => {
   const joinWithSpace = fromImage;
@@ -38,12 +42,8 @@ const cleanLines = (lines: ILine[], { xCounts, joinWithSpace }: { xCounts: IXCou
   return _.map(lines, (line) => cleanLine(line, { xCounts, joinWithSpace }));
 };
 
-//----------------------------------------------------------------------------------------------
-//--------------------------------------- CLEANING ---------------------------------------------
-//----------------------------------------------------------------------------------------------
-
 const cleanLine = (line: ILine, { xCounts, joinWithSpace }: { xCounts: IXCounts; joinWithSpace: boolean }): ILine => {
-  const valueToPass = xAlignmentValue(10, xCounts);
+  const valueToPass = computeXHighestAlignmentValue(10, xCounts);
   return {
     ...line,
     texts: _.reduce(
@@ -64,16 +64,8 @@ const cleanLine = (line: ILine, { xCounts, joinWithSpace }: { xCounts: IXCounts;
   };
 };
 
-const xAlignmentValue = (x: number, xCounts: IXCounts): number => {
+const computeXHighestAlignmentValue = (x: number, xCounts: IXCounts): number => {
   const values = Object.values(xCounts);
   const valueSorted = values.sort((a, b) => b - a);
-  // console.log(Object.keys(xCounts).sort());
-  // console.log(valueSorted);
   return valueSorted[x - 1];
 };
-
-// const xPercentile = (percentile: number, xCounts: IXCounts): number => {
-//   const values = Object.values(xCounts);
-//   const valueSorted = values.sort((a, b) => a - b);
-//   return valueSorted[Math.floor((valueSorted.length / 100) * percentile)];
-// };

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { ILine, IPdfData, IRawElement } from '@src/tasks/poc/fds.model.js';
+import type { ILine, IPdfData, IRawElement } from '@topics/extractor/model/fds.model.js';
 
 export const isPdfParsable = (pdfData: IPdfData): boolean => {
   const pdfContent = pdfData.Pages.map(({ Texts }) => Texts)
@@ -55,8 +55,6 @@ export const getTextFromPdfData = (pdfData: IPdfData): ILine[] => {
 
   const linesYOrdered = _.sortBy(result.lines, 'y');
   const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'x') }));
-  // const meanCharWidthByStyle = computeMeanCharWidthByStyle(result.charWidthsByStyle);
-  // const linesWithBlocsGrouped = groupBlocInLines(linesOrdered, { pdfSpaceWidth, meanCharWidthByStyle, pdfDataMeanSpaceWidth });
   const cleanedLines = cleanLines(linesOrdered);
   return cleanedLines;
 };

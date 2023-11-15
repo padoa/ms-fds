@@ -1,18 +1,20 @@
 import { format } from 'date-fns';
 import _ from 'lodash';
 
-import type { IFDSTree, ISubstance } from '@src/tasks/poc/fds.model.js';
+import type {
+  IExtractedData,
+  IFDSTree,
+  IExtractedSubstance,
+  IExtractedHazard,
+  IExtractedDate,
+  IExtractedProduct,
+  IExtractedProducer,
+} from '@topics/extractor/model/fds.model.js';
 
-export const applyExtractionRules = async ({
-  fdsTreeCleaned,
-  fullText,
-}: {
-  fdsTreeCleaned: IFDSTree;
-  fullText: string;
-}): Promise<{ date: string; inTextDate: string; productName: string; producer: string; hazards: string[]; substances: ISubstance[] }> => {
+export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
-    ...getDate(fullText),
-    productName: getProductName(fdsTreeCleaned, { fullText }),
+    date: getDate(fullText),
+    product: getProductName(fdsTreeCleaned, { fullText }),
     producer: getProducer(fdsTreeCleaned),
     hazards: getHazards(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
@@ -28,11 +30,11 @@ const stringDateRegex = '((?<!\\d{1})([1-9]|[12][0-9]|3[01])-?([a-zA-Z]+)\\.?.?(
 const englishNumberDateRegex = '((19\\d{2}|20\\d{2}|\\d{2})(\\/|-|\\.)(0[1-9]|1[0-2])(\\/|-|\\.)(0[1-9]|[12][0-9]|3[01]))';
 const dateRegexps = [numberDateRegex, stringDateRegex, englishNumberDateRegex];
 
-const getDate = (fullText: string): { date: string; inTextDate: string } => {
+const getDate = (fullText: string): IExtractedDate => {
   const text = fullText.replaceAll(' ', '').replaceAll('û', 'u');
   const inTextDate = getDateByText(text) || getDateByMostFrequent(text) || getDateByMostRecent(text);
   return {
-    date: inTextDate ? format(parseDate(inTextDate), 'yyyy/MM/dd') : null,
+    formattedDate: inTextDate ? format(parseDate(inTextDate), 'yyyy/MM/dd') : null,
     inTextDate,
   };
 };
@@ -114,14 +116,12 @@ const parseDateFromEnglishNumberRegex = (date: string): Date => {
 //------------------------------------- PRODUCT NAME -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getProductName = (fdsTree: IFDSTree, { fullText }: { fullText: string }): string => {
+const getProductName = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct => {
   return getProductNameByText(fdsTree) || getProductNameByLineOrder(fdsTree, { fullText });
 };
 
-const getProductNameByText = (fdsTree: IFDSTree): string => {
+const getProductNameByText = (fdsTree: IFDSTree): IExtractedProduct => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
-
-  // console.log(JSON.stringify(linesToSearchIn));
 
   if (_.isEmpty(linesToSearchIn)) return null;
 
@@ -143,7 +143,7 @@ const getProductNameByText = (fdsTree: IFDSTree): string => {
   return null;
 };
 
-const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): string => {
+const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
@@ -173,11 +173,8 @@ const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: 
 //--------------------------------------- PRODUCER ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getProducer = (fdsTree: IFDSTree): string => {
+const getProducer = (fdsTree: IFDSTree): IExtractedProducer => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[3]?.lines;
-
-  // console.log(JSON.stringify(fdsTree));
-  // console.log(JSON.stringify(linesToSearchIn));
 
   if (_.isEmpty(linesToSearchIn)) return null;
 
@@ -196,22 +193,30 @@ const getProducer = (fdsTree: IFDSTree): string => {
     )
       continue;
 
-    return text;
+    return cleanProducer(text);
   }
   return null;
+};
+
+const cleanProducer = (producer: IExtractedProducer): IExtractedProducer => {
+  if (!producer?.endsWith('.')) return producer;
+  const producerSplit = producer.split(/ |\.|-/);
+  const wordBeforePoint = producerSplit[producerSplit.length - 2];
+  const wordBeforePointIsAChar = wordBeforePoint?.length === 1;
+
+  if (wordBeforePointIsAChar) return producer;
+  return producer.slice(0, -1);
 };
 
 //----------------------------------------------------------------------------------------------
 //---------------------------------------- HAZARDS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getHazards = (fdsTree: IFDSTree): string[] => {
+const getHazards = (fdsTree: IFDSTree): IExtractedHazard[] => {
   const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
   const textInEachLine = _.map(linesToSearchIn, ({ texts }) => {
     return _.map(texts, 'content').join('');
   });
-
-  // console.log(textInEachLine);
 
   const matches = _(textInEachLine)
     .map((text) => {
@@ -226,7 +231,6 @@ const getHazards = (fdsTree: IFDSTree): string[] => {
     .compact()
     .value();
 
-  // console.log(JSON.stringify(linesToSearchIn));
   return matches;
 };
 
@@ -234,14 +238,14 @@ const getHazards = (fdsTree: IFDSTree): string[] => {
 //--------------------------------------- SUBSTANCES -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getSubstances = (fdsTree: IFDSTree): ISubstance[] => {
+const getSubstances = (fdsTree: IFDSTree): IExtractedSubstance[] => {
   const linesToSearchIn = [...(fdsTree[3]?.subsections?.[1]?.lines || []), ...(fdsTree[3]?.subsections?.[2]?.lines || [])];
   const textInEachLine = _.map(linesToSearchIn, ({ texts }) => {
     return _.map(texts, 'content').join('');
   });
 
-  const substances: ISubstance[] = [];
-  let previousLineSubstance: Partial<ISubstance> = {};
+  const substances: IExtractedSubstance[] = [];
+  let previousLineSubstance: Partial<IExtractedSubstance> = {};
   for (const text of textInEachLine) {
     const textCleaned = text.replaceAll(' ', '');
 

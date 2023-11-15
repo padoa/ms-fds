@@ -5634,6 +5634,7 @@ __metadata:
     typescript: ^5.2.2
     vite-tsconfig-paths: ^4.2.1
     vitest: ^0.34.6
+    yargs: ^17.7.2
   languageName: unknown
   linkType: soft
 
