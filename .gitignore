@@ -7,6 +7,9 @@ yarn-error.log
 generated
 .vscode
 .DS_Store
+resources
+images
+*.traineddata
 
 # yarn
 .yarn
