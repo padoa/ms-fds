@@ -42,7 +42,6 @@ workflows:
           packageName: "ms-fds"
           imageDirectory: "ms"
           imageName: "fds/backend-dist"
-          openApiMockerGitTag: "264ffce16a3af972a4493748ea86d1f12b104fad"
           requires:
             - Build
           context:
