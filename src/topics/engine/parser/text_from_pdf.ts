@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { ILine, IPdfData, IRawElement } from '@topics/extractor/model/fds.model.js';
+import type { ILine, IPdfData, IRawElement } from '@topics/engine/model/fds.model.js';
 
 export const isPdfParsable = (pdfData: IPdfData): boolean => {
   const pdfContent = pdfData.Pages.map(({ Texts }) => Texts)

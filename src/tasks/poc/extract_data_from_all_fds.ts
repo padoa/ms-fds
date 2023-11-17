@@ -6,8 +6,8 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { promiseMapSeries } from '@padoa/promise';
 
-import { extractDataFromFDS } from '@topics/extractor/fds_extractor.js';
-import type { IExtractedData } from '@topics/extractor/model/fds.model.js';
+import { extractDataFromFDS } from '@topics/engine/fds_engine.js';
+import type { IExtractedData } from '@topics/engine/model/fds.model.js';
 
 const logger = console;
 

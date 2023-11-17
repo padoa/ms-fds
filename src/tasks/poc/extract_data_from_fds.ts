@@ -3,7 +3,7 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { extractDataFromFDS } from '@topics/extractor/fds_extractor.js';
+import { extractDataFromFDS } from '@topics/engine/fds_engine.js';
 
 const logger = console;
 

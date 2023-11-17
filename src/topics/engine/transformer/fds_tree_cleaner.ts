@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { IFDSTree, ILine, IText, IXCounts } from '@topics/extractor/model/fds.model.js';
+import type { IFDSTree, ILine, IText, IXCounts } from '@topics/engine/model/fds.model.js';
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- CLEANING ---------------------------------------------

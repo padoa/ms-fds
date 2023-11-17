@@ -9,7 +9,7 @@ import type {
   IExtractedDate,
   IExtractedProduct,
   IExtractedProducer,
-} from '@topics/extractor/model/fds.model.js';
+} from '@topics/engine/model/fds.model.js';
 
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {

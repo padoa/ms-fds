@@ -4,7 +4,7 @@ import { fromPath } from 'pdf2pic';
 import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 
-import type { IBox, ILine, IText } from '@topics/extractor/model/fds.model.js';
+import type { IBox, ILine, IText } from '@topics/engine/model/fds.model.js';
 
 const options = {
   density: 300,
