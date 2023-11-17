@@ -1,8 +1,8 @@
-import type { IExtractedData } from '@topics/extractor/model/fds.model.js';
-import { buildFdsTree } from '@topics/extractor/transformer/fds_tree_builder.js';
-import { cleanFDSTree } from '@topics/extractor/transformer/fds_tree_cleaner.js';
-import { applyExtractionRules } from '@topics/extractor/rules/extraction_rules.js';
-import { parsePDF } from '@topics/extractor/parser/pdf_parser.js';
+import type { IExtractedData } from '@topics/engine/model/fds.model.js';
+import { buildFdsTree } from '@topics/engine/transformer/fds_tree_builder.js';
+import { cleanFDSTree } from '@topics/engine/transformer/fds_tree_cleaner.js';
+import { applyExtractionRules } from '@topics/engine/rules/extraction_rules.js';
+import { parsePDF } from '@topics/engine/parser/pdf_parser.js';
 
 export const extractDataFromFDS = async (
   fdsFilePath: string,

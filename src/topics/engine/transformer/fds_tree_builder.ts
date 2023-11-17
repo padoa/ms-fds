@@ -1,13 +1,13 @@
 import _ from 'lodash';
 
-import type { IFDSTree, ILine, ISubsection, IText, IXCounts } from '@topics/extractor/model/fds.model.js';
+import type { IFDSTree, ILine, ISubsection, IText, IXCounts } from '@topics/engine/model/fds.model.js';
 import {
   isAnInterestingSection,
   isAnInterestingSubSection,
   isSwitchingSection,
   isSwitchingSubSection,
   shouldAddLineInCurrentSubSection,
-} from '@topics/extractor/rules/section_rules.js';
+} from '@topics/engine/rules/section_rules.js';
 
 //----------------------------------------------------------------------------------------------
 //---------------------------------------- BUILDER ---------------------------------------------

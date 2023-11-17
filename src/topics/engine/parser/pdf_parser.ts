@@ -1,8 +1,8 @@
 import Pdfparser from 'pdf2json';
 
-import type { ILine, IPdfData } from '@topics/extractor/model/fds.model.js';
-import { getTextFromImagePdf } from '@topics/extractor/parser/pdf_image_to_text.js';
-import { getTextFromPdfData, isPdfParsable } from '@topics/extractor/parser/text_from_pdf.js';
+import type { ILine, IPdfData } from '@topics/engine/model/fds.model.js';
+import { getTextFromImagePdf } from '@topics/engine/parser/pdf_image_to_text.js';
+import { getTextFromPdfData, isPdfParsable } from '@topics/engine/parser/text_from_pdf.js';
 
 export const parsePDF = async (fdsFilePath: string): Promise<{ lines: ILine[]; fromImage: boolean }> => {
   return new Promise((resolve, reject) => {
