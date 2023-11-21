@@ -668,9 +668,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@padoa/database@npm:^26.0.1":
-  version: 26.0.1
-  resolution: "@padoa/database@npm:26.0.1"
+"@padoa/database@npm:^26.2.0":
+  version: 26.2.0
+  resolution: "@padoa/database@npm:26.2.0"
   dependencies:
     cls-hooked: ^4.2.2
     date-fns: ^2.30.0
@@ -689,7 +689,7 @@ __metadata:
     sequelize: ^6.31.0
   bin:
     create-migration: ./dist/bin/create-migration.js
-  checksum: f28caa54672d2768f293b22871b652a68a1b3d1ee4ec9b418fbbe2dcb222e4b0935c5b243a9b7123bcae053e625f5e4baa1e4a4838bd916f20f2fb8fa2ac16ae
+  checksum: 8eb93d0a6848a48f40d3c10c5d142f753d551e20f3b0ab3e7e0a0cf5151a07a7ca918aa3a3017704433a3fdf84abf1fee23fe6e7a5d838f0eb85a220076a99a7
   languageName: node
   linkType: hard
 
@@ -5609,7 +5609,7 @@ __metadata:
     "@padoa/async-local-storage": ^2.0.2
     "@padoa/axios": ^5.0.4
     "@padoa/csv-tools": ^2.0.4
-    "@padoa/database": ^26.0.1
+    "@padoa/database": ^26.2.0
     "@padoa/eslint-plugin": ^2.0.9
     "@padoa/express": ^15.0.2
     "@padoa/joi": ^5.0.2

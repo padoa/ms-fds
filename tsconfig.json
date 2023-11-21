@@ -20,7 +20,8 @@
     "paths": {
       "@helpers/*": ["src/helpers/*"],
       "@topics/*": ["src/topics/*"],
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@orm/*": ["src/orm"]
     }
   },
 
