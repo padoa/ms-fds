@@ -21,7 +21,7 @@
       "@helpers/*": ["src/helpers/*"],
       "@topics/*": ["src/topics/*"],
       "@src/*": ["src/*"],
-      "@orm/*": ["src/orm"]
+      "@orm/*": ["src/orm/*"]
     }
   },
 
