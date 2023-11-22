@@ -20,6 +20,8 @@ const options: Options = {
   height: 1485,
 };
 
+// TODO: PdfImageTextExtractorService class
+
 export const getTextFromImagePdf = async (
   fdsFilePath: string,
   { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {},

@@ -34,7 +34,7 @@ RUN npm run yarn:retry
 # COPY ./scripts ./scripts
 COPY ./src ./src
 COPY ./config ./config
-# COPY ./resources ./resources
+COPY ./resources ./resources
 
 EXPOSE 14512
 
@@ -71,7 +71,7 @@ FROM base as dist
 WORKDIR /data/opt/backend
 
 COPY --from=builder /data/opt/backend/config ./config
-# COPY --from=builder /data/opt/backend/resources ./resources
+COPY --from=builder /data/opt/backend/resources ./resources
 COPY --from=builder /data/opt/backend/dist /data/opt/backend
 COPY --from=builder /data/opt/backend/tools/connect-to-npm-registry-ci.sh ./tools/connect-to-npm-registry-ci.sh
 # COPY --from=builder /data/opt/backend/scripts ./scripts

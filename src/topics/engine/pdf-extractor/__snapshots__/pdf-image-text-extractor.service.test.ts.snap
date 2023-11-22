@@ -1,0 +1,1695 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should return text from image pdf 1`] = `
+[
+  {
+    "texts": [
+      {
+        "content": "fiche",
+        "x": 304,
+        "y": 98,
+      },
+      {
+        "content": "de",
+        "x": 386,
+        "y": 98,
+      },
+      {
+        "content": "données",
+        "x": 428,
+        "y": 98,
+      },
+      {
+        "content": "de",
+        "x": 559,
+        "y": 98,
+      },
+      {
+        "content": "sécurité",
+        "x": 600,
+        "y": 98,
+      },
+    ],
+    "x": 304,
+    "y": 98,
+  },
+  {
+    "texts": [
+      {
+        "content": "oir",
+        "x": 99,
+        "y": 113,
+      },
+      {
+        "content": "liquide",
+        "x": 204,
+        "y": 122,
+      },
+    ],
+    "x": 99,
+    "y": 113,
+  },
+  {
+    "texts": [
+      {
+        "content": "q",
+        "x": 187,
+        "y": 126,
+      },
+      {
+        "content": "date",
+        "x": 767,
+        "y": 137,
+      },
+      {
+        "content": "de",
+        "x": 798,
+        "y": 137,
+      },
+      {
+        "content": "révision",
+        "x": 817,
+        "y": 137,
+      },
+      {
+        "content": ":",
+        "x": 868,
+        "y": 145,
+      },
+      {
+        "content": "2017-09-01",
+        "x": 878,
+        "y": 137,
+      },
+    ],
+    "x": 187,
+    "y": 126,
+  },
+  {
+    "texts": [
+      {
+        "content": "remplace",
+        "x": 764,
+        "y": 157,
+      },
+      {
+        "content": "la",
+        "x": 828,
+        "y": 157,
+      },
+      {
+        "content": "fiche",
+        "x": 841,
+        "y": 157,
+      },
+      {
+        "content": ":",
+        "x": 874,
+        "y": 165,
+      },
+      {
+        "content": "2015-06-01",
+        "x": 881,
+        "y": 157,
+      },
+    ],
+    "x": 764,
+    "y": 157,
+  },
+  {
+    "texts": [
+      {
+        "content": "argon",
+        "x": 100,
+        "y": 179,
+      },
+      {
+        "content": ";",
+        "x": 183,
+        "y": 184,
+      },
+      {
+        "content": "argon",
+        "x": 196,
+        "y": 179,
+      },
+      {
+        "content": "nertal",
+        "x": 278,
+        "y": 179,
+      },
+      {
+        "content": ";",
+        "x": 387,
+        "y": 184,
+      },
+      {
+        "content": "argon",
+        "x": 400,
+        "y": 179,
+      },
+      {
+        "content": "n56",
+        "x": 502,
+        "y": 180,
+      },
+      {
+        "content": ";",
+        "x": 556,
+        "y": 185,
+      },
+      {
+        "content": "argon",
+        "x": 569,
+        "y": 180,
+      },
+      {
+        "content": "n60",
+        "x": 671,
+        "y": 180,
+      },
+      {
+        "content": "003agis",
+        "x": 815,
+        "y": 179,
+      },
+    ],
+    "x": 100,
+    "y": 179,
+  },
+  {
+    "texts": [
+      {
+        "content": "pays",
+        "x": 785,
+        "y": 206,
+      },
+      {
+        "content": ":",
+        "x": 817,
+        "y": 199,
+      },
+      {
+        "content": "fr/",
+        "x": 826,
+        "y": 206,
+      },
+      {
+        "content": "langue",
+        "x": 855,
+        "y": 206,
+      },
+      {
+        "content": ":",
+        "x": 904,
+        "y": 208,
+      },
+      {
+        "content": "fr",
+        "x": 910,
+        "y": 206,
+      },
+    ],
+    "x": 785,
+    "y": 206,
+  },
+  {
+    "texts": [
+      {
+        "content": "rubrique",
+        "x": 89,
+        "y": 259,
+      },
+      {
+        "content": "1:",
+        "x": 182,
+        "y": 259,
+      },
+      {
+        "content": "identification",
+        "x": 202,
+        "y": 259,
+      },
+      {
+        "content": "de",
+        "x": 309,
+        "y": 259,
+      },
+      {
+        "content": "la",
+        "x": 334,
+        "y": 259,
+      },
+      {
+        "content": "substance/du",
+        "x": 352,
+        "y": 259,
+      },
+      {
+        "content": "mélange",
+        "x": 465,
+        "y": 259,
+      },
+      {
+        "content": "et",
+        "x": 537,
+        "y": 260,
+      },
+      {
+        "content": "de",
+        "x": 556,
+        "y": 260,
+      },
+      {
+        "content": "la",
+        "x": 581,
+        "y": 260,
+      },
+      {
+        "content": "société/l’entreprise",
+        "x": 599,
+        "y": 260,
+      },
+    ],
+    "x": 89,
+    "y": 259,
+  },
+  {
+    "texts": [
+      {
+        "content": "1.1.",
+        "x": 88,
+        "y": 297,
+      },
+      {
+        "content": "identificateur",
+        "x": 114,
+        "y": 297,
+      },
+      {
+        "content": "de",
+        "x": 202,
+        "y": 297,
+      },
+      {
+        "content": "produit",
+        "x": 221,
+        "y": 297,
+      },
+    ],
+    "x": 88,
+    "y": 297,
+  },
+  {
+    "texts": [
+      {
+        "content": "nom",
+        "x": 88,
+        "y": 318,
+      },
+      {
+        "content": "commercial",
+        "x": 119,
+        "y": 318,
+      },
+      {
+        "content": ":",
+        "x": 384,
+        "y": 321,
+      },
+      {
+        "content": "argon",
+        "x": 397,
+        "y": 319,
+      },
+      {
+        "content": ";",
+        "x": 437,
+        "y": 321,
+      },
+      {
+        "content": "argon",
+        "x": 444,
+        "y": 319,
+      },
+      {
+        "content": "nertal",
+        "x": 484,
+        "y": 319,
+      },
+      {
+        "content": ";",
+        "x": 540,
+        "y": 327,
+      },
+      {
+        "content": "argon",
+        "x": 547,
+        "y": 319,
+      },
+      {
+        "content": "n56",
+        "x": 600,
+        "y": 319,
+      },
+      {
+        "content": ";",
+        "x": 629,
+        "y": 327,
+      },
+      {
+        "content": "argon",
+        "x": 635,
+        "y": 319,
+      },
+      {
+        "content": "n60",
+        "x": 689,
+        "y": 319,
+      },
+    ],
+    "x": 88,
+    "y": 318,
+  },
+  {
+    "texts": [
+      {
+        "content": "n°fds",
+        "x": 88,
+        "y": 338,
+      },
+      {
+        "content": "003agis",
+        "x": 397,
+        "y": 338,
+      },
+    ],
+    "x": 88,
+    "y": 338,
+  },
+  {
+    "texts": [
+      {
+        "content": "description",
+        "x": 88,
+        "y": 358,
+      },
+      {
+        "content": "chimique",
+        "x": 158,
+        "y": 358,
+      },
+      {
+        "content": ":",
+        "x": 384,
+        "y": 366,
+      },
+      {
+        "content": "argon",
+        "x": 398,
+        "y": 358,
+      },
+    ],
+    "x": 88,
+    "y": 358,
+  },
+  {
+    "texts": [
+      {
+        "content": "n°",
+        "x": 397,
+        "y": 378,
+      },
+      {
+        "content": "cas",
+        "x": 416,
+        "y": 378,
+      },
+      {
+        "content": ":",
+        "x": 443,
+        "y": 374,
+      },
+      {
+        "content": "7440-37-1",
+        "x": 455,
+        "y": 378,
+      },
+    ],
+    "x": 397,
+    "y": 378,
+  },
+  {
+    "texts": [
+      {
+        "content": "n°",
+        "x": 397,
+        "y": 417,
+      },
+      {
+        "content": "index",
+        "x": 416,
+        "y": 417,
+      },
+      {
+        "content": ":",
+        "x": 450,
+        "y": 413,
+      },
+      {
+        "content": "-—",
+        "x": 459,
+        "y": 422,
+      },
+    ],
+    "x": 397,
+    "y": 417,
+  },
+  {
+    "texts": [
+      {
+        "content": "n°",
+        "x": 87,
+        "y": 436,
+      },
+      {
+        "content": "d'enregistrement",
+        "x": 106,
+        "y": 437,
+      },
+      {
+        "content": "listé",
+        "x": 398,
+        "y": 437,
+      },
+      {
+        "content": "dans",
+        "x": 430,
+        "y": 437,
+      },
+      {
+        "content": "l'annexe",
+        "x": 463,
+        "y": 437,
+      },
+      {
+        "content": "iv/v",
+        "x": 518,
+        "y": 437,
+      },
+      {
+        "content": "de",
+        "x": 546,
+        "y": 437,
+      },
+      {
+        "content": "reach,",
+        "x": 565,
+        "y": 437,
+      },
+      {
+        "content": "exempté",
+        "x": 619,
+        "y": 437,
+      },
+      {
+        "content": "d'enregistrement.",
+        "x": 674,
+        "y": 438,
+      },
+    ],
+    "x": 87,
+    "y": 436,
+  },
+  {
+    "texts": [
+      {
+        "content": "formule",
+        "x": 87,
+        "y": 456,
+      },
+      {
+        "content": "chimique",
+        "x": 140,
+        "y": 456,
+      },
+      {
+        "content": "ar",
+        "x": 398,
+        "y": 457,
+      },
+    ],
+    "x": 87,
+    "y": 456,
+  },
+  {
+    "texts": [
+      {
+        "content": "1.2.",
+        "x": 88,
+        "y": 486,
+      },
+      {
+        "content": "utilisations",
+        "x": 113,
+        "y": 486,
+      },
+      {
+        "content": "identifiées",
+        "x": 189,
+        "y": 486,
+      },
+      {
+        "content": "pertinentes",
+        "x": 259,
+        "y": 487,
+      },
+      {
+        "content": "de",
+        "x": 334,
+        "y": 487,
+      },
+      {
+        "content": "la",
+        "x": 357,
+        "y": 489,
+      },
+      {
+        "content": "substance",
+        "x": 368,
+        "y": 487,
+      },
+      {
+        "content": "ou",
+        "x": 439,
+        "y": 489,
+      },
+      {
+        "content": "du",
+        "x": 459,
+        "y": 487,
+      },
+      {
+        "content": "mélange",
+        "x": 479,
+        "y": 487,
+      },
+      {
+        "content": "et",
+        "x": 536,
+        "y": 488,
+      },
+      {
+        "content": "utilisations",
+        "x": 552,
+        "y": 487,
+      },
+      {
+        "content": "déconseillées",
+        "x": 626,
+        "y": 487,
+      },
+    ],
+    "x": 88,
+    "y": 486,
+  },
+  {
+    "texts": [
+      {
+        "content": "utilisations",
+        "x": 87,
+        "y": 506,
+      },
+      {
+        "content": "pertinentes",
+        "x": 155,
+        "y": 506,
+      },
+      {
+        "content": "identifiées",
+        "x": 225,
+        "y": 506,
+      },
+      {
+        "content": "industriel",
+        "x": 397,
+        "y": 507,
+      },
+      {
+        "content": "et",
+        "x": 455,
+        "y": 507,
+      },
+      {
+        "content": "professionnel.",
+        "x": 469,
+        "y": 507,
+      },
+      {
+        "content": "faire",
+        "x": 556,
+        "y": 507,
+      },
+      {
+        "content": "une",
+        "x": 590,
+        "y": 509,
+      },
+      {
+        "content": "analyse",
+        "x": 616,
+        "y": 507,
+      },
+      {
+        "content": "des",
+        "x": 666,
+        "y": 507,
+      },
+      {
+        "content": "risques",
+        "x": 692,
+        "y": 509,
+      },
+      {
+        "content": "avant",
+        "x": 738,
+        "y": 508,
+      },
+      {
+        "content": "utilisation.",
+        "x": 775,
+        "y": 507,
+      },
+    ],
+    "x": 87,
+    "y": 506,
+  },
+  {
+    "texts": [
+      {
+        "content": "gaz",
+        "x": 396,
+        "y": 526,
+      },
+      {
+        "content": "de",
+        "x": 425,
+        "y": 527,
+      },
+      {
+        "content": "test",
+        "x": 443,
+        "y": 527,
+      },
+      {
+        "content": "ou",
+        "x": 469,
+        "y": 529,
+      },
+      {
+        "content": "d'étalonnage.",
+        "x": 487,
+        "y": 526,
+      },
+    ],
+    "x": 396,
+    "y": 526,
+  },
+  {
+    "texts": [
+      {
+        "content": "gaz",
+        "x": 396,
+        "y": 546,
+      },
+      {
+        "content": "de",
+        "x": 425,
+        "y": 546,
+      },
+      {
+        "content": "purge,",
+        "x": 444,
+        "y": 548,
+      },
+      {
+        "content": "de",
+        "x": 485,
+        "y": 546,
+      },
+      {
+        "content": "dilution,",
+        "x": 503,
+        "y": 546,
+      },
+      {
+        "content": "d'inertage.",
+        "x": 553,
+        "y": 546,
+      },
+    ],
+    "x": 396,
+    "y": 546,
+  },
+  {
+    "texts": [
+      {
+        "content": "purge.",
+        "x": 397,
+        "y": 566,
+      },
+    ],
+    "x": 397,
+    "y": 566,
+  },
+  {
+    "texts": [
+      {
+        "content": "utiliser",
+        "x": 397,
+        "y": 585,
+      },
+      {
+        "content": "dans",
+        "x": 441,
+        "y": 586,
+      },
+      {
+        "content": "la",
+        "x": 473,
+        "y": 585,
+      },
+      {
+        "content": "fabrication",
+        "x": 487,
+        "y": 586,
+      },
+      {
+        "content": "de",
+        "x": 552,
+        "y": 586,
+      },
+      {
+        "content": "composants",
+        "x": 571,
+        "y": 586,
+      },
+      {
+        "content": "électroniques",
+        "x": 647,
+        "y": 586,
+      },
+      {
+        "content": "ou",
+        "x": 731,
+        "y": 589,
+      },
+      {
+        "content": "photovoltaïques.",
+        "x": 749,
+        "y": 586,
+      },
+    ],
+    "x": 397,
+    "y": 585,
+  },
+  {
+    "texts": [
+      {
+        "content": "gaz",
+        "x": 396,
+        "y": 605,
+      },
+      {
+        "content": "de",
+        "x": 424,
+        "y": 605,
+      },
+      {
+        "content": "protection",
+        "x": 443,
+        "y": 606,
+      },
+      {
+        "content": "pour",
+        "x": 505,
+        "y": 608,
+      },
+      {
+        "content": "procédés",
+        "x": 536,
+        "y": 605,
+      },
+      {
+        "content": "de",
+        "x": 594,
+        "y": 606,
+      },
+      {
+        "content": "soudage.",
+        "x": 613,
+        "y": 606,
+      },
+    ],
+    "x": 396,
+    "y": 605,
+  },
+  {
+    "texts": [
+      {
+        "content": "utilisation",
+        "x": 396,
+        "y": 625,
+      },
+      {
+        "content": "en",
+        "x": 458,
+        "y": 628,
+      },
+      {
+        "content": "laboratoire.",
+        "x": 476,
+        "y": 625,
+      },
+    ],
+    "x": 396,
+    "y": 625,
+  },
+  {
+    "texts": [
+      {
+        "content": "contacter",
+        "x": 396,
+        "y": 645,
+      },
+      {
+        "content": "le",
+        "x": 458,
+        "y": 645,
+      },
+      {
+        "content": "fournisseur",
+        "x": 472,
+        "y": 645,
+      },
+      {
+        "content": "pour",
+        "x": 541,
+        "y": 647,
+      },
+      {
+        "content": "plus",
+        "x": 572,
+        "y": 645,
+      },
+      {
+        "content": "d'information",
+        "x": 600,
+        "y": 645,
+      },
+      {
+        "content": "sur",
+        "x": 680,
+        "y": 647,
+      },
+      {
+        "content": "l'utilisation.",
+        "x": 703,
+        "y": 645,
+      },
+    ],
+    "x": 396,
+    "y": 645,
+  },
+  {
+    "texts": [
+      {
+        "content": "‘applications",
+        "x": 395,
+        "y": 664,
+      },
+      {
+        "content": "alimentaires.",
+        "x": 472,
+        "y": 664,
+      },
+    ],
+    "x": 395,
+    "y": 664,
+  },
+  {
+    "texts": [
+      {
+        "content": "utilisations",
+        "x": 86,
+        "y": 683,
+      },
+      {
+        "content": "déconseillées",
+        "x": 154,
+        "y": 683,
+      },
+      {
+        "content": "utilisation",
+        "x": 396,
+        "y": 684,
+      },
+      {
+        "content": "grand",
+        "x": 461,
+        "y": 684,
+      },
+      {
+        "content": "public.",
+        "x": 499,
+        "y": 684,
+      },
+      {
+        "content": "”",
+        "x": 905,
+        "y": 690,
+      },
+    ],
+    "x": 86,
+    "y": 683,
+  },
+  {
+    "texts": [
+      {
+        "content": "1.3.",
+        "x": 87,
+        "y": 710,
+      },
+      {
+        "content": "renseignements",
+        "x": 112,
+        "y": 710,
+      },
+      {
+        "content": "concernant",
+        "x": 223,
+        "y": 711,
+      },
+      {
+        "content": "le",
+        "x": 299,
+        "y": 710,
+      },
+      {
+        "content": "fournisseur",
+        "x": 313,
+        "y": 710,
+      },
+      {
+        "content": "de",
+        "x": 391,
+        "y": 710,
+      },
+      {
+        "content": "la",
+        "x": 410,
+        "y": 710,
+      },
+      {
+        "content": "fiche",
+        "x": 425,
+        "y": 710,
+      },
+      {
+        "content": "de",
+        "x": 460,
+        "y": 710,
+      },
+      {
+        "content": "données",
+        "x": 479,
+        "y": 711,
+      },
+      {
+        "content": "de",
+        "x": 538,
+        "y": 711,
+      },
+      {
+        "content": "sécurité",
+        "x": 557,
+        "y": 711,
+      },
+    ],
+    "x": 87,
+    "y": 710,
+  },
+  {
+    "texts": [
+      {
+        "content": "identification",
+        "x": 86,
+        "y": 751,
+      },
+      {
+        "content": "de",
+        "x": 173,
+        "y": 751,
+      },
+      {
+        "content": "la",
+        "x": 193,
+        "y": 751,
+      },
+      {
+        "content": "société",
+        "x": 207,
+        "y": 751,
+      },
+    ],
+    "x": 86,
+    "y": 751,
+  },
+  {
+    "texts": [
+      {
+        "content": "air",
+        "x": 85,
+        "y": 786,
+      },
+      {
+        "content": "liquide",
+        "x": 106,
+        "y": 786,
+      },
+      {
+        "content": "france",
+        "x": 153,
+        "y": 786,
+      },
+      {
+        "content": "industrie",
+        "x": 199,
+        "y": 786,
+      },
+    ],
+    "x": 85,
+    "y": 786,
+  },
+  {
+    "texts": [
+      {
+        "content": "92220",
+        "x": 86,
+        "y": 816,
+      },
+      {
+        "content": "bagneux",
+        "x": 127,
+        "y": 815,
+      },
+      {
+        "content": "-",
+        "x": 196,
+        "y": 821,
+      },
+      {
+        "content": "france",
+        "x": 204,
+        "y": 815,
+      },
+    ],
+    "x": 86,
+    "y": 815,
+  },
+  {
+    "texts": [
+      {
+        "content": "t",
+        "x": 85,
+        "y": 830,
+      },
+      {
+        "content": "+33",
+        "x": 98,
+        "y": 830,
+      },
+      {
+        "content": "1",
+        "x": 125,
+        "y": 831,
+      },
+      {
+        "content": "5359",
+        "x": 135,
+        "y": 830,
+      },
+      {
+        "content": "7555",
+        "x": 173,
+        "y": 830,
+      },
+    ],
+    "x": 85,
+    "y": 830,
+  },
+  {
+    "texts": [
+      {
+        "content": "fds.gis@airliquide.com",
+        "x": 86,
+        "y": 845,
+      },
+      {
+        "content": "-",
+        "x": 234,
+        "y": 851,
+      },
+      {
+        "content": "www.airliquide.com",
+        "x": 242,
+        "y": 845,
+      },
+    ],
+    "x": 86,
+    "y": 845,
+  },
+  {
+    "texts": [
+      {
+        "content": "adresse",
+        "x": 85,
+        "y": 891,
+      },
+      {
+        "content": "e-mail",
+        "x": 138,
+        "y": 891,
+      },
+      {
+        "content": "(personne",
+        "x": 179,
+        "y": 892,
+      },
+      {
+        "content": "compétente)",
+        "x": 242,
+        "y": 891,
+      },
+      {
+        "content": "fds.gls@airliquide.com",
+        "x": 395,
+        "y": 892,
+      },
+    ],
+    "x": 85,
+    "y": 891,
+  },
+  {
+    "texts": [
+      {
+        "content": "1.4.",
+        "x": 86,
+        "y": 931,
+      },
+      {
+        "content": "numéro",
+        "x": 112,
+        "y": 931,
+      },
+      {
+        "content": "d'appel",
+        "x": 166,
+        "y": 931,
+      },
+      {
+        "content": "d'urgence",
+        "x": 216,
+        "y": 931,
+      },
+    ],
+    "x": 86,
+    "y": 931,
+  },
+  {
+    "texts": [
+      {
+        "content": "numéro",
+        "x": 85,
+        "y": 952,
+      },
+      {
+        "content": "d'appel",
+        "x": 136,
+        "y": 948,
+      },
+      {
+        "content": "d'urgence",
+        "x": 183,
+        "y": 948,
+      },
+      {
+        "content": ":",
+        "x": 382,
+        "y": 960,
+      },
+      {
+        "content": "france:",
+        "x": 395,
+        "y": 952,
+      },
+      {
+        "content": "orfila:",
+        "x": 444,
+        "y": 952,
+      },
+      {
+        "content": "+33",
+        "x": 500,
+        "y": 953,
+      },
+      {
+        "content": "1",
+        "x": 527,
+        "y": 953,
+      },
+      {
+        "content": "45",
+        "x": 537,
+        "y": 953,
+      },
+      {
+        "content": "42",
+        "x": 555,
+        "y": 953,
+      },
+      {
+        "content": "59",
+        "x": 574,
+        "y": 953,
+      },
+      {
+        "content": "59",
+        "x": 593,
+        "y": 953,
+      },
+    ],
+    "x": 85,
+    "y": 952,
+  },
+  {
+    "texts": [
+      {
+        "content": "rubrique",
+        "x": 86,
+        "y": 993,
+      },
+      {
+        "content": "2:",
+        "x": 179,
+        "y": 994,
+      },
+      {
+        "content": "identification",
+        "x": 199,
+        "y": 993,
+      },
+      {
+        "content": "des",
+        "x": 307,
+        "y": 993,
+      },
+      {
+        "content": "dangers",
+        "x": 341,
+        "y": 994,
+      },
+    ],
+    "x": 86,
+    "y": 993,
+  },
+  {
+    "texts": [
+      {
+        "content": "2.1.",
+        "x": 85,
+        "y": 1032,
+      },
+      {
+        "content": "classification",
+        "x": 111,
+        "y": 1032,
+      },
+      {
+        "content": "de",
+        "x": 202,
+        "y": 1032,
+      },
+      {
+        "content": "la",
+        "x": 222,
+        "y": 1032,
+      },
+      {
+        "content": "substance",
+        "x": 236,
+        "y": 1032,
+      },
+      {
+        "content": "ou",
+        "x": 306,
+        "y": 1034,
+      },
+      {
+        "content": "du",
+        "x": 326,
+        "y": 1032,
+      },
+      {
+        "content": "mélange",
+        "x": 346,
+        "y": 1032,
+      },
+    ],
+    "x": 85,
+    "y": 1032,
+  },
+  {
+    "texts": [
+      {
+        "content": "classification",
+        "x": 85,
+        "y": 1060,
+      },
+      {
+        "content": "selon",
+        "x": 176,
+        "y": 1060,
+      },
+      {
+        "content": "le",
+        "x": 215,
+        "y": 1060,
+      },
+      {
+        "content": "règlement",
+        "x": 230,
+        "y": 1060,
+      },
+      {
+        "content": "(ce)",
+        "x": 297,
+        "y": 1060,
+      },
+      {
+        "content": "n°",
+        "x": 328,
+        "y": 1060,
+      },
+      {
+        "content": "1272/2008",
+        "x": 347,
+        "y": 1060,
+      },
+      {
+        "content": "[clp]",
+        "x": 414,
+        "y": 1060,
+      },
+    ],
+    "x": 85,
+    "y": 1060,
+  },
+  {
+    "texts": [
+      {
+        "content": "dangers",
+        "x": 85,
+        "y": 1080,
+      },
+      {
+        "content": "physiques",
+        "x": 140,
+        "y": 1080,
+      },
+      {
+        "content": "gaz",
+        "x": 284,
+        "y": 1080,
+      },
+      {
+        "content": "sous",
+        "x": 312,
+        "y": 1082,
+      },
+      {
+        "content": "pression",
+        "x": 344,
+        "y": 1082,
+      },
+      {
+        "content": ":",
+        "x": 399,
+        "y": 1088,
+      },
+      {
+        "content": "gaz",
+        "x": 406,
+        "y": 1080,
+      },
+      {
+        "content": "comprimé",
+        "x": 434,
+        "y": 1080,
+      },
+      {
+        "content": "h280",
+        "x": 639,
+        "y": 1081,
+      },
+    ],
+    "x": 85,
+    "y": 1080,
+  },
+  {
+    "texts": [
+      {
+        "content": "2,2.",
+        "x": 85,
+        "y": 1117,
+      },
+      {
+        "content": "éléments",
+        "x": 111,
+        "y": 1114,
+      },
+      {
+        "content": "d'étiquetage",
+        "x": 174,
+        "y": 1116,
+      },
+    ],
+    "x": 85,
+    "y": 1114,
+  },
+  {
+    "texts": [
+      {
+        "content": "etiquetage",
+        "x": 85,
+        "y": 1149,
+      },
+      {
+        "content": "selon",
+        "x": 157,
+        "y": 1149,
+      },
+      {
+        "content": "le",
+        "x": 196,
+        "y": 1149,
+      },
+      {
+        "content": "règlement",
+        "x": 211,
+        "y": 1149,
+      },
+      {
+        "content": "(ce)",
+        "x": 278,
+        "y": 1149,
+      },
+      {
+        "content": "n°",
+        "x": 309,
+        "y": 1149,
+      },
+      {
+        "content": "1272/2008",
+        "x": 328,
+        "y": 1149,
+      },
+      {
+        "content": "[clp]",
+        "x": 396,
+        "y": 1149,
+      },
+    ],
+    "x": 85,
+    "y": 1149,
+  },
+  {
+    "texts": [
+      {
+        "content": "pictogrammes",
+        "x": 85,
+        "y": 1170,
+      },
+      {
+        "content": "de",
+        "x": 174,
+        "y": 1170,
+      },
+      {
+        "content": "danger",
+        "x": 193,
+        "y": 1170,
+      },
+      {
+        "content": "(clp)",
+        "x": 238,
+        "y": 1170,
+      },
+      {
+        "content": "-",
+        "x": 428,
+        "y": 1168,
+      },
+    ],
+    "x": 85,
+    "y": 1168,
+  },
+  {
+    "texts": [
+      {
+        "content": "mention",
+        "x": 85,
+        "y": 1272,
+      },
+      {
+        "content": "d'avertissement",
+        "x": 135,
+        "y": 1272,
+      },
+      {
+        "content": "(clp)",
+        "x": 233,
+        "y": 1272,
+      },
+      {
+        "content": "attention",
+        "x": 394,
+        "y": 1272,
+      },
+    ],
+    "x": 85,
+    "y": 1272,
+  },
+  {
+    "texts": [
+      {
+        "content": "mentions",
+        "x": 85,
+        "y": 1292,
+      },
+      {
+        "content": "de",
+        "x": 142,
+        "y": 1292,
+      },
+      {
+        "content": "danger",
+        "x": 161,
+        "y": 1292,
+      },
+      {
+        "content": "(clp)",
+        "x": 206,
+        "y": 1292,
+      },
+      {
+        "content": ":",
+        "x": 381,
+        "y": 1294,
+      },
+      {
+        "content": "h280",
+        "x": 395,
+        "y": 1292,
+      },
+      {
+        "content": "-",
+        "x": 430,
+        "y": 1297,
+      },
+      {
+        "content": "contient",
+        "x": 438,
+        "y": 1292,
+      },
+      {
+        "content": "un",
+        "x": 492,
+        "y": 1294,
+      },
+      {
+        "content": "gaz",
+        "x": 510,
+        "y": 1294,
+      },
+      {
+        "content": "sous",
+        "x": 535,
+        "y": 1294,
+      },
+      {
+        "content": "pression,",
+        "x": 567,
+        "y": 1294,
+      },
+      {
+        "content": "peut",
+        "x": 626,
+        "y": 1293,
+      },
+      {
+        "content": "exploser",
+        "x": 655,
+        "y": 1292,
+      },
+      {
+        "content": "sous",
+        "x": 709,
+        "y": 1295,
+      },
+      {
+        "content": "l'effet",
+        "x": 741,
+        "y": 1292,
+      },
+      {
+        "content": "de",
+        "x": 776,
+        "y": 1293,
+      },
+      {
+        "content": "la",
+        "x": 795,
+        "y": 1293,
+      },
+      {
+        "content": "chaleur.",
+        "x": 809,
+        "y": 1293,
+      },
+    ],
+    "x": 85,
+    "y": 1292,
+  },
+]
+`;
