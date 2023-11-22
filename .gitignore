@@ -8,7 +8,6 @@ generated
 .vscode
 .DS_Store
 resources
-images
 *.traineddata
 
 # yarn
