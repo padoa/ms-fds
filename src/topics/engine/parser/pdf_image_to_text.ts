@@ -3,14 +3,19 @@ import { createWorker } from 'tesseract.js';
 import { fromPath } from 'pdf2pic';
 import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
+import type { Options } from 'pdf2pic/dist/types/options.js';
 
 import type { IBox, ILine, IText } from '@topics/engine/model/fds.model.js';
 
-const options = {
+const tempImageFileName = 'fds-image';
+const tempImageFolderName = '/tmp';
+const tempImageFormat = 'png';
+
+const options: Options = {
   density: 300,
-  saveFilename: 'pdf',
-  savePath: './images',
-  format: 'png',
+  saveFilename: tempImageFileName,
+  savePath: `${tempImageFolderName}`,
+  format: tempImageFormat,
   width: 1050,
   height: 1485,
 };
@@ -32,6 +37,7 @@ export const getTextFromImagePdf = async (
 };
 
 const pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<void> => {
+  // TODO: clean temporary images folder
   await fromPath(pathToFile, options)
     .bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' })
     .then((resolve) => {
@@ -40,7 +46,8 @@ const pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { number
 };
 
 const getTextFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<ILine[]> => {
-  const ret = await worker.recognize(`/Users/padoa/meta-haw/packages/ms-fds/images/pdf.${pageNumber + 1}.png`);
+  const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber + 1}.${tempImageFormat}`;
+  const ret = await worker.recognize(imagePath);
   return hocrToLines(ret.data.hocr);
 };
 

@@ -2,6 +2,14 @@
 
 Microservice de gestion des FDS
 
+## Prequisites
+
+Installer les librairies suivantes à l'aide de `brew`
+
+```bash
+brew install gs graphicsmagick
+```
+
 ## Init project
 
 ### Submodules
