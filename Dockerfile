@@ -2,19 +2,20 @@ FROM node:18-alpine as base
 
 RUN apk add --no-cache --no-progress \
 #  gnupg \
-  bash
+  bash \
 #  git \
 #  curl \
 #  libexecinfo \
 #  openssl \
 #  tzdata \
 #  openssh
+  graphicsmagick \
+  ghostscript
 
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN npm set progress=false
-
 
 # Dev image contains necessary tools to install and run the app in dev mode
 FROM base as dev
