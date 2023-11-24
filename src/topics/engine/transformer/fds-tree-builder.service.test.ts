@@ -83,8 +83,6 @@ describe('FdsTreeBuilderService tests', () => {
     });
 
     describe('BuildFdsTree tests with sections', () => {
-      // TODO: this section comes in second unit tests PR
-
       beforeEach(() => {
         isAnInterestingSectionSpy.mockImplementation((): IInterestingSection => ({ interestingSection: true, sectionNumber: 1 }));
         isAnInterestingSubSectionSpy.mockImplementation((): IInterestingSubSection => ({ interestingSubSection: false }));
@@ -94,8 +92,28 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when given lines with one section', () => {
-        // FIXME: add test...
-        expect(true).toBe(true);
+        const lines: ILine[] = [
+          {
+            x: 3.29,
+            y: 3.292,
+            texts: [
+              { x: 3.29, y: 3.292, content: 'interestingSection' },
+              { x: 26.78, y: 3.292, content: 'content' },
+            ],
+          },
+        ];
+        const expected: IFDSTreeResult = {
+          fdsTree: {
+            1: {
+              subsections: {},
+              x: 3.29,
+              y: 3.292,
+            },
+          },
+          xCounts: { 26.78: 1, 3.29: 1 },
+          fullText: 'interestingSectioncontent',
+        };
+        expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
 
       it('should return fds tree when given lines with two sections', () => {

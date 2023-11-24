@@ -3,7 +3,7 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { extractDataFromFDS } from '@topics/engine/fds_engine.js';
+import { FDSEngineService } from '@topics/engine/fds-engine.service.js';
 
 const logger = console;
 
@@ -19,7 +19,7 @@ const main = async (): Promise<void> => {
     .parseAsync();
 
   logger.info(`🔵  Extracting data from ${filename}...`);
-  const data = await extractDataFromFDS(filename);
+  const data = await FDSEngineService.extractDataFromFDS(filename);
   logger.info(`✅  Data extracted:`, data.dataExtracted);
 };
 

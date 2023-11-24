@@ -6,8 +6,8 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { promiseMapSeries } from '@padoa/promise';
 
-import { extractDataFromFDS } from '@topics/engine/fds_engine.js';
 import type { IExtractedData } from '@topics/engine/model/fds.model.js';
+import { FDSEngineService } from '@topics/engine/fds-engine.service.js';
 
 const logger = console;
 
@@ -36,7 +36,7 @@ const main = async (): Promise<void> => {
   logger.info(`🔵  Extracting data from ${folder}...`);
   await promiseMapSeries(files, async (file) => {
     logger.info(`🔵  Extracting data from ${file}...`);
-    const data = await extractDataFromFDS(`${folder}/${file}`);
+    const data = await FDSEngineService.extractDataFromFDS(`${folder}/${file}`);
     await saveInCsv(csvFile, file, data);
   });
 

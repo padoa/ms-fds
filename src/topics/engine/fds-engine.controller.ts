@@ -5,7 +5,7 @@ import type { Request, Response } from 'express';
 import { createConfiguredMulter } from '@padoa/express';
 
 import Joi from '@helpers/joi.js';
-import { extractDataFromFDS } from '@topics/engine/fds_engine.js';
+import { FDSEngineService } from '@topics/engine/fds-engine.service.js';
 
 class FDSEngineController extends Controller {
   @middlewares({ beforeValidationMiddlewares: [createConfiguredMulter().single('file')] })
@@ -15,7 +15,7 @@ class FDSEngineController extends Controller {
   public async runFDSEngine(req: Request, res: Response): Promise<void> {
     const temporaryFile = '/tmp/file.pdf';
     await fs.writeFile(temporaryFile, req.file.buffer);
-    const { dataExtracted: data } = await extractDataFromFDS(temporaryFile);
+    const { dataExtracted: data } = await FDSEngineService.extractDataFromFDS(temporaryFile);
     res.json({ data });
   }
 }
