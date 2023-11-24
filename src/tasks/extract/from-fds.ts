@@ -20,7 +20,7 @@ const main = async (): Promise<void> => {
 
   logger.info(`🔵  Extracting data from ${filename}...`);
   const data = await FDSEngineService.extractDataFromFDS(filename);
-  logger.info(`✅  Data extracted:`, data.dataExtracted);
+  logger.info(`✅  Data extracted:`, { ...data.dataExtracted, fromImage: data.fromImage });
 };
 
 main()

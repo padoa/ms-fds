@@ -17,3 +17,7 @@ export const SUB_SECTIONS_TO_CONSIDER = {
     2: /(3(\.|,)2)/g,
   },
 } as { [section: number]: { [subsection: string]: RegExp } };
+
+export const MONTH_MAPPING = {
+  aout: 'august',
+} as { [key: string]: string };
