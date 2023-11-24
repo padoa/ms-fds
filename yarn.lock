@@ -693,9 +693,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@padoa/eslint-plugin@npm:^2.0.9":
-  version: 2.0.10
-  resolution: "@padoa/eslint-plugin@npm:2.0.10"
+"@padoa/eslint-plugin@npm:^2.0.11":
+  version: 2.0.11
+  resolution: "@padoa/eslint-plugin@npm:2.0.11"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^6.0.0
     "@typescript-eslint/parser": ^6.0.0
@@ -711,7 +711,7 @@ __metadata:
     prettier: ^2.8.2
   peerDependencies:
     "@padoa/prettier": ^2.0.0
-  checksum: 51b6c08ca192be872e6ae9382633c03913d3ca5b633a2423be366fc54707020c14ac935648364ba80476d3e29af344e2cdbed970656ba006cd721c1b67372c3e
+  checksum: a166c3a60534e57b559deea9ba0718a2fba6d630e412d10fd97962dd46a990c1de6dbde6bffc7a8946bb6d6c5e2f78c04ef546b40cf1f737ea228773dbf5acaa
   languageName: node
   linkType: hard
 
@@ -5610,7 +5610,7 @@ __metadata:
     "@padoa/axios": ^5.0.4
     "@padoa/csv-tools": ^2.0.4
     "@padoa/database": ^26.2.0
-    "@padoa/eslint-plugin": ^2.0.9
+    "@padoa/eslint-plugin": ^2.0.11
     "@padoa/express": ^15.0.2
     "@padoa/joi": ^5.0.2
     "@padoa/logger": ^3.0.2
