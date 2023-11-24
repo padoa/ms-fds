@@ -1,8 +1,8 @@
 import type { IExtractedData } from '@topics/engine/model/fds.model.js';
-import { buildFdsTree } from '@topics/engine/transformer/fds_tree_builder.js';
 import { cleanFDSTree } from '@topics/engine/transformer/fds_tree_cleaner.js';
-import { applyExtractionRules } from '@topics/engine/rules/extraction_rules.js';
-import { parsePDF } from '@topics/engine/parser/pdf_parser.js';
+import { applyExtractionRules } from '@topics/engine/rules/extraction-rules.js';
+import { PdfParserService } from '@topics/engine/pdf-parser/pdf-parser.service.js';
+import { FDSTreeBuilderService } from '@topics/engine/transformer/fds-tree-builder.service.js';
 
 export const extractDataFromFDS = async (
   fdsFilePath: string,
@@ -10,8 +10,8 @@ export const extractDataFromFDS = async (
   dataExtracted: IExtractedData;
   fromImage: boolean;
 }> => {
-  const { lines, fromImage } = await parsePDF(fdsFilePath);
-  const { fdsTree, xCounts, fullText } = buildFdsTree(lines);
+  const { lines, fromImage } = await PdfParserService.parsePDF(fdsFilePath);
+  const { fdsTree, xCounts, fullText } = FDSTreeBuilderService.buildFdsTree(lines);
   const fdsTreeCleaned = cleanFDSTree(fdsTree, { xCounts, fromImage });
   const dataExtracted = await applyExtractionRules({ fdsTreeCleaned, fullText });
   return { dataExtracted, fromImage };

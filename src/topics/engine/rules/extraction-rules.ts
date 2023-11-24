@@ -25,21 +25,31 @@ export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTr
 //----------------------------------------- DATE -----------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const numberDateRegex = '((?<!\\d{1})(0[1-9]|[12][0-9]|3[01])(\\/|-|\\.)(0[1-9]|1[0-2])(\\/|-|\\.)(19\\d{2}|20\\d{2}|\\d{2})(?!:\\d{2}))';
-const stringDateRegex = '((?<!\\d{1})([1-9]|[12][0-9]|3[01])-?([a-zA-Z]+)\\.?.?(20\\d{2}))';
-const englishNumberDateRegex = '((19\\d{2}|20\\d{2}|\\d{2})(\\/|-|\\.)(0[1-9]|1[0-2])(\\/|-|\\.)(0[1-9]|[12][0-9]|3[01]))';
-const dateRegexps = [numberDateRegex, stringDateRegex, englishNumberDateRegex];
+const noSingleDigitStartRegex = '(?<!\\d{1})';
+const dayRegex = '[1-9]|[12][0-9]|3[01]';
+const numberDayRegex = `0${dayRegex}`;
+const monthRegex = '(0[1-9]|1[0-2])';
+const yearRegex = '(19\\d{2}|20\\d{2}|\\d{2})';
+const dateSeparatorsRegex = '(\\/|-|\\.)';
+
+export const numberDateRegex = `(${noSingleDigitStartRegex}(${numberDayRegex})${dateSeparatorsRegex}${monthRegex}${dateSeparatorsRegex}${yearRegex}(?!:\\d{2}))`;
+export const stringDateRegex = `(${noSingleDigitStartRegex}(${dayRegex})-?([a-zA-Z]+)\\.?.?(19\\d{2}|20\\d{2}))`;
+export const englishNumberDateRegex = `(${yearRegex}${dateSeparatorsRegex}${monthRegex}${dateSeparatorsRegex}(${numberDayRegex}))`;
+
+export const dateRegexps = [numberDateRegex, stringDateRegex, englishNumberDateRegex];
 
 const getDate = (fullText: string): IExtractedDate => {
   const text = fullText.replaceAll(' ', '').replaceAll('û', 'u');
-  const inTextDate = getDateByText(text) || getDateByMostFrequent(text) || getDateByMostRecent(text);
+  const inTextDate = getDateByRevisionText(text) || getDateByMostFrequent(text) || getDateByMostRecent(text);
+
   return {
+    // TODO: format will crash if parseDate result date is NaN
     formattedDate: inTextDate ? format(parseDate(inTextDate), 'yyyy/MM/dd') : null,
     inTextDate,
   };
 };
 
-const getDateByText = (fullText: string): string => {
+export const getDateByRevisionText = (fullText: string): string => {
   const revisionDateRegex = 'révision.?';
 
   for (const dateRegex of dateRegexps) {
@@ -50,7 +60,7 @@ const getDateByText = (fullText: string): string => {
   return null;
 };
 
-const getDateByMostFrequent = (fullText: string): string => {
+export const getDateByMostFrequent = (fullText: string): string => {
   const numberDates = fullText.match(new RegExp(numberDateRegex, 'g')) || [];
   const stringDates = fullText.match(new RegExp(stringDateRegex, 'g')) || [];
   const dates = [...numberDates, ...stringDates];
@@ -74,7 +84,7 @@ const getDateByMostFrequent = (fullText: string): string => {
   return _.maxBy(mostUsedDates, parseDate);
 };
 
-const getDateByMostRecent = (fullText: string): string => {
+export const getDateByMostRecent = (fullText: string): string | undefined => {
   const numberDates = fullText.match(new RegExp(numberDateRegex, 'g')) || [];
   const stringDates = fullText.match(new RegExp(stringDateRegex, 'g')) || [];
   const dates = [...numberDates, ...stringDates];
@@ -85,8 +95,9 @@ const parseDate = (date: string): Date => {
   return parseDateFromNumberRegex(date) || parseDateFromStringRegex(date) || parseDateFromEnglishNumberRegex(date);
 };
 
+// TODO: refacto these blocs to avoid code duplication
 const parseDateFromNumberRegex = (date: string): Date => {
-  const regexMatches = date.match(new RegExp(numberDateRegex));
+  const regexMatches = date.match(new RegExp(numberDateRegex)); // TODO: refacto to not always recreate Regexp
   if (!regexMatches) return null;
   // eslint-disable-next-line prefer-const
   let [, , day, , month, , year] = regexMatches;
@@ -94,6 +105,7 @@ const parseDateFromNumberRegex = (date: string): Date => {
   return new Date(`${year}/${month}/${day}`);
 };
 
+// TODO: move to dedicated constants file
 const MONTH_MAPPING = {
   aout: 'august',
 } as { [key: string]: string };

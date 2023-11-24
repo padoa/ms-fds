@@ -2,19 +2,20 @@ FROM node:18-alpine as base
 
 RUN apk add --no-cache --no-progress \
 #  gnupg \
-  bash
+  bash \
 #  git \
 #  curl \
 #  libexecinfo \
 #  openssl \
 #  tzdata \
 #  openssh
+  graphicsmagick \
+  ghostscript
 
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN npm set progress=false
-
 
 # Dev image contains necessary tools to install and run the app in dev mode
 FROM base as dev
@@ -34,7 +35,7 @@ RUN npm run yarn:retry
 # COPY ./scripts ./scripts
 COPY ./src ./src
 COPY ./config ./config
-# COPY ./resources ./resources
+COPY ./resources ./resources
 
 EXPOSE 14512
 
@@ -71,7 +72,7 @@ FROM base as dist
 WORKDIR /data/opt/backend
 
 COPY --from=builder /data/opt/backend/config ./config
-# COPY --from=builder /data/opt/backend/resources ./resources
+COPY --from=builder /data/opt/backend/resources ./resources
 COPY --from=builder /data/opt/backend/dist /data/opt/backend
 COPY --from=builder /data/opt/backend/tools/connect-to-npm-registry-ci.sh ./tools/connect-to-npm-registry-ci.sh
 # COPY --from=builder /data/opt/backend/scripts ./scripts

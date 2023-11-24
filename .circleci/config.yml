@@ -67,6 +67,7 @@ workflows:
             dbName: "fds"
           requires:
             - Dependencies
+          extraAlpineDependencies: 'graphicsmagick ghostscript'
           context:
             - REGISTRY
       - orb-ms/coverage-merge:
