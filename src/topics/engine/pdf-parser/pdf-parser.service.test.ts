@@ -5,10 +5,13 @@ import type { ILine, IPdfData } from '@topics/engine/model/fds.model.js';
 import { PdfParserService } from '@topics/engine/pdf-parser/pdf-parser.service.js';
 import type { IParseResult } from '@topics/engine/pdf-parser/pdf-parser.model.js';
 import { PdfTextExtractorService } from '@topics/engine/pdf-extractor/pdf-text-extractor.service.js';
+import { PdfImageTextExtractorService } from '@topics/engine/pdf-extractor/pdf-image-text-extractor.service.js';
 
 describe('PdfParser tests', () => {
   describe('parsePdfText tests', () => {
     let isPdfParsableSpy: SpyInstance<[pdfData: IPdfData], boolean>;
+    let getTextFromPdfDataSpy: SpyInstance<[pdfData: IPdfData], ILine[]>;
+    let getTextFromImagePdfSpy: SpyInstance<[string, { numberOfPagesToParse?: number }?], Promise<ILine[]>>;
 
     const linesData: ILine[] = [
       {
@@ -26,57 +29,58 @@ describe('PdfParser tests', () => {
 
     beforeEach(() => {
       isPdfParsableSpy = vi.spyOn(PdfTextExtractorService, 'isPdfParsable');
+      getTextFromPdfDataSpy = vi.spyOn(PdfTextExtractorService, 'getTextFromPdfData');
+      getTextFromImagePdfSpy = vi.spyOn(PdfImageTextExtractorService, 'getTextFromImagePdf');
     });
 
     afterEach(() => {
       isPdfParsableSpy.mockRestore();
+      getTextFromPdfDataSpy.mockRestore();
+      getTextFromImagePdfSpy.mockRestore();
     });
 
     describe('Readable Pdf tests', () => {
-      let parseReadablePdfSpy: SpyInstance<[pdfData: IPdfData], ILine[]>;
-
       beforeEach(() => {
         isPdfParsableSpy.mockImplementationOnce((): boolean => true);
-        parseReadablePdfSpy = vi.spyOn(PdfParserService, 'parseReadablePdf');
-        parseReadablePdfSpy.mockImplementationOnce((): ILine[] => linesData);
-      });
-
-      afterEach(() => {
-        parseReadablePdfSpy.mockRestore();
+        getTextFromPdfDataSpy.mockImplementationOnce((): ILine[] => linesData);
       });
 
       it('should return pdf text as lines when providing an image pdf', async () => {
+        const pdfData: IPdfData = {} as IPdfData;
         const expected: IParseResult = {
           fromImage: false,
           lines: linesData,
         };
 
-        await expect(PdfParserService.parsePdfText('fdsFilePath', {} as IPdfData)).resolves.toEqual(expected);
+        await expect(PdfParserService.parsePdfText('fdsFilePath', pdfData)).resolves.toEqual(expected);
+        expect(isPdfParsableSpy).toHaveBeenCalledWith(pdfData);
         expect(isPdfParsableSpy).toHaveBeenCalledOnce();
-        expect(parseReadablePdfSpy).toHaveBeenCalledOnce();
+        expect(getTextFromPdfDataSpy).toHaveBeenCalledOnce();
+        expect(getTextFromPdfDataSpy).toHaveBeenCalledWith(pdfData);
+        expect(getTextFromImagePdfSpy).not.toHaveBeenCalled();
       });
     });
 
     describe('Pdf Images tests', () => {
-      let parseImagePdfSpy: SpyInstance<[fdsFilePath: string, pdfData: IPdfData], Promise<ILine[]>>;
-
       beforeEach(() => {
-        isPdfParsableSpy = vi.spyOn(PdfTextExtractorService, 'isPdfParsable');
         isPdfParsableSpy.mockImplementationOnce((): boolean => false);
-
-        parseImagePdfSpy = vi.spyOn(PdfParserService, 'parseImagePdf');
-        parseImagePdfSpy.mockImplementationOnce((): Promise<ILine[]> => Promise.resolve(linesData));
+        getTextFromImagePdfSpy.mockImplementationOnce(async (): Promise<ILine[]> => Promise.resolve(linesData));
       });
 
       it('should return pdf text as lines when providing a pdf', async () => {
+        const fdsFilePath = 'fdsFilePath';
+        const pdfData: IPdfData = { Pages: [{}] } as IPdfData;
         const expected: IParseResult = {
           fromImage: true,
           lines: linesData,
         };
 
-        await expect(PdfParserService.parsePdfText('fdsFilePath', {} as IPdfData)).resolves.toEqual(expected);
+        await expect(PdfParserService.parsePdfText(fdsFilePath, pdfData)).resolves.toEqual(expected);
+        expect(isPdfParsableSpy).toHaveBeenCalledWith(pdfData);
         expect(isPdfParsableSpy).toHaveBeenCalledOnce();
-        expect(parseImagePdfSpy).toHaveBeenCalledOnce();
+        expect(getTextFromPdfDataSpy).not.toHaveBeenCalled();
+        expect(getTextFromImagePdfSpy).toHaveBeenCalledWith(fdsFilePath, { numberOfPagesToParse: 1 });
+        expect(getTextFromImagePdfSpy).toHaveBeenCalledOnce();
       });
     });
   });

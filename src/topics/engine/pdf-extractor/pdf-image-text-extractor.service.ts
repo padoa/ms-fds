@@ -20,78 +20,74 @@ const options: Options = {
   height: 1485,
 };
 
-// TODO: PdfImageTextExtractorService class
+export class PdfImageTextExtractorService {
+  public static async getTextFromImagePdf(fdsFilePath: string, { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {}): Promise<ILine[]> {
+    await this.pdfToImage(fdsFilePath, { numberOfPagesToParse });
 
-export const getTextFromImagePdf = async (
-  fdsFilePath: string,
-  { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {},
-): Promise<ILine[]> => {
-  await pdfToImage(fdsFilePath, { numberOfPagesToParse });
-
-  const worker = await createWorker('fra');
-  const texts = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (pageNumber) => {
-    return getTextFromImage(worker, pageNumber);
-  });
-  await worker.terminate();
-
-  const text = _.flatMap(texts);
-  return text;
-};
-
-const pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<void> => {
-  // TODO: clean temporary images folder
-  await fromPath(pathToFile, options)
-    .bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' })
-    .then((resolve) => {
-      return resolve;
+    const worker = await createWorker('fra');
+    const texts = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (pageNumber) => {
+      return this.getTextFromImage(worker, pageNumber);
     });
-};
+    await worker.terminate();
 
-const getTextFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<ILine[]> => {
-  const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber + 1}.${tempImageFormat}`;
-  const ret = await worker.recognize(imagePath);
-  return hocrToLines(ret.data.hocr);
-};
+    return _.flatMap(texts);
+  }
 
-const hocrToLines = (hocr: string): ILine[] => {
-  const hocrByLine = hocr.split('\n');
-  return _.reduce(
-    hocrByLine,
-    (lines, hocrElement) => {
-      if (isHocrElementAWord(hocrElement)) {
-        const text = getTextInHocrWordElement(hocrElement);
-        const lastLine = _.last(lines);
-        lastLine.texts.push(text);
+  private static pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<void> => {
+    // TODO: clean temporary images folder
+    await fromPath(pathToFile, options)
+      .bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' })
+      .then((resolve) => {
+        return resolve;
+      });
+  };
+
+  private static getTextFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<ILine[]> => {
+    const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber + 1}.${tempImageFormat}`;
+    const ret = await worker.recognize(imagePath);
+    return this.hocrToLines(ret.data.hocr);
+  };
+
+  private static hocrToLines = (hocr: string): ILine[] => {
+    const hocrByLine = hocr.split('\n');
+    return _.reduce(
+      hocrByLine,
+      (lines, hocrElement) => {
+        if (this.isHocrElementAWord(hocrElement)) {
+          const text = this.getTextInHocrWordElement(hocrElement);
+          const lastLine = _.last(lines);
+          lastLine.texts.push(text);
+          return lines;
+        }
+
+        if (this.isHocrElementALine(hocrElement)) {
+          const box = this.getBoxInHocrElement(hocrElement);
+          lines.push({ ...box, texts: [] } as ILine);
+          return lines;
+        }
+
         return lines;
-      }
+      },
+      [] as ILine[],
+    );
+  };
 
-      if (isHocrElementALine(hocrElement)) {
-        const box = getBoxInHocrElement(hocrElement);
-        lines.push({ ...box, texts: [] } as ILine);
-        return lines;
-      }
+  private static isHocrElementALine = (hocrElement: string): boolean => {
+    return hocrElement.trim().startsWith("<span class='ocr_line'");
+  };
 
-      return lines;
-    },
-    [] as ILine[],
-  );
-};
+  private static isHocrElementAWord = (hocrElement: string): boolean => {
+    return hocrElement.trim().startsWith("<span class='ocrx_word'");
+  };
 
-const isHocrElementALine = (hocrElement: string): boolean => {
-  return hocrElement.trim().startsWith("<span class='ocr_line'");
-};
+  private static getTextInHocrWordElement = (hocrWordElement: string): IText => {
+    const content = decode(hocrWordElement.match(/>(.*)<\/span>/)[1].toLowerCase());
+    const box = this.getBoxInHocrElement(hocrWordElement);
+    return { ...box, content };
+  };
 
-const isHocrElementAWord = (hocrElement: string): boolean => {
-  return hocrElement.trim().startsWith("<span class='ocrx_word'");
-};
-
-const getTextInHocrWordElement = (hocrWordElement: string): IText => {
-  const content = decode(hocrWordElement.match(/>(.*)<\/span>/)[1].toLowerCase());
-  const box = getBoxInHocrElement(hocrWordElement);
-  return { ...box, content };
-};
-
-const getBoxInHocrElement = (hocrElement: string): IBox => {
-  const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
-  return { x: +x, y: +y };
-};
+  private static getBoxInHocrElement = (hocrElement: string): IBox => {
+    const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
+    return { x: +x, y: +y };
+  };
+}

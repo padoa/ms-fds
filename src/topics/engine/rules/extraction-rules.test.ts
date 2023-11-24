@@ -98,11 +98,11 @@ describe('ExtractionRules tests', () => {
   describe('RevisionDate rules tests', () => {
     describe('GetDateByRevisionText tests', () => {
       it.each([
-        ['révision:2017-09-01', true],
-        ['2017-09-01', false],
-        ['révision:n°11(01/02/2022)safety-kleen', false],
-      ])('"%s" input should return %s', (text: string, expected: boolean) => {
-        expect(!!getDateByRevisionText(text)).toEqual(expected);
+        ['révision:2017-09-01', '2017-09-01'],
+        ['2017-09-01', null],
+        ['révision:n°11(01/02/2022)safety-kleen', null],
+      ])('"%s" input should return %s', (text: string, expected: string | null) => {
+        expect(getDateByRevisionText(text)).toEqual(expected);
       });
     });
 
@@ -126,6 +126,16 @@ describe('ExtractionRules tests', () => {
       ])('"%s" input should return %s', (text: string, expected: string | undefined) => {
         expect(getDateByMostRecent(text)).toEqual(expected);
       });
+    });
+
+    describe('GetDate tests', () => {
+      // FIXME: add tests
+      it('should...', () => {});
+    });
+
+    describe('ParseDate tests', () => {
+      // FIXME: add tests with it.each
+      it('should...', () => {});
     });
   });
 

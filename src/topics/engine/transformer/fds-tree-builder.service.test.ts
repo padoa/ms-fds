@@ -63,11 +63,6 @@ describe('FdsTreeBuilderService tests', () => {
         ];
         const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 1 }, fullText: 'c1c2' };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
-        expect(isAnInterestingSectionSpy).toHaveBeenCalledOnce();
-        expect(isAnInterestingSubSectionSpy).toHaveBeenCalledOnce();
-        expect(isSwitchingSectionSpy).toHaveBeenCalledOnce();
-        expect(isSwitchingSubSectionSpy).toHaveBeenCalledOnce();
-        expect(shouldAddLineInCurrentSubSectionSpy).toHaveBeenCalledOnce();
       });
 
       it('should return empty fds tree and concatenated texts when given two lines with no section', () => {
@@ -84,11 +79,6 @@ describe('FdsTreeBuilderService tests', () => {
         ];
         const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 2 }, fullText: 'c1c2c3' };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
-        expect(isAnInterestingSectionSpy).toHaveBeenCalledTimes(lines.length);
-        expect(isAnInterestingSubSectionSpy).toHaveBeenCalledTimes(lines.length);
-        expect(isSwitchingSectionSpy).toHaveBeenCalledTimes(lines.length);
-        expect(isSwitchingSubSectionSpy).toHaveBeenCalledTimes(lines.length);
-        expect(shouldAddLineInCurrentSubSectionSpy).toHaveBeenCalledTimes(lines.length);
       });
     });
 

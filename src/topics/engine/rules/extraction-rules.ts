@@ -61,7 +61,6 @@ export const getDateByRevisionText = (fullText: string): string => {
 };
 
 export const getDateByMostFrequent = (fullText: string): string => {
-  // TODO: single fullMatch with | operator on both regexps to avoid duplication
   const numberDates = fullText.match(new RegExp(numberDateRegex, 'g')) || [];
   const stringDates = fullText.match(new RegExp(stringDateRegex, 'g')) || [];
   const dates = [...numberDates, ...stringDates];
@@ -86,7 +85,6 @@ export const getDateByMostFrequent = (fullText: string): string => {
 };
 
 export const getDateByMostRecent = (fullText: string): string | undefined => {
-  // TODO: single fullMatch with | operator on both regexps to avoid duplication
   const numberDates = fullText.match(new RegExp(numberDateRegex, 'g')) || [];
   const stringDates = fullText.match(new RegExp(stringDateRegex, 'g')) || [];
   const dates = [...numberDates, ...stringDates];
@@ -106,6 +104,7 @@ const parseDateFromNumberRegex = (date: string): Date => {
   if (year.length === 2) year = `${+year > 50 ? '19' : '20'}${year}`;
   return new Date(`${year}/${month}/${day}`);
 };
+
 // TODO: move to dedicated constants file
 const MONTH_MAPPING = {
   aout: 'august',
