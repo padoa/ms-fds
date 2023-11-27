@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { IFDSTree, ILine, ISubsection, IText, IXCounts } from '@topics/engine/model/fds.model.js';
+import type { IFDSTree, ILine, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
 import type { IFDSTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
 
@@ -150,17 +150,12 @@ export class FDSTreeBuilderService {
     return _.reduce(
       line.texts,
       (xCountsAcc, textElement) => {
-        return this.updateXCountElement(xCountsAcc, textElement);
+        const actualCount = xCountsAcc[textElement.x] || 0;
+        // eslint-disable-next-line no-param-reassign
+        xCountsAcc[textElement.x] = actualCount + 1;
+        return xCountsAcc;
       },
       xCounts,
     );
-  }
-
-  public static updateXCountElement(xCounts: IXCounts, textElement: IText): IXCounts {
-    const actualCount = xCounts[textElement.x] || 0;
-    return {
-      ...xCounts,
-      [textElement.x]: actualCount + 1,
-    };
   }
 }
