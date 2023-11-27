@@ -53,8 +53,11 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return empty fds tree and concatenated texts when given one line with no section', () => {
         const lines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [
               { x: 3.29, y: 3.292, content: 'c1' },
               { x: 26.78, y: 3.292, content: 'c2' },
@@ -68,14 +71,17 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return empty fds tree and concatenated texts when given two lines with no section', () => {
         const lines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [
               { x: 3.29, y: 3.292, content: 'c1' },
               { x: 26.78, y: 3.292, content: 'c2' },
             ],
           },
-          { x: 3.29, y: 4.567, texts: [{ x: 3.29, y: 4.567, content: 'c3' }] },
+          { pageNumber: 1, startBox: { x: 3.29, y: 4.567 }, texts: [{ x: 3.29, y: 4.567, content: 'c3' }] },
         ];
         const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 2 }, fullText: 'c1c2c3' };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
@@ -96,8 +102,11 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when given lines with one section', () => {
         const lines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [
               { x: 3.29, y: 3.292, content: 'interestingSection' },
               { x: 26.78, y: 3.292, content: 'content' },
@@ -121,14 +130,17 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when given lines with two sections', () => {
         const lines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [
               { x: 3.29, y: 3.292, content: 'interestingSection' },
               { x: 26.78, y: 3.292, content: 'content' },
             ],
           },
-          { x: 3.29, y: 4.567, texts: [{ x: 3.29, y: 4.567, content: 'anotherInterestingSection' }] },
+          { pageNumber: 1, startBox: { x: 3.29, y: 4.567 }, texts: [{ x: 3.29, y: 4.567, content: 'anotherInterestingSection' }] },
         ];
         const expected: IFDSTreeResult = {
           fdsTree: {
@@ -166,15 +178,21 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when given lines with a section and subsection', () => {
         const sectionLines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [{ x: 3.29, y: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionLines: ILine[] = [
           {
-            x: 3.013,
-            y: 14.311,
+            pageNumber: 1,
+            startBox: {
+              x: 3.013,
+              y: 14.311,
+            },
             texts: [
               { x: 3.013, y: 14.311, content: 'interesting' },
               { x: 13.651, y: 14.311, content: 'Subsection' },
@@ -205,23 +223,32 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when given lines with a section and two subsections', () => {
         const sectionLines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [{ x: 3.29, y: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionsLines: ILine[] = [
           {
-            x: 3.013,
-            y: 14.311,
+            pageNumber: 1,
+            startBox: {
+              x: 3.013,
+              y: 14.311,
+            },
             texts: [
               { x: 3.013, y: 14.311, content: 'interesting' },
               { x: 13.651, y: 14.311, content: 'Subsection' },
             ],
           },
           {
-            x: 3.013,
-            y: 17.621,
+            pageNumber: 1,
+            startBox: {
+              x: 3.013,
+              y: 17.621,
+            },
             texts: [
               { x: 3.013, y: 17.621, content: 'anotherInteresting' },
               { x: 13.651, y: 14.311, content: 'Subsection' },
@@ -267,8 +294,11 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when switching section', () => {
         const lines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [
               { x: 3.29, y: 3.292, content: 'c1' },
               { x: 26.78, y: 3.292, content: 'c2' },
@@ -292,8 +322,11 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when switching subSection', () => {
         const lines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [
               { x: 3.29, y: 3.292, content: 'c1' },
               { x: 26.78, y: 3.292, content: 'c2' },
@@ -321,15 +354,21 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree with line added to current subSection', () => {
         const sectionLines: ILine[] = [
           {
-            x: 3.29,
-            y: 3.292,
+            pageNumber: 1,
+            startBox: {
+              x: 3.29,
+              y: 3.292,
+            },
             texts: [{ x: 3.29, y: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionLines: ILine[] = [
           {
-            x: 3.013,
-            y: 14.311,
+            pageNumber: 1,
+            startBox: {
+              x: 3.013,
+              y: 14.311,
+            },
             texts: [
               { x: 3.013, y: 14.311, content: 'interesting' },
               { x: 13.651, y: 14.311, content: 'Subsection' },
@@ -337,8 +376,11 @@ describe('FdsTreeBuilderService tests', () => {
           },
         ];
         const extraSubSectionLine: ILine = {
-          x: 3.013,
-          y: 17.621,
+          pageNumber: 1,
+          startBox: {
+            x: 3.013,
+            y: 17.621,
+          },
           texts: [{ x: 3.013, y: 17.621, content: 'extraSubsection' }],
         };
 

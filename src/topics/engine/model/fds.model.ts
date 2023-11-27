@@ -31,8 +31,11 @@ export type ISection = IBox & {
 
 export type ISubsection = IBox & { lines: ILine[] };
 
-export type ILine = IBox & {
+export type ILine = {
   texts: IText[];
+  pageNumber: number;
+  startBox: IBox;
+  endBox?: IBox;
 };
 
 export type IText = IBox & {
@@ -45,15 +48,31 @@ export type IRawElement = IBox & {
 
 export type IXCounts = { [xPosition: number]: number };
 
+export type IPageDimension = {
+  width: number;
+  height: number;
+};
+
+export type IRatioXY = {
+  ratioX: number;
+  ratioY: number;
+};
+
+export type IMetaData = {
+  pageNumber: number;
+  startBoxRatio: IRatioXY;
+  endBoxRatio?: IRatioXY;
+};
+
 //----------------------------------------------------------------------------------------------
 //--------------------------------- EXTRACTED DATA TYPES ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
 export type IExtractedDate = { formattedDate: string; inTextDate: string };
 
-export type IExtractedProduct = string;
+export type IExtractedProduct = { text: string; metaData: IMetaData };
 
-export type IExtractedProducer = string;
+export type IExtractedProducer = { text: string; metaData: IMetaData };
 
 export type IExtractedHazard = string;
 

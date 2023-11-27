@@ -20,13 +20,15 @@ export class PdfParserService {
 
   public static async parsePdfText(fdsFilePath: string, pdfData: IPdfData): Promise<IParseResult> {
     const pdfIsParsable = PdfTextExtractorService.isPdfParsable(pdfData);
+    const { lines, pageDimension } = pdfIsParsable
+      ? PdfTextExtractorService.getTextAndDimensionFromPdfData(pdfData)
+      : await PdfImageTextExtractorService.getTextAndDimensionFromImagePdf(fdsFilePath, {
+          numberOfPagesToParse: Math.min(pdfData.Pages.length, MAX_PAGE_NUMBER_TO_PARSE),
+        });
     return {
+      pageDimension,
       fromImage: !pdfIsParsable,
-      lines: pdfIsParsable
-        ? PdfTextExtractorService.getTextFromPdfData(pdfData)
-        : await PdfImageTextExtractorService.getTextFromImagePdf(fdsFilePath, {
-            numberOfPagesToParse: Math.min(pdfData.Pages.length, MAX_PAGE_NUMBER_TO_PARSE),
-          }),
+      lines,
     };
   }
 }

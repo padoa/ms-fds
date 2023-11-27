@@ -1,533 +1,680 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should return text from pdf 1`] = `
-[
-  {
-    "texts": [
-      {
-        "content": "fiche de donnees de securite (règlement (ce) n°1907/2006 - reach)",
+{
+  "lines": [
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 4.746,
         "y": 5.462,
       },
-      {
-        "content": "date : 01/02/2022    page 1/7",
-        "x": 25.952,
-        "y": 5.462,
-      },
-    ],
-    "x": 4.746,
-    "y": 5.462,
-  },
-  {
-    "texts": [
-      {
-        "content": "version : n°1 (01/02/2022)",
+      "texts": [
+        {
+          "content": "fiche de donnees de securite (règlement (ce) n°1907/2006 - reach)",
+          "x": 4.746,
+          "y": 5.462,
+        },
+        {
+          "content": "date : 01/02/2022    page 1/7",
+          "x": 25.952,
+          "y": 5.462,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 4.746,
         "y": 6.037,
       },
-      {
-        "content": "révision : n°11 (01/02/2022)",
-        "x": 25.844,
-        "y": 6.037,
-      },
-    ],
-    "x": 4.746,
-    "y": 6.037,
-  },
-  {
-    "texts": [
-      {
-        "content": "safety-kleen france",
+      "texts": [
+        {
+          "content": "version : n°1 (01/02/2022)",
+          "x": 4.746,
+          "y": 6.037,
+        },
+        {
+          "content": "révision : n°11 (01/02/2022)",
+          "x": 25.844,
+          "y": 6.037,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 4.746,
         "y": 6.613,
       },
-    ],
-    "x": 4.746,
-    "y": 6.613,
-  },
-  {
-    "texts": [
-      {
-        "content": "kleen 112 s - kl 112 s",
+      "texts": [
+        {
+          "content": "safety-kleen france",
+          "x": 4.746,
+          "y": 6.613,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 15.553,
         "y": 7.202,
       },
-    ],
-    "x": 15.553,
-    "y": 7.202,
-  },
-  {
-    "texts": [
-      {
-        "content": "fiche de données de sécurité",
+      "texts": [
+        {
+          "content": "kleen 112 s - kl 112 s",
+          "x": 15.553,
+          "y": 7.202,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 12.621,
         "y": 11.007,
       },
-    ],
-    "x": 12.621,
-    "y": 11.007,
-  },
-  {
-    "texts": [
-      {
-        "content": "(règlement reach (ce) n° 1907/2006 - n° 2020/878)",
+      "texts": [
+        {
+          "content": "fiche de données de sécurité",
+          "x": 12.621,
+          "y": 11.007,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 12.668,
         "y": 11.752,
       },
-    ],
-    "x": 12.668,
-    "y": 11.752,
-  },
-  {
-    "texts": [
-      {
-        "content": "rubrique 1 : identification de la substance/du mélange et de la société/l’entreprise",
+      "texts": [
+        {
+          "content": "(règlement reach (ce) n° 1907/2006 - n° 2020/878)",
+          "x": 12.668,
+          "y": 11.752,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.193,
         "y": 12.916,
       },
-    ],
-    "x": 5.193,
-    "y": 12.916,
-  },
-  {
-    "texts": [
-      {
-        "content": "1.1. identificateur de produit",
+      "texts": [
+        {
+          "content": "rubrique 1 : identification de la substance/du mélange et de la société/l’entreprise",
+          "x": 5.193,
+          "y": 12.916,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 13.681,
       },
-    ],
-    "x": 5.64,
-    "y": 13.681,
-  },
-  {
-    "texts": [
-      {
-        "content": "nom du produit : kleen 112 s",
+      "texts": [
+        {
+          "content": "1.1. identificateur de produit",
+          "x": 5.64,
+          "y": 13.681,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 14.385,
       },
-    ],
-    "x": 6.006,
-    "y": 14.385,
-  },
-  {
-    "texts": [
-      {
-        "content": "code du produit : kl 112 s",
+      "texts": [
+        {
+          "content": "nom du produit : kleen 112 s",
+          "x": 6.006,
+          "y": 14.385,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 15.103,
       },
-    ],
-    "x": 6.006,
-    "y": 15.103,
-  },
-  {
-    "texts": [
-      {
-        "content": "1.2. utilisations identifiées pertinentes de la substance ou du mélange et utilisations déconseillées",
+      "texts": [
+        {
+          "content": "code du produit : kl 112 s",
+          "x": 6.006,
+          "y": 15.103,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 15.881,
       },
-    ],
-    "x": 5.64,
-    "y": 15.881,
-  },
-  {
-    "texts": [
-      {
-        "content": "se reporter à la fiche technique.",
+      "texts": [
+        {
+          "content": "1.2. utilisations identifiées pertinentes de la substance ou du mélange et utilisations déconseillées",
+          "x": 5.64,
+          "y": 15.881,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 16.586,
       },
-    ],
-    "x": 6.006,
-    "y": 16.586,
-  },
-  {
-    "texts": [
-      {
-        "content": "produit de nettoyage",
+      "texts": [
+        {
+          "content": "se reporter à la fiche technique.",
+          "x": 6.006,
+          "y": 16.586,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 17.303,
       },
-    ],
-    "x": 6.006,
-    "y": 17.303,
-  },
-  {
-    "texts": [
-      {
-        "content": "1.3. renseignements concernant le fournisseur de la fiche de données de sécurité",
+      "texts": [
+        {
+          "content": "produit de nettoyage",
+          "x": 6.006,
+          "y": 17.303,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 18.082,
       },
-    ],
-    "x": 5.64,
-    "y": 18.082,
-  },
-  {
-    "texts": [
-      {
-        "content": "raison sociale : safety-kleen france.",
+      "texts": [
+        {
+          "content": "1.3. renseignements concernant le fournisseur de la fiche de données de sécurité",
+          "x": 5.64,
+          "y": 18.082,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 18.786,
       },
-    ],
-    "x": 6.006,
-    "y": 18.786,
-  },
-  {
-    "texts": [
-      {
-        "content": "adresse : 65, avenue jean mermoz.93126.la courneuve.france.",
+      "texts": [
+        {
+          "content": "raison sociale : safety-kleen france.",
+          "x": 6.006,
+          "y": 18.786,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 19.504,
       },
-    ],
-    "x": 6.006,
-    "y": 19.504,
-  },
-  {
-    "texts": [
-      {
-        "content": "téléphone : +33 (0)1.48.38.71.71.     fax : +33 (0)1.48.38.71.70.",
+      "texts": [
+        {
+          "content": "adresse : 65, avenue jean mermoz.93126.la courneuve.france.",
+          "x": 6.006,
+          "y": 19.504,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 20.221,
       },
-    ],
-    "x": 6.006,
-    "y": 20.221,
-  },
-  {
-    "texts": [
-      {
-        "content": "1.4. numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
+      "texts": [
+        {
+          "content": "téléphone : +33 (0)1.48.38.71.71.     fax : +33 (0)1.48.38.71.70.",
+          "x": 6.006,
+          "y": 20.221,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 21,
       },
-    ],
-    "x": 5.64,
-    "y": 21,
-  },
-  {
-    "texts": [
-      {
-        "content": "société/organisme : inrs / orfila   http://www.centres-antipoison.net.",
+      "texts": [
+        {
+          "content": "1.4. numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
+          "x": 5.64,
+          "y": 21,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 21.704,
       },
-    ],
-    "x": 6.006,
-    "y": 21.704,
-  },
-  {
-    "texts": [
-      {
-        "content": "rubrique 2 : identification des dangers",
+      "texts": [
+        {
+          "content": "société/organisme : inrs / orfila   http://www.centres-antipoison.net.",
+          "x": 6.006,
+          "y": 21.704,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.193,
         "y": 22.869,
       },
-    ],
-    "x": 5.193,
-    "y": 22.869,
-  },
-  {
-    "texts": [
-      {
-        "content": "2.1. classification de la substance ou du mélange",
+      "texts": [
+        {
+          "content": "rubrique 2 : identification des dangers",
+          "x": 5.193,
+          "y": 22.869,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 23.634,
       },
-    ],
-    "x": 5.64,
-    "y": 23.634,
-  },
-  {
-    "texts": [
-      {
-        "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
+      "texts": [
+        {
+          "content": "2.1. classification de la substance ou du mélange",
+          "x": 5.64,
+          "y": 23.634,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 24.399,
       },
-    ],
-    "x": 5.64,
-    "y": 24.399,
-  },
-  {
-    "texts": [
-      {
-        "content": "ce mélange ne présente pas de danger physique. voir les préconisations concernant les autres produits présents dans le local.",
+      "texts": [
+        {
+          "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
+          "x": 5.64,
+          "y": 24.399,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 25.103,
       },
-    ],
-    "x": 6.006,
-    "y": 25.103,
-  },
-  {
-    "texts": [
-      {
-        "content": "ce mélange ne présente pas de danger pour la santé hormis d'éventuelles valeurs limites d'exposition professionnelle (voir les",
+      "texts": [
+        {
+          "content": "ce mélange ne présente pas de danger physique. voir les préconisations concernant les autres produits présents dans le local.",
+          "x": 6.006,
+          "y": 25.103,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 25.821,
       },
-    ],
-    "x": 6.006,
-    "y": 25.821,
-  },
-  {
-    "texts": [
-      {
-        "content": "rubriques 3 et 8).",
+      "texts": [
+        {
+          "content": "ce mélange ne présente pas de danger pour la santé hormis d'éventuelles valeurs limites d'exposition professionnelle (voir les",
+          "x": 6.006,
+          "y": 25.821,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 26.396,
       },
-    ],
-    "x": 6.006,
-    "y": 26.396,
-  },
-  {
-    "texts": [
-      {
-        "content": "ce mélange ne présente pas de danger pour l'environnement. aucune atteinte à l'environnement n'est connue ou prévisible dans",
+      "texts": [
+        {
+          "content": "rubriques 3 et 8).",
+          "x": 6.006,
+          "y": 26.396,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 27.114,
       },
-    ],
-    "x": 6.006,
-    "y": 27.114,
-  },
-  {
-    "texts": [
-      {
-        "content": "les conditions normales d'utilisation.",
+      "texts": [
+        {
+          "content": "ce mélange ne présente pas de danger pour l'environnement. aucune atteinte à l'environnement n'est connue ou prévisible dans",
+          "x": 6.006,
+          "y": 27.114,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 27.689,
       },
-    ],
-    "x": 6.006,
-    "y": 27.689,
-  },
-  {
-    "texts": [
-      {
-        "content": "2.2. éléments d’étiquetage",
+      "texts": [
+        {
+          "content": "les conditions normales d'utilisation.",
+          "x": 6.006,
+          "y": 27.689,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 28.468,
       },
-    ],
-    "x": 5.64,
-    "y": 28.468,
-  },
-  {
-    "texts": [
-      {
-        "content": "le mélange est un produit détergent (voir la rubrique 15).",
+      "texts": [
+        {
+          "content": "2.2. éléments d’étiquetage",
+          "x": 5.64,
+          "y": 28.468,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 29.172,
       },
-    ],
-    "x": 6.006,
-    "y": 29.172,
-  },
-  {
-    "texts": [
-      {
-        "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
+      "texts": [
+        {
+          "content": "le mélange est un produit détergent (voir la rubrique 15).",
+          "x": 6.006,
+          "y": 29.172,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 29.951,
       },
-    ],
-    "x": 5.64,
-    "y": 29.951,
-  },
-  {
-    "texts": [
-      {
-        "content": "aucun élément d'étiquetage n'est requis pour ce mélange.",
+      "texts": [
+        {
+          "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
+          "x": 5.64,
+          "y": 29.951,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 30.655,
       },
-    ],
-    "x": 6.006,
-    "y": 30.655,
-  },
-  {
-    "texts": [
-      {
-        "content": "2.3. autres dangers",
+      "texts": [
+        {
+          "content": "aucun élément d'étiquetage n'est requis pour ce mélange.",
+          "x": 6.006,
+          "y": 30.655,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 31.433,
       },
-    ],
-    "x": 5.64,
-    "y": 31.433,
-  },
-  {
-    "texts": [
-      {
-        "content": "le mélange ne contient pas de 'substances extrêmement préoccupantes' (svhc)>= 0.1% publiées par l’agence européenne",
+      "texts": [
+        {
+          "content": "2.3. autres dangers",
+          "x": 5.64,
+          "y": 31.433,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 32.138,
       },
-    ],
-    "x": 6.006,
-    "y": 32.138,
-  },
-  {
-    "texts": [
-      {
-        "content": "des produits chimiques (echa) selon l’article 57 du reach : http://echa.europa.eu/fr/candidate-list-table. se référer à la",
+      "texts": [
+        {
+          "content": "le mélange ne contient pas de 'substances extrêmement préoccupantes' (svhc)>= 0.1% publiées par l’agence européenne",
+          "x": 6.006,
+          "y": 32.138,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 32.713,
       },
-    ],
-    "x": 6.006,
-    "y": 32.713,
-  },
-  {
-    "texts": [
-      {
-        "content": "rubrique 3 pour identifier les substances concernées.",
+      "texts": [
+        {
+          "content": "des produits chimiques (echa) selon l’article 57 du reach : http://echa.europa.eu/fr/candidate-list-table. se référer à la",
+          "x": 6.006,
+          "y": 32.713,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 33.288,
       },
-    ],
-    "x": 6.006,
-    "y": 33.288,
-  },
-  {
-    "texts": [
-      {
-        "content": "le mélange ne répond pas aux critères applicables aux mélanges pbt ou vpvb, conformément à l'annexe xiii du règlement",
+      "texts": [
+        {
+          "content": "rubrique 3 pour identifier les substances concernées.",
+          "x": 6.006,
+          "y": 33.288,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 34.006,
       },
-    ],
-    "x": 6.006,
-    "y": 34.006,
-  },
-  {
-    "texts": [
-      {
-        "content": "reach (ce) n° 1907/2006.",
+      "texts": [
+        {
+          "content": "le mélange ne répond pas aux critères applicables aux mélanges pbt ou vpvb, conformément à l'annexe xiii du règlement",
+          "x": 6.006,
+          "y": 34.006,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 34.582,
       },
-    ],
-    "x": 6.006,
-    "y": 34.582,
-  },
-  {
-    "texts": [
-      {
-        "content": "le mélange ne contient pas de substances >= 0,1 % présentant des propriétés perturbant le système endocrinien conformément",
+      "texts": [
+        {
+          "content": "reach (ce) n° 1907/2006.",
+          "x": 6.006,
+          "y": 34.582,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 35.299,
       },
-    ],
-    "x": 6.006,
-    "y": 35.299,
-  },
-  {
-    "texts": [
-      {
-        "content": "aux critères énoncés dans le règlement délégué (ue) 2017/2100 de la commission ou dans le règlement (ue) 2018/605 de la",
+      "texts": [
+        {
+          "content": "le mélange ne contient pas de substances >= 0,1 % présentant des propriétés perturbant le système endocrinien conformément",
+          "x": 6.006,
+          "y": 35.299,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 35.875,
       },
-    ],
-    "x": 6.006,
-    "y": 35.875,
-  },
-  {
-    "texts": [
-      {
-        "content": "commission.",
+      "texts": [
+        {
+          "content": "aux critères énoncés dans le règlement délégué (ue) 2017/2100 de la commission ou dans le règlement (ue) 2018/605 de la",
+          "x": 6.006,
+          "y": 35.875,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 36.45,
       },
-    ],
-    "x": 6.006,
-    "y": 36.45,
-  },
-  {
-    "texts": [
-      {
-        "content": "rubrique 3 : composition/informations sur les composants",
+      "texts": [
+        {
+          "content": "commission.",
+          "x": 6.006,
+          "y": 36.45,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.193,
         "y": 37.615,
       },
-    ],
-    "x": 5.193,
-    "y": 37.615,
-  },
-  {
-    "texts": [
-      {
-        "content": "3.2. mélanges",
+      "texts": [
+        {
+          "content": "rubrique 3 : composition/informations sur les composants",
+          "x": 5.193,
+          "y": 37.615,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.64,
         "y": 38.38,
       },
-    ],
-    "x": 5.64,
-    "y": 38.38,
-  },
-  {
-    "texts": [
-      {
-        "content": "aucune substance ne répond aux critères énoncés dans l'annexe ii partie a du règlement reach (ce) n° 1907/2006.",
+      "texts": [
+        {
+          "content": "3.2. mélanges",
+          "x": 5.64,
+          "y": 38.38,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 39.084,
       },
-    ],
-    "x": 6.006,
-    "y": 39.084,
-  },
-  {
-    "texts": [
-      {
-        "content": "rubrique 4 : premiers secours",
+      "texts": [
+        {
+          "content": "aucune substance ne répond aux critères énoncés dans l'annexe ii partie a du règlement reach (ce) n° 1907/2006.",
+          "x": 6.006,
+          "y": 39.084,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 5.193,
         "y": 40.249,
       },
-    ],
-    "x": 5.193,
-    "y": 40.249,
-  },
-  {
-    "texts": [
-      {
-        "content": "d'une manière générale, en cas de doute ou si des symptômes persistent,  toujours faire appel à un médecin.",
+      "texts": [
+        {
+          "content": "rubrique 4 : premiers secours",
+          "x": 5.193,
+          "y": 40.249,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 40.953,
       },
-    ],
-    "x": 6.006,
-    "y": 40.953,
-  },
-  {
-    "texts": [
-      {
-        "content": "ne jamais rien faire ingérer à une personne inconsciente.",
+      "texts": [
+        {
+          "content": "d'une manière générale, en cas de doute ou si des symptômes persistent,  toujours faire appel à un médecin.",
+          "x": 6.006,
+          "y": 40.953,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 6.006,
         "y": 41.67,
       },
-    ],
-    "x": 6.006,
-    "y": 41.67,
-  },
-  {
-    "texts": [
-      {
-        "content": "- made under licence of european label system® msds software from infodyne  - http://www.infodyne.fr -",
+      "texts": [
+        {
+          "content": "ne jamais rien faire ingérer à une personne inconsciente.",
+          "x": 6.006,
+          "y": 41.67,
+        },
+      ],
+    },
+    {
+      "pageNumber": 1,
+      "startBox": {
         "x": 10.955,
         "y": 48.014,
       },
-    ],
-    "x": 10.955,
-    "y": 48.014,
+      "texts": [
+        {
+          "content": "- made under licence of european label system® msds software from infodyne  - http://www.infodyne.fr -",
+          "x": 10.955,
+          "y": 48.014,
+        },
+      ],
+    },
+  ],
+  "pageDimension": {
+    "height": undefined,
+    "width": undefined,
   },
-]
+}
 `;

@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import _ from 'lodash';
 
+import { ExtractionRulesHelper } from '@topics/engine/rules/extraction-rules.helper.js';
 import type {
   IExtractedData,
   IFDSTree,
@@ -9,14 +10,24 @@ import type {
   IExtractedDate,
   IExtractedProduct,
   IExtractedProducer,
+  IPageDimension,
 } from '@topics/engine/model/fds.model.js';
 import { MONTH_MAPPING } from '@topics/engine/rules/rules.constants.js';
+import type { IExtractedElement } from '@topics/engine/rules/rules.model.js';
 
-export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
+export const applyExtractionRules = async ({
+  fdsTreeCleaned,
+  fullText,
+  pageDimension,
+}: {
+  fdsTreeCleaned: IFDSTree;
+  fullText: string;
+  pageDimension: IPageDimension;
+}): Promise<IExtractedData> => {
   return {
     date: getDate(fullText),
-    product: getProductName(fdsTreeCleaned, { fullText }),
-    producer: getProducer(fdsTreeCleaned),
+    product: getProductName(fdsTreeCleaned, { fullText, pageDimension }),
+    producer: getProducer(fdsTreeCleaned, { pageDimension }),
     hazards: getHazards(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
   };
@@ -124,39 +135,48 @@ const parseDateFromEnglishNumberRegex = (date: string): Date | null => {
 //------------------------------------- PRODUCT NAME -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getProductName = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
-  return getProductNameByText(fdsTree) || getProductNameByLineOrder(fdsTree, { fullText });
+export const getProductName = (
+  fdsTree: IFDSTree,
+  { fullText, pageDimension }: { fullText: string; pageDimension: IPageDimension },
+): IExtractedProduct | null => {
+  const { text, pageNumber, startBox, endBox } = getProductByText(fdsTree) || getProductByLineOrder(fdsTree, { fullText });
+  const { startBoxRatio, endBoxRatio } = ExtractionRulesHelper.getStartAndEndBoxRatio(pageDimension, startBox, endBox);
+
+  return { text, metaData: { pageNumber, startBoxRatio, endBoxRatio } };
 };
 
-export const getProductNameByText = (fdsTree: IFDSTree): IExtractedProduct | null => {
+export const getProductByText = (fdsTree: IFDSTree): IExtractedElement | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
 
   let nameInCurrentLine = false;
   for (const line of linesToSearchIn) {
+    const { pageNumber, startBox, endBox } = line;
+    const lineMetaData = { pageNumber, startBox, endBox };
     const lineText = line.texts.map(({ content }) => content).join(' ');
     const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
-    if (nameInCurrentLine) return text;
+    if (nameInCurrentLine) return { text, ...lineMetaData };
 
     if (_.includes(lineText.replaceAll(' ', ''), 'nomduproduit')) {
       if (_.includes(text.replaceAll(' ', ''), 'nomduproduit')) {
         nameInCurrentLine = true;
         continue;
       }
-      return text;
+      return { text, ...lineMetaData };
     }
   }
   return null;
 };
 
-export const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
+export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedElement | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
 
   for (const line of linesToSearchIn) {
+    const { pageNumber, startBox, endBox } = line;
     const lineText = line.texts.map(({ content }) => content).join('');
     const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
@@ -173,7 +193,7 @@ export const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { ful
     const numberOfOtherMatchesInDocument = fullText
       .replaceAll(' ', '')
       .match(new RegExp(`${text.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
-    if (numberOfOtherMatchesInDocument?.length >= 3) return text;
+    if (numberOfOtherMatchesInDocument?.length >= 3) return { text, pageNumber, startBox, endBox };
   }
   return null;
 };
@@ -182,7 +202,7 @@ export const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { ful
 //--------------------------------------- PRODUCER ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
+export const getProducer = (fdsTree: IFDSTree, { pageDimension }: { pageDimension: IPageDimension }): IExtractedProducer | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[3]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
@@ -202,19 +222,22 @@ export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
     )
       continue;
 
-    return cleanProducer(text);
+    const { pageNumber, startBox, endBox } = line;
+    const { startBoxRatio, endBoxRatio } = ExtractionRulesHelper.getStartAndEndBoxRatio(pageDimension, startBox, endBox);
+
+    return { text: cleanProducerName(text), metaData: { pageNumber, startBoxRatio, endBoxRatio } };
   }
   return null;
 };
 
-const cleanProducer = (producer: IExtractedProducer): IExtractedProducer => {
-  if (!producer?.endsWith('.')) return producer;
-  const producerSplit = producer.split(/ |\.|-/);
+const cleanProducerName = (text: string): string => {
+  if (!text?.endsWith('.')) return text;
+  const producerSplit = text.split(/ |\.|-/);
   const wordBeforePoint = producerSplit[producerSplit.length - 2];
   const wordBeforePointIsAChar = wordBeforePoint?.length === 1;
 
-  if (wordBeforePointIsAChar) return producer;
-  return producer.slice(0, -1);
+  if (wordBeforePointIsAChar) return text;
+  return text.slice(0, -1);
 };
 
 //----------------------------------------------------------------------------------------------

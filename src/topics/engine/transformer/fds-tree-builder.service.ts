@@ -81,7 +81,7 @@ export class FDSTreeBuilderService {
   //----------------------------------------------------------------------------------------------
 
   public static addFDSTreeSection(fdsTree: IFDSTree, { line, sectionNumber }: { line: ILine; sectionNumber: number }): IFDSTree {
-    return { ...fdsTree, [sectionNumber]: { x: line.x, y: line.y, subsections: {} as ISubsection } };
+    return { ...fdsTree, [sectionNumber]: { x: line.startBox.x, y: line.startBox.y, subsections: {} as ISubsection } };
   }
 
   public static addFDSTreeSubSection(
@@ -95,8 +95,8 @@ export class FDSTreeBuilderService {
         subsections: {
           ...fdsTree[sectionNumber].subsections,
           [subSectionNumber]: {
-            x: line.x,
-            y: line.y,
+            x: line.startBox.x,
+            y: line.startBox.y,
             lines: [line],
           },
         },

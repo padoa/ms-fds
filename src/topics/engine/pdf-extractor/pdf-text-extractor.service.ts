@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import type { ILine, IPdfData, IRawElement } from '@topics/engine/model/fds.model.js';
+import type { IExtractorResult } from '@topics/engine/pdf-extractor/pdf-extractor.model.js';
 
 export class PdfTextExtractorService {
   public static isPdfParsable(pdfData: IPdfData): boolean {
@@ -16,8 +17,8 @@ export class PdfTextExtractorService {
       .join('');
   }
 
-  public static getTextFromPdfData(pdfData: IPdfData): ILine[] {
-    const result = pdfData.Pages.map(({ Texts }, index) => _.map(Texts, (text) => ({ ...text, y: text.y + index * 100 })))
+  public static getTextAndDimensionFromPdfData(pdfData: IPdfData): IExtractorResult {
+    const result = pdfData.Pages.map(({ Texts }, index) => _.map(Texts, (text) => ({ ...text, y: text.y + index * 100, pageNumber: index + 1 })))
       .flat()
       .reduce(
         ({ lines, fullText: fullTextBeforeUpdate }: { lines: ILine[]; fullText: string }, rawLine) => {
@@ -40,9 +41,12 @@ export class PdfTextExtractorService {
             lines: [
               ...lines,
               {
-                x: rawElement.x,
-                y: rawElement.y,
                 texts: [rawElement],
+                pageNumber: rawLine.pageNumber,
+                startBox: {
+                  x: rawElement.x,
+                  y: rawElement.y,
+                },
               },
             ],
           };
@@ -53,14 +57,17 @@ export class PdfTextExtractorService {
         },
       );
 
-    const linesYOrdered = _.sortBy(result.lines, 'y');
+    const linesYOrdered = _.sortBy(result.lines, 'y'); // TODO: sort by pageNumber and 'y' instead of 'y' and adding index *100
     const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'x') }));
     const cleanedLines = this.cleanLines(linesOrdered);
-    return cleanedLines;
+    const fistPage = _.first(pdfData.Pages);
+    const pageDimension = { width: _.get(fistPage, 'Width'), height: _.get(fistPage, 'Height') };
+
+    return { lines: cleanedLines, pageDimension };
   }
 
   private static isSameLine(lastLine: ILine, rawLine: IRawElement): boolean {
-    return lastLine?.y >= rawLine.y - 0.25 && lastLine?.y <= rawLine.y + 0.25;
+    return lastLine?.startBox.y >= rawLine.y - 0.25 && lastLine?.startBox.y <= rawLine.y + 0.25;
   }
 
   //----------------------------------------------------------------------------------------------

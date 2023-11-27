@@ -5,7 +5,8 @@ import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 import type { Options } from 'pdf2pic/dist/types/options.js';
 
-import type { IBox, ILine, IText } from '@topics/engine/model/fds.model.js';
+import type { IBox, ILine, IPageDimension, IText } from '@topics/engine/model/fds.model.js';
+import type { IExtractorResult } from '@topics/engine/pdf-extractor/pdf-extractor.model.js';
 
 const tempImageFileName = 'fds-image';
 const tempImageFolderName = '/tmp';
@@ -21,16 +22,22 @@ const options: Options = {
 };
 
 export class PdfImageTextExtractorService {
-  public static async getTextFromImagePdf(fdsFilePath: string, { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {}): Promise<ILine[]> {
+  public static async getTextAndDimensionFromImagePdf(
+    fdsFilePath: string,
+    { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {},
+  ): Promise<IExtractorResult> {
     await this.pdfToImage(fdsFilePath, { numberOfPagesToParse });
 
     const worker = await createWorker('fra');
-    const texts = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (pageNumber) => {
-      return this.getTextFromImage(worker, pageNumber);
+    const textsAndDimension = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (index) => {
+      return this.getTextAndDimensionFromImage(worker, index + 1);
     });
     await worker.terminate();
 
-    return _.flatMap(texts);
+    const pageDimension = _.first(textsAndDimension)?.pageDimension || null;
+    const lines = _.flatMap(textsAndDimension, (e) => e.lines);
+
+    return { lines, pageDimension };
   }
 
   private static pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<void> => {
@@ -42,14 +49,17 @@ export class PdfImageTextExtractorService {
       });
   };
 
-  private static getTextFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<ILine[]> => {
-    const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber + 1}.${tempImageFormat}`;
+  private static getTextAndDimensionFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<IExtractorResult> => {
+    const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber}.${tempImageFormat}`;
     const ret = await worker.recognize(imagePath);
-    return this.hocrToLines(ret.data.hocr);
+
+    const hocrByLine = ret.data.hocr.split('\n');
+    const pageDimension = this.getHocrPageDimension(_.first(hocrByLine));
+    const lines = this.hocrToLines(hocrByLine, pageNumber);
+    return { lines, pageDimension };
   };
 
-  private static hocrToLines = (hocr: string): ILine[] => {
-    const hocrByLine = hocr.split('\n');
+  private static hocrToLines = (hocrByLine: string[], pageNumber: number): ILine[] => {
     return _.reduce(
       hocrByLine,
       (lines, hocrElement) => {
@@ -61,8 +71,9 @@ export class PdfImageTextExtractorService {
         }
 
         if (this.isHocrElementALine(hocrElement)) {
-          const box = this.getBoxInHocrElement(hocrElement);
-          lines.push({ ...box, texts: [] } as ILine);
+          const startBox = this.getStartBoxInHocrElement(hocrElement);
+          const endBox = this.getEndBoxInHocrElement(hocrElement);
+          lines.push({ startBox, endBox, pageNumber, texts: [] } as ILine);
           return lines;
         }
 
@@ -82,12 +93,22 @@ export class PdfImageTextExtractorService {
 
   private static getTextInHocrWordElement = (hocrWordElement: string): IText => {
     const content = decode(hocrWordElement.match(/>(.*)<\/span>/)[1].toLowerCase());
-    const box = this.getBoxInHocrElement(hocrWordElement);
+    const box = this.getStartBoxInHocrElement(hocrWordElement);
     return { ...box, content };
   };
 
-  private static getBoxInHocrElement = (hocrElement: string): IBox => {
+  private static getHocrPageDimension = (hocrFirstElement: string): IPageDimension => {
+    const [, , , w, h] = hocrFirstElement.match(/bbox (\d+) (\d+) (\d+) (\d+);/);
+    return { width: +w, height: +h };
+  };
+
+  private static getStartBoxInHocrElement = (hocrElement: string): IBox => {
     const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
     return { x: +x, y: +y };
+  };
+
+  private static getEndBoxInHocrElement = (hocrElement: string): IBox => {
+    const [, x, y, w, h] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
+    return { x: +x + (+w - +x), y: +y + (+h - +y) };
   };
 }
