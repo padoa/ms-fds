@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  CASNumberRegex,
+  CENumberRegex,
   applyExtractionRules,
   englishNumberDateRegex,
   getDate,
@@ -28,7 +30,6 @@ import type {
   IFDSTree,
   ILine,
 } from '@topics/engine/model/fds.model.js';
-import { ps2175FdsTreeCleaned, ps2175FullText } from '@topics/engine/rules/tests/extraction-rules.test-setup.js';
 
 describe('ExtractionRules tests', () => {
   const iBox: IBox = { x: 1.0, y: 1.0 };
@@ -114,6 +115,45 @@ describe('ExtractionRules tests', () => {
         // ['2100.04.28', false], // FIXME: correct this in order to fail in JS func => 00.04.28
       ])('"%s" input should return %s', (dateString, expected) => {
         expect(new RegExp(englishNumberDateRegex).test(dateString)).toEqual(expected);
+      });
+    });
+
+    describe('CASNumberRegex tests', () => {
+      it.each<[{ input: string; expected: boolean }]>([
+        [{ input: '1234567-12-3', expected: true }],
+        [{ input: '9876543-45-6', expected: true }],
+        [{ input: '111-22-3', expected: true }],
+        [{ input: '987-65-4', expected: true }],
+        [{ input: '1-23-4', expected: true }],
+        [{ input: '-1234567-12-3', expected: false }],
+        [{ input: '1234567-12-3-', expected: false }],
+        [{ input: '12-34567-12-3', expected: false }],
+        [{ input: '1234567-123-3', expected: false }],
+        [{ input: '1234567-12-3-4', expected: false }],
+        [{ input: 'abc-12-34', expected: false }],
+        [{ input: '12-34-def', expected: false }],
+        [{ input: '12-34-56789', expected: false }],
+        [{ input: '12-34', expected: false }],
+        [{ input: '12-34-', expected: false }],
+      ])('$input payload should return $expected', ({ input, expected }) => {
+        expect(new RegExp(CASNumberRegex).test(input)).toEqual(expected);
+      });
+    });
+
+    describe('CENumberRegex tests', () => {
+      it.each<[{ input: string; expected: boolean }]>([
+        [{ input: '123-456-7', expected: true }],
+        [{ input: '987-654-3', expected: true }],
+        [{ input: '111-222-3', expected: true }],
+        [{ input: '987-654-3', expected: true }],
+        [{ input: '1-234-5', expected: false }],
+        [{ input: '1-23-456-7', expected: false }],
+        [{ input: '123-456-78', expected: false }],
+        [{ input: 'abc-123-456', expected: false }],
+        [{ input: '123-abc-456', expected: false }],
+        [{ input: '123-456-', expected: false }],
+      ])('$input payload should return $expected', ({ input, expected }) => {
+        expect(new RegExp(CENumberRegex).test(input)).toEqual(expected);
       });
     });
   });
@@ -594,20 +634,151 @@ describe('ExtractionRules tests', () => {
   });
 
   describe('ApplyExtractionRules tests', () => {
-    it('Should return', async () => {
+    it('Should extract all fields from fds', async () => {
+      const fullTextLines = [
+        'révision : 18/05/2015',
+        'nom du produit: ps 2175',
+        '1.3.',
+        'societe industrielle de diffusion',
+        'h317 - peut provoquer une allergie cutanée',
+        'p261 - éviter de respirer les poussières/fumées/gaz/brouillards/vapeurs/aérosols',
+        'p303+p361+p353 - en cas de contact avec la peau (ou les cheveux): enlever ',
+        'numéro ce ',
+        '233-826-7',
+        'numéro cas 3251-23-8',
+      ];
+      const [, productName, section1point3, producerName, h317text, p261Text, pAdditionedText, ceNumberTitle, ceNumberText, numeroCasText] =
+        fullTextLines;
+
+      const fdsTree: IFDSTree = {
+        '1': {
+          x: 2,
+          y: 5.873,
+          subsections: {
+            '1': {
+              x: 2,
+              y: 6.666,
+              lines: [
+                {
+                  x: 1.988,
+                  y: 8.145,
+                  texts: [
+                    {
+                      x: 1.988,
+                      y: 8.145,
+                      content: productName,
+                    },
+                  ],
+                },
+              ],
+            },
+            '3': {
+              x: 2,
+              y: 28.54,
+              lines: [
+                {
+                  x: 2,
+                  y: 28.54,
+                  texts: [
+                    {
+                      x: 2,
+                      y: 28.54,
+                      content: section1point3,
+                    },
+                  ],
+                },
+                {
+                  x: 2,
+                  y: 29.28,
+                  texts: [
+                    {
+                      x: 2,
+                      y: 29.28,
+                      content: producerName,
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        '2': {
+          x: 2,
+          y: 34.598,
+          subsections: {
+            '2': {
+              x: 2,
+              y: 107.628,
+              lines: [
+                {
+                  x: 13.575,
+                  y: 115.139,
+                  texts: [
+                    {
+                      x: 13.575,
+                      y: 115.139,
+                      content: h317text,
+                    },
+                    {
+                      x: 13.575,
+                      y: 116.994,
+                      content: p261Text,
+                    },
+                    {
+                      x: 13.575,
+                      y: 118.667,
+                      content: pAdditionedText,
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        '3': {
+          x: 2,
+          y: 129.159,
+          subsections: {
+            '2': {
+              x: 2,
+              y: 131.934,
+              lines: [
+                {
+                  x: 11.197,
+                  y: 140.415,
+                  texts: [
+                    {
+                      x: 12.76,
+                      y: 140.415,
+                      content: ceNumberTitle,
+                    },
+                    {
+                      x: 13.544,
+                      y: 140.415,
+                      content: ceNumberText,
+                    },
+                    {
+                      x: 13.795,
+                      y: 142.031,
+                      content: numeroCasText,
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+      };
+
       const expected: IExtractedData = {
         date: { formattedDate: '2015/05/18', inTextDate: '18/05/2015' },
         product: 'ps 2175',
         producer: 'societe industrielle de diffusion',
-        hazards: ['h314', 'h317', 'h400', 'h411', 'p261', 'p280', 'p303 + p361 + p353', 'p304 + p340', 'p310', 'p305 + p351 + p338', 'p362 + p364'],
-        substances: [
-          { casNumber: undefined, ceNumber: '233-826-7' },
-          { casNumber: undefined, ceNumber: '221-838-5' },
-          { casNumber: '55965-84-9', ceNumber: undefined },
-        ],
+        hazards: ['h317', 'p261', 'p303 + p361 + p353'],
+        substances: [{ casNumber: '3251-23-8', ceNumber: '233-826-7' }],
       };
 
-      await expect(applyExtractionRules({ fdsTreeCleaned: ps2175FdsTreeCleaned, fullText: ps2175FullText })).resolves.toEqual(expected);
+      await expect(applyExtractionRules({ fdsTreeCleaned: fdsTree, fullText: fullTextLines.join('') })).resolves.toEqual(expected);
     });
   });
 });

@@ -285,8 +285,8 @@ export const getSubstances = (fdsTree: IFDSTree): IExtractedSubstance[] => {
   return substances;
 };
 
-const CASNumberRegex = /(?<!(-|\d{1})+)(\d{1,7}-\d{2}-\d{1})(?!(-|\d{1})+)/;
-const CENumberRegex = /(?<!(\d{1})+)(\d{3}-\d{3}-\d{1})(?!(\d{1})+)/;
+export const CASNumberRegex = /(?<!(-|\d{1})+)(\d{1,7}-\d{2}-\d{1})(?!(-|\d{1})+)/;
+export const CENumberRegex = /(?<!(\d{1})+)(\d{3}-\d{3}-\d{1})(?!(\d{1})+)/;
 
 const getCASNumber = (text: string): string => {
   // TODO: rule with cas
