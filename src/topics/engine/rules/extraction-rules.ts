@@ -26,7 +26,7 @@ export const applyExtractionRules = async ({
 }): Promise<IExtractedData> => {
   return {
     date: getDate(fullText),
-    product: getProductName(fdsTreeCleaned, { fullText, pageDimension }),
+    product: getProduct(fdsTreeCleaned, { fullText, pageDimension }),
     producer: getProducer(fdsTreeCleaned, { pageDimension }),
     hazards: getHazards(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
@@ -135,11 +135,15 @@ const parseDateFromEnglishNumberRegex = (date: string): Date | null => {
 //------------------------------------- PRODUCT NAME -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getProductName = (
+export const getProduct = (
   fdsTree: IFDSTree,
   { fullText, pageDimension }: { fullText: string; pageDimension: IPageDimension },
 ): IExtractedProduct | null => {
-  const { text, pageNumber, startBox, endBox } = getProductByText(fdsTree) || getProductByLineOrder(fdsTree, { fullText });
+  const extractedElement = getProductByText(fdsTree) || getProductByLineOrder(fdsTree, { fullText });
+
+  if (!extractedElement) return null;
+
+  const { text, pageNumber, startBox, endBox } = extractedElement;
   const { startBoxRatio, endBoxRatio } = ExtractionRulesHelper.getStartAndEndBoxRatio(pageDimension, startBox, endBox);
 
   return { text, metaData: { pageNumber, startBoxRatio, endBoxRatio } };
