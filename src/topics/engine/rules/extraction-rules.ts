@@ -10,6 +10,7 @@ import type {
   IExtractedProduct,
   IExtractedProducer,
 } from '@topics/engine/model/fds.model.js';
+import { MONTH_MAPPING } from '@topics/engine/rules/rules.constants.js';
 
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
@@ -38,29 +39,29 @@ export const englishNumberDateRegex = `(${yearRegex}${dateSeparatorsRegex}${mont
 
 export const dateRegexps = [numberDateRegex, stringDateRegex, englishNumberDateRegex];
 
-const getDate = (fullText: string): IExtractedDate => {
+export const getDate = (fullText: string): IExtractedDate => {
   const text = fullText.replaceAll(' ', '').replaceAll('û', 'u');
   const inTextDate = getDateByRevisionText(text) || getDateByMostFrequent(text) || getDateByMostRecent(text);
+  if (!inTextDate) return { formattedDate: null, inTextDate: null };
+  const parsedDate = parseDate(inTextDate);
 
   return {
-    // TODO: format will crash if parseDate result date is NaN
-    formattedDate: inTextDate ? format(parseDate(inTextDate), 'yyyy/MM/dd') : null,
+    formattedDate: parsedDate && !Number.isNaN(parsedDate.getTime()) ? format(parsedDate, 'yyyy/MM/dd') : null,
     inTextDate,
   };
 };
 
-export const getDateByRevisionText = (fullText: string): string => {
+export const getDateByRevisionText = (fullText: string): string | null => {
   const revisionDateRegex = 'révision.?';
 
   for (const dateRegex of dateRegexps) {
     const revisionDateMatch = fullText.match(new RegExp(revisionDateRegex + dateRegex));
     if (revisionDateMatch?.length) return revisionDateMatch[1];
   }
-
   return null;
 };
 
-export const getDateByMostFrequent = (fullText: string): string => {
+export const getDateByMostFrequent = (fullText: string): string | undefined | null => {
   const numberDates = fullText.match(new RegExp(numberDateRegex, 'g')) || [];
   const stringDates = fullText.match(new RegExp(stringDateRegex, 'g')) || [];
   const dates = [...numberDates, ...stringDates];
@@ -91,12 +92,12 @@ export const getDateByMostRecent = (fullText: string): string | undefined => {
   return _.maxBy(dates, parseDate);
 };
 
-const parseDate = (date: string): Date => {
+export const parseDate = (date: string): Date | null => {
   return parseDateFromNumberRegex(date) || parseDateFromStringRegex(date) || parseDateFromEnglishNumberRegex(date);
 };
 
 // TODO: refacto these blocs to avoid code duplication
-const parseDateFromNumberRegex = (date: string): Date => {
+const parseDateFromNumberRegex = (date: string): Date | null => {
   const regexMatches = date.match(new RegExp(numberDateRegex)); // TODO: refacto to not always recreate Regexp
   if (!regexMatches) return null;
   // eslint-disable-next-line prefer-const
@@ -105,19 +106,14 @@ const parseDateFromNumberRegex = (date: string): Date => {
   return new Date(`${year}/${month}/${day}`);
 };
 
-// TODO: move to dedicated constants file
-const MONTH_MAPPING = {
-  aout: 'august',
-} as { [key: string]: string };
-
-const parseDateFromStringRegex = (date: string): Date => {
+const parseDateFromStringRegex = (date: string): Date | null => {
   const regexMatches = date.match(new RegExp(stringDateRegex));
   if (!regexMatches) return null;
   const [, , day, month, year] = regexMatches;
   return new Date(`${year} ${MONTH_MAPPING[month] || month} ${day}`);
 };
 
-const parseDateFromEnglishNumberRegex = (date: string): Date => {
+const parseDateFromEnglishNumberRegex = (date: string): Date | null => {
   const regexMatches = date.match(new RegExp(englishNumberDateRegex));
   if (!regexMatches) return null;
   const [, , year, , month, , day] = regexMatches;
@@ -128,11 +124,11 @@ const parseDateFromEnglishNumberRegex = (date: string): Date => {
 //------------------------------------- PRODUCT NAME -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getProductName = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct => {
+export const getProductName = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
   return getProductNameByText(fdsTree) || getProductNameByLineOrder(fdsTree, { fullText });
 };
 
-const getProductNameByText = (fdsTree: IFDSTree): IExtractedProduct => {
+export const getProductNameByText = (fdsTree: IFDSTree): IExtractedProduct | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
@@ -155,7 +151,7 @@ const getProductNameByText = (fdsTree: IFDSTree): IExtractedProduct => {
   return null;
 };
 
-const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct => {
+export const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
@@ -171,8 +167,9 @@ const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: 
       _.includes(text, 'mélange') ||
       _.includes(text, 'identificateur de produit') ||
       _.includes(lineText, 'forme du produit')
-    )
+    ) {
       continue;
+    }
     const numberOfOtherMatchesInDocument = fullText
       .replaceAll(' ', '')
       .match(new RegExp(`${text.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
@@ -185,13 +182,13 @@ const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: 
 //--------------------------------------- PRODUCER ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getProducer = (fdsTree: IFDSTree): IExtractedProducer => {
+export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[3]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
 
   for (const line of linesToSearchIn) {
-    const { content } = _.last(line.texts);
+    const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
     if (!text) continue;
 
@@ -224,13 +221,14 @@ const cleanProducer = (producer: IExtractedProducer): IExtractedProducer => {
 //---------------------------------------- HAZARDS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getHazards = (fdsTree: IFDSTree): IExtractedHazard[] => {
+export const getHazards = (fdsTree: IFDSTree): IExtractedHazard[] => {
   const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
   const textInEachLine = _.map(linesToSearchIn, ({ texts }) => {
     return _.map(texts, 'content').join('');
   });
 
-  const matches = _(textInEachLine)
+  // TODO: possible improvement: concat all lines then use regex once to extract hazards
+  return _(textInEachLine)
     .map((text) => {
       const customHazards = ['h350i', 'h360f', 'h360d', 'h360fd', 'h360df', 'h361f', 'h361d', 'h361fd'];
       const hazardsRegex = `(${customHazards.join(')|(')})|(h[2-4]\\d{2})`;
@@ -242,15 +240,13 @@ const getHazards = (fdsTree: IFDSTree): IExtractedHazard[] => {
     .flatMap()
     .compact()
     .value();
-
-  return matches;
 };
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- SUBSTANCES -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-const getSubstances = (fdsTree: IFDSTree): IExtractedSubstance[] => {
+export const getSubstances = (fdsTree: IFDSTree): IExtractedSubstance[] => {
   const linesToSearchIn = [...(fdsTree[3]?.subsections?.[1]?.lines || []), ...(fdsTree[3]?.subsections?.[2]?.lines || [])];
   const textInEachLine = _.map(linesToSearchIn, ({ texts }) => {
     return _.map(texts, 'content').join('');
@@ -289,14 +285,17 @@ const getSubstances = (fdsTree: IFDSTree): IExtractedSubstance[] => {
   return substances;
 };
 
+export const CASNumberRegex = /(?<!(-|\d{1})+)(\d{1,7}-\d{2}-\d{1})(?!(-|\d{1})+)/;
+export const CENumberRegex = /(?<!(\d{1})+)(\d{3}-\d{3}-\d{1})(?!(\d{1})+)/;
+
 const getCASNumber = (text: string): string => {
-  // TODO rule with cas
-  const match = text.match(/(?<!(-|\d{1})+)(\d{1,7}-\d{2}-\d{1})(?!(–|\d{1})+)/);
+  // TODO: rule with cas
+  const match = text.match(CASNumberRegex);
   return match?.[2];
 };
 
 const getCENumber = (text: string): string => {
-  // TODO rule with ce
-  const match = text.match(/(?<!(\d{1})+)(\d{3}-\d{3}-\d{1})(?!(\d{1})+)/);
+  // TODO: rule with ce
+  const match = text.match(CENumberRegex);
   return match?.[2];
 };

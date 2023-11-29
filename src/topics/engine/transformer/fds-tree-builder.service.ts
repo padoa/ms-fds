@@ -2,28 +2,13 @@ import _ from 'lodash';
 
 import type { IFDSTree, ILine, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
-import type { IFDSTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
+import type { IBuildTree, IFDSTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
 
 export class FDSTreeBuilderService {
   public static buildFdsTree(lines: ILine[]): IFDSTreeResult {
     const result = _.reduce(
       lines,
-      (
-        {
-          fdsTree,
-          currentSection,
-          currentSubSection,
-          xCounts: XCountsBeforeUpdate,
-          fullText: fullTextBeforeUpdate,
-        }: {
-          fdsTree: IFDSTree;
-          currentSection: number;
-          currentSubSection: number;
-          xCounts: IXCounts;
-          fullText: string;
-        },
-        line,
-      ) => {
+      ({ fdsTree, currentSection, currentSubSection, xCounts: XCountsBeforeUpdate, fullText: fullTextBeforeUpdate }: IBuildTree, line) => {
         const xCounts = this.updateXCounts(XCountsBeforeUpdate, line);
         const fullTextLine = line.texts.map((t) => t.content).join('');
         const fullText = `${fullTextBeforeUpdate}${fullTextLine}`;
@@ -81,13 +66,7 @@ export class FDSTreeBuilderService {
 
         return { fdsTree, currentSection, currentSubSection, xCounts, fullText };
       },
-      { fdsTree: {}, currentSection: null, currentSubSection: null, xCounts: {}, fullText: '', currentLine: null } as {
-        fdsTree: IFDSTree;
-        currentSection: number;
-        currentSubSection: number;
-        xCounts: IXCounts;
-        fullText: string;
-      },
+      { fdsTree: {}, currentSection: null, currentSubSection: null, xCounts: {}, fullText: '', currentLine: null } as IBuildTree,
     );
 
     return {
