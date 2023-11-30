@@ -22,8 +22,8 @@ export type IRawLine = IRawBox & {
 };
 
 export type IBox = {
-  xPositionInPercent: number;
-  yPositionInPercent: number;
+  xPositionProportion: number;
+  yPositionProportion: number;
 };
 
 export type IPageDimension = {

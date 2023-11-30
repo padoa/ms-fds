@@ -84,8 +84,8 @@ export class FDSTreeBuilderService {
     return {
       ...fdsTree,
       [sectionNumber]: {
-        xPositionInPercent: line.startBox.xPositionInPercent,
-        yPositionInPercent: line.startBox.yPositionInPercent,
+        xPositionProportion: line.startBox.xPositionProportion,
+        yPositionProportion: line.startBox.yPositionProportion,
         subsections: {} as ISubsection,
       },
     };
@@ -102,8 +102,8 @@ export class FDSTreeBuilderService {
         subsections: {
           ...fdsTree[sectionNumber].subsections,
           [subSectionNumber]: {
-            xPositionInPercent: line.startBox.xPositionInPercent,
-            yPositionInPercent: line.startBox.yPositionInPercent,
+            xPositionProportion: line.startBox.xPositionProportion,
+            yPositionProportion: line.startBox.yPositionProportion,
             lines: [line],
           },
         },
@@ -136,9 +136,9 @@ export class FDSTreeBuilderService {
     return _.reduce(
       line.texts,
       (xCountsAcc, textElement) => {
-        const actualCount = xCountsAcc[textElement.xPositionInPercent] || 0;
+        const actualCount = xCountsAcc[textElement.xPositionProportion] || 0;
         // eslint-disable-next-line no-param-reassign
-        xCountsAcc[textElement.xPositionInPercent] = actualCount + 1;
+        xCountsAcc[textElement.xPositionProportion] = actualCount + 1;
         return xCountsAcc;
       },
       xCounts,

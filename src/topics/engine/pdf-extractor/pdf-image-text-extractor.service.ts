@@ -97,12 +97,12 @@ export class PdfImageTextExtractorService {
   private static getStartBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IBox => {
     const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
     const { width, height } = pageDimension;
-    return { xPositionInPercent: +x / width, yPositionInPercent: +y / height };
+    return { xPositionProportion: +x / width, yPositionProportion: +y / height };
   };
 
   private static getEndBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IBox => {
     const [, x, y, w, h] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
     const { width, height } = pageDimension;
-    return { xPositionInPercent: (+x + (+w - +x)) / width, yPositionInPercent: (+y + (+h - +y)) / height };
+    return { xPositionProportion: (+x + (+w - +x)) / width, yPositionProportion: (+y + (+h - +y)) / height };
   };
 }

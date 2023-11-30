@@ -30,8 +30,8 @@ export class PdfTextExtractorService {
 
           const fullText = `${fullTextBeforeUpdate}${rawText}`;
           const rawElement = {
-            xPositionInPercent: rawLine.x / pageDimension.width,
-            yPositionInPercent: rawLine.y / pageDimension.height,
+            xPositionProportion: rawLine.x / pageDimension.width,
+            yPositionProportion: rawLine.y / pageDimension.height,
             content: rawText,
           };
 
@@ -50,8 +50,8 @@ export class PdfTextExtractorService {
                 texts: [rawElement],
                 pageNumber: rawLine.pageNumber,
                 startBox: {
-                  xPositionInPercent: rawElement.xPositionInPercent,
-                  yPositionInPercent: rawElement.yPositionInPercent,
+                  xPositionProportion: rawElement.xPositionProportion,
+                  yPositionProportion: rawElement.yPositionProportion,
                 },
               },
             ],
@@ -63,8 +63,8 @@ export class PdfTextExtractorService {
         },
       );
 
-    const linesYOrdered = _.sortBy(result.lines, 'y'); // TODO: sort by pageNumber and 'yPositionInPercent' instead of 'y' and adding index *100
-    const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionInPercent') }));
+    const linesYOrdered = _.sortBy(result.lines, 'y'); // TODO: sort by pageNumber and 'yPositionProportion' instead of 'y' and adding index *100
+    const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionProportion') }));
     const cleanedLines = this.cleanLines(linesOrdered);
     return cleanedLines;
   }
@@ -73,10 +73,10 @@ export class PdfTextExtractorService {
     const { startBox } = lastLine;
 
     const TOLERANCE_IN_PERCENT = 0.25 / pageDimension.height;
-    const yMinInPercent = rawLine.yPositionInPercent - TOLERANCE_IN_PERCENT;
-    const yMaxInPercent = rawLine.yPositionInPercent + TOLERANCE_IN_PERCENT;
+    const yMinInPercent = rawLine.yPositionProportion - TOLERANCE_IN_PERCENT;
+    const yMaxInPercent = rawLine.yPositionProportion + TOLERANCE_IN_PERCENT;
 
-    return startBox.yPositionInPercent >= yMinInPercent && startBox.yPositionInPercent <= yMaxInPercent;
+    return startBox.yPositionProportion >= yMinInPercent && startBox.yPositionProportion <= yMaxInPercent;
   }
 
   //----------------------------------------------------------------------------------------------

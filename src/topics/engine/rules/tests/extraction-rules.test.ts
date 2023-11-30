@@ -33,7 +33,7 @@ import type {
 } from '@topics/engine/model/fds.model.js';
 
 describe('ExtractionRules tests', () => {
-  const iBox: IBox = { xPositionInPercent: 1, yPositionInPercent: 1 };
+  const iBox: IBox = { xPositionProportion: 1, yPositionProportion: 1 };
   const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
 
   describe('Regexps tests', () => {
@@ -693,20 +693,20 @@ describe('ExtractionRules tests', () => {
 
       const fdsTree: IFDSTree = {
         '1': {
-          xPositionInPercent: 2,
-          yPositionInPercent: 5.873,
+          xPositionProportion: 2,
+          yPositionProportion: 5.873,
           subsections: {
             '1': {
-              xPositionInPercent: 2,
-              yPositionInPercent: 6.666,
+              xPositionProportion: 2,
+              yPositionProportion: 6.666,
               lines: [
                 {
-                  startBox: { xPositionInPercent: 1, yPositionInPercent: 1 },
+                  startBox: { xPositionProportion: 1, yPositionProportion: 1 },
                   pageNumber: 1,
                   texts: [
                     {
-                      xPositionInPercent: 1.988,
-                      yPositionInPercent: 8.145,
+                      xPositionProportion: 1.988,
+                      yPositionProportion: 8.145,
                       content: productName,
                     },
                   ],
@@ -714,27 +714,27 @@ describe('ExtractionRules tests', () => {
               ],
             },
             '3': {
-              xPositionInPercent: 2,
-              yPositionInPercent: 28.54,
+              xPositionProportion: 2,
+              yPositionProportion: 28.54,
               lines: [
                 {
-                  startBox: { xPositionInPercent: 2, yPositionInPercent: 28.54 },
+                  startBox: { xPositionProportion: 2, yPositionProportion: 28.54 },
                   pageNumber: 1,
                   texts: [
                     {
-                      xPositionInPercent: 2,
-                      yPositionInPercent: 28.54,
+                      xPositionProportion: 2,
+                      yPositionProportion: 28.54,
                       content: section1point3,
                     },
                   ],
                 },
                 {
-                  startBox: { xPositionInPercent: 1, yPositionInPercent: 1 },
+                  startBox: { xPositionProportion: 1, yPositionProportion: 1 },
                   pageNumber: 1,
                   texts: [
                     {
-                      xPositionInPercent: 2,
-                      yPositionInPercent: 29.28,
+                      xPositionProportion: 2,
+                      yPositionProportion: 29.28,
                       content: producerName,
                     },
                   ],
@@ -744,30 +744,30 @@ describe('ExtractionRules tests', () => {
           },
         },
         '2': {
-          xPositionInPercent: 2,
-          yPositionInPercent: 34.598,
+          xPositionProportion: 2,
+          yPositionProportion: 34.598,
           subsections: {
             '2': {
-              xPositionInPercent: 2,
-              yPositionInPercent: 107.628,
+              xPositionProportion: 2,
+              yPositionProportion: 107.628,
               lines: [
                 {
-                  startBox: { xPositionInPercent: 13.575, yPositionInPercent: 115.139 },
+                  startBox: { xPositionProportion: 13.575, yPositionProportion: 115.139 },
                   pageNumber: 1,
                   texts: [
                     {
-                      xPositionInPercent: 13.575,
-                      yPositionInPercent: 115.139,
+                      xPositionProportion: 13.575,
+                      yPositionProportion: 115.139,
                       content: h317text,
                     },
                     {
-                      xPositionInPercent: 13.575,
-                      yPositionInPercent: 116.994,
+                      xPositionProportion: 13.575,
+                      yPositionProportion: 116.994,
                       content: p261Text,
                     },
                     {
-                      xPositionInPercent: 13.575,
-                      yPositionInPercent: 118.667,
+                      xPositionProportion: 13.575,
+                      yPositionProportion: 118.667,
                       content: pAdditionedText,
                     },
                   ],
@@ -777,30 +777,30 @@ describe('ExtractionRules tests', () => {
           },
         },
         '3': {
-          xPositionInPercent: 2,
-          yPositionInPercent: 129.159,
+          xPositionProportion: 2,
+          yPositionProportion: 129.159,
           subsections: {
             '2': {
-              xPositionInPercent: 2,
-              yPositionInPercent: 131.934,
+              xPositionProportion: 2,
+              yPositionProportion: 131.934,
               lines: [
                 {
-                  startBox: { xPositionInPercent: 11.197, yPositionInPercent: 140.415 },
+                  startBox: { xPositionProportion: 11.197, yPositionProportion: 140.415 },
                   pageNumber: 1,
                   texts: [
                     {
-                      xPositionInPercent: 12.76,
-                      yPositionInPercent: 140.415,
+                      xPositionProportion: 12.76,
+                      yPositionProportion: 140.415,
                       content: ceNumberTitle,
                     },
                     {
-                      xPositionInPercent: 13.544,
-                      yPositionInPercent: 140.415,
+                      xPositionProportion: 13.544,
+                      yPositionProportion: 140.415,
                       content: ceNumberText,
                     },
                     {
-                      xPositionInPercent: 13.795,
-                      yPositionInPercent: 142.031,
+                      xPositionProportion: 13.795,
+                      yPositionProportion: 142.031,
                       content: numeroCasText,
                     },
                   ],

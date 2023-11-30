@@ -55,12 +55,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
             texts: [
-              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
-              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
+              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
+              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
             ],
           },
         ];
@@ -73,18 +73,18 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
             texts: [
-              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
-              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
+              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
+              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
             ],
           },
           {
             pageNumber: 1,
-            startBox: { xPositionInPercent: 3.29, yPositionInPercent: 4.567 },
-            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 4.567, content: 'c3' }],
+            startBox: { xPositionProportion: 3.29, yPositionProportion: 4.567 },
+            texts: [{ xPositionProportion: 3.29, yPositionProportion: 4.567, content: 'c3' }],
           },
         ];
         const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 2 }, fullText: 'c1c2c3' };
@@ -108,12 +108,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
             texts: [
-              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' },
-              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'content' },
+              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' },
+              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'content' },
             ],
           },
         ];
@@ -121,8 +121,8 @@ describe('FdsTreeBuilderService tests', () => {
           fdsTree: {
             1: {
               subsections: {},
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
           },
           xCounts: { 26.78: 1, 3.29: 1 },
@@ -136,31 +136,31 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
             texts: [
-              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' },
-              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'content' },
+              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' },
+              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'content' },
             ],
           },
           {
             pageNumber: 1,
-            startBox: { xPositionInPercent: 3.29, yPositionInPercent: 4.567 },
-            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 4.567, content: 'anotherInterestingSection' }],
+            startBox: { xPositionProportion: 3.29, yPositionProportion: 4.567 },
+            texts: [{ xPositionProportion: 3.29, yPositionProportion: 4.567, content: 'anotherInterestingSection' }],
           },
         ];
         const expected: IFDSTreeResult = {
           fdsTree: {
             1: {
               subsections: {},
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
             2: {
               subsections: {},
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 4.567,
+              xPositionProportion: 3.29,
+              yPositionProportion: 4.567,
             },
           },
           xCounts: { 26.78: 1, 3.29: 2 },
@@ -188,22 +188,22 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
-            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' }],
+            texts: [{ xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionLines: ILine[] = [
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.013,
-              yPositionInPercent: 14.311,
+              xPositionProportion: 3.013,
+              yPositionProportion: 14.311,
             },
             texts: [
-              { xPositionInPercent: 3.013, yPositionInPercent: 14.311, content: 'interesting' },
-              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
+              { xPositionProportion: 3.013, yPositionProportion: 14.311, content: 'interesting' },
+              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
             ],
           },
         ];
@@ -213,13 +213,13 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  xPositionInPercent: 3.013,
-                  yPositionInPercent: 14.311,
+                  xPositionProportion: 3.013,
+                  yPositionProportion: 14.311,
                   lines: subSectionLines,
                 },
               },
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
           },
           xCounts: { 3.29: 1, 13.651: 1, 3.013: 1 },
@@ -233,33 +233,33 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
-            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' }],
+            texts: [{ xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionsLines: ILine[] = [
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.013,
-              yPositionInPercent: 14.311,
+              xPositionProportion: 3.013,
+              yPositionProportion: 14.311,
             },
             texts: [
-              { xPositionInPercent: 3.013, yPositionInPercent: 14.311, content: 'interesting' },
-              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
+              { xPositionProportion: 3.013, yPositionProportion: 14.311, content: 'interesting' },
+              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
             ],
           },
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.013,
-              yPositionInPercent: 17.621,
+              xPositionProportion: 3.013,
+              yPositionProportion: 17.621,
             },
             texts: [
-              { xPositionInPercent: 3.013, yPositionInPercent: 17.621, content: 'anotherInteresting' },
-              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
+              { xPositionProportion: 3.013, yPositionProportion: 17.621, content: 'anotherInteresting' },
+              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
             ],
           },
         ];
@@ -269,18 +269,18 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  xPositionInPercent: 3.013,
-                  yPositionInPercent: 14.311,
+                  xPositionProportion: 3.013,
+                  yPositionProportion: 14.311,
                   lines: [subSectionsLines[0]],
                 },
                 2: {
-                  xPositionInPercent: 3.013,
-                  yPositionInPercent: 17.621,
+                  xPositionProportion: 3.013,
+                  yPositionProportion: 17.621,
                   lines: [subSectionsLines[1]],
                 },
               },
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
           },
           xCounts: { 3.29: 1, 13.651: 2, 3.013: 2 },
@@ -304,12 +304,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
             texts: [
-              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
-              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
+              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
+              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
             ],
           },
         ];
@@ -332,12 +332,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
             texts: [
-              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
-              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
+              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
+              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
             ],
           },
         ];
@@ -364,32 +364,32 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
-            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' }],
+            texts: [{ xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionLines: ILine[] = [
           {
             pageNumber: 1,
             startBox: {
-              xPositionInPercent: 3.013,
-              yPositionInPercent: 14.311,
+              xPositionProportion: 3.013,
+              yPositionProportion: 14.311,
             },
             texts: [
-              { xPositionInPercent: 3.013, yPositionInPercent: 14.311, content: 'interesting' },
-              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
+              { xPositionProportion: 3.013, yPositionProportion: 14.311, content: 'interesting' },
+              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
             ],
           },
         ];
         const extraSubSectionLine: ILine = {
           pageNumber: 1,
           startBox: {
-            xPositionInPercent: 3.013,
-            yPositionInPercent: 17.621,
+            xPositionProportion: 3.013,
+            yPositionProportion: 17.621,
           },
-          texts: [{ xPositionInPercent: 3.013, yPositionInPercent: 17.621, content: 'extraSubsection' }],
+          texts: [{ xPositionProportion: 3.013, yPositionProportion: 17.621, content: 'extraSubsection' }],
         };
 
         const expected: IFDSTreeResult = {
@@ -397,13 +397,13 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  xPositionInPercent: 3.013,
-                  yPositionInPercent: 14.311,
+                  xPositionProportion: 3.013,
+                  yPositionProportion: 14.311,
                   lines: [...subSectionLines, extraSubSectionLine],
                 },
               },
-              xPositionInPercent: 3.29,
-              yPositionInPercent: 3.292,
+              xPositionProportion: 3.29,
+              yPositionProportion: 3.292,
             },
           },
           xCounts: { 3.29: 1, 13.651: 1, 3.013: 2 },
