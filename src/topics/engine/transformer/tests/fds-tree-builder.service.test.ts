@@ -1,11 +1,19 @@
 import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import type { ILine } from '@topics/engine/model/fds.model.js';
 import type { IFDSTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
 import type { IInterestingSection, IInterestingSubSection } from '@topics/engine/rules/rules.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
 import { FDSTreeBuilderService } from '@topics/engine/transformer/fds-tree-builder.service.js';
+import {
+  aLineWithOneText,
+  aLineWithOneTextAndPositionYIncremented,
+  aLineWithOneTextAndPositionYIncrementedTwice,
+  aLineWithTwoTexts,
+  aLineWithTwoTextsAndPositionYIncremented,
+  aLineWithTwoTextsAndPositionYIncrementedTwice,
+} from '@topics/engine/fixtures/line.mother.js';
+import { INCREMENT_VALUE, POSITION_X, POSITION_Y, TEXT_CONTENT } from '@topics/engine/fixtures/fixtures.constants.js';
 
 describe('FdsTreeBuilderService tests', () => {
   describe('BuildFdsTree tests', () => {
@@ -51,43 +59,24 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return empty fds tree and concatenated texts when given one line with no section', () => {
-        const lines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [
-              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
-              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
-            ],
-          },
-        ];
-        const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 1 }, fullText: 'c1c2' };
-        expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
+        const line = aLineWithTwoTexts().properties;
+
+        const expected: IFDSTreeResult = {
+          fdsTree: {},
+          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          fullText: TEXT_CONTENT.repeat(2),
+        };
+        expect(FDSTreeBuilderService.buildFdsTree([line])).toEqual(expected);
       });
 
       it('should return empty fds tree and concatenated texts when given two lines with no section', () => {
-        const lines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [
-              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
-              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
-            ],
-          },
-          {
-            pageNumber: 1,
-            startBox: { xPositionProportion: 3.29, yPositionProportion: 4.567 },
-            texts: [{ xPositionProportion: 3.29, yPositionProportion: 4.567, content: 'c3' }],
-          },
-        ];
-        const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 2 }, fullText: 'c1c2c3' };
+        const lines = [aLineWithTwoTexts().properties, aLineWithOneTextAndPositionYIncremented().properties];
+
+        const expected: IFDSTreeResult = {
+          fdsTree: {},
+          xCounts: { [POSITION_X + INCREMENT_VALUE]: 1, [POSITION_X]: 2 },
+          fullText: TEXT_CONTENT.repeat(3),
+        };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
     });
@@ -103,68 +92,41 @@ describe('FdsTreeBuilderService tests', () => {
         shouldAddLineInCurrentSubSectionSpy.mockImplementation((): boolean => false);
       });
 
-      it('should return fds tree when given lines with one section', () => {
-        const lines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [
-              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' },
-              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'content' },
-            ],
-          },
-        ];
+      it('should return fds tree when given a line with one section', () => {
+        const line = aLineWithTwoTexts().properties;
+
         const expected: IFDSTreeResult = {
           fdsTree: {
             1: {
               subsections: {},
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
+              xPositionProportion: POSITION_X,
+              yPositionProportion: POSITION_Y,
             },
           },
-          xCounts: { 26.78: 1, 3.29: 1 },
-          fullText: 'interestingSectioncontent',
+          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          fullText: TEXT_CONTENT.repeat(2),
         };
-        expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
+        expect(FDSTreeBuilderService.buildFdsTree([line])).toEqual(expected);
       });
 
       it('should return fds tree when given lines with two sections', () => {
-        const lines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [
-              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' },
-              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'content' },
-            ],
-          },
-          {
-            pageNumber: 1,
-            startBox: { xPositionProportion: 3.29, yPositionProportion: 4.567 },
-            texts: [{ xPositionProportion: 3.29, yPositionProportion: 4.567, content: 'anotherInterestingSection' }],
-          },
-        ];
+        const lines = [aLineWithOneText().properties, aLineWithOneTextAndPositionYIncremented().properties];
+
         const expected: IFDSTreeResult = {
           fdsTree: {
             1: {
               subsections: {},
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
+              xPositionProportion: POSITION_X,
+              yPositionProportion: POSITION_Y,
             },
             2: {
               subsections: {},
-              xPositionProportion: 3.29,
-              yPositionProportion: 4.567,
+              xPositionProportion: POSITION_X,
+              yPositionProportion: POSITION_Y + INCREMENT_VALUE,
             },
           },
-          xCounts: { 26.78: 1, 3.29: 2 },
-          fullText: 'interestingSectioncontentanotherInterestingSection',
+          xCounts: { [POSITION_X]: 2 },
+          fullText: TEXT_CONTENT.repeat(2),
         };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
@@ -184,107 +146,54 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when given lines with a section and subsection', () => {
-        const sectionLines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [{ xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' }],
-          },
-        ];
-        const subSectionLines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.013,
-              yPositionProportion: 14.311,
-            },
-            texts: [
-              { xPositionProportion: 3.013, yPositionProportion: 14.311, content: 'interesting' },
-              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
-            ],
-          },
-        ];
+        const sectionLines = [aLineWithOneText().properties];
+        const subSectionLines = [aLineWithTwoTextsAndPositionYIncremented().properties];
 
         const expected: IFDSTreeResult = {
           fdsTree: {
             1: {
               subsections: {
                 1: {
-                  xPositionProportion: 3.013,
-                  yPositionProportion: 14.311,
+                  xPositionProportion: POSITION_X,
+                  yPositionProportion: POSITION_Y + INCREMENT_VALUE,
                   lines: subSectionLines,
                 },
               },
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
+              xPositionProportion: POSITION_X,
+              yPositionProportion: POSITION_Y,
             },
           },
-          xCounts: { 3.29: 1, 13.651: 1, 3.013: 1 },
-          fullText: 'interestingSectioninterestingSubsection',
+          xCounts: { [POSITION_X]: 2, [POSITION_X + INCREMENT_VALUE]: 1 },
+          fullText: TEXT_CONTENT.repeat(3),
         };
         expect(FDSTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionLines])).toEqual(expected);
       });
 
       it('should return fds tree when given lines with a section and two subsections', () => {
-        const sectionLines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [{ xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' }],
-          },
-        ];
-        const subSectionsLines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.013,
-              yPositionProportion: 14.311,
-            },
-            texts: [
-              { xPositionProportion: 3.013, yPositionProportion: 14.311, content: 'interesting' },
-              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
-            ],
-          },
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.013,
-              yPositionProportion: 17.621,
-            },
-            texts: [
-              { xPositionProportion: 3.013, yPositionProportion: 17.621, content: 'anotherInteresting' },
-              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
-            ],
-          },
-        ];
+        const sectionLines = [aLineWithOneText().properties];
+        const subSectionsLines = [aLineWithTwoTextsAndPositionYIncremented().properties, aLineWithTwoTextsAndPositionYIncrementedTwice().properties];
 
         const expected: IFDSTreeResult = {
           fdsTree: {
             1: {
               subsections: {
                 1: {
-                  xPositionProportion: 3.013,
-                  yPositionProportion: 14.311,
+                  xPositionProportion: POSITION_X,
+                  yPositionProportion: POSITION_Y + INCREMENT_VALUE,
                   lines: [subSectionsLines[0]],
                 },
                 2: {
-                  xPositionProportion: 3.013,
-                  yPositionProportion: 17.621,
+                  xPositionProportion: POSITION_X,
+                  yPositionProportion: POSITION_Y + 2 * INCREMENT_VALUE,
                   lines: [subSectionsLines[1]],
                 },
               },
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
+              xPositionProportion: POSITION_X,
+              yPositionProportion: POSITION_Y,
             },
           },
-          xCounts: { 3.29: 1, 13.651: 2, 3.013: 2 },
-          fullText: 'interestingSectioninterestingSubsectionanotherInterestingSubsection',
+          xCounts: { [POSITION_X]: 3, [POSITION_X + INCREMENT_VALUE]: 1, [POSITION_X + 2 * INCREMENT_VALUE]: 1 },
+          fullText: TEXT_CONTENT.repeat(5),
         };
         expect(FDSTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionsLines])).toEqual(expected);
       });
@@ -300,20 +209,13 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when switching section', () => {
-        const lines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [
-              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
-              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
-            ],
-          },
-        ];
-        const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 1 }, fullText: 'c1c2' };
+        const lines = [aLineWithTwoTexts().properties];
+
+        const expected: IFDSTreeResult = {
+          fdsTree: {},
+          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          fullText: TEXT_CONTENT.repeat(2),
+        };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
     });
@@ -328,20 +230,13 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when switching subSection', () => {
-        const lines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [
-              { xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'c1' },
-              { xPositionProportion: 26.78, yPositionProportion: 3.292, content: 'c2' },
-            ],
-          },
-        ];
-        const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 1 }, fullText: 'c1c2' };
+        const lines = [aLineWithTwoTexts().properties];
+
+        const expected: IFDSTreeResult = {
+          fdsTree: {},
+          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          fullText: TEXT_CONTENT.repeat(2),
+        };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
     });
@@ -360,56 +255,28 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree with line added to current subSection', () => {
-        const sectionLines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
-            },
-            texts: [{ xPositionProportion: 3.29, yPositionProportion: 3.292, content: 'interestingSection' }],
-          },
-        ];
-        const subSectionLines: ILine[] = [
-          {
-            pageNumber: 1,
-            startBox: {
-              xPositionProportion: 3.013,
-              yPositionProportion: 14.311,
-            },
-            texts: [
-              { xPositionProportion: 3.013, yPositionProportion: 14.311, content: 'interesting' },
-              { xPositionProportion: 13.651, yPositionProportion: 14.311, content: 'Subsection' },
-            ],
-          },
-        ];
-        const extraSubSectionLine: ILine = {
-          pageNumber: 1,
-          startBox: {
-            xPositionProportion: 3.013,
-            yPositionProportion: 17.621,
-          },
-          texts: [{ xPositionProportion: 3.013, yPositionProportion: 17.621, content: 'extraSubsection' }],
-        };
+        const sectionLine = aLineWithOneText().properties;
+        const subSectionLine = aLineWithTwoTextsAndPositionYIncremented().properties;
+        const extraSubSectionLine = aLineWithOneTextAndPositionYIncrementedTwice().properties;
 
         const expected: IFDSTreeResult = {
           fdsTree: {
             1: {
               subsections: {
                 1: {
-                  xPositionProportion: 3.013,
-                  yPositionProportion: 14.311,
-                  lines: [...subSectionLines, extraSubSectionLine],
+                  xPositionProportion: POSITION_X,
+                  yPositionProportion: POSITION_Y + INCREMENT_VALUE,
+                  lines: [subSectionLine, extraSubSectionLine],
                 },
               },
-              xPositionProportion: 3.29,
-              yPositionProportion: 3.292,
+              xPositionProportion: POSITION_X,
+              yPositionProportion: POSITION_Y,
             },
           },
-          xCounts: { 3.29: 1, 13.651: 1, 3.013: 2 },
-          fullText: 'interestingSectioninterestingSubsectionextraSubsection',
+          xCounts: { [POSITION_X]: 3, [POSITION_X + INCREMENT_VALUE]: 1 },
+          fullText: TEXT_CONTENT.repeat(4),
         };
-        expect(FDSTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionLines, extraSubSectionLine])).toEqual(expected);
+        expect(FDSTreeBuilderService.buildFdsTree([sectionLine, subSectionLine, extraSubSectionLine])).toEqual(expected);
       });
     });
   });

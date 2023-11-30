@@ -6,6 +6,7 @@ import { PdfParserService } from '@topics/engine/pdf-parser/pdf-parser.service.j
 import type { IParseResult } from '@topics/engine/pdf-parser/pdf-parser.model.js';
 import { PdfTextExtractorService } from '@topics/engine/pdf-extractor/pdf-text-extractor.service.js';
 import { PdfImageTextExtractorService } from '@topics/engine/pdf-extractor/pdf-image-text-extractor.service.js';
+import { aLineWithOneText } from '@topics/engine/fixtures/line.mother.js';
 
 describe('PdfParser tests', () => {
   describe('parsePdfText tests', () => {
@@ -13,19 +14,7 @@ describe('PdfParser tests', () => {
     let getTextFromPdfDataSpy: SpyInstance<[pdfData: IPdfData], ILine[]>;
     let getTextFromImagePdfSpy: SpyInstance<[string, { numberOfPagesToParse?: number }?], Promise<ILine[]>>;
 
-    const linesData: ILine[] = [
-      {
-        texts: [
-          {
-            content: 'test',
-            xPositionProportion: 0,
-            yPositionProportion: 0,
-          },
-        ],
-        pageNumber: 1,
-        startBox: { xPositionProportion: 0, yPositionProportion: 0 },
-      },
-    ];
+    const mockedLines: ILine[] = [aLineWithOneText().properties];
 
     beforeEach(() => {
       isPdfParsableSpy = vi.spyOn(PdfTextExtractorService, 'isPdfParsable');
@@ -42,14 +31,14 @@ describe('PdfParser tests', () => {
     describe('Readable Pdf tests', () => {
       beforeEach(() => {
         isPdfParsableSpy.mockImplementationOnce((): boolean => true);
-        getTextFromPdfDataSpy.mockImplementationOnce((): ILine[] => linesData);
+        getTextFromPdfDataSpy.mockImplementationOnce((): ILine[] => mockedLines);
       });
 
       it('should return pdf text as lines when providing an image pdf', async () => {
         const pdfData: IPdfData = {} as IPdfData;
         const expected: IParseResult = {
           fromImage: false,
-          lines: linesData,
+          lines: mockedLines,
         };
 
         await expect(PdfParserService.parsePdfText('fdsFilePath', pdfData)).resolves.toEqual(expected);
@@ -64,7 +53,7 @@ describe('PdfParser tests', () => {
     describe('Pdf Images tests', () => {
       beforeEach(() => {
         isPdfParsableSpy.mockImplementationOnce((): boolean => false);
-        getTextFromImagePdfSpy.mockImplementationOnce(async (): Promise<ILine[]> => Promise.resolve(linesData));
+        getTextFromImagePdfSpy.mockImplementationOnce(async (): Promise<ILine[]> => Promise.resolve(mockedLines));
       });
 
       it('should return pdf text as lines when providing a pdf', async () => {
@@ -72,7 +61,7 @@ describe('PdfParser tests', () => {
         const pdfData: IPdfData = { Pages: [{}] } as IPdfData;
         const expected: IParseResult = {
           fromImage: true,
-          lines: linesData,
+          lines: mockedLines,
         };
 
         await expect(PdfParserService.parsePdfText(fdsFilePath, pdfData)).resolves.toEqual(expected);
