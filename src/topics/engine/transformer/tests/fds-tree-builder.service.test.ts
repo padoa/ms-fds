@@ -55,12 +55,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
             texts: [
-              { x: 3.29, y: 3.292, content: 'c1' },
-              { x: 26.78, y: 3.292, content: 'c2' },
+              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
+              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
             ],
           },
         ];
@@ -73,15 +73,19 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
             texts: [
-              { x: 3.29, y: 3.292, content: 'c1' },
-              { x: 26.78, y: 3.292, content: 'c2' },
+              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
+              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
             ],
           },
-          { pageNumber: 1, startBox: { x: 3.29, y: 4.567 }, texts: [{ x: 3.29, y: 4.567, content: 'c3' }] },
+          {
+            pageNumber: 1,
+            startBox: { xPositionInPercent: 3.29, yPositionInPercent: 4.567 },
+            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 4.567, content: 'c3' }],
+          },
         ];
         const expected: IFDSTreeResult = { fdsTree: {}, xCounts: { 26.78: 1, 3.29: 2 }, fullText: 'c1c2c3' };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
@@ -104,12 +108,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
             texts: [
-              { x: 3.29, y: 3.292, content: 'interestingSection' },
-              { x: 26.78, y: 3.292, content: 'content' },
+              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' },
+              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'content' },
             ],
           },
         ];
@@ -117,8 +121,8 @@ describe('FdsTreeBuilderService tests', () => {
           fdsTree: {
             1: {
               subsections: {},
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
           },
           xCounts: { 26.78: 1, 3.29: 1 },
@@ -132,27 +136,31 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
             texts: [
-              { x: 3.29, y: 3.292, content: 'interestingSection' },
-              { x: 26.78, y: 3.292, content: 'content' },
+              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' },
+              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'content' },
             ],
           },
-          { pageNumber: 1, startBox: { x: 3.29, y: 4.567 }, texts: [{ x: 3.29, y: 4.567, content: 'anotherInterestingSection' }] },
+          {
+            pageNumber: 1,
+            startBox: { xPositionInPercent: 3.29, yPositionInPercent: 4.567 },
+            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 4.567, content: 'anotherInterestingSection' }],
+          },
         ];
         const expected: IFDSTreeResult = {
           fdsTree: {
             1: {
               subsections: {},
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
             2: {
               subsections: {},
-              x: 3.29,
-              y: 4.567,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 4.567,
             },
           },
           xCounts: { 26.78: 1, 3.29: 2 },
@@ -180,22 +188,22 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
-            texts: [{ x: 3.29, y: 3.292, content: 'interestingSection' }],
+            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionLines: ILine[] = [
           {
             pageNumber: 1,
             startBox: {
-              x: 3.013,
-              y: 14.311,
+              xPositionInPercent: 3.013,
+              yPositionInPercent: 14.311,
             },
             texts: [
-              { x: 3.013, y: 14.311, content: 'interesting' },
-              { x: 13.651, y: 14.311, content: 'Subsection' },
+              { xPositionInPercent: 3.013, yPositionInPercent: 14.311, content: 'interesting' },
+              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
             ],
           },
         ];
@@ -205,13 +213,13 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  x: 3.013,
-                  y: 14.311,
+                  xPositionInPercent: 3.013,
+                  yPositionInPercent: 14.311,
                   lines: subSectionLines,
                 },
               },
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
           },
           xCounts: { 3.29: 1, 13.651: 1, 3.013: 1 },
@@ -225,33 +233,33 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
-            texts: [{ x: 3.29, y: 3.292, content: 'interestingSection' }],
+            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionsLines: ILine[] = [
           {
             pageNumber: 1,
             startBox: {
-              x: 3.013,
-              y: 14.311,
+              xPositionInPercent: 3.013,
+              yPositionInPercent: 14.311,
             },
             texts: [
-              { x: 3.013, y: 14.311, content: 'interesting' },
-              { x: 13.651, y: 14.311, content: 'Subsection' },
+              { xPositionInPercent: 3.013, yPositionInPercent: 14.311, content: 'interesting' },
+              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
             ],
           },
           {
             pageNumber: 1,
             startBox: {
-              x: 3.013,
-              y: 17.621,
+              xPositionInPercent: 3.013,
+              yPositionInPercent: 17.621,
             },
             texts: [
-              { x: 3.013, y: 17.621, content: 'anotherInteresting' },
-              { x: 13.651, y: 14.311, content: 'Subsection' },
+              { xPositionInPercent: 3.013, yPositionInPercent: 17.621, content: 'anotherInteresting' },
+              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
             ],
           },
         ];
@@ -261,18 +269,18 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  x: 3.013,
-                  y: 14.311,
+                  xPositionInPercent: 3.013,
+                  yPositionInPercent: 14.311,
                   lines: [subSectionsLines[0]],
                 },
                 2: {
-                  x: 3.013,
-                  y: 17.621,
+                  xPositionInPercent: 3.013,
+                  yPositionInPercent: 17.621,
                   lines: [subSectionsLines[1]],
                 },
               },
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
           },
           xCounts: { 3.29: 1, 13.651: 2, 3.013: 2 },
@@ -296,12 +304,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
             texts: [
-              { x: 3.29, y: 3.292, content: 'c1' },
-              { x: 26.78, y: 3.292, content: 'c2' },
+              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
+              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
             ],
           },
         ];
@@ -324,12 +332,12 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
             texts: [
-              { x: 3.29, y: 3.292, content: 'c1' },
-              { x: 26.78, y: 3.292, content: 'c2' },
+              { xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'c1' },
+              { xPositionInPercent: 26.78, yPositionInPercent: 3.292, content: 'c2' },
             ],
           },
         ];
@@ -356,32 +364,32 @@ describe('FdsTreeBuilderService tests', () => {
           {
             pageNumber: 1,
             startBox: {
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
-            texts: [{ x: 3.29, y: 3.292, content: 'interestingSection' }],
+            texts: [{ xPositionInPercent: 3.29, yPositionInPercent: 3.292, content: 'interestingSection' }],
           },
         ];
         const subSectionLines: ILine[] = [
           {
             pageNumber: 1,
             startBox: {
-              x: 3.013,
-              y: 14.311,
+              xPositionInPercent: 3.013,
+              yPositionInPercent: 14.311,
             },
             texts: [
-              { x: 3.013, y: 14.311, content: 'interesting' },
-              { x: 13.651, y: 14.311, content: 'Subsection' },
+              { xPositionInPercent: 3.013, yPositionInPercent: 14.311, content: 'interesting' },
+              { xPositionInPercent: 13.651, yPositionInPercent: 14.311, content: 'Subsection' },
             ],
           },
         ];
         const extraSubSectionLine: ILine = {
           pageNumber: 1,
           startBox: {
-            x: 3.013,
-            y: 17.621,
+            xPositionInPercent: 3.013,
+            yPositionInPercent: 17.621,
           },
-          texts: [{ x: 3.013, y: 17.621, content: 'extraSubsection' }],
+          texts: [{ xPositionInPercent: 3.013, yPositionInPercent: 17.621, content: 'extraSubsection' }],
         };
 
         const expected: IFDSTreeResult = {
@@ -389,13 +397,13 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  x: 3.013,
-                  y: 14.311,
+                  xPositionInPercent: 3.013,
+                  yPositionInPercent: 14.311,
                   lines: [...subSectionLines, extraSubSectionLine],
                 },
               },
-              x: 3.29,
-              y: 3.292,
+              xPositionInPercent: 3.29,
+              yPositionInPercent: 3.292,
             },
           },
           xCounts: { 3.29: 1, 13.651: 1, 3.013: 2 },

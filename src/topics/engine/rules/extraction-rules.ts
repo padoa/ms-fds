@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import _ from 'lodash';
 
-import { ExtractionRulesHelper } from '@topics/engine/rules/extraction-rules.helper.js';
 import type {
   IExtractedData,
   IFDSTree,
@@ -10,24 +9,14 @@ import type {
   IExtractedDate,
   IExtractedProduct,
   IExtractedProducer,
-  IPageDimension,
 } from '@topics/engine/model/fds.model.js';
 import { MONTH_MAPPING } from '@topics/engine/rules/rules.constants.js';
-import type { IExtractedElement } from '@topics/engine/rules/rules.model.js';
 
-export const applyExtractionRules = async ({
-  fdsTreeCleaned,
-  fullText,
-  pageDimension,
-}: {
-  fdsTreeCleaned: IFDSTree;
-  fullText: string;
-  pageDimension: IPageDimension;
-}): Promise<IExtractedData> => {
+export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
     date: getDate(fullText),
-    product: getProduct(fdsTreeCleaned, { fullText, pageDimension }),
-    producer: getProducer(fdsTreeCleaned, { pageDimension }),
+    product: getProduct(fdsTreeCleaned, { fullText }),
+    producer: getProducer(fdsTreeCleaned),
     hazards: getHazards(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
   };
@@ -135,21 +124,11 @@ const parseDateFromEnglishNumberRegex = (date: string): Date | null => {
 //------------------------------------- PRODUCT NAME -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getProduct = (
-  fdsTree: IFDSTree,
-  { fullText, pageDimension }: { fullText: string; pageDimension: IPageDimension },
-): IExtractedProduct | null => {
-  const extractedElement = getProductByText(fdsTree) || getProductByLineOrder(fdsTree, { fullText });
-
-  if (!extractedElement) return null;
-
-  const { text, pageNumber, startBox, endBox } = extractedElement;
-  const { startBoxRatio, endBoxRatio } = ExtractionRulesHelper.getStartAndEndBoxRatio(pageDimension, startBox, endBox);
-
-  return { text, metaData: { pageNumber, startBoxRatio, endBoxRatio } };
+export const getProduct = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
+  return getProductByText(fdsTree) || getProductByLineOrder(fdsTree, { fullText });
 };
 
-export const getProductByText = (fdsTree: IFDSTree): IExtractedElement | null => {
+export const getProductByText = (fdsTree: IFDSTree): IExtractedProduct | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
@@ -157,24 +136,24 @@ export const getProductByText = (fdsTree: IFDSTree): IExtractedElement | null =>
   let nameInCurrentLine = false;
   for (const line of linesToSearchIn) {
     const { pageNumber, startBox, endBox } = line;
-    const lineMetaData = { pageNumber, startBox, endBox };
+    const metaData = { pageNumber, startBox, endBox };
     const lineText = line.texts.map(({ content }) => content).join(' ');
     const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
-    if (nameInCurrentLine) return { text, ...lineMetaData };
+    if (nameInCurrentLine) return { name: text, metaData };
 
     if (_.includes(lineText.replaceAll(' ', ''), 'nomduproduit')) {
       if (_.includes(text.replaceAll(' ', ''), 'nomduproduit')) {
         nameInCurrentLine = true;
         continue;
       }
-      return { text, ...lineMetaData };
+      return { name: text, metaData };
     }
   }
   return null;
 };
 
-export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedElement | null => {
+export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
@@ -197,7 +176,7 @@ export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullTex
     const numberOfOtherMatchesInDocument = fullText
       .replaceAll(' ', '')
       .match(new RegExp(`${text.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
-    if (numberOfOtherMatchesInDocument?.length >= 3) return { text, pageNumber, startBox, endBox };
+    if (numberOfOtherMatchesInDocument?.length >= 3) return { name: text, metaData: { pageNumber, startBox, endBox } };
   }
   return null;
 };
@@ -206,7 +185,7 @@ export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullTex
 //--------------------------------------- PRODUCER ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getProducer = (fdsTree: IFDSTree, { pageDimension }: { pageDimension: IPageDimension }): IExtractedProducer | null => {
+export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[3]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
@@ -227,9 +206,8 @@ export const getProducer = (fdsTree: IFDSTree, { pageDimension }: { pageDimensio
       continue;
 
     const { pageNumber, startBox, endBox } = line;
-    const { startBoxRatio, endBoxRatio } = ExtractionRulesHelper.getStartAndEndBoxRatio(pageDimension, startBox, endBox);
 
-    return { text: cleanProducerName(text), metaData: { pageNumber, startBoxRatio, endBoxRatio } };
+    return { name: cleanProducerName(text), metaData: { pageNumber, startBox, endBox } };
   }
   return null;
 };

@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-import type { ILine, IPdfData, IRawElement } from '@topics/engine/model/fds.model.js';
-import type { IExtractorResult } from '@topics/engine/pdf-extractor/pdf-extractor.model.js';
+import type { ILine, IPageDimension, IPdfData, IRawElement } from '@topics/engine/model/fds.model.js';
 
 export class PdfTextExtractorService {
   public static isPdfParsable(pdfData: IPdfData): boolean {
@@ -17,7 +16,10 @@ export class PdfTextExtractorService {
       .join('');
   }
 
-  public static getTextAndDimensionFromPdfData(pdfData: IPdfData): IExtractorResult {
+  public static getTextFromPdfData(pdfData: IPdfData): ILine[] {
+    const firstPage = _.first(pdfData.Pages);
+    const pageDimension: IPageDimension = { width: _.get(firstPage, 'Width'), height: _.get(firstPage, 'Height') };
+
     const result = pdfData.Pages.map(({ Texts }, index) => _.map(Texts, (text) => ({ ...text, y: text.y + index * 100, pageNumber: index + 1 })))
       .flat()
       .reduce(
@@ -26,11 +28,15 @@ export class PdfTextExtractorService {
             .join('')
             .replaceAll('\t', ' ');
 
-          const rawElement = { x: rawLine.x, y: rawLine.y, content: rawText };
           const fullText = `${fullTextBeforeUpdate}${rawText}`;
+          const rawElement = {
+            xPositionInPercent: rawLine.x / pageDimension.width,
+            yPositionInPercent: rawLine.y / pageDimension.height,
+            content: rawText,
+          };
 
           for (const line of lines) {
-            if (this.isSameLine(line, rawElement)) {
+            if (this.isSameLine(line, rawElement, pageDimension)) {
               line.texts.push(rawElement);
               return { lines, fullText };
             }
@@ -44,8 +50,8 @@ export class PdfTextExtractorService {
                 texts: [rawElement],
                 pageNumber: rawLine.pageNumber,
                 startBox: {
-                  x: rawElement.x,
-                  y: rawElement.y,
+                  xPositionInPercent: rawElement.xPositionInPercent,
+                  yPositionInPercent: rawElement.yPositionInPercent,
                 },
               },
             ],
@@ -57,17 +63,20 @@ export class PdfTextExtractorService {
         },
       );
 
-    const linesYOrdered = _.sortBy(result.lines, 'y'); // TODO: sort by pageNumber and 'y' instead of 'y' and adding index *100
-    const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'x') }));
+    const linesYOrdered = _.sortBy(result.lines, 'y'); // TODO: sort by pageNumber and 'yPositionInPercent' instead of 'y' and adding index *100
+    const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionInPercent') }));
     const cleanedLines = this.cleanLines(linesOrdered);
-    const fistPage = _.first(pdfData.Pages);
-    const pageDimension = { width: _.get(fistPage, 'Width'), height: _.get(fistPage, 'Height') };
-
-    return { lines: cleanedLines, pageDimension };
+    return cleanedLines;
   }
 
-  private static isSameLine(lastLine: ILine, rawLine: IRawElement): boolean {
-    return lastLine?.startBox.y >= rawLine.y - 0.25 && lastLine?.startBox.y <= rawLine.y + 0.25;
+  private static isSameLine(lastLine: ILine, rawLine: IRawElement, pageDimension: IPageDimension): boolean {
+    const { startBox } = lastLine;
+
+    const TOLERANCE_IN_PERCENT = 0.25 / pageDimension.height;
+    const yMinInPercent = rawLine.yPositionInPercent - TOLERANCE_IN_PERCENT;
+    const yMaxInPercent = rawLine.yPositionInPercent + TOLERANCE_IN_PERCENT;
+
+    return startBox.yPositionInPercent >= yMinInPercent && startBox.yPositionInPercent <= yMaxInPercent;
   }
 
   //----------------------------------------------------------------------------------------------

@@ -3,6 +3,8 @@ import type { IPdfData } from '@topics/engine/model/fds.model.js';
 export const fdsKleenFirstPagePdfData: IPdfData = {
   Pages: [
     {
+      Width: 1000,
+      Height: 1200,
       Texts: [
         {
           x: 4.746,

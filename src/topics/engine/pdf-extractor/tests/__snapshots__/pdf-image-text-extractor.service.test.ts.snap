@@ -1,2009 +1,2003 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should return text from image pdf 1`] = `
-{
-  "lines": [
-    {
-      "endBox": {
-        "x": 725,
-        "y": 116,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 304,
-        "y": 98,
-      },
-      "texts": [
-        {
-          "content": "fiche",
-          "x": 304,
-          "y": 98,
-        },
-        {
-          "content": "de",
-          "x": 386,
-          "y": 98,
-        },
-        {
-          "content": "données",
-          "x": 428,
-          "y": 98,
-        },
-        {
-          "content": "de",
-          "x": 559,
-          "y": 98,
-        },
-        {
-          "content": "sécurité",
-          "x": 600,
-          "y": 98,
-        },
-      ],
+[
+  {
+    "endBox": {
+      "xPositionInPercent": 0.6904761904761905,
+      "yPositionInPercent": 0.07811447811447811,
     },
-    {
-      "endBox": {
-        "x": 256,
-        "y": 142,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 99,
-        "y": 113,
-      },
-      "texts": [
-        {
-          "content": "oir",
-          "x": 99,
-          "y": 113,
-        },
-        {
-          "content": "liquide",
-          "x": 204,
-          "y": 122,
-        },
-      ],
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.2895238095238095,
+      "yPositionInPercent": 0.06599326599326599,
     },
-    {
-      "endBox": {
-        "x": 943,
-        "y": 147,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 187,
-        "y": 126,
-      },
-      "texts": [
-        {
-          "content": "q",
-          "x": 187,
-          "y": 126,
-        },
-        {
-          "content": "date",
-          "x": 767,
-          "y": 137,
-        },
-        {
-          "content": "de",
-          "x": 798,
-          "y": 137,
-        },
-        {
-          "content": "révision",
-          "x": 817,
-          "y": 137,
-        },
-        {
-          "content": ":",
-          "x": 868,
-          "y": 145,
-        },
-        {
-          "content": "2017-09-01",
-          "x": 878,
-          "y": 137,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 946,
-        "y": 169,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 764,
-        "y": 157,
-      },
-      "texts": [
-        {
-          "content": "remplace",
-          "x": 764,
-          "y": 157,
-        },
-        {
-          "content": "la",
-          "x": 828,
-          "y": 157,
-        },
-        {
-          "content": "fiche",
-          "x": 841,
-          "y": 157,
-        },
-        {
-          "content": ":",
-          "x": 874,
-          "y": 165,
-        },
-        {
-          "content": "2015-06-01",
-          "x": 881,
-          "y": 157,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 896,
-        "y": 202,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 100,
-        "y": 179,
-      },
-      "texts": [
-        {
-          "content": "argon",
-          "x": 100,
-          "y": 179,
-        },
-        {
-          "content": ";",
-          "x": 183,
-          "y": 184,
-        },
-        {
-          "content": "argon",
-          "x": 196,
-          "y": 179,
-        },
-        {
-          "content": "nertal",
-          "x": 278,
-          "y": 179,
-        },
-        {
-          "content": ";",
-          "x": 387,
-          "y": 184,
-        },
-        {
-          "content": "argon",
-          "x": 400,
-          "y": 179,
-        },
-        {
-          "content": "n56",
-          "x": 502,
-          "y": 180,
-        },
-        {
-          "content": ";",
-          "x": 556,
-          "y": 185,
-        },
-        {
-          "content": "argon",
-          "x": 569,
-          "y": 180,
-        },
-        {
-          "content": "n60",
-          "x": 671,
-          "y": 180,
-        },
-        {
-          "content": "003agis",
-          "x": 815,
-          "y": 179,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 927,
-        "y": 218,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 785,
-        "y": 206,
-      },
-      "texts": [
-        {
-          "content": "pays",
-          "x": 785,
-          "y": 206,
-        },
-        {
-          "content": ":",
-          "x": 817,
-          "y": 199,
-        },
-        {
-          "content": "fr/",
-          "x": 826,
-          "y": 206,
-        },
-        {
-          "content": "langue",
-          "x": 855,
-          "y": 206,
-        },
-        {
-          "content": ":",
-          "x": 904,
-          "y": 208,
-        },
-        {
-          "content": "fr",
-          "x": 910,
-          "y": 206,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 751,
-        "y": 275,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 89,
-        "y": 259,
-      },
-      "texts": [
-        {
-          "content": "rubrique",
-          "x": 89,
-          "y": 259,
-        },
-        {
-          "content": "1:",
-          "x": 182,
-          "y": 259,
-        },
-        {
-          "content": "identification",
-          "x": 202,
-          "y": 259,
-        },
-        {
-          "content": "de",
-          "x": 309,
-          "y": 259,
-        },
-        {
-          "content": "la",
-          "x": 334,
-          "y": 259,
-        },
-        {
-          "content": "substance/du",
-          "x": 352,
-          "y": 259,
-        },
-        {
-          "content": "mélange",
-          "x": 465,
-          "y": 259,
-        },
-        {
-          "content": "et",
-          "x": 537,
-          "y": 260,
-        },
-        {
-          "content": "de",
-          "x": 556,
-          "y": 260,
-        },
-        {
-          "content": "la",
-          "x": 581,
-          "y": 260,
-        },
-        {
-          "content": "société/l’entreprise",
-          "x": 599,
-          "y": 260,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 266,
-        "y": 310,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 88,
-        "y": 297,
-      },
-      "texts": [
-        {
-          "content": "1.1.",
-          "x": 88,
-          "y": 297,
-        },
-        {
-          "content": "identificateur",
-          "x": 114,
-          "y": 297,
-        },
-        {
-          "content": "de",
-          "x": 202,
-          "y": 297,
-        },
-        {
-          "content": "produit",
-          "x": 221,
-          "y": 297,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 712,
-        "y": 331,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 88,
-        "y": 318,
-      },
-      "texts": [
-        {
-          "content": "nom",
-          "x": 88,
-          "y": 318,
-        },
-        {
-          "content": "commercial",
-          "x": 119,
-          "y": 318,
-        },
-        {
-          "content": ":",
-          "x": 384,
-          "y": 321,
-        },
-        {
-          "content": "argon",
-          "x": 397,
-          "y": 319,
-        },
-        {
-          "content": ";",
-          "x": 437,
-          "y": 321,
-        },
-        {
-          "content": "argon",
-          "x": 444,
-          "y": 319,
-        },
-        {
-          "content": "nertal",
-          "x": 484,
-          "y": 319,
-        },
-        {
-          "content": ";",
-          "x": 540,
-          "y": 327,
-        },
-        {
-          "content": "argon",
-          "x": 547,
-          "y": 319,
-        },
-        {
-          "content": "n56",
-          "x": 600,
-          "y": 319,
-        },
-        {
-          "content": ";",
-          "x": 629,
-          "y": 327,
-        },
-        {
-          "content": "argon",
-          "x": 635,
-          "y": 319,
-        },
-        {
-          "content": "n60",
-          "x": 689,
-          "y": 319,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 451,
-        "y": 348,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 88,
-        "y": 338,
-      },
-      "texts": [
-        {
-          "content": "n°fds",
-          "x": 88,
-          "y": 338,
-        },
-        {
-          "content": "003agis",
-          "x": 397,
-          "y": 338,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 433,
-        "y": 370,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 88,
-        "y": 358,
-      },
-      "texts": [
-        {
-          "content": "description",
-          "x": 88,
-          "y": 358,
-        },
-        {
-          "content": "chimique",
-          "x": 158,
-          "y": 358,
-        },
-        {
-          "content": ":",
-          "x": 384,
-          "y": 366,
-        },
-        {
-          "content": "argon",
-          "x": 398,
-          "y": 358,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 512,
-        "y": 388,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 397,
-        "y": 378,
-      },
-      "texts": [
-        {
-          "content": "n°",
-          "x": 397,
-          "y": 378,
-        },
-        {
-          "content": "cas",
-          "x": 416,
-          "y": 378,
-        },
-        {
-          "content": ":",
-          "x": 443,
-          "y": 374,
-        },
-        {
-          "content": "7440-37-1",
-          "x": 455,
-          "y": 378,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 472,
-        "y": 427,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 397,
-        "y": 417,
-      },
-      "texts": [
-        {
-          "content": "n°",
-          "x": 397,
-          "y": 417,
-        },
-        {
-          "content": "index",
-          "x": 416,
-          "y": 417,
-        },
-        {
-          "content": ":",
-          "x": 450,
-          "y": 413,
-        },
-        {
-          "content": "-—",
-          "x": 459,
-          "y": 422,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 772,
-        "y": 450,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 87,
-        "y": 436,
-      },
-      "texts": [
-        {
-          "content": "n°",
-          "x": 87,
-          "y": 436,
-        },
-        {
-          "content": "d'enregistrement",
-          "x": 106,
-          "y": 437,
-        },
-        {
-          "content": "listé",
-          "x": 398,
-          "y": 437,
-        },
-        {
-          "content": "dans",
-          "x": 430,
-          "y": 437,
-        },
-        {
-          "content": "l'annexe",
-          "x": 463,
-          "y": 437,
-        },
-        {
-          "content": "iv/v",
-          "x": 518,
-          "y": 437,
-        },
-        {
-          "content": "de",
-          "x": 546,
-          "y": 437,
-        },
-        {
-          "content": "reach,",
-          "x": 565,
-          "y": 437,
-        },
-        {
-          "content": "exempté",
-          "x": 619,
-          "y": 437,
-        },
-        {
-          "content": "d'enregistrement.",
-          "x": 674,
-          "y": 438,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 411,
-        "y": 469,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 87,
-        "y": 456,
-      },
-      "texts": [
-        {
-          "content": "formule",
-          "x": 87,
-          "y": 456,
-        },
-        {
-          "content": "chimique",
-          "x": 140,
-          "y": 456,
-        },
-        {
-          "content": "ar",
-          "x": 398,
-          "y": 457,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 713,
-        "y": 500,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 88,
-        "y": 486,
-      },
-      "texts": [
-        {
-          "content": "1.2.",
-          "x": 88,
-          "y": 486,
-        },
-        {
-          "content": "utilisations",
-          "x": 113,
-          "y": 486,
-        },
-        {
-          "content": "identifiées",
-          "x": 189,
-          "y": 486,
-        },
-        {
-          "content": "pertinentes",
-          "x": 259,
-          "y": 487,
-        },
-        {
-          "content": "de",
-          "x": 334,
-          "y": 487,
-        },
-        {
-          "content": "la",
-          "x": 357,
-          "y": 489,
-        },
-        {
-          "content": "substance",
-          "x": 368,
-          "y": 487,
-        },
-        {
-          "content": "ou",
-          "x": 439,
-          "y": 489,
-        },
-        {
-          "content": "du",
-          "x": 459,
-          "y": 487,
-        },
-        {
-          "content": "mélange",
-          "x": 479,
-          "y": 487,
-        },
-        {
-          "content": "et",
-          "x": 536,
-          "y": 488,
-        },
-        {
-          "content": "utilisations",
-          "x": 552,
-          "y": 487,
-        },
-        {
-          "content": "déconseillées",
-          "x": 626,
-          "y": 487,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 829,
-        "y": 519,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 87,
-        "y": 506,
-      },
-      "texts": [
-        {
-          "content": "utilisations",
-          "x": 87,
-          "y": 506,
-        },
-        {
-          "content": "pertinentes",
-          "x": 155,
-          "y": 506,
-        },
-        {
-          "content": "identifiées",
-          "x": 225,
-          "y": 506,
-        },
-        {
-          "content": "industriel",
-          "x": 397,
-          "y": 507,
-        },
-        {
-          "content": "et",
-          "x": 455,
-          "y": 507,
-        },
-        {
-          "content": "professionnel.",
-          "x": 469,
-          "y": 507,
-        },
-        {
-          "content": "faire",
-          "x": 556,
-          "y": 507,
-        },
-        {
-          "content": "une",
-          "x": 590,
-          "y": 509,
-        },
-        {
-          "content": "analyse",
-          "x": 616,
-          "y": 507,
-        },
-        {
-          "content": "des",
-          "x": 666,
-          "y": 507,
-        },
-        {
-          "content": "risques",
-          "x": 692,
-          "y": 509,
-        },
-        {
-          "content": "avant",
-          "x": 738,
-          "y": 508,
-        },
-        {
-          "content": "utilisation.",
-          "x": 775,
-          "y": 507,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 565,
-        "y": 539,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 396,
-        "y": 526,
-      },
-      "texts": [
-        {
-          "content": "gaz",
-          "x": 396,
-          "y": 526,
-        },
-        {
-          "content": "de",
-          "x": 425,
-          "y": 527,
-        },
-        {
-          "content": "test",
-          "x": 443,
-          "y": 527,
-        },
-        {
-          "content": "ou",
-          "x": 469,
-          "y": 529,
-        },
-        {
-          "content": "d'étalonnage.",
-          "x": 487,
-          "y": 526,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 610,
-        "y": 558,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 396,
-        "y": 546,
-      },
-      "texts": [
-        {
-          "content": "gaz",
-          "x": 396,
-          "y": 546,
-        },
-        {
-          "content": "de",
-          "x": 425,
-          "y": 546,
-        },
-        {
-          "content": "purge,",
-          "x": 444,
-          "y": 548,
-        },
-        {
-          "content": "de",
-          "x": 485,
-          "y": 546,
-        },
-        {
-          "content": "dilution,",
-          "x": 503,
-          "y": 546,
-        },
-        {
-          "content": "d'inertage.",
-          "x": 553,
-          "y": 546,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 431,
-        "y": 578,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 397,
-        "y": 566,
-      },
-      "texts": [
-        {
-          "content": "purge.",
-          "x": 397,
-          "y": 566,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 842,
-        "y": 599,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 397,
-        "y": 585,
-      },
-      "texts": [
-        {
-          "content": "utiliser",
-          "x": 397,
-          "y": 585,
-        },
-        {
-          "content": "dans",
-          "x": 441,
-          "y": 586,
-        },
-        {
-          "content": "la",
-          "x": 473,
-          "y": 585,
-        },
-        {
-          "content": "fabrication",
-          "x": 487,
-          "y": 586,
-        },
-        {
-          "content": "de",
-          "x": 552,
-          "y": 586,
-        },
-        {
-          "content": "composants",
-          "x": 571,
-          "y": 586,
-        },
-        {
-          "content": "électroniques",
-          "x": 647,
-          "y": 586,
-        },
-        {
-          "content": "ou",
-          "x": 731,
-          "y": 589,
-        },
-        {
-          "content": "photovoltaïques.",
-          "x": 749,
-          "y": 586,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 664,
-        "y": 618,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 396,
-        "y": 605,
-      },
-      "texts": [
-        {
-          "content": "gaz",
-          "x": 396,
-          "y": 605,
-        },
-        {
-          "content": "de",
-          "x": 424,
-          "y": 605,
-        },
-        {
-          "content": "protection",
-          "x": 443,
-          "y": 606,
-        },
-        {
-          "content": "pour",
-          "x": 505,
-          "y": 608,
-        },
-        {
-          "content": "procédés",
-          "x": 536,
-          "y": 605,
-        },
-        {
-          "content": "de",
-          "x": 594,
-          "y": 606,
-        },
-        {
-          "content": "soudage.",
-          "x": 613,
-          "y": 606,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 542,
-        "y": 635,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 396,
-        "y": 625,
-      },
-      "texts": [
-        {
-          "content": "utilisation",
-          "x": 396,
-          "y": 625,
-        },
-        {
-          "content": "en",
-          "x": 458,
-          "y": 628,
-        },
-        {
-          "content": "laboratoire.",
-          "x": 476,
-          "y": 625,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 766,
-        "y": 657,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 396,
-        "y": 645,
-      },
-      "texts": [
-        {
-          "content": "contacter",
-          "x": 396,
-          "y": 645,
-        },
-        {
-          "content": "le",
-          "x": 458,
-          "y": 645,
-        },
-        {
-          "content": "fournisseur",
-          "x": 472,
-          "y": 645,
-        },
-        {
-          "content": "pour",
-          "x": 541,
-          "y": 647,
-        },
-        {
-          "content": "plus",
-          "x": 572,
-          "y": 645,
-        },
-        {
-          "content": "d'information",
-          "x": 600,
-          "y": 645,
-        },
-        {
-          "content": "sur",
-          "x": 680,
-          "y": 647,
-        },
-        {
-          "content": "l'utilisation.",
-          "x": 703,
-          "y": 645,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 542,
-        "y": 677,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 395,
-        "y": 664,
-      },
-      "texts": [
-        {
-          "content": "‘applications",
-          "x": 395,
-          "y": 664,
-        },
-        {
-          "content": "alimentaires.",
-          "x": 472,
-          "y": 664,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 913,
-        "y": 698,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 86,
-        "y": 683,
-      },
-      "texts": [
-        {
-          "content": "utilisations",
-          "x": 86,
-          "y": 683,
-        },
-        {
-          "content": "déconseillées",
-          "x": 154,
-          "y": 683,
-        },
-        {
-          "content": "utilisation",
-          "x": 396,
-          "y": 684,
-        },
-        {
-          "content": "grand",
-          "x": 461,
-          "y": 684,
-        },
-        {
-          "content": "public.",
-          "x": 499,
-          "y": 684,
-        },
-        {
-          "content": "”",
-          "x": 905,
-          "y": 690,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 608,
-        "y": 723,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 87,
-        "y": 710,
-      },
-      "texts": [
-        {
-          "content": "1.3.",
-          "x": 87,
-          "y": 710,
-        },
-        {
-          "content": "renseignements",
-          "x": 112,
-          "y": 710,
-        },
-        {
-          "content": "concernant",
-          "x": 223,
-          "y": 711,
-        },
-        {
-          "content": "le",
-          "x": 299,
-          "y": 710,
-        },
-        {
-          "content": "fournisseur",
-          "x": 313,
-          "y": 710,
-        },
-        {
-          "content": "de",
-          "x": 391,
-          "y": 710,
-        },
-        {
-          "content": "la",
-          "x": 410,
-          "y": 710,
-        },
-        {
-          "content": "fiche",
-          "x": 425,
-          "y": 710,
-        },
-        {
-          "content": "de",
-          "x": 460,
-          "y": 710,
-        },
-        {
-          "content": "données",
-          "x": 479,
-          "y": 711,
-        },
-        {
-          "content": "de",
-          "x": 538,
-          "y": 711,
-        },
-        {
-          "content": "sécurité",
-          "x": 557,
-          "y": 711,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 252,
-        "y": 761,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 86,
-        "y": 751,
-      },
-      "texts": [
-        {
-          "content": "identification",
-          "x": 86,
-          "y": 751,
-        },
-        {
-          "content": "de",
-          "x": 173,
-          "y": 751,
-        },
-        {
-          "content": "la",
-          "x": 193,
-          "y": 751,
-        },
-        {
-          "content": "société",
-          "x": 207,
-          "y": 751,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 248,
-        "y": 798,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 786,
-      },
-      "texts": [
-        {
-          "content": "air",
-          "x": 85,
-          "y": 786,
-        },
-        {
-          "content": "liquide",
-          "x": 106,
-          "y": 786,
-        },
-        {
-          "content": "france",
-          "x": 153,
-          "y": 786,
-        },
-        {
-          "content": "industrie",
-          "x": 199,
-          "y": 786,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 258,
-        "y": 825,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 86,
-        "y": 815,
-      },
-      "texts": [
-        {
-          "content": "92220",
-          "x": 86,
-          "y": 816,
-        },
-        {
-          "content": "bagneux",
-          "x": 127,
-          "y": 815,
-        },
-        {
-          "content": "-",
-          "x": 196,
-          "y": 821,
-        },
-        {
-          "content": "france",
-          "x": 204,
-          "y": 815,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 205,
-        "y": 840,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 830,
-      },
-      "texts": [
-        {
-          "content": "t",
-          "x": 85,
-          "y": 830,
-        },
-        {
-          "content": "+33",
-          "x": 98,
-          "y": 830,
-        },
-        {
-          "content": "1",
-          "x": 125,
-          "y": 831,
-        },
-        {
-          "content": "5359",
-          "x": 135,
-          "y": 830,
-        },
-        {
-          "content": "7555",
-          "x": 173,
-          "y": 830,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 356,
-        "y": 858,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 86,
-        "y": 845,
-      },
-      "texts": [
-        {
-          "content": "fds.gis@airliquide.com",
-          "x": 86,
-          "y": 845,
-        },
-        {
-          "content": "-",
-          "x": 234,
-          "y": 851,
-        },
-        {
-          "content": "www.airliquide.com",
-          "x": 242,
-          "y": 845,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 539,
-        "y": 904,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 891,
-      },
-      "texts": [
-        {
-          "content": "adresse",
-          "x": 85,
-          "y": 891,
-        },
-        {
-          "content": "e-mail",
-          "x": 138,
-          "y": 891,
-        },
-        {
-          "content": "(personne",
-          "x": 179,
-          "y": 892,
-        },
-        {
-          "content": "compétente)",
-          "x": 242,
-          "y": 891,
-        },
-        {
-          "content": "fds.gls@airliquide.com",
-          "x": 395,
-          "y": 892,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 279,
-        "y": 944,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 86,
-        "y": 931,
-      },
-      "texts": [
-        {
-          "content": "1.4.",
-          "x": 86,
-          "y": 931,
-        },
-        {
-          "content": "numéro",
-          "x": 112,
-          "y": 931,
-        },
-        {
-          "content": "d'appel",
-          "x": 166,
-          "y": 931,
-        },
-        {
-          "content": "d'urgence",
-          "x": 216,
-          "y": 931,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 607,
-        "y": 964,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 952,
-      },
-      "texts": [
-        {
-          "content": "numéro",
-          "x": 85,
-          "y": 952,
-        },
-        {
-          "content": "d'appel",
-          "x": 136,
-          "y": 948,
-        },
-        {
-          "content": "d'urgence",
-          "x": 183,
-          "y": 948,
-        },
-        {
-          "content": ":",
-          "x": 382,
-          "y": 960,
-        },
-        {
-          "content": "france:",
-          "x": 395,
-          "y": 952,
-        },
-        {
-          "content": "orfila:",
-          "x": 444,
-          "y": 952,
-        },
-        {
-          "content": "+33",
-          "x": 500,
-          "y": 953,
-        },
-        {
-          "content": "1",
-          "x": 527,
-          "y": 953,
-        },
-        {
-          "content": "45",
-          "x": 537,
-          "y": 953,
-        },
-        {
-          "content": "42",
-          "x": 555,
-          "y": 953,
-        },
-        {
-          "content": "59",
-          "x": 574,
-          "y": 953,
-        },
-        {
-          "content": "59",
-          "x": 593,
-          "y": 953,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 405,
-        "y": 1009,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 86,
-        "y": 993,
-      },
-      "texts": [
-        {
-          "content": "rubrique",
-          "x": 86,
-          "y": 993,
-        },
-        {
-          "content": "2:",
-          "x": 179,
-          "y": 994,
-        },
-        {
-          "content": "identification",
-          "x": 199,
-          "y": 993,
-        },
-        {
-          "content": "des",
-          "x": 307,
-          "y": 993,
-        },
-        {
-          "content": "dangers",
-          "x": 341,
-          "y": 994,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 399,
-        "y": 1045,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1032,
-      },
-      "texts": [
-        {
-          "content": "2.1.",
-          "x": 85,
-          "y": 1032,
-        },
-        {
-          "content": "classification",
-          "x": 111,
-          "y": 1032,
-        },
-        {
-          "content": "de",
-          "x": 202,
-          "y": 1032,
-        },
-        {
-          "content": "la",
-          "x": 222,
-          "y": 1032,
-        },
-        {
-          "content": "substance",
-          "x": 236,
-          "y": 1032,
-        },
-        {
-          "content": "ou",
-          "x": 306,
-          "y": 1034,
-        },
-        {
-          "content": "du",
-          "x": 326,
-          "y": 1032,
-        },
-        {
-          "content": "mélange",
-          "x": 346,
-          "y": 1032,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 448,
-        "y": 1073,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1060,
-      },
-      "texts": [
-        {
-          "content": "classification",
-          "x": 85,
-          "y": 1060,
-        },
-        {
-          "content": "selon",
-          "x": 176,
-          "y": 1060,
-        },
-        {
-          "content": "le",
-          "x": 215,
-          "y": 1060,
-        },
-        {
-          "content": "règlement",
-          "x": 230,
-          "y": 1060,
-        },
-        {
-          "content": "(ce)",
-          "x": 297,
-          "y": 1060,
-        },
-        {
-          "content": "n°",
-          "x": 328,
-          "y": 1060,
-        },
-        {
-          "content": "1272/2008",
-          "x": 347,
-          "y": 1060,
-        },
-        {
-          "content": "[clp]",
-          "x": 414,
-          "y": 1060,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 670,
-        "y": 1092,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1080,
-      },
-      "texts": [
-        {
-          "content": "dangers",
-          "x": 85,
-          "y": 1080,
-        },
-        {
-          "content": "physiques",
-          "x": 140,
-          "y": 1080,
-        },
-        {
-          "content": "gaz",
-          "x": 284,
-          "y": 1080,
-        },
-        {
-          "content": "sous",
-          "x": 312,
-          "y": 1082,
-        },
-        {
-          "content": "pression",
-          "x": 344,
-          "y": 1082,
-        },
-        {
-          "content": ":",
-          "x": 399,
-          "y": 1088,
-        },
-        {
-          "content": "gaz",
-          "x": 406,
-          "y": 1080,
-        },
-        {
-          "content": "comprimé",
-          "x": 434,
-          "y": 1080,
-        },
-        {
-          "content": "h280",
-          "x": 639,
-          "y": 1081,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 252,
-        "y": 1127,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1114,
-      },
-      "texts": [
-        {
-          "content": "2,2.",
-          "x": 85,
-          "y": 1117,
-        },
-        {
-          "content": "éléments",
-          "x": 111,
-          "y": 1114,
-        },
-        {
-          "content": "d'étiquetage",
-          "x": 174,
-          "y": 1116,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 429,
-        "y": 1161,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1149,
-      },
-      "texts": [
-        {
-          "content": "etiquetage",
-          "x": 85,
-          "y": 1149,
-        },
-        {
-          "content": "selon",
-          "x": 157,
-          "y": 1149,
-        },
-        {
-          "content": "le",
-          "x": 196,
-          "y": 1149,
-        },
-        {
-          "content": "règlement",
-          "x": 211,
-          "y": 1149,
-        },
-        {
-          "content": "(ce)",
-          "x": 278,
-          "y": 1149,
-        },
-        {
-          "content": "n°",
-          "x": 309,
-          "y": 1149,
-        },
-        {
-          "content": "1272/2008",
-          "x": 328,
-          "y": 1149,
-        },
-        {
-          "content": "[clp]",
-          "x": 396,
-          "y": 1149,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 454,
-        "y": 1248,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1168,
-      },
-      "texts": [
-        {
-          "content": "pictogrammes",
-          "x": 85,
-          "y": 1170,
-        },
-        {
-          "content": "de",
-          "x": 174,
-          "y": 1170,
-        },
-        {
-          "content": "danger",
-          "x": 193,
-          "y": 1170,
-        },
-        {
-          "content": "(clp)",
-          "x": 238,
-          "y": 1170,
-        },
-        {
-          "content": "-",
-          "x": 428,
-          "y": 1168,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 446,
-        "y": 1284,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1272,
-      },
-      "texts": [
-        {
-          "content": "mention",
-          "x": 85,
-          "y": 1272,
-        },
-        {
-          "content": "d'avertissement",
-          "x": 135,
-          "y": 1272,
-        },
-        {
-          "content": "(clp)",
-          "x": 233,
-          "y": 1272,
-        },
-        {
-          "content": "attention",
-          "x": 394,
-          "y": 1272,
-        },
-      ],
-    },
-    {
-      "endBox": {
-        "x": 859,
-        "y": 1305,
-      },
-      "pageNumber": 1,
-      "startBox": {
-        "x": 85,
-        "y": 1292,
-      },
-      "texts": [
-        {
-          "content": "mentions",
-          "x": 85,
-          "y": 1292,
-        },
-        {
-          "content": "de",
-          "x": 142,
-          "y": 1292,
-        },
-        {
-          "content": "danger",
-          "x": 161,
-          "y": 1292,
-        },
-        {
-          "content": "(clp)",
-          "x": 206,
-          "y": 1292,
-        },
-        {
-          "content": ":",
-          "x": 381,
-          "y": 1294,
-        },
-        {
-          "content": "h280",
-          "x": 395,
-          "y": 1292,
-        },
-        {
-          "content": "-",
-          "x": 430,
-          "y": 1297,
-        },
-        {
-          "content": "contient",
-          "x": 438,
-          "y": 1292,
-        },
-        {
-          "content": "un",
-          "x": 492,
-          "y": 1294,
-        },
-        {
-          "content": "gaz",
-          "x": 510,
-          "y": 1294,
-        },
-        {
-          "content": "sous",
-          "x": 535,
-          "y": 1294,
-        },
-        {
-          "content": "pression,",
-          "x": 567,
-          "y": 1294,
-        },
-        {
-          "content": "peut",
-          "x": 626,
-          "y": 1293,
-        },
-        {
-          "content": "exploser",
-          "x": 655,
-          "y": 1292,
-        },
-        {
-          "content": "sous",
-          "x": 709,
-          "y": 1295,
-        },
-        {
-          "content": "l'effet",
-          "x": 741,
-          "y": 1292,
-        },
-        {
-          "content": "de",
-          "x": 776,
-          "y": 1293,
-        },
-        {
-          "content": "la",
-          "x": 795,
-          "y": 1293,
-        },
-        {
-          "content": "chaleur.",
-          "x": 809,
-          "y": 1293,
-        },
-      ],
-    },
-  ],
-  "pageDimension": {
-    "height": 1485,
-    "width": 1050,
+    "texts": [
+      {
+        "content": "fiche",
+        "xPositionInPercent": 0.2895238095238095,
+        "yPositionInPercent": 0.06599326599326599,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.3676190476190476,
+        "yPositionInPercent": 0.06599326599326599,
+      },
+      {
+        "content": "données",
+        "xPositionInPercent": 0.4076190476190476,
+        "yPositionInPercent": 0.06599326599326599,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.5323809523809524,
+        "yPositionInPercent": 0.06599326599326599,
+      },
+      {
+        "content": "sécurité",
+        "xPositionInPercent": 0.5714285714285714,
+        "yPositionInPercent": 0.06599326599326599,
+      },
+    ],
   },
-}
+  {
+    "endBox": {
+      "xPositionInPercent": 0.2438095238095238,
+      "yPositionInPercent": 0.09562289562289562,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.09428571428571429,
+      "yPositionInPercent": 0.07609427609427609,
+    },
+    "texts": [
+      {
+        "content": "oir",
+        "xPositionInPercent": 0.09428571428571429,
+        "yPositionInPercent": 0.07609427609427609,
+      },
+      {
+        "content": "liquide",
+        "xPositionInPercent": 0.19428571428571428,
+        "yPositionInPercent": 0.08215488215488216,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.8980952380952381,
+      "yPositionInPercent": 0.09898989898989899,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.17809523809523808,
+      "yPositionInPercent": 0.08484848484848485,
+    },
+    "texts": [
+      {
+        "content": "q",
+        "xPositionInPercent": 0.17809523809523808,
+        "yPositionInPercent": 0.08484848484848485,
+      },
+      {
+        "content": "date",
+        "xPositionInPercent": 0.7304761904761905,
+        "yPositionInPercent": 0.09225589225589226,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.76,
+        "yPositionInPercent": 0.09225589225589226,
+      },
+      {
+        "content": "révision",
+        "xPositionInPercent": 0.7780952380952381,
+        "yPositionInPercent": 0.09225589225589226,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.8266666666666667,
+        "yPositionInPercent": 0.09764309764309764,
+      },
+      {
+        "content": "2017-09-01",
+        "xPositionInPercent": 0.8361904761904762,
+        "yPositionInPercent": 0.09225589225589226,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.900952380952381,
+      "yPositionInPercent": 0.11380471380471381,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.7276190476190476,
+      "yPositionInPercent": 0.10572390572390572,
+    },
+    "texts": [
+      {
+        "content": "remplace",
+        "xPositionInPercent": 0.7276190476190476,
+        "yPositionInPercent": 0.10572390572390572,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.7885714285714286,
+        "yPositionInPercent": 0.10572390572390572,
+      },
+      {
+        "content": "fiche",
+        "xPositionInPercent": 0.800952380952381,
+        "yPositionInPercent": 0.10572390572390572,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.8323809523809523,
+        "yPositionInPercent": 0.1111111111111111,
+      },
+      {
+        "content": "2015-06-01",
+        "xPositionInPercent": 0.839047619047619,
+        "yPositionInPercent": 0.10572390572390572,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.8533333333333334,
+      "yPositionInPercent": 0.13602693602693602,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.09523809523809523,
+      "yPositionInPercent": 0.12053872053872054,
+    },
+    "texts": [
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.09523809523809523,
+        "yPositionInPercent": 0.12053872053872054,
+      },
+      {
+        "content": ";",
+        "xPositionInPercent": 0.1742857142857143,
+        "yPositionInPercent": 0.12390572390572391,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.18666666666666668,
+        "yPositionInPercent": 0.12053872053872054,
+      },
+      {
+        "content": "nertal",
+        "xPositionInPercent": 0.26476190476190475,
+        "yPositionInPercent": 0.12053872053872054,
+      },
+      {
+        "content": ";",
+        "xPositionInPercent": 0.36857142857142855,
+        "yPositionInPercent": 0.12390572390572391,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.38095238095238093,
+        "yPositionInPercent": 0.12053872053872054,
+      },
+      {
+        "content": "n56",
+        "xPositionInPercent": 0.4780952380952381,
+        "yPositionInPercent": 0.12121212121212122,
+      },
+      {
+        "content": ";",
+        "xPositionInPercent": 0.5295238095238095,
+        "yPositionInPercent": 0.12457912457912458,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.5419047619047619,
+        "yPositionInPercent": 0.12121212121212122,
+      },
+      {
+        "content": "n60",
+        "xPositionInPercent": 0.6390476190476191,
+        "yPositionInPercent": 0.12121212121212122,
+      },
+      {
+        "content": "003agis",
+        "xPositionInPercent": 0.7761904761904762,
+        "yPositionInPercent": 0.12053872053872054,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.8828571428571429,
+      "yPositionInPercent": 0.1468013468013468,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.7476190476190476,
+      "yPositionInPercent": 0.13872053872053872,
+    },
+    "texts": [
+      {
+        "content": "pays",
+        "xPositionInPercent": 0.7476190476190476,
+        "yPositionInPercent": 0.13872053872053872,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.7780952380952381,
+        "yPositionInPercent": 0.13400673400673402,
+      },
+      {
+        "content": "fr/",
+        "xPositionInPercent": 0.7866666666666666,
+        "yPositionInPercent": 0.13872053872053872,
+      },
+      {
+        "content": "langue",
+        "xPositionInPercent": 0.8142857142857143,
+        "yPositionInPercent": 0.13872053872053872,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.8609523809523809,
+        "yPositionInPercent": 0.14006734006734006,
+      },
+      {
+        "content": "fr",
+        "xPositionInPercent": 0.8666666666666667,
+        "yPositionInPercent": 0.13872053872053872,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.7152380952380952,
+      "yPositionInPercent": 0.18518518518518517,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08476190476190476,
+      "yPositionInPercent": 0.1744107744107744,
+    },
+    "texts": [
+      {
+        "content": "rubrique",
+        "xPositionInPercent": 0.08476190476190476,
+        "yPositionInPercent": 0.1744107744107744,
+      },
+      {
+        "content": "1:",
+        "xPositionInPercent": 0.17333333333333334,
+        "yPositionInPercent": 0.1744107744107744,
+      },
+      {
+        "content": "identification",
+        "xPositionInPercent": 0.19238095238095237,
+        "yPositionInPercent": 0.1744107744107744,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.29428571428571426,
+        "yPositionInPercent": 0.1744107744107744,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.3180952380952381,
+        "yPositionInPercent": 0.1744107744107744,
+      },
+      {
+        "content": "substance/du",
+        "xPositionInPercent": 0.3352380952380952,
+        "yPositionInPercent": 0.1744107744107744,
+      },
+      {
+        "content": "mélange",
+        "xPositionInPercent": 0.44285714285714284,
+        "yPositionInPercent": 0.1744107744107744,
+      },
+      {
+        "content": "et",
+        "xPositionInPercent": 0.5114285714285715,
+        "yPositionInPercent": 0.1750841750841751,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.5295238095238095,
+        "yPositionInPercent": 0.1750841750841751,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.5533333333333333,
+        "yPositionInPercent": 0.1750841750841751,
+      },
+      {
+        "content": "société/l’entreprise",
+        "xPositionInPercent": 0.5704761904761905,
+        "yPositionInPercent": 0.1750841750841751,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.25333333333333335,
+      "yPositionInPercent": 0.20875420875420875,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.0838095238095238,
+      "yPositionInPercent": 0.2,
+    },
+    "texts": [
+      {
+        "content": "1.1.",
+        "xPositionInPercent": 0.0838095238095238,
+        "yPositionInPercent": 0.2,
+      },
+      {
+        "content": "identificateur",
+        "xPositionInPercent": 0.10857142857142857,
+        "yPositionInPercent": 0.2,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.19238095238095237,
+        "yPositionInPercent": 0.2,
+      },
+      {
+        "content": "produit",
+        "xPositionInPercent": 0.21047619047619048,
+        "yPositionInPercent": 0.2,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.6780952380952381,
+      "yPositionInPercent": 0.2228956228956229,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.0838095238095238,
+      "yPositionInPercent": 0.21414141414141413,
+    },
+    "texts": [
+      {
+        "content": "nom",
+        "xPositionInPercent": 0.0838095238095238,
+        "yPositionInPercent": 0.21414141414141413,
+      },
+      {
+        "content": "commercial",
+        "xPositionInPercent": 0.11333333333333333,
+        "yPositionInPercent": 0.21414141414141413,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.3657142857142857,
+        "yPositionInPercent": 0.21616161616161617,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.3780952380952381,
+        "yPositionInPercent": 0.21481481481481482,
+      },
+      {
+        "content": ";",
+        "xPositionInPercent": 0.41619047619047617,
+        "yPositionInPercent": 0.21616161616161617,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.4228571428571429,
+        "yPositionInPercent": 0.21481481481481482,
+      },
+      {
+        "content": "nertal",
+        "xPositionInPercent": 0.46095238095238095,
+        "yPositionInPercent": 0.21481481481481482,
+      },
+      {
+        "content": ";",
+        "xPositionInPercent": 0.5142857142857142,
+        "yPositionInPercent": 0.2202020202020202,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.520952380952381,
+        "yPositionInPercent": 0.21481481481481482,
+      },
+      {
+        "content": "n56",
+        "xPositionInPercent": 0.5714285714285714,
+        "yPositionInPercent": 0.21481481481481482,
+      },
+      {
+        "content": ";",
+        "xPositionInPercent": 0.599047619047619,
+        "yPositionInPercent": 0.2202020202020202,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.6047619047619047,
+        "yPositionInPercent": 0.21481481481481482,
+      },
+      {
+        "content": "n60",
+        "xPositionInPercent": 0.6561904761904762,
+        "yPositionInPercent": 0.21481481481481482,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.42952380952380953,
+      "yPositionInPercent": 0.23434343434343435,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.0838095238095238,
+      "yPositionInPercent": 0.22760942760942762,
+    },
+    "texts": [
+      {
+        "content": "n°fds",
+        "xPositionInPercent": 0.0838095238095238,
+        "yPositionInPercent": 0.22760942760942762,
+      },
+      {
+        "content": "003agis",
+        "xPositionInPercent": 0.3780952380952381,
+        "yPositionInPercent": 0.22760942760942762,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.4123809523809524,
+      "yPositionInPercent": 0.24915824915824916,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.0838095238095238,
+      "yPositionInPercent": 0.24107744107744108,
+    },
+    "texts": [
+      {
+        "content": "description",
+        "xPositionInPercent": 0.0838095238095238,
+        "yPositionInPercent": 0.24107744107744108,
+      },
+      {
+        "content": "chimique",
+        "xPositionInPercent": 0.15047619047619049,
+        "yPositionInPercent": 0.24107744107744108,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.3657142857142857,
+        "yPositionInPercent": 0.24646464646464647,
+      },
+      {
+        "content": "argon",
+        "xPositionInPercent": 0.379047619047619,
+        "yPositionInPercent": 0.24107744107744108,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.4876190476190476,
+      "yPositionInPercent": 0.2612794612794613,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.3780952380952381,
+      "yPositionInPercent": 0.2545454545454545,
+    },
+    "texts": [
+      {
+        "content": "n°",
+        "xPositionInPercent": 0.3780952380952381,
+        "yPositionInPercent": 0.2545454545454545,
+      },
+      {
+        "content": "cas",
+        "xPositionInPercent": 0.3961904761904762,
+        "yPositionInPercent": 0.2545454545454545,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.4219047619047619,
+        "yPositionInPercent": 0.2518518518518518,
+      },
+      {
+        "content": "7440-37-1",
+        "xPositionInPercent": 0.43333333333333335,
+        "yPositionInPercent": 0.2545454545454545,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.44952380952380955,
+      "yPositionInPercent": 0.28754208754208754,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.3780952380952381,
+      "yPositionInPercent": 0.2808080808080808,
+    },
+    "texts": [
+      {
+        "content": "n°",
+        "xPositionInPercent": 0.3780952380952381,
+        "yPositionInPercent": 0.2808080808080808,
+      },
+      {
+        "content": "index",
+        "xPositionInPercent": 0.3961904761904762,
+        "yPositionInPercent": 0.2808080808080808,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.42857142857142855,
+        "yPositionInPercent": 0.2781144781144781,
+      },
+      {
+        "content": "-—",
+        "xPositionInPercent": 0.43714285714285717,
+        "yPositionInPercent": 0.2841750841750842,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.7352380952380952,
+      "yPositionInPercent": 0.30303030303030304,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08285714285714285,
+      "yPositionInPercent": 0.2936026936026936,
+    },
+    "texts": [
+      {
+        "content": "n°",
+        "xPositionInPercent": 0.08285714285714285,
+        "yPositionInPercent": 0.2936026936026936,
+      },
+      {
+        "content": "d'enregistrement",
+        "xPositionInPercent": 0.10095238095238095,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "listé",
+        "xPositionInPercent": 0.379047619047619,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "dans",
+        "xPositionInPercent": 0.4095238095238095,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "l'annexe",
+        "xPositionInPercent": 0.44095238095238093,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "iv/v",
+        "xPositionInPercent": 0.49333333333333335,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.52,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "reach,",
+        "xPositionInPercent": 0.5380952380952381,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "exempté",
+        "xPositionInPercent": 0.5895238095238096,
+        "yPositionInPercent": 0.2942760942760943,
+      },
+      {
+        "content": "d'enregistrement.",
+        "xPositionInPercent": 0.6419047619047619,
+        "yPositionInPercent": 0.29494949494949496,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.3914285714285714,
+      "yPositionInPercent": 0.31582491582491584,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08285714285714285,
+      "yPositionInPercent": 0.30707070707070705,
+    },
+    "texts": [
+      {
+        "content": "formule",
+        "xPositionInPercent": 0.08285714285714285,
+        "yPositionInPercent": 0.30707070707070705,
+      },
+      {
+        "content": "chimique",
+        "xPositionInPercent": 0.13333333333333333,
+        "yPositionInPercent": 0.30707070707070705,
+      },
+      {
+        "content": "ar",
+        "xPositionInPercent": 0.379047619047619,
+        "yPositionInPercent": 0.30774410774410776,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.679047619047619,
+      "yPositionInPercent": 0.3367003367003367,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.0838095238095238,
+      "yPositionInPercent": 0.32727272727272727,
+    },
+    "texts": [
+      {
+        "content": "1.2.",
+        "xPositionInPercent": 0.0838095238095238,
+        "yPositionInPercent": 0.32727272727272727,
+      },
+      {
+        "content": "utilisations",
+        "xPositionInPercent": 0.10761904761904761,
+        "yPositionInPercent": 0.32727272727272727,
+      },
+      {
+        "content": "identifiées",
+        "xPositionInPercent": 0.18,
+        "yPositionInPercent": 0.32727272727272727,
+      },
+      {
+        "content": "pertinentes",
+        "xPositionInPercent": 0.24666666666666667,
+        "yPositionInPercent": 0.32794612794612793,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.3180952380952381,
+        "yPositionInPercent": 0.32794612794612793,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.34,
+        "yPositionInPercent": 0.3292929292929293,
+      },
+      {
+        "content": "substance",
+        "xPositionInPercent": 0.3504761904761905,
+        "yPositionInPercent": 0.32794612794612793,
+      },
+      {
+        "content": "ou",
+        "xPositionInPercent": 0.4180952380952381,
+        "yPositionInPercent": 0.3292929292929293,
+      },
+      {
+        "content": "du",
+        "xPositionInPercent": 0.43714285714285717,
+        "yPositionInPercent": 0.32794612794612793,
+      },
+      {
+        "content": "mélange",
+        "xPositionInPercent": 0.4561904761904762,
+        "yPositionInPercent": 0.32794612794612793,
+      },
+      {
+        "content": "et",
+        "xPositionInPercent": 0.5104761904761905,
+        "yPositionInPercent": 0.32861952861952864,
+      },
+      {
+        "content": "utilisations",
+        "xPositionInPercent": 0.5257142857142857,
+        "yPositionInPercent": 0.32794612794612793,
+      },
+      {
+        "content": "déconseillées",
+        "xPositionInPercent": 0.5961904761904762,
+        "yPositionInPercent": 0.32794612794612793,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.7895238095238095,
+      "yPositionInPercent": 0.34949494949494947,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08285714285714285,
+      "yPositionInPercent": 0.34074074074074073,
+    },
+    "texts": [
+      {
+        "content": "utilisations",
+        "xPositionInPercent": 0.08285714285714285,
+        "yPositionInPercent": 0.34074074074074073,
+      },
+      {
+        "content": "pertinentes",
+        "xPositionInPercent": 0.14761904761904762,
+        "yPositionInPercent": 0.34074074074074073,
+      },
+      {
+        "content": "identifiées",
+        "xPositionInPercent": 0.21428571428571427,
+        "yPositionInPercent": 0.34074074074074073,
+      },
+      {
+        "content": "industriel",
+        "xPositionInPercent": 0.3780952380952381,
+        "yPositionInPercent": 0.3414141414141414,
+      },
+      {
+        "content": "et",
+        "xPositionInPercent": 0.43333333333333335,
+        "yPositionInPercent": 0.3414141414141414,
+      },
+      {
+        "content": "professionnel.",
+        "xPositionInPercent": 0.44666666666666666,
+        "yPositionInPercent": 0.3414141414141414,
+      },
+      {
+        "content": "faire",
+        "xPositionInPercent": 0.5295238095238095,
+        "yPositionInPercent": 0.3414141414141414,
+      },
+      {
+        "content": "une",
+        "xPositionInPercent": 0.5619047619047619,
+        "yPositionInPercent": 0.34276094276094277,
+      },
+      {
+        "content": "analyse",
+        "xPositionInPercent": 0.5866666666666667,
+        "yPositionInPercent": 0.3414141414141414,
+      },
+      {
+        "content": "des",
+        "xPositionInPercent": 0.6342857142857142,
+        "yPositionInPercent": 0.3414141414141414,
+      },
+      {
+        "content": "risques",
+        "xPositionInPercent": 0.659047619047619,
+        "yPositionInPercent": 0.34276094276094277,
+      },
+      {
+        "content": "avant",
+        "xPositionInPercent": 0.7028571428571428,
+        "yPositionInPercent": 0.3420875420875421,
+      },
+      {
+        "content": "utilisation.",
+        "xPositionInPercent": 0.7380952380952381,
+        "yPositionInPercent": 0.3414141414141414,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.5380952380952381,
+      "yPositionInPercent": 0.362962962962963,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.37714285714285717,
+      "yPositionInPercent": 0.3542087542087542,
+    },
+    "texts": [
+      {
+        "content": "gaz",
+        "xPositionInPercent": 0.37714285714285717,
+        "yPositionInPercent": 0.3542087542087542,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.40476190476190477,
+        "yPositionInPercent": 0.3548821548821549,
+      },
+      {
+        "content": "test",
+        "xPositionInPercent": 0.4219047619047619,
+        "yPositionInPercent": 0.3548821548821549,
+      },
+      {
+        "content": "ou",
+        "xPositionInPercent": 0.44666666666666666,
+        "yPositionInPercent": 0.35622895622895623,
+      },
+      {
+        "content": "d'étalonnage.",
+        "xPositionInPercent": 0.4638095238095238,
+        "yPositionInPercent": 0.3542087542087542,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.580952380952381,
+      "yPositionInPercent": 0.37575757575757573,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.37714285714285717,
+      "yPositionInPercent": 0.36767676767676766,
+    },
+    "texts": [
+      {
+        "content": "gaz",
+        "xPositionInPercent": 0.37714285714285717,
+        "yPositionInPercent": 0.36767676767676766,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.40476190476190477,
+        "yPositionInPercent": 0.36767676767676766,
+      },
+      {
+        "content": "purge,",
+        "xPositionInPercent": 0.4228571428571429,
+        "yPositionInPercent": 0.36902356902356903,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.46190476190476193,
+        "yPositionInPercent": 0.36767676767676766,
+      },
+      {
+        "content": "dilution,",
+        "xPositionInPercent": 0.47904761904761906,
+        "yPositionInPercent": 0.36767676767676766,
+      },
+      {
+        "content": "d'inertage.",
+        "xPositionInPercent": 0.5266666666666666,
+        "yPositionInPercent": 0.36767676767676766,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.4104761904761905,
+      "yPositionInPercent": 0.38922558922558925,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.3780952380952381,
+      "yPositionInPercent": 0.3811447811447811,
+    },
+    "texts": [
+      {
+        "content": "purge.",
+        "xPositionInPercent": 0.3780952380952381,
+        "yPositionInPercent": 0.3811447811447811,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.8019047619047619,
+      "yPositionInPercent": 0.4033670033670034,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.3780952380952381,
+      "yPositionInPercent": 0.3939393939393939,
+    },
+    "texts": [
+      {
+        "content": "utiliser",
+        "xPositionInPercent": 0.3780952380952381,
+        "yPositionInPercent": 0.3939393939393939,
+      },
+      {
+        "content": "dans",
+        "xPositionInPercent": 0.42,
+        "yPositionInPercent": 0.39461279461279464,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.4504761904761905,
+        "yPositionInPercent": 0.3939393939393939,
+      },
+      {
+        "content": "fabrication",
+        "xPositionInPercent": 0.4638095238095238,
+        "yPositionInPercent": 0.39461279461279464,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.5257142857142857,
+        "yPositionInPercent": 0.39461279461279464,
+      },
+      {
+        "content": "composants",
+        "xPositionInPercent": 0.5438095238095239,
+        "yPositionInPercent": 0.39461279461279464,
+      },
+      {
+        "content": "électroniques",
+        "xPositionInPercent": 0.6161904761904762,
+        "yPositionInPercent": 0.39461279461279464,
+      },
+      {
+        "content": "ou",
+        "xPositionInPercent": 0.6961904761904761,
+        "yPositionInPercent": 0.3966329966329966,
+      },
+      {
+        "content": "photovoltaïques.",
+        "xPositionInPercent": 0.7133333333333334,
+        "yPositionInPercent": 0.39461279461279464,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.6323809523809524,
+      "yPositionInPercent": 0.4161616161616162,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.37714285714285717,
+      "yPositionInPercent": 0.4074074074074074,
+    },
+    "texts": [
+      {
+        "content": "gaz",
+        "xPositionInPercent": 0.37714285714285717,
+        "yPositionInPercent": 0.4074074074074074,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.4038095238095238,
+        "yPositionInPercent": 0.4074074074074074,
+      },
+      {
+        "content": "protection",
+        "xPositionInPercent": 0.4219047619047619,
+        "yPositionInPercent": 0.4080808080808081,
+      },
+      {
+        "content": "pour",
+        "xPositionInPercent": 0.48095238095238096,
+        "yPositionInPercent": 0.4094276094276094,
+      },
+      {
+        "content": "procédés",
+        "xPositionInPercent": 0.5104761904761905,
+        "yPositionInPercent": 0.4074074074074074,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.5657142857142857,
+        "yPositionInPercent": 0.4080808080808081,
+      },
+      {
+        "content": "soudage.",
+        "xPositionInPercent": 0.5838095238095238,
+        "yPositionInPercent": 0.4080808080808081,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.5161904761904762,
+      "yPositionInPercent": 0.4276094276094276,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.37714285714285717,
+      "yPositionInPercent": 0.4208754208754209,
+    },
+    "texts": [
+      {
+        "content": "utilisation",
+        "xPositionInPercent": 0.37714285714285717,
+        "yPositionInPercent": 0.4208754208754209,
+      },
+      {
+        "content": "en",
+        "xPositionInPercent": 0.4361904761904762,
+        "yPositionInPercent": 0.4228956228956229,
+      },
+      {
+        "content": "laboratoire.",
+        "xPositionInPercent": 0.4533333333333333,
+        "yPositionInPercent": 0.4208754208754209,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.7295238095238096,
+      "yPositionInPercent": 0.44242424242424244,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.37714285714285717,
+      "yPositionInPercent": 0.43434343434343436,
+    },
+    "texts": [
+      {
+        "content": "contacter",
+        "xPositionInPercent": 0.37714285714285717,
+        "yPositionInPercent": 0.43434343434343436,
+      },
+      {
+        "content": "le",
+        "xPositionInPercent": 0.4361904761904762,
+        "yPositionInPercent": 0.43434343434343436,
+      },
+      {
+        "content": "fournisseur",
+        "xPositionInPercent": 0.44952380952380955,
+        "yPositionInPercent": 0.43434343434343436,
+      },
+      {
+        "content": "pour",
+        "xPositionInPercent": 0.5152380952380953,
+        "yPositionInPercent": 0.4356902356902357,
+      },
+      {
+        "content": "plus",
+        "xPositionInPercent": 0.5447619047619048,
+        "yPositionInPercent": 0.43434343434343436,
+      },
+      {
+        "content": "d'information",
+        "xPositionInPercent": 0.5714285714285714,
+        "yPositionInPercent": 0.43434343434343436,
+      },
+      {
+        "content": "sur",
+        "xPositionInPercent": 0.6476190476190476,
+        "yPositionInPercent": 0.4356902356902357,
+      },
+      {
+        "content": "l'utilisation.",
+        "xPositionInPercent": 0.6695238095238095,
+        "yPositionInPercent": 0.43434343434343436,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.5161904761904762,
+      "yPositionInPercent": 0.4558922558922559,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.3761904761904762,
+      "yPositionInPercent": 0.4471380471380471,
+    },
+    "texts": [
+      {
+        "content": "‘applications",
+        "xPositionInPercent": 0.3761904761904762,
+        "yPositionInPercent": 0.4471380471380471,
+      },
+      {
+        "content": "alimentaires.",
+        "xPositionInPercent": 0.44952380952380955,
+        "yPositionInPercent": 0.4471380471380471,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.8695238095238095,
+      "yPositionInPercent": 0.47003367003367,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08190476190476191,
+      "yPositionInPercent": 0.4599326599326599,
+    },
+    "texts": [
+      {
+        "content": "utilisations",
+        "xPositionInPercent": 0.08190476190476191,
+        "yPositionInPercent": 0.4599326599326599,
+      },
+      {
+        "content": "déconseillées",
+        "xPositionInPercent": 0.14666666666666667,
+        "yPositionInPercent": 0.4599326599326599,
+      },
+      {
+        "content": "utilisation",
+        "xPositionInPercent": 0.37714285714285717,
+        "yPositionInPercent": 0.46060606060606063,
+      },
+      {
+        "content": "grand",
+        "xPositionInPercent": 0.439047619047619,
+        "yPositionInPercent": 0.46060606060606063,
+      },
+      {
+        "content": "public.",
+        "xPositionInPercent": 0.47523809523809524,
+        "yPositionInPercent": 0.46060606060606063,
+      },
+      {
+        "content": "”",
+        "xPositionInPercent": 0.861904761904762,
+        "yPositionInPercent": 0.46464646464646464,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.579047619047619,
+      "yPositionInPercent": 0.4868686868686869,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08285714285714285,
+      "yPositionInPercent": 0.4781144781144781,
+    },
+    "texts": [
+      {
+        "content": "1.3.",
+        "xPositionInPercent": 0.08285714285714285,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "renseignements",
+        "xPositionInPercent": 0.10666666666666667,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "concernant",
+        "xPositionInPercent": 0.2123809523809524,
+        "yPositionInPercent": 0.47878787878787876,
+      },
+      {
+        "content": "le",
+        "xPositionInPercent": 0.28476190476190477,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "fournisseur",
+        "xPositionInPercent": 0.2980952380952381,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.37238095238095237,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.3904761904761905,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "fiche",
+        "xPositionInPercent": 0.40476190476190477,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.4380952380952381,
+        "yPositionInPercent": 0.4781144781144781,
+      },
+      {
+        "content": "données",
+        "xPositionInPercent": 0.4561904761904762,
+        "yPositionInPercent": 0.47878787878787876,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.5123809523809524,
+        "yPositionInPercent": 0.47878787878787876,
+      },
+      {
+        "content": "sécurité",
+        "xPositionInPercent": 0.5304761904761904,
+        "yPositionInPercent": 0.47878787878787876,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.24,
+      "yPositionInPercent": 0.5124579124579125,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08190476190476191,
+      "yPositionInPercent": 0.5057239057239057,
+    },
+    "texts": [
+      {
+        "content": "identification",
+        "xPositionInPercent": 0.08190476190476191,
+        "yPositionInPercent": 0.5057239057239057,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.16476190476190475,
+        "yPositionInPercent": 0.5057239057239057,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.1838095238095238,
+        "yPositionInPercent": 0.5057239057239057,
+      },
+      {
+        "content": "société",
+        "xPositionInPercent": 0.19714285714285715,
+        "yPositionInPercent": 0.5057239057239057,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.2361904761904762,
+      "yPositionInPercent": 0.5373737373737374,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.5292929292929293,
+    },
+    "texts": [
+      {
+        "content": "air",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.5292929292929293,
+      },
+      {
+        "content": "liquide",
+        "xPositionInPercent": 0.10095238095238095,
+        "yPositionInPercent": 0.5292929292929293,
+      },
+      {
+        "content": "france",
+        "xPositionInPercent": 0.1457142857142857,
+        "yPositionInPercent": 0.5292929292929293,
+      },
+      {
+        "content": "industrie",
+        "xPositionInPercent": 0.1895238095238095,
+        "yPositionInPercent": 0.5292929292929293,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.24571428571428572,
+      "yPositionInPercent": 0.5555555555555556,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08190476190476191,
+      "yPositionInPercent": 0.5488215488215489,
+    },
+    "texts": [
+      {
+        "content": "92220",
+        "xPositionInPercent": 0.08190476190476191,
+        "yPositionInPercent": 0.5494949494949495,
+      },
+      {
+        "content": "bagneux",
+        "xPositionInPercent": 0.12095238095238095,
+        "yPositionInPercent": 0.5488215488215489,
+      },
+      {
+        "content": "-",
+        "xPositionInPercent": 0.18666666666666668,
+        "yPositionInPercent": 0.5528619528619528,
+      },
+      {
+        "content": "france",
+        "xPositionInPercent": 0.19428571428571428,
+        "yPositionInPercent": 0.5488215488215489,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.19523809523809524,
+      "yPositionInPercent": 0.5656565656565656,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.5589225589225589,
+    },
+    "texts": [
+      {
+        "content": "t",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.5589225589225589,
+      },
+      {
+        "content": "+33",
+        "xPositionInPercent": 0.09333333333333334,
+        "yPositionInPercent": 0.5589225589225589,
+      },
+      {
+        "content": "1",
+        "xPositionInPercent": 0.11904761904761904,
+        "yPositionInPercent": 0.5595959595959596,
+      },
+      {
+        "content": "5359",
+        "xPositionInPercent": 0.12857142857142856,
+        "yPositionInPercent": 0.5589225589225589,
+      },
+      {
+        "content": "7555",
+        "xPositionInPercent": 0.16476190476190475,
+        "yPositionInPercent": 0.5589225589225589,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.33904761904761904,
+      "yPositionInPercent": 0.5777777777777777,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08190476190476191,
+      "yPositionInPercent": 0.569023569023569,
+    },
+    "texts": [
+      {
+        "content": "fds.gis@airliquide.com",
+        "xPositionInPercent": 0.08190476190476191,
+        "yPositionInPercent": 0.569023569023569,
+      },
+      {
+        "content": "-",
+        "xPositionInPercent": 0.22285714285714286,
+        "yPositionInPercent": 0.573063973063973,
+      },
+      {
+        "content": "www.airliquide.com",
+        "xPositionInPercent": 0.23047619047619047,
+        "yPositionInPercent": 0.569023569023569,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.5133333333333333,
+      "yPositionInPercent": 0.6087542087542087,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.6,
+    },
+    "texts": [
+      {
+        "content": "adresse",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.6,
+      },
+      {
+        "content": "e-mail",
+        "xPositionInPercent": 0.13142857142857142,
+        "yPositionInPercent": 0.6,
+      },
+      {
+        "content": "(personne",
+        "xPositionInPercent": 0.17047619047619048,
+        "yPositionInPercent": 0.6006734006734007,
+      },
+      {
+        "content": "compétente)",
+        "xPositionInPercent": 0.23047619047619047,
+        "yPositionInPercent": 0.6,
+      },
+      {
+        "content": "fds.gls@airliquide.com",
+        "xPositionInPercent": 0.3761904761904762,
+        "yPositionInPercent": 0.6006734006734007,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.26571428571428574,
+      "yPositionInPercent": 0.6356902356902356,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08190476190476191,
+      "yPositionInPercent": 0.6269360269360269,
+    },
+    "texts": [
+      {
+        "content": "1.4.",
+        "xPositionInPercent": 0.08190476190476191,
+        "yPositionInPercent": 0.6269360269360269,
+      },
+      {
+        "content": "numéro",
+        "xPositionInPercent": 0.10666666666666667,
+        "yPositionInPercent": 0.6269360269360269,
+      },
+      {
+        "content": "d'appel",
+        "xPositionInPercent": 0.1580952380952381,
+        "yPositionInPercent": 0.6269360269360269,
+      },
+      {
+        "content": "d'urgence",
+        "xPositionInPercent": 0.2057142857142857,
+        "yPositionInPercent": 0.6269360269360269,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.5780952380952381,
+      "yPositionInPercent": 0.6491582491582492,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.641077441077441,
+    },
+    "texts": [
+      {
+        "content": "numéro",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.641077441077441,
+      },
+      {
+        "content": "d'appel",
+        "xPositionInPercent": 0.1295238095238095,
+        "yPositionInPercent": 0.6383838383838384,
+      },
+      {
+        "content": "d'urgence",
+        "xPositionInPercent": 0.1742857142857143,
+        "yPositionInPercent": 0.6383838383838384,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.3638095238095238,
+        "yPositionInPercent": 0.6464646464646465,
+      },
+      {
+        "content": "france:",
+        "xPositionInPercent": 0.3761904761904762,
+        "yPositionInPercent": 0.641077441077441,
+      },
+      {
+        "content": "orfila:",
+        "xPositionInPercent": 0.4228571428571429,
+        "yPositionInPercent": 0.641077441077441,
+      },
+      {
+        "content": "+33",
+        "xPositionInPercent": 0.47619047619047616,
+        "yPositionInPercent": 0.6417508417508417,
+      },
+      {
+        "content": "1",
+        "xPositionInPercent": 0.5019047619047619,
+        "yPositionInPercent": 0.6417508417508417,
+      },
+      {
+        "content": "45",
+        "xPositionInPercent": 0.5114285714285715,
+        "yPositionInPercent": 0.6417508417508417,
+      },
+      {
+        "content": "42",
+        "xPositionInPercent": 0.5285714285714286,
+        "yPositionInPercent": 0.6417508417508417,
+      },
+      {
+        "content": "59",
+        "xPositionInPercent": 0.5466666666666666,
+        "yPositionInPercent": 0.6417508417508417,
+      },
+      {
+        "content": "59",
+        "xPositionInPercent": 0.5647619047619048,
+        "yPositionInPercent": 0.6417508417508417,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.38571428571428573,
+      "yPositionInPercent": 0.6794612794612794,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08190476190476191,
+      "yPositionInPercent": 0.6686868686868687,
+    },
+    "texts": [
+      {
+        "content": "rubrique",
+        "xPositionInPercent": 0.08190476190476191,
+        "yPositionInPercent": 0.6686868686868687,
+      },
+      {
+        "content": "2:",
+        "xPositionInPercent": 0.17047619047619048,
+        "yPositionInPercent": 0.6693602693602694,
+      },
+      {
+        "content": "identification",
+        "xPositionInPercent": 0.1895238095238095,
+        "yPositionInPercent": 0.6686868686868687,
+      },
+      {
+        "content": "des",
+        "xPositionInPercent": 0.2923809523809524,
+        "yPositionInPercent": 0.6686868686868687,
+      },
+      {
+        "content": "dangers",
+        "xPositionInPercent": 0.32476190476190475,
+        "yPositionInPercent": 0.6693602693602694,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.38,
+      "yPositionInPercent": 0.7037037037037037,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.694949494949495,
+    },
+    "texts": [
+      {
+        "content": "2.1.",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.694949494949495,
+      },
+      {
+        "content": "classification",
+        "xPositionInPercent": 0.10571428571428572,
+        "yPositionInPercent": 0.694949494949495,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.19238095238095237,
+        "yPositionInPercent": 0.694949494949495,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.21142857142857144,
+        "yPositionInPercent": 0.694949494949495,
+      },
+      {
+        "content": "substance",
+        "xPositionInPercent": 0.22476190476190477,
+        "yPositionInPercent": 0.694949494949495,
+      },
+      {
+        "content": "ou",
+        "xPositionInPercent": 0.2914285714285714,
+        "yPositionInPercent": 0.6962962962962963,
+      },
+      {
+        "content": "du",
+        "xPositionInPercent": 0.31047619047619046,
+        "yPositionInPercent": 0.694949494949495,
+      },
+      {
+        "content": "mélange",
+        "xPositionInPercent": 0.3295238095238095,
+        "yPositionInPercent": 0.694949494949495,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.4266666666666667,
+      "yPositionInPercent": 0.7225589225589225,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.7138047138047138,
+    },
+    "texts": [
+      {
+        "content": "classification",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+      {
+        "content": "selon",
+        "xPositionInPercent": 0.1676190476190476,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+      {
+        "content": "le",
+        "xPositionInPercent": 0.20476190476190476,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+      {
+        "content": "règlement",
+        "xPositionInPercent": 0.21904761904761905,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+      {
+        "content": "(ce)",
+        "xPositionInPercent": 0.28285714285714286,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+      {
+        "content": "n°",
+        "xPositionInPercent": 0.31238095238095237,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+      {
+        "content": "1272/2008",
+        "xPositionInPercent": 0.3304761904761905,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+      {
+        "content": "[clp]",
+        "xPositionInPercent": 0.3942857142857143,
+        "yPositionInPercent": 0.7138047138047138,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.638095238095238,
+      "yPositionInPercent": 0.7353535353535353,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.7272727272727273,
+    },
+    "texts": [
+      {
+        "content": "dangers",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.7272727272727273,
+      },
+      {
+        "content": "physiques",
+        "xPositionInPercent": 0.13333333333333333,
+        "yPositionInPercent": 0.7272727272727273,
+      },
+      {
+        "content": "gaz",
+        "xPositionInPercent": 0.2704761904761905,
+        "yPositionInPercent": 0.7272727272727273,
+      },
+      {
+        "content": "sous",
+        "xPositionInPercent": 0.29714285714285715,
+        "yPositionInPercent": 0.7286195286195286,
+      },
+      {
+        "content": "pression",
+        "xPositionInPercent": 0.32761904761904764,
+        "yPositionInPercent": 0.7286195286195286,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.38,
+        "yPositionInPercent": 0.7326599326599327,
+      },
+      {
+        "content": "gaz",
+        "xPositionInPercent": 0.38666666666666666,
+        "yPositionInPercent": 0.7272727272727273,
+      },
+      {
+        "content": "comprimé",
+        "xPositionInPercent": 0.41333333333333333,
+        "yPositionInPercent": 0.7272727272727273,
+      },
+      {
+        "content": "h280",
+        "xPositionInPercent": 0.6085714285714285,
+        "yPositionInPercent": 0.7279461279461279,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.24,
+      "yPositionInPercent": 0.7589225589225589,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.7501683501683502,
+    },
+    "texts": [
+      {
+        "content": "2,2.",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.7521885521885522,
+      },
+      {
+        "content": "éléments",
+        "xPositionInPercent": 0.10571428571428572,
+        "yPositionInPercent": 0.7501683501683502,
+      },
+      {
+        "content": "d'étiquetage",
+        "xPositionInPercent": 0.1657142857142857,
+        "yPositionInPercent": 0.7515151515151515,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.4085714285714286,
+      "yPositionInPercent": 0.7818181818181819,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.7737373737373737,
+    },
+    "texts": [
+      {
+        "content": "etiquetage",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+      {
+        "content": "selon",
+        "xPositionInPercent": 0.14952380952380953,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+      {
+        "content": "le",
+        "xPositionInPercent": 0.18666666666666668,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+      {
+        "content": "règlement",
+        "xPositionInPercent": 0.20095238095238097,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+      {
+        "content": "(ce)",
+        "xPositionInPercent": 0.26476190476190475,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+      {
+        "content": "n°",
+        "xPositionInPercent": 0.29428571428571426,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+      {
+        "content": "1272/2008",
+        "xPositionInPercent": 0.31238095238095237,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+      {
+        "content": "[clp]",
+        "xPositionInPercent": 0.37714285714285717,
+        "yPositionInPercent": 0.7737373737373737,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.43238095238095237,
+      "yPositionInPercent": 0.8404040404040404,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.7865319865319865,
+    },
+    "texts": [
+      {
+        "content": "pictogrammes",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.7878787878787878,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.1657142857142857,
+        "yPositionInPercent": 0.7878787878787878,
+      },
+      {
+        "content": "danger",
+        "xPositionInPercent": 0.1838095238095238,
+        "yPositionInPercent": 0.7878787878787878,
+      },
+      {
+        "content": "(clp)",
+        "xPositionInPercent": 0.22666666666666666,
+        "yPositionInPercent": 0.7878787878787878,
+      },
+      {
+        "content": "-",
+        "xPositionInPercent": 0.4076190476190476,
+        "yPositionInPercent": 0.7865319865319865,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.4247619047619048,
+      "yPositionInPercent": 0.8646464646464647,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.8565656565656565,
+    },
+    "texts": [
+      {
+        "content": "mention",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.8565656565656565,
+      },
+      {
+        "content": "d'avertissement",
+        "xPositionInPercent": 0.12857142857142856,
+        "yPositionInPercent": 0.8565656565656565,
+      },
+      {
+        "content": "(clp)",
+        "xPositionInPercent": 0.2219047619047619,
+        "yPositionInPercent": 0.8565656565656565,
+      },
+      {
+        "content": "attention",
+        "xPositionInPercent": 0.37523809523809526,
+        "yPositionInPercent": 0.8565656565656565,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionInPercent": 0.8180952380952381,
+      "yPositionInPercent": 0.8787878787878788,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionInPercent": 0.08095238095238096,
+      "yPositionInPercent": 0.87003367003367,
+    },
+    "texts": [
+      {
+        "content": "mentions",
+        "xPositionInPercent": 0.08095238095238096,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.13523809523809524,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": "danger",
+        "xPositionInPercent": 0.15333333333333332,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": "(clp)",
+        "xPositionInPercent": 0.1961904761904762,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": ":",
+        "xPositionInPercent": 0.3628571428571429,
+        "yPositionInPercent": 0.8713804713804714,
+      },
+      {
+        "content": "h280",
+        "xPositionInPercent": 0.3761904761904762,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": "-",
+        "xPositionInPercent": 0.4095238095238095,
+        "yPositionInPercent": 0.8734006734006734,
+      },
+      {
+        "content": "contient",
+        "xPositionInPercent": 0.41714285714285715,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": "un",
+        "xPositionInPercent": 0.4685714285714286,
+        "yPositionInPercent": 0.8713804713804714,
+      },
+      {
+        "content": "gaz",
+        "xPositionInPercent": 0.4857142857142857,
+        "yPositionInPercent": 0.8713804713804714,
+      },
+      {
+        "content": "sous",
+        "xPositionInPercent": 0.5095238095238095,
+        "yPositionInPercent": 0.8713804713804714,
+      },
+      {
+        "content": "pression,",
+        "xPositionInPercent": 0.54,
+        "yPositionInPercent": 0.8713804713804714,
+      },
+      {
+        "content": "peut",
+        "xPositionInPercent": 0.5961904761904762,
+        "yPositionInPercent": 0.8707070707070707,
+      },
+      {
+        "content": "exploser",
+        "xPositionInPercent": 0.6238095238095238,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": "sous",
+        "xPositionInPercent": 0.6752380952380952,
+        "yPositionInPercent": 0.8720538720538721,
+      },
+      {
+        "content": "l'effet",
+        "xPositionInPercent": 0.7057142857142857,
+        "yPositionInPercent": 0.87003367003367,
+      },
+      {
+        "content": "de",
+        "xPositionInPercent": 0.7390476190476191,
+        "yPositionInPercent": 0.8707070707070707,
+      },
+      {
+        "content": "la",
+        "xPositionInPercent": 0.7571428571428571,
+        "yPositionInPercent": 0.8707070707070707,
+      },
+      {
+        "content": "chaleur.",
+        "xPositionInPercent": 0.7704761904761904,
+        "yPositionInPercent": 0.8707070707070707,
+      },
+    ],
+  },
+]
 `;

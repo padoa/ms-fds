@@ -4,19 +4,31 @@
 
 export type IPdfData = {
   Pages: Array<{
+    Height: number;
+    Width: number;
     Texts: IRawLine[];
   }>;
 };
 
-export type IRawLine = IBox & {
+export type IRawBox = {
+  x: number;
+  y: number;
+};
+
+export type IRawLine = IRawBox & {
   w: number;
   sw: number;
   R: Array<{ T: string; S: number; TS: [number, number, number, number] }>;
 };
 
 export type IBox = {
-  x: number;
-  y: number;
+  xPositionInPercent: number;
+  yPositionInPercent: number;
+};
+
+export type IPageDimension = {
+  width: number;
+  height: number;
 };
 
 export type IFDSTree = {
@@ -31,11 +43,14 @@ export type ISection = IBox & {
 
 export type ISubsection = IBox & { lines: ILine[] };
 
-export type ILine = {
-  texts: IText[];
+export type IMetaData = {
   pageNumber: number;
   startBox: IBox;
   endBox?: IBox;
+};
+
+export type ILine = IMetaData & {
+  texts: IText[];
 };
 
 export type IText = IBox & {
@@ -48,31 +63,15 @@ export type IRawElement = IBox & {
 
 export type IXCounts = { [xPosition: number]: number };
 
-export type IPageDimension = {
-  width: number;
-  height: number;
-};
-
-export type IRatioXY = {
-  ratioX: number;
-  ratioY: number;
-};
-
-export type IMetaData = {
-  pageNumber: number;
-  startBoxRatio: IRatioXY;
-  endBoxRatio?: IRatioXY;
-};
-
 //----------------------------------------------------------------------------------------------
 //--------------------------------- EXTRACTED DATA TYPES ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
 export type IExtractedDate = { formattedDate: string; inTextDate: string };
 
-export type IExtractedProduct = { text: string; metaData: IMetaData };
+export type IExtractedProduct = { name: string; metaData: IMetaData };
 
-export type IExtractedProducer = { text: string; metaData: IMetaData };
+export type IExtractedProducer = { name: string; metaData: IMetaData };
 
 export type IExtractedHazard = string;
 

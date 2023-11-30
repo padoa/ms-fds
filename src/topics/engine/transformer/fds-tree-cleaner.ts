@@ -51,7 +51,7 @@ const cleanLine = (line: ILine, { xCounts, joinWithSpace }: { xCounts: IXCounts;
       (cleanedLine, text) => {
         if (_.isEmpty(cleanedLine)) return [text];
 
-        if (xCounts[text.x] < valueToPass)
+        if (xCounts[text.xPositionInPercent] < valueToPass)
           return [
             ...cleanedLine.slice(0, cleanedLine.length - 1),
             { ..._.last(cleanedLine), content: `${_.last(cleanedLine).content}${joinWithSpace ? ' ' : ''}${text.content}` },

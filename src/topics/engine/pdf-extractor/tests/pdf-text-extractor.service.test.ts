@@ -6,7 +6,7 @@ import { fdsKleenFirstPagePdfData } from '@topics/engine/pdf-extractor/tests/pdf
 describe('PdfTextExtractorService tests', () => {
   describe('getTextFromPdfData tests', () => {
     it('should return text from pdf', () => {
-      expect(PdfTextExtractorService.getTextAndDimensionFromPdfData(fdsKleenFirstPagePdfData)).toMatchSnapshot();
+      expect(PdfTextExtractorService.getTextFromPdfData(fdsKleenFirstPagePdfData)).toMatchSnapshot();
     });
   });
 });
