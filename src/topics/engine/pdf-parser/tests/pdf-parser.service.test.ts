@@ -18,12 +18,12 @@ describe('PdfParser tests', () => {
         texts: [
           {
             content: 'test',
-            x: 0,
-            y: 0,
+            xPositionProportion: 0,
+            yPositionProportion: 0,
           },
         ],
-        x: 0,
-        y: 0,
+        pageNumber: 1,
+        startBox: { xPositionProportion: 0, yPositionProportion: 0 },
       },
     ];
 

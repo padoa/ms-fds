@@ -11,9 +11,9 @@ import {
   getDateByRevisionText,
   getHazards,
   getProducer,
-  getProductName,
-  getProductNameByLineOrder,
-  getProductNameByText,
+  getProduct,
+  getProductByLineOrder,
+  getProductByText,
   getSubstances,
   numberDateRegex,
   parseDate,
@@ -29,10 +29,12 @@ import type {
   IExtractedSubstance,
   IFDSTree,
   ILine,
+  IMetaData,
 } from '@topics/engine/model/fds.model.js';
 
 describe('ExtractionRules tests', () => {
-  const iBox: IBox = { x: 1.0, y: 1.0 };
+  const iBox: IBox = { xPositionProportion: 1, yPositionProportion: 1 };
+  const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
 
   describe('Regexps tests', () => {
     describe('NumberDateRegex tests', () => {
@@ -229,14 +231,15 @@ describe('ExtractionRules tests', () => {
   });
 
   describe('Product Name rules tests', () => {
-    describe('GetProductNameByText tests', () => {
+    describe('GetProductByText tests', () => {
       it.each<[ILine[], IExtractedProduct | null]>([
         [undefined, null],
         [
           [
             {
               texts: [],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           null,
@@ -248,9 +251,10 @@ describe('ExtractionRules tests', () => {
                 { content: 'abc', ...iBox },
                 { content: 'def', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
-            { texts: [{ content: 'ghi', ...iBox }], ...iBox },
+            { texts: [{ content: 'ghi', ...iBox }], startBox: iBox, pageNumber: 1 },
           ],
           null,
         ],
@@ -258,14 +262,16 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [{ content: 'quelque chose: nom du produit', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: ' désinfectant 2.0  ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          'désinfectant 2.0',
+          { name: 'désinfectant 2.0', metaData },
         ],
         [
           [
@@ -275,10 +281,11 @@ describe('ExtractionRules tests', () => {
                 { content: ':', ...iBox },
                 { content: ' désinfectant 2.0', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          'désinfectant 2.0',
+          { name: 'désinfectant 2.0', metaData },
         ],
         [
           [
@@ -287,25 +294,27 @@ describe('ExtractionRules tests', () => {
                 { content: 'texte random', ...iBox },
                 { content: 'nom du produit : désinfectant 2.0', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          'désinfectant 2.0',
+          { name: 'désinfectant 2.0', metaData },
         ],
       ])('"%s" input should return %s', (lines, expected) => {
         const fdsTtree: IFDSTree = { 1: { subsections: { 1: { lines, ...iBox } }, ...iBox } };
-        expect(getProductNameByText(fdsTtree)).toEqual(expected);
+        expect(getProductByText(fdsTtree)).toEqual(expected);
       });
     });
 
-    describe('GetProductNameByLineOrder tests', () => {
+    describe('GetProductByLineOrder tests', () => {
       it.each<[ILine[], string, IExtractedProduct | null]>([
         [undefined, '', null],
         [
           [
             {
               texts: [],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           '',
@@ -318,9 +327,10 @@ describe('ExtractionRules tests', () => {
                 { content: 'abc', ...iBox },
                 { content: 'def', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
-            { texts: [{ content: 'ghi', ...iBox }], ...iBox },
+            { texts: [{ content: 'ghi', ...iBox }], startBox: iBox, pageNumber: 1 },
           ],
           '',
           null,
@@ -329,7 +339,8 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [{ content: "nom du produit: pas assez d'occurences", ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           "blabla... nom du produit: pas assez d'occurences blablabla... et pas assez d'occurences",
@@ -339,68 +350,75 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [{ content: 'nom du produit: huile de coude', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           'nom du produit : huile de coude et puis il y a du texte et huile de coude et huile de coude encore plus loin',
-          'huile de coude',
+          { name: 'huile de coude', metaData },
         ],
         [
           [
             {
               texts: [{ content: 'quelque chose: nom du produit', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: ' huile de coude  ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           "quelque chose: nom du produit huile de coude puis encore huile de coude dans le cas où il y a de l'huile de coude",
-          'huile de coude',
+          { name: 'huile de coude', metaData },
         ],
       ])('"%s" input should return %s', (lines, fullText, expected) => {
         const fdsTtree: IFDSTree = { 1: { subsections: { 1: { lines, ...iBox } }, ...iBox } };
-        expect(getProductNameByLineOrder(fdsTtree, { fullText })).toEqual(expected);
+        expect(getProductByLineOrder(fdsTtree, { fullText })).toEqual(expected);
       });
     });
 
-    describe('GetProductName tests', () => {
+    describe('GetProduct tests', () => {
       it.each<[ILine[], string, IExtractedProduct | null]>([
         [[], '', null],
-        // enters getProductNameByText
+        // enters getProductByText
         [
           [
             {
               texts: [{ content: 'quelque chose: nom du produit', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: ' désinfectant 2.0  ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           'quelque chose: nom du produit désinfectant 2.0  ',
-          'désinfectant 2.0',
+          { name: 'désinfectant 2.0', metaData },
         ],
-        // enters getProductNameByLineOrder
+        // enters getProductByLineOrder
         [
           [
             {
               texts: [{ content: 'quelque chose: pas de nom de produit !', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: ' désinfectant 2.0  ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           'quelque chose: nom du produit désinfectant 2.0  et désinfectant 2.0 et désinfectant 2.0',
-          'désinfectant 2.0',
+          { name: 'désinfectant 2.0', metaData },
         ],
       ])('"%s" input should return %s', (lines, fullText, expected) => {
         const fdsTtree: IFDSTree = { 1: { subsections: { 1: { lines, ...iBox } }, ...iBox } };
-        expect(getProductName(fdsTtree, { fullText })).toEqual(expected);
+        expect(getProduct(fdsTtree, { fullText })).toEqual(expected);
       });
     });
   });
@@ -413,7 +431,8 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           null,
@@ -422,7 +441,8 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [{ content: 'blablabla : 1.3 fournisseur ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           null,
@@ -431,10 +451,11 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [{ content: '1.3  fournisseur  : @Padoa - FDS SaaS ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          '@Padoa - FDS SaaS',
+          { name: '@Padoa - FDS SaaS', metaData },
         ],
         [
           [
@@ -443,42 +464,47 @@ describe('ExtractionRules tests', () => {
                 { content: '1.3  fournisseur : ', ...iBox },
                 { content: ' @Padoa - FDS SaaS  ', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          '@Padoa - FDS SaaS',
+          { name: '@Padoa - FDS SaaS', metaData },
         ],
         [
           [
             {
               texts: [{ content: '1.3  fournisseur : ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: ' @Padoa - FDS SaaS  ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          '@Padoa - FDS SaaS',
+          { name: '@Padoa - FDS SaaS', metaData },
         ],
         // entering cleanProducer
         [
           [
             {
               texts: [{ content: '1.3  fournisseur  : @Padoa - FDS SaaS. ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          '@Padoa - FDS SaaS',
+          { name: '@Padoa - FDS SaaS', metaData },
         ],
         [
           [
             {
               texts: [{ content: '1.3  fournisseur  : E.T ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
-          'E.T',
+          { name: 'E.T', metaData },
         ],
       ])('"%s" input should return %s', (lines, expected) => {
         const fdsTtree: IFDSTree = { 1: { subsections: { 3: { lines, ...iBox } }, ...iBox } };
@@ -495,7 +521,8 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           [],
@@ -504,11 +531,13 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [{ content: ' h350i ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: 'et puis aussi euh212 mais pas euh132 mais euh401 si', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           ['h350i', 'euh212', 'euh401'],
@@ -520,11 +549,13 @@ describe('ExtractionRules tests', () => {
                 { content: 'mentions de danger : h 304 : blabla', ...iBox },
                 { content: 'et puis aussi une phrase P qui est p331', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: 'associé à une autre phrase P complexe p301+ p 310', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           ['h304', 'p331', 'p301 + p310'],
@@ -544,13 +575,15 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           [
             {
               texts: [],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           [],
@@ -563,14 +596,16 @@ describe('ExtractionRules tests', () => {
                 { content: 'cas : 64742-52-5 ', ...iBox },
                 { content: 'de base ce : 265-155-0 ', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [
                 { content: 'cas : 67762-38-3 ', ...iBox },
                 { content: "esters d'acide gras ce : 267-015-4 ", ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           [],
@@ -586,11 +621,13 @@ describe('ExtractionRules tests', () => {
                 { content: ' cas : 64742-52-5 ', ...iBox },
                 { content: ' ce : 265-155-0 ', ...iBox },
               ],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: ' ce : 265-155-0 ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           [],
@@ -603,19 +640,23 @@ describe('ExtractionRules tests', () => {
           [
             {
               texts: [{ content: 'cas : 64742-52-5 ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: 'ce 265-155-0', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: 'ce : 221-838-5 ', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
             {
               texts: [{ content: 'cas 55965-84-9', ...iBox }],
-              ...iBox,
+              startBox: iBox,
+              pageNumber: 1,
             },
           ],
           [],
@@ -652,20 +693,20 @@ describe('ExtractionRules tests', () => {
 
       const fdsTree: IFDSTree = {
         '1': {
-          x: 2,
-          y: 5.873,
+          xPositionProportion: 2,
+          yPositionProportion: 5.873,
           subsections: {
             '1': {
-              x: 2,
-              y: 6.666,
+              xPositionProportion: 2,
+              yPositionProportion: 6.666,
               lines: [
                 {
-                  x: 1.988,
-                  y: 8.145,
+                  startBox: { xPositionProportion: 1, yPositionProportion: 1 },
+                  pageNumber: 1,
                   texts: [
                     {
-                      x: 1.988,
-                      y: 8.145,
+                      xPositionProportion: 1.988,
+                      yPositionProportion: 8.145,
                       content: productName,
                     },
                   ],
@@ -673,27 +714,27 @@ describe('ExtractionRules tests', () => {
               ],
             },
             '3': {
-              x: 2,
-              y: 28.54,
+              xPositionProportion: 2,
+              yPositionProportion: 28.54,
               lines: [
                 {
-                  x: 2,
-                  y: 28.54,
+                  startBox: { xPositionProportion: 2, yPositionProportion: 28.54 },
+                  pageNumber: 1,
                   texts: [
                     {
-                      x: 2,
-                      y: 28.54,
+                      xPositionProportion: 2,
+                      yPositionProportion: 28.54,
                       content: section1point3,
                     },
                   ],
                 },
                 {
-                  x: 2,
-                  y: 29.28,
+                  startBox: { xPositionProportion: 1, yPositionProportion: 1 },
+                  pageNumber: 1,
                   texts: [
                     {
-                      x: 2,
-                      y: 29.28,
+                      xPositionProportion: 2,
+                      yPositionProportion: 29.28,
                       content: producerName,
                     },
                   ],
@@ -703,30 +744,30 @@ describe('ExtractionRules tests', () => {
           },
         },
         '2': {
-          x: 2,
-          y: 34.598,
+          xPositionProportion: 2,
+          yPositionProportion: 34.598,
           subsections: {
             '2': {
-              x: 2,
-              y: 107.628,
+              xPositionProportion: 2,
+              yPositionProportion: 107.628,
               lines: [
                 {
-                  x: 13.575,
-                  y: 115.139,
+                  startBox: { xPositionProportion: 13.575, yPositionProportion: 115.139 },
+                  pageNumber: 1,
                   texts: [
                     {
-                      x: 13.575,
-                      y: 115.139,
+                      xPositionProportion: 13.575,
+                      yPositionProportion: 115.139,
                       content: h317text,
                     },
                     {
-                      x: 13.575,
-                      y: 116.994,
+                      xPositionProportion: 13.575,
+                      yPositionProportion: 116.994,
                       content: p261Text,
                     },
                     {
-                      x: 13.575,
-                      y: 118.667,
+                      xPositionProportion: 13.575,
+                      yPositionProportion: 118.667,
                       content: pAdditionedText,
                     },
                   ],
@@ -736,30 +777,30 @@ describe('ExtractionRules tests', () => {
           },
         },
         '3': {
-          x: 2,
-          y: 129.159,
+          xPositionProportion: 2,
+          yPositionProportion: 129.159,
           subsections: {
             '2': {
-              x: 2,
-              y: 131.934,
+              xPositionProportion: 2,
+              yPositionProportion: 131.934,
               lines: [
                 {
-                  x: 11.197,
-                  y: 140.415,
+                  startBox: { xPositionProportion: 11.197, yPositionProportion: 140.415 },
+                  pageNumber: 1,
                   texts: [
                     {
-                      x: 12.76,
-                      y: 140.415,
+                      xPositionProportion: 12.76,
+                      yPositionProportion: 140.415,
                       content: ceNumberTitle,
                     },
                     {
-                      x: 13.544,
-                      y: 140.415,
+                      xPositionProportion: 13.544,
+                      yPositionProportion: 140.415,
                       content: ceNumberText,
                     },
                     {
-                      x: 13.795,
-                      y: 142.031,
+                      xPositionProportion: 13.795,
+                      yPositionProportion: 142.031,
                       content: numeroCasText,
                     },
                   ],
@@ -772,8 +813,8 @@ describe('ExtractionRules tests', () => {
 
       const expected: IExtractedData = {
         date: { formattedDate: '2015/05/18', inTextDate: '18/05/2015' },
-        product: 'ps 2175',
-        producer: 'societe industrielle de diffusion',
+        product: { name: 'ps 2175', metaData },
+        producer: { name: 'societe industrielle de diffusion', metaData },
         hazards: ['h317', 'p261', 'p303 + p361 + p353'],
         substances: [{ casNumber: '3251-23-8', ceNumber: '233-826-7' }],
       };

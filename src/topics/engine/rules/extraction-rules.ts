@@ -15,7 +15,7 @@ import { MONTH_MAPPING } from '@topics/engine/rules/rules.constants.js';
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
     date: getDate(fullText),
-    product: getProductName(fdsTreeCleaned, { fullText }),
+    product: getProduct(fdsTreeCleaned, { fullText }),
     producer: getProducer(fdsTreeCleaned),
     hazards: getHazards(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
@@ -124,39 +124,42 @@ const parseDateFromEnglishNumberRegex = (date: string): Date | null => {
 //------------------------------------- PRODUCT NAME -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getProductName = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
-  return getProductNameByText(fdsTree) || getProductNameByLineOrder(fdsTree, { fullText });
+export const getProduct = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
+  return getProductByText(fdsTree) || getProductByLineOrder(fdsTree, { fullText });
 };
 
-export const getProductNameByText = (fdsTree: IFDSTree): IExtractedProduct | null => {
+export const getProductByText = (fdsTree: IFDSTree): IExtractedProduct | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
 
   let nameInCurrentLine = false;
   for (const line of linesToSearchIn) {
+    const { pageNumber, startBox, endBox } = line;
+    const metaData = { pageNumber, startBox, endBox };
     const lineText = line.texts.map(({ content }) => content).join(' ');
     const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
-    if (nameInCurrentLine) return text;
+    if (nameInCurrentLine) return { name: text, metaData };
 
     if (_.includes(lineText.replaceAll(' ', ''), 'nomduproduit')) {
       if (_.includes(text.replaceAll(' ', ''), 'nomduproduit')) {
         nameInCurrentLine = true;
         continue;
       }
-      return text;
+      return { name: text, metaData };
     }
   }
   return null;
 };
 
-export const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
+export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
   const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
   if (_.isEmpty(linesToSearchIn)) return null;
 
   for (const line of linesToSearchIn) {
+    const { pageNumber, startBox, endBox } = line;
     const lineText = line.texts.map(({ content }) => content).join('');
     const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
@@ -173,7 +176,7 @@ export const getProductNameByLineOrder = (fdsTree: IFDSTree, { fullText }: { ful
     const numberOfOtherMatchesInDocument = fullText
       .replaceAll(' ', '')
       .match(new RegExp(`${text.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
-    if (numberOfOtherMatchesInDocument?.length >= 3) return text;
+    if (numberOfOtherMatchesInDocument?.length >= 3) return { name: text, metaData: { pageNumber, startBox, endBox } };
   }
   return null;
 };
@@ -202,19 +205,21 @@ export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
     )
       continue;
 
-    return cleanProducer(text);
+    const { pageNumber, startBox, endBox } = line;
+
+    return { name: cleanProducerName(text), metaData: { pageNumber, startBox, endBox } };
   }
   return null;
 };
 
-const cleanProducer = (producer: IExtractedProducer): IExtractedProducer => {
-  if (!producer?.endsWith('.')) return producer;
-  const producerSplit = producer.split(/ |\.|-/);
+const cleanProducerName = (text: string): string => {
+  if (!text?.endsWith('.')) return text;
+  const producerSplit = text.split(/ |\.|-/);
   const wordBeforePoint = producerSplit[producerSplit.length - 2];
   const wordBeforePointIsAChar = wordBeforePoint?.length === 1;
 
-  if (wordBeforePointIsAChar) return producer;
-  return producer.slice(0, -1);
+  if (wordBeforePointIsAChar) return text;
+  return text.slice(0, -1);
 };
 
 //----------------------------------------------------------------------------------------------

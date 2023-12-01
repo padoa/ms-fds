@@ -5,7 +5,7 @@ import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 import type { Options } from 'pdf2pic/dist/types/options.js';
 
-import type { IBox, ILine, IText } from '@topics/engine/model/fds.model.js';
+import type { IBox, ILine, IPageDimension, IText } from '@topics/engine/model/fds.model.js';
 
 const tempImageFileName = 'fds-image';
 const tempImageFolderName = '/tmp';
@@ -25,8 +25,8 @@ export class PdfImageTextExtractorService {
     await this.pdfToImage(fdsFilePath, { numberOfPagesToParse });
 
     const worker = await createWorker('fra');
-    const texts = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (pageNumber) => {
-      return this.getTextFromImage(worker, pageNumber);
+    const texts = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (index) => {
+      return this.getTextFromImage(worker, index + 1);
     });
     await worker.terminate();
 
@@ -43,26 +43,29 @@ export class PdfImageTextExtractorService {
   };
 
   private static getTextFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<ILine[]> => {
-    const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber + 1}.${tempImageFormat}`;
+    const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber}.${tempImageFormat}`;
     const ret = await worker.recognize(imagePath);
-    return this.hocrToLines(ret.data.hocr);
+    return this.hocrToLines(ret.data.hocr, pageNumber);
   };
 
-  private static hocrToLines = (hocr: string): ILine[] => {
+  private static hocrToLines = (hocr: string, pageNumber: number): ILine[] => {
     const hocrByLine = hocr.split('\n');
+    const pageDimension = this.getHocrPageDimension(_.first(hocrByLine));
+
     return _.reduce(
       hocrByLine,
       (lines, hocrElement) => {
         if (this.isHocrElementAWord(hocrElement)) {
-          const text = this.getTextInHocrWordElement(hocrElement);
+          const text = this.getTextInHocrWordElement(hocrElement, pageDimension);
           const lastLine = _.last(lines);
           lastLine.texts.push(text);
           return lines;
         }
 
         if (this.isHocrElementALine(hocrElement)) {
-          const box = this.getBoxInHocrElement(hocrElement);
-          lines.push({ ...box, texts: [] } as ILine);
+          const startBox = this.getStartBoxInHocrElement(hocrElement, pageDimension);
+          const endBox = this.getEndBoxInHocrElement(hocrElement, pageDimension);
+          lines.push({ startBox, endBox, pageNumber, texts: [] });
           return lines;
         }
 
@@ -80,14 +83,26 @@ export class PdfImageTextExtractorService {
     return hocrElement.trim().startsWith("<span class='ocrx_word'");
   };
 
-  private static getTextInHocrWordElement = (hocrWordElement: string): IText => {
+  private static getTextInHocrWordElement = (hocrWordElement: string, pageDimension: IPageDimension): IText => {
     const content = decode(hocrWordElement.match(/>(.*)<\/span>/)[1].toLowerCase());
-    const box = this.getBoxInHocrElement(hocrWordElement);
-    return { ...box, content };
+    const startBox = this.getStartBoxInHocrElement(hocrWordElement, pageDimension);
+    return { ...startBox, content };
   };
 
-  private static getBoxInHocrElement = (hocrElement: string): IBox => {
+  private static getHocrPageDimension = (hocrFirstElement: string): IPageDimension => {
+    const [, , , w, h] = hocrFirstElement.match(/bbox (\d+) (\d+) (\d+) (\d+);/);
+    return { width: +w, height: +h };
+  };
+
+  private static getStartBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IBox => {
     const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
-    return { x: +x, y: +y };
+    const { width, height } = pageDimension;
+    return { xPositionProportion: +x / width, yPositionProportion: +y / height };
+  };
+
+  private static getEndBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IBox => {
+    const [, x, y, w, h] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
+    const { width, height } = pageDimension;
+    return { xPositionProportion: (+x + (+w - +x)) / width, yPositionProportion: (+y + (+h - +y)) / height };
   };
 }
