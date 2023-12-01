@@ -4,7 +4,7 @@ import { SectionRulesService } from '@topics/engine/rules/section-rules.service.
 
 describe('Section rules tests', () => {
   describe('isAnInterestingSection', () => {
-    it.each([
+    it.each<{ section: number; expected: boolean }>([
       {
         section: null,
         expected: false,
@@ -55,7 +55,7 @@ describe('Section rules tests', () => {
   });
 
   describe('isAnInterestingSubSection', () => {
-    it.each([
+    it.each<{ section: number; subSection: number; expected: boolean }>([
       {
         section: 1,
         subSection: 1,
@@ -120,7 +120,7 @@ describe('Section rules tests', () => {
   });
 
   describe('computeNewSection', () => {
-    it.each([
+    it.each<{ message: string; text: string; section: number; expected: number }>([
       {
         message: 'should handle null text',
         text: null,
@@ -178,7 +178,7 @@ describe('Section rules tests', () => {
   });
 
   describe('computeNewSubSection', () => {
-    it.each([
+    it.each<{ message: string; text: string; section: number; subSection: number; expected: number }>([
       {
         message: 'should handle null text',
         text: null,

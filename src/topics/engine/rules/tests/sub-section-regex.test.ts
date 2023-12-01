@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { SUB_SECTIONS_REGEX } from '@topics/engine/rules/rules.constants.js';
 
 describe('Sub section regex tests', () => {
-  it.each([
+  it.each<{ section: number; subSection: number; input: string; expected: boolean }>([
     {
       section: 1,
       subSection: 1,

@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { SECTIONS_REGEX } from '@topics/engine/rules/rules.constants.js';
 
 describe('Section regex tests', () => {
-  it.each([
+  it.each<{ section: number; input: string; expected: boolean }>([
     {
       section: 1,
       input: 'rubrique1',
