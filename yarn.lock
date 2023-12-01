@@ -804,6 +804,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@padoa/spawn-director@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "@padoa/spawn-director@npm:4.0.4"
+  peerDependencies:
+    "@padoa/meta": ^5.0.0
+    "@padoa/promise": ^3.0.0
+  checksum: d4768324f16dd251d11a00b28e770a76be620b38a70a23aee2495dddd3bd46d5802071db10260988c2b9d5d32a50e8c0ff180481718b2e4b12ac8689cf927d4c
+  languageName: node
+  linkType: hard
+
 "@padoa/swagger@npm:^15.0.3":
   version: 15.0.4
   resolution: "@padoa/swagger@npm:15.0.4"
@@ -5618,6 +5628,7 @@ __metadata:
     "@padoa/prettier": ^2.0.2
     "@padoa/promise": ^3.0.3
     "@padoa/sanitizer": ^1.2.6
+    "@padoa/spawn-director": ^4.0.4
     "@padoa/swagger": ^15.0.3
     "@padoa/tasks": ^4.0.3
     "@padoa/time": ^2.0.3

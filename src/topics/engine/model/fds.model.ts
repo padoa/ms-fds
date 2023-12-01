@@ -43,14 +43,14 @@ export type ISection = IBox & {
 
 export type ISubsection = IBox & { lines: ILine[] };
 
+export type ILine = IMetaData & {
+  texts: IText[];
+};
+
 export type IMetaData = {
   pageNumber: number;
   startBox: IBox;
   endBox?: IBox;
-};
-
-export type ILine = IMetaData & {
-  texts: IText[];
 };
 
 export type IText = IBox & {
