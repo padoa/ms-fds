@@ -235,6 +235,7 @@ export const getHazards = (fdsTree: IFDSTree): IExtractedHazard[] => {
   // TODO: possible improvement: concat all lines then use regex once to extract hazards
   return _(textInEachLine)
     .map((text) => {
+      // TODO: add unit tests on regexes
       const customHazards = ['h350i', 'h360f', 'h360d', 'h360fd', 'h360df', 'h361f', 'h361d', 'h361fd'];
       const hazardsRegex = `(${customHazards.join(')|(')})|(h[2-4]\\d{2})`;
       const precautionRegex = '(((p[1-5]\\d{2})\\+?)+)';
