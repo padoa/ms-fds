@@ -13,44 +13,36 @@ export class FDSTreeBuilderService {
         const fullTextLine = line.texts.map((t) => t.content).join('');
         const fullText = `${fullTextBeforeUpdate}${fullTextLine}`;
 
-        const { interestingSection, sectionNumber: newSection } = SectionRulesService.isAnInterestingSection(fullTextLine, { currentSection });
-        if (interestingSection) {
-          return {
-            fdsTree: this.addFDSTreeSection(fdsTree, { line, sectionNumber: newSection }),
-            currentSection: newSection,
-            currentSubSection: 0,
-            xCounts,
-            fullText,
-          };
+        // SECTION
+        const newSection = SectionRulesService.computeNewSection(fullTextLine, { currentSection });
+        const sectionChanged = newSection !== currentSection;
+        if (sectionChanged) {
+          let newFdsTree = fdsTree;
+          if (SectionRulesService.isAnInterestingSection(newSection)) {
+            newFdsTree = this.addFDSTreeSection(fdsTree, { line, sectionNumber: newSection });
+          }
+
+          return { fdsTree: newFdsTree, currentSection: newSection, currentSubSection: 0, xCounts, fullText };
         }
 
-        const { interestingSubSection, subSectionNumber: newSubSection } = SectionRulesService.isAnInterestingSubSection(fullTextLine, {
-          currentSection,
-          currentSubSection,
-        });
-        if (interestingSubSection) {
-          return {
-            fdsTree: this.addFDSTreeSubSection(fdsTree, {
+        // SUBSECTION
+        const newSubSection = SectionRulesService.computeNewSubSection(fullTextLine, { currentSection, currentSubSection });
+        const subSectionChanged = newSubSection !== currentSubSection;
+        if (subSectionChanged) {
+          let newFdsTree = fdsTree;
+          if (SectionRulesService.isAnInterestingSubSection(currentSection, newSubSection)) {
+            newFdsTree = this.addFDSTreeSubSection(fdsTree, {
               line,
               sectionNumber: currentSection,
               subSectionNumber: newSubSection,
-            }),
-            currentSection,
-            currentSubSection: newSubSection,
-            xCounts,
-            fullText,
-          };
+            });
+          }
+
+          return { fdsTree: newFdsTree, currentSection, currentSubSection: newSubSection, xCounts, fullText };
         }
 
-        if (SectionRulesService.isSwitchingSection(fullTextLine, { currentSection })) {
-          return { fdsTree, currentSection: currentSection + 1, currentSubSection: null, xCounts, fullText };
-        }
-
-        if (SectionRulesService.isSwitchingSubSection(fullTextLine, { currentSection, currentSubSection })) {
-          return { fdsTree, currentSection, currentSubSection: currentSubSection + 1, xCounts, fullText };
-        }
-
-        if (SectionRulesService.shouldAddLineInCurrentSubSection(currentSection, currentSubSection)) {
+        // LINE
+        if (SectionRulesService.shouldAddLineInSubSection(currentSection, currentSubSection)) {
           return {
             fdsTree: this.addFdsTreeLine(fdsTree, {
               line,
@@ -66,7 +58,7 @@ export class FDSTreeBuilderService {
 
         return { fdsTree, currentSection, currentSubSection, xCounts, fullText };
       },
-      { fdsTree: {}, currentSection: null, currentSubSection: null, xCounts: {}, fullText: '', currentLine: null } as IBuildTree,
+      { fdsTree: {}, currentSection: null, currentSubSection: null, xCounts: {}, fullText: '' },
     );
 
     return {

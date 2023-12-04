@@ -2,7 +2,6 @@ import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { IFDSTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
-import type { IInterestingSection, IInterestingSubSection } from '@topics/engine/rules/rules.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
 import { FDSTreeBuilderService } from '@topics/engine/transformer/fds-tree-builder.service.js';
 import {
@@ -17,35 +16,31 @@ import { INCREMENT_VALUE, POSITION_X, POSITION_Y, TEXT_CONTENT } from '@topics/e
 
 describe('FdsTreeBuilderService tests', () => {
   describe('BuildFdsTree tests', () => {
-    let isAnInterestingSectionSpy: SpyInstance<[text: string, { currentSection: number }], IInterestingSection>;
-    let isAnInterestingSubSectionSpy: SpyInstance<[text: string, { currentSection: number; currentSubSection: number }], IInterestingSubSection>;
-    let isSwitchingSectionSpy: SpyInstance<[text: string, { currentSection: number }], boolean>;
-    let isSwitchingSubSectionSpy: SpyInstance<[text: string, { currentSection: number; currentSubSection: number }], boolean>;
-    let shouldAddLineInCurrentSubSectionSpy: SpyInstance<[currentSection: number, currentSubSection: number], boolean>;
+    let isAnInterestingSectionSpy: SpyInstance<[section: number], boolean>;
+    let isAnInterestingSubSectionSpy: SpyInstance<[section: number, subSection: number], boolean>;
+    let computeNewSectionSpy: SpyInstance<[text: string, { currentSection: number }], number>;
+    let computeNewSubSectionSpy: SpyInstance<[text: string, { currentSection: number; currentSubSection: number }], number>;
 
     beforeEach(() => {
       isAnInterestingSectionSpy = vi.spyOn(SectionRulesService, 'isAnInterestingSection');
       isAnInterestingSubSectionSpy = vi.spyOn(SectionRulesService, 'isAnInterestingSubSection');
-      isSwitchingSectionSpy = vi.spyOn(SectionRulesService, 'isSwitchingSection');
-      isSwitchingSubSectionSpy = vi.spyOn(SectionRulesService, 'isSwitchingSubSection');
-      shouldAddLineInCurrentSubSectionSpy = vi.spyOn(SectionRulesService, 'shouldAddLineInCurrentSubSection');
+      computeNewSectionSpy = vi.spyOn(SectionRulesService, 'computeNewSection');
+      computeNewSubSectionSpy = vi.spyOn(SectionRulesService, 'computeNewSubSection');
     });
 
     afterEach(() => {
       isAnInterestingSubSectionSpy.mockRestore();
       isAnInterestingSectionSpy.mockRestore();
-      isSwitchingSectionSpy.mockRestore();
-      isSwitchingSubSectionSpy.mockRestore();
-      shouldAddLineInCurrentSubSectionSpy.mockRestore();
+      computeNewSectionSpy.mockRestore();
+      computeNewSubSectionSpy.mockRestore();
     });
 
     describe('BuildFdsTree tests without sections', () => {
       beforeEach(() => {
-        isAnInterestingSectionSpy.mockImplementation((): IInterestingSection => ({ interestingSection: false, sectionNumber: null }));
-        isAnInterestingSubSectionSpy.mockImplementation((): IInterestingSubSection => ({ interestingSubSection: false }));
-        isSwitchingSectionSpy.mockImplementation((): boolean => false);
-        isSwitchingSubSectionSpy.mockImplementation((): boolean => false);
-        shouldAddLineInCurrentSubSectionSpy.mockImplementation((): boolean => false);
+        isAnInterestingSectionSpy.mockImplementation(() => false);
+        isAnInterestingSubSectionSpy.mockImplementation(() => false);
+        computeNewSectionSpy.mockImplementation((text, { currentSection }) => currentSection);
+        computeNewSubSectionSpy.mockImplementation((text, { currentSubSection }) => currentSubSection);
       });
 
       it('should return empty values when providing undefined lines', () => {
@@ -83,13 +78,10 @@ describe('FdsTreeBuilderService tests', () => {
 
     describe('BuildFdsTree tests with sections', () => {
       beforeEach(() => {
-        isAnInterestingSectionSpy
-          .mockImplementationOnce((): IInterestingSection => ({ interestingSection: true, sectionNumber: 1 }))
-          .mockImplementationOnce((): IInterestingSection => ({ interestingSection: true, sectionNumber: 2 }));
-        isAnInterestingSubSectionSpy.mockImplementation((): IInterestingSubSection => ({ interestingSubSection: false }));
-        isSwitchingSectionSpy.mockImplementation((): boolean => false);
-        isSwitchingSubSectionSpy.mockImplementation((): boolean => false);
-        shouldAddLineInCurrentSubSectionSpy.mockImplementation((): boolean => false);
+        isAnInterestingSectionSpy.mockImplementation(() => true);
+        isAnInterestingSubSectionSpy.mockImplementation(() => false);
+        computeNewSectionSpy.mockImplementationOnce(() => 1).mockImplementation(() => 2);
+        computeNewSubSectionSpy.mockImplementation((text, { currentSubSection }) => currentSubSection);
       });
 
       it('should return fds tree when given a line with one section', () => {
@@ -134,15 +126,10 @@ describe('FdsTreeBuilderService tests', () => {
 
     describe('BuildFdsTree tests with a section and subsections', () => {
       beforeEach(() => {
-        isAnInterestingSectionSpy
-          .mockImplementationOnce((): IInterestingSection => ({ interestingSection: true, sectionNumber: 1 }))
-          .mockImplementation((): IInterestingSection => ({ interestingSection: false, sectionNumber: 1 }));
-        isAnInterestingSubSectionSpy
-          .mockImplementationOnce((): IInterestingSubSection => ({ interestingSubSection: true, subSectionNumber: 1 }))
-          .mockImplementationOnce((): IInterestingSubSection => ({ interestingSubSection: true, subSectionNumber: 2 }));
-        isSwitchingSectionSpy.mockImplementation((): boolean => false);
-        isSwitchingSubSectionSpy.mockImplementation((): boolean => false);
-        shouldAddLineInCurrentSubSectionSpy.mockImplementation((): boolean => false);
+        isAnInterestingSectionSpy.mockImplementationOnce(() => true).mockImplementation(() => false);
+        isAnInterestingSubSectionSpy.mockImplementation(() => true);
+        computeNewSectionSpy.mockImplementation(() => 1);
+        computeNewSubSectionSpy.mockImplementationOnce(() => 1).mockImplementation(() => 2);
       });
 
       it('should return fds tree when given lines with a section and subsection', () => {
@@ -199,13 +186,12 @@ describe('FdsTreeBuilderService tests', () => {
       });
     });
 
-    describe('BuildFdsTree tests with section switching', () => {
+    describe('BuildFdsTree tests with uninteresting section switching', () => {
       beforeEach(() => {
-        isAnInterestingSectionSpy.mockImplementation((): IInterestingSection => ({ interestingSection: false, sectionNumber: null }));
-        isAnInterestingSubSectionSpy.mockImplementation((): IInterestingSubSection => ({ interestingSubSection: false }));
-        isSwitchingSectionSpy.mockImplementation((): boolean => true);
-        isSwitchingSubSectionSpy.mockImplementation((): boolean => false);
-        shouldAddLineInCurrentSubSectionSpy.mockImplementation((): boolean => false);
+        isAnInterestingSectionSpy.mockImplementation(() => false);
+        isAnInterestingSubSectionSpy.mockImplementation(() => false);
+        computeNewSectionSpy.mockImplementation(() => 1);
+        computeNewSubSectionSpy.mockImplementation((text, { currentSubSection }) => currentSubSection);
       });
 
       it('should return fds tree when switching section', () => {
@@ -220,13 +206,12 @@ describe('FdsTreeBuilderService tests', () => {
       });
     });
 
-    describe('BuildFdsTree tests with subSection switching', () => {
+    describe('BuildFdsTree tests with uninteresting subSection switching', () => {
       beforeEach(() => {
-        isAnInterestingSectionSpy.mockImplementation((): IInterestingSection => ({ interestingSection: false, sectionNumber: null }));
-        isAnInterestingSubSectionSpy.mockImplementation((): IInterestingSubSection => ({ interestingSubSection: false }));
-        isSwitchingSectionSpy.mockImplementation((): boolean => false);
-        isSwitchingSubSectionSpy.mockImplementation((): boolean => true);
-        shouldAddLineInCurrentSubSectionSpy.mockImplementation((): boolean => false);
+        isAnInterestingSectionSpy.mockImplementation(() => false);
+        isAnInterestingSubSectionSpy.mockImplementation(() => false);
+        computeNewSectionSpy.mockImplementation((text, { currentSection }) => currentSection);
+        computeNewSubSectionSpy.mockImplementation(() => 1);
       });
 
       it('should return fds tree when switching subSection', () => {
@@ -243,15 +228,10 @@ describe('FdsTreeBuilderService tests', () => {
 
     describe('BuildFdsTree tests when adding line to current subSection', () => {
       beforeEach(() => {
-        isAnInterestingSectionSpy
-          .mockImplementationOnce((): IInterestingSection => ({ interestingSection: true, sectionNumber: 1 }))
-          .mockImplementation((): IInterestingSection => ({ interestingSection: false, sectionNumber: 1 }));
-        isAnInterestingSubSectionSpy
-          .mockImplementationOnce((): IInterestingSubSection => ({ interestingSubSection: true, subSectionNumber: 1 }))
-          .mockImplementation((): IInterestingSubSection => ({ interestingSubSection: false }));
-        isSwitchingSectionSpy.mockImplementation((): boolean => false);
-        isSwitchingSubSectionSpy.mockImplementation((): boolean => false);
-        shouldAddLineInCurrentSubSectionSpy.mockImplementationOnce((): boolean => true);
+        isAnInterestingSectionSpy.mockImplementation(() => true);
+        isAnInterestingSubSectionSpy.mockImplementation(() => true);
+        computeNewSectionSpy.mockImplementation(() => 1);
+        computeNewSubSectionSpy.mockImplementation(() => 1);
       });
 
       it('should return fds tree with line added to current subSection', () => {
