@@ -28,12 +28,64 @@ import type {
   IExtractedProduct,
   IExtractedSubstance,
   IFDSTree,
-  ILine,
   IMetaData,
 } from '@topics/engine/model/fds.model.js';
+import {
+  aFdsTree,
+  aFdsTreeWithAllSectionsWithUsefulInfo,
+  aFdsTreeWithAllSectionsWithoutUsefulInfo,
+  anEmptyFdsTreeWithAllSections,
+} from '@topics/engine/fixtures/fds-tree.mother.js';
+import {
+  POSITION_X,
+  POSITION_Y,
+  PRODUCT_NAME,
+  PRODUCT_IDENTIFIER_WITH_COLON,
+  PLACEHOLDER_TEXT_1,
+  PLACEHOLDER_TEXT_2,
+  PLACEHOLDER_TEXT_3,
+  TEXT_CONTENT,
+  PRODUCER_NAME,
+  PRODUCER_NAME_WITH_DOT,
+  H_HAZARD,
+  EUH_HAZARD,
+  P_HAZARD,
+  MULTIPLE_P_HAZARD,
+  CAS_NUMBER,
+  CE_NUMBER,
+  PRODUCER_IDENTIFIER,
+  CAS_NUMBER_TEXT,
+  CE_NUMBER_TEXT,
+  H_HAZARD_WITH_DETAILS,
+  MULTIPLE_P_HAZARD_WITH_DETAILS,
+} from '@topics/engine/fixtures/fixtures.constants.js';
+import {
+  aLine,
+  aLineWithCASAndCENumberIn2Texts,
+  aLineWithCASNumber,
+  aLineWithCENumber,
+  aLineWithEUHHazard,
+  aLineWithHHazard,
+  aLineWithMultiplePHazard,
+  aLineWithOneText,
+  aLineWithProducerIdentifierOnly,
+  aLineWithProducerEndingWithDotIn1Text,
+  aLineWithProducerIn1Text,
+  aLineWithProducerIn2Texts,
+  aLineWithProducerNameOnly,
+  aLineWithProducerWithDotIn1Text,
+  aLineWithProductIdentifierOnly,
+  aLineWithProductIn1Text,
+  aLineWithProductIn2Texts,
+  aLineWithProductNameOnly,
+  aLineWithTwoHazards,
+} from '@topics/engine/fixtures/line.mother.js';
+import { aSection } from '@topics/engine/fixtures/section.mother.js';
+import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics/engine/fixtures/sub-section.mother.js';
+import { aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/fixtures/text.mother.js';
 
 describe('ExtractionRules tests', () => {
-  const iBox: IBox = { xPositionProportion: 1, yPositionProportion: 1 };
+  const iBox: IBox = { xPositionProportion: POSITION_X, yPositionProportion: POSITION_Y };
   const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
 
   describe('Regexps tests', () => {
@@ -232,594 +284,326 @@ describe('ExtractionRules tests', () => {
 
   describe('Product Name rules tests', () => {
     describe('GetProductByText tests', () => {
-      it.each<[ILine[], IExtractedProduct | null]>([
-        [undefined, null],
+      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedProduct | null }]>([
         [
-          [
-            {
-              texts: [],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          null,
+          {
+            message: 'should return null when providing a fdsTree with all subsections but all empty',
+            fdsTree: anEmptyFdsTreeWithAllSections().properties,
+            expected: null,
+          },
         ],
         [
-          [
-            {
-              texts: [
-                { content: 'abc', ...iBox },
-                { content: 'def', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            { texts: [{ content: 'ghi', ...iBox }], startBox: iBox, pageNumber: 1 },
-          ],
-          null,
+          {
+            message: 'should return null when providing a fdsTree with all subsections filled without product name',
+            fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+            expected: null,
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: 'quelque chose: nom du produit', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: ' désinfectant 2.0  ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: 'désinfectant 2.0', metaData },
+          {
+            message: 'should return product name when it is contained in 1 text',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn1Text().properties]).properties }).properties,
+            ).properties,
+            expected: { name: PRODUCT_NAME, metaData },
+          },
         ],
         [
-          [
-            {
-              texts: [
-                { content: ' nom du produit ', ...iBox },
-                { content: ':', ...iBox },
-                { content: ' désinfectant 2.0', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: 'désinfectant 2.0', metaData },
+          {
+            message: 'should return product name when it is contained in 2 different texts of same line',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn2Texts().properties]).properties }).properties,
+            ).properties,
+            expected: { name: PRODUCT_NAME, metaData },
+          },
         ],
-        [
-          [
-            {
-              texts: [
-                { content: 'texte random', ...iBox },
-                { content: 'nom du produit : désinfectant 2.0', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: 'désinfectant 2.0', metaData },
-        ],
-      ])('"%s" input should return %s', (lines, expected) => {
-        const fdsTtree: IFDSTree = { 1: { subsections: { 1: { lines, ...iBox } }, ...iBox } };
-        expect(getProductByText(fdsTtree)).toEqual(expected);
+      ])('$message', ({ fdsTree, expected }) => {
+        expect(getProductByText(fdsTree)).toEqual(expected);
       });
     });
 
     describe('GetProductByLineOrder tests', () => {
-      it.each<[ILine[], string, IExtractedProduct | null]>([
-        [undefined, '', null],
+      it.each<[{ message: string; fdsTree: IFDSTree; fullText: string; expected: IExtractedProduct | null }]>([
         [
-          [
-            {
-              texts: [],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          '',
-          null,
+          {
+            message: 'should return null when providing a fdsTree with all subsections but all empty',
+            fdsTree: anEmptyFdsTreeWithAllSections().properties,
+            fullText: '',
+            expected: null,
+          },
         ],
         [
-          [
-            {
-              texts: [
-                { content: 'abc', ...iBox },
-                { content: 'def', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            { texts: [{ content: 'ghi', ...iBox }], startBox: iBox, pageNumber: 1 },
-          ],
-          '',
-          null,
+          {
+            message: 'should return null when providing a fdsTree with all subsections filled without product name',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([
+                  aLine().withTexts([aTextWithRandomContent1().properties, aTextWithRandomContent2().properties]).properties,
+                  aLine().withTexts([aTextWithRandomContent3().properties]).properties,
+                ]).properties,
+              }).properties,
+            ).properties,
+            fullText: `${PLACEHOLDER_TEXT_1}${PLACEHOLDER_TEXT_2}${PLACEHOLDER_TEXT_3}`,
+            expected: null,
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: "nom du produit: pas assez d'occurences", ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          "blabla... nom du produit: pas assez d'occurences blablabla... et pas assez d'occurences",
-          null,
+          {
+            message: 'should return null when product name only appears twice in fullText',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([
+                  aLineWithOneText().properties,
+                  aLineWithProductNameOnly().properties,
+                  aLineWithProductNameOnly().properties,
+                ]).properties,
+              }).properties,
+            ).properties,
+            fullText: `${TEXT_CONTENT}${PRODUCT_NAME}${PRODUCT_NAME}`,
+            expected: null,
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: 'nom du produit: huile de coude', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          'nom du produit : huile de coude et puis il y a du texte et huile de coude et huile de coude encore plus loin',
-          { name: 'huile de coude', metaData },
+          {
+            message: 'should return product name when it appears three times or more in fullText',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSectionWith3LinesContainingProductName().properties,
+              }).properties,
+            ).properties,
+            fullText: `${PRODUCT_NAME.repeat(3)}`,
+            expected: { name: PRODUCT_NAME, metaData },
+          },
         ],
-        [
-          [
-            {
-              texts: [{ content: 'quelque chose: nom du produit', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: ' huile de coude  ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          "quelque chose: nom du produit huile de coude puis encore huile de coude dans le cas où il y a de l'huile de coude",
-          { name: 'huile de coude', metaData },
-        ],
-      ])('"%s" input should return %s', (lines, fullText, expected) => {
-        const fdsTtree: IFDSTree = { 1: { subsections: { 1: { lines, ...iBox } }, ...iBox } };
-        expect(getProductByLineOrder(fdsTtree, { fullText })).toEqual(expected);
+      ])('$message', ({ fdsTree, fullText, expected }) => {
+        expect(getProductByLineOrder(fdsTree, { fullText })).toEqual(expected);
       });
     });
 
     describe('GetProduct tests', () => {
-      it.each<[ILine[], string, IExtractedProduct | null]>([
-        [[], '', null],
+      it.each<[{ message: string; fdsTree: IFDSTree; fullText: string; expected: IExtractedProduct | null }]>([
+        [
+          {
+            message: 'it should return null when providing an empty fdsTree',
+            fdsTree: anEmptyFdsTreeWithAllSections().properties,
+            fullText: '',
+            expected: null,
+          },
+        ],
         // enters getProductByText
         [
-          [
-            {
-              texts: [{ content: 'quelque chose: nom du produit', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: ' désinfectant 2.0  ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          'quelque chose: nom du produit désinfectant 2.0  ',
-          { name: 'désinfectant 2.0', metaData },
+          {
+            message: 'it should return product name when identifier is in one line and product in another line',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties, aLineWithProductNameOnly().properties]).properties,
+              }).properties,
+            ).properties,
+            fullText: `${PRODUCT_IDENTIFIER_WITH_COLON}${PRODUCT_NAME}`,
+            expected: { name: PRODUCT_NAME, metaData },
+          },
         ],
         // enters getProductByLineOrder
         [
-          [
-            {
-              texts: [{ content: 'quelque chose: pas de nom de produit !', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: ' désinfectant 2.0  ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          'quelque chose: nom du produit désinfectant 2.0  et désinfectant 2.0 et désinfectant 2.0',
-          { name: 'désinfectant 2.0', metaData },
+          {
+            message: 'should return product name when it appears three times or more in fullText',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSectionWith3LinesContainingProductName().properties,
+              }).properties,
+            ).properties,
+            fullText: `${PRODUCT_NAME.repeat(3)}`,
+            expected: { name: PRODUCT_NAME, metaData },
+          },
         ],
-      ])('"%s" input should return %s', (lines, fullText, expected) => {
-        const fdsTtree: IFDSTree = { 1: { subsections: { 1: { lines, ...iBox } }, ...iBox } };
-        expect(getProduct(fdsTtree, { fullText })).toEqual(expected);
+      ])('$message', ({ fdsTree, fullText, expected }) => {
+        expect(getProduct(fdsTree, { fullText })).toEqual(expected);
       });
     });
   });
 
   describe('Producer rules tests', () => {
     describe('GetProducer tests', () => {
-      it.each<[ILine[], IExtractedProducer | null]>([
-        [undefined, null],
+      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedProducer | null }]>([
+        [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: null }],
         [
-          [
-            {
-              texts: [],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          null,
+          {
+            message: 'it should return null when providing a fdsTree with only product name identifier',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: null,
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: 'blablabla : 1.3 fournisseur ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          null,
+          {
+            message: 'it should return product name when providing a line with product in 1 text',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIn1Text().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: { name: PRODUCER_NAME, metaData },
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: '1.3  fournisseur  : @Padoa - FDS SaaS ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: '@Padoa - FDS SaaS', metaData },
+          {
+            message: 'it should return product name when providing a line with product in 2 texts',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIn2Texts().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: { name: PRODUCER_NAME, metaData },
+          },
         ],
         [
-          [
-            {
-              texts: [
-                { content: '1.3  fournisseur : ', ...iBox },
-                { content: ' @Padoa - FDS SaaS  ', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: '@Padoa - FDS SaaS', metaData },
-        ],
-        [
-          [
-            {
-              texts: [{ content: '1.3  fournisseur : ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: ' @Padoa - FDS SaaS  ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: '@Padoa - FDS SaaS', metaData },
+          {
+            message: 'it should return product name when providing product in 2 lines',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerNameOnly().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: { name: PRODUCER_NAME, metaData },
+          },
         ],
         // entering cleanProducer
         [
-          [
-            {
-              texts: [{ content: '1.3  fournisseur  : @Padoa - FDS SaaS. ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: '@Padoa - FDS SaaS', metaData },
+          {
+            message: 'it should return product name when providing product ending with dot',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerEndingWithDotIn1Text().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: { name: PRODUCER_NAME, metaData },
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: '1.3  fournisseur  : E.T ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          { name: 'E.T', metaData },
+          {
+            message: 'it should return product name when providing product ending with dot',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerWithDotIn1Text().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: { name: PRODUCER_NAME_WITH_DOT, metaData },
+          },
         ],
-      ])('"%s" input should return %s', (lines, expected) => {
-        const fdsTtree: IFDSTree = { 1: { subsections: { 3: { lines, ...iBox } }, ...iBox } };
-        expect(getProducer(fdsTtree)).toEqual(expected);
+      ])('$message', ({ fdsTree, expected }) => {
+        expect(getProducer(fdsTree)).toEqual(expected);
       });
     });
   });
 
   describe('Hazards rules tests', () => {
     describe('GetHazards tests', () => {
-      it.each<[ILine[], IExtractedHazard[]]>([
-        [undefined, []],
+      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedHazard[] }]>([
+        [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],
         [
-          [
-            {
-              texts: [],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          [],
+          {
+            message: 'it should retrieve hazards contained in lines',
+            fdsTree: aFdsTree().withSection2(
+              aSection().withSubsections({
+                2: aSubSection().withLines([aLineWithHHazard().properties, aLineWithEUHHazard().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: [H_HAZARD, EUH_HAZARD],
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: ' h350i ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: 'et puis aussi euh212 mais pas euh132 mais euh401 si', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          ['h350i', 'euh212', 'euh401'],
+          {
+            message: 'it should retrieve hazards contained in texts and lines',
+            fdsTree: aFdsTree().withSection2(
+              aSection().withSubsections({
+                2: aSubSection().withLines([aLineWithTwoHazards().properties, aLineWithMultiplePHazard().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: [H_HAZARD, P_HAZARD, MULTIPLE_P_HAZARD],
+          },
         ],
-        [
-          [
-            {
-              texts: [
-                { content: 'mentions de danger : h 304 : blabla', ...iBox },
-                { content: 'et puis aussi une phrase P qui est p331', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: 'associé à une autre phrase P complexe p301+ p 310', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          ['h304', 'p331', 'p301 + p310'],
-        ],
-      ])('"%s" input should return %s', (lines, expected) => {
-        const fdsTtree: IFDSTree = { 2: { subsections: { 2: { lines, ...iBox } }, ...iBox } };
-        expect(getHazards(fdsTtree)).toEqual(expected);
+      ])('$message', ({ fdsTree, expected }) => {
+        expect(getHazards(fdsTree)).toEqual(expected);
       });
     });
   });
 
   describe('Substances rules tests', () => {
     describe('GetSubstances tests', () => {
-      it.each<[ILine[], ILine[], IExtractedSubstance[]]>([
-        [undefined, undefined, []],
+      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedSubstance[] }]>([
         [
-          [
-            {
-              texts: [],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          [
-            {
-              texts: [],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          [],
+          {
+            message: 'it should return an empty list when given an empty fdsTree',
+            fdsTree: anEmptyFdsTreeWithAllSections().properties,
+            expected: [],
+          },
         ],
         [
-          [
-            {
-              texts: [
-                { content: 'huiles minérales ', ...iBox },
-                { content: 'cas : 64742-52-5 ', ...iBox },
-                { content: 'de base ce : 265-155-0 ', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [
-                { content: 'cas : 67762-38-3 ', ...iBox },
-                { content: "esters d'acide gras ce : 267-015-4 ", ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          [],
-          [
-            { casNumber: '64742-52-5', ceNumber: '265-155-0' },
-            { casNumber: '67762-38-3', ceNumber: '267-015-4' },
-          ],
+          {
+            message: 'it should return cas and ce number when it is contained in 2 texts',
+            fdsTree: aFdsTree().withSection3(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithCASAndCENumberIn2Texts().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+          },
         ],
         [
-          [
-            {
-              texts: [
-                { content: ' cas : 64742-52-5 ', ...iBox },
-                { content: ' ce : 265-155-0 ', ...iBox },
-              ],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: ' ce : 265-155-0 ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          [],
-          [
-            { casNumber: '64742-52-5', ceNumber: '265-155-0' },
-            { casNumber: undefined, ceNumber: '265-155-0' },
-          ],
+          {
+            message: 'it should return ce number even when cas number is missing',
+            fdsTree: aFdsTree().withSection3(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithCENumber().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: [{ casNumber: undefined, ceNumber: CE_NUMBER }],
+          },
         ],
         [
-          [
-            {
-              texts: [{ content: 'cas : 64742-52-5 ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: 'ce 265-155-0', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: 'ce : 221-838-5 ', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-            {
-              texts: [{ content: 'cas 55965-84-9', ...iBox }],
-              startBox: iBox,
-              pageNumber: 1,
-            },
-          ],
-          [],
-          [
-            { casNumber: '64742-52-5', ceNumber: '265-155-0' },
-            { casNumber: '55965-84-9', ceNumber: '221-838-5' },
-          ],
+          {
+            message: 'it should return ce number even when it is contained in 2 lines',
+            fdsTree: aFdsTree().withSection3(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithCASNumber().properties, aLineWithCENumber().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+          },
         ],
-      ])('"%s" input should return %s', (subSection1Lines, SubSection2Lines, expected) => {
-        const fdsTtree: IFDSTree = {
-          3: { subsections: { 1: { lines: subSection1Lines, ...iBox }, 2: { lines: SubSection2Lines, ...iBox } }, ...iBox },
-        };
-        expect(getSubstances(fdsTtree)).toEqual(expected);
+      ])('$message', ({ fdsTree, expected }) => {
+        expect(getSubstances(fdsTree)).toEqual(expected);
       });
     });
   });
 
   describe('ApplyExtractionRules tests', () => {
     it('Should extract all fields from fds', async () => {
-      const fullTextLines = [
-        'révision : 18/05/2015',
-        'nom du produit: ps 2175',
-        '1.3.',
-        'societe industrielle de diffusion',
-        'h317 - peut provoquer une allergie cutanée',
-        'p261 - éviter de respirer les poussières/fumées/gaz/brouillards/vapeurs/aérosols',
-        'p303+p361+p353 - en cas de contact avec la peau (ou les cheveux): enlever ',
-        'numéro ce ',
-        '233-826-7',
-        'numéro cas 3251-23-8',
-      ];
-      const [, productName, section1point3, producerName, h317text, p261Text, pAdditionedText, ceNumberTitle, ceNumberText, numeroCasText] =
-        fullTextLines;
-
-      const fdsTree: IFDSTree = {
-        '1': {
-          xPositionProportion: 2,
-          yPositionProportion: 5.873,
-          subsections: {
-            '1': {
-              xPositionProportion: 2,
-              yPositionProportion: 6.666,
-              lines: [
-                {
-                  startBox: { xPositionProportion: 1, yPositionProportion: 1 },
-                  pageNumber: 1,
-                  texts: [
-                    {
-                      xPositionProportion: 1.988,
-                      yPositionProportion: 8.145,
-                      content: productName,
-                    },
-                  ],
-                },
-              ],
-            },
-            '3': {
-              xPositionProportion: 2,
-              yPositionProportion: 28.54,
-              lines: [
-                {
-                  startBox: { xPositionProportion: 2, yPositionProportion: 28.54 },
-                  pageNumber: 1,
-                  texts: [
-                    {
-                      xPositionProportion: 2,
-                      yPositionProportion: 28.54,
-                      content: section1point3,
-                    },
-                  ],
-                },
-                {
-                  startBox: { xPositionProportion: 1, yPositionProportion: 1 },
-                  pageNumber: 1,
-                  texts: [
-                    {
-                      xPositionProportion: 2,
-                      yPositionProportion: 29.28,
-                      content: producerName,
-                    },
-                  ],
-                },
-              ],
-            },
-          },
-        },
-        '2': {
-          xPositionProportion: 2,
-          yPositionProportion: 34.598,
-          subsections: {
-            '2': {
-              xPositionProportion: 2,
-              yPositionProportion: 107.628,
-              lines: [
-                {
-                  startBox: { xPositionProportion: 13.575, yPositionProportion: 115.139 },
-                  pageNumber: 1,
-                  texts: [
-                    {
-                      xPositionProportion: 13.575,
-                      yPositionProportion: 115.139,
-                      content: h317text,
-                    },
-                    {
-                      xPositionProportion: 13.575,
-                      yPositionProportion: 116.994,
-                      content: p261Text,
-                    },
-                    {
-                      xPositionProportion: 13.575,
-                      yPositionProportion: 118.667,
-                      content: pAdditionedText,
-                    },
-                  ],
-                },
-              ],
-            },
-          },
-        },
-        '3': {
-          xPositionProportion: 2,
-          yPositionProportion: 129.159,
-          subsections: {
-            '2': {
-              xPositionProportion: 2,
-              yPositionProportion: 131.934,
-              lines: [
-                {
-                  startBox: { xPositionProportion: 11.197, yPositionProportion: 140.415 },
-                  pageNumber: 1,
-                  texts: [
-                    {
-                      xPositionProportion: 12.76,
-                      yPositionProportion: 140.415,
-                      content: ceNumberTitle,
-                    },
-                    {
-                      xPositionProportion: 13.544,
-                      yPositionProportion: 140.415,
-                      content: ceNumberText,
-                    },
-                    {
-                      xPositionProportion: 13.795,
-                      yPositionProportion: 142.031,
-                      content: numeroCasText,
-                    },
-                  ],
-                },
-              ],
-            },
-          },
-        },
-      };
+      const fullText: string = `
+      révision : 18/05/2015
+      ${PRODUCT_IDENTIFIER_WITH_COLON}
+      ${PRODUCT_NAME}
+      ${PRODUCER_IDENTIFIER}
+      ${PRODUCER_NAME}
+      ${H_HAZARD_WITH_DETAILS}
+      ${MULTIPLE_P_HAZARD_WITH_DETAILS}
+      ${MULTIPLE_P_HAZARD}
+      ${CAS_NUMBER_TEXT}
+      ${CE_NUMBER_TEXT}
+    `;
 
       const expected: IExtractedData = {
         date: { formattedDate: '2015/05/18', inTextDate: '18/05/2015' },
-        product: { name: 'ps 2175', metaData },
-        producer: { name: 'societe industrielle de diffusion', metaData },
-        hazards: ['h317', 'p261', 'p303 + p361 + p353'],
-        substances: [{ casNumber: '3251-23-8', ceNumber: '233-826-7' }],
+        product: { name: PRODUCT_NAME, metaData },
+        producer: { name: PRODUCER_NAME, metaData },
+        hazards: [H_HAZARD, P_HAZARD, MULTIPLE_P_HAZARD],
+        substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
       };
 
-      await expect(applyExtractionRules({ fdsTreeCleaned: fdsTree, fullText: fullTextLines.join('') })).resolves.toEqual(expected);
+      await expect(applyExtractionRules({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(expected);
     });
   });
 });

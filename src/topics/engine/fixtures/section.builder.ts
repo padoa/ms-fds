@@ -11,7 +11,7 @@ export class SectionBuilder extends BaseBuilder<ISection> {
     return {
       xPositionProportion: 0,
       yPositionProportion: 0,
-      subsections: [],
+      subsections: {},
     };
   }
 }
