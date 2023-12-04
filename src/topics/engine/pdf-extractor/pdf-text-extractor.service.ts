@@ -63,7 +63,7 @@ export class PdfTextExtractorService {
         },
       );
 
-    const linesYOrdered = _.sortBy(result.lines, 'y'); // TODO: sort by pageNumber and 'yPositionProportion' instead of 'y' and adding index *100
+    const linesYOrdered = _.sortBy(result.lines, 'startBox.yPositionProportion'); // TODO: sort by pageNumber and 'yPositionProportion' instead of 'y' and adding index *100
     const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionProportion') }));
     const cleanedLines = this.cleanLines(linesOrdered);
     return cleanedLines;

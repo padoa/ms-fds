@@ -62,6 +62,7 @@ const saveInCsv = async (
       producer,
       hazards,
       substances,
+      physicalState,
     },
     fromImage,
   }: {
@@ -71,7 +72,9 @@ const saveInCsv = async (
 ): Promise<void> => {
   return fs.appendFile(
     csvFile,
-    `${filename};${formattedDate};${inTextDate};${product.name};${producer.name};${hazards.join(',')};${JSON.stringify(substances)};${fromImage}\n`,
+    `${filename};${formattedDate};${inTextDate};${product?.name};${producer?.name};${hazards.join(',')};${JSON.stringify(substances)};${
+      physicalState?.value
+    };${fromImage}\n`,
   );
 };
 

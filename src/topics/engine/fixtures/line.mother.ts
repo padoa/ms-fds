@@ -30,6 +30,8 @@ import {
   aTextWithProductName,
   aTextWithProductNameIdentifierWithColon,
   aTextWithProductNameIdentifier,
+  aTextWithPhysicalStateIdentifier,
+  aTextWithPhysicalStateValue,
 } from '@topics/engine/fixtures/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -117,3 +119,12 @@ export const aLineWithCASNumber = (): LineBuilder => aLineWithPosition().withTex
 export const aLineWithCENumber = (): LineBuilder => aLineWithPosition().withTexts([aTextWithCENumber().properties]);
 export const aLineWithCASAndCENumberIn2Texts = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithCASNumber().properties, aTextWithCENumber().properties]);
+
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- PHYSICAL_STATE ---------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aLineWithPhysicalStateIdentifier = (): LineBuilder => aLineWithPosition().withTexts([aTextWithPhysicalStateIdentifier().properties]);
+export const aLineWithPhysicalStateValue = (): LineBuilder => aLineWithPosition().withTexts([aTextWithPhysicalStateValue().properties]);
+export const aLineWithPhysicalStateIdentifierAndValue = (): LineBuilder =>
+  aLineWithPosition().withTexts([aTextWithPhysicalStateIdentifier().properties, aTextWithPhysicalStateValue().properties]);

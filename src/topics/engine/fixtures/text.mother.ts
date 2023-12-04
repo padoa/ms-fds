@@ -22,6 +22,8 @@ import {
   H_HAZARD_WITH_DETAILS,
   P_HAZARD_WITH_DETAILS,
   MULTIPLE_P_HAZARD_WITH_DETAILS,
+  PHYSICAL_STATE_IDENTIFIER,
+  PHYSICAL_STATE_VALUE,
 } from '@topics/engine/fixtures/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/fixtures/text.builder.js';
 
@@ -92,3 +94,10 @@ export const aTextWithMultiplePHazardWithDetails = (): TextBuilder => aText().wi
 
 export const aTextWithCASNumber = (): TextBuilder => aText().withContent(CAS_NUMBER_TEXT);
 export const aTextWithCENumber = (): TextBuilder => aText().withContent(CE_NUMBER_TEXT);
+
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- PHYSICAL STATE ---------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aTextWithPhysicalStateIdentifier = (): TextBuilder => aText().withContent(PHYSICAL_STATE_IDENTIFIER);
+export const aTextWithPhysicalStateValue = (): TextBuilder => aText().withContent(PHYSICAL_STATE_VALUE);

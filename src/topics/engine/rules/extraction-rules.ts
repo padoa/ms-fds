@@ -11,6 +11,8 @@ import type {
   IExtractedProducer,
 } from '@topics/engine/model/fds.model.js';
 import { MONTH_MAPPING } from '@topics/engine/rules/rules.constants.js';
+import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
+import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
 
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
@@ -19,6 +21,7 @@ export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTr
     producer: getProducer(fdsTreeCleaned),
     hazards: getHazards(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
+    physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
   };
 };
 
@@ -207,19 +210,9 @@ export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
 
     const { pageNumber, startBox, endBox } = line;
 
-    return { name: cleanProducerName(text), metaData: { pageNumber, startBox, endBox } };
+    return { name: ExtractionCleanerService.trimAndCleanTrailingDot(text), metaData: { pageNumber, startBox, endBox } };
   }
   return null;
-};
-
-const cleanProducerName = (text: string): string => {
-  if (!text?.endsWith('.')) return text;
-  const producerSplit = text.split(/ |\.|-/);
-  const wordBeforePoint = producerSplit[producerSplit.length - 2];
-  const wordBeforePointIsAChar = wordBeforePoint?.length === 1;
-
-  if (wordBeforePointIsAChar) return text;
-  return text.slice(0, -1);
 };
 
 //----------------------------------------------------------------------------------------------
