@@ -3,41 +3,43 @@ import {
   POSITION_X,
   POSITION_Y,
   PRODUCT_NAME,
-  PRODUCT_DETECTION,
-  PRODUCT_DETECTION_WITHOUT_COLON,
+  PRODUCT_IDENTIFIER_WITH_COLON,
+  PRODUCT_IDENTIFIER,
   PLACEHOLDER_TEXT_1,
   PLACEHOLDER_TEXT_2,
   PLACEHOLDER_TEXT_3,
   TEXT_CONTENT,
-  PRODUCER_DETECTION,
+  PRODUCER_IDENTIFIER,
   PRODUCER_NAME_WITH_DOT,
   PRODUCER_NAME_ENDING_WITH_DOT,
   PRODUCER_NAME,
   H_HAZARD,
   EUH_HAZARD,
   P_HAZARD,
-  PP_HAZARD,
+  MULTIPLE_P_HAZARD,
   CAS_NUMBER_TEXT,
   CE_NUMBER_TEXT,
   H_HAZARD_WITH_DETAILS,
   P_HAZARD_WITH_DETAILS,
-  PP_HAZARD_WITH_DETAILS,
+  MULTIPLE_P_HAZARD_WITH_DETAILS,
 } from '@topics/engine/fixtures/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/fixtures/text.builder.js';
 
 export const aText = (): TextBuilder => new TextBuilder();
 
-/*
- ** BASICS
- */
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- BASICS ---------------------------------------------
+//----------------------------------------------------------------------------------------------
+
 export const aTextWithContent = (): TextBuilder => aText().withContent(TEXT_CONTENT);
 export const aTextWithRandomContent1 = (): TextBuilder => aText().withContent(PLACEHOLDER_TEXT_1);
 export const aTextWithRandomContent2 = (): TextBuilder => aText().withContent(PLACEHOLDER_TEXT_2);
 export const aTextWithRandomContent3 = (): TextBuilder => aText().withContent(PLACEHOLDER_TEXT_3);
 
-/*
- ** POSITIONS
- */
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- POSITIONS ------------------------------------------
+//----------------------------------------------------------------------------------------------
+
 export const aTextWithContentAndPosition = (): TextBuilder => buildTextWithContentAndPositionIncrementedTimes(0, 0);
 export const aTextWithContentAndPositionXIncremented = (): TextBuilder => buildTextWithContentAndPositionIncrementedTimes(1, 0);
 export const aTextWithContentAndPositionYIncremented = (): TextBuilder => buildTextWithContentAndPositionIncrementedTimes(0, 1);
@@ -52,37 +54,41 @@ const buildTextWithContentAndPositionIncrementedTimes = (multiplyXBy: number, mu
     .withXPositionProportion(POSITION_X + multiplyXBy * INCREMENT_VALUE)
     .withYPositionProportion(POSITION_Y + multiplyYBy * INCREMENT_VALUE);
 
-/*
- ** PRODUCT NAME
- */
-export const aTextWithProductNameDetection = (): TextBuilder => aText().withContent(PRODUCT_DETECTION);
-export const aTextWithProductNameDetectionWithoutColon = (): TextBuilder => aText().withContent(PRODUCT_DETECTION_WITHOUT_COLON);
-export const aTextWithProductName = (): TextBuilder => aText().withContent(PRODUCT_NAME);
-export const aTextWithProductDetectionAndName = (): TextBuilder => aText().withContent(`${PRODUCT_DETECTION}${PRODUCT_NAME}`);
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- PRODUCT NAME ---------------------------------------
+//----------------------------------------------------------------------------------------------
 
-/*
- ** PRODUCER NAME
- */
-export const aTextWithProducerDetection = (): TextBuilder => aText().withContent(PRODUCER_DETECTION);
+export const aTextWithProductNameIdentifierWithColon = (): TextBuilder => aText().withContent(PRODUCT_IDENTIFIER_WITH_COLON);
+export const aTextWithProductNameIdentifier = (): TextBuilder => aText().withContent(PRODUCT_IDENTIFIER);
+export const aTextWithProductName = (): TextBuilder => aText().withContent(PRODUCT_NAME);
+export const aTextWithProductIdentifierWithColonAndName = (): TextBuilder => aText().withContent(`${PRODUCT_IDENTIFIER_WITH_COLON}${PRODUCT_NAME}`);
+
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- PRODUCER NAME --------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aTextWithProducerIdentifier = (): TextBuilder => aText().withContent(PRODUCER_IDENTIFIER);
 export const aTextWithProducerName = (): TextBuilder => aText().withContent(PRODUCER_NAME);
 export const aTextWithProducerNameWithDot = (): TextBuilder => aText().withContent(PRODUCER_NAME_WITH_DOT);
 export const aTextWithProducerNameEndingWithDot = (): TextBuilder => aText().withContent(PRODUCER_NAME_ENDING_WITH_DOT);
-export const aTextWithProducerDetectionAndName = (): TextBuilder => aText().withContent(`${PRODUCER_DETECTION}${PRODUCER_NAME}`);
+export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().withContent(`${PRODUCER_IDENTIFIER}${PRODUCER_NAME}`);
 
-/*
- ** HAZARDS
- */
-export const aTextWithOneHHazard = (): TextBuilder => aText().withContent(H_HAZARD);
-export const aTextWithOneEUHHazard = (): TextBuilder => aText().withContent(EUH_HAZARD);
-export const aTextWithOnePHazard = (): TextBuilder => aText().withContent(P_HAZARD);
-export const aTextWithOnePPHazard = (): TextBuilder => aText().withContent(PP_HAZARD);
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- HAZARDS --------------------------------------------
+//----------------------------------------------------------------------------------------------
 
-export const aTextWithOneHHazardWithDetails = (): TextBuilder => aText().withContent(H_HAZARD_WITH_DETAILS);
-export const aTextWithOnePHazardWithDetails = (): TextBuilder => aText().withContent(P_HAZARD_WITH_DETAILS);
-export const aTextWithOnePPHazardWithDetails = (): TextBuilder => aText().withContent(PP_HAZARD_WITH_DETAILS);
+export const aTextWithHHazard = (): TextBuilder => aText().withContent(H_HAZARD);
+export const aTextWithOEUHHazard = (): TextBuilder => aText().withContent(EUH_HAZARD);
+export const aTextWithPHazard = (): TextBuilder => aText().withContent(P_HAZARD);
+export const aTextWithMultiplePHazard = (): TextBuilder => aText().withContent(MULTIPLE_P_HAZARD);
 
-/*
- ** SUBSTANCES
- */
+export const aTextWithHHazardWithDetails = (): TextBuilder => aText().withContent(H_HAZARD_WITH_DETAILS);
+export const aTextWithHazardWithDetails = (): TextBuilder => aText().withContent(P_HAZARD_WITH_DETAILS);
+export const aTextWithMultiplePHazardWithDetails = (): TextBuilder => aText().withContent(MULTIPLE_P_HAZARD_WITH_DETAILS);
+
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- SUBSTANCES -----------------------------------------
+//----------------------------------------------------------------------------------------------
+
 export const aTextWithCASNumber = (): TextBuilder => aText().withContent(CAS_NUMBER_TEXT);
 export const aTextWithCENumber = (): TextBuilder => aText().withContent(CE_NUMBER_TEXT);

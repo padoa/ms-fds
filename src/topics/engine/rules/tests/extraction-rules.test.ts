@@ -40,7 +40,7 @@ import {
   POSITION_X,
   POSITION_Y,
   PRODUCT_NAME,
-  PRODUCT_DETECTION,
+  PRODUCT_IDENTIFIER_WITH_COLON,
   PLACEHOLDER_TEXT_1,
   PLACEHOLDER_TEXT_2,
   PLACEHOLDER_TEXT_3,
@@ -50,31 +50,31 @@ import {
   H_HAZARD,
   EUH_HAZARD,
   P_HAZARD,
-  PP_HAZARD,
+  MULTIPLE_P_HAZARD,
   CAS_NUMBER,
   CE_NUMBER,
-  PRODUCER_DETECTION,
+  PRODUCER_IDENTIFIER,
   CAS_NUMBER_TEXT,
   CE_NUMBER_TEXT,
   H_HAZARD_WITH_DETAILS,
-  PP_HAZARD_WITH_DETAILS,
+  MULTIPLE_P_HAZARD_WITH_DETAILS,
 } from '@topics/engine/fixtures/fixtures.constants.js';
 import {
   aLine,
   aLineWithCASAndCENumberIn2Texts,
   aLineWithCASNumber,
   aLineWithCENumber,
-  aLineWithOneEUHHazard,
-  aLineWithOneHHazard,
-  aLineWithOnePPazard,
+  aLineWithEUHHazard,
+  aLineWithHHazard,
+  aLineWithMultiplePHazard,
   aLineWithOneText,
-  aLineWithProducerDetectionOnly,
+  aLineWithProducerIdentifierOnly,
   aLineWithProducerEndingWithDotIn1Text,
   aLineWithProducerIn1Text,
   aLineWithProducerIn2Texts,
   aLineWithProducerNameOnly,
   aLineWithProducerWithDotIn1Text,
-  aLineWithProductDetectionWithoutColonOnly,
+  aLineWithProductIdentifierOnly,
   aLineWithProductIn1Text,
   aLineWithProductIn2Texts,
   aLineWithProductNameOnly,
@@ -393,14 +393,13 @@ describe('ExtractionRules tests', () => {
         // enters getProductByText
         [
           {
-            message: 'it should return product name when detection is in one line and product in another line',
+            message: 'it should return product name when identifier is in one line and product in another line',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
-                1: aSubSection().withLines([aLineWithProductDetectionWithoutColonOnly().properties, aLineWithProductNameOnly().properties])
-                  .properties,
+                1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties, aLineWithProductNameOnly().properties]).properties,
               }).properties,
             ).properties,
-            fullText: `${PRODUCT_DETECTION}${PRODUCT_NAME}`,
+            fullText: `${PRODUCT_IDENTIFIER_WITH_COLON}${PRODUCT_NAME}`,
             expected: { name: PRODUCT_NAME, metaData },
           },
         ],
@@ -429,10 +428,10 @@ describe('ExtractionRules tests', () => {
         [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: null }],
         [
           {
-            message: 'it should return null when providing a fdsTree with only product name detection',
+            message: 'it should return null when providing a fdsTree with only product name identifier',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerDetectionOnly().properties]).properties,
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties]).properties,
               }).properties,
             ).properties,
             expected: null,
@@ -465,7 +464,7 @@ describe('ExtractionRules tests', () => {
             message: 'it should return product name when providing product in 2 lines',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerDetectionOnly().properties, aLineWithProducerNameOnly().properties]).properties,
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerNameOnly().properties]).properties,
               }).properties,
             ).properties,
             expected: { name: PRODUCER_NAME, metaData },
@@ -509,7 +508,7 @@ describe('ExtractionRules tests', () => {
             message: 'it should retrieve hazards contained in lines',
             fdsTree: aFdsTree().withSection2(
               aSection().withSubsections({
-                2: aSubSection().withLines([aLineWithOneHHazard().properties, aLineWithOneEUHHazard().properties]).properties,
+                2: aSubSection().withLines([aLineWithHHazard().properties, aLineWithEUHHazard().properties]).properties,
               }).properties,
             ).properties,
             expected: [H_HAZARD, EUH_HAZARD],
@@ -520,10 +519,10 @@ describe('ExtractionRules tests', () => {
             message: 'it should retrieve hazards contained in texts and lines',
             fdsTree: aFdsTree().withSection2(
               aSection().withSubsections({
-                2: aSubSection().withLines([aLineWithTwoHazards().properties, aLineWithOnePPazard().properties]).properties,
+                2: aSubSection().withLines([aLineWithTwoHazards().properties, aLineWithMultiplePHazard().properties]).properties,
               }).properties,
             ).properties,
-            expected: [H_HAZARD, P_HAZARD, PP_HAZARD],
+            expected: [H_HAZARD, P_HAZARD, MULTIPLE_P_HAZARD],
           },
         ],
       ])('$message', ({ fdsTree, expected }) => {
@@ -585,13 +584,13 @@ describe('ExtractionRules tests', () => {
     it('Should extract all fields from fds', async () => {
       const fullText: string = `
       révision : 18/05/2015
-      ${PRODUCT_DETECTION}
+      ${PRODUCT_IDENTIFIER_WITH_COLON}
       ${PRODUCT_NAME}
-      ${PRODUCER_DETECTION}
+      ${PRODUCER_IDENTIFIER}
       ${PRODUCER_NAME}
       ${H_HAZARD_WITH_DETAILS}
-      ${PP_HAZARD_WITH_DETAILS}
-      ${PP_HAZARD}
+      ${MULTIPLE_P_HAZARD_WITH_DETAILS}
+      ${MULTIPLE_P_HAZARD}
       ${CAS_NUMBER_TEXT}
       ${CE_NUMBER_TEXT}
     `;
@@ -600,7 +599,7 @@ describe('ExtractionRules tests', () => {
         date: { formattedDate: '2015/05/18', inTextDate: '18/05/2015' },
         product: { name: PRODUCT_NAME, metaData },
         producer: { name: PRODUCER_NAME, metaData },
-        hazards: [H_HAZARD, P_HAZARD, PP_HAZARD],
+        hazards: [H_HAZARD, P_HAZARD, MULTIPLE_P_HAZARD],
         substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
       };
 

@@ -1,10 +1,10 @@
 import { FDSTreeBuilder } from '@topics/engine/fixtures/fds-tree.builder.js';
 import {
   aLineWithCASAndCENumberIn2Texts,
-  aLineWithProducerDetectionOnly,
+  aLineWithProducerIdentifierOnly,
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
-  aLineWithThreeHazardsWithDetails,
+  aLineWithThreeHazardsAndTheirDetails,
 } from '@topics/engine/fixtures/line.mother.js';
 import { aSection } from '@topics/engine/fixtures/section.mother.js';
 import { aSubSection, aSubSectionWithContent } from '@topics/engine/fixtures/sub-section.mother.js';
@@ -28,10 +28,12 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FDSTreeBuilder =>
     .withSection1(
       aSection().withSubsections({
         1: aSubSection().withLines([aLineWithProductIn1Text().properties]).properties,
-        3: aSubSection().withLines([aLineWithProducerDetectionOnly().properties, aLineWithProducerNameOnly().properties]).properties,
+        3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerNameOnly().properties]).properties,
       }).properties,
     )
-    .withSection2(aSection().withSubsections({ 2: aSubSection().withLines([aLineWithThreeHazardsWithDetails().properties]).properties }).properties)
+    .withSection2(
+      aSection().withSubsections({ 2: aSubSection().withLines([aLineWithThreeHazardsAndTheirDetails().properties]).properties }).properties,
+    )
     .withSection3(
       aSection().withSubsections({
         2: aSubSection().withLines([aLineWithCASAndCENumberIn2Texts().properties]).properties,

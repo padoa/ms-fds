@@ -14,36 +14,38 @@ import {
   aTextWithContentAndPositionXYIncrementedTwice,
   aTextWithContentAndPositionYIncremented,
   aTextWithContentAndPositionYIncrementedTwice,
-  aTextWithOneEUHHazard,
-  aTextWithOneHHazard,
-  aTextWithOneHHazardWithDetails,
-  aTextWithOnePHazard,
-  aTextWithOnePHazardWithDetails,
-  aTextWithOnePPHazard,
-  aTextWithOnePPHazardWithDetails,
-  aTextWithProducerDetection,
-  aTextWithProducerDetectionAndName,
+  aTextWithOEUHHazard,
+  aTextWithHHazard,
+  aTextWithHHazardWithDetails,
+  aTextWithPHazard,
+  aTextWithHazardWithDetails,
+  aTextWithMultiplePHazard,
+  aTextWithMultiplePHazardWithDetails,
+  aTextWithProducerIdentifier,
+  aTextWithProducerIdentifierAndName,
   aTextWithProducerName,
   aTextWithProducerNameEndingWithDot,
   aTextWithProducerNameWithDot,
-  aTextWithProductDetectionAndName,
+  aTextWithProductIdentifierWithColonAndName,
   aTextWithProductName,
-  aTextWithProductNameDetection,
-  aTextWithProductNameDetectionWithoutColon,
+  aTextWithProductNameIdentifierWithColon,
+  aTextWithProductNameIdentifier,
 } from '@topics/engine/fixtures/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
 
-/*
- ** BASICS
- */
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- BASICS ---------------------------------------------
+//----------------------------------------------------------------------------------------------
+
 export const aLineWithOneText = (): LineBuilder => aLineWithPosition().withTexts([aTextWithContentAndPosition().properties]);
 export const aLineWithTwoTexts = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithContentAndPosition().properties, aTextWithContentAndPositionXIncremented().properties]);
 
-/*
- ** POSITIONS
- */
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- POSITIONS ------------------------------------------
+//----------------------------------------------------------------------------------------------
+
 export const aLineWithPosition = (): LineBuilder => aLine().withStartBox(aBoxWithPosition().properties);
 export const aLineWithPositionXIncremented = (): LineBuilder => aLine().withStartBox(aBoxWithPositionXIncremented().properties);
 export const aLineWithPositionYIncremented = (): LineBuilder => aLine().withStartBox(aBoxWithPositionYIncremented().properties);
@@ -65,48 +67,52 @@ export const aLineWithTwoTextsAndPositionYIncrementedTwice = (): LineBuilder =>
     aTextWithContentAndPositionXYIncrementedTwice().properties,
   ]);
 
-/*
- ** PRODUCT NAME
- */
-export const aLineWithProductDetectionOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductNameDetection().properties]);
-export const aLineWithProductDetectionWithoutColonOnly = (): LineBuilder =>
-  aLineWithPosition().withTexts([aTextWithProductNameDetectionWithoutColon().properties]);
-export const aLineWithProductNameOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductName().properties]);
-export const aLineWithProductIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductDetectionAndName().properties]);
-export const aLineWithProductIn2Texts = (): LineBuilder =>
-  aLineWithPosition().withTexts([aTextWithProductNameDetection().properties, aTextWithProductName().properties]);
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- PRODUCT NAME ---------------------------------------
+//----------------------------------------------------------------------------------------------
 
-/*
- ** PRODUCER NAME
- */
-export const aLineWithProducerDetectionOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerDetection().properties]);
+export const aLineWithProductIdentifierWithColonOnly = (): LineBuilder =>
+  aLineWithPosition().withTexts([aTextWithProductNameIdentifierWithColon().properties]);
+export const aLineWithProductIdentifierOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductNameIdentifier().properties]);
+export const aLineWithProductNameOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductName().properties]);
+export const aLineWithProductIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductIdentifierWithColonAndName().properties]);
+export const aLineWithProductIn2Texts = (): LineBuilder =>
+  aLineWithPosition().withTexts([aTextWithProductNameIdentifierWithColon().properties, aTextWithProductName().properties]);
+
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- PRODUCER NAME --------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aLineWithProducerIdentifierOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerIdentifier().properties]);
 export const aLineWithProducerNameOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerName().properties]);
-export const aLineWithProducerIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerDetectionAndName().properties]);
+export const aLineWithProducerIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerIdentifierAndName().properties]);
 export const aLineWithProducerIn2Texts = (): LineBuilder =>
-  aLineWithPosition().withTexts([aTextWithProducerDetection().properties, aTextWithProducerName().properties]);
+  aLineWithPosition().withTexts([aTextWithProducerIdentifier().properties, aTextWithProducerName().properties]);
 export const aLineWithProducerWithDotIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerNameWithDot().properties]);
 export const aLineWithProducerEndingWithDotIn1Text = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithProducerNameEndingWithDot().properties]);
 
-/*
- ** HAZARDS
- */
-export const aLineWithOneHHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOneHHazard().properties]);
-export const aLineWithOneEUHHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOneEUHHazard().properties]);
-export const aLineWithOnePHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOnePHazard().properties]);
-export const aLineWithOnePPazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOnePPHazard().properties]);
-export const aLineWithTwoHazards = (): LineBuilder =>
-  aLineWithPosition().withTexts([aTextWithOneHHazard().properties, aTextWithOnePHazard().properties]);
-export const aLineWithThreeHazardsWithDetails = (): LineBuilder =>
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- HAZARDS --------------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aLineWithHHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHHazard().properties]);
+export const aLineWithEUHHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOEUHHazard().properties]);
+export const aLineWithPHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithPHazard().properties]);
+export const aLineWithMultiplePHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithMultiplePHazard().properties]);
+
+export const aLineWithTwoHazards = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHHazard().properties, aTextWithPHazard().properties]);
+export const aLineWithThreeHazardsAndTheirDetails = (): LineBuilder =>
   aLineWithPosition().withTexts([
-    aTextWithOneHHazardWithDetails().properties,
-    aTextWithOnePHazardWithDetails().properties,
-    aTextWithOnePPHazardWithDetails().properties,
+    aTextWithHHazardWithDetails().properties,
+    aTextWithHazardWithDetails().properties,
+    aTextWithMultiplePHazardWithDetails().properties,
   ]);
 
-/*
- ** SUBSTANCES
- */
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- SUBSTANCES -----------------------------------------
+//----------------------------------------------------------------------------------------------
+
 export const aLineWithCASNumber = (): LineBuilder => aLineWithPosition().withTexts([aTextWithCASNumber().properties]);
 export const aLineWithCENumber = (): LineBuilder => aLineWithPosition().withTexts([aTextWithCENumber().properties]);
 export const aLineWithCASAndCENumberIn2Texts = (): LineBuilder =>
