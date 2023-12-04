@@ -1,6 +1,7 @@
 import { FDSTreeBuilder } from '@topics/engine/fixtures/fds-tree.builder.js';
 import {
   aLineWithCASAndCENumberIn2Texts,
+  aLineWithPhysicalStateIdentifierAndValue,
   aLineWithProducerIdentifierOnly,
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
@@ -15,13 +16,15 @@ export const anEmptyFdsTreeWithAllSections = (): FDSTreeBuilder =>
   aFdsTree()
     .withSection1(aSection().withSubsections({ 1: aSubSection().properties, 3: aSubSection().properties }).properties)
     .withSection2(aSection().withSubsections({ 2: aSubSection().properties }).properties)
-    .withSection3(aSection().withSubsections({ 1: aSubSection().properties, 2: aSubSection().properties }).properties);
+    .withSection3(aSection().withSubsections({ 1: aSubSection().properties, 2: aSubSection().properties }).properties)
+    .withSection9(aSection().withSubsections({ 1: aSubSection().properties }).properties);
 
 export const aFdsTreeWithAllSectionsWithoutUsefulInfo = (): FDSTreeBuilder =>
   aFdsTree()
     .withSection1(aSection().withSubsections({ 1: aSubSectionWithContent().properties, 3: aSubSectionWithContent().properties }).properties)
     .withSection2(aSection().withSubsections({ 2: aSubSectionWithContent().properties }).properties)
-    .withSection3(aSection().withSubsections({ 1: aSubSectionWithContent().properties, 2: aSubSectionWithContent().properties }).properties);
+    .withSection3(aSection().withSubsections({ 1: aSubSectionWithContent().properties, 2: aSubSectionWithContent().properties }).properties)
+    .withSection9(aSection().withSubsections({ 1: aSubSectionWithContent().properties }).properties);
 
 export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FDSTreeBuilder =>
   aFdsTree()
@@ -38,4 +41,7 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FDSTreeBuilder =>
       aSection().withSubsections({
         2: aSubSection().withLines([aLineWithCASAndCENumberIn2Texts().properties]).properties,
       }).properties,
+    )
+    .withSection9(
+      aSection().withSubsections({ 1: aSubSection().withLines([aLineWithPhysicalStateIdentifierAndValue().properties]).properties }).properties,
     );
