@@ -58,6 +58,7 @@ import {
   CE_NUMBER_TEXT,
   H_HAZARD_WITH_DETAILS,
   MULTIPLE_P_HAZARD_WITH_DETAILS,
+  PHYSICAL_STATE_VALUE,
 } from '@topics/engine/fixtures/fixtures.constants.js';
 import {
   aLine,
@@ -601,6 +602,7 @@ describe('ExtractionRules tests', () => {
         producer: { name: PRODUCER_NAME, metaData },
         hazards: [H_HAZARD, P_HAZARD, MULTIPLE_P_HAZARD],
         substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+        physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
       };
 
       await expect(applyExtractionRules({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(expected);
