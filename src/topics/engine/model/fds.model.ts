@@ -80,10 +80,13 @@ export type IExtractedSubstance = {
   ceNumber: string;
 };
 
+export type IExtractedPhysicalState = { value: string; metaData: IMetaData };
+
 export type IExtractedData = {
   date: IExtractedDate;
   product: IExtractedProduct;
   producer: IExtractedProducer;
   hazards: IExtractedHazard[];
   substances: IExtractedSubstance[];
+  physicalState: IExtractedPhysicalState;
 };
