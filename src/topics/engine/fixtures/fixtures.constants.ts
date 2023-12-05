@@ -2,9 +2,9 @@
 //----------------------------------------- BOX -----------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const POSITION_X = 0.32;
-export const POSITION_Y = 0.32;
-export const INCREMENT_VALUE = 0.08;
+export const POSITION_X = 0.12;
+export const POSITION_Y = 0.12;
+export const INCREMENT_VALUE = 0.03;
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- TEXTS -----------------------------------------------
@@ -13,6 +13,7 @@ export const INCREMENT_VALUE = 0.08;
 export const PLACEHOLDER_TEXT_1 = 'abc';
 export const PLACEHOLDER_TEXT_2 = 'def';
 export const PLACEHOLDER_TEXT_3 = 'ghi';
+export const SPACE_TEXT = ' ';
 export const TEXT_CONTENT = 'content';
 
 export const PRODUCT_IDENTIFIER_WITH_COLON = ' blabla nom du produit : ';
