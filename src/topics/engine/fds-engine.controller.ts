@@ -8,6 +8,8 @@ import { fdsEngineResponse } from '@topics/engine/fds-engine.validator.js';
 import { FDSEngineService } from '@topics/engine/fds-engine.service.js';
 
 class FDSEngineController extends Controller {
+  /* c8 ignore start */
+  // Ignored because this controller route will be deleted in the future
   @middlewares({ beforeValidationMiddlewares: [createConfiguredMulter().single('file')] })
   @response(200, 'Résultat du moteur de fds', fdsEngineResponse)
   @markAuthMiddlewareAsSet()
@@ -18,6 +20,7 @@ class FDSEngineController extends Controller {
     const { dataExtracted: data, fromImage } = await FDSEngineService.extractDataFromFDS(temporaryFile);
     res.json({ data, fromImage });
   }
+  /* c8 ignore stop */
 }
 
 export const fdsEngineController = new FDSEngineController('/api/fds-engine', 'fds', 'Routes pour lancer le moteur de fds');

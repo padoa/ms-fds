@@ -1,17 +1,18 @@
 import { describe, expect, it } from 'vitest';
 
 import { PdfImageTextExtractorService } from '@topics/engine/pdf-extractor/pdf-image-text-extractor.service.js';
+import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/fixtures.constants.js';
 
 describe('PdfImageTextExtractorService tests', () => {
   describe('getTextFromImagePdf tests', () => {
-    const imageArgonPdfPath = `${process.cwd()}/resources/test-files/images/image-argon.pdf`;
-
     it('should return text from image pdf', async () => {
-      await expect(PdfImageTextExtractorService.getTextFromImagePdf(imageArgonPdfPath, { numberOfPagesToParse: 1 })).resolves.toMatchSnapshot();
+      await expect(
+        PdfImageTextExtractorService.getTextFromImagePdf(FDS_TEST_FILES_PATH.IMAGE_ARGON, { numberOfPagesToParse: 1 }),
+      ).resolves.toMatchSnapshot();
     });
 
     it('should return an empty list when numberOfPagesToParse is not specified', async () => {
-      await expect(PdfImageTextExtractorService.getTextFromImagePdf(imageArgonPdfPath)).resolves.toEqual([]);
+      await expect(PdfImageTextExtractorService.getTextFromImagePdf(FDS_TEST_FILES_PATH.IMAGE_ARGON)).resolves.toEqual([]);
     });
   });
 });

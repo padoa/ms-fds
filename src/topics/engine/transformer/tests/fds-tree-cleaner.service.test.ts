@@ -29,6 +29,7 @@ describe('FdsTreeCleanerService Tests', () => {
             aTextWithContentAndPosition().properties,
             aTextWithContentAndPositionXIncremented().properties,
             aTextWithContentAndPositionXIncrementedTwice().properties,
+            aTextWithContentAndPosition().properties,
           ]).properties,
         ]).properties,
       }).properties,
@@ -37,6 +38,7 @@ describe('FdsTreeCleanerService Tests', () => {
       [POSITION_X]: 4,
       [POSITION_X + INCREMENT_VALUE]: 1,
       [POSITION_X + 2 * INCREMENT_VALUE]: 1,
+      [POSITION_X + 3 * INCREMENT_VALUE]: 1,
     };
 
     beforeEach(() => {
@@ -51,7 +53,10 @@ describe('FdsTreeCleanerService Tests', () => {
             1: {
               lines: [
                 {
-                  texts: [aTextWithContentAndPosition().withContent(`${TEXT_CONTENT.repeat(3)}`).properties],
+                  texts: [
+                    aTextWithContentAndPosition().withContent(`${TEXT_CONTENT.repeat(3)}`).properties,
+                    aTextWithContentAndPosition().properties,
+                  ],
                   ...metaData,
                 },
               ],
@@ -77,7 +82,10 @@ describe('FdsTreeCleanerService Tests', () => {
             1: {
               lines: [
                 {
-                  texts: [aTextWithContentAndPosition().withContent(`${_.times(3, () => TEXT_CONTENT).join(' ')}`).properties],
+                  texts: [
+                    aTextWithContentAndPosition().withContent(`${_.times(3, () => TEXT_CONTENT).join(' ')}`).properties,
+                    aTextWithContentAndPosition().properties,
+                  ],
                   ...metaData,
                 },
               ],
