@@ -7,9 +7,10 @@ import type { IParseResult } from '@topics/engine/pdf-parser/pdf-parser.model.js
 import { PdfTextExtractorService } from '@topics/engine/pdf-extractor/pdf-text-extractor.service.js';
 import { PdfImageTextExtractorService } from '@topics/engine/pdf-extractor/pdf-image-text-extractor.service.js';
 import { aLineWithOneText } from '@topics/engine/fixtures/line.mother.js';
+import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/fixtures.constants.js';
 
 describe('PdfParser tests', () => {
-  describe('parsePdfText tests', () => {
+  describe('ParsePdfText tests', () => {
     let isPdfParsableSpy: SpyInstance<[pdfData: IPdfData], boolean>;
     let getTextFromPdfDataSpy: SpyInstance<[pdfData: IPdfData], ILine[]>;
     let getTextFromImagePdfSpy: SpyInstance<[string, { numberOfPagesToParse?: number }?], Promise<ILine[]>>;
@@ -71,6 +72,16 @@ describe('PdfParser tests', () => {
         expect(getTextFromImagePdfSpy).toHaveBeenCalledWith(fdsFilePath, { numberOfPagesToParse: 1 });
         expect(getTextFromImagePdfSpy).toHaveBeenCalledOnce();
       });
+    });
+  });
+
+  describe('ParsePDF tests', () => {
+    it('should throw an error when giving providing a bad filePath', async () => {
+      await expect(PdfParserService.parsePDF('')).rejects.toThrow();
+    });
+
+    it('should return the text contained in the pdf', async () => {
+      await expect(PdfParserService.parsePDF(FDS_TEST_FILES_PATH.PDF_JEFFACLEAN)).resolves.toMatchSnapshot();
     });
   });
 });
