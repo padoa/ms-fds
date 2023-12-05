@@ -73,8 +73,6 @@ export const aLineWithTwoTextsAndPositionYIncrementedTwice = (): LineBuilder =>
 //----------------------------------------- PRODUCT NAME ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aLineWithProductIdentifierWithColonOnly = (): LineBuilder =>
-  aLineWithPosition().withTexts([aTextWithProductNameIdentifierWithColon().properties]);
 export const aLineWithProductIdentifierOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductNameIdentifier().properties]);
 export const aLineWithProductNameOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductName().properties]);
 export const aLineWithProductIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProductIdentifierWithColonAndName().properties]);
