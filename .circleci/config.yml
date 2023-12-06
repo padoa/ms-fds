@@ -35,7 +35,8 @@ workflows:
       - orb-ms/build-and-publish-swagger-packages:
           matrix:
             parameters:
-              packageType: ['client', 'mocker', 'model']
+              packageType: ['client', 'mocker']
+              # packageType: ['client', 'mocker', 'model']
               swaggerScope: ['api']
           name: "Build and publish Swagger-<<matrix.packageType>>"
           npmToken: ${AZDO_NPM_REGISTRY_PUSH_TOKEN}
