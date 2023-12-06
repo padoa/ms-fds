@@ -48,5 +48,7 @@ export const SUB_SECTIONS_REGEX = {
 } as { [section: number]: { subSectionNumber: number; subSectionRegex: RegExp }[] };
 
 export const MONTH_MAPPING = {
-  aout: 'august',
+  août: 'august',
+  février: 'february',
+  décembre: 'december',
 } as { [key: string]: string };

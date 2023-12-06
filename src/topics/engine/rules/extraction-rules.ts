@@ -35,16 +35,17 @@ const numberDayRegex = `0${dayRegex}`;
 const monthRegex = '(0[1-9]|1[0-2])';
 const yearRegex = '(19\\d{2}|20\\d{2}|\\d{2})';
 const dateSeparatorsRegex = '(\\/|-|\\.)';
+const stringMonthRegex = '[a-zA-ZÉÛéû]+';
+const spaceRegex = '\\s*';
 
-export const numberDateRegex = `(${noSingleDigitStartRegex}(${numberDayRegex})${dateSeparatorsRegex}${monthRegex}${dateSeparatorsRegex}${yearRegex}(?!:\\d{2}))`;
-export const stringDateRegex = `(${noSingleDigitStartRegex}(${dayRegex})-?([a-zA-Z]+)\\.?.?(19\\d{2}|20\\d{2}))`;
-export const englishNumberDateRegex = `(${yearRegex}${dateSeparatorsRegex}${monthRegex}${dateSeparatorsRegex}(${numberDayRegex}))`;
+export const numberDateRegex = `(${noSingleDigitStartRegex}(${numberDayRegex})${spaceRegex}${dateSeparatorsRegex}${spaceRegex}${monthRegex}${spaceRegex}${dateSeparatorsRegex}${spaceRegex}${yearRegex}(?!:\\d{2}))`;
+export const stringDateRegex = `(${noSingleDigitStartRegex}(${dayRegex})${spaceRegex}-?(${stringMonthRegex})${spaceRegex}\\.?.?(19\\d{2}|20\\d{2}))`;
+export const englishNumberDateRegex = `(${yearRegex}${spaceRegex}${dateSeparatorsRegex}${spaceRegex}${monthRegex}${spaceRegex}${dateSeparatorsRegex}${spaceRegex}(${numberDayRegex}))`;
 
 export const dateRegexps = [numberDateRegex, stringDateRegex, englishNumberDateRegex];
 
 export const getDate = (fullText: string): IExtractedDate => {
-  const text = fullText.replaceAll(' ', '').replaceAll('û', 'u');
-  const inTextDate = getDateByRevisionText(text) || getDateByMostFrequent(text) || getDateByMostRecent(text);
+  const inTextDate = getDateByRevisionText(fullText) || getDateByMostFrequent(fullText) || getDateByMostRecent(fullText);
   if (!inTextDate) return { formattedDate: null, inTextDate: null };
   const parsedDate = parseDate(inTextDate);
 
@@ -55,7 +56,7 @@ export const getDate = (fullText: string): IExtractedDate => {
 };
 
 export const getDateByRevisionText = (fullText: string): string | null => {
-  const revisionDateRegex = 'révision.?';
+  const revisionDateRegex = `[R|r][é|e]vision.?${spaceRegex}`;
 
   for (const dateRegex of dateRegexps) {
     const revisionDateMatch = fullText.match(new RegExp(revisionDateRegex + dateRegex));
