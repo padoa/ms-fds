@@ -5,9 +5,7 @@ export const aBox = (): BoxBuilder => new BoxBuilder();
 
 export const aBoxWithPosition = (): BoxBuilder =>
   aBox().withXPositionProportion(POSITION_PROPORTION_X).withYPositionProportion(POSITION_PROPORTION_Y);
-export const aBoxWithPositionXIncremented = (): BoxBuilder => buildBoxWithPositionIncrementedTimes(1, 0);
 export const aBoxWithPositionYIncremented = (): BoxBuilder => buildBoxWithPositionIncrementedTimes(0, 1);
-export const aBoxWithPositionXYIncremented = (): BoxBuilder => buildBoxWithPositionIncrementedTimes(1, 1);
 export const aBoxWithPositionYIncrementedTwice = (): BoxBuilder => buildBoxWithPositionIncrementedTimes(0, 2);
 
 const buildBoxWithPositionIncrementedTimes = (multiplyXBy: number, multiplyYBy: number): BoxBuilder =>

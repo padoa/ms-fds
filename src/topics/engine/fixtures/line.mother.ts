@@ -1,9 +1,4 @@
-import {
-  aBoxWithPosition,
-  aBoxWithPositionXIncremented,
-  aBoxWithPositionYIncremented,
-  aBoxWithPositionYIncrementedTwice,
-} from '@topics/engine/fixtures/box.mother.js';
+import { aBoxWithPosition, aBoxWithPositionYIncremented, aBoxWithPositionYIncrementedTwice } from '@topics/engine/fixtures/box.mother.js';
 import { LineBuilder } from '@topics/engine/fixtures/line.builder.js';
 import {
   aTextWithCASNumber,
@@ -21,7 +16,7 @@ import {
   aTextWithHazardWithDetails,
   aTextWithMultiplePHazard,
   aTextWithMultiplePHazardWithDetails,
-  aTextWithProducerIdentifier,
+  aTextWithProducerIdentifierWithColon,
   aTextWithProducerIdentifierAndName,
   aTextWithProducerName,
   aTextWithProducerNameEndingWithDot,
@@ -32,6 +27,7 @@ import {
   aTextWithProductNameIdentifier,
   aTextWithPhysicalStateIdentifier,
   aTextWithPhysicalStateValue,
+  aTextWithProducerIdentifier,
 } from '@topics/engine/fixtures/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -40,6 +36,7 @@ export const aLine = (): LineBuilder => new LineBuilder();
 //----------------------------------------- BASICS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
+export const aLineWithUndefinedText = (): LineBuilder => aLine().withTexts(undefined);
 export const aLineWithOneText = (): LineBuilder => aLineWithPosition().withTexts([aTextWithContentAndPosition().properties]);
 export const aLineWithTwoTexts = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithContentAndPosition().properties, aTextWithContentAndPositionXIncremented().properties]);
@@ -49,7 +46,6 @@ export const aLineWithTwoTexts = (): LineBuilder =>
 //----------------------------------------------------------------------------------------------
 
 export const aLineWithPosition = (): LineBuilder => aLine().withStartBox(aBoxWithPosition().properties);
-export const aLineWithPositionXIncremented = (): LineBuilder => aLine().withStartBox(aBoxWithPositionXIncremented().properties);
 export const aLineWithPositionYIncremented = (): LineBuilder => aLine().withStartBox(aBoxWithPositionYIncremented().properties);
 export const aLineWithPositionYIncrementedTwice = (): LineBuilder => aLine().withStartBox(aBoxWithPositionYIncrementedTwice().properties);
 
@@ -83,11 +79,13 @@ export const aLineWithProductIn2Texts = (): LineBuilder =>
 //----------------------------------------- PRODUCER NAME --------------------------------------
 //----------------------------------------------------------------------------------------------
 
+export const aLineWithProducerIdentifierOnlyWithColon = (): LineBuilder =>
+  aLineWithPosition().withTexts([aTextWithProducerIdentifierWithColon().properties]);
 export const aLineWithProducerIdentifierOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerIdentifier().properties]);
 export const aLineWithProducerNameOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerName().properties]);
 export const aLineWithProducerIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerIdentifierAndName().properties]);
 export const aLineWithProducerIn2Texts = (): LineBuilder =>
-  aLineWithPosition().withTexts([aTextWithProducerIdentifier().properties, aTextWithProducerName().properties]);
+  aLineWithPosition().withTexts([aTextWithProducerIdentifierWithColon().properties, aTextWithProducerName().properties]);
 export const aLineWithProducerWithDotIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerNameWithDot().properties]);
 export const aLineWithProducerEndingWithDotIn1Text = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithProducerNameEndingWithDot().properties]);
