@@ -23,7 +23,7 @@ import type {
   IBox,
   IExtractedData,
   IExtractedDate,
-  IExtractedHazard,
+  IExtractedDanger,
   IExtractedProducer,
   IExtractedProduct,
   IExtractedSubstance,
@@ -580,7 +580,7 @@ describe('ExtractionRules tests', () => {
 
   describe('Hazards rules tests', () => {
     describe('GetHazards tests', () => {
-      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedHazard[] }]>([
+      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedDanger[] }]>([
         [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],
         [
           {

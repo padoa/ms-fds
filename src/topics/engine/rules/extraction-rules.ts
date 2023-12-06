@@ -5,7 +5,7 @@ import type {
   IExtractedData,
   IFDSTree,
   IExtractedSubstance,
-  IExtractedHazard,
+  IExtractedDanger,
   IExtractedDate,
   IExtractedProduct,
   IExtractedProducer,
@@ -220,7 +220,7 @@ export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
 //---------------------------------------- HAZARDS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getHazards = (fdsTree: IFDSTree): IExtractedHazard[] => {
+export const getHazards = (fdsTree: IFDSTree): IExtractedDanger[] => {
   const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
   const textInEachLine = _.map(linesToSearchIn, ({ texts }) => _.map(texts, 'content').join(''));
 
