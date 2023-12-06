@@ -53,12 +53,13 @@ import {
   MULTIPLE_P_HAZARD,
   CAS_NUMBER,
   CE_NUMBER,
-  PRODUCER_IDENTIFIER,
+  PRODUCER_IDENTIFIER_WITH_COLON,
   CAS_NUMBER_TEXT,
   CE_NUMBER_TEXT,
   H_HAZARD_WITH_DETAILS,
   MULTIPLE_P_HAZARD_WITH_DETAILS,
   PHYSICAL_STATE_VALUE,
+  PRODUCT_IDENTIFIER,
 } from '@topics/engine/fixtures/fixtures.constants.js';
 import {
   aLine,
@@ -69,7 +70,7 @@ import {
   aLineWithHHazard,
   aLineWithMultiplePHazard,
   aLineWithOneText,
-  aLineWithProducerIdentifierOnly,
+  aLineWithProducerIdentifierOnlyWithColon,
   aLineWithProducerEndingWithDotIn1Text,
   aLineWithProducerIn1Text,
   aLineWithProducerIn2Texts,
@@ -80,6 +81,8 @@ import {
   aLineWithProductIn2Texts,
   aLineWithProductNameOnly,
   aLineWithTwoHazards,
+  aLineWithUndefinedText,
+  aLineWithProducerIdentifierOnly,
 } from '@topics/engine/fixtures/line.mother.js';
 import { aSection } from '@topics/engine/fixtures/section.mother.js';
 import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics/engine/fixtures/sub-section.mother.js';
@@ -288,6 +291,17 @@ describe('ExtractionRules tests', () => {
       it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedProduct | null }]>([
         [
           {
+            message: 'should return null when providing a fdsTree with an undefined text',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithUndefinedText().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: null,
+          },
+        ],
+        [
+          {
             message: 'should return null when providing a fdsTree with all subsections but all empty',
             fdsTree: anEmptyFdsTreeWithAllSections().properties,
             expected: null,
@@ -327,6 +341,18 @@ describe('ExtractionRules tests', () => {
       it.each<[{ message: string; fdsTree: IFDSTree; fullText: string; expected: IExtractedProduct | null }]>([
         [
           {
+            message: 'should return null when providing a fdsTree with an undefined text',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithUndefinedText().properties]).properties,
+              }).properties,
+            ).properties,
+            fullText: '',
+            expected: null,
+          },
+        ],
+        [
+          {
             message: 'should return null when providing a fdsTree with all subsections but all empty',
             fdsTree: anEmptyFdsTreeWithAllSections().properties,
             fullText: '',
@@ -361,6 +387,18 @@ describe('ExtractionRules tests', () => {
               }).properties,
             ).properties,
             fullText: `${TEXT_CONTENT}${PRODUCT_NAME}${PRODUCT_NAME}`,
+            expected: null,
+          },
+        ],
+        [
+          {
+            message: 'should enter includes condition when given a line with product identifier',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties]).properties,
+              }).properties,
+            ).properties,
+            fullText: PRODUCT_IDENTIFIER,
             expected: null,
           },
         ],
@@ -426,10 +464,32 @@ describe('ExtractionRules tests', () => {
   describe('Producer rules tests', () => {
     describe('GetProducer tests', () => {
       it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedProducer | null }]>([
+        [
+          {
+            message: 'should return null when providing a fdsTree with an undefined text',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithUndefinedText().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: null,
+          },
+        ],
         [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: null }],
         [
           {
             message: 'it should return null when providing a fdsTree with only product name identifier',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: null,
+          },
+        ],
+        [
+          {
+            message: 'should enter includes condition when given a line with producer identifier',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties]).properties,
@@ -465,7 +525,8 @@ describe('ExtractionRules tests', () => {
             message: 'it should return product name when providing product in 2 lines',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerNameOnly().properties]).properties,
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon().properties, aLineWithProducerNameOnly().properties])
+                  .properties,
               }).properties,
             ).properties,
             expected: { name: PRODUCER_NAME, metaData },
@@ -506,6 +567,13 @@ describe('ExtractionRules tests', () => {
         [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],
         [
           {
+            message: 'it should return an empty list when providing texts without hazards',
+            fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+            expected: [],
+          },
+        ],
+        [
+          {
             message: 'it should retrieve hazards contained in lines',
             fdsTree: aFdsTree().withSection2(
               aSection().withSubsections({
@@ -544,6 +612,13 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
+            message: 'it should return an empty list when given a text without cas nor ce number',
+            fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+            expected: [],
+          },
+        ],
+        [
+          {
             message: 'it should return cas and ce number when it is contained in 2 texts',
             fdsTree: aFdsTree().withSection3(
               aSection().withSubsections({
@@ -575,6 +650,17 @@ describe('ExtractionRules tests', () => {
             expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
           },
         ],
+        [
+          {
+            message: 'it should return cas number even when it is contained in 2 lines',
+            fdsTree: aFdsTree().withSection3(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithCENumber().properties, aLineWithCASNumber().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+          },
+        ],
       ])('$message', ({ fdsTree, expected }) => {
         expect(getSubstances(fdsTree)).toEqual(expected);
       });
@@ -587,7 +673,7 @@ describe('ExtractionRules tests', () => {
       révision : 18/05/2015
       ${PRODUCT_IDENTIFIER_WITH_COLON}
       ${PRODUCT_NAME}
-      ${PRODUCER_IDENTIFIER}
+      ${PRODUCER_IDENTIFIER_WITH_COLON}
       ${PRODUCER_NAME}
       ${H_HAZARD_WITH_DETAILS}
       ${MULTIPLE_P_HAZARD_WITH_DETAILS}

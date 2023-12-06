@@ -20,7 +20,8 @@ export const PRODUCT_IDENTIFIER_WITH_COLON = ' blabla nom du produit : ';
 export const PRODUCT_IDENTIFIER = ' blabla: nom du produit';
 export const PRODUCT_NAME = 'jeffaclean';
 
-export const PRODUCER_IDENTIFIER = ' blabla 1.3 fournisseur : ';
+export const PRODUCER_IDENTIFIER_WITH_COLON = ' blabla 1.3 fournisseur : ';
+export const PRODUCER_IDENTIFIER = ' blabla 1.3 fournisseur ';
 export const PRODUCER_NAME = 'padoa';
 export const PRODUCER_NAME_WITH_DOT = `${PRODUCER_NAME}.rc`;
 export const PRODUCER_NAME_ENDING_WITH_DOT = `${PRODUCER_NAME}.`;

@@ -140,7 +140,7 @@ export const getProductByText = (fdsTree: IFDSTree): IExtractedProduct | null =>
   for (const line of linesToSearchIn) {
     const { pageNumber, startBox, endBox } = line;
     const metaData = { pageNumber, startBox, endBox };
-    const lineText = line.texts.map(({ content }) => content).join(' ');
+    const lineText = _.map(line.texts, ({ content }) => content).join(' ');
     const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
     if (nameInCurrentLine) return { name: text, metaData };
@@ -163,7 +163,7 @@ export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullTex
 
   for (const line of linesToSearchIn) {
     const { pageNumber, startBox, endBox } = line;
-    const lineText = line.texts.map(({ content }) => content).join('');
+    const lineText = _.map(line.texts, ({ content }) => content).join('');
     const { content } = _.last(line.texts) || { content: '' };
     const text = _(content).split(':').last().trim();
     if (
@@ -205,8 +205,9 @@ export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
       _.includes(text, 'société') ||
       _.includes(text, 'données de sécurité') ||
       _.includes(text, 'raison sociale')
-    )
+    ) {
       continue;
+    }
 
     const { pageNumber, startBox, endBox } = line;
 
@@ -221,9 +222,7 @@ export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
 
 export const getHazards = (fdsTree: IFDSTree): IExtractedHazard[] => {
   const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
-  const textInEachLine = _.map(linesToSearchIn, ({ texts }) => {
-    return _.map(texts, 'content').join('');
-  });
+  const textInEachLine = _.map(linesToSearchIn, ({ texts }) => _.map(texts, 'content').join(''));
 
   // TODO: possible improvement: concat all lines then use regex once to extract hazards
   return _(textInEachLine)

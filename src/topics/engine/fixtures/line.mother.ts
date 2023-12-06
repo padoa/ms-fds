@@ -21,7 +21,7 @@ import {
   aTextWithHazardWithDetails,
   aTextWithMultiplePHazard,
   aTextWithMultiplePHazardWithDetails,
-  aTextWithProducerIdentifier,
+  aTextWithProducerIdentifierWithColon,
   aTextWithProducerIdentifierAndName,
   aTextWithProducerName,
   aTextWithProducerNameEndingWithDot,
@@ -32,6 +32,7 @@ import {
   aTextWithProductNameIdentifier,
   aTextWithPhysicalStateIdentifier,
   aTextWithPhysicalStateValue,
+  aTextWithProducerIdentifier,
 } from '@topics/engine/fixtures/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -40,6 +41,7 @@ export const aLine = (): LineBuilder => new LineBuilder();
 //----------------------------------------- BASICS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
+export const aLineWithUndefinedText = (): LineBuilder => aLine().withTexts(undefined);
 export const aLineWithOneText = (): LineBuilder => aLineWithPosition().withTexts([aTextWithContentAndPosition().properties]);
 export const aLineWithTwoTexts = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithContentAndPosition().properties, aTextWithContentAndPositionXIncremented().properties]);
@@ -83,11 +85,13 @@ export const aLineWithProductIn2Texts = (): LineBuilder =>
 //----------------------------------------- PRODUCER NAME --------------------------------------
 //----------------------------------------------------------------------------------------------
 
+export const aLineWithProducerIdentifierOnlyWithColon = (): LineBuilder =>
+  aLineWithPosition().withTexts([aTextWithProducerIdentifierWithColon().properties]);
 export const aLineWithProducerIdentifierOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerIdentifier().properties]);
 export const aLineWithProducerNameOnly = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerName().properties]);
 export const aLineWithProducerIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerIdentifierAndName().properties]);
 export const aLineWithProducerIn2Texts = (): LineBuilder =>
-  aLineWithPosition().withTexts([aTextWithProducerIdentifier().properties, aTextWithProducerName().properties]);
+  aLineWithPosition().withTexts([aTextWithProducerIdentifierWithColon().properties, aTextWithProducerName().properties]);
 export const aLineWithProducerWithDotIn1Text = (): LineBuilder => aLineWithPosition().withTexts([aTextWithProducerNameWithDot().properties]);
 export const aLineWithProducerEndingWithDotIn1Text = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithProducerNameEndingWithDot().properties]);

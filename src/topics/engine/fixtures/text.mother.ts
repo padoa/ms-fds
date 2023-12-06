@@ -9,7 +9,7 @@ import {
   PLACEHOLDER_TEXT_2,
   PLACEHOLDER_TEXT_3,
   TEXT_CONTENT,
-  PRODUCER_IDENTIFIER,
+  PRODUCER_IDENTIFIER_WITH_COLON,
   PRODUCER_NAME_WITH_DOT,
   PRODUCER_NAME_ENDING_WITH_DOT,
   PRODUCER_NAME,
@@ -24,6 +24,7 @@ import {
   MULTIPLE_P_HAZARD_WITH_DETAILS,
   PHYSICAL_STATE_IDENTIFIER,
   PHYSICAL_STATE_VALUE,
+  PRODUCER_IDENTIFIER,
 } from '@topics/engine/fixtures/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/fixtures/text.builder.js';
 
@@ -71,11 +72,12 @@ export const aTextWithProductIdentifierWithColonAndName = (): TextBuilder => aTe
 //----------------------------------------- PRODUCER NAME --------------------------------------
 //----------------------------------------------------------------------------------------------
 
+export const aTextWithProducerIdentifierWithColon = (): TextBuilder => aText().withContent(PRODUCER_IDENTIFIER_WITH_COLON);
 export const aTextWithProducerIdentifier = (): TextBuilder => aText().withContent(PRODUCER_IDENTIFIER);
 export const aTextWithProducerName = (): TextBuilder => aText().withContent(PRODUCER_NAME);
 export const aTextWithProducerNameWithDot = (): TextBuilder => aText().withContent(PRODUCER_NAME_WITH_DOT);
 export const aTextWithProducerNameEndingWithDot = (): TextBuilder => aText().withContent(PRODUCER_NAME_ENDING_WITH_DOT);
-export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().withContent(`${PRODUCER_IDENTIFIER}${PRODUCER_NAME}`);
+export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().withContent(`${PRODUCER_IDENTIFIER_WITH_COLON}${PRODUCER_NAME}`);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- HAZARDS --------------------------------------------
