@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ (include "ms-fds.fullname" .) }}"
+  labels:
+    {{- include "ms-fds.labels" . | nindent 4 }}
+    app: ms-fds
+    service.istio.io/canonical-name: ms-fds
+    component: {{ .component }}
+  {{- with .Values.annotations }}
+  annotations: {{- toYaml . | nindent 4 }}
+  {{- with $.syncWave }}
+    argocd.argoproj.io/sync-wave: {{ . | quote }}
+  {{- end }}
+  {{- end }}
+spec:
+  replicas: {{ .replicaCount }}
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      {{- include "ms-fds.selectorLabels" . | nindent 6 }}
+      component: {{ .component }}
+      padoa.fr/alert-severity: high
+  template:
+    metadata:
+      labels:
+        {{- include "ms-fds.selectorLabels" . | nindent 8 }}
+        app: ms-fds
+        service.istio.io/canonical-name: ms-fds
+        component: {{ .component }}
+        version: v1
+        padoa.fr/alert-severity: high
+        fluentd_logstash_prefix: ms-fds
+        sidecar.istio.io/inject: {{ .Values.istio.enabled | quote }}
+        istio.io/rev: {{ .Values.istio.rev | quote }}
+        {{- if .Values.labels }}
+        {{- .Values.labels | toYaml | nindent 8 }}
+        {{- end }}
+      annotations:
+        {{- if .Values.annotations }}
+        {{- .Values.annotations | toYaml | nindent 8 }}
+        {{- end }}
+        proxy.istio.io/config: {{ .Values.istio.proxy.config | toJson | squote }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "ms-fds.serviceAccountName" . }}
+      securityContext: {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers: []
+      containers:
+      - name: {{ .Chart.Name }}
+        command:
+        - node
+        - ./index.js
+        env:
+        - name: EXAMPLE
+          value: TODO # TODO: set env variables
+
+        securityContext: {{- toYaml .Values.securityContext | nindent 10 }}
+        image: "{{ .Values.image.repository }}:{{ tpl .Values.image.tag . }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - name: {{ .Values.service.port.name }}
+          containerPort: {{ .Values.service.port.number }}
+          protocol: {{ .Values.service.port.protocol }}
+        livenessProbe:
+          initialDelaySeconds: {{ .Values.probes.liveness.initial_delay }}
+          timeoutSeconds: {{ .Values.probes.liveness.timeout }}
+          failureThreshold: {{ .Values.probes.liveness.failure_threshold }}
+          periodSeconds: {{ .Values.probes.liveness.period_seconds }}
+          httpGet:
+            # TODO: set liveness path
+            # BUG: istio fails to send headers, so we set it in query params
+            path: "/api/health-check?example=NULL"
+            port: {{ .Values.service.port.number  }}
+            httpHeaders:
+            - name: example
+              value: NULL
+        readinessProbe:
+          initialDelaySeconds: {{ .Values.probes.readiness.initial_delay }}
+          timeoutSeconds: {{ .Values.probes.readiness.timeout }}
+          failureThreshold: {{ .Values.probes.readiness.failure_threshold }}
+          periodSeconds: {{ .Values.probes.readiness.period_seconds }}
+          httpGet:
+            # TODO: set readiness path
+            # BUG: istio fails to send headers, so we set it in query params
+            path: "/api/health-check?example=NULL"
+            port: {{ .Values.service.port.number  }}
+            httpHeaders:
+            - name: example
+              value: NULL
+        startupProbe:
+          initialDelaySeconds: {{ .Values.probes.startup.initial_delay }}
+          timeoutSeconds: {{ .Values.probes.startup.timeout }}
+          failureThreshold: {{ .Values.probes.startup.failure_threshold }}
+          periodSeconds: {{ .Values.probes.startup.period_seconds }}
+          httpGet:
+            # TODO: set startup probe path
+            # BUG: istio fails to send headers, so we set it in query params
+            path: "/api/health-check?example=NULL"
+            port: {{ .Values.service.port.number  }}
+            httpHeaders:
+            - name: example
+              value: NULL
+        resources: {{- tpl (.Values.resources | toYaml) . | nindent 10 }}
+
+      {{- with .nodeSelector | default .Values.nodeSelector }}
+      nodeSelector: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .tolerations | default .Values.tolerations }}
+      tolerations: {{- toYaml . | nindent 6 }}
+      {{- end }}

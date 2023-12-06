@@ -1,0 +1,126 @@
+global:
+  frontend_domain: toto # TODO: delete only for lsp
+
+nameOverride: ""
+fullnameOverride: ""
+
+# -----------------------------------------------------------------------------
+# Deployment
+# -----------------------------------------------------------------------------
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+annotations: {}
+
+labels: {}
+
+nodeSelector:
+  dedicated: "Memory"
+
+tolerations:
+  - key: "dedicated"
+    operator: "Equal"
+    value: "Memory"
+    effect: "NoSchedule"
+
+affinity: {}
+
+serviceAccount:
+  name: default
+
+probes: 
+  liveness:
+    initial_delay: 0
+    timeout: 2
+    failure_threshold: 5
+    period_seconds: 10
+
+  readiness:
+    initial_delay: 0
+    timeout: 2
+    failure_threshold: 1
+    period_seconds: 10
+
+  startup:
+    initial_delay: 0
+    timeout: 2
+    failure_threshold: 1
+    period_seconds: 10
+
+# -----------------------------------------------------------------------------
+# Service
+# -----------------------------------------------------------------------------
+
+service:
+  type: ClusterIP
+  port:
+    name: http
+    number: 80 # TODO: change port
+    protocol: TCP
+
+# -----------------------------------------------------------------------------
+# Service
+# -----------------------------------------------------------------------------
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    #no middlewares in production
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  middlewares:
+    blockPath: false
+
+availableTraefikMiddlewares:
+  ipWhitelist:
+    name: ip-whitelist
+    namespace: ip-whitelist
+  forwardAuth:
+    name: sso-forward-auth
+    namespace: traefik-forward-auth
+  onDemand:
+    name: "{{ .Values.global.onDemandMiddlewareName }}"
+    namespace: "{{ .Values.global.namespace }}"
+  ipWhitelistOutsideCloudflare:
+    name: ip-whitelist
+    namespace: ip-whitelist-outside-cloudflare
+  blockPath:
+    name: back-block-paths
+    namespace: blockpath
+  authenticationATRT:
+    name: authentication-at-rt
+    namespace: "{{ .Values.global.namespace }}"
+
+startMiddlewares:
+  - ipWhitelist
+  - ipWhitelistOutsideCloudflare
+
+endMiddlewares:
+  - onDemand
+
+# -----------------------------------------------------------------------------
+# Istio
+# -----------------------------------------------------------------------------
+
+istio:
+  enabled: true
+  rev: default
+
+  proxy:
+    config:
+      holdApplicationUntilProxyStarts: true
+      terminationDrainDuration: 15s

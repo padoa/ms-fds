@@ -1,0 +1,35 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "ms-fds.fullname" . -}}
+{{- $frontend_domain := tpl .Values.global.frontend_domain . -}}
+{{- $svcPort := .Values.service.port.number -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "ms-fds.labels" . | nindent 4 }}
+  annotations:
+  {{- .Values.ingress.annotations | toYaml | nindent 4}}
+  {{- include "ingress-middlewares"
+    (merge (deepCopy $) (
+      dict
+      "availableMiddlewares" .Values.availableTraefikMiddlewares
+      "middlewares" .Values.ingress.middlewares
+      "startMiddlewares" .Values.startMiddlewares
+      "endMiddlewares" .Values.endMiddlewares
+    ))
+  | indent 4 }}
+spec:
+  rules:
+  - host: {{ $frontend_domain }}
+    http:
+      paths:
+      - path: /fds
+        pathType: "Prefix"
+        backend:
+          service:
+            name: {{ $fullName }}
+            port:
+              number: {{ $svcPort }}
+---
+{{- end }}
