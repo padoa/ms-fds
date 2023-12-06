@@ -3,7 +3,7 @@ import _ from 'lodash';
 import type { IFDSTree, ILine, IText, IXCounts } from '@topics/engine/model/fds.model.js';
 
 export class FdsTreeCleanerService {
-  public static readonly XHighestAlignmentValue = 10;
+  public static readonly XHighestAlignmentValue: number = 10;
 
   public static cleanFDSTree(fdsTree: IFDSTree, { xCounts, fromImage }: { xCounts: IXCounts; fromImage: boolean }): IFDSTree {
     const joinWithSpace = fromImage;

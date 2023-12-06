@@ -18,6 +18,7 @@ resources/*
 
 tsconfig.tsbuildinfo
 /coverage/
+reports/
 
 # connect-db dump files
 dumps/*
