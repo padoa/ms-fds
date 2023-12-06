@@ -392,7 +392,7 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
-            message: 'should enter includes condition when given a line with product identifier',
+            message: 'should skip lines containing only product identifier',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties]).properties,
@@ -489,7 +489,7 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
-            message: 'should enter includes condition when given a line with producer identifier',
+            message: 'should skip lines containing only producer identifier',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties]).properties,
