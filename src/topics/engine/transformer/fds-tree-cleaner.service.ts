@@ -41,7 +41,7 @@ export class FdsTreeCleanerService {
     return _.map(lines, (line) => this.cleanLine(line, { xCounts, joinWithSpace }));
   }
 
-  private static cleanLine(line: ILine, { xCounts, joinWithSpace }: { xCounts: IXCounts; joinWithSpace: boolean }): ILine {
+  public static cleanLine(line: ILine, { xCounts, joinWithSpace }: { xCounts: IXCounts; joinWithSpace: boolean }): ILine {
     const valueToPass = this.computeXHighestAlignmentValue(this.XHighestAlignmentValue, xCounts);
     return {
       ...line,

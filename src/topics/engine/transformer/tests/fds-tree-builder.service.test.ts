@@ -12,7 +12,7 @@ import {
   aLineWithTwoTextsAndPositionYIncremented,
   aLineWithTwoTextsAndPositionYIncrementedTwice,
 } from '@topics/engine/fixtures/line.mother.js';
-import { INCREMENT_VALUE, POSITION_X, POSITION_Y, TEXT_CONTENT } from '@topics/engine/fixtures/fixtures.constants.js';
+import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, TEXT_CONTENT } from '@topics/engine/fixtures/fixtures.constants.js';
 
 describe('FdsTreeBuilderService tests', () => {
   describe('BuildFdsTree tests', () => {
@@ -58,7 +58,7 @@ describe('FdsTreeBuilderService tests', () => {
 
         const expected: IFDSTreeResult = {
           fdsTree: {},
-          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
         expect(FDSTreeBuilderService.buildFdsTree([line])).toEqual(expected);
@@ -69,7 +69,7 @@ describe('FdsTreeBuilderService tests', () => {
 
         const expected: IFDSTreeResult = {
           fdsTree: {},
-          xCounts: { [POSITION_X + INCREMENT_VALUE]: 1, [POSITION_X]: 2 },
+          xCounts: { [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1, [POSITION_PROPORTION_X]: 2 },
           fullText: TEXT_CONTENT.repeat(3),
         };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
@@ -91,11 +91,11 @@ describe('FdsTreeBuilderService tests', () => {
           fdsTree: {
             1: {
               subsections: {},
-              xPositionProportion: POSITION_X,
-              yPositionProportion: POSITION_Y,
+              xPositionProportion: POSITION_PROPORTION_X,
+              yPositionProportion: POSITION_PROPORTION_Y,
             },
           },
-          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
         expect(FDSTreeBuilderService.buildFdsTree([line])).toEqual(expected);
@@ -108,16 +108,16 @@ describe('FdsTreeBuilderService tests', () => {
           fdsTree: {
             1: {
               subsections: {},
-              xPositionProportion: POSITION_X,
-              yPositionProportion: POSITION_Y,
+              xPositionProportion: POSITION_PROPORTION_X,
+              yPositionProportion: POSITION_PROPORTION_Y,
             },
             2: {
               subsections: {},
-              xPositionProportion: POSITION_X,
-              yPositionProportion: POSITION_Y + INCREMENT_VALUE,
+              xPositionProportion: POSITION_PROPORTION_X,
+              yPositionProportion: POSITION_PROPORTION_Y + INCREMENT_VALUE,
             },
           },
-          xCounts: { [POSITION_X]: 2 },
+          xCounts: { [POSITION_PROPORTION_X]: 2 },
           fullText: TEXT_CONTENT.repeat(2),
         };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
@@ -141,16 +141,16 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  xPositionProportion: POSITION_X,
-                  yPositionProportion: POSITION_Y + INCREMENT_VALUE,
+                  xPositionProportion: POSITION_PROPORTION_X,
+                  yPositionProportion: POSITION_PROPORTION_Y + INCREMENT_VALUE,
                   lines: subSectionLines,
                 },
               },
-              xPositionProportion: POSITION_X,
-              yPositionProportion: POSITION_Y,
+              xPositionProportion: POSITION_PROPORTION_X,
+              yPositionProportion: POSITION_PROPORTION_Y,
             },
           },
-          xCounts: { [POSITION_X]: 2, [POSITION_X + INCREMENT_VALUE]: 1 },
+          xCounts: { [POSITION_PROPORTION_X]: 2, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(3),
         };
         expect(FDSTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionLines])).toEqual(expected);
@@ -165,21 +165,21 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  xPositionProportion: POSITION_X,
-                  yPositionProportion: POSITION_Y + INCREMENT_VALUE,
+                  xPositionProportion: POSITION_PROPORTION_X,
+                  yPositionProportion: POSITION_PROPORTION_Y + INCREMENT_VALUE,
                   lines: [subSectionsLines[0]],
                 },
                 2: {
-                  xPositionProportion: POSITION_X,
-                  yPositionProportion: POSITION_Y + 2 * INCREMENT_VALUE,
+                  xPositionProportion: POSITION_PROPORTION_X,
+                  yPositionProportion: POSITION_PROPORTION_Y + 2 * INCREMENT_VALUE,
                   lines: [subSectionsLines[1]],
                 },
               },
-              xPositionProportion: POSITION_X,
-              yPositionProportion: POSITION_Y,
+              xPositionProportion: POSITION_PROPORTION_X,
+              yPositionProportion: POSITION_PROPORTION_Y,
             },
           },
-          xCounts: { [POSITION_X]: 3, [POSITION_X + INCREMENT_VALUE]: 1, [POSITION_X + 2 * INCREMENT_VALUE]: 1 },
+          xCounts: { [POSITION_PROPORTION_X]: 3, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1, [POSITION_PROPORTION_X + 2 * INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(5),
         };
         expect(FDSTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionsLines])).toEqual(expected);
@@ -199,7 +199,7 @@ describe('FdsTreeBuilderService tests', () => {
 
         const expected: IFDSTreeResult = {
           fdsTree: {},
-          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
@@ -219,7 +219,7 @@ describe('FdsTreeBuilderService tests', () => {
 
         const expected: IFDSTreeResult = {
           fdsTree: {},
-          xCounts: { [POSITION_X]: 1, [POSITION_X + INCREMENT_VALUE]: 1 },
+          xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
         expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
@@ -244,16 +244,16 @@ describe('FdsTreeBuilderService tests', () => {
             1: {
               subsections: {
                 1: {
-                  xPositionProportion: POSITION_X,
-                  yPositionProportion: POSITION_Y + INCREMENT_VALUE,
+                  xPositionProportion: POSITION_PROPORTION_X,
+                  yPositionProportion: POSITION_PROPORTION_Y + INCREMENT_VALUE,
                   lines: [subSectionLine, extraSubSectionLine],
                 },
               },
-              xPositionProportion: POSITION_X,
-              yPositionProportion: POSITION_Y,
+              xPositionProportion: POSITION_PROPORTION_X,
+              yPositionProportion: POSITION_PROPORTION_Y,
             },
           },
-          xCounts: { [POSITION_X]: 3, [POSITION_X + INCREMENT_VALUE]: 1 },
+          xCounts: { [POSITION_PROPORTION_X]: 3, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(4),
         };
         expect(FDSTreeBuilderService.buildFdsTree([sectionLine, subSectionLine, extraSubSectionLine])).toEqual(expected);
