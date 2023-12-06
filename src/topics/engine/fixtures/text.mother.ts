@@ -37,6 +37,7 @@ export const aTextWithContent = (): TextBuilder => aText().withContent(TEXT_CONT
 export const aTextWithRandomContent1 = (): TextBuilder => aText().withContent(PLACEHOLDER_TEXT_1);
 export const aTextWithRandomContent2 = (): TextBuilder => aText().withContent(PLACEHOLDER_TEXT_2);
 export const aTextWithRandomContent3 = (): TextBuilder => aText().withContent(PLACEHOLDER_TEXT_3);
+export const aTextWithPosition = (): TextBuilder => aText().withXPositionProportion(POSITION_X).withYPositionProportion(POSITION_Y);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- POSITIONS ------------------------------------------
