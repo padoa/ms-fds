@@ -73,7 +73,7 @@ export type IExtractedProduct = { name: string; metaData: IMetaData };
 
 export type IExtractedProducer = { name: string; metaData: IMetaData };
 
-export type IExtractedHazard = string;
+export type IExtractedDanger = string;
 
 export type IExtractedSubstance = {
   casNumber: string;
@@ -86,7 +86,7 @@ export type IExtractedData = {
   date: IExtractedDate;
   product: IExtractedProduct;
   producer: IExtractedProducer;
-  hazards: IExtractedHazard[];
+  hazards: IExtractedDanger[];
   substances: IExtractedSubstance[];
   physicalState: IExtractedPhysicalState;
 };
