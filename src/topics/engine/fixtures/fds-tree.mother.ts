@@ -5,7 +5,7 @@ import {
   aLineWithProducerIdentifierOnlyWithColon,
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
-  aLineWithThreeHazardsAndTheirDetails,
+  aLineWithThreeDangersAndTheirDetails,
 } from '@topics/engine/fixtures/line.mother.js';
 import { aSection } from '@topics/engine/fixtures/section.mother.js';
 import { aSubSection, aSubSectionWithContent } from '@topics/engine/fixtures/sub-section.mother.js';
@@ -35,7 +35,7 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FDSTreeBuilder =>
       }).properties,
     )
     .withSection2(
-      aSection().withSubsections({ 2: aSubSection().withLines([aLineWithThreeHazardsAndTheirDetails().properties]).properties }).properties,
+      aSection().withSubsections({ 2: aSubSection().withLines([aLineWithThreeDangersAndTheirDetails().properties]).properties }).properties,
     )
     .withSection3(
       aSection().withSubsections({

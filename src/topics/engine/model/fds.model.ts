@@ -86,7 +86,7 @@ export type IExtractedData = {
   date: IExtractedDate;
   product: IExtractedProduct;
   producer: IExtractedProducer;
-  hazards: IExtractedDanger[];
+  dangers: IExtractedDanger[];
   substances: IExtractedSubstance[];
   physicalState: IExtractedPhysicalState;
 };

@@ -13,15 +13,15 @@ import {
   PRODUCER_NAME_WITH_DOT,
   PRODUCER_NAME_ENDING_WITH_DOT,
   PRODUCER_NAME,
-  H_HAZARD,
-  EUH_HAZARD,
-  P_HAZARD,
-  MULTIPLE_P_HAZARD,
+  H_DANGER,
+  EUH_DANGER,
+  P_DANGER,
+  MULTIPLE_P_DANGER,
   CAS_NUMBER_TEXT,
   CE_NUMBER_TEXT,
-  H_HAZARD_WITH_DETAILS,
-  P_HAZARD_WITH_DETAILS,
-  MULTIPLE_P_HAZARD_WITH_DETAILS,
+  H_DANGER_WITH_DETAILS,
+  P_DANGER_WITH_DETAILS,
+  MULTIPLE_P_DANGER_WITH_DETAILS,
   PHYSICAL_STATE_IDENTIFIER,
   PHYSICAL_STATE_VALUE,
   PRODUCER_IDENTIFIER,
@@ -80,17 +80,17 @@ export const aTextWithProducerNameEndingWithDot = (): TextBuilder => aText().wit
 export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().withContent(`${PRODUCER_IDENTIFIER_WITH_COLON}${PRODUCER_NAME}`);
 
 //----------------------------------------------------------------------------------------------
-//----------------------------------------- HAZARDS --------------------------------------------
+//----------------------------------------- DANGERS --------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithHHazard = (): TextBuilder => aText().withContent(H_HAZARD);
-export const aTextWithOEUHHazard = (): TextBuilder => aText().withContent(EUH_HAZARD);
-export const aTextWithPHazard = (): TextBuilder => aText().withContent(P_HAZARD);
-export const aTextWithMultiplePHazard = (): TextBuilder => aText().withContent(MULTIPLE_P_HAZARD);
+export const aTextWithHDanger = (): TextBuilder => aText().withContent(H_DANGER);
+export const aTextWithOEUHDanger = (): TextBuilder => aText().withContent(EUH_DANGER);
+export const aTextWithPDanger = (): TextBuilder => aText().withContent(P_DANGER);
+export const aTextWithMultiplePDanger = (): TextBuilder => aText().withContent(MULTIPLE_P_DANGER);
 
-export const aTextWithHHazardWithDetails = (): TextBuilder => aText().withContent(H_HAZARD_WITH_DETAILS);
-export const aTextWithHazardWithDetails = (): TextBuilder => aText().withContent(P_HAZARD_WITH_DETAILS);
-export const aTextWithMultiplePHazardWithDetails = (): TextBuilder => aText().withContent(MULTIPLE_P_HAZARD_WITH_DETAILS);
+export const aTextWithHDangerWithDetails = (): TextBuilder => aText().withContent(H_DANGER_WITH_DETAILS);
+export const aTextWithDangerWithDetails = (): TextBuilder => aText().withContent(P_DANGER_WITH_DETAILS);
+export const aTextWithMultiplePDangerWithDetails = (): TextBuilder => aText().withContent(MULTIPLE_P_DANGER_WITH_DETAILS);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- SUBSTANCES -----------------------------------------
