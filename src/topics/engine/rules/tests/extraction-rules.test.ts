@@ -37,8 +37,8 @@ import {
   anEmptyFdsTreeWithAllSections,
 } from '@topics/engine/fixtures/fds-tree.mother.js';
 import {
-  POSITION_X,
-  POSITION_Y,
+  POSITION_PROPORTION_X,
+  POSITION_PROPORTION_Y,
   PRODUCT_NAME,
   PRODUCT_IDENTIFIER_WITH_COLON,
   PLACEHOLDER_TEXT_1,
@@ -86,7 +86,7 @@ import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics
 import { aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/fixtures/text.mother.js';
 
 describe('ExtractionRules tests', () => {
-  const iBox: IBox = { xPositionProportion: POSITION_X, yPositionProportion: POSITION_Y };
+  const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };
   const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
 
   describe('Regexps tests', () => {
