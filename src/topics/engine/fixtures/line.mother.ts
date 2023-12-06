@@ -9,13 +9,13 @@ import {
   aTextWithContentAndPositionXYIncrementedTwice,
   aTextWithContentAndPositionYIncremented,
   aTextWithContentAndPositionYIncrementedTwice,
-  aTextWithOEUHHazard,
-  aTextWithHHazard,
-  aTextWithHHazardWithDetails,
-  aTextWithPHazard,
-  aTextWithHazardWithDetails,
-  aTextWithMultiplePHazard,
-  aTextWithMultiplePHazardWithDetails,
+  aTextWithOEUHDanger,
+  aTextWithHDanger,
+  aTextWithHDangerWithDetails,
+  aTextWithPDanger,
+  aTextWithDangerWithDetails,
+  aTextWithMultiplePDanger,
+  aTextWithMultiplePDangerWithDetails,
   aTextWithProducerIdentifierWithColon,
   aTextWithProducerIdentifierAndName,
   aTextWithProducerName,
@@ -91,20 +91,20 @@ export const aLineWithProducerEndingWithDotIn1Text = (): LineBuilder =>
   aLineWithPosition().withTexts([aTextWithProducerNameEndingWithDot().properties]);
 
 //----------------------------------------------------------------------------------------------
-//----------------------------------------- HAZARDS --------------------------------------------
+//----------------------------------------- DANGERS --------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aLineWithHHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHHazard().properties]);
-export const aLineWithEUHHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOEUHHazard().properties]);
-export const aLineWithPHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithPHazard().properties]);
-export const aLineWithMultiplePHazard = (): LineBuilder => aLineWithPosition().withTexts([aTextWithMultiplePHazard().properties]);
+export const aLineWithHDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHDanger().properties]);
+export const aLineWithEUHDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOEUHDanger().properties]);
+export const aLineWithPDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithPDanger().properties]);
+export const aLineWithMultiplePDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithMultiplePDanger().properties]);
 
-export const aLineWithTwoHazards = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHHazard().properties, aTextWithPHazard().properties]);
-export const aLineWithThreeHazardsAndTheirDetails = (): LineBuilder =>
+export const aLineWithTwoDangers = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHDanger().properties, aTextWithPDanger().properties]);
+export const aLineWithThreeDangersAndTheirDetails = (): LineBuilder =>
   aLineWithPosition().withTexts([
-    aTextWithHHazardWithDetails().properties,
-    aTextWithHazardWithDetails().properties,
-    aTextWithMultiplePHazardWithDetails().properties,
+    aTextWithHDangerWithDetails().properties,
+    aTextWithDangerWithDetails().properties,
+    aTextWithMultiplePDangerWithDetails().properties,
   ]);
 
 //----------------------------------------------------------------------------------------------

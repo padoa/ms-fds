@@ -9,7 +9,7 @@ import {
   getDateByMostFrequent,
   getDateByMostRecent,
   getDateByRevisionText,
-  getHazards,
+  getDangers,
   getProducer,
   getProduct,
   getProductByLineOrder,
@@ -47,17 +47,17 @@ import {
   TEXT_CONTENT,
   PRODUCER_NAME,
   PRODUCER_NAME_WITH_DOT,
-  H_HAZARD,
-  EUH_HAZARD,
-  P_HAZARD,
-  MULTIPLE_P_HAZARD,
+  H_DANGER,
+  EUH_DANGER,
+  P_DANGER,
+  MULTIPLE_P_DANGER,
   CAS_NUMBER,
   CE_NUMBER,
   PRODUCER_IDENTIFIER_WITH_COLON,
   CAS_NUMBER_TEXT,
   CE_NUMBER_TEXT,
-  H_HAZARD_WITH_DETAILS,
-  MULTIPLE_P_HAZARD_WITH_DETAILS,
+  H_DANGER_WITH_DETAILS,
+  MULTIPLE_P_DANGER_WITH_DETAILS,
   PHYSICAL_STATE_VALUE,
   PRODUCT_IDENTIFIER,
 } from '@topics/engine/fixtures/fixtures.constants.js';
@@ -66,9 +66,9 @@ import {
   aLineWithCASAndCENumberIn2Texts,
   aLineWithCASNumber,
   aLineWithCENumber,
-  aLineWithEUHHazard,
-  aLineWithHHazard,
-  aLineWithMultiplePHazard,
+  aLineWithEUHDanger,
+  aLineWithHDanger,
+  aLineWithMultiplePDanger,
   aLineWithOneText,
   aLineWithProducerIdentifierOnlyWithColon,
   aLineWithProducerEndingWithDotIn1Text,
@@ -80,7 +80,7 @@ import {
   aLineWithProductIn1Text,
   aLineWithProductIn2Texts,
   aLineWithProductNameOnly,
-  aLineWithTwoHazards,
+  aLineWithTwoDangers,
   aLineWithUndefinedText,
   aLineWithProducerIdentifierOnly,
 } from '@topics/engine/fixtures/line.mother.js';
@@ -578,41 +578,41 @@ describe('ExtractionRules tests', () => {
     });
   });
 
-  describe('Hazards rules tests', () => {
-    describe('GetHazards tests', () => {
+  describe('Dangers rules tests', () => {
+    describe('GetDangers tests', () => {
       it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedDanger[] }]>([
         [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],
         [
           {
-            message: 'it should return an empty list when providing texts without hazards',
+            message: 'it should return an empty list when providing texts without dangers',
             fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
             expected: [],
           },
         ],
         [
           {
-            message: 'it should retrieve hazards contained in lines',
+            message: 'it should retrieve dangers contained in lines',
             fdsTree: aFdsTree().withSection2(
               aSection().withSubsections({
-                2: aSubSection().withLines([aLineWithHHazard().properties, aLineWithEUHHazard().properties]).properties,
+                2: aSubSection().withLines([aLineWithHDanger().properties, aLineWithEUHDanger().properties]).properties,
               }).properties,
             ).properties,
-            expected: [H_HAZARD, EUH_HAZARD],
+            expected: [H_DANGER, EUH_DANGER],
           },
         ],
         [
           {
-            message: 'it should retrieve hazards contained in texts and lines',
+            message: 'it should retrieve dangers contained in texts and lines',
             fdsTree: aFdsTree().withSection2(
               aSection().withSubsections({
-                2: aSubSection().withLines([aLineWithTwoHazards().properties, aLineWithMultiplePHazard().properties]).properties,
+                2: aSubSection().withLines([aLineWithTwoDangers().properties, aLineWithMultiplePDanger().properties]).properties,
               }).properties,
             ).properties,
-            expected: [H_HAZARD, P_HAZARD, MULTIPLE_P_HAZARD],
+            expected: [H_DANGER, P_DANGER, MULTIPLE_P_DANGER],
           },
         ],
       ])('$message', ({ fdsTree, expected }) => {
-        expect(getHazards(fdsTree)).toEqual(expected);
+        expect(getDangers(fdsTree)).toEqual(expected);
       });
     });
   });
@@ -692,9 +692,9 @@ describe('ExtractionRules tests', () => {
       ${PRODUCT_NAME}
       ${PRODUCER_IDENTIFIER_WITH_COLON}
       ${PRODUCER_NAME}
-      ${H_HAZARD_WITH_DETAILS}
-      ${MULTIPLE_P_HAZARD_WITH_DETAILS}
-      ${MULTIPLE_P_HAZARD}
+      ${H_DANGER_WITH_DETAILS}
+      ${MULTIPLE_P_DANGER_WITH_DETAILS}
+      ${MULTIPLE_P_DANGER}
       ${CAS_NUMBER_TEXT}
       ${CE_NUMBER_TEXT}
     `;
@@ -703,7 +703,7 @@ describe('ExtractionRules tests', () => {
         date: { formattedDate: '2015/05/18', inTextDate: '18/05/2015' },
         product: { name: PRODUCT_NAME, metaData },
         producer: { name: PRODUCER_NAME, metaData },
-        hazards: [H_HAZARD, P_HAZARD, MULTIPLE_P_HAZARD],
+        dangers: [H_DANGER, P_DANGER, MULTIPLE_P_DANGER],
         substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
         physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
       };

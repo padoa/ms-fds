@@ -26,13 +26,13 @@ export const PRODUCER_NAME = 'padoa';
 export const PRODUCER_NAME_WITH_DOT = `${PRODUCER_NAME}.rc`;
 export const PRODUCER_NAME_ENDING_WITH_DOT = `${PRODUCER_NAME}.`;
 
-export const H_HAZARD = 'h350i';
-export const H_HAZARD_WITH_DETAILS = `${H_HAZARD} - peut provoquer le cancer`;
-export const EUH_HAZARD = 'euh212';
-export const P_HAZARD = 'p331';
-export const P_HAZARD_WITH_DETAILS = `${P_HAZARD} - peut provoquer la mort`;
-export const MULTIPLE_P_HAZARD = 'p301 + p310';
-export const MULTIPLE_P_HAZARD_WITH_DETAILS = `${MULTIPLE_P_HAZARD} - peut provoquer des douleurs`;
+export const H_DANGER = 'h350i';
+export const H_DANGER_WITH_DETAILS = `${H_DANGER} - peut provoquer le cancer`;
+export const EUH_DANGER = 'euh212';
+export const P_DANGER = 'p331';
+export const P_DANGER_WITH_DETAILS = `${P_DANGER} - peut provoquer la mort`;
+export const MULTIPLE_P_DANGER = 'p301 + p310';
+export const MULTIPLE_P_DANGER_WITH_DETAILS = `${MULTIPLE_P_DANGER} - peut provoquer des douleurs`;
 
 export const CAS_NUMBER = '64742-52-5';
 export const CAS_NUMBER_TEXT = `cas : ${CAS_NUMBER}`;

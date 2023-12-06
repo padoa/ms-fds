@@ -19,7 +19,7 @@ export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTr
     date: getDate(fullText),
     product: getProduct(fdsTreeCleaned, { fullText }),
     producer: getProducer(fdsTreeCleaned),
-    hazards: getHazards(fdsTreeCleaned),
+    dangers: getDangers(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
     physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
   };
@@ -217,14 +217,14 @@ export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
 };
 
 //----------------------------------------------------------------------------------------------
-//---------------------------------------- HAZARDS ---------------------------------------------
+//---------------------------------------- DANGERS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const getHazards = (fdsTree: IFDSTree): IExtractedDanger[] => {
+export const getDangers = (fdsTree: IFDSTree): IExtractedDanger[] => {
   const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
   const textInEachLine = _.map(linesToSearchIn, ({ texts }) => _.map(texts, 'content').join(''));
 
-  // TODO: possible improvement: concat all lines then use regex once to extract hazards
+  // TODO: possible improvement: concat all lines then use regex once to extract dangers
   return _(textInEachLine)
     .map((text) => {
       // TODO: add unit tests on regexes
