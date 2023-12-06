@@ -1,5 +1,5 @@
 import type { SpyInstance } from 'vitest';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import _ from 'lodash';
 
 import { aFdsTree } from '@topics/engine/fixtures/fds-tree.mother.js';
@@ -99,8 +99,11 @@ describe('FdsTreeCleanerService Tests', () => {
     };
 
     beforeEach(() => {
-      XHighestAlignmentValueSpy = vi.spyOn(FdsTreeCleanerService, 'XHighestAlignmentValue', 'get');
-      XHighestAlignmentValueSpy.mockImplementationOnce(() => 1);
+      XHighestAlignmentValueSpy = vi.spyOn(FdsTreeCleanerService, 'XHighestAlignmentValue', 'get').mockImplementationOnce(() => 1);
+    });
+
+    afterEach(() => {
+      XHighestAlignmentValueSpy.mockRestore();
     });
 
     it('should clean the given fds tree by concatenating texts without joining with Space', () => {

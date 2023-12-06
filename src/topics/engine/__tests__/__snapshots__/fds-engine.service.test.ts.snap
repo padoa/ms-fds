@@ -1,0 +1,120 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FdsEngine tests > ExtractDataFromFDS tests > should extract data from a pdf FDS file 1`] = `
+{
+  "dataExtracted": {
+    "dangers": [
+      "h304",
+      "p301 + p310",
+      "p331",
+      "p501",
+    ],
+    "date": {
+      "formattedDate": "2017/01/20",
+      "inTextDate": "20janvier2017",
+    },
+    "physicalState": {
+      "metaData": {
+        "endBox": undefined,
+        "pageNumber": 7,
+        "startBox": {
+          "xPositionProportion": 0.12333369167920878,
+          "yPositionProportion": 11.669346256176361,
+        },
+      },
+      "value": "liquide",
+    },
+    "producer": {
+      "metaData": {
+        "endBox": undefined,
+        "pageNumber": 1,
+        "startBox": {
+          "xPositionProportion": 0.08097720920232208,
+          "yPositionProportion": 0.3348726719878373,
+        },
+      },
+      "name": "jeffa lubrifiants",
+    },
+    "product": {
+      "metaData": {
+        "endBox": undefined,
+        "pageNumber": 1,
+        "startBox": {
+          "xPositionProportion": 0.08097720920232208,
+          "yPositionProportion": 0.2719688331432915,
+        },
+      },
+      "name": "jeffaclean h 100 sc",
+    },
+    "substances": [
+      {
+        "casNumber": "64742-52-5",
+        "ceNumber": "265-155-0",
+      },
+      {
+        "casNumber": "67762-38-3",
+        "ceNumber": "267-015-4",
+      },
+      {
+        "casNumber": undefined,
+        "ceNumber": "918-481-9",
+      },
+    ],
+  },
+  "fromImage": false,
+}
+`;
+
+exports[`FdsEngine tests > ExtractDataFromFDS tests > should extract data from an image FDS file 1`] = `
+{
+  "dataExtracted": {
+    "dangers": [
+      "h314",
+      "h412",
+      "p273",
+      "p280",
+      "p301 + p330 + p331",
+      "p303 + p361 + p353",
+      "p304 + p340",
+      "p305 + p351 + p338",
+      "p310",
+      "p501",
+    ],
+    "date": {
+      "formattedDate": "2016/09/09",
+      "inTextDate": "09/09/16",
+    },
+    "physicalState": null,
+    "producer": {
+      "metaData": {
+        "endBox": {
+          "xPositionProportion": 0.47619047619047616,
+          "yPositionProportion": 0.5858585858585859,
+        },
+        "pageNumber": 1,
+        "startBox": {
+          "xPositionProportion": 0.37333333333333335,
+          "yPositionProportion": 0.5764309764309764,
+        },
+      },
+      "name": "hypred sas",
+    },
+    "product": null,
+    "substances": [
+      {
+        "casNumber": "69011-36-5",
+        "ceNumber": undefined,
+      },
+      {
+        "casNumber": "08062-26-4",
+        "ceNumber": undefined,
+      },
+      {
+        "casNumber": undefined,
+        "ceNumber": "219-145-8",
+      },
+    ],
+  },
+  "fromImage": true,
+}
+`;

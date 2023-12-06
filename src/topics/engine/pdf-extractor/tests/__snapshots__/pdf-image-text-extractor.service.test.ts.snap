@@ -4,1998 +4,1508 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
 [
   {
     "endBox": {
-      "xPositionProportion": 0.6904761904761905,
-      "yPositionProportion": 0.07811447811447811,
+      "xPositionProportion": 0.5076190476190476,
+      "yPositionProportion": 0.13333333333333333,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.2895238095238095,
-      "yPositionProportion": 0.06599326599326599,
-    },
-    "texts": [
-      {
-        "content": "fiche",
-        "xPositionProportion": 0.2895238095238095,
-        "yPositionProportion": 0.06599326599326599,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.3676190476190476,
-        "yPositionProportion": 0.06599326599326599,
-      },
-      {
-        "content": "données",
-        "xPositionProportion": 0.4076190476190476,
-        "yPositionProportion": 0.06599326599326599,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.5323809523809524,
-        "yPositionProportion": 0.06599326599326599,
-      },
-      {
-        "content": "sécurité",
-        "xPositionProportion": 0.5714285714285714,
-        "yPositionProportion": 0.06599326599326599,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.2438095238095238,
-      "yPositionProportion": 0.09562289562289562,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.09428571428571429,
-      "yPositionProportion": 0.07609427609427609,
-    },
-    "texts": [
-      {
-        "content": "oir",
-        "xPositionProportion": 0.09428571428571429,
-        "yPositionProportion": 0.07609427609427609,
-      },
-      {
-        "content": "liquide",
-        "xPositionProportion": 0.19428571428571428,
-        "yPositionProportion": 0.08215488215488216,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.8980952380952381,
-      "yPositionProportion": 0.09898989898989899,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.17809523809523808,
-      "yPositionProportion": 0.08484848484848485,
-    },
-    "texts": [
-      {
-        "content": "q",
-        "xPositionProportion": 0.17809523809523808,
-        "yPositionProportion": 0.08484848484848485,
-      },
-      {
-        "content": "date",
-        "xPositionProportion": 0.7304761904761905,
-        "yPositionProportion": 0.09225589225589226,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.76,
-        "yPositionProportion": 0.09225589225589226,
-      },
-      {
-        "content": "révision",
-        "xPositionProportion": 0.7780952380952381,
-        "yPositionProportion": 0.09225589225589226,
-      },
-      {
-        "content": ":",
-        "xPositionProportion": 0.8266666666666667,
-        "yPositionProportion": 0.09764309764309764,
-      },
-      {
-        "content": "2017-09-01",
-        "xPositionProportion": 0.8361904761904762,
-        "yPositionProportion": 0.09225589225589226,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.900952380952381,
-      "yPositionProportion": 0.11380471380471381,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.7276190476190476,
-      "yPositionProportion": 0.10572390572390572,
-    },
-    "texts": [
-      {
-        "content": "remplace",
-        "xPositionProportion": 0.7276190476190476,
-        "yPositionProportion": 0.10572390572390572,
-      },
-      {
-        "content": "la",
-        "xPositionProportion": 0.7885714285714286,
-        "yPositionProportion": 0.10572390572390572,
-      },
-      {
-        "content": "fiche",
-        "xPositionProportion": 0.800952380952381,
-        "yPositionProportion": 0.10572390572390572,
-      },
-      {
-        "content": ":",
-        "xPositionProportion": 0.8323809523809523,
-        "yPositionProportion": 0.1111111111111111,
-      },
-      {
-        "content": "2015-06-01",
-        "xPositionProportion": 0.839047619047619,
-        "yPositionProportion": 0.10572390572390572,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.8533333333333334,
-      "yPositionProportion": 0.13602693602693602,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.09523809523809523,
+      "xPositionProportion": 0.08666666666666667,
       "yPositionProportion": 0.12053872053872054,
     },
     "texts": [
       {
-        "content": "argon",
-        "xPositionProportion": 0.09523809523809523,
+        "content": "dégraissant",
+        "xPositionProportion": 0.08666666666666667,
         "yPositionProportion": 0.12053872053872054,
       },
       {
-        "content": ";",
+        "content": "désinfectant",
+        "xPositionProportion": 0.23333333333333334,
+        "yPositionProportion": 0.12053872053872054,
+      },
+      {
+        "content": "concentré",
+        "xPositionProportion": 0.38666666666666666,
+        "yPositionProportion": 0.12053872053872054,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.18285714285714286,
+      "yPositionProportion": 0.14882154882154883,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.08571428571428572,
+      "yPositionProportion": 0.1393939393939394,
+    },
+    "texts": [
+      {
+        "content": "code:",
+        "xPositionProportion": 0.08571428571428572,
+        "yPositionProportion": 0.1414141414141414,
+      },
+      {
+        "content": "0",
+        "xPositionProportion": 0.12761904761904763,
+        "yPositionProportion": 0.1393939393939394,
+      },
+      {
+        "content": "330",
+        "xPositionProportion": 0.14095238095238094,
+        "yPositionProportion": 0.1393939393939394,
+      },
+      {
+        "content": "2",
         "xPositionProportion": 0.1742857142857143,
-        "yPositionProportion": 0.12390572390572391,
+        "yPositionProportion": 0.1367003367003367,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.8790476190476191,
+      "yPositionProportion": 0.18316498316498317,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.10476190476190476,
+      "yPositionProportion": 0.1696969696969697,
+    },
+    "texts": [
+      {
+        "content": "fiche",
+        "xPositionProportion": 0.10476190476190476,
+        "yPositionProportion": 0.1696969696969697,
       },
       {
-        "content": "argon",
-        "xPositionProportion": 0.18666666666666668,
-        "yPositionProportion": 0.12053872053872054,
+        "content": "de",
+        "xPositionProportion": 0.1580952380952381,
+        "yPositionProportion": 0.17037037037037037,
       },
       {
-        "content": "nertal",
+        "content": "données",
+        "xPositionProportion": 0.18476190476190477,
+        "yPositionProportion": 0.1696969696969697,
+      },
+      {
+        "content": "de",
         "xPositionProportion": 0.26476190476190475,
-        "yPositionProportion": 0.12053872053872054,
+        "yPositionProportion": 0.17037037037037037,
       },
       {
-        "content": ";",
-        "xPositionProportion": 0.36857142857142855,
-        "yPositionProportion": 0.12390572390572391,
+        "content": "sécurité",
+        "xPositionProportion": 0.29333333333333333,
+        "yPositionProportion": 0.17037037037037037,
       },
       {
-        "content": "argon",
-        "xPositionProportion": 0.38095238095238093,
-        "yPositionProportion": 0.12053872053872054,
+        "content": "conforme",
+        "xPositionProportion": 0.3657142857142857,
+        "yPositionProportion": 0.17037037037037037,
       },
       {
-        "content": "n56",
+        "content": "au",
+        "xPositionProportion": 0.4514285714285714,
+        "yPositionProportion": 0.17373737373737375,
+      },
+      {
+        "content": "règlement",
         "xPositionProportion": 0.4780952380952381,
-        "yPositionProportion": 0.12121212121212122,
+        "yPositionProportion": 0.17037037037037037,
       },
       {
-        "content": ";",
-        "xPositionProportion": 0.5295238095238095,
-        "yPositionProportion": 0.12457912457912458,
+        "content": "(ce)",
+        "xPositionProportion": 0.5780952380952381,
+        "yPositionProportion": 0.17037037037037037,
       },
       {
-        "content": "argon",
-        "xPositionProportion": 0.5419047619047619,
-        "yPositionProportion": 0.12121212121212122,
+        "content": "1907/2006,",
+        "xPositionProportion": 0.6276190476190476,
+        "yPositionProportion": 0.17037037037037037,
       },
       {
-        "content": "n60",
-        "xPositionProportion": 0.6390476190476191,
-        "yPositionProportion": 0.12121212121212122,
+        "content": "annexe",
+        "xPositionProportion": 0.7257142857142858,
+        "yPositionProportion": 0.17306397306397306,
       },
       {
-        "content": "003agis",
-        "xPositionProportion": 0.7761904761904762,
-        "yPositionProportion": 0.12053872053872054,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.8828571428571429,
-      "yPositionProportion": 0.1468013468013468,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.7476190476190476,
-      "yPositionProportion": 0.13872053872053872,
-    },
-    "texts": [
-      {
-        "content": "pays",
-        "xPositionProportion": 0.7476190476190476,
-        "yPositionProportion": 0.13872053872053872,
+        "content": "!l,",
+        "xPositionProportion": 0.7952380952380952,
+        "yPositionProportion": 0.17104377104377105,
       },
       {
-        "content": ":",
-        "xPositionProportion": 0.7780952380952381,
-        "yPositionProportion": 0.13400673400673402,
-      },
-      {
-        "content": "fr/",
-        "xPositionProportion": 0.7866666666666666,
-        "yPositionProportion": 0.13872053872053872,
-      },
-      {
-        "content": "langue",
-        "xPositionProportion": 0.8142857142857143,
-        "yPositionProportion": 0.13872053872053872,
-      },
-      {
-        "content": ":",
-        "xPositionProportion": 0.8609523809523809,
-        "yPositionProportion": 0.14006734006734006,
-      },
-      {
-        "content": "fr",
-        "xPositionProportion": 0.8666666666666667,
-        "yPositionProportion": 0.13872053872053872,
+        "content": "modifié",
+        "xPositionProportion": 0.8228571428571428,
+        "yPositionProportion": 0.17037037037037037,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.7152380952380952,
-      "yPositionProportion": 0.18518518518518517,
+      "xPositionProportion": 0.6390476190476191,
+      "yPositionProportion": 0.20134680134680136,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.08476190476190476,
-      "yPositionProportion": 0.1744107744107744,
+      "xPositionProportion": 0.35714285714285715,
+      "yPositionProportion": 0.18855218855218855,
     },
     "texts": [
       {
-        "content": "rubrique",
-        "xPositionProportion": 0.08476190476190476,
-        "yPositionProportion": 0.1744107744107744,
+        "content": "par",
+        "xPositionProportion": 0.35714285714285715,
+        "yPositionProportion": 0.19124579124579125,
       },
       {
-        "content": "1:",
-        "xPositionProportion": 0.17333333333333334,
-        "yPositionProportion": 0.1744107744107744,
+        "content": "le",
+        "xPositionProportion": 0.3923809523809524,
+        "yPositionProportion": 0.19326599326599325,
+      },
+      {
+        "content": "règlement",
+        "xPositionProportion": 0.41523809523809524,
+        "yPositionProportion": 0.18855218855218855,
+      },
+      {
+        "content": "(ce)",
+        "xPositionProportion": 0.5123809523809524,
+        "yPositionProportion": 0.18855218855218855,
+      },
+      {
+        "content": "453/2010",
+        "xPositionProportion": 0.5571428571428572,
+        "yPositionProportion": 0.18855218855218855,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.18761904761904763,
+      "yPositionProportion": 0.22693602693602694,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.09523809523809523,
+      "yPositionProportion": 0.21885521885521886,
+    },
+    "texts": [
+      {
+        "content": "version",
+        "xPositionProportion": 0.09523809523809523,
+        "yPositionProportion": 0.21885521885521886,
+      },
+      {
+        "content": "5.2.0",
+        "xPositionProportion": 0.15619047619047619,
+        "yPositionProportion": 0.21885521885521886,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.2695238095238095,
+      "yPositionProportion": 0.2404040404040404,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.09619047619047619,
+      "yPositionProportion": 0.23232323232323232,
+    },
+    "texts": [
+      {
+        "content": "date",
+        "xPositionProportion": 0.09619047619047619,
+        "yPositionProportion": 0.23232323232323232,
+      },
+      {
+        "content": "de",
+        "xPositionProportion": 0.13047619047619047,
+        "yPositionProportion": 0.23232323232323232,
+      },
+      {
+        "content": "révision:",
+        "xPositionProportion": 0.15142857142857144,
+        "yPositionProportion": 0.23232323232323232,
+      },
+      {
+        "content": "09/09/16",
+        "xPositionProportion": 0.21428571428571427,
+        "yPositionProportion": 0.23232323232323232,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.28476190476190477,
+      "yPositionProportion": 0.2579124579124579,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.09619047619047619,
+      "yPositionProportion": 0.24713804713804713,
+    },
+    "texts": [
+      {
+        "content": "date",
+        "xPositionProportion": 0.09619047619047619,
+        "yPositionProportion": 0.24713804713804713,
+      },
+      {
+        "content": "d'impression",
+        "xPositionProportion": 0.13047619047619047,
+        "yPositionProportion": 0.24713804713804713,
+      },
+      {
+        "content": ":_12/09/16",
+        "xPositionProportion": 0.23047619047619047,
+        "yPositionProportion": 0.24713804713804713,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.7838095238095238,
+      "yPositionProportion": 0.2828282828282828,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.08571428571428572,
+      "yPositionProportion": 0.2734006734006734,
+    },
+    "texts": [
+      {
+        "content": "section",
+        "xPositionProportion": 0.08571428571428572,
+        "yPositionProportion": 0.2734006734006734,
+      },
+      {
+        "content": "1",
+        "xPositionProportion": 0.15523809523809523,
+        "yPositionProportion": 0.2734006734006734,
+      },
+      {
+        "content": ":",
+        "xPositionProportion": 0.1676190476190476,
+        "yPositionProportion": 0.2754208754208754,
       },
       {
         "content": "identification",
-        "xPositionProportion": 0.19238095238095237,
-        "yPositionProportion": 0.1744107744107744,
+        "xPositionProportion": 0.1761904761904762,
+        "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": "de",
-        "xPositionProportion": 0.29428571428571426,
-        "yPositionProportion": 0.1744107744107744,
+        "xPositionProportion": 0.29523809523809524,
+        "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": "la",
-        "xPositionProportion": 0.3180952380952381,
-        "yPositionProportion": 0.1744107744107744,
+        "xPositionProportion": 0.32,
+        "yPositionProportion": 0.2734006734006734,
       },
       {
-        "content": "substance/du",
-        "xPositionProportion": 0.3352380952380952,
-        "yPositionProportion": 0.1744107744107744,
+        "content": "substance",
+        "xPositionProportion": 0.34095238095238095,
+        "yPositionProportion": 0.2734006734006734,
       },
       {
-        "content": "mélange",
+        "content": "/",
+        "xPositionProportion": 0.4342857142857143,
+        "yPositionProportion": 0.2740740740740741,
+      },
+      {
+        "content": "du",
         "xPositionProportion": 0.44285714285714284,
-        "yPositionProportion": 0.1744107744107744,
+        "yPositionProportion": 0.2740740740740741,
+      },
+      {
+        "content": "melange",
+        "xPositionProportion": 0.4676190476190476,
+        "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "et",
-        "xPositionProportion": 0.5114285714285715,
-        "yPositionProportion": 0.1750841750841751,
+        "xPositionProportion": 0.5438095238095239,
+        "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "de",
-        "xPositionProportion": 0.5295238095238095,
-        "yPositionProportion": 0.1750841750841751,
+        "xPositionProportion": 0.5666666666666667,
+        "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "la",
-        "xPositionProportion": 0.5533333333333333,
-        "yPositionProportion": 0.1750841750841751,
+        "xPositionProportion": 0.5904761904761905,
+        "yPositionProportion": 0.2740740740740741,
       },
       {
-        "content": "société/l’entreprise",
-        "xPositionProportion": 0.5704761904761905,
-        "yPositionProportion": 0.1750841750841751,
+        "content": "societe/l'entreprise",
+        "xPositionProportion": 0.6123809523809524,
+        "yPositionProportion": 0.2740740740740741,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.25333333333333335,
-      "yPositionProportion": 0.20875420875420875,
+      "xPositionProportion": 0.27714285714285714,
+      "yPositionProportion": 0.3111111111111111,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.0838095238095238,
-      "yPositionProportion": 0.2,
+      "xPositionProportion": 0.09904761904761905,
+      "yPositionProportion": 0.30168350168350166,
     },
     "texts": [
       {
-        "content": "1.1.",
-        "xPositionProportion": 0.0838095238095238,
-        "yPositionProportion": 0.2,
+        "content": "1.1,",
+        "xPositionProportion": 0.09904761904761905,
+        "yPositionProportion": 0.30168350168350166,
       },
       {
         "content": "identificateur",
-        "xPositionProportion": 0.10857142857142857,
-        "yPositionProportion": 0.2,
+        "xPositionProportion": 0.12571428571428572,
+        "yPositionProportion": 0.30168350168350166,
       },
       {
         "content": "de",
-        "xPositionProportion": 0.19238095238095237,
-        "yPositionProportion": 0.2,
+        "xPositionProportion": 0.21333333333333335,
+        "yPositionProportion": 0.30168350168350166,
       },
       {
         "content": "produit",
-        "xPositionProportion": 0.21047619047619048,
-        "yPositionProportion": 0.2,
+        "xPositionProportion": 0.2342857142857143,
+        "yPositionProportion": 0.3023569023569024,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.6780952380952381,
-      "yPositionProportion": 0.2228956228956229,
+      "xPositionProportion": 0.7,
+      "yPositionProportion": 0.33804713804713804,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.0838095238095238,
-      "yPositionProportion": 0.21414141414141413,
+      "xPositionProportion": 0.15428571428571428,
+      "yPositionProportion": 0.32727272727272727,
     },
     "texts": [
       {
-        "content": "nom",
-        "xPositionProportion": 0.0838095238095238,
-        "yPositionProportion": 0.21414141414141413,
+        "content": "désignation",
+        "xPositionProportion": 0.15428571428571428,
+        "yPositionProportion": 0.32861952861952864,
       },
       {
-        "content": "commercial",
-        "xPositionProportion": 0.11333333333333333,
-        "yPositionProportion": 0.21414141414141413,
+        "content": "commerciale",
+        "xPositionProportion": 0.23523809523809525,
+        "yPositionProportion": 0.32861952861952864,
+      },
+      {
+        "content": "dégraissant",
+        "xPositionProportion": 0.3838095238095238,
+        "yPositionProportion": 0.32727272727272727,
+      },
+      {
+        "content": "désinfectant",
+        "xPositionProportion": 0.49142857142857144,
+        "yPositionProportion": 0.32727272727272727,
+      },
+      {
+        "content": "concentré",
+        "xPositionProportion": 0.6076190476190476,
+        "yPositionProportion": 0.32727272727272727,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.7285714285714285,
+      "yPositionProportion": 0.38047138047138046,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.09904761904761905,
+      "yPositionProportion": 0.37037037037037035,
+    },
+    "texts": [
+      {
+        "content": "1.2.",
+        "xPositionProportion": 0.09904761904761905,
+        "yPositionProportion": 0.37037037037037035,
+      },
+      {
+        "content": "utilisations",
+        "xPositionProportion": 0.12571428571428572,
+        "yPositionProportion": 0.37037037037037035,
+      },
+      {
+        "content": "identifiées",
+        "xPositionProportion": 0.20095238095238097,
+        "yPositionProportion": 0.37037037037037035,
+      },
+      {
+        "content": "pertinentes",
+        "xPositionProportion": 0.2704761904761905,
+        "yPositionProportion": 0.3723905723905724,
+      },
+      {
+        "content": "de",
+        "xPositionProportion": 0.3514285714285714,
+        "yPositionProportion": 0.3750841750841751,
+      },
+      {
+        "content": "la",
+        "xPositionProportion": 0.3742857142857143,
+        "yPositionProportion": 0.37373737373737376,
+      },
+      {
+        "content": "su",
+        "xPositionProportion": 0.38952380952380955,
+        "yPositionProportion": 0.37575757575757573,
+      },
+      {
+        "content": ":ce",
+        "xPositionProportion": 0.43238095238095237,
+        "yPositionProportion": 0.37306397306397304,
+      },
+      {
+        "content": "où",
+        "xPositionProportion": 0.4523809523809524,
+        "yPositionProportion": 0.37306397306397304,
+      },
+      {
+        "content": "du",
+        "xPositionProportion": 0.4723809523809524,
+        "yPositionProportion": 0.37104377104377106,
+      },
+      {
+        "content": "mélange",
+        "xPositionProportion": 0.5057142857142857,
+        "yPositionProportion": 0.37306397306397304,
+      },
+      {
+        "content": "et",
+        "xPositionProportion": 0.5533333333333333,
+        "yPositionProportion": 0.3717171717171717,
+      },
+      {
+        "content": "utilisations",
+        "xPositionProportion": 0.5695238095238095,
+        "yPositionProportion": 0.3717171717171717,
+      },
+      {
+        "content": "déconseillées",
+        "xPositionProportion": 0.6419047619047619,
+        "yPositionProportion": 0.37104377104377106,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.2857142857142857,
+      "yPositionProportion": 0.4067340067340067,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.15428571428571428,
+      "yPositionProportion": 0.397979797979798,
+    },
+    "texts": [
+      {
+        "content": "utilisation",
+        "xPositionProportion": 0.15428571428571428,
+        "yPositionProportion": 0.397979797979798,
+      },
+      {
+        "content": "du",
+        "xPositionProportion": 0.2219047619047619,
+        "yPositionProportion": 0.397979797979798,
+      },
+      {
+        "content": "produit",
+        "xPositionProportion": 0.2419047619047619,
+        "yPositionProportion": 0.397979797979798,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.46190476190476193,
+      "yPositionProportion": 0.4356902356902357,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37238095238095237,
+      "yPositionProportion": 0.4255892255892256,
+    },
+    "texts": [
+      {
+        "content": "alcalin",
+        "xPositionProportion": 0.37238095238095237,
+        "yPositionProportion": 0.4255892255892256,
+      },
+      {
+        "content": "liquide",
+        "xPositionProportion": 0.42,
+        "yPositionProportion": 0.4255892255892256,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.5819047619047619,
+      "yPositionProportion": 0.4471380471380471,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.43905723905723903,
+    },
+    "texts": [
+      {
+        "content": "restauration",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.43905723905723903,
+      },
+      {
+        "content": "collective",
+        "xPositionProportion": 0.49142857142857144,
+        "yPositionProportion": 0.43905723905723903,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.58,
+      "yPositionProportion": 0.4612794612794613,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.4511784511784512,
+    },
+    "texts": [
+      {
+        "content": "détergent-désinfectant",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.4511784511784512,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.5247619047619048,
+      "yPositionProportion": 0.47474747474747475,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.4666666666666667,
+    },
+    "texts": [
+      {
+        "content": "bactéricide",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.4666666666666667,
+      },
+      {
+        "content": "et",
+        "xPositionProportion": 0.44761904761904764,
+        "yPositionProportion": 0.46734006734006733,
+      },
+      {
+        "content": "levuricide",
+        "xPositionProportion": 0.4638095238095238,
+        "yPositionProportion": 0.4666666666666667,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.5333333333333333,
+      "yPositionProportion": 0.49023569023569025,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.4808080808080808,
+    },
+    "texts": [
+      {
+        "content": "pour",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.48215488215488217,
+      },
+      {
+        "content": "matériel",
+        "xPositionProportion": 0.4066666666666667,
+        "yPositionProportion": 0.4808080808080808,
+      },
+      {
+        "content": "et",
+        "xPositionProportion": 0.46190476190476193,
+        "yPositionProportion": 0.4808080808080808,
+      },
+      {
+        "content": "surfaces",
+        "xPositionProportion": 0.4780952380952381,
+        "yPositionProportion": 0.4808080808080808,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.6285714285714286,
+      "yPositionProportion": 0.5313131313131313,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.0980952380952381,
+      "yPositionProportion": 0.5218855218855218,
+    },
+    "texts": [
+      {
+        "content": "1.3.",
+        "xPositionProportion": 0.0980952380952381,
+        "yPositionProportion": 0.5218855218855218,
+      },
+      {
+        "content": "renseignements",
+        "xPositionProportion": 0.12571428571428572,
+        "yPositionProportion": 0.5218855218855218,
+      },
+      {
+        "content": "concernant",
+        "xPositionProportion": 0.23904761904761904,
+        "yPositionProportion": 0.5239057239057239,
+      },
+      {
+        "content": "le",
+        "xPositionProportion": 0.319047619047619,
+        "yPositionProportion": 0.5239057239057239,
+      },
+      {
+        "content": "fournisss",
+        "xPositionProportion": 0.3314285714285714,
+        "yPositionProportion": 0.5218855218855218,
+      },
+      {
+        "content": "€",
+        "xPositionProportion": 0.41714285714285715,
+        "yPositionProportion": 0.5239057239057239,
+      },
+      {
+        "content": "la",
+        "xPositionProportion": 0.4276190476190476,
+        "yPositionProportion": 0.5232323232323233,
+      },
+      {
+        "content": "fiche",
+        "xPositionProportion": 0.44666666666666666,
+        "yPositionProportion": 0.5245791245791246,
+      },
+      {
+        "content": "de",
+        "xPositionProportion": 0.47714285714285715,
+        "yPositionProportion": 0.5225589225589226,
+      },
+      {
+        "content": "données",
+        "xPositionProportion": 0.4980952380952381,
+        "yPositionProportion": 0.5218855218855218,
+      },
+      {
+        "content": "de",
+        "xPositionProportion": 0.5580952380952381,
+        "yPositionProportion": 0.5232323232323233,
+      },
+      {
+        "content": "sécurité",
+        "xPositionProportion": 0.5780952380952381,
+        "yPositionProportion": 0.5239057239057239,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.32285714285714284,
+      "yPositionProportion": 0.5569023569023569,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.15428571428571428,
+      "yPositionProportion": 0.5488215488215489,
+    },
+    "texts": [
+      {
+        "content": "identification",
+        "xPositionProportion": 0.15428571428571428,
+        "yPositionProportion": 0.5488215488215489,
+      },
+      {
+        "content": "de",
+        "xPositionProportion": 0.24,
+        "yPositionProportion": 0.5494949494949495,
+      },
+      {
+        "content": "la",
+        "xPositionProportion": 0.26,
+        "yPositionProportion": 0.5494949494949495,
+      },
+      {
+        "content": "société",
+        "xPositionProportion": 0.2752380952380952,
+        "yPositionProportion": 0.5488215488215489,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.47619047619047616,
+      "yPositionProportion": 0.5858585858585859,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.5764309764309764,
+    },
+    "texts": [
+      {
+        "content": "hypred",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.5764309764309764,
+      },
+      {
+        "content": "sas",
+        "xPositionProportion": 0.44476190476190475,
+        "yPositionProportion": 0.5764309764309764,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.6485714285714286,
+      "yPositionProportion": 0.6033670033670033,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.591919191919192,
+    },
+    "texts": [
+      {
+        "content": "55,",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.5925925925925926,
+      },
+      {
+        "content": "boulevard",
+        "xPositionProportion": 0.4,
+        "yPositionProportion": 0.591919191919192,
+      },
+      {
+        "content": "jules",
+        "xPositionProportion": 0.47619047619047616,
+        "yPositionProportion": 0.591919191919192,
+      },
+      {
+        "content": "verger",
+        "xPositionProportion": 0.5190476190476191,
+        "yPositionProportion": 0.5925925925925926,
+      },
+      {
+        "content": "b.p",
+        "xPositionProportion": 0.5723809523809524,
+        "yPositionProportion": 0.5925925925925926,
+      },
+      {
+        "content": "10180",
+        "xPositionProportion": 0.6038095238095238,
+        "yPositionProportion": 0.591919191919192,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.6161904761904762,
+      "yPositionProportion": 0.6168350168350168,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.6074074074074074,
+    },
+    "texts": [
+      {
+        "content": "35803",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.6074074074074074,
+      },
+      {
+        "content": "dinard",
+        "xPositionProportion": 0.4228571428571429,
+        "yPositionProportion": 0.6074074074074074,
+      },
+      {
+        "content": "cedex",
+        "xPositionProportion": 0.48857142857142855,
+        "yPositionProportion": 0.6074074074074074,
+      },
+      {
+        "content": "-",
+        "xPositionProportion": 0.54,
+        "yPositionProportion": 0.6127946127946128,
+      },
+      {
+        "content": "france",
+        "xPositionProportion": 0.5504761904761905,
+        "yPositionProportion": 0.6074074074074074,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.559047619047619,
+      "yPositionProportion": 0.6343434343434343,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37238095238095237,
+      "yPositionProportion": 0.622895622895623,
+    },
+    "texts": [
+      {
+        "content": "tél",
+        "xPositionProportion": 0.37238095238095237,
+        "yPositionProportion": 0.622895622895623,
       },
       {
         "content": ":",
-        "xPositionProportion": 0.3657142857142857,
-        "yPositionProportion": 0.21616161616161617,
+        "xPositionProportion": 0.40095238095238095,
+        "yPositionProportion": 0.6255892255892256,
       },
       {
-        "content": "argon",
-        "xPositionProportion": 0.3780952380952381,
-        "yPositionProportion": 0.21481481481481482,
+        "content": "+33",
+        "xPositionProportion": 0.4085714285714286,
+        "yPositionProportion": 0.622895622895623,
       },
       {
-        "content": ";",
-        "xPositionProportion": 0.41619047619047617,
-        "yPositionProportion": 0.21616161616161617,
+        "content": "(0)2",
+        "xPositionProportion": 0.44095238095238093,
+        "yPositionProportion": 0.622895622895623,
       },
       {
-        "content": "argon",
-        "xPositionProportion": 0.4228571428571429,
-        "yPositionProportion": 0.21481481481481482,
+        "content": "99",
+        "xPositionProportion": 0.47333333333333333,
+        "yPositionProportion": 0.622895622895623,
       },
       {
-        "content": "nertal",
-        "xPositionProportion": 0.46095238095238095,
-        "yPositionProportion": 0.21481481481481482,
+        "content": "16",
+        "xPositionProportion": 0.49714285714285716,
+        "yPositionProportion": 0.622895622895623,
       },
       {
-        "content": ";",
-        "xPositionProportion": 0.5142857142857142,
-        "yPositionProportion": 0.2202020202020202,
+        "content": "50",
+        "xPositionProportion": 0.5190476190476191,
+        "yPositionProportion": 0.622895622895623,
       },
       {
-        "content": "argon",
-        "xPositionProportion": 0.520952380952381,
-        "yPositionProportion": 0.21481481481481482,
-      },
-      {
-        "content": "n56",
-        "xPositionProportion": 0.5714285714285714,
-        "yPositionProportion": 0.21481481481481482,
-      },
-      {
-        "content": ";",
-        "xPositionProportion": 0.599047619047619,
-        "yPositionProportion": 0.2202020202020202,
-      },
-      {
-        "content": "argon",
-        "xPositionProportion": 0.6047619047619047,
-        "yPositionProportion": 0.21481481481481482,
-      },
-      {
-        "content": "n60",
-        "xPositionProportion": 0.6561904761904762,
-        "yPositionProportion": 0.21481481481481482,
+        "content": "00",
+        "xPositionProportion": 0.540952380952381,
+        "yPositionProportion": 0.622895622895623,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.42952380952380953,
-      "yPositionProportion": 0.23434343434343435,
+      "xPositionProportion": 0.5676190476190476,
+      "yPositionProportion": 0.6498316498316499,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.0838095238095238,
-      "yPositionProportion": 0.22760942760942762,
+      "xPositionProportion": 0.37333333333333335,
+      "yPositionProportion": 0.6383838383838384,
     },
     "texts": [
       {
-        "content": "n°fds",
-        "xPositionProportion": 0.0838095238095238,
-        "yPositionProportion": 0.22760942760942762,
+        "content": "fax",
+        "xPositionProportion": 0.37333333333333335,
+        "yPositionProportion": 0.6383838383838384,
       },
       {
-        "content": "003agis",
-        "xPositionProportion": 0.3780952380952381,
-        "yPositionProportion": 0.22760942760942762,
+        "content": ":",
+        "xPositionProportion": 0.40476190476190477,
+        "yPositionProportion": 0.641077441077441,
+      },
+      {
+        "content": "+33",
+        "xPositionProportion": 0.4180952380952381,
+        "yPositionProportion": 0.6383838383838384,
+      },
+      {
+        "content": "(0)2",
+        "xPositionProportion": 0.44952380952380955,
+        "yPositionProportion": 0.6383838383838384,
+      },
+      {
+        "content": "99",
+        "xPositionProportion": 0.4828571428571429,
+        "yPositionProportion": 0.6383838383838384,
+      },
+      {
+        "content": "16",
+        "xPositionProportion": 0.5066666666666667,
+        "yPositionProportion": 0.6383838383838384,
+      },
+      {
+        "content": "50",
+        "xPositionProportion": 0.5276190476190477,
+        "yPositionProportion": 0.6390572390572391,
+      },
+      {
+        "content": "20",
+        "xPositionProportion": 0.5504761904761905,
+        "yPositionProportion": 0.6383838383838384,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.56,
+      "yPositionProportion": 0.6653198653198653,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.37238095238095237,
+      "yPositionProportion": 0.6538720538720538,
+    },
+    "texts": [
+      {
+        "content": "e-mail",
+        "xPositionProportion": 0.37238095238095237,
+        "yPositionProportion": 0.6538720538720538,
+      },
+      {
+        "content": ":",
+        "xPositionProportion": 0.4219047619047619,
+        "yPositionProportion": 0.6558922558922559,
+      },
+      {
+        "content": "hypred@hypred.fr",
+        "xPositionProportion": 0.43047619047619046,
+        "yPositionProportion": 0.6538720538720538,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.6895238095238095,
+      "yPositionProportion": 0.6915824915824916,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.17523809523809525,
+      "yPositionProportion": 0.6828282828282828,
+    },
+    "texts": [
+      {
+        "content": "pour",
+        "xPositionProportion": 0.17523809523809525,
+        "yPositionProportion": 0.6828282828282828,
+      },
+      {
+        "content": "toute",
+        "xPositionProportion": 0.2057142857142857,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": "information",
+        "xPositionProportion": 0.23809523809523808,
+        "yPositionProportion": 0.6828282828282828,
+      },
+      {
+        "content": "concernant",
+        "xPositionProportion": 0.30666666666666664,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": "cette",
+        "xPositionProportion": 0.37523809523809526,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": "fiche",
+        "xPositionProportion": 0.4066666666666667,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": "de",
+        "xPositionProportion": 0.4380952380952381,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": "données",
+        "xPositionProportion": 0.4561904761904762,
+        "yPositionProportion": 0.6828282828282828,
+      },
+      {
+        "content": "de",
+        "xPositionProportion": 0.5095238095238095,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": "sécurité,",
+        "xPositionProportion": 0.5285714285714286,
+        "yPositionProportion": 0.6828282828282828,
+      },
+      {
+        "content": "veuillez",
+        "xPositionProportion": 0.580952380952381,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": "contacter",
+        "xPositionProportion": 0.6295238095238095,
+        "yPositionProportion": 0.6835016835016835,
+      },
+      {
+        "content": ":",
+        "xPositionProportion": 0.6857142857142857,
+        "yPositionProportion": 0.6801346801346801,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.35619047619047617,
+      "yPositionProportion": 0.7043771043771043,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.17523809523809525,
+      "yPositionProportion": 0.6956228956228956,
+    },
+    "texts": [
+      {
+        "content": "hypred.regulatory@roullier.com",
+        "xPositionProportion": 0.17523809523809525,
+        "yPositionProportion": 0.6956228956228956,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.28285714285714286,
+      "yPositionProportion": 0.7313131313131314,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.09714285714285714,
+      "yPositionProportion": 0.7218855218855219,
+    },
+    "texts": [
+      {
+        "content": "1.4.",
+        "xPositionProportion": 0.09714285714285714,
+        "yPositionProportion": 0.7225589225589225,
+      },
+      {
+        "content": "numéro",
+        "xPositionProportion": 0.12476190476190477,
+        "yPositionProportion": 0.7218855218855219,
+      },
+      {
+        "content": "d'appel",
+        "xPositionProportion": 0.18,
+        "yPositionProportion": 0.7151515151515152,
+      },
+      {
+        "content": "d'urgenc",
+        "xPositionProportion": 0.23142857142857143,
+        "yPositionProportion": 0.7239057239057239,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.28095238095238095,
+      "yPositionProportion": 0.7589225589225589,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.17714285714285713,
+      "yPositionProportion": 0.7488215488215488,
+    },
+    "texts": [
+      {
+        "content": "appel",
+        "xPositionProportion": 0.17714285714285713,
+        "yPositionProportion": 0.7488215488215488,
+      },
+      {
+        "content": "d'urgence",
+        "xPositionProportion": 0.2180952380952381,
+        "yPositionProportion": 0.7488215488215488,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.8295238095238096,
+      "yPositionProportion": 0.773063973063973,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.38285714285714284,
+      "yPositionProportion": 0.762962962962963,
+    },
+    "texts": [
+      {
+        "content": "ligne",
+        "xPositionProportion": 0.38285714285714284,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": "directe",
+        "xPositionProportion": 0.4219047619047619,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": "d'intervention",
+        "xPositionProportion": 0.4704761904761905,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": "d'urgence",
+        "xPositionProportion": 0.560952380952381,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": "(24",
+        "xPositionProportion": 0.6295238095238095,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": "h/24",
+        "xPositionProportion": 0.6542857142857142,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": "-",
+        "xPositionProportion": 0.6866666666666666,
+        "yPositionProportion": 0.7676767676767676,
+      },
+      {
+        "content": "7j/",
+        "xPositionProportion": 0.6961904761904761,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": "7)",
+        "xPositionProportion": 0.7152380952380952,
+        "yPositionProportion": 0.762962962962963,
+      },
+      {
+        "content": ":",
+        "xPositionProportion": 0.7333333333333333,
+        "yPositionProportion": 0.7656565656565657,
+      },
+      {
+        "content": "(+)1-760-476-",
+        "xPositionProportion": 0.7409523809523809,
+        "yPositionProportion": 0.762962962962963,
       },
     ],
   },
   {
     "endBox": {
       "xPositionProportion": 0.4123809523809524,
-      "yPositionProportion": 0.24915824915824916,
+      "yPositionProportion": 0.7851851851851852,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.0838095238095238,
-      "yPositionProportion": 0.24107744107744108,
+      "xPositionProportion": 0.38285714285714284,
+      "yPositionProportion": 0.7771043771043771,
     },
     "texts": [
       {
-        "content": "description",
-        "xPositionProportion": 0.0838095238095238,
-        "yPositionProportion": 0.24107744107744108,
+        "content": "3961",
+        "xPositionProportion": 0.38285714285714284,
+        "yPositionProportion": 0.7771043771043771,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.5285714285714286,
+      "yPositionProportion": 0.7986531986531986,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.38285714285714284,
+      "yPositionProportion": 0.7905723905723906,
+    },
+    "texts": [
+      {
+        "content": "code",
+        "xPositionProportion": 0.38285714285714284,
+        "yPositionProportion": 0.7905723905723906,
       },
       {
-        "content": "chimique",
-        "xPositionProportion": 0.15047619047619049,
-        "yPositionProportion": 0.24107744107744108,
+        "content": "d'accès",
+        "xPositionProportion": 0.42095238095238097,
+        "yPositionProportion": 0.7905723905723906,
       },
       {
         "content": ":",
-        "xPositionProportion": 0.3657142857142857,
-        "yPositionProportion": 0.24646464646464647,
-      },
-      {
-        "content": "argon",
-        "xPositionProportion": 0.379047619047619,
-        "yPositionProportion": 0.24107744107744108,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.4876190476190476,
-      "yPositionProportion": 0.2612794612794613,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.3780952380952381,
-      "yPositionProportion": 0.2545454545454545,
-    },
-    "texts": [
-      {
-        "content": "n°",
-        "xPositionProportion": 0.3780952380952381,
-        "yPositionProportion": 0.2545454545454545,
-      },
-      {
-        "content": "cas",
-        "xPositionProportion": 0.3961904761904762,
-        "yPositionProportion": 0.2545454545454545,
-      },
-      {
-        "content": ":",
-        "xPositionProportion": 0.4219047619047619,
-        "yPositionProportion": 0.2518518518518518,
-      },
-      {
-        "content": "7440-37-1",
-        "xPositionProportion": 0.43333333333333335,
-        "yPositionProportion": 0.2545454545454545,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.44952380952380955,
-      "yPositionProportion": 0.28754208754208754,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.3780952380952381,
-      "yPositionProportion": 0.2808080808080808,
-    },
-    "texts": [
-      {
-        "content": "n°",
-        "xPositionProportion": 0.3780952380952381,
-        "yPositionProportion": 0.2808080808080808,
-      },
-      {
-        "content": "index",
-        "xPositionProportion": 0.3961904761904762,
-        "yPositionProportion": 0.2808080808080808,
-      },
-      {
-        "content": ":",
-        "xPositionProportion": 0.42857142857142855,
-        "yPositionProportion": 0.2781144781144781,
-      },
-      {
-        "content": "-—",
-        "xPositionProportion": 0.43714285714285717,
-        "yPositionProportion": 0.2841750841750842,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.7352380952380952,
-      "yPositionProportion": 0.30303030303030304,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08285714285714285,
-      "yPositionProportion": 0.2936026936026936,
-    },
-    "texts": [
-      {
-        "content": "n°",
-        "xPositionProportion": 0.08285714285714285,
-        "yPositionProportion": 0.2936026936026936,
-      },
-      {
-        "content": "d'enregistrement",
-        "xPositionProportion": 0.10095238095238095,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "listé",
-        "xPositionProportion": 0.379047619047619,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "dans",
-        "xPositionProportion": 0.4095238095238095,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "l'annexe",
-        "xPositionProportion": 0.44095238095238093,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "iv/v",
-        "xPositionProportion": 0.49333333333333335,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.52,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "reach,",
-        "xPositionProportion": 0.5380952380952381,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "exempté",
-        "xPositionProportion": 0.5895238095238096,
-        "yPositionProportion": 0.2942760942760943,
-      },
-      {
-        "content": "d'enregistrement.",
-        "xPositionProportion": 0.6419047619047619,
-        "yPositionProportion": 0.29494949494949496,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.3914285714285714,
-      "yPositionProportion": 0.31582491582491584,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08285714285714285,
-      "yPositionProportion": 0.30707070707070705,
-    },
-    "texts": [
-      {
-        "content": "formule",
-        "xPositionProportion": 0.08285714285714285,
-        "yPositionProportion": 0.30707070707070705,
-      },
-      {
-        "content": "chimique",
-        "xPositionProportion": 0.13333333333333333,
-        "yPositionProportion": 0.30707070707070705,
-      },
-      {
-        "content": "ar",
-        "xPositionProportion": 0.379047619047619,
-        "yPositionProportion": 0.30774410774410776,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.679047619047619,
-      "yPositionProportion": 0.3367003367003367,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.0838095238095238,
-      "yPositionProportion": 0.32727272727272727,
-    },
-    "texts": [
-      {
-        "content": "1.2.",
-        "xPositionProportion": 0.0838095238095238,
-        "yPositionProportion": 0.32727272727272727,
-      },
-      {
-        "content": "utilisations",
-        "xPositionProportion": 0.10761904761904761,
-        "yPositionProportion": 0.32727272727272727,
-      },
-      {
-        "content": "identifiées",
-        "xPositionProportion": 0.18,
-        "yPositionProportion": 0.32727272727272727,
-      },
-      {
-        "content": "pertinentes",
-        "xPositionProportion": 0.24666666666666667,
-        "yPositionProportion": 0.32794612794612793,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.3180952380952381,
-        "yPositionProportion": 0.32794612794612793,
-      },
-      {
-        "content": "la",
-        "xPositionProportion": 0.34,
-        "yPositionProportion": 0.3292929292929293,
-      },
-      {
-        "content": "substance",
-        "xPositionProportion": 0.3504761904761905,
-        "yPositionProportion": 0.32794612794612793,
-      },
-      {
-        "content": "ou",
-        "xPositionProportion": 0.4180952380952381,
-        "yPositionProportion": 0.3292929292929293,
-      },
-      {
-        "content": "du",
-        "xPositionProportion": 0.43714285714285717,
-        "yPositionProportion": 0.32794612794612793,
-      },
-      {
-        "content": "mélange",
-        "xPositionProportion": 0.4561904761904762,
-        "yPositionProportion": 0.32794612794612793,
-      },
-      {
-        "content": "et",
-        "xPositionProportion": 0.5104761904761905,
-        "yPositionProportion": 0.32861952861952864,
-      },
-      {
-        "content": "utilisations",
-        "xPositionProportion": 0.5257142857142857,
-        "yPositionProportion": 0.32794612794612793,
-      },
-      {
-        "content": "déconseillées",
-        "xPositionProportion": 0.5961904761904762,
-        "yPositionProportion": 0.32794612794612793,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.7895238095238095,
-      "yPositionProportion": 0.34949494949494947,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08285714285714285,
-      "yPositionProportion": 0.34074074074074073,
-    },
-    "texts": [
-      {
-        "content": "utilisations",
-        "xPositionProportion": 0.08285714285714285,
-        "yPositionProportion": 0.34074074074074073,
-      },
-      {
-        "content": "pertinentes",
-        "xPositionProportion": 0.14761904761904762,
-        "yPositionProportion": 0.34074074074074073,
-      },
-      {
-        "content": "identifiées",
-        "xPositionProportion": 0.21428571428571427,
-        "yPositionProportion": 0.34074074074074073,
-      },
-      {
-        "content": "industriel",
-        "xPositionProportion": 0.3780952380952381,
-        "yPositionProportion": 0.3414141414141414,
-      },
-      {
-        "content": "et",
-        "xPositionProportion": 0.43333333333333335,
-        "yPositionProportion": 0.3414141414141414,
-      },
-      {
-        "content": "professionnel.",
-        "xPositionProportion": 0.44666666666666666,
-        "yPositionProportion": 0.3414141414141414,
-      },
-      {
-        "content": "faire",
-        "xPositionProportion": 0.5295238095238095,
-        "yPositionProportion": 0.3414141414141414,
-      },
-      {
-        "content": "une",
-        "xPositionProportion": 0.5619047619047619,
-        "yPositionProportion": 0.34276094276094277,
-      },
-      {
-        "content": "analyse",
-        "xPositionProportion": 0.5866666666666667,
-        "yPositionProportion": 0.3414141414141414,
-      },
-      {
-        "content": "des",
-        "xPositionProportion": 0.6342857142857142,
-        "yPositionProportion": 0.3414141414141414,
-      },
-      {
-        "content": "risques",
-        "xPositionProportion": 0.659047619047619,
-        "yPositionProportion": 0.34276094276094277,
-      },
-      {
-        "content": "avant",
-        "xPositionProportion": 0.7028571428571428,
-        "yPositionProportion": 0.3420875420875421,
-      },
-      {
-        "content": "utilisation.",
-        "xPositionProportion": 0.7380952380952381,
-        "yPositionProportion": 0.3414141414141414,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.5380952380952381,
-      "yPositionProportion": 0.362962962962963,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.37714285714285717,
-      "yPositionProportion": 0.3542087542087542,
-    },
-    "texts": [
-      {
-        "content": "gaz",
-        "xPositionProportion": 0.37714285714285717,
-        "yPositionProportion": 0.3542087542087542,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.40476190476190477,
-        "yPositionProportion": 0.3548821548821549,
-      },
-      {
-        "content": "test",
-        "xPositionProportion": 0.4219047619047619,
-        "yPositionProportion": 0.3548821548821549,
-      },
-      {
-        "content": "ou",
-        "xPositionProportion": 0.44666666666666666,
-        "yPositionProportion": 0.35622895622895623,
-      },
-      {
-        "content": "d'étalonnage.",
-        "xPositionProportion": 0.4638095238095238,
-        "yPositionProportion": 0.3542087542087542,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.580952380952381,
-      "yPositionProportion": 0.37575757575757573,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.37714285714285717,
-      "yPositionProportion": 0.36767676767676766,
-    },
-    "texts": [
-      {
-        "content": "gaz",
-        "xPositionProportion": 0.37714285714285717,
-        "yPositionProportion": 0.36767676767676766,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.40476190476190477,
-        "yPositionProportion": 0.36767676767676766,
-      },
-      {
-        "content": "purge,",
-        "xPositionProportion": 0.4228571428571429,
-        "yPositionProportion": 0.36902356902356903,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.46190476190476193,
-        "yPositionProportion": 0.36767676767676766,
-      },
-      {
-        "content": "dilution,",
-        "xPositionProportion": 0.47904761904761906,
-        "yPositionProportion": 0.36767676767676766,
-      },
-      {
-        "content": "d'inertage.",
-        "xPositionProportion": 0.5266666666666666,
-        "yPositionProportion": 0.36767676767676766,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.4104761904761905,
-      "yPositionProportion": 0.38922558922558925,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.3780952380952381,
-      "yPositionProportion": 0.3811447811447811,
-    },
-    "texts": [
-      {
-        "content": "purge.",
-        "xPositionProportion": 0.3780952380952381,
-        "yPositionProportion": 0.3811447811447811,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.8019047619047619,
-      "yPositionProportion": 0.4033670033670034,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.3780952380952381,
-      "yPositionProportion": 0.3939393939393939,
-    },
-    "texts": [
-      {
-        "content": "utiliser",
-        "xPositionProportion": 0.3780952380952381,
-        "yPositionProportion": 0.3939393939393939,
-      },
-      {
-        "content": "dans",
-        "xPositionProportion": 0.42,
-        "yPositionProportion": 0.39461279461279464,
-      },
-      {
-        "content": "la",
-        "xPositionProportion": 0.4504761904761905,
-        "yPositionProportion": 0.3939393939393939,
-      },
-      {
-        "content": "fabrication",
-        "xPositionProportion": 0.4638095238095238,
-        "yPositionProportion": 0.39461279461279464,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.5257142857142857,
-        "yPositionProportion": 0.39461279461279464,
-      },
-      {
-        "content": "composants",
-        "xPositionProportion": 0.5438095238095239,
-        "yPositionProportion": 0.39461279461279464,
-      },
-      {
-        "content": "électroniques",
-        "xPositionProportion": 0.6161904761904762,
-        "yPositionProportion": 0.39461279461279464,
-      },
-      {
-        "content": "ou",
-        "xPositionProportion": 0.6961904761904761,
-        "yPositionProportion": 0.3966329966329966,
-      },
-      {
-        "content": "photovoltaïques.",
-        "xPositionProportion": 0.7133333333333334,
-        "yPositionProportion": 0.39461279461279464,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.6323809523809524,
-      "yPositionProportion": 0.4161616161616162,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.37714285714285717,
-      "yPositionProportion": 0.4074074074074074,
-    },
-    "texts": [
-      {
-        "content": "gaz",
-        "xPositionProportion": 0.37714285714285717,
-        "yPositionProportion": 0.4074074074074074,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.4038095238095238,
-        "yPositionProportion": 0.4074074074074074,
-      },
-      {
-        "content": "protection",
-        "xPositionProportion": 0.4219047619047619,
-        "yPositionProportion": 0.4080808080808081,
-      },
-      {
-        "content": "pour",
-        "xPositionProportion": 0.48095238095238096,
-        "yPositionProportion": 0.4094276094276094,
-      },
-      {
-        "content": "procédés",
-        "xPositionProportion": 0.5104761904761905,
-        "yPositionProportion": 0.4074074074074074,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.5657142857142857,
-        "yPositionProportion": 0.4080808080808081,
-      },
-      {
-        "content": "soudage.",
-        "xPositionProportion": 0.5838095238095238,
-        "yPositionProportion": 0.4080808080808081,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.5161904761904762,
-      "yPositionProportion": 0.4276094276094276,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.37714285714285717,
-      "yPositionProportion": 0.4208754208754209,
-    },
-    "texts": [
-      {
-        "content": "utilisation",
-        "xPositionProportion": 0.37714285714285717,
-        "yPositionProportion": 0.4208754208754209,
-      },
-      {
-        "content": "en",
-        "xPositionProportion": 0.4361904761904762,
-        "yPositionProportion": 0.4228956228956229,
-      },
-      {
-        "content": "laboratoire.",
-        "xPositionProportion": 0.4533333333333333,
-        "yPositionProportion": 0.4208754208754209,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.7295238095238096,
-      "yPositionProportion": 0.44242424242424244,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.37714285714285717,
-      "yPositionProportion": 0.43434343434343436,
-    },
-    "texts": [
-      {
-        "content": "contacter",
-        "xPositionProportion": 0.37714285714285717,
-        "yPositionProportion": 0.43434343434343436,
-      },
-      {
-        "content": "le",
-        "xPositionProportion": 0.4361904761904762,
-        "yPositionProportion": 0.43434343434343436,
-      },
-      {
-        "content": "fournisseur",
-        "xPositionProportion": 0.44952380952380955,
-        "yPositionProportion": 0.43434343434343436,
-      },
-      {
-        "content": "pour",
-        "xPositionProportion": 0.5152380952380953,
-        "yPositionProportion": 0.4356902356902357,
-      },
-      {
-        "content": "plus",
-        "xPositionProportion": 0.5447619047619048,
-        "yPositionProportion": 0.43434343434343436,
-      },
-      {
-        "content": "d'information",
-        "xPositionProportion": 0.5714285714285714,
-        "yPositionProportion": 0.43434343434343436,
-      },
-      {
-        "content": "sur",
-        "xPositionProportion": 0.6476190476190476,
-        "yPositionProportion": 0.4356902356902357,
-      },
-      {
-        "content": "l'utilisation.",
-        "xPositionProportion": 0.6695238095238095,
-        "yPositionProportion": 0.43434343434343436,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.5161904761904762,
-      "yPositionProportion": 0.4558922558922559,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.3761904761904762,
-      "yPositionProportion": 0.4471380471380471,
-    },
-    "texts": [
-      {
-        "content": "‘applications",
-        "xPositionProportion": 0.3761904761904762,
-        "yPositionProportion": 0.4471380471380471,
-      },
-      {
-        "content": "alimentaires.",
-        "xPositionProportion": 0.44952380952380955,
-        "yPositionProportion": 0.4471380471380471,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.8695238095238095,
-      "yPositionProportion": 0.47003367003367,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08190476190476191,
-      "yPositionProportion": 0.4599326599326599,
-    },
-    "texts": [
-      {
-        "content": "utilisations",
-        "xPositionProportion": 0.08190476190476191,
-        "yPositionProportion": 0.4599326599326599,
-      },
-      {
-        "content": "déconseillées",
-        "xPositionProportion": 0.14666666666666667,
-        "yPositionProportion": 0.4599326599326599,
-      },
-      {
-        "content": "utilisation",
-        "xPositionProportion": 0.37714285714285717,
-        "yPositionProportion": 0.46060606060606063,
-      },
-      {
-        "content": "grand",
-        "xPositionProportion": 0.439047619047619,
-        "yPositionProportion": 0.46060606060606063,
-      },
-      {
-        "content": "public.",
         "xPositionProportion": 0.47523809523809524,
-        "yPositionProportion": 0.46060606060606063,
+        "yPositionProportion": 0.7925925925925926,
       },
       {
-        "content": "”",
-        "xPositionProportion": 0.861904761904762,
-        "yPositionProportion": 0.46464646464646464,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.579047619047619,
-      "yPositionProportion": 0.4868686868686869,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08285714285714285,
-      "yPositionProportion": 0.4781144781144781,
-    },
-    "texts": [
-      {
-        "content": "1.3.",
-        "xPositionProportion": 0.08285714285714285,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "renseignements",
-        "xPositionProportion": 0.10666666666666667,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "concernant",
-        "xPositionProportion": 0.2123809523809524,
-        "yPositionProportion": 0.47878787878787876,
-      },
-      {
-        "content": "le",
-        "xPositionProportion": 0.28476190476190477,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "fournisseur",
-        "xPositionProportion": 0.2980952380952381,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.37238095238095237,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "la",
-        "xPositionProportion": 0.3904761904761905,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "fiche",
-        "xPositionProportion": 0.40476190476190477,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.4380952380952381,
-        "yPositionProportion": 0.4781144781144781,
-      },
-      {
-        "content": "données",
-        "xPositionProportion": 0.4561904761904762,
-        "yPositionProportion": 0.47878787878787876,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.5123809523809524,
-        "yPositionProportion": 0.47878787878787876,
-      },
-      {
-        "content": "sécurité",
-        "xPositionProportion": 0.5304761904761904,
-        "yPositionProportion": 0.47878787878787876,
+        "content": "333021",
+        "xPositionProportion": 0.4819047619047619,
+        "yPositionProportion": 0.7905723905723906,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.24,
-      "yPositionProportion": 0.5124579124579125,
+      "xPositionProportion": 0.41619047619047617,
+      "yPositionProportion": 0.8262626262626263,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.08190476190476191,
-      "yPositionProportion": 0.5057239057239057,
+      "xPositionProportion": 0.38285714285714284,
+      "yPositionProportion": 0.8181818181818182,
     },
     "texts": [
       {
-        "content": "identification",
-        "xPositionProportion": 0.08190476190476191,
-        "yPositionProportion": 0.5057239057239057,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.16476190476190475,
-        "yPositionProportion": 0.5057239057239057,
-      },
-      {
-        "content": "la",
-        "xPositionProportion": 0.1838095238095238,
-        "yPositionProportion": 0.5057239057239057,
-      },
-      {
-        "content": "société",
-        "xPositionProportion": 0.19714285714285715,
-        "yPositionProportion": 0.5057239057239057,
+        "content": "inrs",
+        "xPositionProportion": 0.38285714285714284,
+        "yPositionProportion": 0.8181818181818182,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.2361904761904762,
-      "yPositionProportion": 0.5373737373737374,
+      "xPositionProportion": 0.5161904761904762,
+      "yPositionProportion": 0.8417508417508418,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.5292929292929293,
+      "xPositionProportion": 0.3819047619047619,
+      "yPositionProportion": 0.8316498316498316,
     },
     "texts": [
       {
-        "content": "air",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.5292929292929293,
+        "content": "30,",
+        "xPositionProportion": 0.3819047619047619,
+        "yPositionProportion": 0.8316498316498316,
       },
       {
-        "content": "liquide",
-        "xPositionProportion": 0.10095238095238095,
-        "yPositionProportion": 0.5292929292929293,
+        "content": "rue",
+        "xPositionProportion": 0.4066666666666667,
+        "yPositionProportion": 0.8336700336700337,
       },
       {
-        "content": "france",
-        "xPositionProportion": 0.1457142857142857,
-        "yPositionProportion": 0.5292929292929293,
+        "content": "olivier",
+        "xPositionProportion": 0.43142857142857144,
+        "yPositionProportion": 0.8316498316498316,
       },
       {
-        "content": "industrie",
-        "xPositionProportion": 0.1895238095238095,
-        "yPositionProportion": 0.5292929292929293,
+        "content": "noyer",
+        "xPositionProportion": 0.4780952380952381,
+        "yPositionProportion": 0.8316498316498316,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.24571428571428572,
-      "yPositionProportion": 0.5555555555555556,
+      "xPositionProportion": 0.45904761904761904,
+      "yPositionProportion": 0.8538720538720539,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.08190476190476191,
-      "yPositionProportion": 0.5488215488215489,
+      "xPositionProportion": 0.3819047619047619,
+      "yPositionProportion": 0.8457912457912458,
     },
     "texts": [
       {
-        "content": "92220",
-        "xPositionProportion": 0.08190476190476191,
-        "yPositionProportion": 0.5494949494949495,
+        "content": "75014",
+        "xPositionProportion": 0.3819047619047619,
+        "yPositionProportion": 0.8457912457912458,
       },
       {
-        "content": "bagneux",
-        "xPositionProportion": 0.12095238095238095,
-        "yPositionProportion": 0.5488215488215489,
-      },
-      {
-        "content": "-",
-        "xPositionProportion": 0.18666666666666668,
-        "yPositionProportion": 0.5528619528619528,
-      },
-      {
-        "content": "france",
-        "xPositionProportion": 0.19428571428571428,
-        "yPositionProportion": 0.5488215488215489,
+        "content": "paris",
+        "xPositionProportion": 0.4276190476190476,
+        "yPositionProportion": 0.8457912457912458,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.19523809523809524,
-      "yPositionProportion": 0.5656565656565656,
+      "xPositionProportion": 0.5114285714285715,
+      "yPositionProportion": 0.8673400673400673,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.5589225589225589,
+      "xPositionProportion": 0.3819047619047619,
+      "yPositionProportion": 0.8592592592592593,
     },
     "texts": [
       {
-        "content": "t",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.5589225589225589,
-      },
-      {
-        "content": "+33",
-        "xPositionProportion": 0.09333333333333334,
-        "yPositionProportion": 0.5589225589225589,
-      },
-      {
-        "content": "1",
-        "xPositionProportion": 0.11904761904761904,
-        "yPositionProportion": 0.5595959595959596,
-      },
-      {
-        "content": "5359",
-        "xPositionProportion": 0.12857142857142856,
-        "yPositionProportion": 0.5589225589225589,
-      },
-      {
-        "content": "7555",
-        "xPositionProportion": 0.16476190476190475,
-        "yPositionProportion": 0.5589225589225589,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.33904761904761904,
-      "yPositionProportion": 0.5777777777777777,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08190476190476191,
-      "yPositionProportion": 0.569023569023569,
-    },
-    "texts": [
-      {
-        "content": "fds.gis@airliquide.com",
-        "xPositionProportion": 0.08190476190476191,
-        "yPositionProportion": 0.569023569023569,
-      },
-      {
-        "content": "-",
-        "xPositionProportion": 0.22285714285714286,
-        "yPositionProportion": 0.573063973063973,
-      },
-      {
-        "content": "www.airliquide.com",
-        "xPositionProportion": 0.23047619047619047,
-        "yPositionProportion": 0.569023569023569,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.5133333333333333,
-      "yPositionProportion": 0.6087542087542087,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.6,
-    },
-    "texts": [
-      {
-        "content": "adresse",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.6,
-      },
-      {
-        "content": "e-mail",
-        "xPositionProportion": 0.13142857142857142,
-        "yPositionProportion": 0.6,
-      },
-      {
-        "content": "(personne",
-        "xPositionProportion": 0.17047619047619048,
-        "yPositionProportion": 0.6006734006734007,
-      },
-      {
-        "content": "compétente)",
-        "xPositionProportion": 0.23047619047619047,
-        "yPositionProportion": 0.6,
-      },
-      {
-        "content": "fds.gls@airliquide.com",
-        "xPositionProportion": 0.3761904761904762,
-        "yPositionProportion": 0.6006734006734007,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.26571428571428574,
-      "yPositionProportion": 0.6356902356902356,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08190476190476191,
-      "yPositionProportion": 0.6269360269360269,
-    },
-    "texts": [
-      {
-        "content": "1.4.",
-        "xPositionProportion": 0.08190476190476191,
-        "yPositionProportion": 0.6269360269360269,
-      },
-      {
-        "content": "numéro",
-        "xPositionProportion": 0.10666666666666667,
-        "yPositionProportion": 0.6269360269360269,
-      },
-      {
-        "content": "d'appel",
-        "xPositionProportion": 0.1580952380952381,
-        "yPositionProportion": 0.6269360269360269,
-      },
-      {
-        "content": "d'urgence",
-        "xPositionProportion": 0.2057142857142857,
-        "yPositionProportion": 0.6269360269360269,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.5780952380952381,
-      "yPositionProportion": 0.6491582491582492,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.641077441077441,
-    },
-    "texts": [
-      {
-        "content": "numéro",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.641077441077441,
-      },
-      {
-        "content": "d'appel",
-        "xPositionProportion": 0.1295238095238095,
-        "yPositionProportion": 0.6383838383838384,
-      },
-      {
-        "content": "d'urgence",
-        "xPositionProportion": 0.1742857142857143,
-        "yPositionProportion": 0.6383838383838384,
+        "content": "tél",
+        "xPositionProportion": 0.3819047619047619,
+        "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": ":",
-        "xPositionProportion": 0.3638095238095238,
-        "yPositionProportion": 0.6464646464646465,
+        "xPositionProportion": 0.4066666666666667,
+        "yPositionProportion": 0.8612794612794613,
       },
       {
-        "content": "france:",
-        "xPositionProportion": 0.3761904761904762,
-        "yPositionProportion": 0.641077441077441,
-      },
-      {
-        "content": "orfila:",
-        "xPositionProportion": 0.4228571428571429,
-        "yPositionProportion": 0.641077441077441,
-      },
-      {
-        "content": "+33",
-        "xPositionProportion": 0.47619047619047616,
-        "yPositionProportion": 0.6417508417508417,
-      },
-      {
-        "content": "1",
-        "xPositionProportion": 0.5019047619047619,
-        "yPositionProportion": 0.6417508417508417,
+        "content": "01",
+        "xPositionProportion": 0.41523809523809524,
+        "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "45",
-        "xPositionProportion": 0.5114285714285715,
-        "yPositionProportion": 0.6417508417508417,
+        "xPositionProportion": 0.43523809523809526,
+        "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "42",
-        "xPositionProportion": 0.5285714285714286,
-        "yPositionProportion": 0.6417508417508417,
+        "xPositionProportion": 0.4552380952380952,
+        "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "59",
-        "xPositionProportion": 0.5466666666666666,
-        "yPositionProportion": 0.6417508417508417,
+        "xPositionProportion": 0.47523809523809524,
+        "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "59",
+        "xPositionProportion": 0.4961904761904762,
+        "yPositionProportion": 0.8592592592592593,
+      },
+    ],
+  },
+  {
+    "endBox": {
+      "xPositionProportion": 0.5676190476190476,
+      "yPositionProportion": 0.8949494949494949,
+    },
+    "pageNumber": 1,
+    "startBox": {
+      "xPositionProportion": 0.38285714285714284,
+      "yPositionProportion": 0.8868686868686869,
+    },
+    "texts": [
+      {
+        "content": "centres",
+        "xPositionProportion": 0.38285714285714284,
+        "yPositionProportion": 0.8868686868686869,
+      },
+      {
+        "content": "anti",
+        "xPositionProportion": 0.4552380952380952,
+        "yPositionProportion": 0.8868686868686869,
+      },
+      {
+        "content": "poisons",
+        "xPositionProportion": 0.4942857142857143,
+        "yPositionProportion": 0.8868686868686869,
+      },
+      {
+        "content": ":",
         "xPositionProportion": 0.5647619047619048,
-        "yPositionProportion": 0.6417508417508417,
+        "yPositionProportion": 0.8888888888888888,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.38571428571428573,
-      "yPositionProportion": 0.6794612794612794,
+      "xPositionProportion": 0.7438095238095238,
+      "yPositionProportion": 0.9104377104377105,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.08190476190476191,
-      "yPositionProportion": 0.6686868686868687,
+      "xPositionProportion": 0.3819047619047619,
+      "yPositionProportion": 0.9003367003367003,
     },
     "texts": [
       {
-        "content": "rubrique",
-        "xPositionProportion": 0.08190476190476191,
-        "yPositionProportion": 0.6686868686868687,
+        "content": "angers:",
+        "xPositionProportion": 0.3819047619047619,
+        "yPositionProportion": 0.9003367003367003,
       },
       {
-        "content": "2:",
-        "xPositionProportion": 0.17047619047619048,
-        "yPositionProportion": 0.6693602693602694,
+        "content": "0241482121",
+        "xPositionProportion": 0.44095238095238093,
+        "yPositionProportion": 0.9003367003367003,
       },
       {
-        "content": "identification",
-        "xPositionProportion": 0.1895238095238095,
-        "yPositionProportion": 0.6686868686868687,
+        "content": "|",
+        "xPositionProportion": 0.5495238095238095,
+        "yPositionProportion": 0.8949494949494949,
       },
       {
-        "content": "des",
-        "xPositionProportion": 0.2923809523809524,
-        "yPositionProportion": 0.6686868686868687,
-      },
-      {
-        "content": "dangers",
-        "xPositionProportion": 0.32476190476190475,
-        "yPositionProportion": 0.6693602693602694,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.38,
-      "yPositionProportion": 0.7037037037037037,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.694949494949495,
-    },
-    "texts": [
-      {
-        "content": "2.1.",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.694949494949495,
-      },
-      {
-        "content": "classification",
-        "xPositionProportion": 0.10571428571428572,
-        "yPositionProportion": 0.694949494949495,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.19238095238095237,
-        "yPositionProportion": 0.694949494949495,
-      },
-      {
-        "content": "la",
-        "xPositionProportion": 0.21142857142857144,
-        "yPositionProportion": 0.694949494949495,
-      },
-      {
-        "content": "substance",
-        "xPositionProportion": 0.22476190476190477,
-        "yPositionProportion": 0.694949494949495,
-      },
-      {
-        "content": "ou",
-        "xPositionProportion": 0.2914285714285714,
-        "yPositionProportion": 0.6962962962962963,
-      },
-      {
-        "content": "du",
-        "xPositionProportion": 0.31047619047619046,
-        "yPositionProportion": 0.694949494949495,
-      },
-      {
-        "content": "mélange",
-        "xPositionProportion": 0.3295238095238095,
-        "yPositionProportion": 0.694949494949495,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.4266666666666667,
-      "yPositionProportion": 0.7225589225589225,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.7138047138047138,
-    },
-    "texts": [
-      {
-        "content": "classification",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.7138047138047138,
-      },
-      {
-        "content": "selon",
-        "xPositionProportion": 0.1676190476190476,
-        "yPositionProportion": 0.7138047138047138,
-      },
-      {
-        "content": "le",
-        "xPositionProportion": 0.20476190476190476,
-        "yPositionProportion": 0.7138047138047138,
-      },
-      {
-        "content": "règlement",
-        "xPositionProportion": 0.21904761904761905,
-        "yPositionProportion": 0.7138047138047138,
-      },
-      {
-        "content": "(ce)",
-        "xPositionProportion": 0.28285714285714286,
-        "yPositionProportion": 0.7138047138047138,
-      },
-      {
-        "content": "n°",
-        "xPositionProportion": 0.31238095238095237,
-        "yPositionProportion": 0.7138047138047138,
-      },
-      {
-        "content": "1272/2008",
-        "xPositionProportion": 0.3304761904761905,
-        "yPositionProportion": 0.7138047138047138,
-      },
-      {
-        "content": "[clp]",
-        "xPositionProportion": 0.3942857142857143,
-        "yPositionProportion": 0.7138047138047138,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.638095238095238,
-      "yPositionProportion": 0.7353535353535353,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.7272727272727273,
-    },
-    "texts": [
-      {
-        "content": "dangers",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.7272727272727273,
-      },
-      {
-        "content": "physiques",
-        "xPositionProportion": 0.13333333333333333,
-        "yPositionProportion": 0.7272727272727273,
-      },
-      {
-        "content": "gaz",
-        "xPositionProportion": 0.2704761904761905,
-        "yPositionProportion": 0.7272727272727273,
-      },
-      {
-        "content": "sous",
-        "xPositionProportion": 0.29714285714285715,
-        "yPositionProportion": 0.7286195286195286,
-      },
-      {
-        "content": "pression",
-        "xPositionProportion": 0.32761904761904764,
-        "yPositionProportion": 0.7286195286195286,
+        "content": "bordeaux",
+        "xPositionProportion": 0.5714285714285714,
+        "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": ":",
-        "xPositionProportion": 0.38,
-        "yPositionProportion": 0.7326599326599327,
+        "xPositionProportion": 0.6390476190476191,
+        "yPositionProportion": 0.9023569023569024,
       },
       {
-        "content": "gaz",
-        "xPositionProportion": 0.38666666666666666,
-        "yPositionProportion": 0.7272727272727273,
+        "content": "05",
+        "xPositionProportion": 0.6466666666666666,
+        "yPositionProportion": 0.9003367003367003,
       },
       {
-        "content": "comprimé",
-        "xPositionProportion": 0.41333333333333333,
-        "yPositionProportion": 0.7272727272727273,
+        "content": "56",
+        "xPositionProportion": 0.6676190476190477,
+        "yPositionProportion": 0.9003367003367003,
       },
       {
-        "content": "h280",
-        "xPositionProportion": 0.6085714285714285,
-        "yPositionProportion": 0.7279461279461279,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.24,
-      "yPositionProportion": 0.7589225589225589,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.7501683501683502,
-    },
-    "texts": [
-      {
-        "content": "2,2.",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.7521885521885522,
+        "content": "96",
+        "xPositionProportion": 0.6876190476190476,
+        "yPositionProportion": 0.9003367003367003,
       },
       {
-        "content": "éléments",
-        "xPositionProportion": 0.10571428571428572,
-        "yPositionProportion": 0.7501683501683502,
+        "content": "40",
+        "xPositionProportion": 0.7076190476190476,
+        "yPositionProportion": 0.9003367003367003,
       },
       {
-        "content": "d'étiquetage",
-        "xPositionProportion": 0.1657142857142857,
-        "yPositionProportion": 0.7515151515151515,
+        "content": "80",
+        "xPositionProportion": 0.7276190476190476,
+        "yPositionProportion": 0.9003367003367003,
       },
     ],
   },
   {
     "endBox": {
-      "xPositionProportion": 0.4085714285714286,
-      "yPositionProportion": 0.7818181818181819,
+      "xPositionProportion": 0.9152380952380952,
+      "yPositionProportion": 0.9259259259259259,
     },
     "pageNumber": 1,
     "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.7737373737373737,
+      "xPositionProportion": 0.8704761904761905,
+      "yPositionProportion": 0.9178451178451178,
     },
     "texts": [
       {
-        "content": "etiquetage",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.7737373737373737,
-      },
-      {
-        "content": "selon",
-        "xPositionProportion": 0.14952380952380953,
-        "yPositionProportion": 0.7737373737373737,
-      },
-      {
-        "content": "le",
-        "xPositionProportion": 0.18666666666666668,
-        "yPositionProportion": 0.7737373737373737,
-      },
-      {
-        "content": "règlement",
-        "xPositionProportion": 0.20095238095238097,
-        "yPositionProportion": 0.7737373737373737,
-      },
-      {
-        "content": "(ce)",
-        "xPositionProportion": 0.26476190476190475,
-        "yPositionProportion": 0.7737373737373737,
-      },
-      {
-        "content": "n°",
-        "xPositionProportion": 0.29428571428571426,
-        "yPositionProportion": 0.7737373737373737,
-      },
-      {
-        "content": "1272/2008",
-        "xPositionProportion": 0.31238095238095237,
-        "yPositionProportion": 0.7737373737373737,
-      },
-      {
-        "content": "[clp]",
-        "xPositionProportion": 0.37714285714285717,
-        "yPositionProportion": 0.7737373737373737,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.43238095238095237,
-      "yPositionProportion": 0.8404040404040404,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.7865319865319865,
-    },
-    "texts": [
-      {
-        "content": "pictogrammes",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.7878787878787878,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.1657142857142857,
-        "yPositionProportion": 0.7878787878787878,
-      },
-      {
-        "content": "danger",
-        "xPositionProportion": 0.1838095238095238,
-        "yPositionProportion": 0.7878787878787878,
-      },
-      {
-        "content": "(clp)",
-        "xPositionProportion": 0.22666666666666666,
-        "yPositionProportion": 0.7878787878787878,
+        "content": "17",
+        "xPositionProportion": 0.8704761904761905,
+        "yPositionProportion": 0.9178451178451178,
       },
       {
         "content": "-",
-        "xPositionProportion": 0.4076190476190476,
-        "yPositionProportion": 0.7865319865319865,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.4247619047619048,
-      "yPositionProportion": 0.8646464646464647,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.8565656565656565,
-    },
-    "texts": [
-      {
-        "content": "mention",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.8565656565656565,
-      },
-      {
-        "content": "d'avertissement",
-        "xPositionProportion": 0.12857142857142856,
-        "yPositionProportion": 0.8565656565656565,
-      },
-      {
-        "content": "(clp)",
-        "xPositionProportion": 0.2219047619047619,
-        "yPositionProportion": 0.8565656565656565,
-      },
-      {
-        "content": "attention",
-        "xPositionProportion": 0.37523809523809526,
-        "yPositionProportion": 0.8565656565656565,
-      },
-    ],
-  },
-  {
-    "endBox": {
-      "xPositionProportion": 0.8180952380952381,
-      "yPositionProportion": 0.8787878787878788,
-    },
-    "pageNumber": 1,
-    "startBox": {
-      "xPositionProportion": 0.08095238095238096,
-      "yPositionProportion": 0.87003367003367,
-    },
-    "texts": [
-      {
-        "content": "mentions",
-        "xPositionProportion": 0.08095238095238096,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.13523809523809524,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": "danger",
-        "xPositionProportion": 0.15333333333333332,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": "(clp)",
-        "xPositionProportion": 0.1961904761904762,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": ":",
-        "xPositionProportion": 0.3628571428571429,
-        "yPositionProportion": 0.8713804713804714,
-      },
-      {
-        "content": "h280",
-        "xPositionProportion": 0.3761904761904762,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": "-",
-        "xPositionProportion": 0.4095238095238095,
-        "yPositionProportion": 0.8734006734006734,
-      },
-      {
-        "content": "contient",
-        "xPositionProportion": 0.41714285714285715,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": "un",
-        "xPositionProportion": 0.4685714285714286,
-        "yPositionProportion": 0.8713804713804714,
-      },
-      {
-        "content": "gaz",
-        "xPositionProportion": 0.4857142857142857,
-        "yPositionProportion": 0.8713804713804714,
-      },
-      {
-        "content": "sous",
-        "xPositionProportion": 0.5095238095238095,
-        "yPositionProportion": 0.8713804713804714,
-      },
-      {
-        "content": "pression,",
-        "xPositionProportion": 0.54,
-        "yPositionProportion": 0.8713804713804714,
-      },
-      {
-        "content": "peut",
-        "xPositionProportion": 0.5961904761904762,
-        "yPositionProportion": 0.8707070707070707,
-      },
-      {
-        "content": "exploser",
-        "xPositionProportion": 0.6238095238095238,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": "sous",
-        "xPositionProportion": 0.6752380952380952,
-        "yPositionProportion": 0.8720538720538721,
-      },
-      {
-        "content": "l'effet",
-        "xPositionProportion": 0.7057142857142857,
-        "yPositionProportion": 0.87003367003367,
-      },
-      {
-        "content": "de",
-        "xPositionProportion": 0.7390476190476191,
-        "yPositionProportion": 0.8707070707070707,
-      },
-      {
-        "content": "la",
-        "xPositionProportion": 0.7571428571428571,
-        "yPositionProportion": 0.8707070707070707,
-      },
-      {
-        "content": "chaleur.",
-        "xPositionProportion": 0.7704761904761904,
-        "yPositionProportion": 0.8707070707070707,
+        "xPositionProportion": 0.9095238095238095,
+        "yPositionProportion": 0.9212121212121213,
       },
     ],
   },

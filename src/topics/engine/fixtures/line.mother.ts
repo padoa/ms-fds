@@ -96,7 +96,6 @@ export const aLineWithProducerEndingWithDotIn1Text = (): LineBuilder =>
 
 export const aLineWithHDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHDanger().properties]);
 export const aLineWithEUHDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithOEUHDanger().properties]);
-export const aLineWithPDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithPDanger().properties]);
 export const aLineWithMultiplePDanger = (): LineBuilder => aLineWithPosition().withTexts([aTextWithMultiplePDanger().properties]);
 
 export const aLineWithTwoDangers = (): LineBuilder => aLineWithPosition().withTexts([aTextWithHDanger().properties, aTextWithPDanger().properties]);
