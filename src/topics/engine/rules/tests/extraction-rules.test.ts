@@ -376,6 +376,18 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
+            message: 'should skip lines containing only product identifier',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties]).properties,
+              }).properties,
+            ).properties,
+            fullText: PRODUCT_IDENTIFIER,
+            expected: null,
+          },
+        ],
+        [
+          {
             message: 'should return null when product name only appears twice in fullText',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
@@ -392,25 +404,30 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
-            message: 'should skip lines containing only product identifier',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties]).properties,
-              }).properties,
-            ).properties,
-            fullText: PRODUCT_IDENTIFIER,
-            expected: null,
-          },
-        ],
-        [
-          {
-            message: 'should return product name when it appears three times or more in fullText',
+            message: 'should return product name when it appears three times in fullText',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 1: aSubSectionWith3LinesContainingProductName().properties,
               }).properties,
             ).properties,
             fullText: `${PRODUCT_NAME.repeat(3)}`,
+            expected: { name: PRODUCT_NAME, metaData },
+          },
+        ],
+        [
+          {
+            message: 'should skip first line containing product identifier and return product name when it appears three times in fullText',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([
+                  aLineWithProductIdentifierOnly().properties,
+                  aLineWithProductNameOnly().properties,
+                  aLineWithProductNameOnly().properties,
+                  aLineWithProductNameOnly().properties,
+                ]).properties,
+              }).properties,
+            ).properties,
+            fullText: `${PRODUCT_IDENTIFIER}${PRODUCT_NAME.repeat(3)}`,
             expected: { name: PRODUCT_NAME, metaData },
           },
         ],
@@ -478,17 +495,6 @@ describe('ExtractionRules tests', () => {
         [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: null }],
         [
           {
-            message: 'it should return null when providing a fdsTree with only product name identifier',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: null,
-          },
-        ],
-        [
-          {
             message: 'should skip lines containing only producer identifier',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
@@ -500,7 +506,7 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
-            message: 'it should return product name when providing a line with product in 1 text',
+            message: 'it should return producer name when providing a line with producer in 1 text',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 3: aSubSection().withLines([aLineWithProducerIn1Text().properties]).properties,
@@ -511,7 +517,18 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
-            message: 'it should return product name when providing a line with product in 2 texts',
+            message: 'it should skip first line containing producer identifer and return producer name when providing a line with producer in 1 text',
+            fdsTree: aFdsTree().withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerIn1Text().properties]).properties,
+              }).properties,
+            ).properties,
+            expected: { name: PRODUCER_NAME, metaData },
+          },
+        ],
+        [
+          {
+            message: 'it should return producer name when providing a line with producer in 2 texts',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 3: aSubSection().withLines([aLineWithProducerIn2Texts().properties]).properties,
@@ -522,7 +539,7 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
-            message: 'it should return product name when providing product in 2 lines',
+            message: 'it should return producer name when providing producer in 2 lines',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon().properties, aLineWithProducerNameOnly().properties])
@@ -535,7 +552,7 @@ describe('ExtractionRules tests', () => {
         // entering cleanProducer
         [
           {
-            message: 'it should return product name when providing product ending with dot',
+            message: 'it should return producer name when providing producer ending with dot',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 3: aSubSection().withLines([aLineWithProducerEndingWithDotIn1Text().properties]).properties,
@@ -546,7 +563,7 @@ describe('ExtractionRules tests', () => {
         ],
         [
           {
-            message: 'it should return product name when providing product ending with dot',
+            message: 'it should return producer name when providing producer ending with dot',
             fdsTree: aFdsTree().withSection1(
               aSection().withSubsections({
                 3: aSubSection().withLines([aLineWithProducerWithDotIn1Text().properties]).properties,
