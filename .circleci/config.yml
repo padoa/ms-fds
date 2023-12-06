@@ -35,7 +35,7 @@ workflows:
       - orb-ms/build-and-publish-swagger-packages:
           matrix:
             parameters:
-              packageType: ['client', 'mocker', 'model']
+              packageType: ['client', 'mocker']
               swaggerScope: ['api']
           name: "Build and publish Swagger-<<matrix.packageType>>"
           npmToken: ${AZDO_NPM_REGISTRY_PUSH_TOKEN}
@@ -44,6 +44,19 @@ workflows:
           imageName: "fds/backend-dist"
           requires:
             - Build
+          context:
+            - REGISTRY
+      - orb-ms/build-and-publish-swagger-packages:
+          packageType: 'model'
+          swaggerScope: 'api'
+          name: "Build and publish Swagger-model"
+          npmToken: ${AZDO_NPM_REGISTRY_PUSH_TOKEN}
+          packageName: "ms-fds"
+          imageDirectory: "ms"
+          imageName: "fds/backend-dist"
+          requires:
+            - Build
+            - Build and publish Swagger-client
           context:
             - REGISTRY
       - orb-ms/typescript-check:
