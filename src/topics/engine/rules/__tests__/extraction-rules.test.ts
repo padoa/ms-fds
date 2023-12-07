@@ -289,7 +289,7 @@ describe('ExtractionRules tests', () => {
         // enters getDateByRevisionText
         ['révision 15 août 2023', { formattedDate: '2023/08/15', inTextDate: '15 août 2023' }],
         // enters getDateByMostFrequent
-        ['abbcdef 15 aout 2023 e t20/01/2000 et 20/01/2000 et 20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
+        ['abbcdef 15 aout 2023 et 20/01/2000 et 20/01/2000 et 20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
         // enters getDateByMostRecent
         ['abbcdef 15 août 2023 et 20/01/2000 et 20/01/2000', { formattedDate: '2023/08/15', inTextDate: '15 août 2023' }],
         // invalid cases
