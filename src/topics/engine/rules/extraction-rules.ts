@@ -1,11 +1,10 @@
-import _ from 'lodash';
-
-import type { IExtractedData, IFDSTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
+import type { IExtractedData, IFDSTree } from '@topics/engine/model/fds.model.js';
 import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
 import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dangers-rules.service.js';
+import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
 
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
@@ -13,65 +12,7 @@ export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTr
     product: ProductRulesService.getProduct(fdsTreeCleaned, { fullText }),
     producer: ProducerRulesService.getProducer(fdsTreeCleaned),
     dangers: DangersRulesService.getDangers(fdsTreeCleaned),
-    substances: getSubstances(fdsTreeCleaned),
+    substances: SubstancesRulesService.getSubstances(fdsTreeCleaned),
     physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
   };
-};
-
-//----------------------------------------------------------------------------------------------
-//--------------------------------------- SUBSTANCES -------------------------------------------
-//----------------------------------------------------------------------------------------------
-
-export const getSubstances = (fdsTree: IFDSTree): IExtractedSubstance[] => {
-  const linesToSearchIn = [...(fdsTree[3]?.subsections?.[1]?.lines || []), ...(fdsTree[3]?.subsections?.[2]?.lines || [])];
-  const textInEachLine = _.map(linesToSearchIn, ({ texts }) => {
-    return _.map(texts, 'content').join('');
-  });
-
-  const substances: IExtractedSubstance[] = [];
-  let previousLineSubstance: Partial<IExtractedSubstance> = {};
-  for (const text of textInEachLine) {
-    const textCleaned = text.replaceAll(' ', '');
-
-    const casNumber = getCASNumber(textCleaned);
-    const ceNumber = getCENumber(textCleaned);
-
-    if (casNumber && ceNumber) {
-      substances.push({ casNumber, ceNumber });
-      previousLineSubstance = {};
-      continue;
-    }
-
-    if (!casNumber && !ceNumber) {
-      previousLineSubstance = {};
-      continue;
-    }
-
-    const lastSubstance = _.last(substances);
-    if (lastSubstance && lastSubstance.casNumber === previousLineSubstance.casNumber && lastSubstance.ceNumber === previousLineSubstance.ceNumber) {
-      substances[substances.length - 1] = { casNumber: lastSubstance.casNumber || casNumber, ceNumber: lastSubstance.ceNumber || ceNumber };
-      previousLineSubstance = {};
-      continue;
-    }
-
-    previousLineSubstance = { casNumber, ceNumber };
-    substances.push({ casNumber, ceNumber });
-  }
-
-  return substances;
-};
-
-export const CASNumberRegex = /(?<!(-|\d{1})+)(\d{1,7}-\d{2}-\d{1})(?!(-|\d{1})+)/;
-export const CENumberRegex = /(?<!(\d{1})+)(\d{3}-\d{3}-\d{1})(?!(\d{1})+)/;
-
-const getCASNumber = (text: string): string => {
-  // TODO: rule with cas
-  const match = text.match(CASNumberRegex);
-  return match?.[2];
-};
-
-const getCENumber = (text: string): string => {
-  // TODO: rule with ce
-  const match = text.match(CENumberRegex);
-  return match?.[2];
 };

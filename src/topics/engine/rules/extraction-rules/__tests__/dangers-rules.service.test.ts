@@ -8,7 +8,7 @@ import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import type { IFDSTree, IExtractedDanger } from '@topics/engine/model/fds.model.js';
 import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dangers-rules.service.js';
 
-describe('Dangers rules tests', () => {
+describe('DangersRulesService tests', () => {
   describe('GetDangers tests', () => {
     it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedDanger[] }]>([
       [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],

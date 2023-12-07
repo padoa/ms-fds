@@ -22,7 +22,7 @@ import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import type { IFDSTree, IExtractedProducer, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
 
-describe('Producer rules tests', () => {
+describe('ProducerRulesService tests', () => {
   const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };
   const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
 
