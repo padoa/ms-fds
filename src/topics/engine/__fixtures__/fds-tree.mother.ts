@@ -1,4 +1,4 @@
-import { FDSTreeBuilder } from '@topics/engine/fixtures/fds-tree.builder.js';
+import { FDSTreeBuilder } from '@topics/engine/__fixtures__/fds-tree.builder.js';
 import {
   aLineWithCASAndCENumberIn2Texts,
   aLineWithPhysicalStateIdentifierAndValue,
@@ -6,9 +6,9 @@ import {
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
   aLineWithThreeDangersAndTheirDetails,
-} from '@topics/engine/fixtures/line.mother.js';
-import { aSection } from '@topics/engine/fixtures/section.mother.js';
-import { aSubSection, aSubSectionWithContent } from '@topics/engine/fixtures/sub-section.mother.js';
+} from '@topics/engine/__fixtures__/line.mother.js';
+import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
+import { aSubSection, aSubSectionWithContent } from '@topics/engine/__fixtures__/sub-section.mother.js';
 
 export const aFdsTree = (): FDSTreeBuilder => new FDSTreeBuilder();
 

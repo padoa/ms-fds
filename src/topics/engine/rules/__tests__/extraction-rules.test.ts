@@ -35,7 +35,7 @@ import {
   aFdsTreeWithAllSectionsWithUsefulInfo,
   aFdsTreeWithAllSectionsWithoutUsefulInfo,
   anEmptyFdsTreeWithAllSections,
-} from '@topics/engine/fixtures/fds-tree.mother.js';
+} from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
@@ -60,7 +60,7 @@ import {
   MULTIPLE_P_DANGER_WITH_DETAILS,
   PHYSICAL_STATE_VALUE,
   PRODUCT_IDENTIFIER,
-} from '@topics/engine/fixtures/fixtures.constants.js';
+} from '@topics/engine/__fixtures__/fixtures.constants.js';
 import {
   aLine,
   aLineWithCASAndCENumberIn2Texts,
@@ -83,10 +83,10 @@ import {
   aLineWithTwoDangers,
   aLineWithUndefinedText,
   aLineWithProducerIdentifierOnly,
-} from '@topics/engine/fixtures/line.mother.js';
-import { aSection } from '@topics/engine/fixtures/section.mother.js';
-import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics/engine/fixtures/sub-section.mother.js';
-import { aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/fixtures/text.mother.js';
+} from '@topics/engine/__fixtures__/line.mother.js';
+import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
+import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics/engine/__fixtures__/sub-section.mother.js';
+import { aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/__fixtures__/text.mother.js';
 
 describe('ExtractionRules tests', () => {
   const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };

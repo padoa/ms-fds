@@ -2,23 +2,23 @@ import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import _ from 'lodash';
 
-import { aFdsTree } from '@topics/engine/fixtures/fds-tree.mother.js';
-import { aSectionWithPosition } from '@topics/engine/fixtures/section.mother.js';
-import { aSubSectionWithPosition } from '@topics/engine/fixtures/sub-section.mother.js';
-import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, TEXT_CONTENT } from '@topics/engine/fixtures/fixtures.constants.js';
+import { aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
+import { aSectionWithPosition } from '@topics/engine/__fixtures__/section.mother.js';
+import { aSubSectionWithPosition } from '@topics/engine/__fixtures__/sub-section.mother.js';
+import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { IBox, IFDSTree, ILine, IMetaData, IXCounts } from '@topics/engine/model/fds.model.js';
 import {
   aLineWithOneText,
   aLineWithOneTextAndPositionYIncremented,
   aLineWithPosition,
   aLineWithTwoTexts,
-} from '@topics/engine/fixtures/line.mother.js';
+} from '@topics/engine/__fixtures__/line.mother.js';
 import {
   aTextWithContentAndPosition,
   aTextWithContentAndPositionXIncremented,
   aTextWithContentAndPositionXIncrementedTwice,
   aTextWithPosition,
-} from '@topics/engine/fixtures/text.mother.js';
+} from '@topics/engine/__fixtures__/text.mother.js';
 import { FdsTreeCleanerService } from '@topics/engine/transformer/fds-tree-cleaner.service.js';
 
 describe('FdsTreeCleanerService Tests', () => {

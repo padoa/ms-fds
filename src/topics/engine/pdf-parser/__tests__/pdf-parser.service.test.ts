@@ -6,7 +6,7 @@ import { PdfParserService } from '@topics/engine/pdf-parser/pdf-parser.service.j
 import type { IParseResult } from '@topics/engine/pdf-parser/pdf-parser.model.js';
 import { PdfTextExtractorService } from '@topics/engine/pdf-extractor/pdf-text-extractor.service.js';
 import { PdfImageTextExtractorService } from '@topics/engine/pdf-extractor/pdf-image-text-extractor.service.js';
-import { aLineWithOneText } from '@topics/engine/fixtures/line.mother.js';
+import { aLineWithOneText } from '@topics/engine/__fixtures__/line.mother.js';
 import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/fixtures.constants.js';
 
 describe('PdfParser tests', () => {

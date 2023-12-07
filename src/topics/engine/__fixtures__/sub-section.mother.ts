@@ -1,6 +1,6 @@
-import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/fixtures/fixtures.constants.js';
-import { aLineWithProductNameOnly, aLineWithTwoTexts } from '@topics/engine/fixtures/line.mother.js';
-import { SubSectionBuilder } from '@topics/engine/fixtures/sub-section.builder.js';
+import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { aLineWithProductNameOnly, aLineWithTwoTexts } from '@topics/engine/__fixtures__/line.mother.js';
+import { SubSectionBuilder } from '@topics/engine/__fixtures__/sub-section.builder.js';
 
 export const aSubSection = (): SubSectionBuilder => new SubSectionBuilder();
 
