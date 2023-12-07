@@ -96,11 +96,13 @@ describe('ExtractionRules tests', () => {
     describe('NumberDateRegex tests', () => {
       it.each<[string, boolean]>([
         ['15-03-1995', true],
+        ['14 / 06 / 2022', true],
+        ['15 - 03 - 1995', true],
         ['14/06.2022', true],
         ['.14.06.2022.', true],
         ['28.04.15', true],
-        ['date:01/02/2022page1/7version:n°', true],
-        ['randomtext02.09.20221.partie1', true],
+        ['date: 01/02/2022 page 1/7 version: n°', true],
+        ['random text 02.09.20221. partie1', true],
         // Invalid day cases
         ['00/01/2000', false],
         ['1/01/2000', false],
@@ -124,13 +126,17 @@ describe('ExtractionRules tests', () => {
 
     describe('StringDateRegex tests', () => {
       it.each<[string, boolean]>([
-        ['1janvier2022', true],
+        ['1 janvier 2022', true],
+        ['1 décembre 2022', true],
+        ['15novembre 1959', true],
+        ['15 novembre1959', true],
         ['15novembre1959', true],
         ['15novembre2099', true],
         ['15-janv2021', true],
         ['15janv.2021', true],
         ['15janv..2021', true],
         // Invalid day cases
+        ['0 avril 2022', false],
         ['0avril2022', false],
         ['32avril2022', false],
         ['123avril2022', false],
@@ -138,6 +144,8 @@ describe('ExtractionRules tests', () => {
         // Invalid month cases
         ['12.2022', false],
         // Invalid year cases
+        ['15 novembre 12', false],
+        ['15novembre 12', false],
         ['15novembre12', false],
         ['1mars', false],
         ['2022', false],
@@ -146,7 +154,7 @@ describe('ExtractionRules tests', () => {
         ['28avril2100', false],
         // Invalid cases
         ['7date:97', false],
-        ['11informationstoxicologiques11', false],
+        ['11 informations toxicologiques 11', false],
       ])('"%s" input should return %s', (dateString, expected) => {
         expect(new RegExp(stringDateRegex).test(dateString)).toEqual(expected);
       });
@@ -155,10 +163,14 @@ describe('ExtractionRules tests', () => {
     describe('EnglishNumberDateRegex tests', () => {
       it.each<[string, boolean]>([
         ['1995-03-15', true],
+        ['1995 - 03 - 15', true],
+        ['1995-03 - 15', true],
+        ['1995 -03-15', true],
         ['2022/06.14', true],
         ['2022.06.14.', true],
         ['15.04.01', true],
         // Invalid day cases
+        ['2000 / 01 / 00', false],
         ['2000/01/00', false],
         ['2000/01/1', false],
         ['2000/01/32', false],
@@ -219,9 +231,11 @@ describe('ExtractionRules tests', () => {
   describe('RevisionDate rules tests', () => {
     describe('GetDateByRevisionText tests', () => {
       it.each<[string, string | null]>([
-        ['révision:2017-09-01', '2017-09-01'],
+        ['révision: 2017-09-01', '2017-09-01'],
+        ['Revision:2017-09-01', '2017-09-01'],
+        ['Revision: 1 janvier 2022', '1 janvier 2022'],
         ['2017-09-01', null],
-        ['révision:n°11(01/02/2022)safety-kleen', null],
+        ['révision: n°11 (01/02/2022) safety-kleen', null],
       ])('"%s" input should return %s', (text, expected) => {
         expect(getDateByRevisionText(text)).toEqual(expected);
       });
@@ -229,11 +243,11 @@ describe('ExtractionRules tests', () => {
 
     describe('GetDateByMostFrequent tests', () => {
       it.each<[string, string | undefined | null]>([
-        ['textnotmatchinganyregex', undefined],
-        ['onlynumberregexmatch1occurence01/02/2022', null],
-        ['onlynumberregexmatch2occ01/02/2022and01/02/2022', null],
-        ['onlynumberregexmatch3occ01/02/2022and01/02/2022and01/02/2022', '01/02/2022'],
-        ['regexmatch3occeachtakebiggest01/02/2022and01/02/2022and01/02/2022or18janv2040and18janv2040and18janv2040', '18janv2040'],
+        ['text not matching any regex', undefined],
+        ['only number regex match 1 occurence 01/02/2022', null],
+        ['only number regex match 2 occ 01/02/2022 and 01/02/2022', null],
+        ['only number regex match 3 occ 01/02/2022 and 01/02/2022 and 01/02/2022', '01/02/2022'],
+        ['regex match 3 occ each take biggest 01/02/2022 and 01/02/2022 and 01/02/2022 or 18janv2040 and 18janv2040 and 18janv2040', '18janv2040'],
       ])('"%s" input should return %s', (text, expected) => {
         expect(getDateByMostFrequent(text)).toEqual(expected);
       });
@@ -241,9 +255,9 @@ describe('ExtractionRules tests', () => {
 
     describe('GetDateByMostRecent tests', () => {
       it.each<[string, string | undefined]>([
-        ['abc01/02/2022def8janvier2023ghj', '8janvier2023'],
-        ['randomtextbefore11.08.25andthisdate06mars1920', '11.08.25'],
-        ['sometextnotmatchinganyregex', undefined],
+        ['abc 01/02/2022 def 8 janvier 2023 ghj', '8 janvier 2023'],
+        ['random text before 11.08.25 and this date 06 mars 1920', '11.08.25'],
+        ['some text not matching any regex', undefined],
       ])('"%s" input should return %s', (text, expected) => {
         expect(getDateByMostRecent(text)).toEqual(expected);
       });
@@ -252,17 +266,19 @@ describe('ExtractionRules tests', () => {
     describe('ParseDate tests', () => {
       it.each<[string, Date | null]>([
         // enters parseDateFromNumberRegex function
-        ['placeholder09-01-2017sometext', new Date('2017/01/09')],
+        ['placeholder 09-01-2017 some text', new Date('2017/01/09')],
         ['14/08/98', new Date('1998/08/14')],
         ['14/08/38', new Date('2038/08/14')],
         // enters parseDateFromStringRegex function
-        ['abc15janv2021def', new Date('2021/01/15')],
-        ['abc15aout.2021def', new Date('2021/08/15')],
+        ['abc 15 janv 2021 def', new Date('2021/01/15')],
+        ['abc 15 août. 2021 def', new Date('2021/08/15')],
+        ['abc 20 décembre 1998 def', new Date('1998/12/20')],
+        ['abc 19 février 2035 def', new Date('2035/02/19')],
         // enters parseDateFromEnglishNumberRegex function
-        ['abc2012/12/01', new Date('2012/12/01')],
+        ['abc 2012/12/01', new Date('2012/12/01')],
         // invalid cases
-        ['nodatematchinganyfunction', null],
-        ['missingmappingmonth20xyz2023', new Date(NaN)],
+        ['no date matching any function', null],
+        ['missing mapping month 20 xyz 2023', new Date(NaN)],
       ])('"%s" input should return %s', (text, expected) => {
         expect(parseDate(text)).toEqual(expected);
       });
@@ -271,14 +287,14 @@ describe('ExtractionRules tests', () => {
     describe('GetDate tests', () => {
       it.each<[string, IExtractedDate]>([
         // enters getDateByRevisionText
-        ['révision 15 août 2023', { formattedDate: '2023/08/15', inTextDate: '15aout2023' }],
+        ['révision 15 août 2023', { formattedDate: '2023/08/15', inTextDate: '15 août 2023' }],
         // enters getDateByMostFrequent
-        ['abbcdef15aout2023et20/01/2000et20/01/2000et20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
+        ['abbcdef 15 aout 2023 et 20/01/2000 et 20/01/2000 et 20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
         // enters getDateByMostRecent
-        ['abbcdef15aout2023et20/01/2000et20/01/2000', { formattedDate: '2023/08/15', inTextDate: '15aout2023' }],
+        ['abbcdef 15 août 2023 et 20/01/2000 et 20/01/2000', { formattedDate: '2023/08/15', inTextDate: '15 août 2023' }],
         // invalid cases
         ['', { formattedDate: null, inTextDate: null }],
-        ['missingmappingmonth20xyz2023', { formattedDate: null, inTextDate: '20xyz2023' }],
+        ['missing mapping month 20xyz2023', { formattedDate: null, inTextDate: '20xyz2023' }],
         ['thereisnotasingledateinthere', { formattedDate: null, inTextDate: null }],
       ])('"%s" input should return %s', (text: string, expected) => {
         expect(getDate(text)).toEqual(expected);

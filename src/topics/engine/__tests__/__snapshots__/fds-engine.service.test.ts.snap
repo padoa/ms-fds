@@ -11,7 +11,7 @@ exports[`FdsEngine tests > ExtractDataFromFDS tests > should extract data from a
     ],
     "date": {
       "formattedDate": "2017/01/20",
-      "inTextDate": "20janvier2017",
+      "inTextDate": "20 janvier 2017",
     },
     "physicalState": {
       "metaData": {
