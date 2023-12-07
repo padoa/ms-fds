@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import type { IFill, IRawStroke, IPdfData, IStroke } from '@topics/engine/model/fds.model.js';
+import { FILL_MAX_WIDTH_IN_PROPORTION, RAW_STROKE_MAX_WIDTH_IN_PROPORTION } from '@topics/engine/pdf-extractor/pdf-stroke-extractor.config.js';
 
 type IPageDimension = { height: number; width: number };
 type IPageMetaData = IPageDimension & { pageNumber: number };
@@ -11,9 +12,9 @@ export class PdfStrokeExtractorService {
       .map((page, pageNumber) => {
         const pageMetaData = { height: page.Height, width: page.Width, pageNumber };
         return [
-          ...this.getStrokeFromHLines(page.HLines, pageMetaData),
-          ...this.getStrokeFromVLines(page.VLines, pageMetaData),
-          ...this.getStrokeFromFills(page.Fills, pageMetaData),
+          ...PdfStrokeExtractorService.getStrokeFromHLines(page.HLines, pageMetaData),
+          ...PdfStrokeExtractorService.getStrokeFromVLines(page.VLines, pageMetaData),
+          ...PdfStrokeExtractorService.getStrokeFromFills(page.Fills, pageMetaData),
         ];
       })
       .flatMap()
@@ -23,37 +24,37 @@ export class PdfStrokeExtractorService {
 
   public static getStrokeFromHLines(hLines: IRawStroke[], { height, width, pageNumber }: IPageMetaData): IStroke[] {
     return _(hLines)
-      .filter((hLine) => hLine.w / height < 1 / 10 || hLine.l / width < 1 / 10)
+      .filter((hLine) => hLine.w / height <= RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
       .map((hLine) => ({
         pageNumber,
         startBox: { xPositionProportion: hLine.x, yPositionProportion: hLine.y },
         endBox: { xPositionProportion: hLine.x + hLine.l, yPositionProportion: hLine.y + hLine.w },
       }))
-      .map((stroke) => this.normalizeStroke(stroke, { height, width }))
+      .map((stroke) => PdfStrokeExtractorService.normalizeStroke(stroke, { height, width }))
       .value();
   }
 
   public static getStrokeFromVLines(vLines: IRawStroke[], { height, width, pageNumber }: IPageMetaData): IStroke[] {
     return _(vLines)
-      .filter((vLine) => vLine.l / height < 1 / 10 || vLine.w / width < 1 / 10)
+      .filter((vLine) => vLine.w / width <= RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
       .map((vLine) => ({
         pageNumber,
         startBox: { xPositionProportion: vLine.x, yPositionProportion: vLine.y },
         endBox: { xPositionProportion: vLine.x + vLine.w, yPositionProportion: vLine.y + vLine.l },
       }))
-      .map((stroke) => this.normalizeStroke(stroke, { height, width }))
+      .map((stroke) => PdfStrokeExtractorService.normalizeStroke(stroke, { height, width }))
       .value();
   }
 
   public static getStrokeFromFills(fills: IFill[], { height, width, pageNumber }: IPageMetaData): IStroke[] {
     return _(fills)
-      .filter((fill) => fill.h / height < 1 / 500 || fill.w / width < 1 / 500)
+      .filter((fill) => fill.h / height <= FILL_MAX_WIDTH_IN_PROPORTION || fill.w / width <= FILL_MAX_WIDTH_IN_PROPORTION)
       .map((fill) => ({
         pageNumber,
         startBox: { xPositionProportion: fill.x, yPositionProportion: fill.y },
         endBox: { xPositionProportion: fill.x + fill.w, yPositionProportion: fill.y + fill.h },
       }))
-      .map((stroke) => this.normalizeStroke(stroke, { height, width }))
+      .map((stroke) => PdfStrokeExtractorService.normalizeStroke(stroke, { height, width }))
       .value();
   }
 
