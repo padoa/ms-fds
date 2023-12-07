@@ -1,87 +1,20 @@
 import _ from 'lodash';
 
-import type {
-  IExtractedData,
-  IFDSTree,
-  IExtractedSubstance,
-  IExtractedDanger,
-  IExtractedProduct,
-  IExtractedProducer,
-} from '@topics/engine/model/fds.model.js';
+import type { IExtractedData, IFDSTree, IExtractedSubstance, IExtractedDanger, IExtractedProducer } from '@topics/engine/model/fds.model.js';
 import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
 import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
+import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
 
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
     date: RevisionDateRulesService.getDate(fullText),
-    product: getProduct(fdsTreeCleaned, { fullText }),
+    product: ProductRulesService.getProduct(fdsTreeCleaned, { fullText }),
     producer: getProducer(fdsTreeCleaned),
     dangers: getDangers(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
     physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
   };
-};
-
-//----------------------------------------------------------------------------------------------
-//------------------------------------- PRODUCT NAME -------------------------------------------
-//----------------------------------------------------------------------------------------------
-
-export const getProduct = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
-  return getProductByText(fdsTree) || getProductByLineOrder(fdsTree, { fullText });
-};
-
-export const getProductByText = (fdsTree: IFDSTree): IExtractedProduct | null => {
-  const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
-
-  if (_.isEmpty(linesToSearchIn)) return null;
-
-  let nameInCurrentLine = false;
-  for (const line of linesToSearchIn) {
-    const { pageNumber, startBox, endBox } = line;
-    const metaData = { pageNumber, startBox, endBox };
-    const lineText = _.map(line.texts, ({ content }) => content).join(' ');
-    const { content } = _.last(line.texts) || { content: '' };
-    const text = _(content).split(':').last().trim();
-    if (nameInCurrentLine) return { name: text, metaData };
-
-    if (_.includes(lineText.replaceAll(' ', ''), 'nomduproduit')) {
-      if (_.includes(text.replaceAll(' ', ''), 'nomduproduit')) {
-        nameInCurrentLine = true;
-        continue;
-      }
-      return { name: text, metaData };
-    }
-  }
-  return null;
-};
-
-export const getProductByLineOrder = (fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null => {
-  const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
-
-  if (_.isEmpty(linesToSearchIn)) return null;
-
-  for (const line of linesToSearchIn) {
-    const { pageNumber, startBox, endBox } = line;
-    const lineText = _.map(line.texts, ({ content }) => content).join('');
-    const { content } = _.last(line.texts) || { content: '' };
-    const text = _(content).split(':').last().trim();
-    if (
-      !text ||
-      _.includes(text, '1.1') ||
-      _.includes(text, 'nom du produit') ||
-      _.includes(text, 'mélange') ||
-      _.includes(text, 'identificateur de produit') ||
-      _.includes(lineText, 'forme du produit')
-    ) {
-      continue;
-    }
-    const numberOfOtherMatchesInDocument = fullText
-      .replaceAll(' ', '')
-      .match(new RegExp(`${text.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
-    if (numberOfOtherMatchesInDocument?.length >= 3) return { name: text, metaData: { pageNumber, startBox, endBox } };
-  }
-  return null;
 };
 
 //----------------------------------------------------------------------------------------------
