@@ -2,9 +2,14 @@ import { format } from 'date-fns';
 import _ from 'lodash';
 
 import type { IExtractedDate } from '@topics/engine/model/fds.model.js';
-import { MONTH_MAPPING } from '@topics/engine/rules/rules.constants.js';
 
 export class RevisionDateRulesService {
+  private static readonly MONTH_MAPPING = {
+    août: 'august',
+    février: 'february',
+    décembre: 'december',
+  } as { [key: string]: string };
+
   private static readonly noSingleDigitStartRegex = '(?<!\\d{1})';
   private static readonly dayRegex = '[1-9]|[12][0-9]|3[01]';
   private static readonly numberDayRegex = `0${this.dayRegex}`;
@@ -90,7 +95,7 @@ export class RevisionDateRulesService {
     const regexMatches = date.match(new RegExp(this.stringDateRegex));
     if (!regexMatches) return null;
     const [, , day, month, year] = regexMatches;
-    return new Date(`${year} ${MONTH_MAPPING[month] || month} ${day}`);
+    return new Date(`${year} ${this.MONTH_MAPPING[month] || month} ${day}`);
   }
 
   private static parseDateFromEnglishNumberRegex(date: string): Date | null {

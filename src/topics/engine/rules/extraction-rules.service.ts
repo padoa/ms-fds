@@ -6,13 +6,15 @@ import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/prod
 import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dangers-rules.service.js';
 import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
 
-export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
-  return {
-    date: RevisionDateRulesService.getDate(fullText),
-    product: ProductRulesService.getProduct(fdsTreeCleaned, { fullText }),
-    producer: ProducerRulesService.getProducer(fdsTreeCleaned),
-    dangers: DangersRulesService.getDangers(fdsTreeCleaned),
-    substances: SubstancesRulesService.getSubstances(fdsTreeCleaned),
-    physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
-  };
-};
+export class ExtractionRulesService {
+  public static async extract({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> {
+    return {
+      date: RevisionDateRulesService.getDate(fullText),
+      product: ProductRulesService.getProduct(fdsTreeCleaned, { fullText }),
+      producer: ProducerRulesService.getProducer(fdsTreeCleaned),
+      dangers: DangersRulesService.getDangers(fdsTreeCleaned),
+      substances: SubstancesRulesService.getSubstances(fdsTreeCleaned),
+      physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
+    };
+  }
+}

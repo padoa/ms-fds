@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 
-import { applyExtractionRules } from '@topics/engine/rules/extraction-rules.js';
 import type { IBox, IExtractedData, IMetaData } from '@topics/engine/model/fds.model.js';
 import { aFdsTreeWithAllSectionsWithUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
@@ -21,6 +20,7 @@ import {
   MULTIPLE_P_DANGER_WITH_DETAILS,
   PHYSICAL_STATE_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 
 describe('ExtractionRulesService tests', () => {
   const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };
@@ -50,7 +50,9 @@ describe('ExtractionRulesService tests', () => {
         physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
       };
 
-      await expect(applyExtractionRules({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(expected);
+      await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(
+        expected,
+      );
     });
   });
 });
