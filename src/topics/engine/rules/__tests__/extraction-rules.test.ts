@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { CASNumberRegex, CENumberRegex, applyExtractionRules, getDangers, getSubstances } from '@topics/engine/rules/extraction-rules.js';
-import type { IBox, IExtractedData, IExtractedDanger, IExtractedSubstance, IFDSTree, IMetaData } from '@topics/engine/model/fds.model.js';
+import { CASNumberRegex, CENumberRegex, applyExtractionRules, getSubstances } from '@topics/engine/rules/extraction-rules.js';
+import type { IBox, IExtractedData, IExtractedSubstance, IFDSTree, IMetaData } from '@topics/engine/model/fds.model.js';
 import {
   aFdsTree,
   aFdsTreeWithAllSectionsWithUsefulInfo,
@@ -15,7 +15,6 @@ import {
   PRODUCT_IDENTIFIER_WITH_COLON,
   PRODUCER_NAME,
   H_DANGER,
-  EUH_DANGER,
   P_DANGER,
   MULTIPLE_P_DANGER,
   CAS_NUMBER,
@@ -27,15 +26,7 @@ import {
   MULTIPLE_P_DANGER_WITH_DETAILS,
   PHYSICAL_STATE_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import {
-  aLineWithCASAndCENumberIn2Texts,
-  aLineWithCASNumber,
-  aLineWithCENumber,
-  aLineWithEUHDanger,
-  aLineWithHDanger,
-  aLineWithMultiplePDanger,
-  aLineWithTwoDangers,
-} from '@topics/engine/__fixtures__/line.mother.js';
+import { aLineWithCASAndCENumberIn2Texts, aLineWithCASNumber, aLineWithCENumber } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 
@@ -80,45 +71,6 @@ describe('ExtractionRules tests', () => {
         [{ input: '123-456-', expected: false }],
       ])('$input payload should return $expected', ({ input, expected }) => {
         expect(new RegExp(CENumberRegex).test(input)).toEqual(expected);
-      });
-    });
-  });
-
-  describe('Dangers rules tests', () => {
-    describe('GetDangers tests', () => {
-      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedDanger[] }]>([
-        [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],
-        [
-          {
-            message: 'it should return an empty list when providing texts without dangers',
-            fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
-            expected: [],
-          },
-        ],
-        [
-          {
-            message: 'it should retrieve dangers contained in lines',
-            fdsTree: aFdsTree().withSection2(
-              aSection().withSubsections({
-                2: aSubSection().withLines([aLineWithHDanger().properties, aLineWithEUHDanger().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: [H_DANGER, EUH_DANGER],
-          },
-        ],
-        [
-          {
-            message: 'it should retrieve dangers contained in texts and lines',
-            fdsTree: aFdsTree().withSection2(
-              aSection().withSubsections({
-                2: aSubSection().withLines([aLineWithTwoDangers().properties, aLineWithMultiplePDanger().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: [H_DANGER, P_DANGER, MULTIPLE_P_DANGER],
-          },
-        ],
-      ])('$message', ({ fdsTree, expected }) => {
-        expect(getDangers(fdsTree)).toEqual(expected);
       });
     });
   });

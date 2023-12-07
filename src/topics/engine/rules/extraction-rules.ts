@@ -1,44 +1,21 @@
 import _ from 'lodash';
 
-import type { IExtractedData, IFDSTree, IExtractedSubstance, IExtractedDanger } from '@topics/engine/model/fds.model.js';
+import type { IExtractedData, IFDSTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
 import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
+import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dangers-rules.service.js';
 
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
     date: RevisionDateRulesService.getDate(fullText),
     product: ProductRulesService.getProduct(fdsTreeCleaned, { fullText }),
     producer: ProducerRulesService.getProducer(fdsTreeCleaned),
-    dangers: getDangers(fdsTreeCleaned),
+    dangers: DangersRulesService.getDangers(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
     physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
   };
-};
-
-//----------------------------------------------------------------------------------------------
-//---------------------------------------- DANGERS ---------------------------------------------
-//----------------------------------------------------------------------------------------------
-
-export const getDangers = (fdsTree: IFDSTree): IExtractedDanger[] => {
-  const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
-  const textInEachLine = _.map(linesToSearchIn, ({ texts }) => _.map(texts, 'content').join(''));
-
-  // TODO: possible improvement: concat all lines then use regex once to extract dangers
-  return _(textInEachLine)
-    .map((text) => {
-      // TODO: add unit tests on regexes
-      const customHazards = ['h350i', 'h360f', 'h360d', 'h360fd', 'h360df', 'h361f', 'h361d', 'h361fd'];
-      const hazardsRegex = `(${customHazards.join(')|(')})|(h[2-4]\\d{2})`;
-      const precautionRegex = '(((p[1-5]\\d{2})\\+?)+)';
-      const europeanHazardsRegex = '(euh[02]\\d{2})|(euh401)';
-      const textMatches = text.replaceAll(' ', '').match(new RegExp(`${europeanHazardsRegex}|${hazardsRegex}|${precautionRegex}`, 'g')) || [];
-      return textMatches.map((t) => t.replaceAll('+', ' + '));
-    })
-    .flatMap()
-    .compact()
-    .value();
 };
 
 //----------------------------------------------------------------------------------------------
