@@ -1,22 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  CASNumberRegex,
-  CENumberRegex,
-  applyExtractionRules,
-  getDangers,
-  getProducer,
-  getSubstances,
-} from '@topics/engine/rules/extraction-rules.js';
-import type {
-  IBox,
-  IExtractedData,
-  IExtractedDanger,
-  IExtractedProducer,
-  IExtractedSubstance,
-  IFDSTree,
-  IMetaData,
-} from '@topics/engine/model/fds.model.js';
+import { CASNumberRegex, CENumberRegex, applyExtractionRules, getDangers, getSubstances } from '@topics/engine/rules/extraction-rules.js';
+import type { IBox, IExtractedData, IExtractedDanger, IExtractedSubstance, IFDSTree, IMetaData } from '@topics/engine/model/fds.model.js';
 import {
   aFdsTree,
   aFdsTreeWithAllSectionsWithUsefulInfo,
@@ -29,7 +14,6 @@ import {
   PRODUCT_NAME,
   PRODUCT_IDENTIFIER_WITH_COLON,
   PRODUCER_NAME,
-  PRODUCER_NAME_WITH_DOT,
   H_DANGER,
   EUH_DANGER,
   P_DANGER,
@@ -50,15 +34,7 @@ import {
   aLineWithEUHDanger,
   aLineWithHDanger,
   aLineWithMultiplePDanger,
-  aLineWithProducerIdentifierOnlyWithColon,
-  aLineWithProducerEndingWithDotIn1Text,
-  aLineWithProducerIn1Text,
-  aLineWithProducerIn2Texts,
-  aLineWithProducerNameOnly,
-  aLineWithProducerWithDotIn1Text,
   aLineWithTwoDangers,
-  aLineWithUndefinedText,
-  aLineWithProducerIdentifierOnly,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
@@ -104,106 +80,6 @@ describe('ExtractionRules tests', () => {
         [{ input: '123-456-', expected: false }],
       ])('$input payload should return $expected', ({ input, expected }) => {
         expect(new RegExp(CENumberRegex).test(input)).toEqual(expected);
-      });
-    });
-  });
-
-  describe('Producer rules tests', () => {
-    describe('GetProducer tests', () => {
-      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedProducer | null }]>([
-        [
-          {
-            message: 'should return null when providing a fdsTree with an undefined text',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithUndefinedText().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: null,
-          },
-        ],
-        [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: null }],
-        [
-          {
-            message: 'should skip lines containing only producer identifier',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: null,
-          },
-        ],
-        [
-          {
-            message: 'it should return producer name when providing a line with producer in 1 text',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerIn1Text().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: { name: PRODUCER_NAME, metaData },
-          },
-        ],
-        [
-          {
-            message: 'it should skip first line containing producer identifer and return producer name when providing a line with producer in 1 text',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerIn1Text().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: { name: PRODUCER_NAME, metaData },
-          },
-        ],
-        [
-          {
-            message: 'it should return producer name when providing a line with producer in 2 texts',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerIn2Texts().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: { name: PRODUCER_NAME, metaData },
-          },
-        ],
-        [
-          {
-            message: 'it should return producer name when providing producer in 2 lines',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon().properties, aLineWithProducerNameOnly().properties])
-                  .properties,
-              }).properties,
-            ).properties,
-            expected: { name: PRODUCER_NAME, metaData },
-          },
-        ],
-        // entering cleanProducer
-        [
-          {
-            message: 'it should return producer name when providing producer ending with dot',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerEndingWithDotIn1Text().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: { name: PRODUCER_NAME, metaData },
-          },
-        ],
-        [
-          {
-            message: 'it should return producer name when providing producer ending with dot',
-            fdsTree: aFdsTree().withSection1(
-              aSection().withSubsections({
-                3: aSubSection().withLines([aLineWithProducerWithDotIn1Text().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: { name: PRODUCER_NAME_WITH_DOT, metaData },
-          },
-        ],
-      ])('$message', ({ fdsTree, expected }) => {
-        expect(getProducer(fdsTree)).toEqual(expected);
       });
     });
   });

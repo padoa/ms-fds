@@ -1,52 +1,20 @@
 import _ from 'lodash';
 
-import type { IExtractedData, IFDSTree, IExtractedSubstance, IExtractedDanger, IExtractedProducer } from '@topics/engine/model/fds.model.js';
-import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
+import type { IExtractedData, IFDSTree, IExtractedSubstance, IExtractedDanger } from '@topics/engine/model/fds.model.js';
 import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
+import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
 
 export const applyExtractionRules = async ({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> => {
   return {
     date: RevisionDateRulesService.getDate(fullText),
     product: ProductRulesService.getProduct(fdsTreeCleaned, { fullText }),
-    producer: getProducer(fdsTreeCleaned),
+    producer: ProducerRulesService.getProducer(fdsTreeCleaned),
     dangers: getDangers(fdsTreeCleaned),
     substances: getSubstances(fdsTreeCleaned),
     physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
   };
-};
-
-//----------------------------------------------------------------------------------------------
-//--------------------------------------- PRODUCER ---------------------------------------------
-//----------------------------------------------------------------------------------------------
-
-export const getProducer = (fdsTree: IFDSTree): IExtractedProducer | null => {
-  const linesToSearchIn = fdsTree[1]?.subsections?.[3]?.lines;
-
-  if (_.isEmpty(linesToSearchIn)) return null;
-
-  for (const line of linesToSearchIn) {
-    const { content } = _.last(line.texts) || { content: '' };
-    const text = _(content).split(':').last().trim();
-    if (!text) continue;
-
-    if (
-      _.includes(text, 'fournisseur') ||
-      _.includes(text, '1.3') ||
-      _.includes(text, '1. 3') ||
-      _.includes(text, 'société') ||
-      _.includes(text, 'données de sécurité') ||
-      _.includes(text, 'raison sociale')
-    ) {
-      continue;
-    }
-
-    const { pageNumber, startBox, endBox } = line;
-
-    return { name: ExtractionCleanerService.trimAndCleanTrailingDot(text), metaData: { pageNumber, startBox, endBox } };
-  }
-  return null;
 };
 
 //----------------------------------------------------------------------------------------------
