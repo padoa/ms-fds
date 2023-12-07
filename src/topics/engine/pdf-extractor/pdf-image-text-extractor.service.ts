@@ -7,20 +7,20 @@ import type { Options } from 'pdf2pic/dist/types/options.js';
 
 import type { IBox, ILine, IPageDimension, IText } from '@topics/engine/model/fds.model.js';
 
-const tempImageFileName = 'fds-image';
-const tempImageFolderName = '/tmp';
-const tempImageFormat = 'png';
-
-const options: Options = {
-  density: 300,
-  saveFilename: tempImageFileName,
-  savePath: `${tempImageFolderName}`,
-  format: tempImageFormat,
-  width: 1050,
-  height: 1485,
-};
-
 export class PdfImageTextExtractorService {
+  private static readonly tempImageFileName = 'fds-image';
+  private static readonly tempImageFolderName = '/tmp';
+  private static readonly tempImageFormat = 'png';
+
+  private static readonly options: Options = {
+    density: 300,
+    saveFilename: this.tempImageFileName,
+    savePath: `${this.tempImageFolderName}`,
+    format: this.tempImageFormat,
+    width: 1050,
+    height: 1485,
+  };
+
   public static async getTextFromImagePdf(fdsFilePath: string, { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {}): Promise<ILine[]> {
     await this.pdfToImage(fdsFilePath, { numberOfPagesToParse });
 
@@ -35,7 +35,7 @@ export class PdfImageTextExtractorService {
 
   private static pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<void> => {
     // TODO: clean temporary images folder
-    await fromPath(pathToFile, options)
+    await fromPath(pathToFile, this.options)
       .bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' })
       .then((resolve) => {
         return resolve;
@@ -43,7 +43,7 @@ export class PdfImageTextExtractorService {
   };
 
   private static getTextFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<ILine[]> => {
-    const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber}.${tempImageFormat}`;
+    const imagePath = `${this.tempImageFolderName}/${this.tempImageFileName}.${pageNumber}.${this.tempImageFormat}`;
     const ret = await worker.recognize(imagePath);
     return this.hocrToLines(ret.data.hocr, pageNumber);
   };
