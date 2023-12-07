@@ -19511,5 +19511,3813 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       ],
     },
   ],
+  "strokes": [
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.19956290383884454,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.1989927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.8886735081717978,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.19956290383884454,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.0671092238228338,
+        "yPositionProportion": 0.8886735081717978,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.06630294560309612,
+        "yPositionProportion": 0.19956290383884454,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.8886735081717978,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.19956290383884454,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.24532497149372862,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.24475484606613454,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.2619916381603953,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.26142151273280123,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.4892436335993919,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.4886735081717978,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.5059293044469784,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.5053591790193843,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.8892626377803117,
+      },
+      "pageNumber": 0,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.8886925123527176,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.18745724059293042,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.18688711516533638,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9596731280881795,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.18745724059293048,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.9596731280881795,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.06530853579875297,
+        "yPositionProportion": 0.18745724059293048,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9596731280881795,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.18745724059293048,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9501720060202107,
+        "yPositionProportion": 0.44218928164196125,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.0798215437540314,
+        "yPositionProportion": 0.44161915621436715,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9501720060202107,
+        "yPositionProportion": 0.4587229190421893,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.0798215437540314,
+        "yPositionProportion": 0.45815279361459527,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.5140440896997339,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.5134739642721399,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.5140440896997339,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.5134739642721399,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.5140440896997339,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.5134739642721399,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.853015480541819,
+        "yPositionProportion": 0.5140440896997339,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.5134739642721399,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.5140440896997339,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.8538217587615566,
+        "yPositionProportion": 0.5134739642721399,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6370941732960653,
+        "yPositionProportion": 0.5268719118206006,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.5263017863930065,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8529886046011611,
+        "yPositionProportion": 0.5268719118206006,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.5263017863930065,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.5268719118206006,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.8538217587615566,
+        "yPositionProportion": 0.5263017863930065,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.552109464082098,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.551539338654504,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.552109464082098,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.551539338654504,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.552109464082098,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.551539338654504,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6370941732960653,
+        "yPositionProportion": 0.552109464082098,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.551539338654504,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8529886046011611,
+        "yPositionProportion": 0.552109464082098,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.551539338654504,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.552109464082098,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.8538217587615566,
+        "yPositionProportion": 0.551539338654504,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.6135309768148993,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08103096108363793,
+        "yPositionProportion": 0.552109464082098,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.6135309768148993,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.552109464082098,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.6135309768148993,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.552109464082098,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.6135309768148993,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.552109464082098,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.6135309768148993,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6370672973554075,
+        "yPositionProportion": 0.552109464082098,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8538217587615567,
+        "yPositionProportion": 0.6135309768148993,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.853015480541819,
+        "yPositionProportion": 0.552109464082098,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.944124919372178,
+        "yPositionProportion": 0.6135309768148993,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.552109464082098,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.6141011022424934,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.6135309768148993,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.6141011022424934,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.6135309768148993,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.6141011022424934,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.6135309768148993,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6370941732960653,
+        "yPositionProportion": 0.6141011022424934,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.6135309768148993,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8529886046011611,
+        "yPositionProportion": 0.6141011022424934,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.6135309768148993,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.6141011022424934,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.8538217587615566,
+        "yPositionProportion": 0.6135309768148993,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.6688331432915242,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08103096108363793,
+        "yPositionProportion": 0.6141011022424934,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.6688331432915242,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.6141011022424934,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.6688331432915242,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.6141011022424934,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.6688331432915242,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.6141011022424934,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.6688331432915242,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6370672973554075,
+        "yPositionProportion": 0.6141011022424934,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8538217587615567,
+        "yPositionProportion": 0.6688331432915242,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.853015480541819,
+        "yPositionProportion": 0.6141011022424934,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.944124919372178,
+        "yPositionProportion": 0.6688331432915242,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.6141011022424934,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.6694032687191183,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.6688331432915242,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.6694032687191183,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.6688331432915242,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.6694032687191183,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.6688331432915242,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6370941732960653,
+        "yPositionProportion": 0.6694032687191183,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.6688331432915242,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8529886046011611,
+        "yPositionProportion": 0.6694032687191183,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.6688331432915242,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.6694032687191183,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.8538217587615566,
+        "yPositionProportion": 0.6688331432915242,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.7186240973014063,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08103096108363793,
+        "yPositionProportion": 0.6694222729000381,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.7186240973014063,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.6694222729000381,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.7186240973014063,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.6694222729000381,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.7186240973014063,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.6694222729000381,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.7186240973014063,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6370672973554075,
+        "yPositionProportion": 0.6694222729000381,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8538217587615567,
+        "yPositionProportion": 0.7186240973014063,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.853015480541819,
+        "yPositionProportion": 0.6694222729000381,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.944124919372178,
+        "yPositionProportion": 0.7186240973014063,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.6694222729000381,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23728768006880244,
+        "yPositionProportion": 0.7191942227290005,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.08183723930337562,
+        "yPositionProportion": 0.7186240973014063,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.39254998924962375,
+        "yPositionProportion": 0.7191942227290005,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.2380939582885401,
+        "yPositionProportion": 0.7186240973014063,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5108578800258009,
+        "yPositionProportion": 0.7191942227290005,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.3933562674693614,
+        "yPositionProportion": 0.7186240973014063,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6370941732960653,
+        "yPositionProportion": 0.7191942227290005,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.5116641582455386,
+        "yPositionProportion": 0.7186240973014063,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8529886046011611,
+        "yPositionProportion": 0.7191942227290005,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.6378735755751452,
+        "yPositionProportion": 0.7186240973014063,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9433186411524402,
+        "yPositionProportion": 0.7191942227290005,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.8538217587615566,
+        "yPositionProportion": 0.7186240973014063,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.9602432535157734,
+      },
+      "pageNumber": 1,
+      "startBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.9596731280881794,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9498289623717218,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.9498289623717218,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.06530853579875297,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9498289623717218,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.19543899657924743,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.19486887115165336,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.2121056632459141,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.21153553781832005,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7198989464631261,
+        "yPositionProportion": 0.2528696313188902,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.08645990109653838,
+        "yPositionProportion": 0.251729380463702,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.9503990877993158,
+      },
+      "pageNumber": 2,
+      "startBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.9498289623717218,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9233181299885975,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.0671092238228338,
+        "yPositionProportion": 0.9233181299885975,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.06630294560309612,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9233181299885975,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.19543899657924743,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.19486887115165336,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.2121056632459141,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.21153553781832005,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.567787913340935,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.08143410019350678,
+        "yPositionProportion": 0.567217787913341,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.5844545800076018,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.08143410019350678,
+        "yPositionProportion": 0.5838844545800076,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.9238882554161917,
+      },
+      "pageNumber": 3,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.9233181299885975,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9388635499809959,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.0671092238228338,
+        "yPositionProportion": 0.9388635499809959,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.06630294560309612,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9388635499809959,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.616248574686431,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.615678449258837,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.6327822120866592,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.632212086659065,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.9394336754085899,
+      },
+      "pageNumber": 4,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.9388635499809959,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9491258076776891,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.0671092238228338,
+        "yPositionProportion": 0.9491258076776891,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.06630294560309612,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9491258076776891,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.18730520714557203,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.08143410019350678,
+        "yPositionProportion": 0.18673508171797798,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.20399087799315851,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.08143410019350678,
+        "yPositionProportion": 0.20342075256556444,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.9496959331052832,
+      },
+      "pageNumber": 5,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.9491258076776891,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.959471081487852,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.06490539668888412,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9184720638540479,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.0649053966888841,
+        "yPositionProportion": 0.9184720638540479,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.06409911846914641,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9184720638540479,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9382659643087509,
+        "yPositionProportion": 0.19543899657924743,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.07619329176521178,
+        "yPositionProportion": 0.19486887115165336,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9382659643087509,
+        "yPositionProportion": 0.2121056632459141,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.07619329176521178,
+        "yPositionProportion": 0.21153553781832005,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9382659643087509,
+        "yPositionProportion": 0.6558722919042189,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.07619329176521178,
+        "yPositionProportion": 0.6553021664766249,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9382659643087509,
+        "yPositionProportion": 0.6725389585708856,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.07619329176521178,
+        "yPositionProportion": 0.6719688331432916,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.959471081487852,
+        "yPositionProportion": 0.9190421892816419,
+      },
+      "pageNumber": 6,
+      "startBox": {
+        "xPositionProportion": 0.06490539668888412,
+        "yPositionProportion": 0.9184720638540479,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.06530853579875297,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9159064994298747,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.06530853579875295,
+        "yPositionProportion": 0.9159064994298747,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.06450225757901526,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9159064994298747,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9382659643087509,
+        "yPositionProportion": 0.19543899657924743,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.07659643087508064,
+        "yPositionProportion": 0.19486887115165336,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9382659643087509,
+        "yPositionProportion": 0.2121056632459141,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.07659643087508064,
+        "yPositionProportion": 0.21153553781832005,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3471834014190497,
+        "yPositionProportion": 0.25372481946028125,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.09473769081917867,
+        "yPositionProportion": 0.2531546940326872,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5552300580520318,
+        "yPositionProportion": 0.25372481946028125,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.3479896796387874,
+        "yPositionProportion": 0.2531546940326872,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6626800688024082,
+        "yPositionProportion": 0.25372481946028125,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.5560363362717695,
+        "yPositionProportion": 0.2531546940326872,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8016018060632123,
+        "yPositionProportion": 0.25372481946028125,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.6634863470221458,
+        "yPositionProportion": 0.2531546940326872,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9298000430015052,
+        "yPositionProportion": 0.25372481946028125,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.80240808428295,
+        "yPositionProportion": 0.2531546940326872,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3471834014190497,
+        "yPositionProportion": 0.2815279361459521,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.09473769081917867,
+        "yPositionProportion": 0.28095781071835807,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5552300580520318,
+        "yPositionProportion": 0.2815279361459521,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.3479896796387874,
+        "yPositionProportion": 0.28095781071835807,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6626800688024082,
+        "yPositionProportion": 0.2815279361459521,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.5560363362717695,
+        "yPositionProportion": 0.28095781071835807,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8016018060632123,
+        "yPositionProportion": 0.2815279361459521,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.6634863470221458,
+        "yPositionProportion": 0.28095781071835807,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9298000430015052,
+        "yPositionProportion": 0.2815279361459521,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.80240808428295,
+        "yPositionProportion": 0.28095781071835807,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.09473769081917867,
+        "yPositionProportion": 0.3635119726339795,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.09393141259944099,
+        "yPositionProportion": 0.2815279361459521,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.34798967963878735,
+        "yPositionProportion": 0.3635119726339795,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.3471834014190497,
+        "yPositionProportion": 0.2815279361459521,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5560363362717695,
+        "yPositionProportion": 0.3635119726339795,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.5552300580520318,
+        "yPositionProportion": 0.2815279361459521,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6634863470221458,
+        "yPositionProportion": 0.3635119726339795,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.6626800688024082,
+        "yPositionProportion": 0.2815279361459521,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.80240808428295,
+        "yPositionProportion": 0.3635119726339795,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.8016018060632123,
+        "yPositionProportion": 0.2815279361459521,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9306063212212428,
+        "yPositionProportion": 0.3635119726339795,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.929800043001505,
+        "yPositionProportion": 0.2815279361459521,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3471834014190497,
+        "yPositionProportion": 0.3640820980615736,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.09473769081917867,
+        "yPositionProportion": 0.3635119726339795,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5552300580520318,
+        "yPositionProportion": 0.3640820980615736,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.3479896796387874,
+        "yPositionProportion": 0.3635119726339795,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6626800688024082,
+        "yPositionProportion": 0.3640820980615736,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.5560363362717695,
+        "yPositionProportion": 0.3635119726339795,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8016018060632123,
+        "yPositionProportion": 0.3640820980615736,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.6634863470221458,
+        "yPositionProportion": 0.3635119726339795,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9298000430015052,
+        "yPositionProportion": 0.3640820980615736,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.80240808428295,
+        "yPositionProportion": 0.3635119726339795,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.09473769081917867,
+        "yPositionProportion": 0.4051311288483467,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.09393141259944099,
+        "yPositionProportion": 0.3640820980615736,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.34798967963878735,
+        "yPositionProportion": 0.4051311288483467,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.3471834014190497,
+        "yPositionProportion": 0.3640820980615736,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5560363362717695,
+        "yPositionProportion": 0.4051311288483467,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.5552300580520318,
+        "yPositionProportion": 0.3640820980615736,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6634863470221458,
+        "yPositionProportion": 0.4051311288483467,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.6626800688024082,
+        "yPositionProportion": 0.3640820980615736,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.80240808428295,
+        "yPositionProportion": 0.4051311288483467,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.8016018060632123,
+        "yPositionProportion": 0.3640820980615736,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9306063212212428,
+        "yPositionProportion": 0.4051311288483467,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.929800043001505,
+        "yPositionProportion": 0.3640820980615736,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3471834014190497,
+        "yPositionProportion": 0.4057012542759408,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.09473769081917867,
+        "yPositionProportion": 0.4051311288483467,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5552300580520318,
+        "yPositionProportion": 0.4057012542759408,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.3479896796387874,
+        "yPositionProportion": 0.4051311288483467,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6626800688024082,
+        "yPositionProportion": 0.4057012542759408,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.5560363362717695,
+        "yPositionProportion": 0.4051311288483467,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8016018060632123,
+        "yPositionProportion": 0.4057012542759408,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.6634863470221458,
+        "yPositionProportion": 0.4051311288483467,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9298000430015052,
+        "yPositionProportion": 0.4057012542759408,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.80240808428295,
+        "yPositionProportion": 0.4051311288483467,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.3471834014190497,
+        "yPositionProportion": 0.4431965032307108,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.09473769081917867,
+        "yPositionProportion": 0.4426263778031167,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.5552300580520318,
+        "yPositionProportion": 0.4431965032307108,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.3479896796387874,
+        "yPositionProportion": 0.4426263778031167,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6626800688024082,
+        "yPositionProportion": 0.4431965032307108,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.5560363362717695,
+        "yPositionProportion": 0.4426263778031167,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.8016018060632123,
+        "yPositionProportion": 0.4431965032307108,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.6634863470221458,
+        "yPositionProportion": 0.4426263778031167,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9298000430015052,
+        "yPositionProportion": 0.4431965032307108,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.80240808428295,
+        "yPositionProportion": 0.4426263778031167,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.9164766248574687,
+      },
+      "pageNumber": 7,
+      "startBox": {
+        "xPositionProportion": 0.06530853579875297,
+        "yPositionProportion": 0.9159064994298747,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9137780311668567,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.0671092238228338,
+        "yPositionProportion": 0.9137780311668567,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.06630294560309612,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9137780311668567,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.4017103762827823,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.4011402508551882,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.4183960471303687,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.41782592170277466,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.6621436716077537,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.6615735461801596,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340141,
+        "yPositionProportion": 0.6788103382744204,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.07861212642442485,
+        "yPositionProportion": 0.6782402128468263,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.9143481565944508,
+      },
+      "pageNumber": 8,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.9137780311668567,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.18118586088939564,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.1806157354618016,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9193272519954391,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.9193272519954391,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.06530853579875297,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9193272519954391,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1811858608893957,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.2105473204104903,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.20997719498289624,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.22708095781071835,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.2265108323831243,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.2550171037628278,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.2544469783352338,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.2550171037628278,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.2544469783352338,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.2550171037628278,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.2544469783352338,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.2550171037628278,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.2544469783352338,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.2550171037628278,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.2544469783352338,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.28023565184340554,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.2796655264158115,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.28023565184340554,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.2796655264158115,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.28023565184340554,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.2796655264158115,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.28023565184340554,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.2796655264158115,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.28023565184340554,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.2796655264158115,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.2931014823261118,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.2925313568985177,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.2931014823261118,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.2925313568985177,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.2931014823261118,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.2925313568985177,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.2931014823261118,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.2925313568985177,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.2931014823261118,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.2925313568985177,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.33059673128088185,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.33002660585328775,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.33059673128088185,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.33002660585328775,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.33059673128088185,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.33002660585328775,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.33059673128088185,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.33002660585328775,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.33059673128088185,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.33002660585328775,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.3680729760547321,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.367502850627138,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.3680729760547321,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.367502850627138,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.3680729760547321,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.367502850627138,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.3680729760547321,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.367502850627138,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.3680729760547321,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.367502850627138,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.3933105283162296,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.39274040288863554,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.3933105283162296,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.39274040288863554,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.3933105283162296,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.39274040288863554,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.3933105283162296,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.39274040288863554,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.3933105283162296,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.39274040288863554,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.4183960471303687,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.41782592170277466,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.4183960471303687,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.41782592170277466,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.4183960471303687,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.41782592170277466,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.4183960471303687,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.41782592170277466,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.4183960471303687,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.41782592170277466,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.07116749086218017,
+        "yPositionProportion": 0.46771189661725576,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07036121264244248,
+        "yPositionProportion": 0.41839604713036865,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.46771189661725576,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.2651042786497528,
+        "yPositionProportion": 0.41839604713036865,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.43810470866480333,
+        "yPositionProportion": 0.46771189661725576,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4372984304450656,
+        "yPositionProportion": 0.41839604713036865,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.46771189661725576,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.41839604713036865,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.46771189661725576,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.7816598580950334,
+        "yPositionProportion": 0.41839604713036865,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9547946678133736,
+        "yPositionProportion": 0.46771189661725576,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.9539883895936359,
+        "yPositionProportion": 0.41839604713036865,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.2650774027090948,
+        "yPositionProportion": 0.4682820220448499,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07114061492152225,
+        "yPositionProportion": 0.4677118966172558,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.4372715545044077,
+        "yPositionProportion": 0.4682820220448499,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.26591055686949044,
+        "yPositionProportion": 0.4677118966172558,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.6094657062997205,
+        "yPositionProportion": 0.4682820220448499,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.4381047086648032,
+        "yPositionProportion": 0.4677118966172558,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7816329821543755,
+        "yPositionProportion": 0.4682820220448499,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.6102719845194582,
+        "yPositionProportion": 0.4677118966172558,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9540152655342937,
+        "yPositionProportion": 0.4682820220448499,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.782466136314771,
+        "yPositionProportion": 0.4677118966172558,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.5508171797795516,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.5502470543519574,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.5673508171797796,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.5667806917521855,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.7250285062713798,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.7244583808437857,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9384809718340144,
+        "yPositionProportion": 0.7417141771189663,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.07740270909481832,
+        "yPositionProportion": 0.7411440516913722,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.9198973774230331,
+      },
+      "pageNumber": 9,
+      "startBox": {
+        "xPositionProportion": 0.06611481401849065,
+        "yPositionProportion": 0.9193272519954391,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.030349676928924364,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.12386925123527176,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.031489927784112505,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.7770103203612128,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.7786228768006881,
+        "yPositionProportion": 0.12388825541619157,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.03789507632767147,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.03628251988819609,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9606804988174588,
+        "yPositionProportion": 0.17535157734701637,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.1250285062713797,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.23325628897011397,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.037895076327671466,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9590679423779833,
+        "yPositionProportion": 0.17647282402128472,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.23486884540958936,
+        "yPositionProportion": 0.17533257316609657,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.18131889015583427,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.1807487647282402,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.04617286605031176,
+        "yPositionProportion": 0.9355758266818701,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.04536658783057407,
+        "yPositionProportion": 0.1813188901558343,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.0671092238228338,
+        "yPositionProportion": 0.9355758266818701,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.06630294560309612,
+        "yPositionProportion": 0.1813188901558343,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9602773597075899,
+        "yPositionProportion": 0.9355758266818701,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.9594710814878522,
+        "yPositionProportion": 0.1813188901558343,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.1931573855084928,
+        "yPositionProportion": 0.7974344355758267,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.08769619436680284,
+        "yPositionProportion": 0.796446218167997,
+      },
+    },
+    {
+      "endBox": {
+        "xPositionProportion": 0.9594979574285101,
+        "yPositionProportion": 0.936145952109464,
+      },
+      "pageNumber": 10,
+      "startBox": {
+        "xPositionProportion": 0.06713609976349173,
+        "yPositionProportion": 0.93557582668187,
+      },
+    },
+  ],
 }
 `;

@@ -1,10 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import type { IBox, IExtractedData, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IExtractedData, IMetaData } from '@topics/engine/model/fds.model.js';
 import { aFdsTreeWithAllSectionsWithUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
-  POSITION_PROPORTION_X,
-  POSITION_PROPORTION_Y,
   PRODUCT_NAME,
   PRODUCT_IDENTIFIER_WITH_COLON,
   PRODUCER_NAME,
@@ -21,10 +19,10 @@ import {
   PHYSICAL_STATE_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('ExtractionRulesService tests', () => {
-  const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };
-  const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
+  const metaData: IMetaData = { pageNumber: 1, startBox: aPosition().properties };
 
   describe('ApplyExtractionRules tests', () => {
     it('Should extract all fields from fds', async () => {

@@ -40,6 +40,7 @@ describe('PdfParser tests', () => {
         const expected: IParseResult = {
           fromImage: false,
           lines: mockedLines,
+          strokes: [],
         };
 
         await expect(PdfParserService.parsePdfText('fdsFilePath', pdfData)).resolves.toEqual(expected);
@@ -63,6 +64,7 @@ describe('PdfParser tests', () => {
         const expected: IParseResult = {
           fromImage: true,
           lines: mockedLines,
+          strokes: [],
         };
 
         await expect(PdfParserService.parsePdfText(fdsFilePath, pdfData)).resolves.toEqual(expected);

@@ -6,8 +6,25 @@ export type IPdfData = {
   Pages: Array<{
     Height: number;
     Width: number;
+    VLines: IRawStroke[];
+    HLines: IRawStroke[];
+    Fills: IFill[];
     Texts: IRawLine[];
   }>;
+};
+
+export type IRawStroke = {
+  x: number;
+  y: number;
+  w: number;
+  l: number;
+};
+
+export type IFill = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
 };
 
 export type IRawBox = {
@@ -21,9 +38,18 @@ export type IRawLine = IRawBox & {
   R: Array<{ T: string; S: number; TS: [number, number, number, number] }>;
 };
 
-export type IBox = {
+export type IRawElement = IPosition & {
+  text?: string;
+};
+
+export type IPosition = {
   xPositionProportion: number;
   yPositionProportion: number;
+};
+
+export type IBox = {
+  startBox: IPosition;
+  endBox?: IPosition;
 };
 
 export type IPageDimension = {
@@ -41,24 +67,22 @@ export type ISection = IBox & {
   };
 };
 
-export type ISubsection = IBox & { lines: ILine[] };
+export type ISubsection = IBox & { lines: ILine[]; strokes: IStroke[] };
+
+export type IStroke = IBox & {
+  pageNumber: number;
+};
 
 export type ILine = IMetaData & {
   texts: IText[];
 };
 
-export type IMetaData = {
+export type IMetaData = IBox & {
   pageNumber: number;
-  startBox: IBox;
-  endBox?: IBox;
 };
 
-export type IText = IBox & {
+export type IText = IPosition & {
   content: string;
-};
-
-export type IRawElement = IBox & {
-  text?: string;
 };
 
 export type IXCounts = { [xPosition: number]: number };

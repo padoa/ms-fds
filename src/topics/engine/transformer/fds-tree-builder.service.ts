@@ -1,11 +1,25 @@
 import _ from 'lodash';
 
-import type { IFdsTree, ILine, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
+import type { IBox, IFdsTree, ILine, IPosition, IStroke, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
 import type { IBuildTree, IFdsTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
 
-export class FdsTreeBuilderService {
-  public static buildFdsTree(lines: ILine[]): IFdsTreeResult {
+type IFdsTreeWithoutStrokes = {
+  [section: number]: IBox & {
+    subsections: {
+      [subsection: number]: Omit<ISubsection, 'strokes'> & { strokes?: IStroke[] };
+    };
+  };
+};
+
+export class FDSTreeBuilderService {
+  public static buildFdsTree({ lines, strokes }: { lines: ILine[]; strokes: IStroke[] }): IFdsTreeResult {
+    const { fdsTree: fdsTreeWithoutStrokes, fullText, xCounts } = FDSTreeBuilderService.buildFdsTreeWithoutStrokes(lines);
+    const fdsTree = this.addStrokesToFdsTreeInPlace(fdsTreeWithoutStrokes, { strokes });
+    return { fdsTree, fullText, xCounts };
+  }
+
+  private static buildFdsTreeWithoutStrokes(lines: ILine[]): { fdsTree: IFdsTreeWithoutStrokes } & Omit<IFdsTreeResult, 'fdsTree'> {
     const result = _.reduce(
       lines,
       ({ fdsTree, currentSection, currentSubSection, xCounts: XCountsBeforeUpdate, fullText: fullTextBeforeUpdate }: IBuildTree, line) => {
@@ -17,7 +31,7 @@ export class FdsTreeBuilderService {
         const newSection = SectionRulesService.computeNewSection(fullTextLine, { currentSection });
         const sectionChanged = newSection !== currentSection;
         if (sectionChanged) {
-          let newFdsTree = fdsTree;
+          let newFdsTree = this.setFdsTreeEndBoxSection(fdsTree, { position: line.startBox, sectionNumber: currentSection });
           if (SectionRulesService.isAnInterestingSection(newSection)) {
             newFdsTree = this.addFdsTreeSection(fdsTree, { line, sectionNumber: newSection });
           }
@@ -29,7 +43,11 @@ export class FdsTreeBuilderService {
         const newSubSection = SectionRulesService.computeNewSubSection(fullTextLine, { currentSection, currentSubSection });
         const subSectionChanged = newSubSection !== currentSubSection;
         if (subSectionChanged) {
-          let newFdsTree = fdsTree;
+          let newFdsTree = this.setFdsTreeEndBoxSubSection(fdsTree, {
+            position: line.startBox,
+            sectionNumber: currentSection,
+            subSectionNumber: currentSubSection,
+          });
           if (SectionRulesService.isAnInterestingSubSection(currentSection, newSubSection)) {
             newFdsTree = this.addFdsTreeSubSection(fdsTree, {
               line,
@@ -44,7 +62,7 @@ export class FdsTreeBuilderService {
         // LINE
         if (SectionRulesService.shouldAddLineInSubSection(currentSection, currentSubSection)) {
           return {
-            fdsTree: this.addFdsTreeLine(fdsTree, {
+            fdsTree: FDSTreeBuilderService.addFdsTreeLine(fdsTree, {
               line,
               sectionNumber: currentSection,
               subSectionNumber: currentSubSection,
@@ -68,25 +86,54 @@ export class FdsTreeBuilderService {
     };
   }
 
+  private static addStrokesToFdsTreeInPlace(fdsTree: IFdsTreeWithoutStrokes, { strokes }: { strokes: IStroke[] }): IFdsTree {
+    _.forEach(fdsTree, (section, sectionNumber) => {
+      _.forEach(section.subsections, (subSection, subSectionNumber) => {
+        // eslint-disable-next-line no-param-reassign
+        fdsTree[+sectionNumber].subsections[+subSectionNumber].strokes = _.filter(
+          strokes,
+          ({ startBox, endBox }) =>
+            startBox.yPositionProportion <= subSection.startBox.yPositionProportion &&
+            (!subSection.endBox || endBox.yPositionProportion > subSection.endBox.yPositionProportion),
+        );
+      });
+    });
+
+    return fdsTree as IFdsTree;
+  }
+
   //----------------------------------------------------------------------------------------------
   //--------------------------------------- BUILDERS ---------------------------------------------
   //----------------------------------------------------------------------------------------------
 
-  public static addFdsTreeSection(fdsTree: IFdsTree, { line, sectionNumber }: { line: ILine; sectionNumber: number }): IFdsTree {
+  public static addFdsTreeSection(
+    fdsTree: IFdsTreeWithoutStrokes,
+    { line, sectionNumber }: { line: ILine; sectionNumber: number },
+  ): IFdsTreeWithoutStrokes {
     return {
       ...fdsTree,
       [sectionNumber]: {
-        xPositionProportion: line.startBox.xPositionProportion,
-        yPositionProportion: line.startBox.yPositionProportion,
+        startBox: {
+          xPositionProportion: line.startBox.xPositionProportion,
+          yPositionProportion: line.startBox.yPositionProportion,
+        },
         subsections: {} as ISubsection,
       },
     };
   }
 
+  public static setFdsTreeEndBoxSection(
+    fdsTree: IFdsTreeWithoutStrokes,
+    { position, sectionNumber }: { position: IPosition; sectionNumber: number },
+  ): IFdsTreeWithoutStrokes {
+    if (fdsTree[sectionNumber]) fdsTree[sectionNumber].endBox = position; // eslint-disable-line no-param-reassign
+    return fdsTree;
+  }
+
   public static addFdsTreeSubSection(
-    fdsTree: IFdsTree,
+    fdsTree: IFdsTreeWithoutStrokes,
     { line, sectionNumber, subSectionNumber }: { line: ILine; sectionNumber: number; subSectionNumber: number },
-  ): IFdsTree {
+  ): IFdsTreeWithoutStrokes {
     return {
       ...fdsTree,
       [sectionNumber]: {
@@ -94,8 +141,10 @@ export class FdsTreeBuilderService {
         subsections: {
           ...fdsTree[sectionNumber].subsections,
           [subSectionNumber]: {
-            xPositionProportion: line.startBox.xPositionProportion,
-            yPositionProportion: line.startBox.yPositionProportion,
+            startBox: {
+              xPositionProportion: line.startBox.xPositionProportion,
+              yPositionProportion: line.startBox.yPositionProportion,
+            },
             lines: [line],
           },
         },
@@ -103,10 +152,18 @@ export class FdsTreeBuilderService {
     };
   }
 
+  public static setFdsTreeEndBoxSubSection(
+    fdsTree: IFdsTreeWithoutStrokes,
+    { position, sectionNumber, subSectionNumber }: { position: IPosition; sectionNumber: number; subSectionNumber: number },
+  ): IFdsTreeWithoutStrokes {
+    if (fdsTree[sectionNumber]?.subsections[subSectionNumber]) fdsTree[sectionNumber].subsections[subSectionNumber].endBox = position; // eslint-disable-line no-param-reassign
+    return fdsTree;
+  }
+
   public static addFdsTreeLine(
-    fdsTree: IFdsTree,
+    fdsTree: IFdsTreeWithoutStrokes,
     { line, sectionNumber, subSectionNumber }: { line: ILine; sectionNumber: number; subSectionNumber: number },
-  ): IFdsTree {
+  ): IFdsTreeWithoutStrokes {
     const { lines } = fdsTree[sectionNumber].subsections[subSectionNumber];
 
     return {

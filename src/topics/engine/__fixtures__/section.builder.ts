@@ -1,16 +1,19 @@
 import { BaseBuilder } from '@padoa/meta';
 
+import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { ISection } from '@topics/engine/model/fds.model.js';
 
 export class SectionBuilder extends BaseBuilder<ISection> {
-  public withXPositionProportion = this.withValueFor('xPositionProportion');
-  public withYPositionProportion = this.withValueFor('yPositionProportion');
+  public withStartBox = this.withValueFor('startBox');
+  public withEndBox = this.withValueFor('endBox');
   public withSubsections = this.withValueFor('subsections');
 
   protected getDefaultValues(): ISection {
     return {
-      xPositionProportion: 0,
-      yPositionProportion: 0,
+      startBox: {
+        xPositionProportion: POSITION_PROPORTION_X,
+        yPositionProportion: POSITION_PROPORTION_Y,
+      },
       subsections: {},
     };
   }

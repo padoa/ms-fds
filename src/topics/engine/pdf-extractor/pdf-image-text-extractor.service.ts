@@ -5,7 +5,7 @@ import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 import type { Options } from 'pdf2pic/dist/types/options.js';
 
-import type { IBox, ILine, IPageDimension, IText } from '@topics/engine/model/fds.model.js';
+import type { ILine, IPageDimension, IPosition, IText } from '@topics/engine/model/fds.model.js';
 
 const tempImageFileName = 'fds-image';
 const tempImageFolderName = '/tmp';
@@ -94,13 +94,13 @@ export class PdfImageTextExtractorService {
     return { width: +w, height: +h };
   };
 
-  private static getStartBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IBox => {
+  private static getStartBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IPosition => {
     const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
     const { width, height } = pageDimension;
     return { xPositionProportion: +x / width, yPositionProportion: +y / height };
   };
 
-  private static getEndBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IBox => {
+  private static getEndBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IPosition => {
     const [, x, y, w, h] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
     const { width, height } = pageDimension;
     return { xPositionProportion: (+x + (+w - +x)) / width, yPositionProportion: (+y + (+h - +y)) / height };
