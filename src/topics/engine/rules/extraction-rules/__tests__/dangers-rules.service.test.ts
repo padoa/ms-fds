@@ -5,12 +5,12 @@ import { H_DANGER, EUH_DANGER, P_DANGER, MULTIPLE_P_DANGER } from '@topics/engin
 import { aLineWithHDanger, aLineWithEUHDanger, aLineWithTwoDangers, aLineWithMultiplePDanger } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFDSTree, IExtractedDanger } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedDanger } from '@topics/engine/model/fds.model.js';
 import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dangers-rules.service.js';
 
 describe('DangersRulesService tests', () => {
   describe('GetDangers tests', () => {
-    it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedDanger[] }]>([
+    it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedDanger[] }]>([
       [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],
       [
         {

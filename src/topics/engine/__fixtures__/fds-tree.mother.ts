@@ -1,4 +1,4 @@
-import { FDSTreeBuilder } from '@topics/engine/__fixtures__/fds-tree.builder.js';
+import { FdsTreeBuilder } from '@topics/engine/__fixtures__/fds-tree.builder.js';
 import {
   aLineWithCASAndCENumberIn2Texts,
   aLineWithPhysicalStateIdentifierAndValue,
@@ -10,23 +10,23 @@ import {
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWithContent } from '@topics/engine/__fixtures__/sub-section.mother.js';
 
-export const aFdsTree = (): FDSTreeBuilder => new FDSTreeBuilder();
+export const aFdsTree = (): FdsTreeBuilder => new FdsTreeBuilder();
 
-export const anEmptyFdsTreeWithAllSections = (): FDSTreeBuilder =>
+export const anEmptyFdsTreeWithAllSections = (): FdsTreeBuilder =>
   aFdsTree()
     .withSection1(aSection().withSubsections({ 1: aSubSection().properties, 3: aSubSection().properties }).properties)
     .withSection2(aSection().withSubsections({ 2: aSubSection().properties }).properties)
     .withSection3(aSection().withSubsections({ 1: aSubSection().properties, 2: aSubSection().properties }).properties)
     .withSection9(aSection().withSubsections({ 1: aSubSection().properties }).properties);
 
-export const aFdsTreeWithAllSectionsWithoutUsefulInfo = (): FDSTreeBuilder =>
+export const aFdsTreeWithAllSectionsWithoutUsefulInfo = (): FdsTreeBuilder =>
   aFdsTree()
     .withSection1(aSection().withSubsections({ 1: aSubSectionWithContent().properties, 3: aSubSectionWithContent().properties }).properties)
     .withSection2(aSection().withSubsections({ 2: aSubSectionWithContent().properties }).properties)
     .withSection3(aSection().withSubsections({ 1: aSubSectionWithContent().properties, 2: aSubSectionWithContent().properties }).properties)
     .withSection9(aSection().withSubsections({ 1: aSubSectionWithContent().properties }).properties);
 
-export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FDSTreeBuilder =>
+export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
   aFdsTree()
     .withSection1(
       aSection().withSubsections({

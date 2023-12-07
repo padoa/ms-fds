@@ -31,7 +31,7 @@ export type IPageDimension = {
   height: number;
 };
 
-export type IFDSTree = {
+export type IFdsTree = {
   [section: number]: ISection;
 };
 

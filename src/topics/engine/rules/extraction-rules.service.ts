@@ -1,4 +1,4 @@
-import type { IExtractedData, IFDSTree } from '@topics/engine/model/fds.model.js';
+import type { IExtractedData, IFdsTree } from '@topics/engine/model/fds.model.js';
 import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
@@ -7,7 +7,7 @@ import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dange
 import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
 
 export class ExtractionRulesService {
-  public static async extract({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFDSTree; fullText: string }): Promise<IExtractedData> {
+  public static async extract({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFdsTree; fullText: string }): Promise<IExtractedData> {
     return {
       date: RevisionDateRulesService.getDate(fullText),
       product: ProductRulesService.getProduct(fdsTreeCleaned, { fullText }),

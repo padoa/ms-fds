@@ -1,13 +1,13 @@
 import _ from 'lodash';
 
-import type { IFDSTree, IExtractedProduct } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProduct } from '@topics/engine/model/fds.model.js';
 
 export class ProductRulesService {
-  public static getProduct(fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null {
+  public static getProduct(fdsTree: IFdsTree, { fullText }: { fullText: string }): IExtractedProduct | null {
     return this.getProductByText(fdsTree) || this.getProductByLineOrder(fdsTree, { fullText });
   }
 
-  public static getProductByText(fdsTree: IFDSTree): IExtractedProduct | null {
+  public static getProductByText(fdsTree: IFdsTree): IExtractedProduct | null {
     const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
     if (_.isEmpty(linesToSearchIn)) return null;
@@ -32,7 +32,7 @@ export class ProductRulesService {
     return null;
   }
 
-  public static getProductByLineOrder(fdsTree: IFDSTree, { fullText }: { fullText: string }): IExtractedProduct | null {
+  public static getProductByLineOrder(fdsTree: IFdsTree, { fullText }: { fullText: string }): IExtractedProduct | null {
     const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
     if (_.isEmpty(linesToSearchIn)) return null;

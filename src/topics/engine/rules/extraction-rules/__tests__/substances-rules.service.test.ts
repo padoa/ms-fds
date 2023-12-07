@@ -6,7 +6,7 @@ import { CAS_NUMBER, CE_NUMBER } from '@topics/engine/__fixtures__/fixtures.cons
 import { aLineWithCASAndCENumberIn2Texts, aLineWithCENumber, aLineWithCASNumber } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFDSTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
 
 describe('SubstancesRulesService tests', () => {
   describe('Regexps tests', () => {
@@ -52,7 +52,7 @@ describe('SubstancesRulesService tests', () => {
 
   describe('Substances rules tests', () => {
     describe('GetSubstances tests', () => {
-      it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedSubstance[] }]>([
+      it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedSubstance[] }]>([
         [
           {
             message: 'it should return an empty list when given an empty fdsTree',

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { IFDSTree, IExtractedDanger } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedDanger } from '@topics/engine/model/fds.model.js';
 
 export class DangersRulesService {
   private static readonly customHazards = ['h350i', 'h360f', 'h360d', 'h360fd', 'h360df', 'h361f', 'h361d', 'h361fd'];
@@ -10,7 +10,7 @@ export class DangersRulesService {
   public static readonly precautionRegex = '(((p[1-5]\\d{2})\\+?)+)';
   public static readonly europeanHazardsRegex = '(euh[02]\\d{2})|(euh401)';
 
-  public static getDangers(fdsTree: IFDSTree): IExtractedDanger[] {
+  public static getDangers(fdsTree: IFdsTree): IExtractedDanger[] {
     const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
     const textInEachLine = _.map(linesToSearchIn, ({ texts }) => _.map(texts, 'content').join(''));
 

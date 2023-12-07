@@ -1,11 +1,11 @@
 import _ from 'lodash';
 
-import type { IFDSTree, ILine, IText, IXCounts } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, ILine, IText, IXCounts } from '@topics/engine/model/fds.model.js';
 
 export class FdsTreeCleanerService {
   public static readonly XHighestAlignmentValue: number = 10;
 
-  public static cleanFDSTree(fdsTree: IFDSTree, { xCounts, fromImage }: { xCounts: IXCounts; fromImage: boolean }): IFDSTree {
+  public static cleanFdsTree(fdsTree: IFdsTree, { xCounts, fromImage }: { xCounts: IXCounts; fromImage: boolean }): IFdsTree {
     const joinWithSpace = fromImage;
     return _.reduce(
       fdsTree,

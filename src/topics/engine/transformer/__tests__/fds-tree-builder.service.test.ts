@@ -1,9 +1,9 @@
 import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import type { IFDSTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
+import type { IFdsTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
-import { FDSTreeBuilderService } from '@topics/engine/transformer/fds-tree-builder.service.js';
+import { FdsTreeBuilderService } from '@topics/engine/transformer/fds-tree-builder.service.js';
 import {
   aLineWithOneText,
   aLineWithOneTextAndPositionYIncremented,
@@ -44,35 +44,35 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return empty values when providing undefined lines', () => {
-        const expected: IFDSTreeResult = { fdsTree: {}, xCounts: {}, fullText: '' };
-        expect(FDSTreeBuilderService.buildFdsTree(undefined)).toEqual(expected);
+        const expected: IFdsTreeResult = { fdsTree: {}, xCounts: {}, fullText: '' };
+        expect(FdsTreeBuilderService.buildFdsTree(undefined)).toEqual(expected);
       });
 
       it('should return empty values when providing empty lines', () => {
-        const expected: IFDSTreeResult = { fdsTree: {}, xCounts: {}, fullText: '' };
-        expect(FDSTreeBuilderService.buildFdsTree([])).toEqual(expected);
+        const expected: IFdsTreeResult = { fdsTree: {}, xCounts: {}, fullText: '' };
+        expect(FdsTreeBuilderService.buildFdsTree([])).toEqual(expected);
       });
 
       it('should return empty fds tree and concatenated texts when given one line with no section', () => {
         const line = aLineWithTwoTexts().properties;
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
-        expect(FDSTreeBuilderService.buildFdsTree([line])).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree([line])).toEqual(expected);
       });
 
       it('should return empty fds tree and concatenated texts when given two lines with no section', () => {
         const lines = [aLineWithTwoTexts().properties, aLineWithOneTextAndPositionYIncremented().properties];
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1, [POSITION_PROPORTION_X]: 2 },
           fullText: TEXT_CONTENT.repeat(3),
         };
-        expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
     });
 
@@ -87,7 +87,7 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when given a line with one section', () => {
         const line = aLineWithTwoTexts().properties;
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {
             1: {
               subsections: {},
@@ -98,13 +98,13 @@ describe('FdsTreeBuilderService tests', () => {
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
-        expect(FDSTreeBuilderService.buildFdsTree([line])).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree([line])).toEqual(expected);
       });
 
       it('should return fds tree when given lines with two sections', () => {
         const lines = [aLineWithOneText().properties, aLineWithOneTextAndPositionYIncremented().properties];
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {
             1: {
               subsections: {},
@@ -120,7 +120,7 @@ describe('FdsTreeBuilderService tests', () => {
           xCounts: { [POSITION_PROPORTION_X]: 2 },
           fullText: TEXT_CONTENT.repeat(2),
         };
-        expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
     });
 
@@ -136,7 +136,7 @@ describe('FdsTreeBuilderService tests', () => {
         const sectionLines = [aLineWithOneText().properties];
         const subSectionLines = [aLineWithTwoTextsAndPositionYIncremented().properties];
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {
             1: {
               subsections: {
@@ -153,14 +153,14 @@ describe('FdsTreeBuilderService tests', () => {
           xCounts: { [POSITION_PROPORTION_X]: 2, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(3),
         };
-        expect(FDSTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionLines])).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionLines])).toEqual(expected);
       });
 
       it('should return fds tree when given lines with a section and two subsections', () => {
         const sectionLines = [aLineWithOneText().properties];
         const subSectionsLines = [aLineWithTwoTextsAndPositionYIncremented().properties, aLineWithTwoTextsAndPositionYIncrementedTwice().properties];
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {
             1: {
               subsections: {
@@ -182,7 +182,7 @@ describe('FdsTreeBuilderService tests', () => {
           xCounts: { [POSITION_PROPORTION_X]: 3, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1, [POSITION_PROPORTION_X + 2 * INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(5),
         };
-        expect(FDSTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionsLines])).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree([...sectionLines, ...subSectionsLines])).toEqual(expected);
       });
     });
 
@@ -197,12 +197,12 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when switching section', () => {
         const lines = [aLineWithTwoTexts().properties];
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
-        expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
     });
 
@@ -217,12 +217,12 @@ describe('FdsTreeBuilderService tests', () => {
       it('should return fds tree when switching subSection', () => {
         const lines = [aLineWithTwoTexts().properties];
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(2),
         };
-        expect(FDSTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree(lines)).toEqual(expected);
       });
     });
 
@@ -239,7 +239,7 @@ describe('FdsTreeBuilderService tests', () => {
         const subSectionLine = aLineWithTwoTextsAndPositionYIncremented().properties;
         const extraSubSectionLine = aLineWithOneTextAndPositionYIncrementedTwice().properties;
 
-        const expected: IFDSTreeResult = {
+        const expected: IFdsTreeResult = {
           fdsTree: {
             1: {
               subsections: {
@@ -256,7 +256,7 @@ describe('FdsTreeBuilderService tests', () => {
           xCounts: { [POSITION_PROPORTION_X]: 3, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
           fullText: TEXT_CONTENT.repeat(4),
         };
-        expect(FDSTreeBuilderService.buildFdsTree([sectionLine, subSectionLine, extraSubSectionLine])).toEqual(expected);
+        expect(FdsTreeBuilderService.buildFdsTree([sectionLine, subSectionLine, extraSubSectionLine])).toEqual(expected);
       });
     });
   });

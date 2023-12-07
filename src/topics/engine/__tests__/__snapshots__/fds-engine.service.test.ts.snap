@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FdsEngine tests > ExtractDataFromFDS tests > should extract data from a pdf FDS file 1`] = `
+exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a pdf Fds file 1`] = `
 {
   "dataExtracted": {
     "dangers": [
@@ -65,7 +65,7 @@ exports[`FdsEngine tests > ExtractDataFromFDS tests > should extract data from a
 }
 `;
 
-exports[`FdsEngine tests > ExtractDataFromFDS tests > should extract data from an image FDS file 1`] = `
+exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from an image Fds file 1`] = `
 {
   "dataExtracted": {
     "dangers": [
