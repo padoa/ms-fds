@@ -6,7 +6,7 @@ import { aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aSectionWithPosition } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSectionWithPosition } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import type { IBox, IFDSTree, ILine, IMetaData, IXCounts } from '@topics/engine/model/fds.model.js';
+import type { IBox, IFdsTree, ILine, IMetaData, IXCounts } from '@topics/engine/model/fds.model.js';
 import {
   aLineWithOneText,
   aLineWithOneTextAndPositionYIncremented,
@@ -78,7 +78,7 @@ describe('FdsTreeCleanerService Tests', () => {
     });
   });
 
-  describe('CleanFDSTree tests', () => {
+  describe('CleanFdsTree tests', () => {
     const fdsTree = aFdsTree().withSection1(
       aSectionWithPosition().withSubsections({
         1: aSubSectionWithPosition().withLines([
@@ -107,7 +107,7 @@ describe('FdsTreeCleanerService Tests', () => {
     });
 
     it('should clean the given fds tree by concatenating texts without joining with Space', () => {
-      const expected: IFDSTree = {
+      const expected: IFdsTree = {
         1: {
           subsections: {
             1: {
@@ -128,7 +128,7 @@ describe('FdsTreeCleanerService Tests', () => {
       };
 
       expect(
-        FdsTreeCleanerService.cleanFDSTree(fdsTree, {
+        FdsTreeCleanerService.cleanFdsTree(fdsTree, {
           fromImage: false,
           xCounts,
         }),
@@ -136,7 +136,7 @@ describe('FdsTreeCleanerService Tests', () => {
     });
 
     it('should clean the given fds tree by concatenating texts joining with Space', () => {
-      const expected: IFDSTree = {
+      const expected: IFdsTree = {
         1: {
           subsections: {
             1: {
@@ -157,7 +157,7 @@ describe('FdsTreeCleanerService Tests', () => {
       };
 
       expect(
-        FdsTreeCleanerService.cleanFDSTree(fdsTree, {
+        FdsTreeCleanerService.cleanFdsTree(fdsTree, {
           fromImage: true,
           xCounts,
         }),
@@ -172,7 +172,7 @@ describe('FdsTreeCleanerService Tests', () => {
       ).properties;
 
       expect(
-        FdsTreeCleanerService.cleanFDSTree(fdsTreeSection3, {
+        FdsTreeCleanerService.cleanFdsTree(fdsTreeSection3, {
           fromImage: false,
           xCounts: {
             [POSITION_PROPORTION_X]: 4,

@@ -1,11 +1,11 @@
 import _ from 'lodash';
 
-import type { IFDSTree, ILine, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, ILine, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
-import type { IBuildTree, IFDSTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
+import type { IBuildTree, IFdsTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
 
-export class FDSTreeBuilderService {
-  public static buildFdsTree(lines: ILine[]): IFDSTreeResult {
+export class FdsTreeBuilderService {
+  public static buildFdsTree(lines: ILine[]): IFdsTreeResult {
     const result = _.reduce(
       lines,
       ({ fdsTree, currentSection, currentSubSection, xCounts: XCountsBeforeUpdate, fullText: fullTextBeforeUpdate }: IBuildTree, line) => {
@@ -19,7 +19,7 @@ export class FDSTreeBuilderService {
         if (sectionChanged) {
           let newFdsTree = fdsTree;
           if (SectionRulesService.isAnInterestingSection(newSection)) {
-            newFdsTree = this.addFDSTreeSection(fdsTree, { line, sectionNumber: newSection });
+            newFdsTree = this.addFdsTreeSection(fdsTree, { line, sectionNumber: newSection });
           }
 
           return { fdsTree: newFdsTree, currentSection: newSection, currentSubSection: 0, xCounts, fullText };
@@ -31,7 +31,7 @@ export class FDSTreeBuilderService {
         if (subSectionChanged) {
           let newFdsTree = fdsTree;
           if (SectionRulesService.isAnInterestingSubSection(currentSection, newSubSection)) {
-            newFdsTree = this.addFDSTreeSubSection(fdsTree, {
+            newFdsTree = this.addFdsTreeSubSection(fdsTree, {
               line,
               sectionNumber: currentSection,
               subSectionNumber: newSubSection,
@@ -72,7 +72,7 @@ export class FDSTreeBuilderService {
   //--------------------------------------- BUILDERS ---------------------------------------------
   //----------------------------------------------------------------------------------------------
 
-  public static addFDSTreeSection(fdsTree: IFDSTree, { line, sectionNumber }: { line: ILine; sectionNumber: number }): IFDSTree {
+  public static addFdsTreeSection(fdsTree: IFdsTree, { line, sectionNumber }: { line: ILine; sectionNumber: number }): IFdsTree {
     return {
       ...fdsTree,
       [sectionNumber]: {
@@ -83,10 +83,10 @@ export class FDSTreeBuilderService {
     };
   }
 
-  public static addFDSTreeSubSection(
-    fdsTree: IFDSTree,
+  public static addFdsTreeSubSection(
+    fdsTree: IFdsTree,
     { line, sectionNumber, subSectionNumber }: { line: ILine; sectionNumber: number; subSectionNumber: number },
-  ): IFDSTree {
+  ): IFdsTree {
     return {
       ...fdsTree,
       [sectionNumber]: {
@@ -104,9 +104,9 @@ export class FDSTreeBuilderService {
   }
 
   public static addFdsTreeLine(
-    fdsTree: IFDSTree,
+    fdsTree: IFdsTree,
     { line, sectionNumber, subSectionNumber }: { line: ILine; sectionNumber: number; subSectionNumber: number },
-  ): IFDSTree {
+  ): IFdsTree {
     const { lines } = fdsTree[sectionNumber].subsections[subSectionNumber];
 
     return {

@@ -1,12 +1,12 @@
 import _ from 'lodash';
 
-import type { IFDSTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
 
 export class SubstancesRulesService {
   public static readonly CASNumberRegex = /(?<!(-|\d{1})+)(\d{1,7}-\d{2}-\d{1})(?!(-|\d{1})+)/;
   public static readonly CENumberRegex = /(?<!(\d{1})+)(\d{3}-\d{3}-\d{1})(?!(\d{1})+)/;
 
-  public static getSubstances = (fdsTree: IFDSTree): IExtractedSubstance[] => {
+  public static getSubstances = (fdsTree: IFdsTree): IExtractedSubstance[] => {
     const linesToSearchIn = [...(fdsTree[3]?.subsections?.[1]?.lines || []), ...(fdsTree[3]?.subsections?.[2]?.lines || [])];
     const textInEachLine = _.map(linesToSearchIn, ({ texts }) => {
       return _.map(texts, 'content').join('');

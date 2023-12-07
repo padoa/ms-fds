@@ -24,7 +24,7 @@ import {
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/__fixtures__/text.mother.js';
-import type { IFDSTree, IExtractedProduct, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProduct, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
 
 describe('ProductRulesService tests', () => {
@@ -32,7 +32,7 @@ describe('ProductRulesService tests', () => {
   const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
 
   describe('GetProductByText tests', () => {
-    it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedProduct | null }]>([
+    it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedProduct | null }]>([
       [
         {
           message: 'should return null when providing a fdsTree with an undefined text',
@@ -82,7 +82,7 @@ describe('ProductRulesService tests', () => {
   });
 
   describe('GetProductByLineOrder tests', () => {
-    it.each<[{ message: string; fdsTree: IFDSTree; fullText: string; expected: IExtractedProduct | null }]>([
+    it.each<[{ message: string; fdsTree: IFdsTree; fullText: string; expected: IExtractedProduct | null }]>([
       [
         {
           message: 'should return null when providing a fdsTree with an undefined text',
@@ -181,7 +181,7 @@ describe('ProductRulesService tests', () => {
   });
 
   describe('GetProduct tests', () => {
-    it.each<[{ message: string; fdsTree: IFDSTree; fullText: string; expected: IExtractedProduct | null }]>([
+    it.each<[{ message: string; fdsTree: IFdsTree; fullText: string; expected: IExtractedProduct | null }]>([
       [
         {
           message: 'it should return null when providing an empty fdsTree',

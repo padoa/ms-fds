@@ -12,7 +12,7 @@ import { aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
-import type { IFDSTree, ILine } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 
 describe('Physical properties rules service tests', () => {
   describe('Regexps tests', () => {
@@ -134,7 +134,7 @@ describe('Physical properties rules service tests', () => {
   });
 
   describe('getPhysicalState', () => {
-    it.each<{ message: string; fdsTree: IFDSTree; expected: string }>([
+    it.each<{ message: string; fdsTree: IFdsTree; expected: string }>([
       {
         message: 'should return null when the fdsTree contains no line in subsection 9.1',
         fdsTree: aFdsTree().properties,

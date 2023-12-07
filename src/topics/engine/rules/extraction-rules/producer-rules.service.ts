@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-import type { IFDSTree, IExtractedProducer } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProducer } from '@topics/engine/model/fds.model.js';
 import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
 
 export class ProducerRulesService {
-  public static getProducer(fdsTree: IFDSTree): IExtractedProducer | null {
+  public static getProducer(fdsTree: IFdsTree): IExtractedProducer | null {
     const linesToSearchIn = fdsTree[1]?.subsections?.[3]?.lines;
 
     if (_.isEmpty(linesToSearchIn)) return null;

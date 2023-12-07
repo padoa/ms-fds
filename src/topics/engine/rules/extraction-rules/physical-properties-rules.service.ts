@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { IExtractedPhysicalState, IFDSTree, ILine } from '@topics/engine/model/fds.model.js';
+import type { IExtractedPhysicalState, IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
 
 export class PhysicalPropertiesRulesService {
@@ -8,7 +8,7 @@ export class PhysicalPropertiesRulesService {
   //------------------------------------- PHYSICAL STATE -----------------------------------------
   //----------------------------------------------------------------------------------------------
 
-  public static getPhysicalState(fdsTree: IFDSTree): IExtractedPhysicalState {
+  public static getPhysicalState(fdsTree: IFdsTree): IExtractedPhysicalState {
     const linesToSearchIn = fdsTree[9]?.subsections?.[1]?.lines;
 
     if (_.isEmpty(linesToSearchIn)) return null;

@@ -19,7 +19,7 @@ import {
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFDSTree, IExtractedProducer, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProducer, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
 
 describe('ProducerRulesService tests', () => {
@@ -27,7 +27,7 @@ describe('ProducerRulesService tests', () => {
   const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
 
   describe('GetProducer tests', () => {
-    it.each<[{ message: string; fdsTree: IFDSTree; expected: IExtractedProducer | null }]>([
+    it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedProducer | null }]>([
       [
         {
           message: 'should return null when providing a fdsTree with an undefined text',
