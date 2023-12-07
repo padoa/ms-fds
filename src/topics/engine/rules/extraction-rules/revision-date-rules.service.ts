@@ -2,21 +2,26 @@ import { format } from 'date-fns';
 import _ from 'lodash';
 
 import type { IExtractedDate } from '@topics/engine/model/fds.model.js';
-import { MONTH_MAPPING } from '@topics/engine/rules/rules.constants.js';
 
 export class RevisionDateRulesService {
-  private static noSingleDigitStartRegex = '(?<!\\d{1})';
-  private static dayRegex = '[1-9]|[12][0-9]|3[01]';
-  private static numberDayRegex = `0${this.dayRegex}`;
-  private static monthRegex = '(0[1-9]|1[0-2])';
-  private static yearRegex = '(19\\d{2}|20\\d{2}|\\d{2})';
-  private static dateSeparatorsRegex = '(\\/|-|\\.)';
-  private static stringMonthRegex = '[a-zA-ZÉÛéû]+';
-  private static spaceRegex = '\\s*';
+  private static readonly MONTH_MAPPING = {
+    août: 'august',
+    février: 'february',
+    décembre: 'december',
+  } as { [key: string]: string };
 
-  public static numberDateRegex = `(${this.noSingleDigitStartRegex}(${this.numberDayRegex})${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}${this.monthRegex}${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}${this.yearRegex}(?!:\\d{2}))`;
-  public static stringDateRegex = `(${this.noSingleDigitStartRegex}(${this.dayRegex})${this.spaceRegex}-?(${this.stringMonthRegex})${this.spaceRegex}\\.?.?(19\\d{2}|20\\d{2}))`;
-  public static englishNumberDateRegex = `(${this.yearRegex}${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}${this.monthRegex}${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}(${this.numberDayRegex}))`;
+  private static readonly noSingleDigitStartRegex = '(?<!\\d{1})';
+  private static readonly dayRegex = '[1-9]|[12][0-9]|3[01]';
+  private static readonly numberDayRegex = `0${this.dayRegex}`;
+  private static readonly monthRegex = '(0[1-9]|1[0-2])';
+  private static readonly yearRegex = '(19\\d{2}|20\\d{2}|\\d{2})';
+  private static readonly dateSeparatorsRegex = '(\\/|-|\\.)';
+  private static readonly stringMonthRegex = '[a-zA-ZÉÛéû]+';
+  private static readonly spaceRegex = '\\s*';
+
+  public static readonly numberDateRegex = `(${this.noSingleDigitStartRegex}(${this.numberDayRegex})${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}${this.monthRegex}${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}${this.yearRegex}(?!:\\d{2}))`;
+  public static readonly stringDateRegex = `(${this.noSingleDigitStartRegex}(${this.dayRegex})${this.spaceRegex}-?(${this.stringMonthRegex})${this.spaceRegex}\\.?.?(19\\d{2}|20\\d{2}))`;
+  public static readonly englishNumberDateRegex = `(${this.yearRegex}${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}${this.monthRegex}${this.spaceRegex}${this.dateSeparatorsRegex}${this.spaceRegex}(${this.numberDayRegex}))`;
 
   private static readonly dateRegexps = [this.numberDateRegex, this.stringDateRegex, this.englishNumberDateRegex];
 
@@ -90,7 +95,7 @@ export class RevisionDateRulesService {
     const regexMatches = date.match(new RegExp(this.stringDateRegex));
     if (!regexMatches) return null;
     const [, , day, month, year] = regexMatches;
-    return new Date(`${year} ${MONTH_MAPPING[month] || month} ${day}`);
+    return new Date(`${year} ${this.MONTH_MAPPING[month] || month} ${day}`);
   }
 
   private static parseDateFromEnglishNumberRegex(date: string): Date | null {

@@ -19,7 +19,7 @@ export class PhysicalPropertiesRulesService {
     );
   }
 
-  public static PHYSICAL_STATE_IDENTIFIER_REGEX = /[eé]tatphysique|aspect/g;
+  public static readonly PHYSICAL_STATE_IDENTIFIER_REGEX = /[eé]tatphysique|aspect/g;
 
   public static getPhysicalStateByText(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
@@ -41,7 +41,7 @@ export class PhysicalPropertiesRulesService {
     return null;
   }
 
-  public static PHYSICAL_STATE_VALUES_REGEX = /liquide|gaz|poudre|granul[eé]|a[eé]rosol|solide|grain|pastille|copeaux|p[aâ]te|fluide/g;
+  public static readonly PHYSICAL_STATE_VALUES_REGEX = /liquide|gaz|poudre|granul[eé]|a[eé]rosol|solide|grain|pastille|copeaux|p[aâ]te|fluide/g;
 
   public static getPhysicalStateByValue(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
