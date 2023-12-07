@@ -56,8 +56,8 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     "physicalState": {
       "metaData": {
         "endBox": undefined,
-        "pageNumber": 7,
         "startBox": {
+          "pageNumber": 7,
           "xPositionProportion": 0.12333369167920878,
           "yPositionProportion": 0.2668377042949449,
         },
@@ -67,8 +67,8 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     "producer": {
       "metaData": {
         "endBox": undefined,
-        "pageNumber": 1,
         "startBox": {
+          "pageNumber": 1,
           "xPositionProportion": 0.08097720920232208,
           "yPositionProportion": 0.3348726719878373,
         },
@@ -78,8 +78,8 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     "product": {
       "metaData": {
         "endBox": undefined,
-        "pageNumber": 1,
         "startBox": {
+          "pageNumber": 1,
           "xPositionProportion": 0.08097720920232208,
           "yPositionProportion": 0.2719688331432915,
         },
@@ -258,11 +258,12 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     "producer": {
       "metaData": {
         "endBox": {
+          "pageNumber": 1,
           "xPositionProportion": 0.47619047619047616,
           "yPositionProportion": 0.5858585858585859,
         },
-        "pageNumber": 1,
         "startBox": {
+          "pageNumber": 1,
           "xPositionProportion": 0.37333333333333335,
           "yPositionProportion": 0.5764309764309764,
         },

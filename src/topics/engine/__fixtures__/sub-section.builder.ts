@@ -12,6 +12,7 @@ export class SubSectionBuilder extends BaseBuilder<ISubsection> {
   protected getDefaultValues(): ISubsection {
     return {
       startBox: {
+        pageNumber: 0,
         xPositionProportion: POSITION_PROPORTION_X,
         yPositionProportion: POSITION_PROPORTION_Y,
       },

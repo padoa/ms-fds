@@ -14,8 +14,8 @@ export class ProductRulesService {
 
     let nameInCurrentLine = false;
     for (const line of linesToSearchIn) {
-      const { pageNumber, startBox, endBox } = line;
-      const metaData = { pageNumber, startBox, endBox };
+      const { startBox, endBox } = line;
+      const metaData = { startBox, endBox };
       const lineText = _.map(line.texts, ({ content }) => content).join(' ');
       const { content } = _.last(line.texts) || { content: '' };
       const text = _(content).split(':').last().trim();
@@ -38,7 +38,7 @@ export class ProductRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { pageNumber, startBox, endBox } = line;
+      const { startBox, endBox } = line;
       const lineText = _.map(line.texts, ({ content }) => content).join('');
       const { content } = _.last(line.texts) || { content: '' };
       const text = _(content).split(':').last().trim();
@@ -55,7 +55,7 @@ export class ProductRulesService {
       const numberOfOtherMatchesInDocument = fullText
         .replaceAll(' ', '')
         .match(new RegExp(`${text.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
-      if (numberOfOtherMatchesInDocument?.length >= 3) return { name: text, metaData: { pageNumber, startBox, endBox } };
+      if (numberOfOtherMatchesInDocument?.length >= 3) return { name: text, metaData: { startBox, endBox } };
     }
     return null;
   }

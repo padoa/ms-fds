@@ -162,14 +162,15 @@ describe('PdfStrokeExtractorService tests', () => {
                 .withYPositionProportion(POSITION_PROPORTION_Y + 3 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
             ).properties,
           aStroke()
-            .withPageNumber(1)
             .withStartBox(
               aPosition()
+                .withPageNumber(1)
                 .withXPositionProportion(POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
                 .withYPositionProportion(POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
             )
             .withEndBox(
               aPosition()
+                .withPageNumber(1)
                 .withXPositionProportion(POSITION_PROPORTION_X + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
                 .withYPositionProportion(POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
             ).properties,

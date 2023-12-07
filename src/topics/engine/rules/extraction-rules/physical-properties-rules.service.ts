@@ -33,8 +33,8 @@ export class PhysicalPropertiesRulesService {
         .match(PhysicalPropertiesRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
 
       if (expectedText && physicalStateTextInLine && expectedTextIsNotAPhysicalStateIdentifier) {
-        const { pageNumber, startBox, endBox } = line;
-        const metaData = { pageNumber, startBox, endBox };
+        const { startBox, endBox } = line;
+        const metaData = { startBox, endBox };
         return { value: ExtractionCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
       }
     }
@@ -50,8 +50,8 @@ export class PhysicalPropertiesRulesService {
       const expectedTextIsAPhysicalState = expectedText.match(PhysicalPropertiesRulesService.PHYSICAL_STATE_VALUES_REGEX);
 
       if (expectedTextIsAPhysicalState) {
-        const { pageNumber, startBox, endBox } = line;
-        const metaData = { pageNumber, startBox, endBox };
+        const { startBox, endBox } = line;
+        const metaData = { startBox, endBox };
         return { value: ExtractionCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
       }
     }

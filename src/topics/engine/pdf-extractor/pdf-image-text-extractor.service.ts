@@ -56,16 +56,16 @@ export class PdfImageTextExtractorService {
       hocrByLine,
       (lines, hocrElement) => {
         if (this.isHocrElementAWord(hocrElement)) {
-          const text = this.getTextInHocrWordElement(hocrElement, pageDimension);
+          const text = this.getTextInHocrWordElement(hocrElement, { pageNumber, pageDimension });
           const lastLine = _.last(lines);
           lastLine.texts.push(text);
           return lines;
         }
 
         if (this.isHocrElementALine(hocrElement)) {
-          const startBox = this.getStartBoxInHocrElement(hocrElement, pageDimension);
-          const endBox = this.getEndBoxInHocrElement(hocrElement, pageDimension);
-          lines.push({ startBox, endBox, pageNumber, texts: [] });
+          const startBox = this.getStartBoxInHocrElement(hocrElement, { pageNumber, pageDimension });
+          const endBox = this.getEndBoxInHocrElement(hocrElement, { pageNumber, pageDimension });
+          lines.push({ startBox, endBox, texts: [] });
           return lines;
         }
 
@@ -83,9 +83,9 @@ export class PdfImageTextExtractorService {
     return hocrElement.trim().startsWith("<span class='ocrx_word'");
   };
 
-  private static getTextInHocrWordElement = (hocrWordElement: string, pageDimension: IPageDimension): IText => {
+  private static getTextInHocrWordElement = (hocrWordElement: string, pageMetaData: { pageNumber: number; pageDimension: IPageDimension }): IText => {
     const content = decode(hocrWordElement.match(/>(.*)<\/span>/)[1].toLowerCase());
-    const startBox = this.getStartBoxInHocrElement(hocrWordElement, pageDimension);
+    const startBox = this.getStartBoxInHocrElement(hocrWordElement, pageMetaData);
     return { ...startBox, content };
   };
 
@@ -94,15 +94,21 @@ export class PdfImageTextExtractorService {
     return { width: +w, height: +h };
   };
 
-  private static getStartBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IPosition => {
+  private static getStartBoxInHocrElement = (
+    hocrElement: string,
+    { pageNumber, pageDimension }: { pageNumber: number; pageDimension: IPageDimension },
+  ): IPosition => {
     const [, x, y] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
     const { width, height } = pageDimension;
-    return { xPositionProportion: +x / width, yPositionProportion: +y / height };
+    return { xPositionProportion: +x / width, yPositionProportion: +y / height, pageNumber };
   };
 
-  private static getEndBoxInHocrElement = (hocrElement: string, pageDimension: IPageDimension): IPosition => {
+  private static getEndBoxInHocrElement = (
+    hocrElement: string,
+    { pageNumber, pageDimension }: { pageNumber: number; pageDimension: IPageDimension },
+  ): IPosition => {
     const [, x, y, w, h] = hocrElement.match(/title=.bbox ([0-9]*) ([0-9]*) ([0-9]*) ([0-9]*);/);
     const { width, height } = pageDimension;
-    return { xPositionProportion: (+x + (+w - +x)) / width, yPositionProportion: (+y + (+h - +y)) / height };
+    return { xPositionProportion: (+x + (+w - +x)) / width, yPositionProportion: (+y + (+h - +y)) / height, pageNumber };
   };
 }

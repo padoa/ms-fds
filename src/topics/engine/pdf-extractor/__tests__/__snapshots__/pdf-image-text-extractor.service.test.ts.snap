@@ -4,27 +4,31 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
 [
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5076190476190476,
       "yPositionProportion": 0.13333333333333333,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.08666666666666667,
       "yPositionProportion": 0.12053872053872054,
     },
     "texts": [
       {
         "content": "dégraissant",
+        "pageNumber": 1,
         "xPositionProportion": 0.08666666666666667,
         "yPositionProportion": 0.12053872053872054,
       },
       {
         "content": "désinfectant",
+        "pageNumber": 1,
         "xPositionProportion": 0.23333333333333334,
         "yPositionProportion": 0.12053872053872054,
       },
       {
         "content": "concentré",
+        "pageNumber": 1,
         "xPositionProportion": 0.38666666666666666,
         "yPositionProportion": 0.12053872053872054,
       },
@@ -32,32 +36,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.18285714285714286,
       "yPositionProportion": 0.14882154882154883,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.08571428571428572,
       "yPositionProportion": 0.1393939393939394,
     },
     "texts": [
       {
         "content": "code:",
+        "pageNumber": 1,
         "xPositionProportion": 0.08571428571428572,
         "yPositionProportion": 0.1414141414141414,
       },
       {
         "content": "0",
+        "pageNumber": 1,
         "xPositionProportion": 0.12761904761904763,
         "yPositionProportion": 0.1393939393939394,
       },
       {
         "content": "330",
+        "pageNumber": 1,
         "xPositionProportion": 0.14095238095238094,
         "yPositionProportion": 0.1393939393939394,
       },
       {
         "content": "2",
+        "pageNumber": 1,
         "xPositionProportion": 0.1742857142857143,
         "yPositionProportion": 0.1367003367003367,
       },
@@ -65,77 +74,91 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.8790476190476191,
       "yPositionProportion": 0.18316498316498317,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.10476190476190476,
       "yPositionProportion": 0.1696969696969697,
     },
     "texts": [
       {
         "content": "fiche",
+        "pageNumber": 1,
         "xPositionProportion": 0.10476190476190476,
         "yPositionProportion": 0.1696969696969697,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.1580952380952381,
         "yPositionProportion": 0.17037037037037037,
       },
       {
         "content": "données",
+        "pageNumber": 1,
         "xPositionProportion": 0.18476190476190477,
         "yPositionProportion": 0.1696969696969697,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.26476190476190475,
         "yPositionProportion": 0.17037037037037037,
       },
       {
         "content": "sécurité",
+        "pageNumber": 1,
         "xPositionProportion": 0.29333333333333333,
         "yPositionProportion": 0.17037037037037037,
       },
       {
         "content": "conforme",
+        "pageNumber": 1,
         "xPositionProportion": 0.3657142857142857,
         "yPositionProportion": 0.17037037037037037,
       },
       {
         "content": "au",
+        "pageNumber": 1,
         "xPositionProportion": 0.4514285714285714,
         "yPositionProportion": 0.17373737373737375,
       },
       {
         "content": "règlement",
+        "pageNumber": 1,
         "xPositionProportion": 0.4780952380952381,
         "yPositionProportion": 0.17037037037037037,
       },
       {
         "content": "(ce)",
+        "pageNumber": 1,
         "xPositionProportion": 0.5780952380952381,
         "yPositionProportion": 0.17037037037037037,
       },
       {
         "content": "1907/2006,",
+        "pageNumber": 1,
         "xPositionProportion": 0.6276190476190476,
         "yPositionProportion": 0.17037037037037037,
       },
       {
         "content": "annexe",
+        "pageNumber": 1,
         "xPositionProportion": 0.7257142857142858,
         "yPositionProportion": 0.17306397306397306,
       },
       {
         "content": "!l,",
+        "pageNumber": 1,
         "xPositionProportion": 0.7952380952380952,
         "yPositionProportion": 0.17104377104377105,
       },
       {
         "content": "modifié",
+        "pageNumber": 1,
         "xPositionProportion": 0.8228571428571428,
         "yPositionProportion": 0.17037037037037037,
       },
@@ -143,37 +166,43 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.6390476190476191,
       "yPositionProportion": 0.20134680134680136,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.35714285714285715,
       "yPositionProportion": 0.18855218855218855,
     },
     "texts": [
       {
         "content": "par",
+        "pageNumber": 1,
         "xPositionProportion": 0.35714285714285715,
         "yPositionProportion": 0.19124579124579125,
       },
       {
         "content": "le",
+        "pageNumber": 1,
         "xPositionProportion": 0.3923809523809524,
         "yPositionProportion": 0.19326599326599325,
       },
       {
         "content": "règlement",
+        "pageNumber": 1,
         "xPositionProportion": 0.41523809523809524,
         "yPositionProportion": 0.18855218855218855,
       },
       {
         "content": "(ce)",
+        "pageNumber": 1,
         "xPositionProportion": 0.5123809523809524,
         "yPositionProportion": 0.18855218855218855,
       },
       {
         "content": "453/2010",
+        "pageNumber": 1,
         "xPositionProportion": 0.5571428571428572,
         "yPositionProportion": 0.18855218855218855,
       },
@@ -181,22 +210,25 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.18761904761904763,
       "yPositionProportion": 0.22693602693602694,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.09523809523809523,
       "yPositionProportion": 0.21885521885521886,
     },
     "texts": [
       {
         "content": "version",
+        "pageNumber": 1,
         "xPositionProportion": 0.09523809523809523,
         "yPositionProportion": 0.21885521885521886,
       },
       {
         "content": "5.2.0",
+        "pageNumber": 1,
         "xPositionProportion": 0.15619047619047619,
         "yPositionProportion": 0.21885521885521886,
       },
@@ -204,32 +236,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.2695238095238095,
       "yPositionProportion": 0.2404040404040404,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.09619047619047619,
       "yPositionProportion": 0.23232323232323232,
     },
     "texts": [
       {
         "content": "date",
+        "pageNumber": 1,
         "xPositionProportion": 0.09619047619047619,
         "yPositionProportion": 0.23232323232323232,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.13047619047619047,
         "yPositionProportion": 0.23232323232323232,
       },
       {
         "content": "révision:",
+        "pageNumber": 1,
         "xPositionProportion": 0.15142857142857144,
         "yPositionProportion": 0.23232323232323232,
       },
       {
         "content": "09/09/16",
+        "pageNumber": 1,
         "xPositionProportion": 0.21428571428571427,
         "yPositionProportion": 0.23232323232323232,
       },
@@ -237,27 +274,31 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.28476190476190477,
       "yPositionProportion": 0.2579124579124579,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.09619047619047619,
       "yPositionProportion": 0.24713804713804713,
     },
     "texts": [
       {
         "content": "date",
+        "pageNumber": 1,
         "xPositionProportion": 0.09619047619047619,
         "yPositionProportion": 0.24713804713804713,
       },
       {
         "content": "d'impression",
+        "pageNumber": 1,
         "xPositionProportion": 0.13047619047619047,
         "yPositionProportion": 0.24713804713804713,
       },
       {
         "content": ":_12/09/16",
+        "pageNumber": 1,
         "xPositionProportion": 0.23047619047619047,
         "yPositionProportion": 0.24713804713804713,
       },
@@ -265,82 +306,97 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.7838095238095238,
       "yPositionProportion": 0.2828282828282828,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.08571428571428572,
       "yPositionProportion": 0.2734006734006734,
     },
     "texts": [
       {
         "content": "section",
+        "pageNumber": 1,
         "xPositionProportion": 0.08571428571428572,
         "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": "1",
+        "pageNumber": 1,
         "xPositionProportion": 0.15523809523809523,
         "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.1676190476190476,
         "yPositionProportion": 0.2754208754208754,
       },
       {
         "content": "identification",
+        "pageNumber": 1,
         "xPositionProportion": 0.1761904761904762,
         "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.29523809523809524,
         "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": "la",
+        "pageNumber": 1,
         "xPositionProportion": 0.32,
         "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": "substance",
+        "pageNumber": 1,
         "xPositionProportion": 0.34095238095238095,
         "yPositionProportion": 0.2734006734006734,
       },
       {
         "content": "/",
+        "pageNumber": 1,
         "xPositionProportion": 0.4342857142857143,
         "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "du",
+        "pageNumber": 1,
         "xPositionProportion": 0.44285714285714284,
         "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "melange",
+        "pageNumber": 1,
         "xPositionProportion": 0.4676190476190476,
         "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "et",
+        "pageNumber": 1,
         "xPositionProportion": 0.5438095238095239,
         "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.5666666666666667,
         "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "la",
+        "pageNumber": 1,
         "xPositionProportion": 0.5904761904761905,
         "yPositionProportion": 0.2740740740740741,
       },
       {
         "content": "societe/l'entreprise",
+        "pageNumber": 1,
         "xPositionProportion": 0.6123809523809524,
         "yPositionProportion": 0.2740740740740741,
       },
@@ -348,32 +404,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.27714285714285714,
       "yPositionProportion": 0.3111111111111111,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.09904761904761905,
       "yPositionProportion": 0.30168350168350166,
     },
     "texts": [
       {
         "content": "1.1,",
+        "pageNumber": 1,
         "xPositionProportion": 0.09904761904761905,
         "yPositionProportion": 0.30168350168350166,
       },
       {
         "content": "identificateur",
+        "pageNumber": 1,
         "xPositionProportion": 0.12571428571428572,
         "yPositionProportion": 0.30168350168350166,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.21333333333333335,
         "yPositionProportion": 0.30168350168350166,
       },
       {
         "content": "produit",
+        "pageNumber": 1,
         "xPositionProportion": 0.2342857142857143,
         "yPositionProportion": 0.3023569023569024,
       },
@@ -381,37 +442,43 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.7,
       "yPositionProportion": 0.33804713804713804,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.15428571428571428,
       "yPositionProportion": 0.32727272727272727,
     },
     "texts": [
       {
         "content": "désignation",
+        "pageNumber": 1,
         "xPositionProportion": 0.15428571428571428,
         "yPositionProportion": 0.32861952861952864,
       },
       {
         "content": "commerciale",
+        "pageNumber": 1,
         "xPositionProportion": 0.23523809523809525,
         "yPositionProportion": 0.32861952861952864,
       },
       {
         "content": "dégraissant",
+        "pageNumber": 1,
         "xPositionProportion": 0.3838095238095238,
         "yPositionProportion": 0.32727272727272727,
       },
       {
         "content": "désinfectant",
+        "pageNumber": 1,
         "xPositionProportion": 0.49142857142857144,
         "yPositionProportion": 0.32727272727272727,
       },
       {
         "content": "concentré",
+        "pageNumber": 1,
         "xPositionProportion": 0.6076190476190476,
         "yPositionProportion": 0.32727272727272727,
       },
@@ -419,82 +486,97 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.7285714285714285,
       "yPositionProportion": 0.38047138047138046,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.09904761904761905,
       "yPositionProportion": 0.37037037037037035,
     },
     "texts": [
       {
         "content": "1.2.",
+        "pageNumber": 1,
         "xPositionProportion": 0.09904761904761905,
         "yPositionProportion": 0.37037037037037035,
       },
       {
         "content": "utilisations",
+        "pageNumber": 1,
         "xPositionProportion": 0.12571428571428572,
         "yPositionProportion": 0.37037037037037035,
       },
       {
         "content": "identifiées",
+        "pageNumber": 1,
         "xPositionProportion": 0.20095238095238097,
         "yPositionProportion": 0.37037037037037035,
       },
       {
         "content": "pertinentes",
+        "pageNumber": 1,
         "xPositionProportion": 0.2704761904761905,
         "yPositionProportion": 0.3723905723905724,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.3514285714285714,
         "yPositionProportion": 0.3750841750841751,
       },
       {
         "content": "la",
+        "pageNumber": 1,
         "xPositionProportion": 0.3742857142857143,
         "yPositionProportion": 0.37373737373737376,
       },
       {
         "content": "su",
+        "pageNumber": 1,
         "xPositionProportion": 0.38952380952380955,
         "yPositionProportion": 0.37575757575757573,
       },
       {
         "content": ":ce",
+        "pageNumber": 1,
         "xPositionProportion": 0.43238095238095237,
         "yPositionProportion": 0.37306397306397304,
       },
       {
         "content": "où",
+        "pageNumber": 1,
         "xPositionProportion": 0.4523809523809524,
         "yPositionProportion": 0.37306397306397304,
       },
       {
         "content": "du",
+        "pageNumber": 1,
         "xPositionProportion": 0.4723809523809524,
         "yPositionProportion": 0.37104377104377106,
       },
       {
         "content": "mélange",
+        "pageNumber": 1,
         "xPositionProportion": 0.5057142857142857,
         "yPositionProportion": 0.37306397306397304,
       },
       {
         "content": "et",
+        "pageNumber": 1,
         "xPositionProportion": 0.5533333333333333,
         "yPositionProportion": 0.3717171717171717,
       },
       {
         "content": "utilisations",
+        "pageNumber": 1,
         "xPositionProportion": 0.5695238095238095,
         "yPositionProportion": 0.3717171717171717,
       },
       {
         "content": "déconseillées",
+        "pageNumber": 1,
         "xPositionProportion": 0.6419047619047619,
         "yPositionProportion": 0.37104377104377106,
       },
@@ -502,27 +584,31 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.2857142857142857,
       "yPositionProportion": 0.4067340067340067,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.15428571428571428,
       "yPositionProportion": 0.397979797979798,
     },
     "texts": [
       {
         "content": "utilisation",
+        "pageNumber": 1,
         "xPositionProportion": 0.15428571428571428,
         "yPositionProportion": 0.397979797979798,
       },
       {
         "content": "du",
+        "pageNumber": 1,
         "xPositionProportion": 0.2219047619047619,
         "yPositionProportion": 0.397979797979798,
       },
       {
         "content": "produit",
+        "pageNumber": 1,
         "xPositionProportion": 0.2419047619047619,
         "yPositionProportion": 0.397979797979798,
       },
@@ -530,22 +616,25 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.46190476190476193,
       "yPositionProportion": 0.4356902356902357,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37238095238095237,
       "yPositionProportion": 0.4255892255892256,
     },
     "texts": [
       {
         "content": "alcalin",
+        "pageNumber": 1,
         "xPositionProportion": 0.37238095238095237,
         "yPositionProportion": 0.4255892255892256,
       },
       {
         "content": "liquide",
+        "pageNumber": 1,
         "xPositionProportion": 0.42,
         "yPositionProportion": 0.4255892255892256,
       },
@@ -553,22 +642,25 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5819047619047619,
       "yPositionProportion": 0.4471380471380471,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.43905723905723903,
     },
     "texts": [
       {
         "content": "restauration",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.43905723905723903,
       },
       {
         "content": "collective",
+        "pageNumber": 1,
         "xPositionProportion": 0.49142857142857144,
         "yPositionProportion": 0.43905723905723903,
       },
@@ -576,17 +668,19 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.58,
       "yPositionProportion": 0.4612794612794613,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.4511784511784512,
     },
     "texts": [
       {
         "content": "détergent-désinfectant",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.4511784511784512,
       },
@@ -594,27 +688,31 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5247619047619048,
       "yPositionProportion": 0.47474747474747475,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.4666666666666667,
     },
     "texts": [
       {
         "content": "bactéricide",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.4666666666666667,
       },
       {
         "content": "et",
+        "pageNumber": 1,
         "xPositionProportion": 0.44761904761904764,
         "yPositionProportion": 0.46734006734006733,
       },
       {
         "content": "levuricide",
+        "pageNumber": 1,
         "xPositionProportion": 0.4638095238095238,
         "yPositionProportion": 0.4666666666666667,
       },
@@ -622,32 +720,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5333333333333333,
       "yPositionProportion": 0.49023569023569025,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.4808080808080808,
     },
     "texts": [
       {
         "content": "pour",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.48215488215488217,
       },
       {
         "content": "matériel",
+        "pageNumber": 1,
         "xPositionProportion": 0.4066666666666667,
         "yPositionProportion": 0.4808080808080808,
       },
       {
         "content": "et",
+        "pageNumber": 1,
         "xPositionProportion": 0.46190476190476193,
         "yPositionProportion": 0.4808080808080808,
       },
       {
         "content": "surfaces",
+        "pageNumber": 1,
         "xPositionProportion": 0.4780952380952381,
         "yPositionProportion": 0.4808080808080808,
       },
@@ -655,72 +758,85 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.6285714285714286,
       "yPositionProportion": 0.5313131313131313,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.0980952380952381,
       "yPositionProportion": 0.5218855218855218,
     },
     "texts": [
       {
         "content": "1.3.",
+        "pageNumber": 1,
         "xPositionProportion": 0.0980952380952381,
         "yPositionProportion": 0.5218855218855218,
       },
       {
         "content": "renseignements",
+        "pageNumber": 1,
         "xPositionProportion": 0.12571428571428572,
         "yPositionProportion": 0.5218855218855218,
       },
       {
         "content": "concernant",
+        "pageNumber": 1,
         "xPositionProportion": 0.23904761904761904,
         "yPositionProportion": 0.5239057239057239,
       },
       {
         "content": "le",
+        "pageNumber": 1,
         "xPositionProportion": 0.319047619047619,
         "yPositionProportion": 0.5239057239057239,
       },
       {
         "content": "fournisss",
+        "pageNumber": 1,
         "xPositionProportion": 0.3314285714285714,
         "yPositionProportion": 0.5218855218855218,
       },
       {
         "content": "€",
+        "pageNumber": 1,
         "xPositionProportion": 0.41714285714285715,
         "yPositionProportion": 0.5239057239057239,
       },
       {
         "content": "la",
+        "pageNumber": 1,
         "xPositionProportion": 0.4276190476190476,
         "yPositionProportion": 0.5232323232323233,
       },
       {
         "content": "fiche",
+        "pageNumber": 1,
         "xPositionProportion": 0.44666666666666666,
         "yPositionProportion": 0.5245791245791246,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.47714285714285715,
         "yPositionProportion": 0.5225589225589226,
       },
       {
         "content": "données",
+        "pageNumber": 1,
         "xPositionProportion": 0.4980952380952381,
         "yPositionProportion": 0.5218855218855218,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.5580952380952381,
         "yPositionProportion": 0.5232323232323233,
       },
       {
         "content": "sécurité",
+        "pageNumber": 1,
         "xPositionProportion": 0.5780952380952381,
         "yPositionProportion": 0.5239057239057239,
       },
@@ -728,32 +844,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.32285714285714284,
       "yPositionProportion": 0.5569023569023569,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.15428571428571428,
       "yPositionProportion": 0.5488215488215489,
     },
     "texts": [
       {
         "content": "identification",
+        "pageNumber": 1,
         "xPositionProportion": 0.15428571428571428,
         "yPositionProportion": 0.5488215488215489,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.24,
         "yPositionProportion": 0.5494949494949495,
       },
       {
         "content": "la",
+        "pageNumber": 1,
         "xPositionProportion": 0.26,
         "yPositionProportion": 0.5494949494949495,
       },
       {
         "content": "société",
+        "pageNumber": 1,
         "xPositionProportion": 0.2752380952380952,
         "yPositionProportion": 0.5488215488215489,
       },
@@ -761,22 +882,25 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.47619047619047616,
       "yPositionProportion": 0.5858585858585859,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.5764309764309764,
     },
     "texts": [
       {
         "content": "hypred",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.5764309764309764,
       },
       {
         "content": "sas",
+        "pageNumber": 1,
         "xPositionProportion": 0.44476190476190475,
         "yPositionProportion": 0.5764309764309764,
       },
@@ -784,42 +908,49 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.6485714285714286,
       "yPositionProportion": 0.6033670033670033,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.591919191919192,
     },
     "texts": [
       {
         "content": "55,",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.5925925925925926,
       },
       {
         "content": "boulevard",
+        "pageNumber": 1,
         "xPositionProportion": 0.4,
         "yPositionProportion": 0.591919191919192,
       },
       {
         "content": "jules",
+        "pageNumber": 1,
         "xPositionProportion": 0.47619047619047616,
         "yPositionProportion": 0.591919191919192,
       },
       {
         "content": "verger",
+        "pageNumber": 1,
         "xPositionProportion": 0.5190476190476191,
         "yPositionProportion": 0.5925925925925926,
       },
       {
         "content": "b.p",
+        "pageNumber": 1,
         "xPositionProportion": 0.5723809523809524,
         "yPositionProportion": 0.5925925925925926,
       },
       {
         "content": "10180",
+        "pageNumber": 1,
         "xPositionProportion": 0.6038095238095238,
         "yPositionProportion": 0.591919191919192,
       },
@@ -827,37 +958,43 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.6161904761904762,
       "yPositionProportion": 0.6168350168350168,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.6074074074074074,
     },
     "texts": [
       {
         "content": "35803",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.6074074074074074,
       },
       {
         "content": "dinard",
+        "pageNumber": 1,
         "xPositionProportion": 0.4228571428571429,
         "yPositionProportion": 0.6074074074074074,
       },
       {
         "content": "cedex",
+        "pageNumber": 1,
         "xPositionProportion": 0.48857142857142855,
         "yPositionProportion": 0.6074074074074074,
       },
       {
         "content": "-",
+        "pageNumber": 1,
         "xPositionProportion": 0.54,
         "yPositionProportion": 0.6127946127946128,
       },
       {
         "content": "france",
+        "pageNumber": 1,
         "xPositionProportion": 0.5504761904761905,
         "yPositionProportion": 0.6074074074074074,
       },
@@ -865,52 +1002,61 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.559047619047619,
       "yPositionProportion": 0.6343434343434343,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37238095238095237,
       "yPositionProportion": 0.622895622895623,
     },
     "texts": [
       {
         "content": "tél",
+        "pageNumber": 1,
         "xPositionProportion": 0.37238095238095237,
         "yPositionProportion": 0.622895622895623,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.40095238095238095,
         "yPositionProportion": 0.6255892255892256,
       },
       {
         "content": "+33",
+        "pageNumber": 1,
         "xPositionProportion": 0.4085714285714286,
         "yPositionProportion": 0.622895622895623,
       },
       {
         "content": "(0)2",
+        "pageNumber": 1,
         "xPositionProportion": 0.44095238095238093,
         "yPositionProportion": 0.622895622895623,
       },
       {
         "content": "99",
+        "pageNumber": 1,
         "xPositionProportion": 0.47333333333333333,
         "yPositionProportion": 0.622895622895623,
       },
       {
         "content": "16",
+        "pageNumber": 1,
         "xPositionProportion": 0.49714285714285716,
         "yPositionProportion": 0.622895622895623,
       },
       {
         "content": "50",
+        "pageNumber": 1,
         "xPositionProportion": 0.5190476190476191,
         "yPositionProportion": 0.622895622895623,
       },
       {
         "content": "00",
+        "pageNumber": 1,
         "xPositionProportion": 0.540952380952381,
         "yPositionProportion": 0.622895622895623,
       },
@@ -918,52 +1064,61 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5676190476190476,
       "yPositionProportion": 0.6498316498316499,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37333333333333335,
       "yPositionProportion": 0.6383838383838384,
     },
     "texts": [
       {
         "content": "fax",
+        "pageNumber": 1,
         "xPositionProportion": 0.37333333333333335,
         "yPositionProportion": 0.6383838383838384,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.40476190476190477,
         "yPositionProportion": 0.641077441077441,
       },
       {
         "content": "+33",
+        "pageNumber": 1,
         "xPositionProportion": 0.4180952380952381,
         "yPositionProportion": 0.6383838383838384,
       },
       {
         "content": "(0)2",
+        "pageNumber": 1,
         "xPositionProportion": 0.44952380952380955,
         "yPositionProportion": 0.6383838383838384,
       },
       {
         "content": "99",
+        "pageNumber": 1,
         "xPositionProportion": 0.4828571428571429,
         "yPositionProportion": 0.6383838383838384,
       },
       {
         "content": "16",
+        "pageNumber": 1,
         "xPositionProportion": 0.5066666666666667,
         "yPositionProportion": 0.6383838383838384,
       },
       {
         "content": "50",
+        "pageNumber": 1,
         "xPositionProportion": 0.5276190476190477,
         "yPositionProportion": 0.6390572390572391,
       },
       {
         "content": "20",
+        "pageNumber": 1,
         "xPositionProportion": 0.5504761904761905,
         "yPositionProportion": 0.6383838383838384,
       },
@@ -971,27 +1126,31 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.56,
       "yPositionProportion": 0.6653198653198653,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.37238095238095237,
       "yPositionProportion": 0.6538720538720538,
     },
     "texts": [
       {
         "content": "e-mail",
+        "pageNumber": 1,
         "xPositionProportion": 0.37238095238095237,
         "yPositionProportion": 0.6538720538720538,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.4219047619047619,
         "yPositionProportion": 0.6558922558922559,
       },
       {
         "content": "hypred@hypred.fr",
+        "pageNumber": 1,
         "xPositionProportion": 0.43047619047619046,
         "yPositionProportion": 0.6538720538720538,
       },
@@ -999,77 +1158,91 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.6895238095238095,
       "yPositionProportion": 0.6915824915824916,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.17523809523809525,
       "yPositionProportion": 0.6828282828282828,
     },
     "texts": [
       {
         "content": "pour",
+        "pageNumber": 1,
         "xPositionProportion": 0.17523809523809525,
         "yPositionProportion": 0.6828282828282828,
       },
       {
         "content": "toute",
+        "pageNumber": 1,
         "xPositionProportion": 0.2057142857142857,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": "information",
+        "pageNumber": 1,
         "xPositionProportion": 0.23809523809523808,
         "yPositionProportion": 0.6828282828282828,
       },
       {
         "content": "concernant",
+        "pageNumber": 1,
         "xPositionProportion": 0.30666666666666664,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": "cette",
+        "pageNumber": 1,
         "xPositionProportion": 0.37523809523809526,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": "fiche",
+        "pageNumber": 1,
         "xPositionProportion": 0.4066666666666667,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.4380952380952381,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": "données",
+        "pageNumber": 1,
         "xPositionProportion": 0.4561904761904762,
         "yPositionProportion": 0.6828282828282828,
       },
       {
         "content": "de",
+        "pageNumber": 1,
         "xPositionProportion": 0.5095238095238095,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": "sécurité,",
+        "pageNumber": 1,
         "xPositionProportion": 0.5285714285714286,
         "yPositionProportion": 0.6828282828282828,
       },
       {
         "content": "veuillez",
+        "pageNumber": 1,
         "xPositionProportion": 0.580952380952381,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": "contacter",
+        "pageNumber": 1,
         "xPositionProportion": 0.6295238095238095,
         "yPositionProportion": 0.6835016835016835,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.6857142857142857,
         "yPositionProportion": 0.6801346801346801,
       },
@@ -1077,17 +1250,19 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.35619047619047617,
       "yPositionProportion": 0.7043771043771043,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.17523809523809525,
       "yPositionProportion": 0.6956228956228956,
     },
     "texts": [
       {
         "content": "hypred.regulatory@roullier.com",
+        "pageNumber": 1,
         "xPositionProportion": 0.17523809523809525,
         "yPositionProportion": 0.6956228956228956,
       },
@@ -1095,32 +1270,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.28285714285714286,
       "yPositionProportion": 0.7313131313131314,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.09714285714285714,
       "yPositionProportion": 0.7218855218855219,
     },
     "texts": [
       {
         "content": "1.4.",
+        "pageNumber": 1,
         "xPositionProportion": 0.09714285714285714,
         "yPositionProportion": 0.7225589225589225,
       },
       {
         "content": "numéro",
+        "pageNumber": 1,
         "xPositionProportion": 0.12476190476190477,
         "yPositionProportion": 0.7218855218855219,
       },
       {
         "content": "d'appel",
+        "pageNumber": 1,
         "xPositionProportion": 0.18,
         "yPositionProportion": 0.7151515151515152,
       },
       {
         "content": "d'urgenc",
+        "pageNumber": 1,
         "xPositionProportion": 0.23142857142857143,
         "yPositionProportion": 0.7239057239057239,
       },
@@ -1128,22 +1308,25 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.28095238095238095,
       "yPositionProportion": 0.7589225589225589,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.17714285714285713,
       "yPositionProportion": 0.7488215488215488,
     },
     "texts": [
       {
         "content": "appel",
+        "pageNumber": 1,
         "xPositionProportion": 0.17714285714285713,
         "yPositionProportion": 0.7488215488215488,
       },
       {
         "content": "d'urgence",
+        "pageNumber": 1,
         "xPositionProportion": 0.2180952380952381,
         "yPositionProportion": 0.7488215488215488,
       },
@@ -1151,67 +1334,79 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.8295238095238096,
       "yPositionProportion": 0.773063973063973,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.38285714285714284,
       "yPositionProportion": 0.762962962962963,
     },
     "texts": [
       {
         "content": "ligne",
+        "pageNumber": 1,
         "xPositionProportion": 0.38285714285714284,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": "directe",
+        "pageNumber": 1,
         "xPositionProportion": 0.4219047619047619,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": "d'intervention",
+        "pageNumber": 1,
         "xPositionProportion": 0.4704761904761905,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": "d'urgence",
+        "pageNumber": 1,
         "xPositionProportion": 0.560952380952381,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": "(24",
+        "pageNumber": 1,
         "xPositionProportion": 0.6295238095238095,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": "h/24",
+        "pageNumber": 1,
         "xPositionProportion": 0.6542857142857142,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": "-",
+        "pageNumber": 1,
         "xPositionProportion": 0.6866666666666666,
         "yPositionProportion": 0.7676767676767676,
       },
       {
         "content": "7j/",
+        "pageNumber": 1,
         "xPositionProportion": 0.6961904761904761,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": "7)",
+        "pageNumber": 1,
         "xPositionProportion": 0.7152380952380952,
         "yPositionProportion": 0.762962962962963,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.7333333333333333,
         "yPositionProportion": 0.7656565656565657,
       },
       {
         "content": "(+)1-760-476-",
+        "pageNumber": 1,
         "xPositionProportion": 0.7409523809523809,
         "yPositionProportion": 0.762962962962963,
       },
@@ -1219,17 +1414,19 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.4123809523809524,
       "yPositionProportion": 0.7851851851851852,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.38285714285714284,
       "yPositionProportion": 0.7771043771043771,
     },
     "texts": [
       {
         "content": "3961",
+        "pageNumber": 1,
         "xPositionProportion": 0.38285714285714284,
         "yPositionProportion": 0.7771043771043771,
       },
@@ -1237,32 +1434,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5285714285714286,
       "yPositionProportion": 0.7986531986531986,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.38285714285714284,
       "yPositionProportion": 0.7905723905723906,
     },
     "texts": [
       {
         "content": "code",
+        "pageNumber": 1,
         "xPositionProportion": 0.38285714285714284,
         "yPositionProportion": 0.7905723905723906,
       },
       {
         "content": "d'accès",
+        "pageNumber": 1,
         "xPositionProportion": 0.42095238095238097,
         "yPositionProportion": 0.7905723905723906,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.47523809523809524,
         "yPositionProportion": 0.7925925925925926,
       },
       {
         "content": "333021",
+        "pageNumber": 1,
         "xPositionProportion": 0.4819047619047619,
         "yPositionProportion": 0.7905723905723906,
       },
@@ -1270,17 +1472,19 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.41619047619047617,
       "yPositionProportion": 0.8262626262626263,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.38285714285714284,
       "yPositionProportion": 0.8181818181818182,
     },
     "texts": [
       {
         "content": "inrs",
+        "pageNumber": 1,
         "xPositionProportion": 0.38285714285714284,
         "yPositionProportion": 0.8181818181818182,
       },
@@ -1288,32 +1492,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5161904761904762,
       "yPositionProportion": 0.8417508417508418,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.3819047619047619,
       "yPositionProportion": 0.8316498316498316,
     },
     "texts": [
       {
         "content": "30,",
+        "pageNumber": 1,
         "xPositionProportion": 0.3819047619047619,
         "yPositionProportion": 0.8316498316498316,
       },
       {
         "content": "rue",
+        "pageNumber": 1,
         "xPositionProportion": 0.4066666666666667,
         "yPositionProportion": 0.8336700336700337,
       },
       {
         "content": "olivier",
+        "pageNumber": 1,
         "xPositionProportion": 0.43142857142857144,
         "yPositionProportion": 0.8316498316498316,
       },
       {
         "content": "noyer",
+        "pageNumber": 1,
         "xPositionProportion": 0.4780952380952381,
         "yPositionProportion": 0.8316498316498316,
       },
@@ -1321,22 +1530,25 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.45904761904761904,
       "yPositionProportion": 0.8538720538720539,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.3819047619047619,
       "yPositionProportion": 0.8457912457912458,
     },
     "texts": [
       {
         "content": "75014",
+        "pageNumber": 1,
         "xPositionProportion": 0.3819047619047619,
         "yPositionProportion": 0.8457912457912458,
       },
       {
         "content": "paris",
+        "pageNumber": 1,
         "xPositionProportion": 0.4276190476190476,
         "yPositionProportion": 0.8457912457912458,
       },
@@ -1344,47 +1556,55 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5114285714285715,
       "yPositionProportion": 0.8673400673400673,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.3819047619047619,
       "yPositionProportion": 0.8592592592592593,
     },
     "texts": [
       {
         "content": "tél",
+        "pageNumber": 1,
         "xPositionProportion": 0.3819047619047619,
         "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.4066666666666667,
         "yPositionProportion": 0.8612794612794613,
       },
       {
         "content": "01",
+        "pageNumber": 1,
         "xPositionProportion": 0.41523809523809524,
         "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "45",
+        "pageNumber": 1,
         "xPositionProportion": 0.43523809523809526,
         "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "42",
+        "pageNumber": 1,
         "xPositionProportion": 0.4552380952380952,
         "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "59",
+        "pageNumber": 1,
         "xPositionProportion": 0.47523809523809524,
         "yPositionProportion": 0.8592592592592593,
       },
       {
         "content": "59",
+        "pageNumber": 1,
         "xPositionProportion": 0.4961904761904762,
         "yPositionProportion": 0.8592592592592593,
       },
@@ -1392,32 +1612,37 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.5676190476190476,
       "yPositionProportion": 0.8949494949494949,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.38285714285714284,
       "yPositionProportion": 0.8868686868686869,
     },
     "texts": [
       {
         "content": "centres",
+        "pageNumber": 1,
         "xPositionProportion": 0.38285714285714284,
         "yPositionProportion": 0.8868686868686869,
       },
       {
         "content": "anti",
+        "pageNumber": 1,
         "xPositionProportion": 0.4552380952380952,
         "yPositionProportion": 0.8868686868686869,
       },
       {
         "content": "poisons",
+        "pageNumber": 1,
         "xPositionProportion": 0.4942857142857143,
         "yPositionProportion": 0.8868686868686869,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.5647619047619048,
         "yPositionProportion": 0.8888888888888888,
       },
@@ -1425,62 +1650,73 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.7438095238095238,
       "yPositionProportion": 0.9104377104377105,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.3819047619047619,
       "yPositionProportion": 0.9003367003367003,
     },
     "texts": [
       {
         "content": "angers:",
+        "pageNumber": 1,
         "xPositionProportion": 0.3819047619047619,
         "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": "0241482121",
+        "pageNumber": 1,
         "xPositionProportion": 0.44095238095238093,
         "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": "|",
+        "pageNumber": 1,
         "xPositionProportion": 0.5495238095238095,
         "yPositionProportion": 0.8949494949494949,
       },
       {
         "content": "bordeaux",
+        "pageNumber": 1,
         "xPositionProportion": 0.5714285714285714,
         "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": ":",
+        "pageNumber": 1,
         "xPositionProportion": 0.6390476190476191,
         "yPositionProportion": 0.9023569023569024,
       },
       {
         "content": "05",
+        "pageNumber": 1,
         "xPositionProportion": 0.6466666666666666,
         "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": "56",
+        "pageNumber": 1,
         "xPositionProportion": 0.6676190476190477,
         "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": "96",
+        "pageNumber": 1,
         "xPositionProportion": 0.6876190476190476,
         "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": "40",
+        "pageNumber": 1,
         "xPositionProportion": 0.7076190476190476,
         "yPositionProportion": 0.9003367003367003,
       },
       {
         "content": "80",
+        "pageNumber": 1,
         "xPositionProportion": 0.7276190476190476,
         "yPositionProportion": 0.9003367003367003,
       },
@@ -1488,22 +1724,25 @@ exports[`PdfImageTextExtractorService tests > getTextFromImagePdf tests > should
   },
   {
     "endBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.9152380952380952,
       "yPositionProportion": 0.9259259259259259,
     },
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.8704761904761905,
       "yPositionProportion": 0.9178451178451178,
     },
     "texts": [
       {
         "content": "17",
+        "pageNumber": 1,
         "xPositionProportion": 0.8704761904761905,
         "yPositionProportion": 0.9178451178451178,
       },
       {
         "content": "-",
+        "pageNumber": 1,
         "xPositionProportion": 0.9095238095238095,
         "yPositionProportion": 0.9212121212121213,
       },

@@ -43,6 +43,7 @@ export type IRawElement = IPosition & {
 };
 
 export type IPosition = {
+  pageNumber: number;
   xPositionProportion: number;
   yPositionProportion: number;
 };
@@ -69,17 +70,13 @@ export type ISection = IBox & {
 
 export type ISubsection = IBox & { lines: ILine[]; strokes: IStroke[] };
 
-export type IStroke = IBox & {
-  pageNumber: number;
-};
+export type IStroke = IBox;
 
 export type ILine = IMetaData & {
   texts: IText[];
 };
 
-export type IMetaData = IBox & {
-  pageNumber: number;
-};
+export type IMetaData = IBox;
 
 export type IText = IPosition & {
   content: string;

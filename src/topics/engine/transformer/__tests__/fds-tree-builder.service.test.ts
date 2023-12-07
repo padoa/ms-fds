@@ -12,6 +12,12 @@ import {
   aLineWithTwoTextsAndPositionYIncrementedTwice,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { INCREMENT_VALUE, POSITION_PROPORTION_X, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import type { IFdsTree, IStroke } from '@topics/engine/model/fds.model.js';
+import { aFdsTree, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
+import { aStroke } from '@topics/engine/__fixtures__/stroke.mother.js';
+import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
+import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('FdsTreeBuilderService tests', () => {
   describe('BuildFdsTreeWithoutStrokes tests', () => {
@@ -249,6 +255,94 @@ describe('FdsTreeBuilderService tests', () => {
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes([sectionLine, subSectionLine, extraSubSectionLine])).toEqual(expected);
       });
+    });
+  });
+
+  describe('AddStrokesToFdsTreeInPlace tests', () => {
+    it.each<{ message: string; fdsTree: IFdsTree; strokes: IStroke[]; expected: IFdsTree }>([
+      {
+        message: 'should return an empty fds tree if the fds tree is empty',
+        fdsTree: {},
+        strokes: [],
+        expected: {},
+      },
+      {
+        message: 'should return an empty fds tree if the fds tree is empty even if there are strokes',
+        fdsTree: {},
+        strokes: [aStroke().properties],
+        expected: {},
+      },
+      {
+        message: 'should return the given fds tree if there are no strokes',
+        fdsTree: anEmptyFdsTreeWithAllSections().properties,
+        strokes: [],
+        expected: anEmptyFdsTreeWithAllSections().properties,
+      },
+      {
+        message: 'should add the strokes in the correct section',
+        fdsTree: aFdsTree()
+          .withSection1(
+            aSection().withSubsections({ 1: aSubSection().withStartBox(aPosition().properties).withEndBox(aPosition().properties).properties })
+              .properties,
+          )
+          .withSection2(
+            aSection().withSubsections({
+              2: aSubSection().withStartBox(aPosition().withPageNumber(1).properties).withEndBox(aPosition().withPageNumber(1).properties).properties,
+            }).properties,
+          ).properties,
+        strokes: [aStroke().properties],
+        expected: aFdsTree()
+          .withSection1(
+            aSection().withSubsections({
+              1: aSubSection().withStartBox(aPosition().properties).withEndBox(aPosition().properties).withStrokes([aStroke().properties]).properties,
+            }).properties,
+          )
+          .withSection2(
+            aSection().withSubsections({
+              2: aSubSection().withStartBox(aPosition().withPageNumber(1).properties).withEndBox(aPosition().withPageNumber(1).properties).properties,
+            }).properties,
+          ).properties,
+      },
+      {
+        message: 'should add the strokes in the correct section even if there is no end box',
+        fdsTree: aFdsTree().withSection1(
+          aSection().withSubsections({ 1: aSubSection().withStartBox(aPosition().properties).withEndBox(null).properties }).properties,
+        ).properties,
+        strokes: [aStroke().properties],
+        expected: aFdsTree().withSection1(
+          aSection().withSubsections({
+            1: aSubSection().withStartBox(aPosition().properties).withEndBox(null).withStrokes([aStroke().properties]).properties,
+          }).properties,
+        ).properties,
+      },
+    ])('$message', ({ fdsTree, strokes, expected }) => {
+      expect(FdsTreeBuilderService.addStrokesToFdsTreeInPlace(fdsTree, { strokes })).toEqual(expected);
+    });
+  });
+
+  describe('BuildFdsTree tests', () => {
+    let buildFdsTreeWithoutStrokesSpy: SpyInstance;
+    let addStrokesToFdsTreeInPlaceSpy: SpyInstance;
+    const fdsTree = aFdsTree().properties;
+    const fullText = 'blabla';
+    const xCounts = { [POSITION_PROPORTION_X]: 10 };
+
+    beforeEach(() => {
+      buildFdsTreeWithoutStrokesSpy = vi.spyOn(FdsTreeBuilderService, 'buildFdsTreeWithoutStrokes').mockImplementation(() => ({
+        fdsTree: {},
+        xCounts,
+        fullText,
+      }));
+      addStrokesToFdsTreeInPlaceSpy = vi.spyOn(FdsTreeBuilderService, 'addStrokesToFdsTreeInPlace').mockImplementation(() => fdsTree);
+    });
+
+    afterEach(() => {
+      buildFdsTreeWithoutStrokesSpy.mockRestore();
+      addStrokesToFdsTreeInPlaceSpy.mockRestore();
+    });
+
+    it('should return the results of buildFdsTreeWithoutStrokes and addStrokesToFdsTreeInPlace', () => {
+      expect(FdsTreeBuilderService.buildFdsTree({ lines: [], strokes: [] })).toEqual({ fdsTree, fullText, xCounts });
     });
   });
 });

@@ -12,14 +12,14 @@ type IFdsTreeWithoutStrokes = {
   };
 };
 
-export class FDSTreeBuilderService {
+export class FdsTreeBuilderService {
   public static buildFdsTree({ lines, strokes }: { lines: ILine[]; strokes: IStroke[] }): IFdsTreeResult {
-    const { fdsTree: fdsTreeWithoutStrokes, fullText, xCounts } = FDSTreeBuilderService.buildFdsTreeWithoutStrokes(lines);
+    const { fdsTree: fdsTreeWithoutStrokes, fullText, xCounts } = this.buildFdsTreeWithoutStrokes(lines);
     const fdsTree = this.addStrokesToFdsTreeInPlace(fdsTreeWithoutStrokes, { strokes });
     return { fdsTree, fullText, xCounts };
   }
 
-  private static buildFdsTreeWithoutStrokes(lines: ILine[]): { fdsTree: IFdsTreeWithoutStrokes } & Omit<IFdsTreeResult, 'fdsTree'> {
+  public static buildFdsTreeWithoutStrokes(lines: ILine[]): { fdsTree: IFdsTreeWithoutStrokes } & Omit<IFdsTreeResult, 'fdsTree'> {
     const result = _.reduce(
       lines,
       ({ fdsTree, currentSection, currentSubSection, xCounts: XCountsBeforeUpdate, fullText: fullTextBeforeUpdate }: IBuildTree, line) => {
@@ -62,7 +62,7 @@ export class FDSTreeBuilderService {
         // LINE
         if (SectionRulesService.shouldAddLineInSubSection(currentSection, currentSubSection)) {
           return {
-            fdsTree: FDSTreeBuilderService.addFdsTreeLine(fdsTree, {
+            fdsTree: this.addFdsTreeLine(fdsTree, {
               line,
               sectionNumber: currentSection,
               subSectionNumber: currentSubSection,
@@ -86,20 +86,23 @@ export class FDSTreeBuilderService {
     };
   }
 
-  private static addStrokesToFdsTreeInPlace(fdsTree: IFdsTreeWithoutStrokes, { strokes }: { strokes: IStroke[] }): IFdsTree {
+  public static addStrokesToFdsTreeInPlace(fdsTree: IFdsTreeWithoutStrokes, { strokes }: { strokes: IStroke[] }): IFdsTree {
     _.forEach(fdsTree, (section, sectionNumber) => {
       _.forEach(section.subsections, (subSection, subSectionNumber) => {
         // eslint-disable-next-line no-param-reassign
         fdsTree[+sectionNumber].subsections[+subSectionNumber].strokes = _.filter(
           strokes,
-          ({ startBox, endBox }) =>
-            startBox.yPositionProportion <= subSection.startBox.yPositionProportion &&
-            (!subSection.endBox || endBox.yPositionProportion > subSection.endBox.yPositionProportion),
+          ({ startBox, endBox }) => this.isBelow(startBox, subSection.startBox) && (!subSection.endBox || this.isBelow(subSection.endBox, endBox)),
         );
       });
     });
 
     return fdsTree as IFdsTree;
+  }
+
+  public static isBelow(bottomPosition: IPosition, topPosition: IPosition): boolean {
+    if (bottomPosition.pageNumber !== topPosition.pageNumber) return bottomPosition.pageNumber < topPosition.pageNumber;
+    return bottomPosition.yPositionProportion <= topPosition.yPositionProportion;
   }
 
   //----------------------------------------------------------------------------------------------
@@ -114,6 +117,7 @@ export class FDSTreeBuilderService {
       ...fdsTree,
       [sectionNumber]: {
         startBox: {
+          pageNumber: line.startBox.pageNumber,
           xPositionProportion: line.startBox.xPositionProportion,
           yPositionProportion: line.startBox.yPositionProportion,
         },
@@ -142,6 +146,7 @@ export class FDSTreeBuilderService {
           ...fdsTree[sectionNumber].subsections,
           [subSectionNumber]: {
             startBox: {
+              pageNumber: line.startBox.pageNumber,
               xPositionProportion: line.startBox.xPositionProportion,
               yPositionProportion: line.startBox.yPositionProportion,
             },

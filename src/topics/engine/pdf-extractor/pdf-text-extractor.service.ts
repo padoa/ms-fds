@@ -30,6 +30,7 @@ export class PdfTextExtractorService {
 
           const fullText = `${fullTextBeforeUpdate}${rawText}`;
           const rawElement = {
+            pageNumber: rawLine.pageNumber,
             xPositionProportion: rawLine.x / pageDimension.width,
             yPositionProportion: rawLine.y / pageDimension.height,
             content: rawText,
@@ -48,8 +49,8 @@ export class PdfTextExtractorService {
               ...lines,
               {
                 texts: [rawElement],
-                pageNumber: rawLine.pageNumber,
                 startBox: {
+                  pageNumber: rawLine.pageNumber,
                   xPositionProportion: rawElement.xPositionProportion,
                   yPositionProportion: rawElement.yPositionProportion,
                 },

@@ -22,7 +22,7 @@ import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.se
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('ExtractionRulesService tests', () => {
-  const metaData: IMetaData = { pageNumber: 1, startBox: aPosition().properties };
+  const metaData: IMetaData = { startBox: aPosition().properties };
 
   describe('ApplyExtractionRules tests', () => {
     it('Should extract all fields from fds', async () => {

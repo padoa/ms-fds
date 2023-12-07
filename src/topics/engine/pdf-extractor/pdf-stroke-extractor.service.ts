@@ -18,7 +18,7 @@ export class PdfStrokeExtractorService {
         ];
       })
       .flatMap()
-      .sortBy(['pageNumber', 'startBox.yPositionProportion', 'startBox.xPositionProportion'])
+      .sortBy(['startBox.pageNumber', 'startBox.yPositionProportion', 'startBox.xPositionProportion'])
       .value();
   }
 
@@ -26,9 +26,8 @@ export class PdfStrokeExtractorService {
     return _(hLines)
       .filter((hLine) => hLine.w / height <= RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
       .map((hLine) => ({
-        pageNumber,
-        startBox: { xPositionProportion: hLine.x, yPositionProportion: hLine.y },
-        endBox: { xPositionProportion: hLine.x + hLine.l, yPositionProportion: hLine.y + hLine.w },
+        startBox: { pageNumber, xPositionProportion: hLine.x, yPositionProportion: hLine.y },
+        endBox: { pageNumber, xPositionProportion: hLine.x + hLine.l, yPositionProportion: hLine.y + hLine.w },
       }))
       .map((stroke) => PdfStrokeExtractorService.normalizeStroke(stroke, { height, width }))
       .value();
@@ -38,9 +37,8 @@ export class PdfStrokeExtractorService {
     return _(vLines)
       .filter((vLine) => vLine.w / width <= RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
       .map((vLine) => ({
-        pageNumber,
-        startBox: { xPositionProportion: vLine.x, yPositionProportion: vLine.y },
-        endBox: { xPositionProportion: vLine.x + vLine.w, yPositionProportion: vLine.y + vLine.l },
+        startBox: { pageNumber, xPositionProportion: vLine.x, yPositionProportion: vLine.y },
+        endBox: { pageNumber, xPositionProportion: vLine.x + vLine.w, yPositionProportion: vLine.y + vLine.l },
       }))
       .map((stroke) => PdfStrokeExtractorService.normalizeStroke(stroke, { height, width }))
       .value();
@@ -50,9 +48,8 @@ export class PdfStrokeExtractorService {
     return _(fills)
       .filter((fill) => fill.h / height <= FILL_MAX_WIDTH_IN_PROPORTION || fill.w / width <= FILL_MAX_WIDTH_IN_PROPORTION)
       .map((fill) => ({
-        pageNumber,
-        startBox: { xPositionProportion: fill.x, yPositionProportion: fill.y },
-        endBox: { xPositionProportion: fill.x + fill.w, yPositionProportion: fill.y + fill.h },
+        startBox: { pageNumber, xPositionProportion: fill.x, yPositionProportion: fill.y },
+        endBox: { pageNumber, xPositionProportion: fill.x + fill.w, yPositionProportion: fill.y + fill.h },
       }))
       .map((stroke) => PdfStrokeExtractorService.normalizeStroke(stroke, { height, width }))
       .value();
@@ -60,12 +57,16 @@ export class PdfStrokeExtractorService {
 
   private static normalizeStroke(stroke: IStroke, { height, width }: IPageDimension): IStroke {
     return {
-      pageNumber: stroke.pageNumber,
       startBox: {
+        pageNumber: stroke.startBox.pageNumber,
         xPositionProportion: stroke.startBox.xPositionProportion / width,
         yPositionProportion: stroke.startBox.yPositionProportion / height,
       },
-      endBox: { xPositionProportion: stroke.endBox.xPositionProportion / width, yPositionProportion: stroke.endBox.yPositionProportion / height },
+      endBox: {
+        pageNumber: stroke.startBox.pageNumber,
+        xPositionProportion: stroke.endBox.xPositionProportion / width,
+        yPositionProportion: stroke.endBox.yPositionProportion / height,
+      },
     };
   }
 }
