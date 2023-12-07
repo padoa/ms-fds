@@ -11,8 +11,8 @@ import {
   aLineWithTwoTexts,
   aLineWithTwoTextsAndPositionYIncremented,
   aLineWithTwoTextsAndPositionYIncrementedTwice,
-} from '@topics/engine/fixtures/line.mother.js';
-import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, TEXT_CONTENT } from '@topics/engine/fixtures/fixtures.constants.js';
+} from '@topics/engine/__fixtures__/line.mother.js';
+import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 describe('FdsTreeBuilderService tests', () => {
   describe('BuildFdsTree tests', () => {

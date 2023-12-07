@@ -5,12 +5,12 @@ import {
   aLineWithPhysicalStateIdentifier,
   aLineWithPhysicalStateIdentifierAndValue,
   aLineWithPhysicalStateValue,
-} from '@topics/engine/fixtures/line.mother.js';
-import { PHYSICAL_STATE_IDENTIFIER, PHYSICAL_STATE_VALUE } from '@topics/engine/fixtures/fixtures.constants.js';
-import { aText } from '@topics/engine/fixtures/text.mother.js';
-import { aFdsTree } from '@topics/engine/fixtures/fds-tree.mother.js';
-import { aSection } from '@topics/engine/fixtures/section.mother.js';
-import { aSubSection } from '@topics/engine/fixtures/sub-section.mother.js';
+} from '@topics/engine/__fixtures__/line.mother.js';
+import { PHYSICAL_STATE_IDENTIFIER, PHYSICAL_STATE_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { aText } from '@topics/engine/__fixtures__/text.mother.js';
+import { aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
+import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
+import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
 import type { IFDSTree, ILine } from '@topics/engine/model/fds.model.js';
 

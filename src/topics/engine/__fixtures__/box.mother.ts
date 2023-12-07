@@ -1,5 +1,5 @@
-import { BoxBuilder } from '@topics/engine/fixtures/box.builder.js';
-import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/fixtures/fixtures.constants.js';
+import { BoxBuilder } from '@topics/engine/__fixtures__/box.builder.js';
+import { INCREMENT_VALUE, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 export const aBox = (): BoxBuilder => new BoxBuilder();
 

@@ -25,8 +25,8 @@ import {
   PHYSICAL_STATE_IDENTIFIER,
   PHYSICAL_STATE_VALUE,
   PRODUCER_IDENTIFIER,
-} from '@topics/engine/fixtures/fixtures.constants.js';
-import { TextBuilder } from '@topics/engine/fixtures/text.builder.js';
+} from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
 export const aText = (): TextBuilder => new TextBuilder();
 

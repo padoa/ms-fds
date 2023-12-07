@@ -1,5 +1,5 @@
-import { aBoxWithPosition, aBoxWithPositionYIncremented, aBoxWithPositionYIncrementedTwice } from '@topics/engine/fixtures/box.mother.js';
-import { LineBuilder } from '@topics/engine/fixtures/line.builder.js';
+import { aBoxWithPosition, aBoxWithPositionYIncremented, aBoxWithPositionYIncrementedTwice } from '@topics/engine/__fixtures__/box.mother.js';
+import { LineBuilder } from '@topics/engine/__fixtures__/line.builder.js';
 import {
   aTextWithCASNumber,
   aTextWithCENumber,
@@ -28,7 +28,7 @@ import {
   aTextWithPhysicalStateIdentifier,
   aTextWithPhysicalStateValue,
   aTextWithProducerIdentifier,
-} from '@topics/engine/fixtures/text.mother.js';
+} from '@topics/engine/__fixtures__/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
 
