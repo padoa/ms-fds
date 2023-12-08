@@ -10,9 +10,9 @@ export class StrokeBuilder extends BaseBuilder<IStroke> {
 
   protected getDefaultValues(): IStroke {
     return {
-      startBox: { pageNumber: 0, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
+      startBox: { pageNumber: 1, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
       endBox: {
-        pageNumber: 0,
+        pageNumber: 1,
         xPositionProportion: POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION,
         yPositionProportion: POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION,
       },

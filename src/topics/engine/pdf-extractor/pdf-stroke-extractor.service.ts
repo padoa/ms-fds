@@ -9,8 +9,8 @@ type IPageMetaData = IPageDimension & { pageNumber: number };
 export class PdfStrokeExtractorService {
   public static getStrokesFromPdfData(pdfData: IPdfData): IStroke[] {
     return _(pdfData.Pages)
-      .map((page, pageNumber) => {
-        const pageMetaData = { height: page.Height, width: page.Width, pageNumber };
+      .map((page, pageIndex) => {
+        const pageMetaData = { height: page.Height, width: page.Width, pageNumber: pageIndex + 1 };
         return [
           ...PdfStrokeExtractorService.getStrokeFromHLines(page.HLines, pageMetaData),
           ...PdfStrokeExtractorService.getStrokeFromVLines(page.VLines, pageMetaData),

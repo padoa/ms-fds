@@ -10,7 +10,7 @@ export class PositionBuilder extends BaseBuilder<IPosition> {
 
   protected getDefaultValues(): IPosition {
     return {
-      pageNumber: 0,
+      pageNumber: 1,
       xPositionProportion: POSITION_PROPORTION_X,
       yPositionProportion: POSITION_PROPORTION_Y,
     };

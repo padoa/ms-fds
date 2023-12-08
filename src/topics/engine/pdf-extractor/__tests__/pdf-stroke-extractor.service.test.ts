@@ -38,7 +38,7 @@ describe('PdfStrokeExtractorService tests', () => {
         expected: [aStroke().properties],
       },
     ])('$message', ({ hLines, expected }) => {
-      expect(PdfStrokeExtractorService.getStrokeFromHLines(hLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 0 })).toEqual(expected);
+      expect(PdfStrokeExtractorService.getStrokeFromHLines(hLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 1 })).toEqual(expected);
     });
   });
 
@@ -65,7 +65,7 @@ describe('PdfStrokeExtractorService tests', () => {
         expected: [aStroke().properties],
       },
     ])('$message', ({ vLines, expected }) => {
-      expect(PdfStrokeExtractorService.getStrokeFromVLines(vLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 0 })).toEqual(expected);
+      expect(PdfStrokeExtractorService.getStrokeFromVLines(vLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 1 })).toEqual(expected);
     });
   });
 
@@ -92,7 +92,7 @@ describe('PdfStrokeExtractorService tests', () => {
         expected: [aStrokeEndingAtFillMaxWidth().properties],
       },
     ])('$message', ({ fills, expected }) => {
-      expect(PdfStrokeExtractorService.getStrokeFromFills(fills, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 0 })).toEqual(expected);
+      expect(PdfStrokeExtractorService.getStrokeFromFills(fills, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 1 })).toEqual(expected);
     });
   });
 
@@ -164,13 +164,13 @@ describe('PdfStrokeExtractorService tests', () => {
           aStroke()
             .withStartBox(
               aPosition()
-                .withPageNumber(1)
+                .withPageNumber(2)
                 .withXPositionProportion(POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
                 .withYPositionProportion(POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
             )
             .withEndBox(
               aPosition()
-                .withPageNumber(1)
+                .withPageNumber(2)
                 .withXPositionProportion(POSITION_PROPORTION_X + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
                 .withYPositionProportion(POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
             ).properties,

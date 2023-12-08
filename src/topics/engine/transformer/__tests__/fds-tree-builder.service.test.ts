@@ -287,7 +287,7 @@ describe('FdsTreeBuilderService tests', () => {
           )
           .withSection2(
             aSection().withSubsections({
-              2: aSubSection().withStartBox(aPosition().withPageNumber(1).properties).withEndBox(aPosition().withPageNumber(1).properties).properties,
+              2: aSubSection().withStartBox(aPosition().withPageNumber(1).properties).withEndBox(aPosition().withPageNumber(2).properties).properties,
             }).properties,
           ).properties,
         strokes: [aStroke().properties],
@@ -299,7 +299,7 @@ describe('FdsTreeBuilderService tests', () => {
           )
           .withSection2(
             aSection().withSubsections({
-              2: aSubSection().withStartBox(aPosition().withPageNumber(1).properties).withEndBox(aPosition().withPageNumber(1).properties).properties,
+              2: aSubSection().withStartBox(aPosition().withPageNumber(1).properties).withEndBox(aPosition().withPageNumber(2).properties).properties,
             }).properties,
           ).properties,
       },

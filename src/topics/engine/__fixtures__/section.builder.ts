@@ -10,7 +10,7 @@ export class SectionBuilder extends BaseBuilder<ISection> {
 
   protected getDefaultValues(): ISection {
     return {
-      startBox: { pageNumber: 0, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
+      startBox: { pageNumber: 1, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
       subsections: {},
     };
   }
