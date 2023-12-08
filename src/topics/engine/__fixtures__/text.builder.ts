@@ -9,6 +9,7 @@ export class TextBuilder extends BaseBuilder<IText> {
 
   protected getDefaultValues(): IText {
     return {
+      pageNumber: 1,
       xPositionProportion: 0,
       yPositionProportion: 0,
       content: '',

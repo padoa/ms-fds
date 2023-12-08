@@ -9,8 +9,8 @@ export class FdsEngineService {
     dataExtracted: IExtractedData;
     fromImage: boolean;
   }> {
-    const { lines, fromImage } = await PdfParserService.parsePDF(fdsFilePath);
-    const { fdsTree, xCounts, fullText } = FdsTreeBuilderService.buildFdsTree(lines);
+    const { lines, strokes, fromImage } = await PdfParserService.parsePDF(fdsFilePath);
+    const { fdsTree, xCounts, fullText } = FdsTreeBuilderService.buildFdsTree({ lines, strokes });
     const fdsTreeCleaned = FdsTreeCleanerService.cleanFdsTree(fdsTree, { xCounts, fromImage });
     const dataExtracted = await ExtractionRulesService.extract({ fdsTreeCleaned, fullText });
     return { dataExtracted, fromImage };

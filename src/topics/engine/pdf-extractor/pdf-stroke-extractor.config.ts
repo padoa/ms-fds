@@ -1,0 +1,2 @@
+export const RAW_STROKE_MAX_WIDTH_IN_PROPORTION = 1 / 10;
+export const FILL_MAX_WIDTH_IN_PROPORTION = 1 / 500;

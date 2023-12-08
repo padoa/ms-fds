@@ -9,8 +9,6 @@ import {
   PRODUCT_IDENTIFIER,
   TEXT_CONTENT,
   PRODUCT_IDENTIFIER_WITH_COLON,
-  POSITION_PROPORTION_X,
-  POSITION_PROPORTION_Y,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import {
   aLineWithUndefinedText,
@@ -24,12 +22,12 @@ import {
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/__fixtures__/text.mother.js';
-import type { IFdsTree, IExtractedProduct, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProduct, IMetaData } from '@topics/engine/model/fds.model.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('ProductRulesService tests', () => {
-  const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };
-  const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
+  const metaData: IMetaData = { startBox: aPosition().properties };
 
   describe('GetProductByText tests', () => {
     it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedProduct | null }]>([

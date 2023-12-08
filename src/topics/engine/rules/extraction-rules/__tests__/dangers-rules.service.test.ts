@@ -1,23 +1,16 @@
 import { describe, expect, it } from 'vitest';
 
 import { anEmptyFdsTreeWithAllSections, aFdsTreeWithAllSectionsWithoutUsefulInfo, aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
-import {
-  H_DANGER,
-  EUH_DANGER,
-  P_DANGER,
-  MULTIPLE_P_DANGER,
-  POSITION_PROPORTION_X,
-  POSITION_PROPORTION_Y,
-} from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { H_DANGER, EUH_DANGER, P_DANGER, MULTIPLE_P_DANGER } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aLineWithHDanger, aLineWithEUHDanger, aLineWithTwoDangers, aLineWithMultiplePDanger } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFdsTree, IExtractedDanger, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedDanger, IMetaData } from '@topics/engine/model/fds.model.js';
 import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dangers-rules.service.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('DangersRulesService tests', () => {
-  const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };
-  const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
+  const metaData: IMetaData = { startBox: aPosition().properties };
 
   describe('GetDangers tests', () => {
     it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedDanger[] }]>([

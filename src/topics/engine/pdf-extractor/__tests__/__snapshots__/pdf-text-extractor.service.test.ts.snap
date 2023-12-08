@@ -3,668 +3,717 @@
 exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should return text from pdf 1`] = `
 [
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.004746,
       "yPositionProportion": 0.0045516666666666665,
     },
     "texts": [
       {
         "content": "fiche de donnees de securite (règlement (ce) n°1907/2006 - reach)",
+        "pageNumber": 1,
         "xPositionProportion": 0.004746,
         "yPositionProportion": 0.0045516666666666665,
       },
       {
         "content": "date : 01/02/2022    page 1/7",
+        "pageNumber": 1,
         "xPositionProportion": 0.025952000000000003,
         "yPositionProportion": 0.0045516666666666665,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.004746,
       "yPositionProportion": 0.005030833333333333,
     },
     "texts": [
       {
         "content": "version : n°1 (01/02/2022)",
+        "pageNumber": 1,
         "xPositionProportion": 0.004746,
         "yPositionProportion": 0.005030833333333333,
       },
       {
         "content": "révision : n°11 (01/02/2022)",
+        "pageNumber": 1,
         "xPositionProportion": 0.025844000000000002,
         "yPositionProportion": 0.005030833333333333,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.004746,
       "yPositionProportion": 0.005510833333333334,
     },
     "texts": [
       {
         "content": "safety-kleen france",
+        "pageNumber": 1,
         "xPositionProportion": 0.004746,
         "yPositionProportion": 0.005510833333333334,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.015553,
       "yPositionProportion": 0.0060016666666666664,
     },
     "texts": [
       {
         "content": "kleen 112 s - kl 112 s",
+        "pageNumber": 1,
         "xPositionProportion": 0.015553,
         "yPositionProportion": 0.0060016666666666664,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.012621,
       "yPositionProportion": 0.0091725,
     },
     "texts": [
       {
         "content": "fiche de données de sécurité",
+        "pageNumber": 1,
         "xPositionProportion": 0.012621,
         "yPositionProportion": 0.0091725,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.012667999999999999,
       "yPositionProportion": 0.009793333333333334,
     },
     "texts": [
       {
         "content": "(règlement reach (ce) n° 1907/2006 - n° 2020/878)",
+        "pageNumber": 1,
         "xPositionProportion": 0.012667999999999999,
         "yPositionProportion": 0.009793333333333334,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.005193,
       "yPositionProportion": 0.010763333333333333,
     },
     "texts": [
       {
         "content": "rubrique 1 : identification de la substance/du mélange et de la société/l’entreprise",
+        "pageNumber": 1,
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.010763333333333333,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.011400833333333332,
     },
     "texts": [
       {
         "content": "1.1. identificateur de produit",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.011400833333333332,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.0119875,
     },
     "texts": [
       {
         "content": "nom du produit : kleen 112 s",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.0119875,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.012585833333333333,
     },
     "texts": [
       {
         "content": "code du produit : kl 112 s",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.012585833333333333,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.013234166666666667,
     },
     "texts": [
       {
         "content": "1.2. utilisations identifiées pertinentes de la substance ou du mélange et utilisations déconseillées",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.013234166666666667,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.013821666666666666,
     },
     "texts": [
       {
         "content": "se reporter à la fiche technique.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.013821666666666666,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.014419166666666667,
     },
     "texts": [
       {
         "content": "produit de nettoyage",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.014419166666666667,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.015068333333333335,
     },
     "texts": [
       {
         "content": "1.3. renseignements concernant le fournisseur de la fiche de données de sécurité",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.015068333333333335,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.015655000000000002,
     },
     "texts": [
       {
         "content": "raison sociale : safety-kleen france.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.015655000000000002,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.016253333333333335,
     },
     "texts": [
       {
         "content": "adresse : 65, avenue jean mermoz.93126.la courneuve.france.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.016253333333333335,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.016850833333333332,
     },
     "texts": [
       {
         "content": "téléphone : +33 (0)1.48.38.71.71.     fax : +33 (0)1.48.38.71.70.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.016850833333333332,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.0175,
     },
     "texts": [
       {
         "content": "1.4. numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.0175,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.018086666666666668,
     },
     "texts": [
       {
         "content": "société/organisme : inrs / orfila   http://www.centres-antipoison.net.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.018086666666666668,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.005193,
       "yPositionProportion": 0.0190575,
     },
     "texts": [
       {
         "content": "rubrique 2 : identification des dangers",
+        "pageNumber": 1,
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.0190575,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.019695,
     },
     "texts": [
       {
         "content": "2.1. classification de la substance ou du mélange",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.019695,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.0203325,
     },
     "texts": [
       {
         "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.0203325,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.02091916666666667,
     },
     "texts": [
       {
         "content": "ce mélange ne présente pas de danger physique. voir les préconisations concernant les autres produits présents dans le local.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.02091916666666667,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.021517500000000002,
     },
     "texts": [
       {
         "content": "ce mélange ne présente pas de danger pour la santé hormis d'éventuelles valeurs limites d'exposition professionnelle (voir les",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.021517500000000002,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.021996666666666668,
     },
     "texts": [
       {
         "content": "rubriques 3 et 8).",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.021996666666666668,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.022595,
     },
     "texts": [
       {
         "content": "ce mélange ne présente pas de danger pour l'environnement. aucune atteinte à l'environnement n'est connue ou prévisible dans",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.022595,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.023074166666666666,
     },
     "texts": [
       {
         "content": "les conditions normales d'utilisation.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.023074166666666666,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.023723333333333332,
     },
     "texts": [
       {
         "content": "2.2. éléments d’étiquetage",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.023723333333333332,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.024310000000000002,
     },
     "texts": [
       {
         "content": "le mélange est un produit détergent (voir la rubrique 15).",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.024310000000000002,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.024959166666666668,
     },
     "texts": [
       {
         "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.024959166666666668,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.025545833333333334,
     },
     "texts": [
       {
         "content": "aucun élément d'étiquetage n'est requis pour ce mélange.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.025545833333333334,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.026194166666666668,
     },
     "texts": [
       {
         "content": "2.3. autres dangers",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.026194166666666668,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.026781666666666665,
     },
     "texts": [
       {
         "content": "le mélange ne contient pas de 'substances extrêmement préoccupantes' (svhc)>= 0.1% publiées par l’agence européenne",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.026781666666666665,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.027260833333333335,
     },
     "texts": [
       {
         "content": "des produits chimiques (echa) selon l’article 57 du reach : http://echa.europa.eu/fr/candidate-list-table. se référer à la",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.027260833333333335,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.027739999999999997,
     },
     "texts": [
       {
         "content": "rubrique 3 pour identifier les substances concernées.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.027739999999999997,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.028338333333333333,
     },
     "texts": [
       {
         "content": "le mélange ne répond pas aux critères applicables aux mélanges pbt ou vpvb, conformément à l'annexe xiii du règlement",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.028338333333333333,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.028818333333333335,
     },
     "texts": [
       {
         "content": "reach (ce) n° 1907/2006.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.028818333333333335,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.029415833333333332,
     },
     "texts": [
       {
         "content": "le mélange ne contient pas de substances >= 0,1 % présentant des propriétés perturbant le système endocrinien conformément",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.029415833333333332,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.029895833333333333,
     },
     "texts": [
       {
         "content": "aux critères énoncés dans le règlement délégué (ue) 2017/2100 de la commission ou dans le règlement (ue) 2018/605 de la",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.029895833333333333,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.030375000000000003,
     },
     "texts": [
       {
         "content": "commission.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.030375000000000003,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.005193,
       "yPositionProportion": 0.03134583333333334,
     },
     "texts": [
       {
         "content": "rubrique 3 : composition/informations sur les composants",
+        "pageNumber": 1,
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.03134583333333334,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.00564,
       "yPositionProportion": 0.031983333333333336,
     },
     "texts": [
       {
         "content": "3.2. mélanges",
+        "pageNumber": 1,
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.031983333333333336,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.03257,
     },
     "texts": [
       {
         "content": "aucune substance ne répond aux critères énoncés dans l'annexe ii partie a du règlement reach (ce) n° 1907/2006.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.03257,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.005193,
       "yPositionProportion": 0.03354083333333333,
     },
     "texts": [
       {
         "content": "rubrique 4 : premiers secours",
+        "pageNumber": 1,
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.03354083333333333,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.034127500000000005,
     },
     "texts": [
       {
         "content": "d'une manière générale, en cas de doute ou si des symptômes persistent,  toujours faire appel à un médecin.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.034127500000000005,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.006006,
       "yPositionProportion": 0.034725,
     },
     "texts": [
       {
         "content": "ne jamais rien faire ingérer à une personne inconsciente.",
+        "pageNumber": 1,
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.034725,
       },
     ],
   },
   {
-    "pageNumber": 1,
     "startBox": {
+      "pageNumber": 1,
       "xPositionProportion": 0.010955,
       "yPositionProportion": 0.04001166666666667,
     },
     "texts": [
       {
         "content": "- made under licence of european label system® msds software from infodyne  - http://www.infodyne.fr -",
+        "pageNumber": 1,
         "xPositionProportion": 0.010955,
         "yPositionProportion": 0.04001166666666667,
       },

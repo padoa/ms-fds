@@ -1,17 +1,23 @@
 import { BaseBuilder } from '@padoa/meta';
 
+import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { ISubsection } from '@topics/engine/model/fds.model.js';
 
 export class SubSectionBuilder extends BaseBuilder<ISubsection> {
-  public withXPositionProportion = this.withValueFor('xPositionProportion');
-  public withYPositionProportion = this.withValueFor('yPositionProportion');
+  public withStartBox = this.withValueFor('startBox');
+  public withEndBox = this.withValueFor('endBox');
   public withLines = this.withValueFor('lines');
+  public withStrokes = this.withValueFor('strokes');
 
   protected getDefaultValues(): ISubsection {
     return {
-      xPositionProportion: 0,
-      yPositionProportion: 0,
+      startBox: {
+        pageNumber: 1,
+        xPositionProportion: POSITION_PROPORTION_X,
+        yPositionProportion: POSITION_PROPORTION_Y,
+      },
       lines: [],
+      strokes: [],
     };
   }
 }

@@ -25,9 +25,9 @@ export class ProducerRulesService {
         continue;
       }
 
-      const { pageNumber, startBox, endBox } = line;
+      const { startBox, endBox } = line;
 
-      return { name: ExtractionCleanerService.trimAndCleanTrailingDot(text), metaData: { pageNumber, startBox, endBox } };
+      return { name: ExtractionCleanerService.trimAndCleanTrailingDot(text), metaData: { startBox, endBox } };
     }
     return null;
   }

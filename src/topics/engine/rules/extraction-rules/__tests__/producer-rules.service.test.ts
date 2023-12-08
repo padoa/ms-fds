@@ -1,12 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { aFdsTree, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
-import {
-  POSITION_PROPORTION_X,
-  POSITION_PROPORTION_Y,
-  PRODUCER_NAME,
-  PRODUCER_NAME_WITH_DOT,
-} from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PRODUCER_NAME, PRODUCER_NAME_WITH_DOT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import {
   aLineWithUndefinedText,
   aLineWithProducerIdentifierOnly,
@@ -19,12 +14,12 @@ import {
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFdsTree, IExtractedProducer, IBox, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProducer, IMetaData } from '@topics/engine/model/fds.model.js';
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('ProducerRulesService tests', () => {
-  const iBox: IBox = { xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y };
-  const metaData: IMetaData = { pageNumber: 1, startBox: iBox, endBox: undefined };
+  const metaData: IMetaData = { startBox: aPosition().properties };
 
   describe('GetProducer tests', () => {
     it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedProducer | null }]>([

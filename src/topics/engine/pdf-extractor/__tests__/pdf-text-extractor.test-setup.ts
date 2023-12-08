@@ -5,6 +5,9 @@ export const fdsKleenFirstPagePdfData: IPdfData = {
     {
       Width: 1000,
       Height: 1200,
+      HLines: [],
+      VLines: [],
+      Fills: [],
       Texts: [
         {
           x: 4.746,
