@@ -64,7 +64,7 @@ export class PdfTextExtractorService {
         },
       );
 
-    const linesOrderedByPageAndY = _.sortBy(result.lines, ['pageNumber', 'startBox.yPositionProportion']);
+    const linesOrderedByPageAndY = _.sortBy(result.lines, ['startBox.pageNumber', 'startBox.yPositionProportion']);
     const linesOrdered = _.map(linesOrderedByPageAndY, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionProportion') }));
     const cleanedLines = this.cleanLines(linesOrdered);
     return cleanedLines;
@@ -80,7 +80,7 @@ export class PdfTextExtractorService {
     const TOLERANCE_IN_PERCENT = 0.25 / pageDimension.height;
     const yMinInPercent = rawLine.yPositionProportion - TOLERANCE_IN_PERCENT;
     const yMaxInPercent = rawLine.yPositionProportion + TOLERANCE_IN_PERCENT;
-    const samePage = lastLine.pageNumber === pageNumber;
+    const samePage = lastLine.startBox?.pageNumber === pageNumber;
 
     return samePage && startBox.yPositionProportion >= yMinInPercent && startBox.yPositionProportion <= yMaxInPercent;
   }

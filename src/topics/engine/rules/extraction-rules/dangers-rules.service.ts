@@ -12,17 +12,17 @@ export class DangersRulesService {
 
   public static getDangers(fdsTree: IFdsTree): IExtractedDanger[] {
     const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
-    const infoInEachLine = _.map(linesToSearchIn, ({ texts, pageNumber, startBox, endBox }) => {
+    const infoInEachLine = _.map(linesToSearchIn, ({ texts, startBox, endBox }) => {
       const textContent = _.map(texts, (text) => text.content).join('');
-      return { text: textContent, pageNumber, startBox, endBox };
+      return { text: textContent, startBox, endBox };
     });
 
     // TODO: possible improvement: concat all lines then use regex once to extract dangers
     return _(infoInEachLine)
       .map((lineInfo) => {
-        const { text: lineText, pageNumber, startBox, endBox } = lineInfo;
+        const { text: lineText, startBox, endBox } = lineInfo;
         const textMatches = lineText.match(new RegExp(`${this.europeanHazardsRegex}|${this.hazardsRegex}|${this.precautionRegex}`, 'g')) || [];
-        return textMatches.map((text) => ({ code: _.trim(text), metaData: { pageNumber, startBox, endBox } }));
+        return textMatches.map((text) => ({ code: _.trim(text), metaData: { startBox, endBox } }));
       })
       .flatMap()
       .compact()
