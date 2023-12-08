@@ -5,7 +5,7 @@
 
 
 ### Liens autres PR
-* MS-FDS: 
+* MS-CHEMICAL-RISK: 
 * Front: 
 * Package: 
 
