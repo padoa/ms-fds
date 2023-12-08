@@ -1,49 +1,54 @@
+import fsPromises from 'fs/promises';
+
 import { decode } from 'html-entities';
 import { createWorker } from 'tesseract.js';
-import { fromPath } from 'pdf2pic';
 import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 import type { Options } from 'pdf2pic/dist/types/options.js';
+import { fromPath } from 'pdf2pic';
 
 import type { ILine, IPageDimension, IPosition, IText } from '@topics/engine/model/fds.model.js';
 
-const tempImageFileName = 'fds-image';
-const tempImageFolderName = '/tmp';
-const tempImageFormat = 'png';
-
-const options: Options = {
-  density: 300,
-  saveFilename: tempImageFileName,
-  savePath: `${tempImageFolderName}`,
-  format: tempImageFormat,
-  width: 1050,
-  height: 1485,
-};
-
 export class PdfImageTextExtractorService {
   public static async getTextFromImagePdf(fdsFilePath: string, { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {}): Promise<ILine[]> {
-    await this.pdfToImage(fdsFilePath, { numberOfPagesToParse });
+    const options = await this.pdfToImage(fdsFilePath, { numberOfPagesToParse });
 
     const worker = await createWorker('fra');
     const texts = await promiseMapSeries(_.range(0, numberOfPagesToParse), async (index) => {
-      return this.getTextFromImage(worker, index + 1);
+      return this.getTextFromImage(worker, index + 1, options);
     });
     await worker.terminate();
+    await fsPromises.rm(options.savePath, { recursive: true });
 
     return _.flatMap(texts);
   }
 
-  private static pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<void> => {
-    // TODO: clean temporary images folder
-    await fromPath(pathToFile, options)
-      .bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' })
-      .then((resolve) => {
-        return resolve;
-      });
+  private static pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<Options> => {
+    const options = await this.getPdf2PicOptions();
+    await fromPath(pathToFile, options).bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' });
+    return options;
   };
 
-  private static getTextFromImage = async (worker: Tesseract.Worker, pageNumber: number): Promise<ILine[]> => {
-    const imagePath = `${tempImageFolderName}/${tempImageFileName}.${pageNumber}.${tempImageFormat}`;
+  private static async getPdf2PicOptions(): Promise<Options> {
+    const savePath = `/tmp/fds/${new Date().getTime().toString()}`;
+    await fsPromises.mkdir(savePath, { recursive: true });
+
+    return {
+      density: 300,
+      savePath,
+      saveFilename: 'fds-image',
+      format: 'png',
+      width: 1050,
+      height: 1485,
+    };
+  }
+
+  private static getTextFromImage = async (
+    worker: Tesseract.Worker,
+    pageNumber: number,
+    { savePath, saveFilename, format }: Options,
+  ): Promise<ILine[]> => {
+    const imagePath = `${savePath}/${saveFilename}.${pageNumber}.${format}`;
     const ret = await worker.recognize(imagePath);
     return this.hocrToLines(ret.data.hocr, pageNumber);
   };
