@@ -37,7 +37,7 @@ export class RevisionDateRulesService {
   }
 
   public static getDateByRevisionText(fullText: string): string | null {
-    const revisionDateRegex = `[R|r][é|e]vision.?${this.spaceRegex}`;
+    const revisionDateRegex = `[R|r][é|e]vision${this.spaceRegex}.?${this.spaceRegex}`;
 
     for (const dateRegex of this.dateRegexps) {
       const revisionDateMatch = fullText.match(new RegExp(revisionDateRegex + dateRegex));

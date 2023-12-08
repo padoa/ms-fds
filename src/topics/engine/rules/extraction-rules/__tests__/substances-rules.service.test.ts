@@ -6,13 +6,20 @@ import { CAS_NUMBER, CE_NUMBER } from '@topics/engine/__fixtures__/fixtures.cons
 import { aLineWithCASAndCENumberIn2Texts, aLineWithCENumber, aLineWithCASNumber } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFdsTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedSubstance, IMetaData } from '@topics/engine/model/fds.model.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('SubstancesRulesService tests', () => {
+  const metaData: IMetaData = { startBox: aPosition().properties };
+
   describe('Regexps tests', () => {
     describe('CASNumberRegex tests', () => {
       it.each<[{ input: string; expected: boolean }]>([
         [{ input: '1234567-12-3', expected: true }],
+        [{ input: '1234567 - 12 - 3', expected: true }],
+        [{ input: '1234567 -12 -3', expected: true }],
+        [{ input: '1234567 -12-3', expected: true }],
+        [{ input: '1234567-12 -3', expected: true }],
         [{ input: '9876543-45-6', expected: true }],
         [{ input: '111-22-3', expected: true }],
         [{ input: '987-65-4', expected: true }],
@@ -35,6 +42,10 @@ describe('SubstancesRulesService tests', () => {
     describe('CENumberRegex tests', () => {
       it.each<[{ input: string; expected: boolean }]>([
         [{ input: '123-456-7', expected: true }],
+        [{ input: '123 - 456 - 7', expected: true }],
+        [{ input: '123 -456 -7', expected: true }],
+        [{ input: '123 -456-7', expected: true }],
+        [{ input: '123-456 -7', expected: true }],
         [{ input: '987-654-3', expected: true }],
         [{ input: '111-222-3', expected: true }],
         [{ input: '987-654-3', expected: true }],
@@ -75,7 +86,7 @@ describe('SubstancesRulesService tests', () => {
                 1: aSubSection().withLines([aLineWithCASAndCENumberIn2Texts().properties]).properties,
               }).properties,
             ).properties,
-            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
           },
         ],
         [
@@ -86,7 +97,7 @@ describe('SubstancesRulesService tests', () => {
                 1: aSubSection().withLines([aLineWithCENumber().properties]).properties,
               }).properties,
             ).properties,
-            expected: [{ casNumber: undefined, ceNumber: CE_NUMBER }],
+            expected: [{ casNumber: undefined, ceNumber: CE_NUMBER, metaData }],
           },
         ],
         [
@@ -97,7 +108,7 @@ describe('SubstancesRulesService tests', () => {
                 1: aSubSection().withLines([aLineWithCASNumber().properties, aLineWithCENumber().properties]).properties,
               }).properties,
             ).properties,
-            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
           },
         ],
         [
@@ -108,7 +119,7 @@ describe('SubstancesRulesService tests', () => {
                 1: aSubSection().withLines([aLineWithCENumber().properties, aLineWithCASNumber().properties]).properties,
               }).properties,
             ).properties,
-            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
           },
         ],
       ])('$message', ({ fdsTree, expected }) => {
