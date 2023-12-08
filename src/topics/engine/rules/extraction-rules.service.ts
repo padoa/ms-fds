@@ -5,6 +5,7 @@ import { ProductRulesService } from '@topics/engine/rules/extraction-rules/produ
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
 import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dangers-rules.service.js';
 import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
+import { SteamPressureService } from '@topics/engine/rules/extraction-rules/steam-pressure.service.js';
 
 export class ExtractionRulesService {
   public static async extract({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFdsTree; fullText: string }): Promise<IExtractedData> {
@@ -15,6 +16,7 @@ export class ExtractionRulesService {
       dangers: DangersRulesService.getDangers(fdsTreeCleaned),
       substances: SubstancesRulesService.getSubstances(fdsTreeCleaned),
       physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
+      steamPressure: SteamPressureService.getSteamPressure(fdsTreeCleaned),
     };
   }
 }

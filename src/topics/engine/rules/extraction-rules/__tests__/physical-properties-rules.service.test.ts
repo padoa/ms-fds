@@ -26,7 +26,7 @@ describe('Physical properties rules service tests', () => {
         { input: 'etat', expected: false },
         { input: 'aspec', expected: false },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(!!input.match(PhysicalPropertiesRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX)).toEqual(expected);
+        expect(new RegExp(PhysicalPropertiesRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX).test(input)).toEqual(expected);
       });
     });
 
@@ -57,7 +57,7 @@ describe('Physical properties rules service tests', () => {
         { input: 'copeau', expected: false },
         { input: 'fluid', expected: false },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(!!input.match(PhysicalPropertiesRulesService.PHYSICAL_STATE_VALUES_REGEX)).toEqual(expected);
+        expect(new RegExp(PhysicalPropertiesRulesService.PHYSICAL_STATE_VALUES_REGEX).test(input)).toEqual(expected);
       });
     });
   });

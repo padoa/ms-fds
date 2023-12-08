@@ -86,6 +86,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
       },
       "name": "jeffaclean h 100 sc",
     },
+    "steamPressure": null,
     "substances": [
       {
         "casNumber": "64742-52-5",
@@ -305,6 +306,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
       "name": "hypred sas",
     },
     "product": null,
+    "steamPressure": null,
     "substances": [
       {
         "casNumber": "69011-36-5",

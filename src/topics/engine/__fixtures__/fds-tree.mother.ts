@@ -5,6 +5,7 @@ import {
   aLineWithProducerIdentifierOnlyWithColon,
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
+  aLineWithSteamPressureIdentifierAndValue,
   aLineWithThreeDangersAndTheirDetails,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
@@ -43,5 +44,8 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
       }).properties,
     )
     .withSection9(
-      aSection().withSubsections({ 1: aSubSection().withLines([aLineWithPhysicalStateIdentifierAndValue().properties]).properties }).properties,
+      aSection().withSubsections({
+        1: aSubSection().withLines([aLineWithPhysicalStateIdentifierAndValue().properties, aLineWithSteamPressureIdentifierAndValue().properties])
+          .properties,
+      }).properties,
     );

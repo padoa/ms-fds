@@ -25,6 +25,9 @@ import {
   PHYSICAL_STATE_IDENTIFIER,
   PHYSICAL_STATE_VALUE,
   PRODUCER_IDENTIFIER,
+  STEAM_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
+  STEAM_PRESSURE_VALUE,
+  STEAM_PRESSURE_IDENTIFIER,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
@@ -104,3 +107,11 @@ export const aTextWithCENumber = (): TextBuilder => aText().withContent(CE_NUMBE
 
 export const aTextWithPhysicalStateIdentifier = (): TextBuilder => aText().withContent(PHYSICAL_STATE_IDENTIFIER);
 export const aTextWithPhysicalStateValue = (): TextBuilder => aText().withContent(PHYSICAL_STATE_VALUE);
+
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- STEAM_PRESSURE ---------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aTextWithSteamPressureIdentifier = (): TextBuilder => aText().withContent(STEAM_PRESSURE_IDENTIFIER);
+export const aTextWithSteamPressureIdentifierWithTemperature = (): TextBuilder => aText().withContent(STEAM_PRESSURE_IDENTIFIER_WITH_TEMPERATURE);
+export const aTextWithSteamPressureValue = (): TextBuilder => aText().withContent(STEAM_PRESSURE_VALUE);
