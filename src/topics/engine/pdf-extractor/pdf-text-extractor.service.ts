@@ -80,7 +80,7 @@ export class PdfTextExtractorService {
     const TOLERANCE_IN_PERCENT = 0.25 / pageDimension.height;
     const yMinInPercent = rawLine.yPositionProportion - TOLERANCE_IN_PERCENT;
     const yMaxInPercent = rawLine.yPositionProportion + TOLERANCE_IN_PERCENT;
-    const samePage = lastLine.startBox?.pageNumber === pageNumber;
+    const samePage = startBox?.pageNumber === pageNumber;
 
     return samePage && startBox.yPositionProportion >= yMinInPercent && startBox.yPositionProportion <= yMaxInPercent;
   }

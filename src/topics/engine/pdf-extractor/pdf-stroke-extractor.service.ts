@@ -1,9 +1,8 @@
 import _ from 'lodash';
 
-import type { IFill, IRawStroke, IPdfData, IStroke } from '@topics/engine/model/fds.model.js';
+import type { IFill, IRawStroke, IPdfData, IStroke, IPageDimension } from '@topics/engine/model/fds.model.js';
 import { FILL_MAX_WIDTH_IN_PROPORTION, RAW_STROKE_MAX_WIDTH_IN_PROPORTION } from '@topics/engine/pdf-extractor/pdf-stroke-extractor.config.js';
 
-type IPageDimension = { height: number; width: number };
 type IPageMetaData = IPageDimension & { pageNumber: number };
 
 export class PdfStrokeExtractorService {
