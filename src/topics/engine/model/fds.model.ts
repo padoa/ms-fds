@@ -95,6 +95,7 @@ export type IExtractedDanger = { code: string; metaData: IMetaData };
 export type IExtractedSubstance = {
   casNumber: string;
   ceNumber: string;
+  metaData: IMetaData;
 };
 
 export type IExtractedPhysicalState = { value: string; metaData: IMetaData };

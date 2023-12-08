@@ -90,14 +90,38 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
       {
         "casNumber": "64742-52-5",
         "ceNumber": "265-155-0",
+        "metaData": {
+          "endBox": undefined,
+          "startBox": {
+            "pageNumber": 2,
+            "xPositionProportion": 0.083799182971404,
+            "yPositionProportion": 0.559806157354618,
+          },
+        },
       },
       {
         "casNumber": "67762-38-3",
         "ceNumber": "267-015-4",
+        "metaData": {
+          "endBox": undefined,
+          "startBox": {
+            "pageNumber": 2,
+            "xPositionProportion": 0.083799182971404,
+            "yPositionProportion": 0.6185290763968073,
+          },
+        },
       },
       {
         "casNumber": undefined,
         "ceNumber": "918-481-9",
+        "metaData": {
+          "endBox": undefined,
+          "startBox": {
+            "pageNumber": 2,
+            "xPositionProportion": 0.24002902601591056,
+            "yPositionProportion": 0.6718738122386926,
+          },
+        },
       },
     ],
   },
@@ -285,14 +309,50 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
       {
         "casNumber": "69011-36-5",
         "ceNumber": undefined,
+        "metaData": {
+          "endBox": {
+            "pageNumber": 4,
+            "xPositionProportion": 0.8990476190476191,
+            "yPositionProportion": 0.36835016835016837,
+          },
+          "startBox": {
+            "pageNumber": 4,
+            "xPositionProportion": 0.09142857142857143,
+            "yPositionProportion": 0.3474747474747475,
+          },
+        },
       },
       {
         "casNumber": "08062-26-4",
         "ceNumber": undefined,
+        "metaData": {
+          "endBox": {
+            "pageNumber": 4,
+            "xPositionProportion": 0.8723809523809524,
+            "yPositionProportion": 0.38855218855218854,
+          },
+          "startBox": {
+            "pageNumber": 4,
+            "xPositionProportion": 0.09142857142857143,
+            "yPositionProportion": 0.3797979797979798,
+          },
+        },
       },
       {
         "casNumber": undefined,
         "ceNumber": "219-145-8",
+        "metaData": {
+          "endBox": {
+            "pageNumber": 4,
+            "xPositionProportion": 0.9,
+            "yPositionProportion": 0.45387205387205387,
+          },
+          "startBox": {
+            "pageNumber": 4,
+            "xPositionProportion": 0.09142857142857143,
+            "yPositionProportion": 0.4457912457912458,
+          },
+        },
       },
     ],
   },

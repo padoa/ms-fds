@@ -106,6 +106,7 @@ describe('RevisionDateRulesService tests', () => {
       it.each<[string, string | null]>([
         ['révision: 2017-09-01', '2017-09-01'],
         ['Revision:2017-09-01', '2017-09-01'],
+        ['Revision : 2010-02-01', '2010-02-01'],
         ['Revision: 1 janvier 2022', '1 janvier 2022'],
         ['2017-09-01', null],
         ['révision: n°11 (01/02/2022) safety-kleen', null],

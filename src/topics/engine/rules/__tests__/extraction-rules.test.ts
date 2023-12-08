@@ -48,7 +48,7 @@ describe('ExtractionRulesService tests', () => {
           { code: P_DANGER, metaData },
           { code: MULTIPLE_P_DANGER, metaData },
         ],
-        substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+        substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
         physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
       };
 
