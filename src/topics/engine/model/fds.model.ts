@@ -13,26 +13,22 @@ export type IPdfData = {
   }>;
 };
 
-export type IRawStroke = {
+export type IRawPosition = {
   x: number;
   y: number;
+};
+
+export type IRawStroke = IRawPosition & {
   w: number;
   l: number;
 };
 
-export type IFill = {
-  x: number;
-  y: number;
+export type IFill = IRawPosition & {
   w: number;
   h: number;
 };
 
-export type IRawBox = {
-  x: number;
-  y: number;
-};
-
-export type IRawLine = IRawBox & {
+export type IRawLine = IRawPosition & {
   w: number;
   sw: number;
   R: Array<{ T: string; S: number; TS: [number, number, number, number] }>;
