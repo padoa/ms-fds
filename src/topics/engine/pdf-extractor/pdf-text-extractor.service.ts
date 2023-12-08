@@ -20,7 +20,7 @@ export class PdfTextExtractorService {
     const firstPage = _.first(pdfData.Pages);
     const pageDimension: IPageDimension = { width: _.get(firstPage, 'Width'), height: _.get(firstPage, 'Height') };
 
-    const result = pdfData.Pages.map(({ Texts }, index) => _.map(Texts, (text) => ({ ...text, y: text.y + index * 100, pageNumber: index + 1 })))
+    const result = pdfData.Pages.map(({ Texts }, index) => _.map(Texts, (text) => ({ ...text, pageNumber: index + 1 })))
       .flat()
       .reduce(
         ({ lines, fullText: fullTextBeforeUpdate }: { lines: ILine[]; fullText: string }, rawLine) => {
@@ -36,7 +36,7 @@ export class PdfTextExtractorService {
           };
 
           for (const line of lines) {
-            if (this.isSameLine(line, rawElement, pageDimension)) {
+            if (this.isSameLine(line, rawElement, { pageDimension, pageNumber: rawLine.pageNumber })) {
               line.texts.push(rawElement);
               return { lines, fullText };
             }
@@ -63,20 +63,25 @@ export class PdfTextExtractorService {
         },
       );
 
-    const linesYOrdered = _.sortBy(result.lines, 'startBox.yPositionProportion'); // TODO: sort by pageNumber and 'yPositionProportion' instead of 'y' and adding index *100
-    const linesOrdered = _.map(linesYOrdered, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionProportion') }));
+    const linesOrderedByPageAndY = _.sortBy(result.lines, ['pageNumber', 'startBox.yPositionProportion']);
+    const linesOrdered = _.map(linesOrderedByPageAndY, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionProportion') }));
     const cleanedLines = this.cleanLines(linesOrdered);
     return cleanedLines;
   }
 
-  private static isSameLine(lastLine: ILine, rawLine: IRawElement, pageDimension: IPageDimension): boolean {
+  private static isSameLine(
+    lastLine: ILine,
+    rawLine: IRawElement,
+    { pageNumber, pageDimension }: { pageNumber: number; pageDimension: IPageDimension },
+  ): boolean {
     const { startBox } = lastLine;
 
     const TOLERANCE_IN_PERCENT = 0.25 / pageDimension.height;
     const yMinInPercent = rawLine.yPositionProportion - TOLERANCE_IN_PERCENT;
     const yMaxInPercent = rawLine.yPositionProportion + TOLERANCE_IN_PERCENT;
+    const samePage = lastLine.pageNumber === pageNumber;
 
-    return startBox.yPositionProportion >= yMinInPercent && startBox.yPositionProportion <= yMaxInPercent;
+    return samePage && startBox.yPositionProportion >= yMinInPercent && startBox.yPositionProportion <= yMaxInPercent;
   }
 
   //----------------------------------------------------------------------------------------------

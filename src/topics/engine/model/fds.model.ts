@@ -73,7 +73,7 @@ export type IExtractedProduct = { name: string; metaData: IMetaData };
 
 export type IExtractedProducer = { name: string; metaData: IMetaData };
 
-export type IExtractedDanger = string;
+export type IExtractedDanger = { code: string; metaData: IMetaData };
 
 export type IExtractedSubstance = {
   casNumber: string;

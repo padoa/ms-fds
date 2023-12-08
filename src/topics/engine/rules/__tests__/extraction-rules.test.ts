@@ -45,7 +45,11 @@ describe('ExtractionRulesService tests', () => {
         date: { formattedDate: '2015/05/18', inTextDate: '18/05/2015' },
         product: { name: PRODUCT_NAME, metaData },
         producer: { name: PRODUCER_NAME, metaData },
-        dangers: [H_DANGER, P_DANGER, MULTIPLE_P_DANGER],
+        dangers: [
+          { code: H_DANGER, metaData },
+          { code: P_DANGER, metaData },
+          { code: MULTIPLE_P_DANGER, metaData },
+        ],
         substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
         physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
       };
