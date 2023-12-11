@@ -10,9 +10,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+    - port: {{ .Values.service.port.number }}
+      targetPort: {{ .Values.service.port.number }}
+      protocol: {{ .Values.service.port.protocol }}
+      name: {{ .Values.service.port.name }}
   selector:
     {{- include "ms-fds.selectorLabels" . | nindent 4 }}
