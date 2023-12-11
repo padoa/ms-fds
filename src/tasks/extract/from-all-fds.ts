@@ -49,12 +49,24 @@ const getFilesInDirectory = async (folder: string): Promise<string[]> => {
 };
 
 const addColumnsToCsv = async (csvFile: string): Promise<void> => {
-  return fs.writeFile(csvFile, `Nom du PDF;Date;Date affichée;Nom du produit;Nom du fournisseur;Phrases H, P et EUH;Substances;Image ?\n`);
+  const headers = [
+    'Nom du PDF',
+    'Date',
+    'Date affichée',
+    'Nom du produit',
+    'Nom du fournisseur',
+    'Dangers',
+    'Substances',
+    'État physique',
+    'Pression de vapeur',
+    'Image ?',
+  ].join(';');
+  return fs.writeFile(csvFile, `${headers}\n`);
 };
 
 const saveInCsv = async (
   csvFile: string,
-  filename: string,
+  fileName: string,
   {
     dataExtracted: {
       date: { formattedDate, inTextDate },
@@ -63,6 +75,7 @@ const saveInCsv = async (
       dangers,
       substances,
       physicalState,
+      vaporPressure,
     },
     fromImage,
   }: {
@@ -70,12 +83,21 @@ const saveInCsv = async (
     fromImage: boolean;
   },
 ): Promise<void> => {
-  return fs.appendFile(
-    csvFile,
-    `${filename};${formattedDate};${inTextDate};${product?.name};${producer?.name};${dangers.join(',')};${JSON.stringify(substances)};${
-      physicalState?.value
-    };${fromImage}\n`,
-  );
+  const resultLine = [
+    fileName,
+    formattedDate,
+    inTextDate,
+    product?.name,
+    producer?.name,
+    dangers.map((danger) => danger.code).join(','),
+    substances.map((substance) => `cas: ${substance.casNumber}, ce: ${substance.ceNumber}`).join(','),
+    physicalState?.value,
+    `${vaporPressure?.pressure} ${vaporPressure?.temperature}`,
+    fromImage,
+    // /!\ If you add a line here please add it in the header above as well /!\
+  ].join(';');
+
+  return fs.appendFile(csvFile, `${resultLine}\n`);
 };
 
 main()
