@@ -11,10 +11,9 @@ fullnameOverride: ""
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: padoa.azurecr.io/ms/fds/backend-dist
+  tag: "{{ .Values.global.ms_fds_tag }}"
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
 
 resources:
   limits:
