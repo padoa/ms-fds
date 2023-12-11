@@ -1,20 +1,20 @@
 import { describe, expect, it } from 'vitest';
 
-import { SteamPressureService } from '@topics/engine/rules/extraction-rules/steam-pressure.service.js';
-import type { IExtractedSteamPressure, IFdsTree, IMetaData } from '@topics/engine/model/fds.model.js';
+import { VaporPressureService } from '@topics/engine/rules/extraction-rules/vapor-pressure.service.js';
+import type { IExtractedVaporPressure, IFdsTree, IMetaData } from '@topics/engine/model/fds.model.js';
 import { aFdsTree, aFdsTreeWithAllSectionsWithoutUsefulInfo, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import { aLine, aLineWithSteamPressureIdentifierAndValue } from '@topics/engine/__fixtures__/line.mother.js';
+import { aLine, aLineWithVaporPressureIdentifierAndValue } from '@topics/engine/__fixtures__/line.mother.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
-import { STEAM_PRESSURE_TEMPERATURE, STEAM_PRESSURE_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import { aTextWithSteamPressureIdentifier, aTextWithSteamPressureValue } from '@topics/engine/__fixtures__/text.mother.js';
+import { VAPOR_PRESSURE_TEMPERATURE, VAPOR_PRESSURE_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { aTextWithVaporPressureIdentifier, aTextWithVaporPressureValue } from '@topics/engine/__fixtures__/text.mother.js';
 
-describe('SteamPressureService tests', () => {
+describe('VaporPressureService tests', () => {
   const metaData: IMetaData = { startBox: aPosition().properties };
 
   describe('Regexps tests', () => {
-    describe('STEAM_PRESSURE_IDENTIFIER_REGEX tests', () => {
+    describe('VAPOR_PRESSURE_IDENTIFIER_REGEX tests', () => {
       it.each<{ input: string; expected: boolean }>([
         { input: 'pressiondevapeur', expected: true },
         { input: 'pressionde vapeur', expected: true },
@@ -23,11 +23,11 @@ describe('SteamPressureService tests', () => {
         { input: 'pression vapeur', expected: true },
         { input: 'pression', expected: false },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(SteamPressureService.STEAM_PRESSURE_IDENTIFIER_REGEX).test(input)).toEqual(expected);
+        expect(new RegExp(VaporPressureService.VAPOR_PRESSURE_IDENTIFIER_REGEX).test(input)).toEqual(expected);
       });
     });
 
-    describe('STEAM_PRESSURE_VALUE_REGEX tests', () => {
+    describe('VAPOR_PRESSURE_VALUE_REGEX tests', () => {
       it.each<{ input: string; expected: boolean }>([
         { input: '3 bar', expected: true },
         { input: '3bar', expected: true },
@@ -55,7 +55,7 @@ describe('SteamPressureService tests', () => {
         { input: '3, bar', expected: false },
         { input: '> pa', expected: false },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(SteamPressureService.STEAM_PRESSURE_VALUE_REGEX).test(input)).toEqual(expected);
+        expect(new RegExp(VaporPressureService.VAPOR_PRESSURE_VALUE_REGEX).test(input)).toEqual(expected);
       });
     });
 
@@ -79,13 +79,13 @@ describe('SteamPressureService tests', () => {
         { input: '50, °c', expected: false },
         { input: '50. °c', expected: false },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(SteamPressureService.TEMPERATURE_VALUE_REGEX).test(input)).toEqual(expected);
+        expect(new RegExp(VaporPressureService.TEMPERATURE_VALUE_REGEX).test(input)).toEqual(expected);
       });
     });
   });
 
-  describe('GetSteamPressure tests', () => {
-    it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedSteamPressure }]>([
+  describe('GetVaporPressure tests', () => {
+    it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedVaporPressure }]>([
       [
         {
           message: 'it should return null when given a fds tree without lines',
@@ -102,51 +102,51 @@ describe('SteamPressureService tests', () => {
       ],
       [
         {
-          message: 'it should return null when given a text without steam pressure',
+          message: 'it should return null when given a text without vapor pressure',
           fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
           expected: null,
         },
       ],
       [
         {
-          message: 'it should return steam pressure when it is contained in 2 texts',
+          message: 'it should return vapor pressure when it is contained in 2 texts',
           fdsTree: aFdsTree().withSection9(
             aSection().withSubsections({
-              1: aSubSection().withLines([aLineWithSteamPressureIdentifierAndValue().properties]).properties,
+              1: aSubSection().withLines([aLineWithVaporPressureIdentifierAndValue().properties]).properties,
             }).properties,
           ).properties,
-          expected: { pressure: STEAM_PRESSURE_VALUE, temperature: STEAM_PRESSURE_TEMPERATURE, metaData },
+          expected: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
         },
       ],
       [
         {
-          message: 'it should return steam pressure even when temperature is missing',
+          message: 'it should return vapor pressure even when temperature is missing',
           fdsTree: aFdsTree().withSection9(
             aSection().withSubsections({
               1: aSubSection().withLines([
-                aLine().withTexts([aTextWithSteamPressureIdentifier().properties, aTextWithSteamPressureValue().properties]).properties,
+                aLine().withTexts([aTextWithVaporPressureIdentifier().properties, aTextWithVaporPressureValue().properties]).properties,
               ]).properties,
             }).properties,
           ).properties,
-          expected: { pressure: STEAM_PRESSURE_VALUE, temperature: undefined, metaData },
+          expected: { pressure: VAPOR_PRESSURE_VALUE, temperature: undefined, metaData },
         },
       ],
       [
         {
-          message: 'it should skip first identifier if there is no steam pressure value',
+          message: 'it should skip first identifier if there is no vapor pressure value',
           fdsTree: aFdsTree().withSection9(
             aSection().withSubsections({
               1: aSubSection().withLines([
-                aLine().withTexts([aTextWithSteamPressureIdentifier().properties]).properties,
-                aLineWithSteamPressureIdentifierAndValue().properties,
+                aLine().withTexts([aTextWithVaporPressureIdentifier().properties]).properties,
+                aLineWithVaporPressureIdentifierAndValue().properties,
               ]).properties,
             }).properties,
           ).properties,
-          expected: { pressure: STEAM_PRESSURE_VALUE, temperature: STEAM_PRESSURE_TEMPERATURE, metaData },
+          expected: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
         },
       ],
     ])('$message', ({ fdsTree, expected }) => {
-      expect(SteamPressureService.getSteamPressure(fdsTree)).toEqual(expected);
+      expect(VaporPressureService.getVaporPressure(fdsTree)).toEqual(expected);
     });
   });
 });

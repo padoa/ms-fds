@@ -28,8 +28,8 @@ import {
   aTextWithPhysicalStateIdentifier,
   aTextWithPhysicalStateValue,
   aTextWithProducerIdentifier,
-  aTextWithSteamPressureIdentifierWithTemperature,
-  aTextWithSteamPressureValue,
+  aTextWithVaporPressureIdentifierWithTemperature,
+  aTextWithVaporPressureValue,
 } from '@topics/engine/__fixtures__/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -124,8 +124,8 @@ export const aLineWithPhysicalStateIdentifierAndValue = (): LineBuilder =>
   aLine().withTexts([aTextWithPhysicalStateIdentifier().properties, aTextWithPhysicalStateValue().properties]);
 
 //----------------------------------------------------------------------------------------------
-//--------------------------------------- STEAM_PRESSURE ---------------------------------------
+//--------------------------------------- VAPOR_PRESSURE ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aLineWithSteamPressureIdentifierAndValue = (): LineBuilder =>
-  aLine().withTexts([aTextWithSteamPressureIdentifierWithTemperature().properties, aTextWithSteamPressureValue().properties]);
+export const aLineWithVaporPressureIdentifierAndValue = (): LineBuilder =>
+  aLine().withTexts([aTextWithVaporPressureIdentifierWithTemperature().properties, aTextWithVaporPressureValue().properties]);

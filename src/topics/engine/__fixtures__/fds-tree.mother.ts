@@ -1,12 +1,12 @@
 import { FdsTreeBuilder } from '@topics/engine/__fixtures__/fds-tree.builder.js';
 import {
   aLineWithCASAndCENumberIn2Texts,
-  aLineWithPhysicalStateIdentifierAndValue,
   aLineWithProducerIdentifierOnlyWithColon,
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
-  aLineWithSteamPressureIdentifierAndValue,
+  aLineWithVaporPressureIdentifierAndValue,
   aLineWithThreeDangersAndTheirDetails,
+  aLineWithPhysicalStateIdentifierAndValue,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWithContent } from '@topics/engine/__fixtures__/sub-section.mother.js';
@@ -45,7 +45,10 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
     )
     .withSection9(
       aSection().withSubsections({
-        1: aSubSection().withLines([aLineWithPhysicalStateIdentifierAndValue().properties, aLineWithSteamPressureIdentifierAndValue().properties])
-          .properties,
+        1: aSubSection().withLines([
+          aLineWithPhysicalStateIdentifierAndValue().properties,
+          aLineWithVaporPressureIdentifierAndValue().properties,
+          aLineWithVaporPressureIdentifierAndValue().properties,
+        ]).properties,
       }).properties,
     );
