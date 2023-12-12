@@ -55,10 +55,10 @@ probes:
     period_seconds: 10
 
   startup:
-    initial_delay: 0
-    timeout: 2
-    failure_threshold: 1
-    period_seconds: 10
+    initial_delay: 30
+    timeout: 5
+    failure_threshold: 30
+    period_seconds: 1
 
 # -----------------------------------------------------------------------------
 # Service
