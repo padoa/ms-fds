@@ -17,11 +17,11 @@ image:
 
 resources:
   limits:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 500m
+    memory: 1000Mi
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 500m
+    memory: 1000Mi
 
 annotations: {}
 
@@ -110,6 +110,17 @@ startMiddlewares:
 
 endMiddlewares:
   - onDemand
+
+# -----------------------------------------------------------------------------
+# Variables
+# -----------------------------------------------------------------------------
+
+variables:
+  PDF_TOOLS_URL: '{{ printf "http://pdf-tools.%s:7272" .Values.global.clusterEndpoint }}'
+  PDF_TOOLS_LOAD_BALANCER: ''
+
+vault_secrets:
+  TRN_PDFNET_KEY: common/medical/pdftron#licenseKeyWebviewerFront
 
 # -----------------------------------------------------------------------------
 # Istio

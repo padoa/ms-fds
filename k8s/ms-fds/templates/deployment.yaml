@@ -51,9 +51,7 @@ spec:
         - node
         - ./index.js
         env:
-        - name: EXAMPLE
-          value: TODO # TODO: set env variables
-
+        {{- include "ms-fds.env" . | nindent 8 }}
         securityContext: {{- toYaml .Values.securityContext | nindent 10 }}
         image: "{{ .Values.image.repository }}:{{ tpl .Values.image.tag . }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
