@@ -23,6 +23,8 @@ export class BoilingPointRulesService {
       if (!boilingPointInLine) continue;
 
       const boilingPoint = lineText.match(this.BOILING_POINT_VALUE_REGEX) || [];
+
+      // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
       if (_.isEmpty(boilingPoint)) continue;
 
       return { value: _.first(boilingPoint), metaData: { startBox, endBox } };

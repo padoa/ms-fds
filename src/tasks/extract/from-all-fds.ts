@@ -94,7 +94,7 @@ const saveInCsv = async (
     dangers.map((danger) => danger.code).join(','),
     substances.map((substance) => `cas: ${substance.casNumber}, ce: ${substance.ceNumber}`).join(','),
     physicalState?.value,
-    `${vaporPressure?.pressure} ${vaporPressure?.temperature}`,
+    `${vaporPressure ? `${vaporPressure.pressure} à ${vaporPressure.temperature}` : null}`,
     boilingPoint?.value,
     fromImage,
     // /!\ If you add a line here please add it in the header above as well /!\
