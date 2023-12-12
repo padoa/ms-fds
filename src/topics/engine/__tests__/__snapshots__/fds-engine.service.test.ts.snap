@@ -3,6 +3,17 @@
 exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a pdf Fds file 1`] = `
 {
   "dataExtracted": {
+    "boilingPoint": {
+      "metaData": {
+        "endBox": undefined,
+        "startBox": {
+          "pageNumber": 7,
+          "xPositionProportion": 0.12333369167920878,
+          "yPositionProportion": 0.33943367540858993,
+        },
+      },
+      "value": "> 160°c",
+    },
     "dangers": [
       {
         "code": "h304",
@@ -133,6 +144,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
 exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from an image Fds file 1`] = `
 {
   "dataExtracted": {
+    "boilingPoint": null,
     "dangers": [
       {
         "code": "h314",
