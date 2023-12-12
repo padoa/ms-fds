@@ -5,7 +5,7 @@ import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/
 
 describe('RevisionDateRulesService tests', () => {
   describe('Regexps tests', () => {
-    describe('NumberDateRegex tests', () => {
+    describe('NUMBER_DATE_REGEX', () => {
       it.each<[string, boolean]>([
         ['15-03-1995', true],
         ['14 / 06 / 2022', true],
@@ -32,11 +32,11 @@ describe('RevisionDateRulesService tests', () => {
         // Invalid followed by minutes
         // ['15-03-1995:50', false],   // FIXME: correct this in order to fail in JS func => matches 15-03-19
       ])('"%s" input should return %s', (dateString, expected) => {
-        expect(new RegExp(RevisionDateRulesService.numberDateRegex).test(dateString)).toEqual(expected);
+        expect(new RegExp(RevisionDateRulesService.NUMBER_DATE_REGEX).test(dateString)).toEqual(expected);
       });
     });
 
-    describe('StringDateRegex tests', () => {
+    describe('STRING_DATE_REGEX', () => {
       it.each<[string, boolean]>([
         ['1 janvier 2022', true],
         ['1 décembre 2022', true],
@@ -68,11 +68,11 @@ describe('RevisionDateRulesService tests', () => {
         ['7date:97', false],
         ['11 informations toxicologiques 11', false],
       ])('"%s" input should return %s', (dateString, expected) => {
-        expect(new RegExp(RevisionDateRulesService.stringDateRegex).test(dateString)).toEqual(expected);
+        expect(new RegExp(RevisionDateRulesService.STRING_DATE_REGEX).test(dateString)).toEqual(expected);
       });
     });
 
-    describe('EnglishNumberDateRegex tests', () => {
+    describe('ENGLISH_NUMBER_DATE_REGEX', () => {
       it.each<[string, boolean]>([
         ['1995-03-15', true],
         ['1995 - 03 - 15', true],
@@ -96,7 +96,7 @@ describe('RevisionDateRulesService tests', () => {
         // ['1899.04.28', false], // FIXME: correct this in order to fail in JS func => matches 99.04.28
         // ['2100.04.28', false], // FIXME: correct this in order to fail in JS func => 00.04.28
       ])('"%s" input should return %s', (dateString, expected) => {
-        expect(new RegExp(RevisionDateRulesService.englishNumberDateRegex).test(dateString)).toEqual(expected);
+        expect(new RegExp(RevisionDateRulesService.ENGLISH_NUMBER_DATE_REGEX).test(dateString)).toEqual(expected);
       });
     });
   });

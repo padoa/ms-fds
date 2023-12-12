@@ -35,7 +35,7 @@ describe('SubstancesRulesService tests', () => {
         [{ input: '12-34', expected: false }],
         [{ input: '12-34-', expected: false }],
       ])('$input payload should return $expected', ({ input, expected }) => {
-        expect(new RegExp(SubstancesRulesService.CASNumberRegex).test(input)).toEqual(expected);
+        expect(new RegExp(SubstancesRulesService.CAS_NUMBER_REGEX).test(input)).toEqual(expected);
       });
     });
 
@@ -56,7 +56,7 @@ describe('SubstancesRulesService tests', () => {
         [{ input: '123-abc-456', expected: false }],
         [{ input: '123-456-', expected: false }],
       ])('$input payload should return $expected', ({ input, expected }) => {
-        expect(new RegExp(SubstancesRulesService.CENumberRegex).test(input)).toEqual(expected);
+        expect(new RegExp(SubstancesRulesService.CE_NUMBER_REGEX).test(input)).toEqual(expected);
       });
     });
   });

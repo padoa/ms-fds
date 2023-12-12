@@ -3,7 +3,7 @@ import _ from 'lodash';
 import type { IFdsTree, ILine, IText, IXCounts } from '@topics/engine/model/fds.model.js';
 
 export class FdsTreeCleanerService {
-  public static readonly XHighestAlignmentValue: number = 10;
+  public static readonly X_HIGHEST_ALIGNMENT_VALUE: number = 10;
 
   public static cleanFdsTree(fdsTree: IFdsTree, { xCounts, fromImage }: { xCounts: IXCounts; fromImage: boolean }): IFdsTree {
     const joinWithSpace = fromImage;
@@ -42,7 +42,7 @@ export class FdsTreeCleanerService {
   }
 
   public static cleanLine(line: ILine, { xCounts, joinWithSpace }: { xCounts: IXCounts; joinWithSpace: boolean }): ILine {
-    const valueToPass = this.computeXHighestAlignmentValue(this.XHighestAlignmentValue, xCounts);
+    const valueToPass = this.computeXHighestAlignmentValue(this.X_HIGHEST_ALIGNMENT_VALUE, xCounts);
     return {
       ...line,
       texts: _.reduce(
