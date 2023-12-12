@@ -38,6 +38,7 @@ describe('VaporPressureService tests', () => {
         { input: '> 5 hpa', expected: true },
         { input: '<3bar', expected: true },
         { input: '>= 4 kpa', expected: true },
+        { input: '>= 4 atm', expected: true },
         { input: '<= 5.2 bar', expected: true },
         { input: '<= 1 . 3 kpa', expected: true },
         { input: '≤ 52 pa ', expected: true },

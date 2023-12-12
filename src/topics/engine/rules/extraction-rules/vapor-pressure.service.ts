@@ -4,10 +4,9 @@ import type { IFdsTree, IExtractedVaporPressure, ILine } from '@topics/engine/mo
 
 export class VaporPressureService {
   private static readonly SPACE_REGEX = '\\s*';
-  private static readonly ORDER_OPERATORS_REGEX = '(<|>|<=|>=|≤|≥|supérieur[e] [à]|inférieur[e] [à])';
-  private static readonly DECIMAL_REGEX = `((\\.|,)${this.SPACE_REGEX}\\d+${this.SPACE_REGEX})?`;
-  private static readonly NUMBER_WITH_DECIMAL_REGEX = `\\d+${this.SPACE_REGEX}${this.DECIMAL_REGEX}`;
-  private static readonly PRESSURE_UNITS_REGEX = '(kpa|hpa|pa|mbar|bar)';
+  private static readonly ORDER_OPERATORS_REGEX = `(<|>|<=|>=|≤|≥|supérieur[e]${this.SPACE_REGEX}[à]|inférieur[e]${this.SPACE_REGEX}[à])`;
+  private static readonly NUMBER_WITH_DECIMAL_REGEX = `\\d+${this.SPACE_REGEX}((\\.|,)${this.SPACE_REGEX}\\d+${this.SPACE_REGEX})?`;
+  private static readonly PRESSURE_UNITS_REGEX = '(kpa|hpa|pa|mbar|bar|atm)';
 
   public static readonly VAPOR_PRESSURE_IDENTIFIER_REGEX = `pression${this.SPACE_REGEX}(de)?${this.SPACE_REGEX}vapeur`;
   public static readonly VAPOR_PRESSURE_VALUE_REGEX = `(${this.ORDER_OPERATORS_REGEX}${this.SPACE_REGEX})?${this.NUMBER_WITH_DECIMAL_REGEX}${this.PRESSURE_UNITS_REGEX}`;
