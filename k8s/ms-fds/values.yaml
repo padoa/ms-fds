@@ -68,7 +68,7 @@ service:
   type: ClusterIP
   port:
     name: http
-    number: 12377 # TODO: change port
+    number: 14512
     protocol: TCP
 
 # -----------------------------------------------------------------------------
