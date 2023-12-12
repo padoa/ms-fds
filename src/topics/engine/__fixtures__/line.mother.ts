@@ -30,6 +30,8 @@ import {
   aTextWithProducerIdentifier,
   aTextWithVaporPressureIdentifierWithTemperature,
   aTextWithVaporPressureValue,
+  aTextWithBoilingPointIdentifier,
+  aTextWithBoilingPointValue,
 } from '@topics/engine/__fixtures__/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -129,3 +131,10 @@ export const aLineWithPhysicalStateIdentifierAndValue = (): LineBuilder =>
 
 export const aLineWithVaporPressureIdentifierAndValue = (): LineBuilder =>
   aLine().withTexts([aTextWithVaporPressureIdentifierWithTemperature().properties, aTextWithVaporPressureValue().properties]);
+
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- BOILING_POINT ----------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aLineWithBoilingPointIdentifierAndValue = (): LineBuilder =>
+  aLine().withTexts([aTextWithBoilingPointIdentifier().properties, aTextWithBoilingPointValue().properties]);

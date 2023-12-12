@@ -53,3 +53,6 @@ export const VAPOR_PRESSURE_TEMPERATURE = '50°c';
 export const VAPOR_PRESSURE_IDENTIFIER = 'pression de vapeur';
 export const VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE = `${VAPOR_PRESSURE_IDENTIFIER} (${VAPOR_PRESSURE_TEMPERATURE})`;
 export const VAPOR_PRESSURE_VALUE = '3 bar';
+
+export const BOILING_POINT_IDENTIFIER = 'ébullition';
+export const BOILING_POINT_VALUE = '120 °c';
