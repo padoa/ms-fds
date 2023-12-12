@@ -102,6 +102,8 @@ export type IExtractedPhysicalState = { value: string; metaData: IMetaData };
 
 export type IExtractedVaporPressure = { pressure?: string; temperature?: string; metaData: IMetaData };
 
+export type IExtractedBoilingPoint = { value: string; metaData: IMetaData };
+
 export type IExtractedData = {
   date: IExtractedDate;
   product: IExtractedProduct;
@@ -110,4 +112,5 @@ export type IExtractedData = {
   substances: IExtractedSubstance[];
   physicalState: IExtractedPhysicalState;
   vaporPressure: IExtractedVaporPressure;
+  boilingPoint: IExtractedBoilingPoint;
 };

@@ -7,6 +7,7 @@ import {
   aLineWithVaporPressureIdentifierAndValue,
   aLineWithThreeDangersAndTheirDetails,
   aLineWithPhysicalStateIdentifierAndValue,
+  aLineWithBoilingPointIdentifierAndValue,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWithContent } from '@topics/engine/__fixtures__/sub-section.mother.js';
@@ -48,7 +49,7 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
         1: aSubSection().withLines([
           aLineWithPhysicalStateIdentifierAndValue().properties,
           aLineWithVaporPressureIdentifierAndValue().properties,
-          aLineWithVaporPressureIdentifierAndValue().properties,
+          aLineWithBoilingPointIdentifierAndValue().properties,
         ]).properties,
       }).properties,
     );

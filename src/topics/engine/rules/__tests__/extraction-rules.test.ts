@@ -21,6 +21,8 @@ import {
   VAPOR_PRESSURE_VALUE,
   PHYSICAL_STATE_IDENTIFIER,
   VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
+  BOILING_POINT_IDENTIFIER,
+  BOILING_POINT_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
@@ -45,6 +47,8 @@ describe('ExtractionRulesService tests', () => {
       ${PHYSICAL_STATE_VALUE}
       ${VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE}
       ${VAPOR_PRESSURE_VALUE}
+      ${BOILING_POINT_IDENTIFIER}
+      ${BOILING_POINT_VALUE}
     `;
 
       const expected: IExtractedData = {
@@ -59,6 +63,7 @@ describe('ExtractionRulesService tests', () => {
         substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
         physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
+        boilingPoint: { value: BOILING_POINT_VALUE, metaData },
       };
 
       await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(
