@@ -92,10 +92,13 @@ export type IExtractedProducer = { name: string; metaData: IMetaData };
 
 export type IExtractedDanger = { code: string; metaData: IMetaData };
 
+export type IConcentration = string;
+
 export type IExtractedSubstance = {
   casNumber: string;
   ceNumber: string;
   metaData: IMetaData;
+  concentration?: IConcentration;
 };
 
 export type IExtractedPhysicalState = { value: string; metaData: IMetaData };

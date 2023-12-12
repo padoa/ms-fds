@@ -3,6 +3,7 @@ import { PositionBuilder } from '@topics/engine/__fixtures__/position.builder.js
 
 export const aPosition = (): PositionBuilder => new PositionBuilder();
 
+export const aPositionWithXIncremented = (): PositionBuilder => buildBoxWithPositionIncrementedTimes(1, 0);
 export const aPositionWithYIncremented = (): PositionBuilder => buildBoxWithPositionIncrementedTimes(0, 1);
 export const aPositionWithYIncrementedTwice = (): PositionBuilder => buildBoxWithPositionIncrementedTimes(0, 2);
 

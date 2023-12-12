@@ -46,6 +46,8 @@ export const CAS_NUMBER_TEXT = `cas : ${CAS_NUMBER}`;
 export const CE_NUMBER = '265-155-0';
 export const CE_NUMBER_TEXT = `ce : ${CE_NUMBER}`;
 
+export const CONCENTRATION_VALUE = '>30 - <60';
+
 export const PHYSICAL_STATE_IDENTIFIER = 'état physique';
 export const PHYSICAL_STATE_VALUE = 'liquide';
 
