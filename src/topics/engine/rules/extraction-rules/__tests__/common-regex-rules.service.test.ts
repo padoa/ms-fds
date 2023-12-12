@@ -1,19 +1,22 @@
 import { describe, expect, it } from 'vitest';
+import _ from 'lodash';
 
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 
 describe('CommonRegexRulesService tests', () => {
   describe('SPACE_REGEX', () => {
-    it.each<{ input: string; expected: boolean }>([
-      { input: '', expected: true },
-      { input: ' ', expected: true },
-      { input: ' \t ', expected: true },
-      { input: '\n\n', expected: true },
-      { input: ' \t\n\r ', expected: true },
-      { input: '  ', expected: true },
-      { input: ' Hello', expected: true },
+    it.each<{ input: string; expected: string }>([
+      { input: '', expected: '' },
+      { input: ' ', expected: ' ' },
+      { input: ' \t ', expected: ' \t ' },
+      { input: '\n\n', expected: '\n\n' },
+      { input: ' \t\n\r ', expected: ' \t\n\r ' },
+      { input: '  ', expected: '  ' },
+      { input: ' Hello', expected: ' ' },
+      { input: 'abc', expected: '' },
+      { input: ' abc ', expected: ' ' },
     ])('should return $expected with input $input', ({ input, expected }) => {
-      expect(new RegExp(CommonRegexRulesService.SPACE_REGEX).test(input)).toEqual(expected);
+      expect(_.first(input.match(CommonRegexRulesService.SPACE_REGEX))).toEqual(expected);
     });
   });
 
