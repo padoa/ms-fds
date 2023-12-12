@@ -83,7 +83,7 @@ export class RevisionDateRulesService {
 
   // TODO: refacto these blocs to avoid code duplication
   private static parseDateFromNumberRegex(date: string): Date | null {
-    const regexMatches = date.match(new RegExp(this.NUMBER_DATE_REGEX)); // TODO: refacto to not always recreate Regexp
+    const regexMatches = date.match(new RegExp(this.NUMBER_DATE_REGEX));
     if (!regexMatches) return null;
     // eslint-disable-next-line prefer-const
     let [, , day, , month, , year] = regexMatches;

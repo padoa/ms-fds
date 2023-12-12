@@ -91,7 +91,7 @@ describe('FdsTreeCleanerService Tests', () => {
     };
 
     beforeEach(() => {
-      XHighestAlignmentValueSpy = vi.spyOn(FdsTreeCleanerService, 'XHighestAlignmentValue', 'get').mockImplementationOnce(() => 1);
+      XHighestAlignmentValueSpy = vi.spyOn(FdsTreeCleanerService, 'X_HIGHEST_ALIGNMENT_VALUE', 'get').mockImplementationOnce(() => 1);
     });
 
     afterEach(() => {
