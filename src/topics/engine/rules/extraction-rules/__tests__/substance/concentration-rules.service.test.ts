@@ -86,7 +86,7 @@ describe('ConcentrationRulesService tests', () => {
           expected: [],
         },
         {
-          message: 'should not return anything if there no text has concentration',
+          message: 'should not return anything if no text has concentrations',
           lines: [[aText().properties], []],
           expected: [],
         },
@@ -101,7 +101,7 @@ describe('ConcentrationRulesService tests', () => {
           expected: [CONCENTRATION_VALUE],
         },
         {
-          message: 'should return multiple concentration if multiple line have concentration even if it is the same',
+          message: 'should return multiple concentration if multiple lines have a concentration even if it is the same',
           lines: [[aTextWithConcentration().properties], [aTextWithConcentration().properties]],
           expected: [CONCENTRATION_VALUE, CONCENTRATION_VALUE],
         },

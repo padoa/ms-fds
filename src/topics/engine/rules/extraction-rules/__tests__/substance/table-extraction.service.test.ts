@@ -19,7 +19,7 @@ describe('TableExtractionService tests', () => {
           expected: [aStroke().properties],
         },
         {
-          message: 'should return all the strokes if there are not on the same x position',
+          message: 'should return all the strokes if they are not on the same x position',
           strokes: [aStroke().properties, aStroke().withStartBox(aPositionWithXIncremented().properties).properties],
           expected: [aStroke().properties, aStroke().withStartBox(aPositionWithXIncremented().properties).properties],
         },
@@ -73,7 +73,7 @@ describe('TableExtractionService tests', () => {
           expected: [aVerticalStroke().properties],
         },
         {
-          message: 'should deduplicate strokes if there are too close',
+          message: 'should deduplicate strokes if they are too close',
           strokes: [
             aVerticalStroke().properties,
             aVerticalStroke().withStartBox(
@@ -83,7 +83,7 @@ describe('TableExtractionService tests', () => {
           expected: [aVerticalStroke().properties],
         },
         {
-          message: 'should not deduplicate strokes if there far enough',
+          message: 'should not deduplicate strokes if they are far enough',
           strokes: [
             aVerticalStroke().properties,
             aVerticalStroke().withStartBox(

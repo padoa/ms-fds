@@ -23,11 +23,7 @@ export class TableExtractionService {
   }
 
   public static mergeStrokesVerticallyAligned(strokes: IStroke[]): IStroke[] {
-    const strokesGroupByX = _.groupBy(
-      strokes,
-      // ({ startBox, endBox }) => `${startBox.pageNumber};${startBox.xPositionProportion};${endBox.xPositionProportion}`,
-      ({ startBox }) => `${startBox.pageNumber};${startBox.xPositionProportion}`, // TODO ?
-    );
+    const strokesGroupByX = _.groupBy(strokes, ({ startBox }) => `${startBox.pageNumber};${startBox.xPositionProportion}`);
 
     return _(strokesGroupByX)
       .map((_strokes) => {
@@ -68,7 +64,6 @@ export class TableExtractionService {
   }
 
   public static areVerticalStrokesClose(strokeA: IStroke, strokeB: IStroke): boolean {
-    if (!strokeA || !strokeB) return false;
     return Math.abs(strokeA.startBox.xPositionProportion - strokeB.startBox.xPositionProportion) < this.CLOSE_VERTICAL_STROKE;
   }
 

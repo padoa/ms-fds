@@ -1,9 +1,13 @@
 import { describe, expect, it } from 'vitest';
 
-import { CAS_NUMBER, CE_NUMBER } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aLineWithCASAndCENumberIn2Texts, aLineWithCENumber, aLineWithCASNumber, aLine } from '@topics/engine/__fixtures__/line.mother.js';
 import type { IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
 import { CasAndCeRulesService } from '@topics/engine/rules/extraction-rules/substance/cas-and-ce-rules.service.js';
+import {
+  aSubstanceWithCasAndCeNumber,
+  aSubstanceWithOnlyACasNumber,
+  aSubstanceWithOnlyACeNumber,
+} from '@topics/engine/__fixtures__/substance.mother.js';
 
 describe('CasAndCeRulesService tests', () => {
   describe('Regexps tests', () => {
@@ -98,27 +102,37 @@ describe('CasAndCeRulesService tests', () => {
       {
         message: 'it should return cas and ce number when it is contained in 2 texts',
         lines: [aLineWithCASAndCENumberIn2Texts().properties],
-        expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+        expected: [aSubstanceWithCasAndCeNumber().properties],
       },
       {
         message: 'it should return ce number even when cas number is missing',
         lines: [aLineWithCENumber().properties],
-        expected: [{ casNumber: undefined, ceNumber: CE_NUMBER }],
+        expected: [aSubstanceWithOnlyACeNumber().properties],
       },
       {
         message: 'it should return ce number even when it is contained in 2 lines',
         lines: [aLineWithCASNumber().properties, aLineWithCENumber().properties],
-        expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+        expected: [aSubstanceWithCasAndCeNumber().properties],
       },
       {
         message: 'it should return cas number even when it is contained in 2 lines',
         lines: [aLineWithCENumber().properties, aLineWithCASNumber().properties],
-        expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER }],
+        expected: [aSubstanceWithCasAndCeNumber().properties],
+      },
+      {
+        message: 'it should not merge cas number and ce number if there are not on consecutive lines',
+        lines: [aLineWithCENumber().properties, aLine().properties, aLineWithCASNumber().properties],
+        expected: [aSubstanceWithOnlyACeNumber().properties, aSubstanceWithOnlyACasNumber().properties],
+      },
+      {
+        message: 'it should not merge cas number and a line with both cas and ce number',
+        lines: [aLineWithCASAndCENumberIn2Texts().properties, aLineWithCASNumber().properties],
+        expected: [aSubstanceWithCasAndCeNumber().properties, aSubstanceWithOnlyACasNumber().properties],
       },
       {
         message: 'it should return deduplicated substances',
         lines: [aLineWithCASNumber().properties, aLineWithCASNumber().properties],
-        expected: [{ casNumber: CAS_NUMBER, ceNumber: undefined }],
+        expected: [aSubstanceWithOnlyACasNumber().properties],
       },
     ])('$message', ({ lines, expected }) => {
       expect(CasAndCeRulesService.getSubstancesCasAndCe(lines)).toEqual(expected);

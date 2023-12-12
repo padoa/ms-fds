@@ -9,8 +9,6 @@ import {
   H_DANGER,
   P_DANGER,
   MULTIPLE_P_DANGER,
-  CAS_NUMBER,
-  CE_NUMBER,
   PRODUCER_IDENTIFIER_WITH_COLON,
   CAS_NUMBER_TEXT,
   CE_NUMBER_TEXT,
@@ -27,6 +25,7 @@ import {
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
+import { aSubstance } from '@topics/engine/__fixtures__/substance.mother.js';
 
 describe('ExtractionRulesService tests', () => {
   const metaData: IMetaData = { startBox: aPosition().properties };
@@ -62,7 +61,7 @@ describe('ExtractionRulesService tests', () => {
           { code: P_DANGER, metaData },
           { code: MULTIPLE_P_DANGER, metaData },
         ],
-        substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, concentration: CONCENTRATION_VALUE }],
+        substances: [aSubstance().properties],
         physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
         boilingPoint: { value: BOILING_POINT_VALUE, metaData },
