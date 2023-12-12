@@ -20,19 +20,6 @@ describe('CommonRegexRulesService tests', () => {
     });
   });
 
-  describe('NUMBER_WITH_OPTIONAL_DECIMAL_REGEX', () => {
-    it.each<{ input: string; expected: boolean }>([
-      { input: '123', expected: true },
-      { input: '12.345', expected: true },
-      { input: '67,89', expected: true },
-      { input: '45 . 678 ', expected: true },
-      { input: ' 789.123 ', expected: true },
-      { input: 'abc', expected: false },
-    ])('should return $expected with input $input', ({ input, expected }) => {
-      expect(new RegExp(CommonRegexRulesService.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX).test(input)).toEqual(expected);
-    });
-  });
-
   describe('ORDER_OPERATORS_REGEX', () => {
     it.each<{ input: string; expected: boolean }>([
       { input: '<', expected: true },
@@ -41,6 +28,8 @@ describe('CommonRegexRulesService tests', () => {
       { input: '>=', expected: true },
       { input: '≤', expected: true },
       { input: '≥', expected: true },
+      { input: '~', expected: true },
+      { input: '≈', expected: true },
       { input: 'supérieur', expected: true },
       { input: 'supérieure', expected: true },
       { input: 'superieur', expected: true },

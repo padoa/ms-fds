@@ -5,10 +5,11 @@ import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/c
 
 export class VaporPressureService {
   private static readonly PRESSURE_UNITS_REGEX = '(kpa|hpa|pa|mbar|bar|atm)';
+  private static readonly NUMBER_WITH_OPTIONAL_DECIMAL_REGEX = `\\d+${CommonRegexRulesService.SPACE_REGEX}((\\.|,)${CommonRegexRulesService.SPACE_REGEX}\\d+${CommonRegexRulesService.SPACE_REGEX})?`;
 
   public static readonly VAPOR_PRESSURE_IDENTIFIER_REGEX = `pression${CommonRegexRulesService.SPACE_REGEX}(de)?${CommonRegexRulesService.SPACE_REGEX}vapeur`;
-  public static readonly VAPOR_PRESSURE_VALUE_REGEX = `(${CommonRegexRulesService.ORDER_OPERATORS_REGEX}${CommonRegexRulesService.SPACE_REGEX})?${CommonRegexRulesService.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX}${this.PRESSURE_UNITS_REGEX}`;
-  public static readonly TEMPERATURE_VALUE_REGEX = `${CommonRegexRulesService.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX}${CommonRegexRulesService.TEMPERATURE_UNITS_REGEX}`;
+  public static readonly VAPOR_PRESSURE_VALUE_REGEX = `(${CommonRegexRulesService.ORDER_OPERATORS_REGEX}${CommonRegexRulesService.SPACE_REGEX})?${this.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX}${this.PRESSURE_UNITS_REGEX}`;
+  public static readonly TEMPERATURE_VALUE_REGEX = `${this.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX}${CommonRegexRulesService.TEMPERATURE_UNITS_REGEX}`;
 
   public static getVaporPressure(fdsTree: IFdsTree): IExtractedVaporPressure | null {
     const linesToSearchIn = fdsTree[9]?.subsections?.[1]?.lines;

@@ -4,8 +4,10 @@ import type { IExtractedBoilingPoint, IFdsTree, ILine } from '@topics/engine/mod
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 
 export class BoilingPointRulesService {
+  private static readonly OPTIONAL_NEGATIVE_NUMBER_WITH_OPTIONAL_DECIMAL_REGEX = `(-${CommonRegexRulesService.SPACE_REGEX})?\\d+${CommonRegexRulesService.SPACE_REGEX}((\\.|,)${CommonRegexRulesService.SPACE_REGEX}\\d+${CommonRegexRulesService.SPACE_REGEX})?`;
+
   public static readonly BOILING_POINT_IDENTIFIER_REGEX = `[eé]bullition`;
-  public static readonly BOILING_POINT_VALUE_REGEX = `(${CommonRegexRulesService.ORDER_OPERATORS_REGEX}${CommonRegexRulesService.SPACE_REGEX})?${CommonRegexRulesService.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX}(-${CommonRegexRulesService.SPACE_REGEX}${CommonRegexRulesService.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX})?${CommonRegexRulesService.TEMPERATURE_UNITS_REGEX}`;
+  public static readonly BOILING_POINT_VALUE_REGEX = `(${CommonRegexRulesService.ORDER_OPERATORS_REGEX}${CommonRegexRulesService.SPACE_REGEX})?${this.OPTIONAL_NEGATIVE_NUMBER_WITH_OPTIONAL_DECIMAL_REGEX}(-${CommonRegexRulesService.SPACE_REGEX}${this.OPTIONAL_NEGATIVE_NUMBER_WITH_OPTIONAL_DECIMAL_REGEX})?${CommonRegexRulesService.TEMPERATURE_UNITS_REGEX}`;
 
   public static getBoilingPoint(fdsTree: IFdsTree): IExtractedBoilingPoint | null {
     const linesToSearchIn = fdsTree[9]?.subsections?.[1]?.lines;

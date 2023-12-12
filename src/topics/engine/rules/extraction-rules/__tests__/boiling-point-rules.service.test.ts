@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import _ from 'lodash';
 
 import { BoilingPointRulesService } from '@topics/engine/rules/extraction-rules/boiling-point-rules.service.js';
 import { aFdsTree, anEmptyFdsTreeWithAllSections, aFdsTreeWithAllSectionsWithoutUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
@@ -24,28 +25,34 @@ describe('BoilingPointRulesService tests', () => {
     });
 
     describe('BOILING_POINT_VALUE_REGEX', () => {
-      it.each<{ input: string; expected: boolean }>([
-        { input: '150 °c', expected: true },
-        { input: '12.01 °f', expected: true },
-        { input: '420,42565 °k', expected: true },
-        { input: '> 105-250°c', expected: true },
-        { input: '<20°c', expected: true },
-        { input: '<= 20 ° c', expected: true },
-        { input: '>= 45° c', expected: true },
-        { input: '≤ 1200 °c', expected: true },
-        { input: '≥ 1242,1°c', expected: true },
-        { input: '165-250°c', expected: true },
-        { input: '123,45 - 155 °c', expected: true },
-        { input: '123 - 155.043 °c', expected: true },
-        { input: '>123-155.043°c', expected: true },
-        { input: '120', expected: false },
-        { input: '°c', expected: false },
-        { input: '1 °', expected: false },
-        { input: '165 - °c', expected: false },
-        { input: '> °c', expected: false },
-        { input: '150 °xyz', expected: false },
+      it.each<{ input: string; expected: string }>([
+        { input: '150 °c', expected: '150 °c' },
+        { input: '12.01 °f', expected: '12.01 °f' },
+        { input: '420,42565 °k', expected: '420,42565 °k' },
+        { input: '> 105-250°c', expected: '> 105-250°c' },
+        { input: '<20°c', expected: '<20°c' },
+        { input: '<= 20 ° c', expected: '<= 20 ° c' },
+        { input: '>= 45° c', expected: '>= 45° c' },
+        { input: '≤ 1200 °c', expected: '≤ 1200 °c' },
+        { input: '≥ 1242,1°c', expected: '≥ 1242,1°c' },
+        { input: '~ 1242,1°c', expected: '~ 1242,1°c' },
+        { input: '≈ 1242,1°c', expected: '≈ 1242,1°c' },
+        { input: '165-250°c', expected: '165-250°c' },
+        { input: '123,45 - 155 °c', expected: '123,45 - 155 °c' },
+        { input: '123 - 155.043 °c', expected: '123 - 155.043 °c' },
+        { input: '>123-155.043°c', expected: '>123-155.043°c' },
+        { input: '>-123,92--155.043°c', expected: '>-123,92--155.043°c' },
+        { input: '- 123,92 - -155.043°c', expected: '- 123,92 - -155.043°c' },
+        { input: '123,92 -155.043°c', expected: '123,92 -155.043°c' },
+        { input: '120', expected: undefined },
+        { input: '°c', expected: undefined },
+        { input: '1 °', expected: undefined },
+        { input: '165 - °c', expected: undefined },
+        { input: '> °c', expected: undefined },
+        { input: '150 °xyz', expected: undefined },
+        { input: '150 °xyz', expected: undefined },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(BoilingPointRulesService.BOILING_POINT_VALUE_REGEX).test(input)).toEqual(expected);
+        expect(_.first(input.match(BoilingPointRulesService.BOILING_POINT_VALUE_REGEX))).toEqual(expected);
       });
     });
   });
