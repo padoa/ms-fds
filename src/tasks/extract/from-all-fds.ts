@@ -59,7 +59,7 @@ const addColumnsToCsv = async (csvFile: string): Promise<void> => {
     'Substances',
     'État physique',
     'Pression de vapeur',
-    'Point d|ébullition',
+    "Point d'ébullition",
     'Image ?',
   ].join(';');
   return fs.writeFile(csvFile, `${headers}\n`);
