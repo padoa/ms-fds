@@ -1,5 +1,5 @@
 import type { IExtractedData, IFdsTree } from '@topics/engine/model/fds.model.js';
-import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
+import { PhysicalStateRulesService } from '@topics/engine/rules/extraction-rules/physical-state-rules.service.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
@@ -16,7 +16,7 @@ export class ExtractionRulesService {
       producer: ProducerRulesService.getProducer(fdsTreeCleaned),
       dangers: DangersRulesService.getDangers(fdsTreeCleaned),
       substances: SubstancesRulesService.getSubstances(fdsTreeCleaned),
-      physicalState: PhysicalPropertiesRulesService.getPhysicalState(fdsTreeCleaned),
+      physicalState: PhysicalStateRulesService.getPhysicalState(fdsTreeCleaned),
       vaporPressure: VaporPressureService.getVaporPressure(fdsTreeCleaned),
       boilingPoint: BoilingPointRulesService.getBoilingPoint(fdsTreeCleaned),
     };

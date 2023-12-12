@@ -11,10 +11,10 @@ import { aText } from '@topics/engine/__fixtures__/text.mother.js';
 import { aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import { PhysicalPropertiesRulesService } from '@topics/engine/rules/extraction-rules/physical-properties-rules.service.js';
+import { PhysicalStateRulesService } from '@topics/engine/rules/extraction-rules/physical-state-rules.service.js';
 import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 
-describe('Physical properties rules service tests', () => {
+describe('PhysicalStateRulesService tests', () => {
   describe('Regexps tests', () => {
     describe('PHYSICAL_STATE_IDENTIFIER_REGEX', () => {
       it.each<{ input: string; expected: boolean }>([
@@ -26,7 +26,7 @@ describe('Physical properties rules service tests', () => {
         { input: 'etat', expected: false },
         { input: 'aspec', expected: false },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(PhysicalPropertiesRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX).test(input)).toEqual(expected);
+        expect(new RegExp(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX).test(input)).toEqual(expected);
       });
     });
 
@@ -57,7 +57,7 @@ describe('Physical properties rules service tests', () => {
         { input: 'copeau', expected: false },
         { input: 'fluid', expected: false },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(PhysicalPropertiesRulesService.PHYSICAL_STATE_VALUES_REGEX).test(input)).toEqual(expected);
+        expect(new RegExp(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX).test(input)).toEqual(expected);
       });
     });
   });
@@ -106,7 +106,7 @@ describe('Physical properties rules service tests', () => {
         expected: PHYSICAL_STATE_VALUE,
       },
     ])('$message', ({ lines, expected }) => {
-      expect(PhysicalPropertiesRulesService.getPhysicalStateByText(lines)).toMatchObject(expected ? { value: expected } : expected);
+      expect(PhysicalStateRulesService.getPhysicalStateByText(lines)).toMatchObject(expected ? { value: expected } : expected);
     });
   });
 
@@ -129,7 +129,7 @@ describe('Physical properties rules service tests', () => {
         expected: PHYSICAL_STATE_VALUE,
       },
     ])('$message', ({ lines, expected }) => {
-      expect(PhysicalPropertiesRulesService.getPhysicalStateByValue(lines)).toMatchObject(expected ? { value: expected } : expected);
+      expect(PhysicalStateRulesService.getPhysicalStateByValue(lines)).toMatchObject(expected ? { value: expected } : expected);
     });
   });
 
@@ -162,7 +162,7 @@ describe('Physical properties rules service tests', () => {
         expected: 'solide',
       },
     ])('$message', ({ fdsTree, expected }) => {
-      expect(PhysicalPropertiesRulesService.getPhysicalState(fdsTree)).toMatchObject(expected ? { value: expected } : expected);
+      expect(PhysicalStateRulesService.getPhysicalState(fdsTree)).toMatchObject(expected ? { value: expected } : expected);
     });
   });
 });
