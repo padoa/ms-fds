@@ -17,6 +17,10 @@ import {
   H_DANGER_WITH_DETAILS,
   MULTIPLE_P_DANGER_WITH_DETAILS,
   PHYSICAL_STATE_VALUE,
+  VAPOR_PRESSURE_TEMPERATURE,
+  VAPOR_PRESSURE_VALUE,
+  PHYSICAL_STATE_IDENTIFIER,
+  VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
@@ -37,6 +41,10 @@ describe('ExtractionRulesService tests', () => {
       ${MULTIPLE_P_DANGER}
       ${CAS_NUMBER_TEXT}
       ${CE_NUMBER_TEXT}
+      ${PHYSICAL_STATE_IDENTIFIER}
+      ${PHYSICAL_STATE_VALUE}
+      ${VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE}
+      ${VAPOR_PRESSURE_VALUE}
     `;
 
       const expected: IExtractedData = {
@@ -50,6 +58,7 @@ describe('ExtractionRulesService tests', () => {
         ],
         substances: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
         physicalState: { value: PHYSICAL_STATE_VALUE, metaData },
+        vaporPressure: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
       };
 
       await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(

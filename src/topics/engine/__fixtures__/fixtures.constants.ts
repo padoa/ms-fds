@@ -48,3 +48,8 @@ export const CE_NUMBER_TEXT = `ce : ${CE_NUMBER}`;
 
 export const PHYSICAL_STATE_IDENTIFIER = 'état physique';
 export const PHYSICAL_STATE_VALUE = 'liquide';
+
+export const VAPOR_PRESSURE_TEMPERATURE = '50°c';
+export const VAPOR_PRESSURE_IDENTIFIER = 'pression de vapeur';
+export const VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE = `${VAPOR_PRESSURE_IDENTIFIER} (${VAPOR_PRESSURE_TEMPERATURE})`;
+export const VAPOR_PRESSURE_VALUE = '3 bar';

@@ -28,6 +28,8 @@ import {
   aTextWithPhysicalStateIdentifier,
   aTextWithPhysicalStateValue,
   aTextWithProducerIdentifier,
+  aTextWithVaporPressureIdentifierWithTemperature,
+  aTextWithVaporPressureValue,
 } from '@topics/engine/__fixtures__/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -65,7 +67,7 @@ export const aLineWithTwoTextsAndPositionYIncrementedTwice = (): LineBuilder =>
   ]);
 
 //----------------------------------------------------------------------------------------------
-//----------------------------------------- PRODUCT NAME ---------------------------------------
+//----------------------------------------- PRODUCT_NAME ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
 export const aLineWithProductIdentifierOnly = (): LineBuilder => aLine().withTexts([aTextWithProductNameIdentifier().properties]);
@@ -75,7 +77,7 @@ export const aLineWithProductIn2Texts = (): LineBuilder =>
   aLine().withTexts([aTextWithProductNameIdentifierWithColon().properties, aTextWithProductName().properties]);
 
 //----------------------------------------------------------------------------------------------
-//----------------------------------------- PRODUCER NAME --------------------------------------
+//----------------------------------------- PRODUCER_NAME --------------------------------------
 //----------------------------------------------------------------------------------------------
 
 export const aLineWithProducerIdentifierOnlyWithColon = (): LineBuilder => aLine().withTexts([aTextWithProducerIdentifierWithColon().properties]);
@@ -120,3 +122,10 @@ export const aLineWithPhysicalStateIdentifier = (): LineBuilder => aLine().withT
 export const aLineWithPhysicalStateValue = (): LineBuilder => aLine().withTexts([aTextWithPhysicalStateValue().properties]);
 export const aLineWithPhysicalStateIdentifierAndValue = (): LineBuilder =>
   aLine().withTexts([aTextWithPhysicalStateIdentifier().properties, aTextWithPhysicalStateValue().properties]);
+
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- VAPOR_PRESSURE ---------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aLineWithVaporPressureIdentifierAndValue = (): LineBuilder =>
+  aLine().withTexts([aTextWithVaporPressureIdentifierWithTemperature().properties, aTextWithVaporPressureValue().properties]);
