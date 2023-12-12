@@ -59,6 +59,7 @@ const addColumnsToCsv = async (csvFile: string): Promise<void> => {
     'Substances',
     'État physique',
     'Pression de vapeur',
+    'Température de la pression vapeur',
     "Point d'ébullition",
     'Image ?',
   ].join(';');
@@ -94,7 +95,8 @@ const saveInCsv = async (
     dangers.map((danger) => danger.code).join(','),
     substances.map((substance) => `cas: ${substance.casNumber}, ce: ${substance.ceNumber}`).join(','),
     physicalState?.value,
-    `${vaporPressure ? `${vaporPressure.pressure} à ${vaporPressure.temperature}` : null}`,
+    vaporPressure ? vaporPressure.pressure : null,
+    vaporPressure ? vaporPressure.temperature : null,
     boilingPoint?.value,
     fromImage,
     // /!\ If you add a line here please add it in the header above as well /!\

@@ -1,32 +1,22 @@
 import { describe, expect, it } from 'vitest';
+import _ from 'lodash';
 
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 
 describe('CommonRegexRulesService tests', () => {
   describe('SPACE_REGEX', () => {
-    it.each<{ input: string; expected: boolean }>([
-      { input: '', expected: true },
-      { input: ' ', expected: true },
-      { input: ' \t ', expected: true },
-      { input: '\n\n', expected: true },
-      { input: ' \t\n\r ', expected: true },
-      { input: '  ', expected: true },
-      { input: ' Hello', expected: true },
+    it.each<{ input: string; expected: string }>([
+      { input: '', expected: '' },
+      { input: ' ', expected: ' ' },
+      { input: ' \t ', expected: ' \t ' },
+      { input: '\n\n', expected: '\n\n' },
+      { input: ' \t\n\r ', expected: ' \t\n\r ' },
+      { input: '  ', expected: '  ' },
+      { input: ' Hello', expected: ' ' },
+      { input: 'abc', expected: '' },
+      { input: ' abc ', expected: ' ' },
     ])('should return $expected with input $input', ({ input, expected }) => {
-      expect(new RegExp(CommonRegexRulesService.SPACE_REGEX).test(input)).toEqual(expected);
-    });
-  });
-
-  describe('NUMBER_WITH_OPTIONAL_DECIMAL_REGEX', () => {
-    it.each<{ input: string; expected: boolean }>([
-      { input: '123', expected: true },
-      { input: '12.345', expected: true },
-      { input: '67,89', expected: true },
-      { input: '45 . 678 ', expected: true },
-      { input: ' 789.123 ', expected: true },
-      { input: 'abc', expected: false },
-    ])('should return $expected with input $input', ({ input, expected }) => {
-      expect(new RegExp(CommonRegexRulesService.NUMBER_WITH_OPTIONAL_DECIMAL_REGEX).test(input)).toEqual(expected);
+      expect(_.first(input.match(CommonRegexRulesService.SPACE_REGEX))).toEqual(expected);
     });
   });
 
@@ -38,6 +28,8 @@ describe('CommonRegexRulesService tests', () => {
       { input: '>=', expected: true },
       { input: '≤', expected: true },
       { input: '≥', expected: true },
+      { input: '~', expected: true },
+      { input: '≈', expected: true },
       { input: 'supérieur', expected: true },
       { input: 'supérieure', expected: true },
       { input: 'superieur', expected: true },
