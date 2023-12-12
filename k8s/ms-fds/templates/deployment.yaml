@@ -67,9 +67,8 @@ spec:
           failureThreshold: {{ .Values.probes.liveness.failure_threshold }}
           periodSeconds: {{ .Values.probes.liveness.period_seconds }}
           httpGet:
-            # TODO: set liveness path
             # BUG: istio fails to send headers, so we set it in query params
-            path: "/api/health-check?example=NULL"
+            path: "/health-check?example=NULL"
             port: {{ .Values.service.port.number  }}
             httpHeaders:
             - name: example
@@ -80,9 +79,8 @@ spec:
           failureThreshold: {{ .Values.probes.readiness.failure_threshold }}
           periodSeconds: {{ .Values.probes.readiness.period_seconds }}
           httpGet:
-            # TODO: set readiness path
             # BUG: istio fails to send headers, so we set it in query params
-            path: "/api/health-check?example=NULL"
+            path: "/health-check?example=NULL"
             port: {{ .Values.service.port.number  }}
             httpHeaders:
             - name: example
@@ -93,9 +91,8 @@ spec:
           failureThreshold: {{ .Values.probes.startup.failure_threshold }}
           periodSeconds: {{ .Values.probes.startup.period_seconds }}
           httpGet:
-            # TODO: set startup probe path
             # BUG: istio fails to send headers, so we set it in query params
-            path: "/api/health-check?example=NULL"
+            path: "/health-check?example=NULL"
             port: {{ .Values.service.port.number  }}
             httpHeaders:
             - name: example

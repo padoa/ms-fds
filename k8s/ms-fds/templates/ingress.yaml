@@ -24,7 +24,7 @@ spec:
   - host: {{ $frontend_domain }}
     http:
       paths:
-      - path: /fds
+      - path: /api/fds-engine
         pathType: "Prefix"
         backend:
           service:
