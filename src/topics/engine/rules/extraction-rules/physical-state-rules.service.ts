@@ -3,20 +3,13 @@ import _ from 'lodash';
 import type { IExtractedPhysicalState, IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
 
-export class PhysicalPropertiesRulesService {
-  //----------------------------------------------------------------------------------------------
-  //------------------------------------- PHYSICAL STATE -----------------------------------------
-  //----------------------------------------------------------------------------------------------
-
+export class PhysicalStateRulesService {
   public static getPhysicalState(fdsTree: IFdsTree): IExtractedPhysicalState {
     const linesToSearchIn = fdsTree[9]?.subsections?.[1]?.lines;
 
     if (_.isEmpty(linesToSearchIn)) return null;
 
-    return (
-      PhysicalPropertiesRulesService.getPhysicalStateByText(linesToSearchIn) ||
-      PhysicalPropertiesRulesService.getPhysicalStateByValue(linesToSearchIn)
-    );
+    return PhysicalStateRulesService.getPhysicalStateByText(linesToSearchIn) || PhysicalStateRulesService.getPhysicalStateByValue(linesToSearchIn);
   }
 
   public static readonly PHYSICAL_STATE_IDENTIFIER_REGEX = /[eé]tatphysique|aspect/g;
@@ -24,13 +17,13 @@ export class PhysicalPropertiesRulesService {
   public static getPhysicalStateByText(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
       const lineText = line.texts.map(({ content }) => content).join(' ');
-      const physicalStateTextInLine = !!lineText?.replaceAll(' ', '').match(PhysicalPropertiesRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
+      const physicalStateTextInLine = !!lineText?.replaceAll(' ', '').match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
 
       const { content } = _.last(line.texts) || { content: '' };
       const expectedText = _(content).split(':').last().trim();
       const expectedTextIsNotAPhysicalStateIdentifier = !expectedText
         ?.replaceAll(' ', '')
-        .match(PhysicalPropertiesRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
+        .match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
 
       if (expectedText && physicalStateTextInLine && expectedTextIsNotAPhysicalStateIdentifier) {
         const { startBox, endBox } = line;
@@ -47,7 +40,7 @@ export class PhysicalPropertiesRulesService {
     for (const line of linesToSearchIn) {
       const { content } = _.last(line.texts) || { content: '' };
       const expectedText = _(content).split(':').last().trim();
-      const expectedTextIsAPhysicalState = expectedText.match(PhysicalPropertiesRulesService.PHYSICAL_STATE_VALUES_REGEX);
+      const expectedTextIsAPhysicalState = expectedText.match(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX);
 
       if (expectedTextIsAPhysicalState) {
         const { startBox, endBox } = line;
