@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { aLineWithCASAndCENumberIn2Texts, aLineWithCENumber, aLineWithCASNumber, aLine } from '@topics/engine/__fixtures__/line.mother.js';
+import { aLineWithCasAndCeNumberIn2Texts, aLineWithCeNumber, aLineWithCasNumber, aLine } from '@topics/engine/__fixtures__/line.mother.js';
 import type { IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
 import { CasAndCeRulesService } from '@topics/engine/rules/extraction-rules/substance/cas-and-ce-rules.service.js';
 import {
@@ -102,37 +102,37 @@ describe('CasAndCeRulesService tests', () => {
       },
       {
         message: 'it should return cas and ce number when it is contained in 2 texts',
-        lines: [aLineWithCASAndCENumberIn2Texts().properties],
+        lines: [aLineWithCasAndCeNumberIn2Texts().properties],
         expected: [aSubstanceWithCasAndCeNumber().properties],
       },
       {
         message: 'it should return ce number even when cas number is missing',
-        lines: [aLineWithCENumber().properties],
+        lines: [aLineWithCeNumber().properties],
         expected: [aSubstanceWithOnlyACeNumber().properties],
       },
       {
         message: 'it should return ce number even when it is contained in 2 lines',
-        lines: [aLineWithCASNumber().properties, aLineWithCENumber().properties],
+        lines: [aLineWithCasNumber().properties, aLineWithCeNumber().properties],
         expected: [aSubstanceWithCasAndCeNumber().properties],
       },
       {
         message: 'it should return cas number even when it is contained in 2 lines',
-        lines: [aLineWithCENumber().properties, aLineWithCASNumber().properties],
+        lines: [aLineWithCeNumber().properties, aLineWithCasNumber().properties],
         expected: [aSubstanceWithCasAndCeNumber().properties],
       },
       {
         message: 'it should not merge cas number and ce number if there are not on consecutive lines',
-        lines: [aLineWithCENumber().properties, aLine().properties, aLineWithCASNumber().properties],
+        lines: [aLineWithCeNumber().properties, aLine().properties, aLineWithCasNumber().properties],
         expected: [aSubstanceWithOnlyACeNumber().properties, aSubstanceWithOnlyACasNumber().properties],
       },
       {
         message: 'it should not merge cas number and a line with both cas and ce number',
-        lines: [aLineWithCASAndCENumberIn2Texts().properties, aLineWithCASNumber().properties],
+        lines: [aLineWithCasAndCeNumberIn2Texts().properties, aLineWithCasNumber().properties],
         expected: [aSubstanceWithCasAndCeNumber().properties, aSubstanceWithOnlyACasNumber().properties],
       },
       {
         message: 'it should return deduplicated substances',
-        lines: [aLineWithCASNumber().properties, aLineWithCASNumber().properties],
+        lines: [aLineWithCasNumber().properties, aLineWithCasNumber().properties],
         expected: [aSubstanceWithOnlyACasNumber().properties],
       },
       {

@@ -89,7 +89,7 @@ export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().wit
 //----------------------------------------------------------------------------------------------
 
 export const aTextWithHDanger = (): TextBuilder => aText().withContent(H_DANGER);
-export const aTextWithOEUHDanger = (): TextBuilder => aText().withContent(EUH_DANGER);
+export const aTextWithEuhDanger = (): TextBuilder => aText().withContent(EUH_DANGER);
 export const aTextWithPDanger = (): TextBuilder => aText().withContent(P_DANGER);
 export const aTextWithMultiplePDanger = (): TextBuilder => aText().withContent(MULTIPLE_P_DANGER);
 
@@ -101,8 +101,8 @@ export const aTextWithMultiplePDangerWithDetails = (): TextBuilder => aText().wi
 //----------------------------------------- SUBSTANCES -----------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithCASNumber = (): TextBuilder => aText().withContent(CAS_NUMBER_TEXT);
-export const aTextWithCENumber = (): TextBuilder => aText().withContent(CE_NUMBER_TEXT);
+export const aTextWithCasNumber = (): TextBuilder => aText().withContent(CAS_NUMBER_TEXT);
+export const aTextWithCeNumber = (): TextBuilder => aText().withContent(CE_NUMBER_TEXT);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- CONCENTRATION  ---------------------------------------

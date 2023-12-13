@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import { anEmptyFdsTreeWithAllSections, aFdsTreeWithAllSectionsWithoutUsefulInfo, aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { H_DANGER, EUH_DANGER, P_DANGER, MULTIPLE_P_DANGER } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import { aLineWithHDanger, aLineWithEUHDanger, aLineWithTwoDangers, aLineWithMultiplePDanger } from '@topics/engine/__fixtures__/line.mother.js';
+import { aLineWithHDanger, aLineWithEuhDanger, aLineWithTwoDangers, aLineWithMultiplePDanger } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import type { IFdsTree, IExtractedDanger, IMetaData } from '@topics/engine/model/fds.model.js';
@@ -112,7 +112,7 @@ describe('DangersRulesService tests', () => {
           message: 'it should retrieve dangers contained in lines',
           fdsTree: aFdsTree().withSection2(
             aSection().withSubsections({
-              2: aSubSection().withLines([aLineWithHDanger().properties, aLineWithEUHDanger().properties]).properties,
+              2: aSubSection().withLines([aLineWithHDanger().properties, aLineWithEuhDanger().properties]).properties,
             }).properties,
           ).properties,
           expected: [
