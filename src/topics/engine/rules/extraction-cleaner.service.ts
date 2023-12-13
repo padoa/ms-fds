@@ -9,4 +9,13 @@ export class ExtractionCleanerService {
     if (wordBeforePointIsAChar) return textTrimmed;
     return textTrimmed.slice(0, -1);
   }
+
+  public static cleanSpaces(text: string): string {
+    return text?.replaceAll(' ', '');
+  }
+
+  public static trimAndCleanMultipleSpaces(text: string): string {
+    const textTrimmed = text.trim();
+    return textTrimmed.replaceAll(/\s+/g, ' ');
+  }
 }

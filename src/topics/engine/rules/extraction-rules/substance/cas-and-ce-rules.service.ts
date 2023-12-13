@@ -2,6 +2,7 @@ import _ from 'lodash';
 
 import type { IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
+import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
 
 export class CasAndCeRulesService {
   public static getSubstancesCasAndCe(linesToSearchIn: ILine[]): Array<Pick<IExtractedSubstance, 'casNumber' | 'ceNumber' | 'metaData'>> {
@@ -9,7 +10,7 @@ export class CasAndCeRulesService {
     let previousLineSubstance: Partial<IExtractedSubstance> = {};
 
     for (const line of linesToSearchIn) {
-      const textCleaned = _.map(line.texts, 'content').join('');
+      const textCleaned = _.map(line.texts, 'content').join(' ');
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
       const casNumber = this.getCasNumber(textCleaned);
@@ -32,7 +33,14 @@ export class CasAndCeRulesService {
       substances.push({ casNumber, ceNumber, metaData });
       previousLineSubstance = { casNumber, ceNumber };
     }
-    return _.uniqBy(substances, (substance) => `${substance.casNumber};${substance.ceNumber}`);
+    return _(substances)
+      .uniqBy((substance) => `${substance.casNumber};${substance.ceNumber}`)
+      .map((substance) => ({
+        ...substance,
+        casNumber: ExtractionCleanerService.cleanSpaces(substance.casNumber),
+        ceNumber: ExtractionCleanerService.cleanSpaces(substance.ceNumber),
+      }))
+      .value();
   }
 
   private static readonly SEPARATOR_REGEX = `${CommonRegexRulesService.SPACE_REGEX}-${CommonRegexRulesService.SPACE_REGEX}`;

@@ -8,6 +8,7 @@ import {
   aSubstanceWithOnlyACasNumber,
   aSubstanceWithOnlyACeNumber,
 } from '@topics/engine/__fixtures__/substance.mother.js';
+import { aText } from '@topics/engine/__fixtures__/text.mother.js';
 
 describe('CasAndCeRulesService tests', () => {
   describe('Regexps tests', () => {
@@ -133,6 +134,11 @@ describe('CasAndCeRulesService tests', () => {
         message: 'it should return deduplicated substances',
         lines: [aLineWithCASNumber().properties, aLineWithCASNumber().properties],
         expected: [aSubstanceWithOnlyACasNumber().properties],
+      },
+      {
+        message: 'it should return substances without spaces',
+        lines: [aLine().withTexts([aText().withContent(' 123546 - 78 - 9 ').properties]).properties],
+        expected: [aSubstanceWithOnlyACasNumber().withCasNumber('123546-78-9').properties],
       },
     ])('$message', ({ lines, expected }) => {
       expect(CasAndCeRulesService.getSubstancesCasAndCe(lines)).toEqual(expected);
