@@ -15,7 +15,6 @@ export class ExtractionCleanerService {
   }
 
   public static trimAndCleanMultipleSpaces(text: string): string {
-    const textTrimmed = text.trim();
-    return textTrimmed.replaceAll(/\s+/g, ' ');
+    return text.trim().replaceAll(/\s+/g, ' ');
   }
 }
