@@ -1,130 +1,95 @@
-import { describe, expect, it } from 'vitest';
+import type { SpyInstance } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import type { IConcentration, IExtractedSubstance, IFdsTree, ILine, IStroke } from '@topics/engine/model/fds.model.js';
 import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
-import { anEmptyFdsTreeWithAllSections, aFdsTreeWithAllSectionsWithoutUsefulInfo, aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
-import { CAS_NUMBER, CE_NUMBER } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import { aLineWithCASAndCENumberIn2Texts, aLineWithCENumber, aLineWithCASNumber } from '@topics/engine/__fixtures__/line.mother.js';
-import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
-import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFdsTree, IExtractedSubstance, IMetaData } from '@topics/engine/model/fds.model.js';
-import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
+import { CONCENTRATION_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import {
+  aFdsTree,
+  aFdsTreeWithAllSectionsWithUsefulInfo,
+  aFdsTreeWithAllSectionsWithoutUsefulInfo,
+} from '@topics/engine/__fixtures__/fds-tree.mother.js';
+import { CasAndCeRulesService } from '@topics/engine/rules/extraction-rules/substance/cas-and-ce-rules.service.js';
+import { ConcentrationRulesService } from '@topics/engine/rules/extraction-rules/substance/concentration-rules.service.js';
+import {
+  aSubstanceWithCasAndCeNumber,
+  aSubstanceWithOnlyACasNumber,
+  aSubstanceWithOnlyACeNumber,
+} from '@topics/engine/__fixtures__/substance.mother.js';
 
 describe('SubstancesRulesService tests', () => {
-  const metaData: IMetaData = { startBox: aPosition().properties };
-
-  describe('Regexps tests', () => {
-    describe('CASNumberRegex tests', () => {
-      it.each<[{ input: string; expected: boolean }]>([
-        [{ input: '1234567-12-3', expected: true }],
-        [{ input: '1234567 - 12 - 3', expected: true }],
-        [{ input: '1234567 -12 -3', expected: true }],
-        [{ input: '1234567 -12-3', expected: true }],
-        [{ input: '1234567-12 -3', expected: true }],
-        [{ input: '9876543-45-6', expected: true }],
-        [{ input: '111-22-3', expected: true }],
-        [{ input: '987-65-4', expected: true }],
-        [{ input: '1-23-4', expected: true }],
-        [{ input: '-1234567-12-3', expected: false }],
-        [{ input: '1234567-12-3-', expected: false }],
-        [{ input: '12-34567-12-3', expected: false }],
-        [{ input: '1234567-123-3', expected: false }],
-        [{ input: '1234567-12-3-4', expected: false }],
-        [{ input: 'abc-12-34', expected: false }],
-        [{ input: '12-34-def', expected: false }],
-        [{ input: '12-34-56789', expected: false }],
-        [{ input: '12-34', expected: false }],
-        [{ input: '12-34-', expected: false }],
-      ])('$input payload should return $expected', ({ input, expected }) => {
-        expect(new RegExp(SubstancesRulesService.CAS_NUMBER_REGEX).test(input)).toEqual(expected);
-      });
-    });
-
-    describe('CENumberRegex tests', () => {
-      it.each<[{ input: string; expected: boolean }]>([
-        [{ input: '123-456-7', expected: true }],
-        [{ input: '123 - 456 - 7', expected: true }],
-        [{ input: '123 -456 -7', expected: true }],
-        [{ input: '123 -456-7', expected: true }],
-        [{ input: '123-456 -7', expected: true }],
-        [{ input: '987-654-3', expected: true }],
-        [{ input: '111-222-3', expected: true }],
-        [{ input: '987-654-3', expected: true }],
-        [{ input: '1-234-5', expected: false }],
-        [{ input: '1-23-456-7', expected: false }],
-        [{ input: '123-456-78', expected: false }],
-        [{ input: 'abc-123-456', expected: false }],
-        [{ input: '123-abc-456', expected: false }],
-        [{ input: '123-456-', expected: false }],
-      ])('$input payload should return $expected', ({ input, expected }) => {
-        expect(new RegExp(SubstancesRulesService.CE_NUMBER_REGEX).test(input)).toEqual(expected);
-      });
+  describe('assignConcentrationToSubstance tests', () => {
+    it.each<{ message: string; substances: IExtractedSubstance[]; concentrations: IConcentration[]; expected: IExtractedSubstance[] }>([
+      {
+        message: 'should return an empty list when there is no substance',
+        substances: [],
+        concentrations: [],
+        expected: [],
+      },
+      {
+        message: 'should return substances without concentrations when there are substances but no concentration',
+        substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+        concentrations: [],
+        expected: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+      },
+      {
+        message: 'should return substances with concentrations',
+        substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+        concentrations: [CONCENTRATION_VALUE, CONCENTRATION_VALUE + 1],
+        expected: [
+          aSubstanceWithOnlyACasNumber().withConcentration(CONCENTRATION_VALUE).properties,
+          aSubstanceWithOnlyACeNumber().withConcentration(CONCENTRATION_VALUE + 1).properties,
+        ],
+      },
+      {
+        message: 'should return substances without concentrations when there is not exactly the same number of concentrations as substances',
+        substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+        concentrations: [CONCENTRATION_VALUE, CONCENTRATION_VALUE + 1, CONCENTRATION_VALUE + 2],
+        expected: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+      },
+    ])('$message', ({ substances, concentrations, expected }) => {
+      expect(SubstancesRulesService.assignConcentrationToSubstance(substances, concentrations)).toEqual(expected);
     });
   });
 
-  describe('Substances rules tests', () => {
-    describe('GetSubstances tests', () => {
-      it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedSubstance[] }]>([
-        [
-          {
-            message: 'it should return an empty list when given an empty fdsTree',
-            fdsTree: anEmptyFdsTreeWithAllSections().properties,
-            expected: [],
-          },
-        ],
-        [
-          {
-            message: 'it should return an empty list when given a text without cas nor ce number',
-            fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
-            expected: [],
-          },
-        ],
-        [
-          {
-            message: 'it should return cas and ce number when it is contained in 2 texts',
-            fdsTree: aFdsTree().withSection3(
-              aSection().withSubsections({
-                1: aSubSection().withLines([aLineWithCASAndCENumberIn2Texts().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
-          },
-        ],
-        [
-          {
-            message: 'it should return ce number even when cas number is missing',
-            fdsTree: aFdsTree().withSection3(
-              aSection().withSubsections({
-                1: aSubSection().withLines([aLineWithCENumber().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: [{ casNumber: undefined, ceNumber: CE_NUMBER, metaData }],
-          },
-        ],
-        [
-          {
-            message: 'it should return ce number even when it is contained in 2 lines',
-            fdsTree: aFdsTree().withSection3(
-              aSection().withSubsections({
-                1: aSubSection().withLines([aLineWithCASNumber().properties, aLineWithCENumber().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
-          },
-        ],
-        [
-          {
-            message: 'it should return cas number even when it is contained in 2 lines',
-            fdsTree: aFdsTree().withSection3(
-              aSection().withSubsections({
-                1: aSubSection().withLines([aLineWithCENumber().properties, aLineWithCASNumber().properties]).properties,
-              }).properties,
-            ).properties,
-            expected: [{ casNumber: CAS_NUMBER, ceNumber: CE_NUMBER, metaData }],
-          },
-        ],
-      ])('$message', ({ fdsTree, expected }) => {
-        expect(SubstancesRulesService.getSubstances(fdsTree)).toEqual(expected);
-      });
+  describe('GetSubstances tests', () => {
+    let getSubstancesCasAndCeSpy: SpyInstance<[lines: ILine[]], Pick<IExtractedSubstance, 'casNumber' | 'ceNumber'>[]>;
+    let getConcentrationsSpy: SpyInstance<[line: ILine[], { strokes: IStroke[] }], IConcentration[]>;
+    let assignConcentrationToSubstanceSpy: SpyInstance<[substances: IExtractedSubstance[], concentration: IConcentration[]], IExtractedSubstance[]>;
+
+    beforeEach(() => {
+      getSubstancesCasAndCeSpy = vi.spyOn(CasAndCeRulesService, 'getSubstancesCasAndCe');
+      getConcentrationsSpy = vi.spyOn(ConcentrationRulesService, 'getConcentrations');
+      assignConcentrationToSubstanceSpy = vi.spyOn(SubstancesRulesService, 'assignConcentrationToSubstance');
+    });
+
+    afterEach(() => {
+      getSubstancesCasAndCeSpy.mockRestore();
+      getConcentrationsSpy.mockRestore();
+      assignConcentrationToSubstanceSpy.mockRestore();
+    });
+
+    it.each<{ message: string; fdsTree: IFdsTree; expected: IExtractedSubstance[] }>([
+      {
+        message: 'should return an empty list when given an empty fdsTree',
+        fdsTree: aFdsTree().properties,
+        expected: [],
+      },
+      {
+        message: 'should return an empty list when given a fdsTree without useful info',
+        fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+        expected: [],
+      },
+      {
+        message: 'should return substances when given a fdsTree with substances and concentration',
+        fdsTree: aFdsTreeWithAllSectionsWithUsefulInfo().properties,
+        expected: [aSubstanceWithCasAndCeNumber().withConcentration(CONCENTRATION_VALUE).properties],
+      },
+    ])('$message', ({ fdsTree, expected }) => {
+      expect(SubstancesRulesService.getSubstances(fdsTree)).toEqual(expected);
+      expect(getSubstancesCasAndCeSpy).toHaveBeenCalledOnce();
+      expect(getConcentrationsSpy).toHaveBeenCalledOnce();
+      expect(assignConcentrationToSubstanceSpy).toHaveBeenCalledOnce();
     });
   });
 });

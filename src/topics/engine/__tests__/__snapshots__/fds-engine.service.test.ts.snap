@@ -101,30 +101,33 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
       {
         "casNumber": "64742-52-5",
         "ceNumber": "265-155-0",
+        "concentration": "> 30 - < 60",
         "metaData": {
           "endBox": undefined,
           "startBox": {
             "pageNumber": 2,
             "xPositionProportion": 0.083799182971404,
-            "yPositionProportion": 0.559806157354618,
+            "yPositionProportion": 0.5475484606613455,
           },
         },
       },
       {
         "casNumber": "67762-38-3",
         "ceNumber": "267-015-4",
+        "concentration": "> 10 - < 30",
         "metaData": {
           "endBox": undefined,
           "startBox": {
             "pageNumber": 2,
-            "xPositionProportion": 0.083799182971404,
-            "yPositionProportion": 0.6185290763968073,
+            "xPositionProportion": 0.24002902601591056,
+            "yPositionProportion": 0.6083998479665528,
           },
         },
       },
       {
         "casNumber": undefined,
         "ceNumber": "918-481-9",
+        "concentration": "> 10 - < 20",
         "metaData": {
           "endBox": undefined,
           "startBox": {

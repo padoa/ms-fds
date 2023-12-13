@@ -32,6 +32,7 @@ import {
   aTextWithVaporPressureValue,
   aTextWithBoilingPointIdentifier,
   aTextWithBoilingPointValue,
+  aTextWithConcentration,
 } from '@topics/engine/__fixtures__/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -115,6 +116,8 @@ export const aLineWithCASNumber = (): LineBuilder => aLine().withTexts([aTextWit
 export const aLineWithCENumber = (): LineBuilder => aLine().withTexts([aTextWithCENumber().properties]);
 export const aLineWithCASAndCENumberIn2Texts = (): LineBuilder =>
   aLine().withTexts([aTextWithCASNumber().properties, aTextWithCENumber().properties]);
+export const aLineWithCASAndCENumberAndConcentrationIn3Texts = (): LineBuilder =>
+  aLine().withTexts([aTextWithCASNumber().properties, aTextWithCENumber().properties, aTextWithConcentration().properties]);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- PHYSICAL_STATE ---------------------------------------

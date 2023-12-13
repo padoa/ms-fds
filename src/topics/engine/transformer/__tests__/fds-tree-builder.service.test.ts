@@ -282,8 +282,9 @@ describe('FdsTreeBuilderService tests', () => {
         message: 'should add the strokes in the correct section',
         fdsTree: aFdsTree()
           .withSection1(
-            aSection().withSubsections({ 1: aSubSection().withStartBox(aPosition().properties).withEndBox(aPosition().properties).properties })
-              .properties,
+            aSection().withSubsections({
+              1: aSubSection().withStartBox(aPosition().properties).withEndBox(aPosition().withYPositionProportion(0.9).properties).properties,
+            }).properties,
           )
           .withSection2(
             aSection().withSubsections({
@@ -294,7 +295,10 @@ describe('FdsTreeBuilderService tests', () => {
         expected: aFdsTree()
           .withSection1(
             aSection().withSubsections({
-              1: aSubSection().withStartBox(aPosition().properties).withEndBox(aPosition().properties).withStrokes([aStroke().properties]).properties,
+              1: aSubSection()
+                .withStartBox(aPosition().properties)
+                .withEndBox(aPosition().withYPositionProportion(0.9).properties)
+                .withStrokes([aStroke().properties]).properties,
             }).properties,
           )
           .withSection2(

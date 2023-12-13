@@ -5,6 +5,7 @@ import * as fs from 'fs/promises';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { promiseMapSeries } from '@padoa/promise';
+import _ from 'lodash';
 
 import type { IExtractedData } from '@topics/engine/model/fds.model.js';
 import { FdsEngineService } from '@topics/engine/fds-engine.service.js';
@@ -62,7 +63,7 @@ const addColumnsToCsv = async (csvFile: string): Promise<void> => {
     'Température de la pression vapeur',
     "Point d'ébullition",
     'Image ?',
-  ].join(';');
+  ].join('\t');
   return fs.writeFile(csvFile, `${headers}\n`);
 };
 
@@ -93,14 +94,14 @@ const saveInCsv = async (
     product?.name,
     producer?.name,
     dangers.map((danger) => danger.code).join(','),
-    substances.map((substance) => `cas: ${substance.casNumber}, ce: ${substance.ceNumber}`).join(','),
+    JSON.stringify(_.map(substances, (substance) => _.pick(substance, ['casNumber', 'ceNumber', 'concentration']))),
     physicalState?.value,
     vaporPressure ? vaporPressure.pressure : null,
     vaporPressure ? vaporPressure.temperature : null,
     boilingPoint?.value,
     fromImage,
     // /!\ If you add a line here please add it in the header above as well /!\
-  ].join(';');
+  ].join('\t');
 
   return fs.appendFile(csvFile, `${resultLine}\n`);
 };

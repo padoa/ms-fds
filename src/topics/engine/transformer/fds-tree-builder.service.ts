@@ -90,10 +90,9 @@ export class FdsTreeBuilderService {
     _.forEach(fdsTree, (section, sectionNumber) => {
       _.forEach(section.subsections, (subSection, subSectionNumber) => {
         // eslint-disable-next-line no-param-reassign
-        fdsTree[+sectionNumber].subsections[+subSectionNumber].strokes = _.filter(
-          strokes,
-          ({ startBox, endBox }) => this.isBelow(startBox, subSection.startBox) && (!subSection.endBox || this.isBelow(subSection.endBox, endBox)),
-        );
+        fdsTree[+sectionNumber].subsections[+subSectionNumber].strokes = _.filter(strokes, ({ startBox, endBox }) => {
+          return this.isBelow(startBox, subSection.startBox) && (!subSection.endBox || this.isBelow(subSection.endBox, endBox));
+        });
       });
     });
 
@@ -101,8 +100,8 @@ export class FdsTreeBuilderService {
   }
 
   public static isBelow(bottomPosition: IPosition, topPosition: IPosition): boolean {
-    if (bottomPosition.pageNumber !== topPosition.pageNumber) return bottomPosition.pageNumber < topPosition.pageNumber;
-    return bottomPosition.yPositionProportion <= topPosition.yPositionProportion;
+    if (bottomPosition.pageNumber !== topPosition.pageNumber) return bottomPosition.pageNumber > topPosition.pageNumber;
+    return bottomPosition.yPositionProportion >= topPosition.yPositionProportion;
   }
 
   //----------------------------------------------------------------------------------------------
@@ -130,7 +129,15 @@ export class FdsTreeBuilderService {
     fdsTree: IFdsTreeWithoutStrokes,
     { position, sectionNumber }: { position: IPosition; sectionNumber: number },
   ): IFdsTreeWithoutStrokes {
-    if (fdsTree[sectionNumber]) fdsTree[sectionNumber].endBox = position; // eslint-disable-line no-param-reassign
+    if (fdsTree[sectionNumber]) {
+      fdsTree[sectionNumber].endBox = position; // eslint-disable-line no-param-reassign
+
+      const latestSubsection = +_.max(Object.keys(fdsTree[sectionNumber].subsections));
+      if (latestSubsection && !fdsTree[sectionNumber].subsections[latestSubsection].endBox) {
+        this.setFdsTreeEndBoxSubSection(fdsTree, { position, sectionNumber, subSectionNumber: latestSubsection });
+      }
+    }
+
     return fdsTree;
   }
 

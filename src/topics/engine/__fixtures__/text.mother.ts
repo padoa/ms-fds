@@ -30,6 +30,7 @@ import {
   VAPOR_PRESSURE_IDENTIFIER,
   BOILING_POINT_IDENTIFIER,
   BOILING_POINT_VALUE,
+  CONCENTRATION_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
@@ -102,6 +103,12 @@ export const aTextWithMultiplePDangerWithDetails = (): TextBuilder => aText().wi
 
 export const aTextWithCASNumber = (): TextBuilder => aText().withContent(CAS_NUMBER_TEXT);
 export const aTextWithCENumber = (): TextBuilder => aText().withContent(CE_NUMBER_TEXT);
+
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- CONCENTRATION  ---------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aTextWithConcentration = (): TextBuilder => aText().withContent(CONCENTRATION_VALUE);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- PHYSICAL STATE ---------------------------------------

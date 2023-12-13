@@ -1,6 +1,6 @@
 import { FdsTreeBuilder } from '@topics/engine/__fixtures__/fds-tree.builder.js';
 import {
-  aLineWithCASAndCENumberIn2Texts,
+  aLineWithCASAndCENumberAndConcentrationIn3Texts,
   aLineWithProducerIdentifierOnlyWithColon,
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
@@ -41,7 +41,7 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
     )
     .withSection3(
       aSection().withSubsections({
-        2: aSubSection().withLines([aLineWithCASAndCENumberIn2Texts().properties]).properties,
+        2: aSubSection().withLines([aLineWithCASAndCENumberAndConcentrationIn3Texts().properties]).properties,
       }).properties,
     )
     .withSection9(

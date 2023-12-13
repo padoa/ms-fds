@@ -1,69 +1,23 @@
 import _ from 'lodash';
 
-import type { IFdsTree, IExtractedSubstance } from '@topics/engine/model/fds.model.js';
-import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
+import type { IConcentration, IExtractedSubstance, IFdsTree } from '@topics/engine/model/fds.model.js';
+import { CasAndCeRulesService } from '@topics/engine/rules/extraction-rules/substance/cas-and-ce-rules.service.js';
+import { ConcentrationRulesService } from '@topics/engine/rules/extraction-rules/substance/concentration-rules.service.js';
 
 export class SubstancesRulesService {
-  private static readonly SEPARATOR_REGEX = `${CommonRegexRulesService.SPACE_REGEX}-${CommonRegexRulesService.SPACE_REGEX}`;
-
-  public static readonly CAS_NUMBER_REGEX = `(?<!(-|\\d{1})+)(\\d{1,7}${this.SEPARATOR_REGEX}\\d{2}${this.SEPARATOR_REGEX}\\d{1})(?!(-|\\d{1})+)`;
-  public static readonly CE_NUMBER_REGEX = `(?<!(\\d{1})+)(\\d{3}${this.SEPARATOR_REGEX}\\d{3}${this.SEPARATOR_REGEX}\\d{1})(?!(\\d{1})+)`;
-
-  public static getSubstances = (fdsTree: IFdsTree): IExtractedSubstance[] => {
+  public static getSubstances(fdsTree: IFdsTree): IExtractedSubstance[] {
     const linesToSearchIn = [...(fdsTree[3]?.subsections?.[1]?.lines || []), ...(fdsTree[3]?.subsections?.[2]?.lines || [])];
-    const infoInEachLine = _.map(linesToSearchIn, ({ texts, startBox, endBox }) => {
-      const textContent = _.map(texts, (text) => text.content).join('');
-      return { text: textContent, startBox, endBox };
-    });
+    const strokes = [...(fdsTree[3]?.subsections?.[1]?.strokes || []), ...(fdsTree[3]?.subsections?.[2]?.strokes || [])];
+    const substancesCasAndCe = CasAndCeRulesService.getSubstancesCasAndCe(linesToSearchIn);
+    const concentrations = ConcentrationRulesService.getConcentrations(linesToSearchIn, { strokes });
+    const res = this.assignConcentrationToSubstance(substancesCasAndCe, concentrations);
+    return res;
+  }
 
-    const substances: IExtractedSubstance[] = [];
-    let previousLineSubstance: Partial<IExtractedSubstance> = {};
-    for (const info of infoInEachLine) {
-      const { text, startBox, endBox } = info;
-      const textCleaned = text.replaceAll(' ', '');
-      const metaData = { startBox, endBox };
-
-      const casNumber = this.getCASNumber(textCleaned);
-      const ceNumber = this.getCENumber(textCleaned);
-
-      if (casNumber && ceNumber) {
-        substances.push({ casNumber, ceNumber, metaData });
-        previousLineSubstance = {};
-        continue;
-      }
-
-      if (!casNumber && !ceNumber) {
-        previousLineSubstance = {};
-        continue;
-      }
-
-      const lastSubstance = _.last(substances);
-      if (lastSubstance && lastSubstance.casNumber === previousLineSubstance.casNumber && lastSubstance.ceNumber === previousLineSubstance.ceNumber) {
-        substances[substances.length - 1] = {
-          casNumber: lastSubstance.casNumber || casNumber,
-          ceNumber: lastSubstance.ceNumber || ceNumber,
-          metaData,
-        };
-        previousLineSubstance = {};
-        continue;
-      }
-
-      previousLineSubstance = { casNumber, ceNumber };
-      substances.push({ casNumber, ceNumber, metaData });
-    }
-
-    return substances;
-  };
-
-  private static getCASNumber = (text: string): string => {
-    // TODO: rule with cas
-    const match = text.match(this.CAS_NUMBER_REGEX);
-    return match?.[2];
-  };
-
-  private static getCENumber = (text: string): string => {
-    // TODO: rule with ce
-    const match = text.match(this.CE_NUMBER_REGEX);
-    return match?.[2];
-  };
+  public static assignConcentrationToSubstance(substances: IExtractedSubstance[], concentrations: IConcentration[]): IExtractedSubstance[] {
+    const nbConcentrationsAndSubstancesMatches = concentrations.length === substances.length;
+    return nbConcentrationsAndSubstancesMatches
+      ? _.zipWith(substances, concentrations, (substance, concentration) => ({ ...substance, concentration }))
+      : substances;
+  }
 }
