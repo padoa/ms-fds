@@ -9,7 +9,7 @@ export class CasAndCeRulesService {
     let previousLineSubstance: Partial<IExtractedSubstance> = {};
 
     for (const line of linesToSearchIn) {
-      const textCleaned = _.map(line.texts, 'content').join(' ');
+      const textCleaned = _.map(line.texts, 'content').join('');
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
       const casNumber = this.getCasNumber(textCleaned);
@@ -23,7 +23,7 @@ export class CasAndCeRulesService {
         substances[substances.length - 1] = {
           casNumber: lastSubstance?.casNumber || casNumber,
           ceNumber: lastSubstance?.ceNumber || ceNumber,
-          metaData,
+          metaData: lastSubstance?.metaData || metaData,
         };
         previousLineSubstance = {};
         continue;

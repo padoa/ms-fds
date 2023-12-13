@@ -99,41 +99,41 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     },
     "substances": [
       {
-        "casNumber": "64742 - 52 - 5",
-        "ceNumber": "265 - 155 - 0",
-        "concentration": ">  3",
+        "casNumber": "64742-52-5",
+        "ceNumber": "265-155-0",
+        "concentration": "> 30 - < 60",
         "metaData": {
           "endBox": undefined,
           "startBox": {
             "pageNumber": 2,
             "xPositionProportion": 0.083799182971404,
-            "yPositionProportion": 0.5967122767008742,
+            "yPositionProportion": 0.5475484606613455,
           },
         },
       },
       {
-        "casNumber": "67762 - 38 - 3",
-        "ceNumber": "267 - 015 - 4",
-        "concentration": ">  1",
+        "casNumber": "67762-38-3",
+        "ceNumber": "267-015-4",
+        "concentration": "> 10 - < 30",
         "metaData": {
           "endBox": undefined,
           "startBox": {
             "pageNumber": 2,
-            "xPositionProportion": 0.6398355192431735,
-            "yPositionProportion": 0.6648422652983657,
+            "xPositionProportion": 0.24002902601591056,
+            "yPositionProportion": 0.6083998479665528,
           },
         },
       },
       {
         "casNumber": undefined,
-        "ceNumber": "918 - 481 - 9",
-        "concentration": ">  10   -   <  20",
+        "ceNumber": "918-481-9",
+        "concentration": "> 10 - < 20",
         "metaData": {
           "endBox": undefined,
           "startBox": {
-            "pageNumber": 3,
-            "xPositionProportion": 0.07974091593205762,
-            "yPositionProportion": 0.17761307487647282,
+            "pageNumber": 2,
+            "xPositionProportion": 0.24002902601591056,
+            "yPositionProportion": 0.6718738122386926,
           },
         },
       },
@@ -328,13 +328,13 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         "metaData": {
           "endBox": {
             "pageNumber": 4,
-            "xPositionProportion": 0.8714285714285714,
-            "yPositionProportion": 0.3744107744107744,
+            "xPositionProportion": 0.8990476190476191,
+            "yPositionProportion": 0.36835016835016837,
           },
           "startBox": {
             "pageNumber": 4,
-            "xPositionProportion": 0.09047619047619047,
-            "yPositionProportion": 0.36363636363636365,
+            "xPositionProportion": 0.09142857142857143,
+            "yPositionProportion": 0.3474747474747475,
           },
         },
       },
@@ -344,13 +344,13 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         "metaData": {
           "endBox": {
             "pageNumber": 4,
-            "xPositionProportion": 0.8428571428571429,
-            "yPositionProportion": 0.4303030303030303,
+            "xPositionProportion": 0.8723809523809524,
+            "yPositionProportion": 0.38855218855218854,
           },
           "startBox": {
             "pageNumber": 4,
-            "xPositionProportion": 0.7542857142857143,
-            "yPositionProportion": 0.4228956228956229,
+            "xPositionProportion": 0.09142857142857143,
+            "yPositionProportion": 0.3797979797979798,
           },
         },
       },
@@ -360,13 +360,13 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         "metaData": {
           "endBox": {
             "pageNumber": 4,
-            "xPositionProportion": 0.5161904761904762,
-            "yPositionProportion": 0.701010101010101,
+            "xPositionProportion": 0.9,
+            "yPositionProportion": 0.45387205387205387,
           },
           "startBox": {
             "pageNumber": 4,
-            "xPositionProportion": 0.13333333333333333,
-            "yPositionProportion": 0.6915824915824916,
+            "xPositionProportion": 0.09142857142857143,
+            "yPositionProportion": 0.4457912457912458,
           },
         },
       },
