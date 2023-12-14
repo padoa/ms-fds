@@ -17,19 +17,19 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByText(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const lineText = line.texts.map(({ cleanContent }) => cleanContent).join(' ');
-      const physicalStateTextInLine = !!lineText?.replaceAll(' ', '').match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
+      const lineCleanText = line.texts.map(({ cleanContent }) => cleanContent).join('');
+      const { cleanPhysicalStateText, rawPhysicalStateText } = this.extractRawAndCleanPhysicalStateText(line);
 
-      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
-      const expectedText = _(cleanContent).split(':').last().trim();
-      const expectedTextIsNotAPhysicalStateIdentifier = !expectedText
-        ?.replaceAll(' ', '')
-        .match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
+      const physicalStateTextInLine = !!lineCleanText?.replaceAll(' ', '').match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
+      const expectedTextIsNotAPhysicalStateIdentifier = !TextCleanerService.cleanSpaces(cleanPhysicalStateText)?.match(
+        PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX,
+      );
 
-      if (expectedText && physicalStateTextInLine && expectedTextIsNotAPhysicalStateIdentifier) {
-        const { startBox, endBox } = line;
-        const metaData = { startBox, endBox };
-        return { value: TextCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
+      if (cleanPhysicalStateText && physicalStateTextInLine && expectedTextIsNotAPhysicalStateIdentifier) {
+        return {
+          value: TextCleanerService.trimAndCleanTrailingDot(rawPhysicalStateText),
+          metaData: { startBox: line.startBox, endBox: line.endBox },
+        };
       }
     }
     return null;
@@ -39,16 +39,28 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByValue(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
-      const expectedText = _(cleanContent).split(':').last().trim();
-      const expectedTextIsAPhysicalState = expectedText.match(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX);
+      const { cleanPhysicalStateText, rawPhysicalStateText } = this.extractRawAndCleanPhysicalStateText(line);
+      const expectedTextIsAPhysicalState = cleanPhysicalStateText.match(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX);
 
       if (expectedTextIsAPhysicalState) {
-        const { startBox, endBox } = line;
-        const metaData = { startBox, endBox };
-        return { value: TextCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
+        return {
+          value: TextCleanerService.trimAndCleanTrailingDot(rawPhysicalStateText),
+          metaData: { startBox: line.startBox, endBox: line.endBox },
+        };
       }
     }
     return null;
+  }
+
+  private static extractRawAndCleanPhysicalStateText(line: ILine): { cleanPhysicalStateText: string; rawPhysicalStateText: string } {
+    const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
+    return {
+      cleanPhysicalStateText: this.extractPhysicalStateText(cleanContent),
+      rawPhysicalStateText: this.extractPhysicalStateText(rawContent),
+    };
+  }
+
+  private static extractPhysicalStateText(productText: string): string {
+    return _(productText).split(':').last().trim();
   }
 }

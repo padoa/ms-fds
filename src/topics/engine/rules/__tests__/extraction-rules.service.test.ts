@@ -6,22 +6,22 @@ import {
   H_DANGER,
   P_DANGER,
   MULTIPLE_P_DANGER,
-  CAS_NUMBER_TEXT,
-  CE_NUMBER_TEXT,
   H_DANGER_WITH_DETAILS,
   MULTIPLE_P_DANGER_WITH_DETAILS,
-  CLEAN_PHYSICAL_STATE_VALUE,
   VAPOR_PRESSURE_TEMPERATURE,
   VAPOR_PRESSURE_VALUE,
-  CLEAN_PHYSICAL_STATE_IDENTIFIER,
   VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
   BOILING_POINT_IDENTIFIER,
   BOILING_POINT_VALUE,
-  CONCENTRATION_VALUE,
   RAW_PRODUCT_IDENTIFIER_WITH_COLON,
   RAW_PRODUCT_NAME,
   RAW_PRODUCER_NAME,
   RAW_PRODUCER_IDENTIFIER_WITH_COLON,
+  RAW_CAS_NUMBER_TEXT,
+  RAW_CE_NUMBER_TEXT,
+  RAW_CONCENTRATION_VALUE,
+  RAW_PHYSICAL_STATE_IDENTIFIER,
+  RAW_PHYSICAL_STATE_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { aSubstance } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/substance.mother.js';
@@ -42,11 +42,12 @@ describe('ExtractionRulesService tests', () => {
       ${H_DANGER_WITH_DETAILS}
       ${MULTIPLE_P_DANGER_WITH_DETAILS}
       ${MULTIPLE_P_DANGER}
-      ${CAS_NUMBER_TEXT}
-      ${CE_NUMBER_TEXT}
-      ${CONCENTRATION_VALUE}
-      ${CLEAN_PHYSICAL_STATE_IDENTIFIER}
-      ${CLEAN_PHYSICAL_STATE_VALUE}
+      ${RAW_CAS_NUMBER_TEXT}
+      ${RAW_CE_NUMBER_TEXT}
+      ${RAW_CONCENTRATION_VALUE}
+      ${RAW_PHYSICAL_STATE_IDENTIFIER}
+      ${RAW_PHYSICAL_STATE_VALUE}
+      // TODO: replace all with "raw" constants
       ${VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE}
       ${VAPOR_PRESSURE_VALUE}
       ${BOILING_POINT_IDENTIFIER}
@@ -63,7 +64,7 @@ describe('ExtractionRulesService tests', () => {
           { code: MULTIPLE_P_DANGER, metaData },
         ],
         substances: [aSubstance().properties],
-        physicalState: { value: CLEAN_PHYSICAL_STATE_VALUE, metaData },
+        physicalState: { value: RAW_PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
         boilingPoint: { value: BOILING_POINT_VALUE, metaData },
       };

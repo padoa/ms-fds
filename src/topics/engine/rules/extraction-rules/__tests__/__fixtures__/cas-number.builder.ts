@@ -1,7 +1,7 @@
 import type { IExtractedCasNumber } from '@padoa/chemical-risk';
 import { BaseBuilder } from '@padoa/meta';
 
-import { CAS_NUMBER, PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, RAW_CAS_NUMBER } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 export class CasNumberBuilder extends BaseBuilder<IExtractedCasNumber> {
   public withValue = this.withValueFor('value');
@@ -9,7 +9,7 @@ export class CasNumberBuilder extends BaseBuilder<IExtractedCasNumber> {
 
   protected getDefaultValues(): IExtractedCasNumber {
     return {
-      value: CAS_NUMBER,
+      value: RAW_CAS_NUMBER,
       metaData: {
         startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
       },

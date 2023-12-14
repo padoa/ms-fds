@@ -2,12 +2,12 @@ import type { IExtractedSubstance } from '@padoa/chemical-risk';
 import { BaseBuilder } from '@padoa/meta';
 
 import {
-  CAS_NUMBER,
-  CE_NUMBER,
-  CONCENTRATION_VALUE,
   PAGE_NUMBER,
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
+  RAW_CAS_NUMBER,
+  RAW_CE_NUMBER,
+  RAW_CONCENTRATION_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 export class SubstanceBuilder extends BaseBuilder<IExtractedSubstance> {
@@ -21,9 +21,9 @@ export class SubstanceBuilder extends BaseBuilder<IExtractedSubstance> {
     };
 
     return {
-      casNumber: { value: CAS_NUMBER, metaData },
-      ceNumber: { value: CE_NUMBER, metaData },
-      concentration: { value: CONCENTRATION_VALUE, metaData },
+      casNumber: { value: RAW_CAS_NUMBER, metaData },
+      ceNumber: { value: RAW_CE_NUMBER, metaData },
+      concentration: { value: RAW_CONCENTRATION_VALUE, metaData },
     };
   }
 }

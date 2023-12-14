@@ -73,7 +73,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "yPositionProportion": 0.2668377042949449,
         },
       },
-      "value": "liquide",
+      "value": "Liquide",
     },
     "producer": {
       "metaData": {

@@ -1,7 +1,7 @@
 import type { IExtractedCeNumber } from '@padoa/chemical-risk';
 import { BaseBuilder } from '@padoa/meta';
 
-import { CE_NUMBER, PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, RAW_CE_NUMBER } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 export class CeNumberBuilder extends BaseBuilder<IExtractedCeNumber> {
   public withValue = this.withValueFor('value');
@@ -9,7 +9,7 @@ export class CeNumberBuilder extends BaseBuilder<IExtractedCeNumber> {
 
   protected getDefaultValues(): IExtractedCeNumber {
     return {
-      value: CE_NUMBER,
+      value: RAW_CE_NUMBER,
       metaData: {
         startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
       },
