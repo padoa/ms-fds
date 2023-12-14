@@ -1,4 +1,4 @@
-import { SubstanceBuilder } from '@topics/engine/__fixtures__/substance.builder.js';
+import { SubstanceBuilder } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/substance.builder.js';
 
 export const aSubstance = (): SubstanceBuilder => new SubstanceBuilder();
 

@@ -24,8 +24,8 @@ import {
   CONCENTRATION_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
+import { aSubstance } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/substance.mother.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
-import { aSubstance } from '@topics/engine/__fixtures__/substance.mother.js';
 
 describe('ExtractionRulesService tests', () => {
   const metaData: IMetaData = { startBox: aPosition().properties };

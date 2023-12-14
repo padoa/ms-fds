@@ -2,11 +2,11 @@ import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import _ from 'lodash';
 
-import { CONCENTRATION_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import type { IConcentration, ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
+import type { IExtractedConcentration, ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
 import { ConcentrationRulesService } from '@topics/engine/rules/extraction-rules/substance/concentration-rules.service.js';
 import { aText, aTextWithConcentration } from '@topics/engine/__fixtures__/text.mother.js';
 import { TableExtractionService } from '@topics/engine/rules/extraction-rules/substance/table-extraction.service.js';
+import { aConcentration } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/concentration.mother.js';
 
 describe('ConcentrationRulesService tests', () => {
   describe('Regexps tests', () => {
@@ -81,7 +81,7 @@ describe('ConcentrationRulesService tests', () => {
 
   describe('Concentration rules tests', () => {
     describe('getConcentrationsInColumn tests', () => {
-      it.each<{ message: string; lines: IText[][]; expected: IConcentration[] }>([
+      it.each<{ message: string; lines: IText[][]; expected: IExtractedConcentration[] }>([
         {
           message: 'should return an empty list when given an empty lines',
           lines: [],
@@ -95,17 +95,17 @@ describe('ConcentrationRulesService tests', () => {
         {
           message: 'should return a concentration if a line contains a concentration',
           lines: [[aTextWithConcentration().properties], []],
-          expected: [CONCENTRATION_VALUE],
+          expected: [aConcentration().properties],
         },
         {
           message: 'should return a concentration if a text in a line contains a concentration',
           lines: [[aText().properties, aTextWithConcentration().properties], []],
-          expected: [CONCENTRATION_VALUE],
+          expected: [aConcentration().properties],
         },
         {
           message: 'should return multiple concentration if multiple lines have a concentration even if it is the same',
           lines: [[aTextWithConcentration().properties], [aTextWithConcentration().properties]],
-          expected: [CONCENTRATION_VALUE, CONCENTRATION_VALUE],
+          expected: [aConcentration().properties, aConcentration().properties],
         },
       ])('$message', ({ lines, expected }) => {
         expect(ConcentrationRulesService.getConcentrationsInColumn(lines)).toEqual(expected);
@@ -126,7 +126,7 @@ describe('ConcentrationRulesService tests', () => {
         splitLinesInColumnsSpy.mockRestore();
       });
 
-      it.each<{ message: string; linesSplittedByColumns: IText[][][]; expected: IConcentration[] }>([
+      it.each<{ message: string; linesSplittedByColumns: IText[][][]; expected: IExtractedConcentration[] }>([
         {
           message: 'should return an empty list when there is no text',
           linesSplittedByColumns: [[]],
@@ -135,7 +135,7 @@ describe('ConcentrationRulesService tests', () => {
         {
           message: 'should return concentrations of a column',
           linesSplittedByColumns: [[[aTextWithConcentration().properties]], [[]]],
-          expected: [CONCENTRATION_VALUE],
+          expected: [aConcentration().properties],
         },
         {
           message: 'should return concentrations found in the column with most concentrations',
@@ -143,7 +143,7 @@ describe('ConcentrationRulesService tests', () => {
             [[aText().withContent('>10-60').properties]],
             [[aTextWithConcentration().properties], [aTextWithConcentration().properties]],
           ],
-          expected: [CONCENTRATION_VALUE, CONCENTRATION_VALUE],
+          expected: [aConcentration().properties, aConcentration().properties],
         },
       ])('$message', ({ linesSplittedByColumns, expected }) => {
         splitLinesInColumnsSpy.mockImplementation(() => linesSplittedByColumns);

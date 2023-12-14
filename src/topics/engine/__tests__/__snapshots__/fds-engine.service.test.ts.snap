@@ -99,42 +99,95 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     },
     "substances": [
       {
-        "casNumber": "64742-52-5",
-        "ceNumber": "265-155-0",
-        "concentration": "> 30 - < 60",
-        "metaData": {
-          "endBox": undefined,
-          "startBox": {
-            "pageNumber": 2,
-            "xPositionProportion": 0.083799182971404,
-            "yPositionProportion": 0.5475484606613455,
+        "casNumber": {
+          "metaData": {
+            "endBox": undefined,
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.083799182971404,
+              "yPositionProportion": 0.5475484606613455,
+            },
           },
+          "value": "64742-52-5",
+        },
+        "ceNumber": {
+          "metaData": {
+            "endBox": undefined,
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.083799182971404,
+              "yPositionProportion": 0.559806157354618,
+            },
+          },
+          "value": "265-155-0",
+        },
+        "concentration": {
+          "metaData": {
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.4009352827348957,
+              "yPositionProportion": 0.5720638540478906,
+            },
+          },
+          "value": "> 30 - < 60",
         },
       },
       {
-        "casNumber": "67762-38-3",
-        "ceNumber": "267-015-4",
-        "concentration": "> 10 - < 30",
-        "metaData": {
-          "endBox": undefined,
-          "startBox": {
-            "pageNumber": 2,
-            "xPositionProportion": 0.24002902601591056,
-            "yPositionProportion": 0.6083998479665528,
+        "casNumber": {
+          "metaData": {
+            "endBox": undefined,
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.24002902601591056,
+              "yPositionProportion": 0.6083998479665528,
+            },
           },
+          "value": "67762-38-3",
+        },
+        "ceNumber": {
+          "metaData": {
+            "endBox": undefined,
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.083799182971404,
+              "yPositionProportion": 0.6185290763968073,
+            },
+          },
+          "value": "267-015-4",
+        },
+        "concentration": {
+          "metaData": {
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.4009352827348957,
+              "yPositionProportion": 0.6307867730900798,
+            },
+          },
+          "value": "> 10 - < 30",
         },
       },
       {
         "casNumber": undefined,
-        "ceNumber": "918-481-9",
-        "concentration": "> 10 - < 20",
-        "metaData": {
-          "endBox": undefined,
-          "startBox": {
-            "pageNumber": 2,
-            "xPositionProportion": 0.24002902601591056,
-            "yPositionProportion": 0.6718738122386926,
+        "ceNumber": {
+          "metaData": {
+            "endBox": undefined,
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.24002902601591056,
+              "yPositionProportion": 0.6718738122386926,
+            },
           },
+          "value": "918-481-9",
+        },
+        "concentration": {
+          "metaData": {
+            "startBox": {
+              "pageNumber": 2,
+              "xPositionProportion": 0.4009352827348957,
+              "yPositionProportion": 0.683276320790574,
+            },
+          },
+          "value": "> 10 - < 20",
         },
       },
     ],
@@ -323,51 +376,57 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     "product": null,
     "substances": [
       {
-        "casNumber": "69011-36-5",
-        "ceNumber": undefined,
-        "metaData": {
-          "endBox": {
-            "pageNumber": 4,
-            "xPositionProportion": 0.8990476190476191,
-            "yPositionProportion": 0.36835016835016837,
+        "casNumber": {
+          "metaData": {
+            "endBox": {
+              "pageNumber": 4,
+              "xPositionProportion": 0.8990476190476191,
+              "yPositionProportion": 0.36835016835016837,
+            },
+            "startBox": {
+              "pageNumber": 4,
+              "xPositionProportion": 0.09142857142857143,
+              "yPositionProportion": 0.3474747474747475,
+            },
           },
-          "startBox": {
-            "pageNumber": 4,
-            "xPositionProportion": 0.09142857142857143,
-            "yPositionProportion": 0.3474747474747475,
-          },
+          "value": "69011-36-5",
         },
+        "ceNumber": undefined,
       },
       {
-        "casNumber": "08062-26-4",
-        "ceNumber": undefined,
-        "metaData": {
-          "endBox": {
-            "pageNumber": 4,
-            "xPositionProportion": 0.8723809523809524,
-            "yPositionProportion": 0.38855218855218854,
+        "casNumber": {
+          "metaData": {
+            "endBox": {
+              "pageNumber": 4,
+              "xPositionProportion": 0.8723809523809524,
+              "yPositionProportion": 0.38855218855218854,
+            },
+            "startBox": {
+              "pageNumber": 4,
+              "xPositionProportion": 0.09142857142857143,
+              "yPositionProportion": 0.3797979797979798,
+            },
           },
-          "startBox": {
-            "pageNumber": 4,
-            "xPositionProportion": 0.09142857142857143,
-            "yPositionProportion": 0.3797979797979798,
-          },
+          "value": "08062-26-4",
         },
+        "ceNumber": undefined,
       },
       {
         "casNumber": undefined,
-        "ceNumber": "219-145-8",
-        "metaData": {
-          "endBox": {
-            "pageNumber": 4,
-            "xPositionProportion": 0.9,
-            "yPositionProportion": 0.45387205387205387,
+        "ceNumber": {
+          "metaData": {
+            "endBox": {
+              "pageNumber": 4,
+              "xPositionProportion": 0.9,
+              "yPositionProportion": 0.45387205387205387,
+            },
+            "startBox": {
+              "pageNumber": 4,
+              "xPositionProportion": 0.09142857142857143,
+              "yPositionProportion": 0.4457912457912458,
+            },
           },
-          "startBox": {
-            "pageNumber": 4,
-            "xPositionProportion": 0.09142857142857143,
-            "yPositionProportion": 0.4457912457912458,
-          },
+          "value": "219-145-8",
         },
       },
     ],

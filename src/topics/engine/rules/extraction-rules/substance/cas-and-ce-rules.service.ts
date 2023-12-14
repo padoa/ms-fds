@@ -1,11 +1,11 @@
 import _ from 'lodash';
 
-import type { IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
+import type { IExtractedCasNumber, IExtractedCeNumber, IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
 
 export class CasAndCeRulesService {
-  public static getSubstancesCasAndCe(linesToSearchIn: ILine[]): Array<Pick<IExtractedSubstance, 'casNumber' | 'ceNumber' | 'metaData'>> {
+  public static getSubstancesCasAndCe(linesToSearchIn: ILine[]): Array<Pick<IExtractedSubstance, 'casNumber' | 'ceNumber'>> {
     const substances: IExtractedSubstance[] = [];
     let previousLineSubstance: Partial<IExtractedSubstance> = {};
 
@@ -13,8 +13,11 @@ export class CasAndCeRulesService {
       const textCleaned = _.map(line.texts, 'content').join(' ');
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
-      const casNumber = this.getCasNumber(textCleaned);
-      const ceNumber = this.getCeNumber(textCleaned);
+      const casNumberValue = this.getCasNumber(textCleaned);
+      const ceNumberValue = this.getCeNumber(textCleaned);
+
+      const casNumber = casNumberValue ? { value: ExtractionCleanerService.cleanSpaces(casNumberValue), metaData } : undefined;
+      const ceNumber = ceNumberValue ? { value: ExtractionCleanerService.cleanSpaces(ceNumberValue), metaData } : undefined;
 
       const substanceDefinitionHasNotStarted = !casNumber && !ceNumber && !_.last(substances);
       if (substanceDefinitionHasNotStarted) continue;
@@ -24,22 +27,16 @@ export class CasAndCeRulesService {
         substances[substances.length - 1] = {
           casNumber: lastSubstance?.casNumber || casNumber,
           ceNumber: lastSubstance?.ceNumber || ceNumber,
-          metaData: lastSubstance?.metaData,
         };
         previousLineSubstance = {};
         continue;
       }
 
-      substances.push({ casNumber, ceNumber, metaData });
+      substances.push({ casNumber, ceNumber });
       previousLineSubstance = { casNumber, ceNumber };
     }
     return _(substances)
-      .uniqBy((substance) => `${substance.casNumber};${substance.ceNumber}`)
-      .map((substance) => ({
-        ...substance,
-        casNumber: ExtractionCleanerService.cleanSpaces(substance.casNumber),
-        ceNumber: ExtractionCleanerService.cleanSpaces(substance.ceNumber),
-      }))
+      .uniqBy((substance) => `${substance.casNumber?.value};${substance.ceNumber?.value}`)
       .value();
   }
 
@@ -67,21 +64,22 @@ export class CasAndCeRulesService {
   }
 
   private static isSameSubstance(
-    newSubstance: { casNumber: string; ceNumber: string },
-    previousLineMatch: Partial<{ casNumber: string; ceNumber: string }>,
+    newSubstance: { casNumber: IExtractedCasNumber; ceNumber: IExtractedCeNumber },
+    previousLineMatch: Partial<IExtractedSubstance>,
   ): boolean {
-    const newSubstanceHasBothCasAndCe = newSubstance.casNumber && newSubstance.ceNumber;
+    const newSubstanceHasBothCasAndCe = newSubstance.casNumber?.value && newSubstance.ceNumber?.value;
     if (newSubstanceHasBothCasAndCe) return false;
 
-    const newSubstanceHasNoCasNorCe = !newSubstance.casNumber && !newSubstance.ceNumber;
+    const newSubstanceHasNoCasNorCe = !newSubstance.casNumber?.value && !newSubstance.ceNumber?.value;
     if (newSubstanceHasNoCasNorCe) return true;
 
     const previousLineMatchOnlyACasOrACe =
-      (previousLineMatch?.casNumber && !previousLineMatch?.ceNumber) || (!previousLineMatch?.casNumber && previousLineMatch?.ceNumber);
+      (previousLineMatch.casNumber?.value && !previousLineMatch.ceNumber?.value) ||
+      (!previousLineMatch.casNumber?.value && previousLineMatch.ceNumber?.value);
     if (!previousLineMatchOnlyACasOrACe) return false;
 
     const newSubstanceDefinesFieldThatPreviousLineDoesNot =
-      newSubstance.casNumber !== previousLineMatch?.casNumber && newSubstance.ceNumber !== previousLineMatch?.ceNumber;
+      newSubstance.casNumber?.value !== previousLineMatch.casNumber?.value && newSubstance.ceNumber?.value !== previousLineMatch.ceNumber?.value;
     if (newSubstanceDefinesFieldThatPreviousLineDoesNot) return true;
 
     return false;
