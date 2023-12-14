@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import _ from 'lodash';
+import type { IExtractedDate } from '@padoa/chemical-risk';
 
-import type { IExtractedDate } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 
 export class RevisionDateRulesService {

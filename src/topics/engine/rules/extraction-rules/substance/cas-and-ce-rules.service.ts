@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import type { IExtractedCasNumber, IExtractedCeNumber, IExtractedSubstance } from '@padoa/chemical-risk';
 
-import type { IExtractedCasNumber, IExtractedCeNumber, IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
+import type { ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 

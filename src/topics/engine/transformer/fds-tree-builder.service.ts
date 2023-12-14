@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import type { IBox, IPosition } from '@padoa/chemical-risk';
 
-import type { IBox, IFdsTree, ILine, IPosition, IStroke, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, ILine, IStroke, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
 import type { IBuildTree, IFdsTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';

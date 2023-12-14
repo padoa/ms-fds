@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { IExtractedProducer, IMetaData } from '@padoa/chemical-risk';
 
 import { aFdsTree, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { RAW_PRODUCER_NAME, RAW_PRODUCER_NAME_WITH_DOT } from '@topics/engine/__fixtures__/fixtures.constants.js';
@@ -14,7 +15,7 @@ import {
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import type { IFdsTree, IExtractedProducer, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/producer-rules.service.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 

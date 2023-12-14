@@ -1,3 +1,4 @@
+import type { IExtractedSubstance } from '@padoa/chemical-risk';
 import { BaseBuilder } from '@padoa/meta';
 
 import {
@@ -8,7 +9,6 @@ import {
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import type { IExtractedSubstance } from '@topics/engine/model/fds.model.js';
 
 export class SubstanceBuilder extends BaseBuilder<IExtractedSubstance> {
   public withCasNumber = this.withValueFor('casNumber');

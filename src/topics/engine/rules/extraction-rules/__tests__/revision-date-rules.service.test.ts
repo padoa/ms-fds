@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import type { IExtractedDate } from '@padoa/chemical-risk';
 
-import type { IExtractedDate } from '@topics/engine/model/fds.model.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
 
 describe('RevisionDateRulesService tests', () => {

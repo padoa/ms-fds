@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import type { IExtractedConcentration, IExtractedSubstance } from '@padoa/chemical-risk';
 
-import type { IExtractedConcentration, IExtractedSubstance, IFdsTree } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { CasAndCeRulesService } from '@topics/engine/rules/extraction-rules/substance/cas-and-ce-rules.service.js';
 import { ConcentrationRulesService } from '@topics/engine/rules/extraction-rules/substance/concentration-rules.service.js';
 

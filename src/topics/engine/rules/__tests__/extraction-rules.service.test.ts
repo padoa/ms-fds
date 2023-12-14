@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import type { IExtractedData, IMetaData } from '@padoa/chemical-risk';
 
-import type { IExtractedData, IMetaData } from '@topics/engine/model/fds.model.js';
 import { aFdsTreeWithAllSectionsWithUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
   H_DANGER,

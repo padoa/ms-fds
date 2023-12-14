@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { IExtractedProduct, IMetaData } from '@padoa/chemical-risk';
 
 import { aFdsTree, anEmptyFdsTreeWithAllSections, aFdsTreeWithAllSectionsWithoutUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
@@ -22,7 +23,7 @@ import {
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWith3LinesContainingProductName } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/__fixtures__/text.mother.js';
-import type { IFdsTree, IExtractedProduct, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 

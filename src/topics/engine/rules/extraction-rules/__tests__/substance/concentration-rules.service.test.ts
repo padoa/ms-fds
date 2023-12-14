@@ -1,8 +1,9 @@
 import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import _ from 'lodash';
+import type { IExtractedConcentration } from '@padoa/chemical-risk';
 
-import type { IExtractedConcentration, ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
+import type { ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
 import { ConcentrationRulesService } from '@topics/engine/rules/extraction-rules/substance/concentration-rules.service.js';
 import { aText, aTextWithConcentration } from '@topics/engine/__fixtures__/text.mother.js';
 import { TableExtractionService } from '@topics/engine/rules/extraction-rules/substance/table-extraction.service.js';

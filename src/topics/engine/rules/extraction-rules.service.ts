@@ -1,4 +1,6 @@
-import type { IExtractedData, IFdsTree } from '@topics/engine/model/fds.model.js';
+import type { IExtractedData } from '@padoa/chemical-risk';
+
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { PhysicalStateRulesService } from '@topics/engine/rules/extraction-rules/physical-state-rules.service.js';
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
 import { ProductRulesService } from '@topics/engine/rules/extraction-rules/product-rules.service.js';
