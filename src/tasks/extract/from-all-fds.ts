@@ -94,7 +94,13 @@ const saveInCsv = async (
     product?.name,
     producer?.name,
     dangers.map((danger) => danger.code).join(','),
-    JSON.stringify(_.map(substances, (substance) => _.pick(substance, ['casNumber', 'ceNumber', 'concentration']))),
+    JSON.stringify(
+      _.map(substances, (substance) => ({
+        casNumber: substance.casNumber?.value,
+        ceNumber: substance.ceNumber?.value,
+        concentration: substance.concentration?.value,
+      })),
+    ),
     physicalState?.value,
     vaporPressure ? vaporPressure.pressure : null,
     vaporPressure ? vaporPressure.temperature : null,
