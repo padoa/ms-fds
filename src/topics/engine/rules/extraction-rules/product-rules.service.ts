@@ -52,24 +52,25 @@ export class ProductRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { startBox, endBox } = line;
-      const lineText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
-      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
-      const text = _(cleanContent).split(':').last().trim();
+      const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
+      const { rawProductText, cleanProductText } = this.extractRawAndCleanProductText(line);
+
       if (
-        !text ||
-        _.includes(text, '1.1') ||
-        _.includes(text, 'nom du produit') ||
-        _.includes(text, 'mélange') ||
-        _.includes(text, 'identificateur de produit') ||
-        _.includes(lineText, 'forme du produit')
+        !cleanProductText ||
+        _.includes(cleanProductText, '1.1') ||
+        _.includes(cleanProductText, 'nom du produit') ||
+        _.includes(cleanProductText, 'mélange') ||
+        _.includes(cleanProductText, 'identificateur de produit') ||
+        _.includes(lineCleanText, 'forme du produit')
       ) {
         continue;
       }
+
       const numberOfOtherMatchesInDocument = fullText
+        .toLowerCase()
         .replaceAll(' ', '')
-        .match(new RegExp(`${text.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
-      if (numberOfOtherMatchesInDocument?.length >= 3) return { name: text, metaData: { startBox, endBox } };
+        .match(new RegExp(`${cleanProductText.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
+      if (numberOfOtherMatchesInDocument?.length >= 3) return { name: rawProductText, metaData: { startBox: line.startBox, endBox: line.endBox } };
     }
     return null;
   }
