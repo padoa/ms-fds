@@ -7,5 +7,8 @@
       "port": 5433
     }
   },
-  "stackName": "test"
+  "stackName": "test",
+  "pdftron": {
+    "licenseKey": "test_pdftron_licenseKey"
+  }
 }

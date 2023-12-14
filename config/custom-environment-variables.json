@@ -44,5 +44,8 @@
       "__name": "FORCE_UNIQUE_TRANSACTION",
       "__format": "json"
     }
+  },
+  "pdftron": {
+    "licenseKey": "PDFTRON_LICENSE_KEY"
   }
 }
