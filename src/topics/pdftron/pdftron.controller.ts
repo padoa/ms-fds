@@ -5,12 +5,10 @@ import type { Request, Response } from 'express';
 import { pdftronInfoResponse } from '@topics/pdftron/pdftron.validator.js';
 
 export class PdftronController extends Controller {
-  /* c8 ignore start */
-  // Ignored because this controller route will be deleted in the future
   @response(200, 'Les informations PDFTron', pdftronInfoResponse)
   @markAuthMiddlewareAsSet()
   @route('/info', HttpMethod.GET, 'Retourne les informations PDFTron')
-  public async get(req: Request, res: Response): Promise<void> {
+  public async getInfo(req: Request, res: Response): Promise<void> {
     res.json({
       // cil not named license to obfuscate
       cil: btoa(config.get<string>('pdftron.licenseKey')),
@@ -19,7 +17,6 @@ export class PdftronController extends Controller {
       til: btoa('PAPI'.repeat(32)),
     });
   }
-  /* c8 ignore stop */
 }
 
 export const pdftronController = new PdftronController('/api/pdftron', 'pdftron', 'Routes pour récupérer les informations PDFTron');
