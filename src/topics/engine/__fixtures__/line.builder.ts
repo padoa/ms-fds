@@ -1,6 +1,6 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { ILine } from '@topics/engine/model/fds.model.js';
 
 export class LineBuilder extends BaseBuilder<ILine> {
@@ -10,7 +10,7 @@ export class LineBuilder extends BaseBuilder<ILine> {
 
   protected getDefaultValues(): ILine {
     return {
-      startBox: { pageNumber: 1, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
+      startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
       texts: [],
     };
   }

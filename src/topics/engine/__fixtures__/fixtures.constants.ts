@@ -2,6 +2,7 @@
 //----------------------------------------- BOX -----------------------------------------------
 //----------------------------------------------------------------------------------------------
 
+export const PAGE_NUMBER = 1;
 export const POSITION_PROPORTION_X = 0.12;
 export const POSITION_PROPORTION_Y = 0.12;
 export const INCREMENT_VALUE = 0.03;

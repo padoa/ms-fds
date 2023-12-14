@@ -1,6 +1,6 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { IPosition } from '@topics/engine/model/fds.model.js';
 
 export class PositionBuilder extends BaseBuilder<IPosition> {
@@ -10,7 +10,7 @@ export class PositionBuilder extends BaseBuilder<IPosition> {
 
   protected getDefaultValues(): IPosition {
     return {
-      pageNumber: 1,
+      pageNumber: PAGE_NUMBER,
       xPositionProportion: POSITION_PROPORTION_X,
       yPositionProportion: POSITION_PROPORTION_Y,
     };

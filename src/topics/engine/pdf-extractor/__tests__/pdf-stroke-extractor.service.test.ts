@@ -8,7 +8,13 @@ import {
   aRawStrokeTooWide,
   aVerticalRawStroke,
 } from '@topics/engine/pdf-extractor/__tests__/__fixtures__/raw-stroke.mother.js';
-import { PAGE_HEIGHT, PAGE_WIDTH, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import {
+  PAGE_HEIGHT,
+  PAGE_NUMBER,
+  PAGE_WIDTH,
+  POSITION_PROPORTION_X,
+  POSITION_PROPORTION_Y,
+} from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aStroke, aStrokeEndingAtFillMaxWidth } from '@topics/engine/__fixtures__/stroke.mother.js';
 import { aFill, aFillTooWide } from '@topics/engine/pdf-extractor/__tests__/__fixtures__/fill.mother.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
@@ -38,7 +44,9 @@ describe('PdfStrokeExtractorService tests', () => {
         expected: [aStroke().properties],
       },
     ])('$message', ({ hLines, expected }) => {
-      expect(PdfStrokeExtractorService.getStrokeFromHLines(hLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 1 })).toEqual(expected);
+      expect(PdfStrokeExtractorService.getStrokeFromHLines(hLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: PAGE_NUMBER })).toEqual(
+        expected,
+      );
     });
   });
 
@@ -65,7 +73,9 @@ describe('PdfStrokeExtractorService tests', () => {
         expected: [aStroke().properties],
       },
     ])('$message', ({ vLines, expected }) => {
-      expect(PdfStrokeExtractorService.getStrokeFromVLines(vLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 1 })).toEqual(expected);
+      expect(PdfStrokeExtractorService.getStrokeFromVLines(vLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: PAGE_NUMBER })).toEqual(
+        expected,
+      );
     });
   });
 
@@ -92,7 +102,9 @@ describe('PdfStrokeExtractorService tests', () => {
         expected: [aStrokeEndingAtFillMaxWidth().properties],
       },
     ])('$message', ({ fills, expected }) => {
-      expect(PdfStrokeExtractorService.getStrokeFromFills(fills, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: 1 })).toEqual(expected);
+      expect(PdfStrokeExtractorService.getStrokeFromFills(fills, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: PAGE_NUMBER })).toEqual(
+        expected,
+      );
     });
   });
 
@@ -164,13 +176,13 @@ describe('PdfStrokeExtractorService tests', () => {
           aStroke()
             .withStartBox(
               aPosition()
-                .withPageNumber(2)
+                .withPageNumber(PAGE_NUMBER + 1)
                 .withXPositionProportion(POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
                 .withYPositionProportion(POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
             )
             .withEndBox(
               aPosition()
-                .withPageNumber(2)
+                .withPageNumber(PAGE_NUMBER + 1)
                 .withXPositionProportion(POSITION_PROPORTION_X + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
                 .withYPositionProportion(POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
             ).properties,

@@ -1,6 +1,6 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { IText } from '@topics/engine/model/fds.model.js';
 
 export class TextBuilder extends BaseBuilder<IText> {
@@ -10,10 +10,10 @@ export class TextBuilder extends BaseBuilder<IText> {
 
   protected getDefaultValues(): IText {
     return {
-      pageNumber: 1,
+      pageNumber: PAGE_NUMBER,
       xPositionProportion: POSITION_PROPORTION_X,
       yPositionProportion: POSITION_PROPORTION_Y,
-      content: 'content',
+      content: TEXT_CONTENT,
     };
   }
 }

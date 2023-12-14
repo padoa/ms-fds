@@ -11,7 +11,7 @@ import {
   aLineWithTwoTextsAndPositionYIncremented,
   aLineWithTwoTextsAndPositionYIncrementedTwice,
 } from '@topics/engine/__fixtures__/line.mother.js';
-import { INCREMENT_VALUE, POSITION_PROPORTION_X, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { INCREMENT_VALUE, PAGE_NUMBER, POSITION_PROPORTION_X, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { IFdsTree, IStroke } from '@topics/engine/model/fds.model.js';
 import { aFdsTree, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aStroke } from '@topics/engine/__fixtures__/stroke.mother.js';
@@ -288,7 +288,9 @@ describe('FdsTreeBuilderService tests', () => {
           )
           .withSection2(
             aSection().withSubsections({
-              2: aSubSection().withStartBox(aPosition().withPageNumber(2).properties).withEndBox(aPosition().withPageNumber(2).properties).properties,
+              2: aSubSection()
+                .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties)
+                .withEndBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties,
             }).properties,
           ).properties,
         strokes: [aStroke().properties],
@@ -303,7 +305,9 @@ describe('FdsTreeBuilderService tests', () => {
           )
           .withSection2(
             aSection().withSubsections({
-              2: aSubSection().withStartBox(aPosition().withPageNumber(2).properties).withEndBox(aPosition().withPageNumber(2).properties).properties,
+              2: aSubSection()
+                .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties)
+                .withEndBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties,
             }).properties,
           ).properties,
       },

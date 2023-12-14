@@ -108,7 +108,7 @@ export class FdsTreeBuilderService {
   //--------------------------------------- BUILDERS ---------------------------------------------
   //----------------------------------------------------------------------------------------------
 
-  public static addFdsTreeSection(
+  private static addFdsTreeSection(
     fdsTree: IFdsTreeWithoutStrokes,
     { line, sectionNumber }: { line: ILine; sectionNumber: number },
   ): IFdsTreeWithoutStrokes {
@@ -125,7 +125,7 @@ export class FdsTreeBuilderService {
     };
   }
 
-  public static setFdsTreeEndBoxSection(
+  private static setFdsTreeEndBoxSection(
     fdsTree: IFdsTreeWithoutStrokes,
     { position, sectionNumber }: { position: IPosition; sectionNumber: number },
   ): IFdsTreeWithoutStrokes {
@@ -141,7 +141,7 @@ export class FdsTreeBuilderService {
     return fdsTree;
   }
 
-  public static addFdsTreeSubSection(
+  private static addFdsTreeSubSection(
     fdsTree: IFdsTreeWithoutStrokes,
     { line, sectionNumber, subSectionNumber }: { line: ILine; sectionNumber: number; subSectionNumber: number },
   ): IFdsTreeWithoutStrokes {
@@ -164,7 +164,7 @@ export class FdsTreeBuilderService {
     };
   }
 
-  public static setFdsTreeEndBoxSubSection(
+  private static setFdsTreeEndBoxSubSection(
     fdsTree: IFdsTreeWithoutStrokes,
     { position, sectionNumber, subSectionNumber }: { position: IPosition; sectionNumber: number; subSectionNumber: number },
   ): IFdsTreeWithoutStrokes {
@@ -172,7 +172,7 @@ export class FdsTreeBuilderService {
     return fdsTree;
   }
 
-  public static addFdsTreeLine(
+  private static addFdsTreeLine(
     fdsTree: IFdsTreeWithoutStrokes,
     { line, sectionNumber, subSectionNumber }: { line: ILine; sectionNumber: number; subSectionNumber: number },
   ): IFdsTreeWithoutStrokes {
@@ -193,7 +193,7 @@ export class FdsTreeBuilderService {
     };
   }
 
-  public static updateXCounts(xCounts: IXCounts, line: ILine): IXCounts {
+  private static updateXCounts(xCounts: IXCounts, line: ILine): IXCounts {
     return _.reduce(
       line.texts,
       (xCountsAcc, textElement) => {

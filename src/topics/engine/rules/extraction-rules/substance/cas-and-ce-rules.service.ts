@@ -24,7 +24,7 @@ export class CasAndCeRulesService {
         substances[substances.length - 1] = {
           casNumber: lastSubstance?.casNumber || casNumber,
           ceNumber: lastSubstance?.ceNumber || ceNumber,
-          metaData: lastSubstance?.metaData || metaData,
+          metaData: lastSubstance?.metaData,
         };
         previousLineSubstance = {};
         continue;

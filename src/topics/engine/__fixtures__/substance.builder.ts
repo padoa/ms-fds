@@ -4,6 +4,7 @@ import {
   CAS_NUMBER,
   CE_NUMBER,
   CONCENTRATION_VALUE,
+  PAGE_NUMBER,
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
@@ -21,7 +22,7 @@ export class SubstanceBuilder extends BaseBuilder<IExtractedSubstance> {
       ceNumber: CE_NUMBER,
       concentration: CONCENTRATION_VALUE,
       metaData: {
-        startBox: { pageNumber: 1, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
+        startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
       },
     };
   }

@@ -1,6 +1,6 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { ISubsection } from '@topics/engine/model/fds.model.js';
 
 export class SubSectionBuilder extends BaseBuilder<ISubsection> {
@@ -12,7 +12,7 @@ export class SubSectionBuilder extends BaseBuilder<ISubsection> {
   protected getDefaultValues(): ISubsection {
     return {
       startBox: {
-        pageNumber: 1,
+        pageNumber: PAGE_NUMBER,
         xPositionProportion: POSITION_PROPORTION_X,
         yPositionProportion: POSITION_PROPORTION_Y,
       },

@@ -5,7 +5,7 @@ import type { ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
 import { aHorizontalStroke, aStroke, aVerticalStroke } from '@topics/engine/__fixtures__/stroke.mother.js';
 import { TableExtractionService } from '@topics/engine/rules/extraction-rules/substance/table-extraction.service.js';
 import { aPosition, aPositionWithXIncremented } from '@topics/engine/__fixtures__/position.mother.js';
-import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aLine, aLineWithOneText } from '@topics/engine/__fixtures__/line.mother.js';
 import { aText, aTextWithRandomContent1, aTextWithRandomContent2, aTextWithRandomContent3 } from '@topics/engine/__fixtures__/text.mother.js';
 
@@ -30,8 +30,8 @@ describe('TableExtractionService tests', () => {
         },
         {
           message: 'should return all strokes if they are on the same x position but on another page',
-          strokes: [aStroke().properties, aStroke().withStartBox(aPosition().withPageNumber(2).properties).properties],
-          expected: [aStroke().properties, aStroke().withStartBox(aPosition().withPageNumber(2).properties).properties],
+          strokes: [aStroke().properties, aStroke().withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties],
+          expected: [aStroke().properties, aStroke().withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties],
         },
       ])('$message', ({ strokes, expected }) => {
         expect(TableExtractionService.mergeStrokesVerticallyAligned(strokes)).toEqual(expected);

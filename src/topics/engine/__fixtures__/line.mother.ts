@@ -1,15 +1,15 @@
 import { LineBuilder } from '@topics/engine/__fixtures__/line.builder.js';
 import { aPositionWithYIncremented, aPositionWithYIncrementedTwice } from '@topics/engine/__fixtures__/position.mother.js';
 import {
-  aTextWithCASNumber,
-  aTextWithCENumber,
+  aTextWithCasNumber,
+  aTextWithCeNumber,
   aTextWithContentAndPosition,
   aTextWithContentAndPositionXIncremented,
   aTextWithContentAndPositionXYIncremented,
   aTextWithContentAndPositionXYIncrementedTwice,
   aTextWithContentAndPositionYIncremented,
   aTextWithContentAndPositionYIncrementedTwice,
-  aTextWithOEUHDanger,
+  aTextWithEuhDanger,
   aTextWithHDanger,
   aTextWithHDangerWithDetails,
   aTextWithPDanger,
@@ -97,7 +97,7 @@ export const aLineWithProducerEndingWithDotIn1Text = (): LineBuilder => aLine().
 //----------------------------------------------------------------------------------------------
 
 export const aLineWithHDanger = (): LineBuilder => aLine().withTexts([aTextWithHDanger().properties]);
-export const aLineWithEUHDanger = (): LineBuilder => aLine().withTexts([aTextWithOEUHDanger().properties]);
+export const aLineWithEuhDanger = (): LineBuilder => aLine().withTexts([aTextWithEuhDanger().properties]);
 export const aLineWithMultiplePDanger = (): LineBuilder => aLine().withTexts([aTextWithMultiplePDanger().properties]);
 
 export const aLineWithTwoDangers = (): LineBuilder => aLine().withTexts([aTextWithHDanger().properties, aTextWithPDanger().properties]);
@@ -112,12 +112,12 @@ export const aLineWithThreeDangersAndTheirDetails = (): LineBuilder =>
 //----------------------------------------- SUBSTANCES -----------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aLineWithCASNumber = (): LineBuilder => aLine().withTexts([aTextWithCASNumber().properties]);
-export const aLineWithCENumber = (): LineBuilder => aLine().withTexts([aTextWithCENumber().properties]);
-export const aLineWithCASAndCENumberIn2Texts = (): LineBuilder =>
-  aLine().withTexts([aTextWithCASNumber().properties, aTextWithCENumber().properties]);
-export const aLineWithCASAndCENumberAndConcentrationIn3Texts = (): LineBuilder =>
-  aLine().withTexts([aTextWithCASNumber().properties, aTextWithCENumber().properties, aTextWithConcentration().properties]);
+export const aLineWithCasNumber = (): LineBuilder => aLine().withTexts([aTextWithCasNumber().properties]);
+export const aLineWithCeNumber = (): LineBuilder => aLine().withTexts([aTextWithCeNumber().properties]);
+export const aLineWithCasAndCeNumberIn2Texts = (): LineBuilder =>
+  aLine().withTexts([aTextWithCasNumber().properties, aTextWithCeNumber().properties]);
+export const aLineWithCasAndCeNumberAndConcentrationIn3Texts = (): LineBuilder =>
+  aLine().withTexts([aTextWithCasNumber().properties, aTextWithCeNumber().properties, aTextWithConcentration().properties]);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- PHYSICAL_STATE ---------------------------------------
