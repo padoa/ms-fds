@@ -3,13 +3,14 @@ import _ from 'lodash';
 
 import { aLineWithCasAndCeNumberIn2Texts, aLineWithCeNumber, aLineWithCasNumber, aLine } from '@topics/engine/__fixtures__/line.mother.js';
 import type { IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
+import { aText } from '@topics/engine/__fixtures__/text.mother.js';
 import { CasAndCeRulesService } from '@topics/engine/rules/extraction-rules/substance/cas-and-ce-rules.service.js';
 import {
   aSubstanceWithCasAndCeNumber,
   aSubstanceWithOnlyACasNumber,
   aSubstanceWithOnlyACeNumber,
-} from '@topics/engine/__fixtures__/substance.mother.js';
-import { aText } from '@topics/engine/__fixtures__/text.mother.js';
+} from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/substance.mother.js';
+import { aCasNumber } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/cas-number.mother.js';
 
 describe('CasAndCeRulesService tests', () => {
   describe('Regexps tests', () => {
@@ -139,7 +140,7 @@ describe('CasAndCeRulesService tests', () => {
       {
         message: 'it should return substances without spaces',
         lines: [aLine().withTexts([aText().withContent(' 123546 - 78 - 9 ').properties]).properties],
-        expected: [aSubstanceWithOnlyACasNumber().withCasNumber('123546-78-9').properties],
+        expected: [aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withValue('123546-78-9').properties).properties],
       },
     ])('$message', ({ lines, expected }) => {
       expect(CasAndCeRulesService.getSubstancesCasAndCe(lines)).toEqual(expected);

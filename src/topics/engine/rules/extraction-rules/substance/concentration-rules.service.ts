@@ -1,26 +1,30 @@
 import _ from 'lodash';
 
-import type { IConcentration, ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
+import type { IExtractedConcentration, ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
 import { TableExtractionService } from '@topics/engine/rules/extraction-rules/substance/table-extraction.service.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
 
 export class ConcentrationRulesService {
-  public static getConcentrations(linesToSearchIn: ILine[], { strokes }: { strokes: IStroke[] }): IConcentration[] {
+  public static getConcentrations(linesToSearchIn: ILine[], { strokes }: { strokes: IStroke[] }): IExtractedConcentration[] {
     const tableVerticalStrokes = TableExtractionService.getTableVerticalStrokes(strokes);
     const linesSplittedByColumns = TableExtractionService.splitLinesInColumns(linesToSearchIn, tableVerticalStrokes);
     const concentrationByColumns = _.map(linesSplittedByColumns, (lines) => this.getConcentrationsInColumn(lines));
     return _(concentrationByColumns)
       .maxBy('length')
-      .map((concentration) => ExtractionCleanerService.trimAndCleanMultipleSpaces(concentration));
+      .map((concentration) => ({ ...concentration, value: ExtractionCleanerService.trimAndCleanMultipleSpaces(concentration.value) }));
   }
 
-  public static getConcentrationsInColumn(lines: IText[][]): IConcentration[] {
+  public static getConcentrationsInColumn(lines: IText[][]): IExtractedConcentration[] {
     const concentrations = [];
     for (const texts of lines) {
       const text = texts.map(({ content }) => content).join('');
       const concentration = this.getConcentration(text);
-      if (concentration) concentrations.push(concentration);
+      if (concentration)
+        concentrations.push({
+          value: concentration,
+          metaData: { startBox: _.pick(texts[0], ['pageNumber', 'xPositionProportion', 'yPositionProportion']) },
+        });
     }
     return concentrations;
   }
@@ -40,7 +44,7 @@ export class ConcentrationRulesService {
     `(${this.RANGE_CONCENTRATION_REGEX}|${this.RANGE_PERCENT_CONCENTRATION_REGEX}|${this.IN_BETWEEN_RANGE_CONCENTRATION_REGEX}|${this.PERCENT_CONCENTRATION_REGEX})`,
   );
 
-  public static getConcentration(text: string): IConcentration {
+  public static getConcentration(text: string): string {
     const match = text.match(this.CONCENTRATION_REGEX);
     return match?.[0];
   }

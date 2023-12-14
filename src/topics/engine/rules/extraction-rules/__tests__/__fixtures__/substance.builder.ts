@@ -14,16 +14,16 @@ export class SubstanceBuilder extends BaseBuilder<IExtractedSubstance> {
   public withCasNumber = this.withValueFor('casNumber');
   public withCeNumber = this.withValueFor('ceNumber');
   public withConcentration = this.withValueFor('concentration');
-  public withMetaData = this.withValueFor('metaData');
 
   protected getDefaultValues(): IExtractedSubstance {
+    const metaData = {
+      startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
+    };
+
     return {
-      casNumber: CAS_NUMBER,
-      ceNumber: CE_NUMBER,
-      concentration: CONCENTRATION_VALUE,
-      metaData: {
-        startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
-      },
+      casNumber: { value: CAS_NUMBER, metaData },
+      ceNumber: { value: CE_NUMBER, metaData },
+      concentration: { value: CONCENTRATION_VALUE, metaData },
     };
   }
 }
