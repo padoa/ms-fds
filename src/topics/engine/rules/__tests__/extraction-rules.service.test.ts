@@ -3,11 +3,9 @@ import { describe, expect, it } from 'vitest';
 import type { IExtractedData, IMetaData } from '@topics/engine/model/fds.model.js';
 import { aFdsTreeWithAllSectionsWithUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
-  PRODUCER_NAME,
   H_DANGER,
   P_DANGER,
   MULTIPLE_P_DANGER,
-  PRODUCER_IDENTIFIER_WITH_COLON,
   CAS_NUMBER_TEXT,
   CE_NUMBER_TEXT,
   H_DANGER_WITH_DETAILS,
@@ -22,6 +20,8 @@ import {
   CONCENTRATION_VALUE,
   RAW_PRODUCT_IDENTIFIER_WITH_COLON,
   RAW_PRODUCT_NAME,
+  RAW_PRODUCER_NAME,
+  RAW_PRODUCER_IDENTIFIER_WITH_COLON,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { aSubstance } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/substance.mother.js';
@@ -36,9 +36,9 @@ describe('ExtractionRulesService tests', () => {
       révision : 18/05/2015
       ${RAW_PRODUCT_IDENTIFIER_WITH_COLON}
       ${RAW_PRODUCT_NAME}
+      ${RAW_PRODUCER_IDENTIFIER_WITH_COLON}
+      ${RAW_PRODUCER_NAME}
       // TODO: replace all with "raw" constants
-      ${PRODUCER_IDENTIFIER_WITH_COLON}
-      ${PRODUCER_NAME}
       ${H_DANGER_WITH_DETAILS}
       ${MULTIPLE_P_DANGER_WITH_DETAILS}
       ${MULTIPLE_P_DANGER}
@@ -56,7 +56,7 @@ describe('ExtractionRulesService tests', () => {
       const expected: IExtractedData = {
         date: { formattedDate: '2015/05/18', inTextDate: '18/05/2015' },
         product: { name: RAW_PRODUCT_NAME, metaData },
-        producer: { name: PRODUCER_NAME, metaData },
+        producer: { name: RAW_PRODUCER_NAME, metaData },
         dangers: [
           { code: H_DANGER, metaData },
           { code: P_DANGER, metaData },

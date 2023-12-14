@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import type { IFdsTree, IExtractedProduct, ILine } from '@topics/engine/model/fds.model.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class ProductRulesService {
   public static getProduct(fdsTree: IFdsTree, { fullText }: { fullText: string }): IExtractedProduct | null {
@@ -66,10 +67,9 @@ export class ProductRulesService {
         continue;
       }
 
-      const numberOfOtherMatchesInDocument = fullText
-        .toLowerCase()
-        .replaceAll(' ', '')
-        .match(new RegExp(`${cleanProductText.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'));
+      const numberOfOtherMatchesInDocument = TextCleanerService.cleanSpaces(TextCleanerService.cleanRawText(fullText)).match(
+        new RegExp(`${cleanProductText.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'),
+      );
       if (numberOfOtherMatchesInDocument?.length >= 3) return { name: rawProductText, metaData: { startBox: line.startBox, endBox: line.endBox } };
     }
     return null;

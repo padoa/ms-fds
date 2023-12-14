@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { IFdsTree, IExtractedProducer } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProducer, ILine } from '@topics/engine/model/fds.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class ProducerRulesService {
@@ -10,25 +10,34 @@ export class ProducerRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
-      const text = _(cleanContent).split(':').last().trim();
-      if (!text) continue;
+      const { cleanProductText, rawProductText } = this.extractRawAndCleanProductText(line);
+      if (!cleanProductText) continue;
 
       if (
-        _.includes(text, 'fournisseur') ||
-        _.includes(text, '1.3') ||
-        _.includes(text, '1. 3') ||
-        _.includes(text, 'société') ||
-        _.includes(text, 'données de sécurité') ||
-        _.includes(text, 'raison sociale')
+        _.includes(cleanProductText, 'fournisseur') ||
+        _.includes(cleanProductText, '1.3') ||
+        _.includes(cleanProductText, '1. 3') ||
+        _.includes(cleanProductText, 'société') ||
+        _.includes(cleanProductText, 'données de sécurité') ||
+        _.includes(cleanProductText, 'raison sociale')
       ) {
         continue;
       }
 
-      const { startBox, endBox } = line;
-
-      return { name: TextCleanerService.trimAndCleanTrailingDot(text), metaData: { startBox, endBox } };
+      return { name: TextCleanerService.trimAndCleanTrailingDot(rawProductText), metaData: { startBox: line.startBox, endBox: line.endBox } };
     }
     return null;
+  }
+
+  private static extractRawAndCleanProductText(line: ILine): { cleanProductText: string; rawProductText: string } {
+    const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
+    return {
+      cleanProductText: this.extractProductText(cleanContent),
+      rawProductText: this.extractProductText(rawContent),
+    };
+  }
+
+  private static extractProductText(productText: string): string {
+    return _(productText).split(':').last().trim();
   }
 }

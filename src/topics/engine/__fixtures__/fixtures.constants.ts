@@ -46,11 +46,16 @@ export const CLEAN_PRODUCT_NAME = TextCleanerService.cleanRawText(RAW_PRODUCT_NA
 //----------------------------------------- PRODUCER -------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const PRODUCER_IDENTIFIER_WITH_COLON = ' blabla 1.3 fournisseur : ';
-export const PRODUCER_IDENTIFIER = ' blabla 1.3 fournisseur ';
-export const PRODUCER_NAME = 'padoa';
-export const PRODUCER_NAME_WITH_DOT = `${PRODUCER_NAME}.rc`;
-export const PRODUCER_NAME_ENDING_WITH_DOT = `${PRODUCER_NAME}.`;
+export const RAW_PRODUCER_IDENTIFIER_WITH_COLON = ' Blabla 1.3 Fournisseur : ';
+export const RAW_PRODUCER_IDENTIFIER = ' Blabla 1.3 Fournisseur ';
+export const RAW_PRODUCER_NAME = 'PADOA';
+export const RAW_PRODUCER_NAME_WITH_DOT = `${RAW_PRODUCER_NAME}.RC`;
+export const RAW_PRODUCER_NAME_ENDING_WITH_DOT = `${RAW_PRODUCER_NAME}.`;
+export const CLEAN_PRODUCER_IDENTIFIER_WITH_COLON = TextCleanerService.cleanRawText(RAW_PRODUCER_IDENTIFIER_WITH_COLON);
+export const CLEAN_PRODUCER_IDENTIFIER = TextCleanerService.cleanRawText(RAW_PRODUCER_IDENTIFIER);
+export const CLEAN_PRODUCER_NAME = TextCleanerService.cleanRawText(RAW_PRODUCER_NAME);
+export const CLEAN_PRODUCER_NAME_WITH_DOT = TextCleanerService.cleanRawText(RAW_PRODUCER_NAME_WITH_DOT);
+export const CLEAN_PRODUCER_NAME_ENDING_WITH_DOT = TextCleanerService.cleanRawText(RAW_PRODUCER_NAME_ENDING_WITH_DOT);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- DANGERS --------------------------------------------

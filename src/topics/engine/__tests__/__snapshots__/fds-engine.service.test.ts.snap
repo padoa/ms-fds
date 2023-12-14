@@ -84,7 +84,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "yPositionProportion": 0.3348726719878373,
         },
       },
-      "name": "jeffa lubrifiants",
+      "name": "JEFFA LUBRIFIANTS",
     },
     "product": {
       "metaData": {
@@ -371,7 +371,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "yPositionProportion": 0.5764309764309764,
         },
       },
-      "name": "hypred sas",
+      "name": "HYPREDSAS",
     },
     "product": null,
     "substances": [
