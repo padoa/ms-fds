@@ -57,5 +57,8 @@
     "domain": "vault/common/zendesk/staging/domain",
     "user": "vault/common/zendesk/staging/user",
     "token": "vault/common/zendesk/staging/token"
+  },
+  "pdftron": {
+    "licenseKey": ""
   }
 }
