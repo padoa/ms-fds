@@ -1,3 +1,5 @@
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- BOX -----------------------------------------------
 //----------------------------------------------------------------------------------------------
@@ -21,14 +23,14 @@ export const PAGE_HEIGHT = 55;
 export const SPACE_TEXT = ' ';
 
 export const RAW_TEXT_CONTENT = 'CONTENT';
-export const CLEAN_TEXT_CONTENT = RAW_TEXT_CONTENT.toLowerCase();
+export const CLEAN_TEXT_CONTENT = TextCleanerService.cleanRawText(RAW_TEXT_CONTENT);
 
 export const RAW_PLACEHOLDER_TEXT_1 = 'Abc';
 export const RAW_PLACEHOLDER_TEXT_2 = 'Def';
 export const RAW_PLACEHOLDER_TEXT_3 = 'Ghi';
-export const CLEAN_PLACEHOLDER_TEXT_1 = RAW_PLACEHOLDER_TEXT_1.toLowerCase();
-export const CLEAN_PLACEHOLDER_TEXT_2 = RAW_PLACEHOLDER_TEXT_2.toLowerCase();
-export const CLEAN_PLACEHOLDER_TEXT_3 = RAW_PLACEHOLDER_TEXT_3.toLowerCase();
+export const CLEAN_PLACEHOLDER_TEXT_1 = TextCleanerService.cleanRawText(RAW_PLACEHOLDER_TEXT_1);
+export const CLEAN_PLACEHOLDER_TEXT_2 = TextCleanerService.cleanRawText(RAW_PLACEHOLDER_TEXT_2);
+export const CLEAN_PLACEHOLDER_TEXT_3 = TextCleanerService.cleanRawText(RAW_PLACEHOLDER_TEXT_3);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- PRODUCT_NAME ---------------------------------------
@@ -37,9 +39,9 @@ export const CLEAN_PLACEHOLDER_TEXT_3 = RAW_PLACEHOLDER_TEXT_3.toLowerCase();
 export const RAW_PRODUCT_IDENTIFIER_WITH_COLON = ' Blabla Nom du produit : ';
 export const RAW_PRODUCT_IDENTIFIER = ' Blabla: Nom du produit';
 export const RAW_PRODUCT_NAME = 'JEFFACLEAN';
-export const CLEAN_PRODUCT_IDENTIFIER_WITH_COLON = RAW_PRODUCT_IDENTIFIER_WITH_COLON.toLowerCase();
-export const CLEAN_PRODUCT_IDENTIFIER = RAW_PRODUCT_IDENTIFIER.toLowerCase();
-export const CLEAN_PRODUCT_NAME = RAW_PRODUCT_NAME.toLowerCase();
+export const CLEAN_PRODUCT_IDENTIFIER_WITH_COLON = TextCleanerService.cleanRawText(RAW_PRODUCT_IDENTIFIER_WITH_COLON);
+export const CLEAN_PRODUCT_IDENTIFIER = TextCleanerService.cleanRawText(RAW_PRODUCT_IDENTIFIER);
+export const CLEAN_PRODUCT_NAME = TextCleanerService.cleanRawText(RAW_PRODUCT_NAME);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- PRODUCER -------------------------------------------
@@ -80,8 +82,8 @@ export const CONCENTRATION_VALUE = '>30 - <60';
 
 export const RAW_PHYSICAL_STATE_IDENTIFIER = 'État Physique';
 export const RAW_PHYSICAL_STATE_VALUE = 'Liquide';
-export const CLEAN_PHYSICAL_STATE_IDENTIFIER = RAW_PHYSICAL_STATE_IDENTIFIER.toLowerCase();
-export const CLEAN_PHYSICAL_STATE_VALUE = RAW_PHYSICAL_STATE_VALUE.toLowerCase();
+export const CLEAN_PHYSICAL_STATE_IDENTIFIER = TextCleanerService.cleanRawText(RAW_PHYSICAL_STATE_IDENTIFIER);
+export const CLEAN_PHYSICAL_STATE_VALUE = TextCleanerService.cleanRawText(RAW_PHYSICAL_STATE_VALUE);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- VAPOR_PRESSURE -------------------------------------

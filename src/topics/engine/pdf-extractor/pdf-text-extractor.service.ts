@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import type { ILine, IPageDimension, IPdfData, IRawElement, IText } from '@topics/engine/model/fds.model.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class PdfTextExtractorService {
   public static isPdfParsable(pdfData: IPdfData): boolean {
@@ -27,7 +28,7 @@ export class PdfTextExtractorService {
           const rawText: string = rawLine.R.map(({ T }) => decodeURIComponent(T))
             .join('')
             .replaceAll('\t', ' ');
-          const cleanText = rawText.toLowerCase();
+          const cleanText = TextCleanerService.cleanRawText(rawText);
 
           const fullText = `${fullTextBeforeUpdate}${rawText}`;
           const rawElement: IText = {
@@ -68,8 +69,7 @@ export class PdfTextExtractorService {
 
     const linesOrderedByPageAndY = _.sortBy(result.lines, ['startBox.pageNumber', 'startBox.yPositionProportion']);
     const linesOrdered = _.map(linesOrderedByPageAndY, (line) => ({ ...line, texts: _.sortBy(line.texts, 'xPositionProportion') }));
-    const cleanedLines = this.cleanLines(linesOrdered);
-    return cleanedLines;
+    return this.cleanLinesFromShadows(linesOrdered);
   }
 
   private static isSameLine(
@@ -90,14 +90,6 @@ export class PdfTextExtractorService {
   //----------------------------------------------------------------------------------------------
   //---------------------------------------- CLEANING -----------------------------------------------
   //----------------------------------------------------------------------------------------------
-
-  private static cleanLines(lines: ILine[]): ILine[] {
-    const linesLowered = _.map(lines, (line) => ({
-      ...line,
-      texts: _.map(line.texts, (text) => ({ ...text, content: text.cleanContent.toLowerCase() })),
-    }));
-    return this.cleanLinesFromShadows(linesLowered);
-  }
 
   private static cleanLinesFromShadows(lines: ILine[]): ILine[] {
     return _.map(lines, (line) => {

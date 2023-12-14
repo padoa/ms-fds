@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 import type { IExtractedPhysicalState, IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
-import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class PhysicalStateRulesService {
   public static getPhysicalState(fdsTree: IFdsTree): IExtractedPhysicalState {
@@ -28,7 +28,7 @@ export class PhysicalStateRulesService {
       if (expectedText && physicalStateTextInLine && expectedTextIsNotAPhysicalStateIdentifier) {
         const { startBox, endBox } = line;
         const metaData = { startBox, endBox };
-        return { value: ExtractionCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
+        return { value: TextCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
       }
     }
     return null;
@@ -45,7 +45,7 @@ export class PhysicalStateRulesService {
       if (expectedTextIsAPhysicalState) {
         const { startBox, endBox } = line;
         const metaData = { startBox, endBox };
-        return { value: ExtractionCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
+        return { value: TextCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
       }
     }
     return null;

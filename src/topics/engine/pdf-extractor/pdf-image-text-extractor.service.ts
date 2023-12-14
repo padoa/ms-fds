@@ -8,6 +8,7 @@ import type { Options } from 'pdf2pic/dist/types/options.js';
 import { fromPath } from 'pdf2pic';
 
 import type { ILine, IPageDimension, IPosition, IText } from '@topics/engine/model/fds.model.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class PdfImageTextExtractorService {
   public static async getTextFromImagePdf(fdsFilePath: string, { numberOfPagesToParse }: { numberOfPagesToParse?: number } = {}): Promise<ILine[]> {
@@ -90,7 +91,7 @@ export class PdfImageTextExtractorService {
 
   private static getTextInHocrWordElement = (hocrWordElement: string, pageMetaData: { pageNumber: number; pageDimension: IPageDimension }): IText => {
     const rawContent = decode(hocrWordElement.match(/>(.*)<\/span>/)[1]);
-    const cleanContent = rawContent.toLowerCase();
+    const cleanContent = TextCleanerService.cleanRawText(rawContent);
     const startBox = this.getStartBoxInHocrElement(hocrWordElement, pageMetaData);
     return { ...startBox, cleanContent, rawContent };
   };

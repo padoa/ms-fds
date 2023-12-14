@@ -3,7 +3,7 @@ import _ from 'lodash';
 import type { IExtractedConcentration, ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
 import { TableExtractionService } from '@topics/engine/rules/extraction-rules/substance/table-extraction.service.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
-import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class ConcentrationRulesService {
   public static getConcentrations(linesToSearchIn: ILine[], { strokes }: { strokes: IStroke[] }): IExtractedConcentration[] {
@@ -12,7 +12,7 @@ export class ConcentrationRulesService {
     const concentrationByColumns = _.map(linesSplittedByColumns, (lines) => this.getConcentrationsInColumn(lines));
     return _(concentrationByColumns)
       .maxBy('length')
-      .map((concentration) => ({ ...concentration, value: ExtractionCleanerService.trimAndCleanMultipleSpaces(concentration.value) }));
+      .map((concentration) => ({ ...concentration, value: TextCleanerService.trimAndCleanMultipleSpaces(concentration.value) }));
   }
 
   public static getConcentrationsInColumn(lines: IText[][]): IExtractedConcentration[] {
