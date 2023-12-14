@@ -2,13 +2,14 @@ import { describe, expect, it } from 'vitest';
 
 import { aFdsTree, anEmptyFdsTreeWithAllSections, aFdsTreeWithAllSectionsWithoutUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
-  PRODUCT_NAME,
-  PLACEHOLDER_TEXT_1,
-  PLACEHOLDER_TEXT_2,
-  PLACEHOLDER_TEXT_3,
-  PRODUCT_IDENTIFIER,
-  TEXT_CONTENT,
-  PRODUCT_IDENTIFIER_WITH_COLON,
+  CLEAN_PLACEHOLDER_TEXT_1,
+  CLEAN_PLACEHOLDER_TEXT_2,
+  CLEAN_PLACEHOLDER_TEXT_3,
+  CLEAN_PRODUCT_IDENTIFIER,
+  CLEAN_TEXT_CONTENT,
+  CLEAN_PRODUCT_NAME,
+  RAW_PRODUCT_NAME,
+  RAW_PRODUCT_IDENTIFIER_WITH_COLON,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import {
   aLineWithUndefinedText,
@@ -62,7 +63,7 @@ describe('ProductRulesService tests', () => {
           fdsTree: aFdsTree().withSection1(
             aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn1Text().properties]).properties }).properties,
           ).properties,
-          expected: { name: PRODUCT_NAME, metaData },
+          expected: { name: RAW_PRODUCT_NAME, metaData },
         },
       ],
       [
@@ -71,7 +72,7 @@ describe('ProductRulesService tests', () => {
           fdsTree: aFdsTree().withSection1(
             aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn2Texts().properties]).properties }).properties,
           ).properties,
-          expected: { name: PRODUCT_NAME, metaData },
+          expected: { name: RAW_PRODUCT_NAME, metaData },
         },
       ],
     ])('$message', ({ fdsTree, expected }) => {
@@ -112,7 +113,7 @@ describe('ProductRulesService tests', () => {
               ]).properties,
             }).properties,
           ).properties,
-          fullText: `${PLACEHOLDER_TEXT_1}${PLACEHOLDER_TEXT_2}${PLACEHOLDER_TEXT_3}`,
+          fullText: `${CLEAN_PLACEHOLDER_TEXT_1}${CLEAN_PLACEHOLDER_TEXT_2}${CLEAN_PLACEHOLDER_TEXT_3}`,
           expected: null,
         },
       ],
@@ -124,7 +125,7 @@ describe('ProductRulesService tests', () => {
               1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties]).properties,
             }).properties,
           ).properties,
-          fullText: PRODUCT_IDENTIFIER,
+          fullText: CLEAN_PRODUCT_IDENTIFIER,
           expected: null,
         },
       ],
@@ -140,7 +141,7 @@ describe('ProductRulesService tests', () => {
               ]).properties,
             }).properties,
           ).properties,
-          fullText: `${TEXT_CONTENT}${PRODUCT_NAME}${PRODUCT_NAME}`,
+          fullText: `${CLEAN_TEXT_CONTENT}${CLEAN_PRODUCT_NAME}${CLEAN_PRODUCT_NAME}`,
           expected: null,
         },
       ],
@@ -152,8 +153,8 @@ describe('ProductRulesService tests', () => {
               1: aSubSectionWith3LinesContainingProductName().properties,
             }).properties,
           ).properties,
-          fullText: `${PRODUCT_NAME.repeat(3)}`,
-          expected: { name: PRODUCT_NAME, metaData },
+          fullText: `${CLEAN_PRODUCT_NAME.repeat(3)}`,
+          expected: { name: CLEAN_PRODUCT_NAME, metaData },
         },
       ],
       [
@@ -169,8 +170,8 @@ describe('ProductRulesService tests', () => {
               ]).properties,
             }).properties,
           ).properties,
-          fullText: `${PRODUCT_IDENTIFIER}${PRODUCT_NAME.repeat(3)}`,
-          expected: { name: PRODUCT_NAME, metaData },
+          fullText: `${CLEAN_PRODUCT_IDENTIFIER}${CLEAN_PRODUCT_NAME.repeat(3)}`,
+          expected: { name: CLEAN_PRODUCT_NAME, metaData },
         },
       ],
     ])('$message', ({ fdsTree, fullText, expected }) => {
@@ -197,8 +198,8 @@ describe('ProductRulesService tests', () => {
               1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties, aLineWithProductNameOnly().properties]).properties,
             }).properties,
           ).properties,
-          fullText: `${PRODUCT_IDENTIFIER_WITH_COLON}${PRODUCT_NAME}`,
-          expected: { name: PRODUCT_NAME, metaData },
+          fullText: `${RAW_PRODUCT_IDENTIFIER_WITH_COLON}${RAW_PRODUCT_NAME}`,
+          expected: { name: RAW_PRODUCT_NAME, metaData },
         },
       ],
       // enters getProductByLineOrder
@@ -210,8 +211,8 @@ describe('ProductRulesService tests', () => {
               1: aSubSectionWith3LinesContainingProductName().properties,
             }).properties,
           ).properties,
-          fullText: `${PRODUCT_NAME.repeat(3)}`,
-          expected: { name: PRODUCT_NAME, metaData },
+          fullText: `${CLEAN_PRODUCT_NAME.repeat(3)}`,
+          expected: { name: CLEAN_PRODUCT_NAME, metaData },
         },
       ],
     ])('$message', ({ fdsTree, fullText, expected }) => {

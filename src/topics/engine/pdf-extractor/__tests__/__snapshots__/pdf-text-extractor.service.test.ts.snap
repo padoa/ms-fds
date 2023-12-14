@@ -10,14 +10,18 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "fiche de donnees de securite (règlement (ce) n°1907/2006 - reach)",
         "content": "fiche de donnees de securite (règlement (ce) n°1907/2006 - reach)",
         "pageNumber": 1,
+        "rawContent": "FICHE DE DONNEES DE SECURITE (Règlement (CE) n°1907/2006 - REACH)",
         "xPositionProportion": 0.004746,
         "yPositionProportion": 0.0045516666666666665,
       },
       {
+        "cleanContent": "date : 01/02/2022    page 1/7",
         "content": "date : 01/02/2022    page 1/7",
         "pageNumber": 1,
+        "rawContent": "Date : 01/02/2022    Page 1/7",
         "xPositionProportion": 0.025952000000000003,
         "yPositionProportion": 0.0045516666666666665,
       },
@@ -31,14 +35,18 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "version : n°1 (01/02/2022)",
         "content": "version : n°1 (01/02/2022)",
         "pageNumber": 1,
+        "rawContent": "Version : N°1 (01/02/2022)",
         "xPositionProportion": 0.004746,
         "yPositionProportion": 0.005030833333333333,
       },
       {
+        "cleanContent": "révision : n°11 (01/02/2022)",
         "content": "révision : n°11 (01/02/2022)",
         "pageNumber": 1,
+        "rawContent": "Révision : N°11 (01/02/2022)",
         "xPositionProportion": 0.025844000000000002,
         "yPositionProportion": 0.005030833333333333,
       },
@@ -52,8 +60,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "safety-kleen france",
         "content": "safety-kleen france",
         "pageNumber": 1,
+        "rawContent": "SAFETY-KLEEN France",
         "xPositionProportion": 0.004746,
         "yPositionProportion": 0.005510833333333334,
       },
@@ -67,8 +77,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "kleen 112 s - kl 112 s",
         "content": "kleen 112 s - kl 112 s",
         "pageNumber": 1,
+        "rawContent": "KLEEN 112 S - KL 112 S",
         "xPositionProportion": 0.015553,
         "yPositionProportion": 0.0060016666666666664,
       },
@@ -82,8 +94,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "fiche de données de sécurité",
         "content": "fiche de données de sécurité",
         "pageNumber": 1,
+        "rawContent": "FICHE DE DONNÉES DE SÉCURITÉ",
         "xPositionProportion": 0.012621,
         "yPositionProportion": 0.0091725,
       },
@@ -97,8 +111,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "(règlement reach (ce) n° 1907/2006 - n° 2020/878)",
         "content": "(règlement reach (ce) n° 1907/2006 - n° 2020/878)",
         "pageNumber": 1,
+        "rawContent": "(Règlement REACH (CE) n° 1907/2006 - n° 2020/878)",
         "xPositionProportion": 0.012667999999999999,
         "yPositionProportion": 0.009793333333333334,
       },
@@ -112,8 +128,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "rubrique 1 : identification de la substance/du mélange et de la société/l’entreprise",
         "content": "rubrique 1 : identification de la substance/du mélange et de la société/l’entreprise",
         "pageNumber": 1,
+        "rawContent": "RUBRIQUE 1 : IDENTIFICATION DE LA SUBSTANCE/DU MÉLANGE ET DE LA SOCIÉTÉ/L’ENTREPRISE",
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.010763333333333333,
       },
@@ -127,8 +145,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "1.1. identificateur de produit",
         "content": "1.1. identificateur de produit",
         "pageNumber": 1,
+        "rawContent": "1.1. Identificateur de produit",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.011400833333333332,
       },
@@ -142,8 +162,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "nom du produit : kleen 112 s",
         "content": "nom du produit : kleen 112 s",
         "pageNumber": 1,
+        "rawContent": "Nom du produit : KLEEN 112 S",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.0119875,
       },
@@ -157,8 +179,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "code du produit : kl 112 s",
         "content": "code du produit : kl 112 s",
         "pageNumber": 1,
+        "rawContent": "Code du produit : KL 112 S",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.012585833333333333,
       },
@@ -172,8 +196,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "1.2. utilisations identifiées pertinentes de la substance ou du mélange et utilisations déconseillées",
         "content": "1.2. utilisations identifiées pertinentes de la substance ou du mélange et utilisations déconseillées",
         "pageNumber": 1,
+        "rawContent": "1.2. Utilisations identifiées pertinentes de la substance ou du mélange et utilisations déconseillées",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.013234166666666667,
       },
@@ -187,8 +213,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "se reporter à la fiche technique.",
         "content": "se reporter à la fiche technique.",
         "pageNumber": 1,
+        "rawContent": "Se reporter à la fiche technique.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.013821666666666666,
       },
@@ -202,8 +230,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "produit de nettoyage",
         "content": "produit de nettoyage",
         "pageNumber": 1,
+        "rawContent": "Produit de nettoyage",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.014419166666666667,
       },
@@ -217,8 +247,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "1.3. renseignements concernant le fournisseur de la fiche de données de sécurité",
         "content": "1.3. renseignements concernant le fournisseur de la fiche de données de sécurité",
         "pageNumber": 1,
+        "rawContent": "1.3. Renseignements concernant le fournisseur de la fiche de données de sécurité",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.015068333333333335,
       },
@@ -232,8 +264,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "raison sociale : safety-kleen france.",
         "content": "raison sociale : safety-kleen france.",
         "pageNumber": 1,
+        "rawContent": "Raison Sociale : SAFETY-KLEEN France.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.015655000000000002,
       },
@@ -247,8 +281,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "adresse : 65, avenue jean mermoz.93126.la courneuve.france.",
         "content": "adresse : 65, avenue jean mermoz.93126.la courneuve.france.",
         "pageNumber": 1,
+        "rawContent": "Adresse : 65, avenue Jean Mermoz.93126.La Courneuve.France.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.016253333333333335,
       },
@@ -262,8 +298,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "téléphone : +33 (0)1.48.38.71.71.     fax : +33 (0)1.48.38.71.70.",
         "content": "téléphone : +33 (0)1.48.38.71.71.     fax : +33 (0)1.48.38.71.70.",
         "pageNumber": 1,
+        "rawContent": "Téléphone : +33 (0)1.48.38.71.71.     Fax : +33 (0)1.48.38.71.70.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.016850833333333332,
       },
@@ -277,8 +315,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "1.4. numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
         "content": "1.4. numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
         "pageNumber": 1,
+        "rawContent": "1.4. Numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.0175,
       },
@@ -292,8 +332,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "société/organisme : inrs / orfila   http://www.centres-antipoison.net.",
         "content": "société/organisme : inrs / orfila   http://www.centres-antipoison.net.",
         "pageNumber": 1,
+        "rawContent": "Société/Organisme : INRS / ORFILA   http://www.centres-antipoison.net.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.018086666666666668,
       },
@@ -307,8 +349,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "rubrique 2 : identification des dangers",
         "content": "rubrique 2 : identification des dangers",
         "pageNumber": 1,
+        "rawContent": "RUBRIQUE 2 : IDENTIFICATION DES DANGERS",
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.0190575,
       },
@@ -322,8 +366,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "2.1. classification de la substance ou du mélange",
         "content": "2.1. classification de la substance ou du mélange",
         "pageNumber": 1,
+        "rawContent": "2.1. Classification de la substance ou du mélange",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.019695,
       },
@@ -337,8 +383,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
         "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
         "pageNumber": 1,
+        "rawContent": "Conformément au règlement (CE) n° 1272/2008 et ses adaptations.",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.0203325,
       },
@@ -352,8 +400,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "ce mélange ne présente pas de danger physique. voir les préconisations concernant les autres produits présents dans le local.",
         "content": "ce mélange ne présente pas de danger physique. voir les préconisations concernant les autres produits présents dans le local.",
         "pageNumber": 1,
+        "rawContent": "Ce mélange ne présente pas de danger physique. Voir les préconisations concernant les autres produits présents dans le local.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.02091916666666667,
       },
@@ -367,8 +417,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "ce mélange ne présente pas de danger pour la santé hormis d'éventuelles valeurs limites d'exposition professionnelle (voir les",
         "content": "ce mélange ne présente pas de danger pour la santé hormis d'éventuelles valeurs limites d'exposition professionnelle (voir les",
         "pageNumber": 1,
+        "rawContent": "Ce mélange ne présente pas de danger pour la santé hormis d'éventuelles valeurs limites d'exposition professionnelle (voir les",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.021517500000000002,
       },
@@ -382,8 +434,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "rubriques 3 et 8).",
         "content": "rubriques 3 et 8).",
         "pageNumber": 1,
+        "rawContent": "rubriques 3 et 8).",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.021996666666666668,
       },
@@ -397,8 +451,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "ce mélange ne présente pas de danger pour l'environnement. aucune atteinte à l'environnement n'est connue ou prévisible dans",
         "content": "ce mélange ne présente pas de danger pour l'environnement. aucune atteinte à l'environnement n'est connue ou prévisible dans",
         "pageNumber": 1,
+        "rawContent": "Ce mélange ne présente pas de danger pour l'environnement. Aucune atteinte à l'environnement n'est connue ou prévisible dans",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.022595,
       },
@@ -412,8 +468,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "les conditions normales d'utilisation.",
         "content": "les conditions normales d'utilisation.",
         "pageNumber": 1,
+        "rawContent": "les conditions normales d'utilisation.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.023074166666666666,
       },
@@ -427,8 +485,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "2.2. éléments d’étiquetage",
         "content": "2.2. éléments d’étiquetage",
         "pageNumber": 1,
+        "rawContent": "2.2. Éléments d’étiquetage",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.023723333333333332,
       },
@@ -442,8 +502,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "le mélange est un produit détergent (voir la rubrique 15).",
         "content": "le mélange est un produit détergent (voir la rubrique 15).",
         "pageNumber": 1,
+        "rawContent": "Le mélange est un produit détergent (voir la rubrique 15).",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.024310000000000002,
       },
@@ -457,8 +519,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
         "content": "conformément au règlement (ce) n° 1272/2008 et ses adaptations.",
         "pageNumber": 1,
+        "rawContent": "Conformément au règlement (CE) n° 1272/2008 et ses adaptations.",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.024959166666666668,
       },
@@ -472,8 +536,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "aucun élément d'étiquetage n'est requis pour ce mélange.",
         "content": "aucun élément d'étiquetage n'est requis pour ce mélange.",
         "pageNumber": 1,
+        "rawContent": "Aucun élément d'étiquetage n'est requis pour ce mélange.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.025545833333333334,
       },
@@ -487,8 +553,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "2.3. autres dangers",
         "content": "2.3. autres dangers",
         "pageNumber": 1,
+        "rawContent": "2.3. Autres dangers",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.026194166666666668,
       },
@@ -502,8 +570,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "le mélange ne contient pas de 'substances extrêmement préoccupantes' (svhc)>= 0.1% publiées par l’agence européenne",
         "content": "le mélange ne contient pas de 'substances extrêmement préoccupantes' (svhc)>= 0.1% publiées par l’agence européenne",
         "pageNumber": 1,
+        "rawContent": "Le mélange ne contient pas de 'Substances extrêmement préoccupantes' (SVHC)>= 0.1% publiées par l’Agence Européenne",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.026781666666666665,
       },
@@ -517,8 +587,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "des produits chimiques (echa) selon l’article 57 du reach : http://echa.europa.eu/fr/candidate-list-table. se référer à la",
         "content": "des produits chimiques (echa) selon l’article 57 du reach : http://echa.europa.eu/fr/candidate-list-table. se référer à la",
         "pageNumber": 1,
+        "rawContent": "des Produits Chimiques (ECHA) selon l’article 57 du REACH : http://echa.europa.eu/fr/candidate-list-table. Se référer à la",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.027260833333333335,
       },
@@ -532,8 +604,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "rubrique 3 pour identifier les substances concernées.",
         "content": "rubrique 3 pour identifier les substances concernées.",
         "pageNumber": 1,
+        "rawContent": "rubrique 3 pour identifier les substances concernées.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.027739999999999997,
       },
@@ -547,8 +621,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "le mélange ne répond pas aux critères applicables aux mélanges pbt ou vpvb, conformément à l'annexe xiii du règlement",
         "content": "le mélange ne répond pas aux critères applicables aux mélanges pbt ou vpvb, conformément à l'annexe xiii du règlement",
         "pageNumber": 1,
+        "rawContent": "Le mélange ne répond pas aux critères applicables aux mélanges PBT ou vPvB, conformément à l'annexe XIII du règlement",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.028338333333333333,
       },
@@ -562,8 +638,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "reach (ce) n° 1907/2006.",
         "content": "reach (ce) n° 1907/2006.",
         "pageNumber": 1,
+        "rawContent": "REACH (CE) n° 1907/2006.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.028818333333333335,
       },
@@ -577,8 +655,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "le mélange ne contient pas de substances >= 0,1 % présentant des propriétés perturbant le système endocrinien conformément",
         "content": "le mélange ne contient pas de substances >= 0,1 % présentant des propriétés perturbant le système endocrinien conformément",
         "pageNumber": 1,
+        "rawContent": "Le mélange ne contient pas de substances >= 0,1 % présentant des propriétés perturbant le système endocrinien conformément",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.029415833333333332,
       },
@@ -592,8 +672,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "aux critères énoncés dans le règlement délégué (ue) 2017/2100 de la commission ou dans le règlement (ue) 2018/605 de la",
         "content": "aux critères énoncés dans le règlement délégué (ue) 2017/2100 de la commission ou dans le règlement (ue) 2018/605 de la",
         "pageNumber": 1,
+        "rawContent": "aux critères énoncés dans le règlement délégué (UE) 2017/2100 de la Commission ou dans le règlement (UE) 2018/605 de la",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.029895833333333333,
       },
@@ -607,8 +689,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "commission.",
         "content": "commission.",
         "pageNumber": 1,
+        "rawContent": "Commission.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.030375000000000003,
       },
@@ -622,8 +706,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "rubrique 3 : composition/informations sur les composants",
         "content": "rubrique 3 : composition/informations sur les composants",
         "pageNumber": 1,
+        "rawContent": "RUBRIQUE 3 : COMPOSITION/INFORMATIONS SUR LES COMPOSANTS",
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.03134583333333334,
       },
@@ -637,8 +723,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "3.2. mélanges",
         "content": "3.2. mélanges",
         "pageNumber": 1,
+        "rawContent": "3.2. Mélanges",
         "xPositionProportion": 0.00564,
         "yPositionProportion": 0.031983333333333336,
       },
@@ -652,8 +740,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "aucune substance ne répond aux critères énoncés dans l'annexe ii partie a du règlement reach (ce) n° 1907/2006.",
         "content": "aucune substance ne répond aux critères énoncés dans l'annexe ii partie a du règlement reach (ce) n° 1907/2006.",
         "pageNumber": 1,
+        "rawContent": "Aucune substance ne répond aux critères énoncés dans l'annexe II partie A du règlement REACH (CE) n° 1907/2006.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.03257,
       },
@@ -667,8 +757,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "rubrique 4 : premiers secours",
         "content": "rubrique 4 : premiers secours",
         "pageNumber": 1,
+        "rawContent": "RUBRIQUE 4 : PREMIERS SECOURS",
         "xPositionProportion": 0.005193,
         "yPositionProportion": 0.03354083333333333,
       },
@@ -682,8 +774,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "d'une manière générale, en cas de doute ou si des symptômes persistent,  toujours faire appel à un médecin.",
         "content": "d'une manière générale, en cas de doute ou si des symptômes persistent,  toujours faire appel à un médecin.",
         "pageNumber": 1,
+        "rawContent": "D'une manière générale, en cas de doute ou si des symptômes persistent,  toujours faire appel à un médecin.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.034127500000000005,
       },
@@ -697,8 +791,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "ne jamais rien faire ingérer à une personne inconsciente.",
         "content": "ne jamais rien faire ingérer à une personne inconsciente.",
         "pageNumber": 1,
+        "rawContent": "NE JAMAIS rien faire ingérer à une personne inconsciente.",
         "xPositionProportion": 0.006006,
         "yPositionProportion": 0.034725,
       },
@@ -712,8 +808,10 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
+        "cleanContent": "- made under licence of european label system® msds software from infodyne  - http://www.infodyne.fr -",
         "content": "- made under licence of european label system® msds software from infodyne  - http://www.infodyne.fr -",
         "pageNumber": 1,
+        "rawContent": "- Made under licence of European Label System® MSDS software from InfoDyne  - http://www.infodyne.fr -",
         "xPositionProportion": 0.010955,
         "yPositionProportion": 0.04001166666666667,
       },

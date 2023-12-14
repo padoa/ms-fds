@@ -18,7 +18,7 @@ export class ConcentrationRulesService {
   public static getConcentrationsInColumn(lines: IText[][]): IExtractedConcentration[] {
     const concentrations = [];
     for (const texts of lines) {
-      const text = texts.map(({ content }) => content).join('');
+      const text = texts.map(({ cleanContent }) => cleanContent).join('');
       const concentration = this.getConcentration(text);
       if (concentration)
         concentrations.push({

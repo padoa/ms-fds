@@ -10,7 +10,9 @@ export class CasAndCeRulesService {
     let previousLineSubstance: Partial<IExtractedSubstance> = {};
 
     for (const line of linesToSearchIn) {
-      const textCleaned = _.map(line.texts, 'content').join(' ');
+      const textCleaned = _(line.texts)
+        .map(({ cleanContent }) => cleanContent)
+        .join(' ');
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
       const casNumberValue = this.getCasNumber(textCleaned);

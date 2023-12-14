@@ -20,7 +20,7 @@ export class BoilingPointRulesService {
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
-      const lineText = texts.map(({ content }) => content).join('');
+      const lineText = texts.map(({ cleanContent }) => cleanContent).join('');
       const boilingPointInLine = !!lineText.match(this.BOILING_POINT_IDENTIFIER_REGEX);
       if (!boilingPointInLine) continue;
 

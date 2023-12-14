@@ -10,8 +10,8 @@ export class ProducerRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { content } = _.last(line.texts) || { content: '' };
-      const text = _(content).split(':').last().trim();
+      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
+      const text = _(cleanContent).split(':').last().trim();
       if (!text) continue;
 
       if (

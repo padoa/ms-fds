@@ -140,7 +140,7 @@ describe('ConcentrationRulesService tests', () => {
         {
           message: 'should return concentrations found in the column with most concentrations',
           linesSplittedByColumns: [
-            [[aText().withContent('>10-60').properties]],
+            [[aText().withRawContent('>10-60').withCleanContent('>10-60').properties]],
             [[aTextWithConcentration().properties], [aTextWithConcentration().properties]],
           ],
           expected: [aConcentration().properties, aConcentration().properties],

@@ -16,11 +16,11 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByText(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const lineText = line.texts.map(({ content }) => content).join(' ');
+      const lineText = line.texts.map(({ cleanContent }) => cleanContent).join(' ');
       const physicalStateTextInLine = !!lineText?.replaceAll(' ', '').match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
 
-      const { content } = _.last(line.texts) || { content: '' };
-      const expectedText = _(content).split(':').last().trim();
+      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
+      const expectedText = _(cleanContent).split(':').last().trim();
       const expectedTextIsNotAPhysicalStateIdentifier = !expectedText
         ?.replaceAll(' ', '')
         .match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
@@ -38,8 +38,8 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByValue(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const { content } = _.last(line.texts) || { content: '' };
-      const expectedText = _(content).split(':').last().trim();
+      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
+      const expectedText = _(cleanContent).split(':').last().trim();
       const expectedTextIsAPhysicalState = expectedText.match(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX);
 
       if (expectedTextIsAPhysicalState) {

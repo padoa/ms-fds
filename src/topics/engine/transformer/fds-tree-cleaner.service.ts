@@ -53,7 +53,11 @@ export class FdsTreeCleanerService {
           if (xCounts[text.xPositionProportion] < valueToPass)
             return [
               ...cleanedLine.slice(0, cleanedLine.length - 1),
-              { ..._.last(cleanedLine), content: `${_.last(cleanedLine).content}${joinWithSpace ? ' ' : ''}${text.content}` },
+              {
+                ..._.last(cleanedLine),
+                rawContent: `${_.last(cleanedLine).rawContent}${text.rawContent}`,
+                cleanContent: `${_.last(cleanedLine).cleanContent}${joinWithSpace ? ' ' : ''}${text.cleanContent}`,
+              },
             ];
 
           return [...cleanedLine, text];

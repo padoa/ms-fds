@@ -89,9 +89,10 @@ export class PdfImageTextExtractorService {
   };
 
   private static getTextInHocrWordElement = (hocrWordElement: string, pageMetaData: { pageNumber: number; pageDimension: IPageDimension }): IText => {
-    const content = decode(hocrWordElement.match(/>(.*)<\/span>/)[1].toLowerCase());
+    const rawContent = decode(hocrWordElement.match(/>(.*)<\/span>/)[1]);
+    const cleanContent = rawContent.toLowerCase();
     const startBox = this.getStartBoxInHocrElement(hocrWordElement, pageMetaData);
-    return { ...startBox, content };
+    return { ...startBox, cleanContent, rawContent };
   };
 
   private static getHocrPageDimension = (hocrFirstElement: string): IPageDimension => {

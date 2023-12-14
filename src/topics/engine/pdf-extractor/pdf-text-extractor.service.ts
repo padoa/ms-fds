@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import type { ILine, IPageDimension, IPdfData, IRawElement } from '@topics/engine/model/fds.model.js';
+import type { ILine, IPageDimension, IPdfData, IRawElement, IText } from '@topics/engine/model/fds.model.js';
 
 export class PdfTextExtractorService {
   public static isPdfParsable(pdfData: IPdfData): boolean {
@@ -24,16 +24,18 @@ export class PdfTextExtractorService {
       .flat()
       .reduce(
         ({ lines, fullText: fullTextBeforeUpdate }: { lines: ILine[]; fullText: string }, rawLine) => {
-          const rawText: string = rawLine.R.map(({ T }) => decodeURIComponent(T).toLowerCase())
+          const rawText: string = rawLine.R.map(({ T }) => decodeURIComponent(T))
             .join('')
             .replaceAll('\t', ' ');
+          const cleanText = rawText.toLowerCase();
 
           const fullText = `${fullTextBeforeUpdate}${rawText}`;
-          const rawElement = {
+          const rawElement: IText = {
             pageNumber: rawLine.pageNumber,
             xPositionProportion: rawLine.x / pageDimension.width,
             yPositionProportion: rawLine.y / pageDimension.height,
-            content: rawText,
+            cleanContent: cleanText,
+            rawContent: rawText,
           };
 
           for (const line of lines) {
@@ -92,17 +94,17 @@ export class PdfTextExtractorService {
   private static cleanLines(lines: ILine[]): ILine[] {
     const linesLowered = _.map(lines, (line) => ({
       ...line,
-      texts: _.map(line.texts, (text) => ({ ...text, content: text.content.toLowerCase() })),
+      texts: _.map(line.texts, (text) => ({ ...text, content: text.cleanContent.toLowerCase() })),
     }));
     return this.cleanLinesFromShadows(linesLowered);
   }
 
   private static cleanLinesFromShadows(lines: ILine[]): ILine[] {
     return _.map(lines, (line) => {
-      const fullTextLine = line.texts.map(({ content }) => content).join('');
+      const fullTextLine = line.texts.map(({ cleanContent }) => cleanContent).join('');
       if (this.areCharsDoubled(fullTextLine.replaceAll(' ', ''))) {
         const newContent = _.filter(fullTextLine, (text, index) => index % 2 === 0).join('');
-        return { ...line, texts: [{ ...line.texts[0], content: newContent }] };
+        return { ...line, texts: [{ ...line.texts[0], cleanContent: newContent }] };
       }
       return line;
     });

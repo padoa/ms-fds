@@ -24,11 +24,13 @@ export class FdsTreeBuilderService {
       lines,
       ({ fdsTree, currentSection, currentSubSection, xCounts: XCountsBeforeUpdate, fullText: fullTextBeforeUpdate }: IBuildTree, line) => {
         const xCounts = this.updateXCounts(XCountsBeforeUpdate, line);
-        const fullTextLine = line.texts.map((t) => t.content).join('');
-        const fullText = `${fullTextBeforeUpdate}${fullTextLine}`;
+        // TODO: Think about map on clean text or lowerCase() on the rawText => should be reflected on sub methods
+        const cleanfullTextLine = line.texts.map((t) => t.cleanContent).join('');
+        const rawfullTextLine = line.texts.map((t) => t.rawContent).join('');
+        const fullText = `${fullTextBeforeUpdate}${rawfullTextLine}`;
 
         // SECTION
-        const newSection = SectionRulesService.computeNewSection(fullTextLine, { currentSection });
+        const newSection = SectionRulesService.computeNewSection(cleanfullTextLine, { currentSection });
         const sectionChanged = newSection !== currentSection;
         if (sectionChanged) {
           let newFdsTree = this.setFdsTreeEndBoxSection(fdsTree, { position: line.startBox, sectionNumber: currentSection });
@@ -40,7 +42,7 @@ export class FdsTreeBuilderService {
         }
 
         // SUBSECTION
-        const newSubSection = SectionRulesService.computeNewSubSection(fullTextLine, { currentSection, currentSubSection });
+        const newSubSection = SectionRulesService.computeNewSubSection(cleanfullTextLine, { currentSection, currentSubSection });
         const subSectionChanged = newSubSection !== currentSubSection;
         if (subSectionChanged) {
           let newFdsTree = this.setFdsTreeEndBoxSubSection(fdsTree, {
