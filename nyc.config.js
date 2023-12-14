@@ -3,5 +3,6 @@ module.exports = {
   lines: 95,
   functions: 95,
   branches: 50,
-  statements: 95
+  statements: 95,
+  perFile: true
 };
