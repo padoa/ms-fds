@@ -32,8 +32,7 @@ const main = async (): Promise<void> => {
       concentration: substance.concentration?.value,
     })),
     physicalState: data.dataExtracted?.physicalState?.value,
-    vaporPressure: data.dataExtracted?.vaporPressure?.pressure,
-    vaporPressureTemperature: data.dataExtracted?.vaporPressure?.temperature,
+    vaporPressure: _.pick(data.dataExtracted?.vaporPressure, ['pressure', 'temperature']),
     boilingPoint: data.dataExtracted?.boilingPoint?.value,
     fromImage: data.fromImage,
   });
