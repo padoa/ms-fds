@@ -8,8 +8,8 @@ import {
   RAW_MULTIPLE_P_DANGER,
   RAW_H_DANGER_WITH_DETAILS,
   RAW_MULTIPLE_P_DANGER_WITH_DETAILS,
-  BOILING_POINT_IDENTIFIER,
-  BOILING_POINT_VALUE,
+  RAW_BOILING_POINT_IDENTIFIER,
+  RAW_BOILING_POINT_VALUE,
   RAW_PRODUCT_IDENTIFIER_WITH_COLON,
   RAW_PRODUCT_NAME,
   RAW_PRODUCER_NAME,
@@ -48,9 +48,8 @@ describe('ExtractionRulesService tests', () => {
       ${RAW_PHYSICAL_STATE_VALUE}
       ${RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE}
       ${RAW_VAPOR_PRESSURE_VALUE}
-      // TODO: replace all with "raw" constants
-      ${BOILING_POINT_IDENTIFIER}
-      ${BOILING_POINT_VALUE}
+      ${RAW_BOILING_POINT_IDENTIFIER}
+      ${RAW_BOILING_POINT_VALUE}
     `;
 
       const expected: IExtractedData = {
@@ -65,7 +64,7 @@ describe('ExtractionRulesService tests', () => {
         substances: [aSubstance().properties],
         physicalState: { value: RAW_PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
-        boilingPoint: { value: BOILING_POINT_VALUE, metaData },
+        boilingPoint: { value: RAW_BOILING_POINT_VALUE, metaData },
       };
 
       await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(

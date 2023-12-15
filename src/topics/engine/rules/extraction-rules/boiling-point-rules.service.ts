@@ -18,19 +18,28 @@ export class BoilingPointRulesService {
   }
 
   private static getBoilingPointByValue(linesToSearchIn: ILine[]): IExtractedBoilingPoint | null {
+    const boilingPointRegex = new RegExp(this.BOILING_POINT_VALUE_REGEX);
+
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
-      const lineText = texts.map(({ cleanContent }) => cleanContent).join('');
-      const boilingPointInLine = !!lineText.match(this.BOILING_POINT_IDENTIFIER_REGEX);
+      const { cleanLineText, rawLineText } = texts.reduce(
+        (joinedTexts, { cleanContent, rawContent }) => ({
+          cleanLineText: joinedTexts.cleanLineText + cleanContent,
+          rawLineText: joinedTexts.rawLineText + rawContent,
+        }),
+        { cleanLineText: '', rawLineText: '' },
+      );
+
+      const boilingPointInLine = !!cleanLineText.match(this.BOILING_POINT_IDENTIFIER_REGEX);
       if (!boilingPointInLine) continue;
 
-      const boilingPoint = lineText.match(this.BOILING_POINT_VALUE_REGEX) || [];
-
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      if (_.isEmpty(boilingPoint)) continue;
+      const boilingPointMatch = boilingPointRegex.exec(cleanLineText);
+      if (!boilingPointMatch) continue;
 
-      return { value: _.first(boilingPoint), metaData: { startBox, endBox } };
+      const boilingPoint = rawLineText.substring(boilingPointMatch.index, boilingPointMatch.index + boilingPointMatch[0].length);
+      return { value: boilingPoint, metaData: { startBox, endBox } };
     }
 
     return null;

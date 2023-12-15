@@ -12,7 +12,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "yPositionProportion": 0.33943367540858993,
         },
       },
-      "value": "> 160°c",
+      "value": "> 160°C",
     },
     "dangers": [
       {

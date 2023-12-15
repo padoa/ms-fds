@@ -9,8 +9,8 @@ import {
   RAW_H_DANGER_WITH_DETAILS,
   RAW_P_DANGER_WITH_DETAILS,
   RAW_MULTIPLE_P_DANGER_WITH_DETAILS,
-  BOILING_POINT_IDENTIFIER,
-  BOILING_POINT_VALUE,
+  RAW_BOILING_POINT_IDENTIFIER,
+  RAW_BOILING_POINT_VALUE,
   RAW_PLACEHOLDER_TEXT_1,
   RAW_PLACEHOLDER_TEXT_2,
   RAW_PLACEHOLDER_TEXT_3,
@@ -130,5 +130,5 @@ export const aTextWithVaporPressureValue = (): TextBuilder => aText().withConten
 //--------------------------------------- BOILING_POINT ----------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithBoilingPointIdentifier = (): TextBuilder => aText().withCleanContent(BOILING_POINT_IDENTIFIER);
-export const aTextWithBoilingPointValue = (): TextBuilder => aText().withCleanContent(BOILING_POINT_VALUE);
+export const aTextWithBoilingPointIdentifier = (): TextBuilder => aText().withContent(RAW_BOILING_POINT_IDENTIFIER);
+export const aTextWithBoilingPointValue = (): TextBuilder => aText().withContent(RAW_BOILING_POINT_VALUE);
