@@ -2,6 +2,7 @@ import type { IExtractedSubstance } from '@padoa/chemical-risk';
 import { BaseBuilder } from '@padoa/meta';
 
 import {
+  H_DANGER,
   PAGE_NUMBER,
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
@@ -14,6 +15,7 @@ export class SubstanceBuilder extends BaseBuilder<IExtractedSubstance> {
   public withCasNumber = this.withValueFor('casNumber');
   public withCeNumber = this.withValueFor('ceNumber');
   public withConcentration = this.withValueFor('concentration');
+  public withHazards = this.withValueFor('hazards');
 
   protected getDefaultValues(): IExtractedSubstance {
     const metaData = {
@@ -24,6 +26,7 @@ export class SubstanceBuilder extends BaseBuilder<IExtractedSubstance> {
       casNumber: { value: RAW_CAS_NUMBER, metaData },
       ceNumber: { value: RAW_CE_NUMBER, metaData },
       concentration: { value: RAW_CONCENTRATION_VALUE, metaData },
+      hazards: [{ code: H_DANGER, metaData }],
     };
   }
 }

@@ -2,6 +2,10 @@ import { SubstanceBuilder } from '@topics/engine/rules/extraction-rules/__tests_
 
 export const aSubstance = (): SubstanceBuilder => new SubstanceBuilder();
 
-export const aSubstanceWithCasAndCeNumber = (): SubstanceBuilder => aSubstance().withConcentration(undefined);
-export const aSubstanceWithOnlyACasNumber = (): SubstanceBuilder => aSubstance().withCeNumber(undefined).withConcentration(undefined);
-export const aSubstanceWithOnlyACeNumber = (): SubstanceBuilder => aSubstance().withCasNumber(undefined).withConcentration(undefined);
+export const aSubstanceWithCasAndCeNumber = (): SubstanceBuilder => aSubstance().withConcentration(undefined).withHazards(undefined);
+export const aSubstanceWithOnlyACasNumber = (): SubstanceBuilder =>
+  aSubstance().withCeNumber(undefined).withConcentration(undefined).withHazards(undefined);
+export const aSubstanceWithOnlyACeNumber = (): SubstanceBuilder =>
+  aSubstance().withCasNumber(undefined).withConcentration(undefined).withHazards(undefined);
+
+export const aSubstanceWithoutHazards = (): SubstanceBuilder => aSubstance().withHazards(undefined);

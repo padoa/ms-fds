@@ -21,21 +21,28 @@ const main = async (): Promise<void> => {
 
   logger.info(`🔵  Extracting data from ${filename}...`);
   const data = await FdsEngineService.extractDataFromFds(filename);
-  logger.info(`✅  Data extracted:`, {
-    date: data.dataExtracted?.date,
-    product: data.dataExtracted?.product?.name,
-    producer: data.dataExtracted?.producer?.name,
-    dangers: _.map(data.dataExtracted?.dangers, 'code'),
-    substances: _.map(data.dataExtracted?.substances, (substance) => ({
-      casNumber: substance.casNumber?.value,
-      ceNumber: substance.ceNumber?.value,
-      concentration: substance.concentration?.value,
-    })),
-    physicalState: data.dataExtracted?.physicalState?.value,
-    vaporPressure: _.pick(data.dataExtracted?.vaporPressure, ['pressure', 'temperature']),
-    boilingPoint: data.dataExtracted?.boilingPoint?.value,
-    fromImage: data.fromImage,
-  });
+  logger.info(
+    `✅  Data extracted:`,
+
+    {
+      date: data.dataExtracted?.date,
+      product: data.dataExtracted?.product?.name,
+      producer: data.dataExtracted?.producer?.name,
+      dangers: _.map(data.dataExtracted?.dangers, 'code'),
+      substances: _.map(data.dataExtracted?.substances, (substance) => ({
+        casNumber: substance.casNumber?.value,
+        ceNumber: substance.ceNumber?.value,
+        concentration: substance.concentration?.value,
+        hazards: JSON.stringify(_.map(substance.hazards, 'code')),
+      })),
+      physicalState: data.dataExtracted?.physicalState?.value,
+      vaporPressure: _.pick(data.dataExtracted?.vaporPressure, ['pressure', 'temperature']),
+      boilingPoint: data.dataExtracted?.boilingPoint?.value,
+      fromImage: data.fromImage,
+    },
+    null,
+    1,
+  );
 };
 
 main()

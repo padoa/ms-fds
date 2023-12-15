@@ -1,12 +1,10 @@
-import type { SpyInstance } from 'vitest';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import _ from 'lodash';
 import type { IExtractedConcentration } from '@padoa/chemical-risk';
 
-import type { ILine, IStroke, IText } from '@topics/engine/model/fds.model.js';
+import type { IText } from '@topics/engine/model/fds.model.js';
 import { ConcentrationRulesService } from '@topics/engine/rules/extraction-rules/substance/concentration-rules.service.js';
 import { aText, aTextWithConcentration } from '@topics/engine/__fixtures__/text.mother.js';
-import { TableExtractionService } from '@topics/engine/rules/extraction-rules/substance/table-extraction.service.js';
 import { aConcentration } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/concentration.mother.js';
 
 describe('ConcentrationRulesService tests', () => {
@@ -114,19 +112,6 @@ describe('ConcentrationRulesService tests', () => {
     });
 
     describe('getConcentrations tests', () => {
-      let getTableVerticalStrokesSpy: SpyInstance<[strokes: IStroke[]], IStroke[]>;
-      let splitLinesInColumnsSpy: SpyInstance<[line: ILine[], tableVerticalStrokes: IStroke[]], IText[][][]>;
-
-      beforeEach(() => {
-        getTableVerticalStrokesSpy = vi.spyOn(TableExtractionService, 'getTableVerticalStrokes');
-        splitLinesInColumnsSpy = vi.spyOn(TableExtractionService, 'splitLinesInColumns');
-      });
-
-      afterEach(() => {
-        getTableVerticalStrokesSpy.mockRestore();
-        splitLinesInColumnsSpy.mockRestore();
-      });
-
       it.each<{ message: string; linesSplittedByColumns: IText[][][]; expected: IExtractedConcentration[] }>([
         {
           message: 'should return an empty list when there is no text',
@@ -147,11 +132,7 @@ describe('ConcentrationRulesService tests', () => {
           expected: [aConcentration().properties, aConcentration().properties],
         },
       ])('$message', ({ linesSplittedByColumns, expected }) => {
-        splitLinesInColumnsSpy.mockImplementation(() => linesSplittedByColumns);
-
-        expect(ConcentrationRulesService.getConcentrations([], { strokes: [] })).toEqual(expected);
-        expect(getTableVerticalStrokesSpy).toHaveBeenCalledOnce();
-        expect(splitLinesInColumnsSpy).toHaveBeenCalledOnce();
+        expect(ConcentrationRulesService.getConcentrations(linesSplittedByColumns)).toEqual(expected);
       });
     });
   });
