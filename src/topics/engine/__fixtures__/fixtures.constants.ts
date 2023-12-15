@@ -1,5 +1,3 @@
-import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
-
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- BOX -----------------------------------------------
 //----------------------------------------------------------------------------------------------
@@ -61,12 +59,16 @@ export const MULTIPLE_P_DANGER_WITH_DETAILS = `${MULTIPLE_P_DANGER} - peut provo
 //----------------------------------------- SUBSTANCES -----------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const CAS_NUMBER = '64742-52-5';
-export const CAS_NUMBER_TEXT = `cas : ${CAS_NUMBER}`;
-export const CE_NUMBER = '265-155-0';
-export const CE_NUMBER_TEXT = `ce : ${CE_NUMBER}`;
+export const RAW_CAS_NUMBER = '64742-52-5';
+export const RAW_CAS_NUMBER_TEXT = `CAS : ${RAW_CAS_NUMBER}`;
+export const RAW_CE_NUMBER = '265-155-0';
+export const RAW_CE_NUMBER_TEXT = `CE : ${RAW_CE_NUMBER}`;
 
-export const CONCENTRATION_VALUE = '>30 - <60';
+//----------------------------------------------------------------------------------------------
+//--------------------------------------- CONCENTRATION  ---------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const RAW_CONCENTRATION_VALUE = '>30 - <60';
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- PHYSICAL_STATE -------------------------------------
@@ -74,8 +76,6 @@ export const CONCENTRATION_VALUE = '>30 - <60';
 
 export const RAW_PHYSICAL_STATE_IDENTIFIER = 'État Physique';
 export const RAW_PHYSICAL_STATE_VALUE = 'Liquide';
-export const CLEAN_PHYSICAL_STATE_IDENTIFIER = TextCleanerService.cleanRawText(RAW_PHYSICAL_STATE_IDENTIFIER);
-export const CLEAN_PHYSICAL_STATE_VALUE = TextCleanerService.cleanRawText(RAW_PHYSICAL_STATE_VALUE);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- VAPOR_PRESSURE -------------------------------------

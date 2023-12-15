@@ -1,7 +1,12 @@
 import type { IExtractedConcentration } from '@padoa/chemical-risk';
 import { BaseBuilder } from '@padoa/meta';
 
-import { CONCENTRATION_VALUE, PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import {
+  PAGE_NUMBER,
+  POSITION_PROPORTION_X,
+  POSITION_PROPORTION_Y,
+  RAW_CONCENTRATION_VALUE,
+} from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 export class ConcentrationBuilder extends BaseBuilder<IExtractedConcentration> {
   public withValue = this.withValueFor('value');
@@ -9,7 +14,7 @@ export class ConcentrationBuilder extends BaseBuilder<IExtractedConcentration> {
 
   protected getDefaultValues(): IExtractedConcentration {
     return {
-      value: CONCENTRATION_VALUE,
+      value: RAW_CONCENTRATION_VALUE,
       metaData: {
         startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
       },

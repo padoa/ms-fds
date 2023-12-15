@@ -6,11 +6,7 @@ import {
   aLineWithPhysicalStateIdentifierAndValue,
   aLineWithPhysicalStateValue,
 } from '@topics/engine/__fixtures__/line.mother.js';
-import {
-  CLEAN_PHYSICAL_STATE_VALUE,
-  RAW_PHYSICAL_STATE_IDENTIFIER,
-  RAW_PHYSICAL_STATE_VALUE,
-} from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { RAW_PHYSICAL_STATE_IDENTIFIER, RAW_PHYSICAL_STATE_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aText } from '@topics/engine/__fixtures__/text.mother.js';
 import { aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
@@ -71,12 +67,12 @@ describe('PhysicalStateRulesService tests', () => {
       {
         message: 'should return physical state value when the first line contains identifier with a value',
         lines: [aLineWithPhysicalStateIdentifierAndValue().properties],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
       {
         message: 'should return physical state value when a line contains identifier with a value',
         lines: [aLine().properties, aLineWithPhysicalStateIdentifierAndValue().properties],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
       {
         message: 'should return null when no line matches PHYSICAL_STATE_IDENTIFIER_REGEX',
@@ -92,12 +88,12 @@ describe('PhysicalStateRulesService tests', () => {
         message:
           'should return physical state value when a line contains identifier without a value even if there is a previous line containing value but without a potential value',
         lines: [aLineWithPhysicalStateIdentifier().properties, aLineWithPhysicalStateIdentifierAndValue().properties],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
       {
         message: 'should return physical state value when a text contains the identifier and the value separated by a colon',
         lines: [aLine().withTexts([aText().withContent(`${RAW_PHYSICAL_STATE_IDENTIFIER}:${RAW_PHYSICAL_STATE_VALUE}`).properties]).properties],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
       {
         message: 'should clean the trailing dot of a value',
@@ -107,7 +103,7 @@ describe('PhysicalStateRulesService tests', () => {
             aText().withContent(`${RAW_PHYSICAL_STATE_VALUE}. `).properties,
           ]).properties,
         ],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
     ])('$message', ({ lines, expected }) => {
       expect(PhysicalStateRulesService.getPhysicalStateByText(lines)).toMatchObject(expected ? { value: expected } : expected);
@@ -119,18 +115,18 @@ describe('PhysicalStateRulesService tests', () => {
       {
         message: 'should return physical state value when the first line contains a potential value',
         lines: [aLineWithPhysicalStateValue().properties],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
       {
         message: 'should return physical state value when a line contains a potential value',
         lines: [aLine().properties, aLineWithPhysicalStateValue().properties],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
       { message: 'should return null when no line matches PHYSICAL_STATE_VALUES_REGEX', lines: [aLine().properties], expected: null },
       {
         message: 'should clean the trailing dot of a value',
         lines: [aLine().withTexts([aText().withContent(`${RAW_PHYSICAL_STATE_VALUE}. `).properties]).properties],
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
     ])('$message', ({ lines, expected }) => {
       expect(PhysicalStateRulesService.getPhysicalStateByValue(lines)).toMatchObject(expected ? { value: expected } : expected);
@@ -154,7 +150,7 @@ describe('PhysicalStateRulesService tests', () => {
             ]).properties,
           }).properties,
         ).properties,
-        expected: CLEAN_PHYSICAL_STATE_VALUE,
+        expected: RAW_PHYSICAL_STATE_VALUE,
       },
       {
         message: 'should use the rule by value if there is not matching text',
@@ -163,7 +159,7 @@ describe('PhysicalStateRulesService tests', () => {
             1: aSubSection().withLines([aLine().withTexts([aText().withContent('SOLIDE').properties]).properties]).properties,
           }).properties,
         ).properties,
-        expected: 'solide',
+        expected: 'SOLIDE',
       },
     ])('$message', ({ fdsTree, expected }) => {
       expect(PhysicalStateRulesService.getPhysicalState(fdsTree)).toMatchObject(expected ? { value: expected } : expected);

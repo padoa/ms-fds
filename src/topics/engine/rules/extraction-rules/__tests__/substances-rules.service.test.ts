@@ -4,7 +4,6 @@ import type { IExtractedConcentration, IExtractedSubstance } from '@padoa/chemic
 
 import type { IFdsTree, ILine, IStroke } from '@topics/engine/model/fds.model.js';
 import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
-import { CONCENTRATION_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import {
   aFdsTree,
   aFdsTreeWithAllSectionsWithUsefulInfo,
@@ -18,6 +17,7 @@ import {
 } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/substance.mother.js';
 import { aConcentration } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/concentration.mother.js';
 import { ConcentrationRulesService } from '@topics/engine/rules/extraction-rules/substance/concentration-rules.service.js';
+import { RAW_CONCENTRATION_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 describe('SubstancesRulesService tests', () => {
   describe('assignConcentrationToSubstance tests', () => {
@@ -37,19 +37,19 @@ describe('SubstancesRulesService tests', () => {
       {
         message: 'should return substances with concentrations',
         substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
-        concentrations: [aConcentration().properties, aConcentration().withValue(CONCENTRATION_VALUE + 1).properties],
+        concentrations: [aConcentration().properties, aConcentration().withValue(RAW_CONCENTRATION_VALUE + 1).properties],
         expected: [
           aSubstanceWithOnlyACasNumber().withConcentration(aConcentration().properties).properties,
-          aSubstanceWithOnlyACeNumber().withConcentration(aConcentration().withValue(CONCENTRATION_VALUE + 1).properties).properties,
+          aSubstanceWithOnlyACeNumber().withConcentration(aConcentration().withValue(RAW_CONCENTRATION_VALUE + 1).properties).properties,
         ],
       },
       {
         message: 'should return substances without concentrations when there is not exactly the same number of concentrations as substances',
         substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
         concentrations: [
-          aConcentration().withValue(CONCENTRATION_VALUE).properties,
-          aConcentration().withValue(CONCENTRATION_VALUE + 1).properties,
-          aConcentration().withValue(CONCENTRATION_VALUE + 2).properties,
+          aConcentration().withValue(RAW_CONCENTRATION_VALUE).properties,
+          aConcentration().withValue(RAW_CONCENTRATION_VALUE + 1).properties,
+          aConcentration().withValue(RAW_CONCENTRATION_VALUE + 2).properties,
         ],
         expected: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
       },

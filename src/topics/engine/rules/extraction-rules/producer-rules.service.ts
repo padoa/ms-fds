@@ -11,7 +11,7 @@ export class ProducerRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { cleanProducerText, rawProducerText } = this.extractRawAndCleanProductText(line);
+      const { cleanProducerText, rawProducerText } = this.extractRawAndCleanProducerText(line);
       if (!cleanProducerText) continue;
 
       if (
@@ -30,15 +30,15 @@ export class ProducerRulesService {
     return null;
   }
 
-  private static extractRawAndCleanProductText(line: ILine): { cleanProducerText: string; rawProducerText: string } {
+  private static extractRawAndCleanProducerText(line: ILine): { cleanProducerText: string; rawProducerText: string } {
     const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
     return {
-      cleanProducerText: this.extractProductText(cleanContent),
-      rawProducerText: this.extractProductText(rawContent),
+      cleanProducerText: this.extractProducerText(cleanContent),
+      rawProducerText: this.extractProducerText(rawContent),
     };
   }
 
-  private static extractProductText(productText: string): string {
+  private static extractProducerText(productText: string): string {
     return _(productText).split(':').last().trim();
   }
 }

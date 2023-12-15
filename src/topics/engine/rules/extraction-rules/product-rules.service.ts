@@ -20,7 +20,7 @@ export class ProductRulesService {
     for (const line of linesToSearchIn) {
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
-      const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join(' ');
+      const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
       const { cleanProductText, rawProductText } = this.extractRawAndCleanProductText(line);
 
       if (nameInCurrentLine) return { name: rawProductText, metaData };
@@ -68,7 +68,8 @@ export class ProductRulesService {
         continue;
       }
 
-      const numberOfOtherMatchesInDocument = TextCleanerService.cleanSpaces(TextCleanerService.cleanRawText(fullText)).match(
+      const cleanedFullText = TextCleanerService.cleanSpaces(TextCleanerService.cleanRawText(fullText));
+      const numberOfOtherMatchesInDocument = cleanedFullText.match(
         new RegExp(`${cleanProductText.replaceAll(' ', '').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')}`, 'g'),
       );
       if (numberOfOtherMatchesInDocument?.length >= 3) return { name: rawProductText, metaData: { startBox: line.startBox, endBox: line.endBox } };

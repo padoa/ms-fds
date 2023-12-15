@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import type { IExtractedCasNumber, IExtractedCeNumber, IExtractedSubstance } from '@padoa/chemical-risk';
+import type { IExtractedCasNumber, IExtractedCeNumber, IExtractedSubstance, IMetaData } from '@padoa/chemical-risk';
 
 import type { ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
@@ -14,7 +14,7 @@ export class CasAndCeRulesService {
       const textCleaned = _(line.texts)
         .map(({ cleanContent }) => cleanContent)
         .join(' ');
-      const metaData = { startBox: line.startBox, endBox: line.endBox };
+      const metaData: IMetaData = { startBox: line.startBox, endBox: line.endBox };
 
       const casNumberValue = this.getCasNumber(textCleaned);
       const ceNumberValue = this.getCeNumber(textCleaned);

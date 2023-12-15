@@ -6,8 +6,6 @@ import {
   EUH_DANGER,
   P_DANGER,
   MULTIPLE_P_DANGER,
-  CAS_NUMBER_TEXT,
-  CE_NUMBER_TEXT,
   H_DANGER_WITH_DETAILS,
   P_DANGER_WITH_DETAILS,
   MULTIPLE_P_DANGER_WITH_DETAILS,
@@ -16,7 +14,6 @@ import {
   VAPOR_PRESSURE_IDENTIFIER,
   BOILING_POINT_IDENTIFIER,
   BOILING_POINT_VALUE,
-  CONCENTRATION_VALUE,
   RAW_PLACEHOLDER_TEXT_1,
   RAW_PLACEHOLDER_TEXT_2,
   RAW_PLACEHOLDER_TEXT_3,
@@ -31,6 +28,9 @@ import {
   RAW_PRODUCER_NAME_WITH_DOT,
   RAW_PRODUCER_NAME_ENDING_WITH_DOT,
   RAW_PRODUCER_IDENTIFIER,
+  RAW_CAS_NUMBER_TEXT,
+  RAW_CE_NUMBER_TEXT,
+  RAW_CONCENTRATION_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
@@ -102,14 +102,14 @@ export const aTextWithMultiplePDangerWithDetails = (): TextBuilder => aText().wi
 //----------------------------------------- SUBSTANCES -----------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithCasNumber = (): TextBuilder => aText().withCleanContent(CAS_NUMBER_TEXT);
-export const aTextWithCeNumber = (): TextBuilder => aText().withCleanContent(CE_NUMBER_TEXT);
+export const aTextWithCasNumber = (): TextBuilder => aText().withContent(RAW_CAS_NUMBER_TEXT);
+export const aTextWithCeNumber = (): TextBuilder => aText().withContent(RAW_CE_NUMBER_TEXT);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- CONCENTRATION  ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithConcentration = (): TextBuilder => aText().withCleanContent(CONCENTRATION_VALUE);
+export const aTextWithConcentration = (): TextBuilder => aText().withContent(RAW_CONCENTRATION_VALUE);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- PHYSICAL_STATE ---------------------------------------
