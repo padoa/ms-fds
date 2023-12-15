@@ -3,6 +3,7 @@ import _ from 'lodash';
 import type { IExtractedDate } from '@padoa/chemical-risk';
 
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class RevisionDateRulesService {
   private static readonly MONTH_MAPPING = {
@@ -25,10 +26,15 @@ export class RevisionDateRulesService {
 
   private static readonly DATE_REGEXPS = [this.NUMBER_DATE_REGEX, this.STRING_DATE_REGEX, this.ENGLISH_NUMBER_DATE_REGEX];
 
-  public static getDate(fullText: string): IExtractedDate {
-    const inTextDate = this.getDateByRevisionText(fullText) || this.getDateByMostFrequent(fullText) || this.getDateByMostRecent(fullText);
+  public static getDate(rawFullText: string): IExtractedDate {
+    const cleanedFullText = TextCleanerService.cleanRawText(rawFullText);
+
+    const inTextDate =
+      this.getDateByRevisionText(rawFullText, cleanedFullText) ||
+      this.getDateByMostFrequent(cleanedFullText) ||
+      this.getDateByMostRecent(cleanedFullText);
     if (!inTextDate) return { formattedDate: null, inTextDate: null };
-    const parsedDate = this.parseDate(inTextDate);
+    const parsedDate = this.parseDate(TextCleanerService.cleanRawText(inTextDate));
 
     return {
       formattedDate: parsedDate && !Number.isNaN(parsedDate.getTime()) ? format(parsedDate, 'yyyy/MM/dd') : null,
@@ -36,12 +42,15 @@ export class RevisionDateRulesService {
     };
   }
 
-  public static getDateByRevisionText(fullText: string): string | null {
-    const revisionDateRegex = `[R|r][é|e]vision${CommonRegexRulesService.SPACE_REGEX}.?${CommonRegexRulesService.SPACE_REGEX}`;
+  public static getDateByRevisionText(rawFullText: string, cleanFullText: string): string | null {
+    const revisionDateRegex = `r[é|e]vision${CommonRegexRulesService.SPACE_REGEX}.?${CommonRegexRulesService.SPACE_REGEX}`;
 
     for (const dateRegex of this.DATE_REGEXPS) {
-      const revisionDateMatch = fullText.match(new RegExp(revisionDateRegex + dateRegex));
-      if (revisionDateMatch?.length) return revisionDateMatch[1];
+      const dateMatch = new RegExp(revisionDateRegex + dateRegex).exec(cleanFullText);
+      if (!dateMatch) continue;
+
+      const revisionDateOffset = dateMatch[0].length - dateMatch[1].length;
+      return rawFullText.substring(dateMatch.index + revisionDateOffset, dateMatch.index + dateMatch[0].length);
     }
     return null;
   }
@@ -81,7 +90,6 @@ export class RevisionDateRulesService {
     return this.parseDateFromNumberRegex(date) || this.parseDateFromStringRegex(date) || this.parseDateFromEnglishNumberRegex(date);
   }
 
-  // TODO: refacto these blocs to avoid code duplication
   private static parseDateFromNumberRegex(date: string): Date | null {
     const regexMatches = date.match(new RegExp(this.NUMBER_DATE_REGEX));
     if (!regexMatches) return null;

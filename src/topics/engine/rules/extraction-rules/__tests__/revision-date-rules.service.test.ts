@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { IExtractedDate } from '@padoa/chemical-risk';
 
 import { RevisionDateRulesService } from '@topics/engine/rules/extraction-rules/revision-date-rules.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 describe('RevisionDateRulesService tests', () => {
   describe('Regexps tests', () => {
@@ -104,14 +105,14 @@ describe('RevisionDateRulesService tests', () => {
   describe('RevisionDate rules tests', () => {
     describe('GetDateByRevisionText tests', () => {
       it.each<[string, string | null]>([
-        ['révision: 2017-09-01', '2017-09-01'],
+        ['RÉVISION: 2017-09-01', '2017-09-01'],
         ['Revision:2017-09-01', '2017-09-01'],
-        ['Revision : 2010-02-01', '2010-02-01'],
-        ['Revision: 1 janvier 2022', '1 janvier 2022'],
+        ['revision : 2010-02-01', '2010-02-01'],
+        ['Revision: 1 JANVIER 2022', '1 JANVIER 2022'],
         ['2017-09-01', null],
         ['révision: n°11 (01/02/2022) safety-kleen', null],
-      ])('"%s" input should return %s', (text, expected) => {
-        expect(RevisionDateRulesService.getDateByRevisionText(text)).toEqual(expected);
+      ])('"%s" input should return %s', (rawText, expected) => {
+        expect(RevisionDateRulesService.getDateByRevisionText(rawText, TextCleanerService.cleanRawText(rawText))).toEqual(expected);
       });
     });
 
@@ -161,7 +162,7 @@ describe('RevisionDateRulesService tests', () => {
     describe('GetDate tests', () => {
       it.each<[string, IExtractedDate]>([
         // enters getDateByRevisionText
-        ['révision 15 août 2023', { formattedDate: '2023/08/15', inTextDate: '15 août 2023' }],
+        ['révision 15 AOÛT 2023', { formattedDate: '2023/08/15', inTextDate: '15 AOÛT 2023' }],
         // enters getDateByMostFrequent
         ['abbcdef 15 aout 2023 et 20/01/2000 et 20/01/2000 et 20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
         // enters getDateByMostRecent
