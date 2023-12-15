@@ -8,8 +8,8 @@ import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { aLine, aLineWithVaporPressureIdentifierAndValue } from '@topics/engine/__fixtures__/line.mother.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
-import { VAPOR_PRESSURE_TEMPERATURE, VAPOR_PRESSURE_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aTextWithVaporPressureIdentifier, aTextWithVaporPressureValue } from '@topics/engine/__fixtures__/text.mother.js';
+import { RAW_VAPOR_PRESSURE_TEMPERATURE, RAW_VAPOR_PRESSURE_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 describe('VaporPressureService tests', () => {
   const metaData: IMetaData = { startBox: aPosition().properties };
@@ -117,7 +117,7 @@ describe('VaporPressureService tests', () => {
               1: aSubSection().withLines([aLineWithVaporPressureIdentifierAndValue().properties]).properties,
             }).properties,
           ).properties,
-          expected: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
+          expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
         },
       ],
       [
@@ -130,7 +130,7 @@ describe('VaporPressureService tests', () => {
               ]).properties,
             }).properties,
           ).properties,
-          expected: { pressure: VAPOR_PRESSURE_VALUE, temperature: undefined, metaData },
+          expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: undefined, metaData },
         },
       ],
       [
@@ -144,7 +144,7 @@ describe('VaporPressureService tests', () => {
               ]).properties,
             }).properties,
           ).properties,
-          expected: { pressure: VAPOR_PRESSURE_VALUE, temperature: VAPOR_PRESSURE_TEMPERATURE, metaData },
+          expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
         },
       ],
     ])('$message', ({ fdsTree, expected }) => {

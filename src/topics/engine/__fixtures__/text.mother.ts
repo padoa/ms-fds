@@ -9,9 +9,6 @@ import {
   H_DANGER_WITH_DETAILS,
   P_DANGER_WITH_DETAILS,
   MULTIPLE_P_DANGER_WITH_DETAILS,
-  VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
-  VAPOR_PRESSURE_VALUE,
-  VAPOR_PRESSURE_IDENTIFIER,
   BOILING_POINT_IDENTIFIER,
   BOILING_POINT_VALUE,
   RAW_PLACEHOLDER_TEXT_1,
@@ -31,6 +28,9 @@ import {
   RAW_CAS_NUMBER_TEXT,
   RAW_CE_NUMBER_TEXT,
   RAW_CONCENTRATION_VALUE,
+  RAW_VAPOR_PRESSURE_IDENTIFIER,
+  RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
+  RAW_VAPOR_PRESSURE_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
@@ -122,10 +122,9 @@ export const aTextWithPhysicalStateValue = (): TextBuilder => aText().withConten
 //--------------------------------------- VAPOR_PRESSURE ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithVaporPressureIdentifier = (): TextBuilder => aText().withCleanContent(VAPOR_PRESSURE_IDENTIFIER);
-export const aTextWithVaporPressureIdentifierWithTemperature = (): TextBuilder =>
-  aText().withCleanContent(VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE);
-export const aTextWithVaporPressureValue = (): TextBuilder => aText().withCleanContent(VAPOR_PRESSURE_VALUE);
+export const aTextWithVaporPressureIdentifier = (): TextBuilder => aText().withContent(RAW_VAPOR_PRESSURE_IDENTIFIER);
+export const aTextWithVaporPressureIdentifierWithTemperature = (): TextBuilder => aText().withContent(RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE);
+export const aTextWithVaporPressureValue = (): TextBuilder => aText().withContent(RAW_VAPOR_PRESSURE_VALUE);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- BOILING_POINT ----------------------------------------
