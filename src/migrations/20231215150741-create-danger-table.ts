@@ -1,4 +1,4 @@
-import { AddAuditTrigger, AddSetUpdatedAtTrigger, createTable, wrapCommands } from '@padoa/database';
+import { AddSetUpdatedAtTrigger, createTable, wrapCommands } from '@padoa/database';
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '@helpers/database/index.js';
@@ -9,12 +9,6 @@ enum DangerType {
 }
 
 const dangerFields = {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
   code: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -32,5 +26,5 @@ const dangerFields = {
 
 export async function up(): Promise<void> {
   await createTable(sequelize, 'danger', dangerFields);
-  // await wrapCommands(sequelize, 'danger', [new AddAuditTrigger(), new AddSetUpdatedAtTrigger()]);
+  await wrapCommands(sequelize, 'danger', [new AddSetUpdatedAtTrigger()]);
 }

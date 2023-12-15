@@ -1,15 +1,9 @@
-import { AddAuditTrigger, AddFk, AddSetUpdatedAtTrigger, createTable, FOREIGN_KEY_ACTIONS, wrapCommands } from '@padoa/database';
+import { AddFk, AddSetUpdatedAtTrigger, createTable, FOREIGN_KEY_ACTIONS, wrapCommands } from '@padoa/database';
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '@helpers/database/index.js';
 
 const fdsFileFields = {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
   fileId: {
     field: 'file_id',
     type: DataTypes.INTEGER,
@@ -30,9 +24,5 @@ const fdsFileFields = {
 
 export async function up(): Promise<void> {
   await createTable(sequelize, 'fds_file', fdsFileFields);
-  await wrapCommands(sequelize, 'fds_file', [
-    // new AddAuditTrigger(),
-    //  new AddSetUpdatedAtTrigger(),
-    new AddFk('file', FOREIGN_KEY_ACTIONS.CASCADE),
-  ]);
+  await wrapCommands(sequelize, 'fds_file', [new AddSetUpdatedAtTrigger(), new AddFk('file', FOREIGN_KEY_ACTIONS.CASCADE)]);
 }

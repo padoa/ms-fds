@@ -1,4 +1,4 @@
-import { AddAuditTrigger, AddFk, AddSetUpdatedAtTrigger, createTable, FOREIGN_KEY_ACTIONS, wrapCommands } from '@padoa/database';
+import { AddFk, AddSetUpdatedAtTrigger, createTable, FOREIGN_KEY_ACTIONS, wrapCommands } from '@padoa/database';
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '@helpers/database/index.js';
@@ -21,8 +21,7 @@ export async function up(): Promise<void> {
     },
   });
   await wrapCommands(sequelize, 'product_substance', [
-    // new AddAuditTrigger(),
-    // new AddSetUpdatedAtTrigger(),
+    new AddSetUpdatedAtTrigger(),
     new AddFk('product', FOREIGN_KEY_ACTIONS.CASCADE),
     new AddFk('substance', FOREIGN_KEY_ACTIONS.CASCADE),
   ]);

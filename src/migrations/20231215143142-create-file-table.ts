@@ -1,15 +1,9 @@
-import { AddAuditTrigger, AddSetUpdatedAtTrigger, createTable, wrapCommands } from '@padoa/database';
+import { AddSetUpdatedAtTrigger, createTable, wrapCommands } from '@padoa/database';
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '@helpers/database/index.js';
 
 const fileFields = {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
   filename: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -43,5 +37,5 @@ const fileFields = {
 
 export async function up(): Promise<void> {
   await createTable(sequelize, 'file', fileFields);
-  // await wrapCommands(sequelize, 'file', [new AddAuditTrigger(), new AddSetUpdatedAtTrigger()]);
+  await wrapCommands(sequelize, 'file', [new AddSetUpdatedAtTrigger()]);
 }

@@ -1,4 +1,4 @@
-import { AddAuditTrigger, AddFk, AddSetUpdatedAtTrigger, createTable, FOREIGN_KEY_ACTIONS, wrapCommands } from '@padoa/database';
+import { AddFk, AddSetUpdatedAtTrigger, createTable, FOREIGN_KEY_ACTIONS, wrapCommands } from '@padoa/database';
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '@helpers/database/index.js';
@@ -22,12 +22,6 @@ enum ProductWarningNotice {
 }
 
 const productFields = {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
   fdsFileId: {
     field: 'fds_file_id',
     type: DataTypes.INTEGER,
@@ -77,9 +71,5 @@ const productFields = {
 
 export async function up(): Promise<void> {
   await createTable(sequelize, 'product', productFields);
-  await wrapCommands(sequelize, 'product', [
-    // new AddAuditTrigger(),
-    // new AddSetUpdatedAtTrigger(),
-    new AddFk('fds_file', FOREIGN_KEY_ACTIONS.CASCADE),
-  ]);
+  await wrapCommands(sequelize, 'product', [new AddSetUpdatedAtTrigger(), new AddFk('fds_file', FOREIGN_KEY_ACTIONS.SET_NULL)]);
 }
