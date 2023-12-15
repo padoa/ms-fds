@@ -12,12 +12,6 @@ export class TextBuilder extends BaseBuilder<IText> {
     return this.withValueFor('rawContent')(rawContent).withValueFor('cleanContent')(TextCleanerService.cleanRawText(rawContent));
   };
 
-  /**
-   * @deprecated Use `withContent`
-   * Please reconsider using this, it will be removed when the raw text is applied on all rules
-   */
-  public withCleanContent = this.withValueFor('cleanContent');
-
   protected getDefaultValues(): IText {
     return {
       pageNumber: PAGE_NUMBER,

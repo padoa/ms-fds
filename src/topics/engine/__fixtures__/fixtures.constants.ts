@@ -47,13 +47,13 @@ export const RAW_PRODUCER_NAME_ENDING_WITH_DOT = `${RAW_PRODUCER_NAME}.`;
 //----------------------------------------- DANGERS --------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const H_DANGER = 'h350i';
-export const H_DANGER_WITH_DETAILS = `${H_DANGER} - peut provoquer le cancer`;
-export const EUH_DANGER = 'euh212';
-export const P_DANGER = 'p 331';
-export const P_DANGER_WITH_DETAILS = `${P_DANGER} - peut provoquer la mort`;
-export const MULTIPLE_P_DANGER = 'p301 + p310';
-export const MULTIPLE_P_DANGER_WITH_DETAILS = `${MULTIPLE_P_DANGER} - peut provoquer des douleurs`;
+export const RAW_H_DANGER = 'H350i';
+export const RAW_H_DANGER_WITH_DETAILS = `${RAW_H_DANGER} - Peut provoquer le CANCER`;
+export const RAW_EUH_DANGER = 'EUH212';
+export const RAW_P_DANGER = 'P 331';
+export const RAW_P_DANGER_WITH_DETAILS = `${RAW_P_DANGER} - Peut provoquer la MORT`;
+export const RAW_MULTIPLE_P_DANGER = 'P301 + P310';
+export const RAW_MULTIPLE_P_DANGER_WITH_DETAILS = `${RAW_MULTIPLE_P_DANGER} - Peut provoquer des DOULEURS`;
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- SUBSTANCES -----------------------------------------

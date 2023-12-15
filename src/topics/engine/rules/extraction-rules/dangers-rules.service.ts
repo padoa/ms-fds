@@ -13,16 +13,31 @@ export class DangersRulesService {
   public static getDangers(fdsTree: IFdsTree): IExtractedDanger[] {
     const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
     const infoInEachLine = _.map(linesToSearchIn, ({ texts, startBox, endBox }) => {
-      const textContent = _.map(texts, (text) => text.cleanContent).join('');
-      return { text: textContent, startBox, endBox };
+      const { cleanLineText, rawLineText } = texts.reduce(
+        (joinedTexts, { cleanContent, rawContent }) => ({
+          cleanLineText: joinedTexts.cleanLineText + cleanContent,
+          rawLineText: joinedTexts.rawLineText + rawContent,
+        }),
+        { cleanLineText: '', rawLineText: '' },
+      );
+      return { cleanLineText, rawLineText, startBox, endBox };
     });
 
     const dangersRegex = new RegExp(`${this.EUROPEAN_HAZARDS_REGEX}|${this.HAZARDS_REGEX}|${this.PRECAUTION_REGEX}`, 'g');
     return _(infoInEachLine)
       .map((lineInfo) => {
-        const { text: lineText, startBox, endBox } = lineInfo;
-        const textMatches = lineText.match(dangersRegex) || [];
-        return textMatches.map((text) => ({ code: _.trim(text), metaData: { startBox, endBox } }));
+        const { cleanLineText, rawLineText, startBox, endBox } = lineInfo;
+
+        const matches: IExtractedDanger[] = [];
+        let match: RegExpExecArray | null;
+        do {
+          match = dangersRegex.exec(cleanLineText);
+          if (!match) continue;
+
+          const code = _.trim(rawLineText.substring(match.index, match.index + match[0].length));
+          matches.push({ code, metaData: { startBox, endBox } });
+        } while (match !== null);
+        return matches;
       })
       .flatMap()
       .compact()

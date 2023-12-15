@@ -3,7 +3,7 @@ import _ from 'lodash';
 import type { IExtractedDanger, IMetaData } from '@padoa/chemical-risk';
 
 import { anEmptyFdsTreeWithAllSections, aFdsTreeWithAllSectionsWithoutUsefulInfo, aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
-import { H_DANGER, EUH_DANGER, P_DANGER, MULTIPLE_P_DANGER } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { RAW_H_DANGER, RAW_EUH_DANGER, RAW_P_DANGER, RAW_MULTIPLE_P_DANGER } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aLineWithHDanger, aLineWithEuhDanger, aLineWithTwoDangers, aLineWithMultiplePDanger } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
@@ -117,8 +117,8 @@ describe('DangersRulesService tests', () => {
             }).properties,
           ).properties,
           expected: [
-            { code: H_DANGER, metaData },
-            { code: EUH_DANGER, metaData },
+            { code: RAW_H_DANGER, metaData },
+            { code: RAW_EUH_DANGER, metaData },
           ],
         },
       ],
@@ -131,9 +131,9 @@ describe('DangersRulesService tests', () => {
             }).properties,
           ).properties,
           expected: [
-            { code: H_DANGER, metaData },
-            { code: P_DANGER, metaData },
-            { code: MULTIPLE_P_DANGER, metaData },
+            { code: RAW_H_DANGER, metaData },
+            { code: RAW_P_DANGER, metaData },
+            { code: RAW_MULTIPLE_P_DANGER, metaData },
           ],
         },
       ],

@@ -3,11 +3,11 @@ import type { IExtractedData, IMetaData } from '@padoa/chemical-risk';
 
 import { aFdsTreeWithAllSectionsWithUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
-  H_DANGER,
-  P_DANGER,
-  MULTIPLE_P_DANGER,
-  H_DANGER_WITH_DETAILS,
-  MULTIPLE_P_DANGER_WITH_DETAILS,
+  RAW_H_DANGER,
+  RAW_P_DANGER,
+  RAW_MULTIPLE_P_DANGER,
+  RAW_H_DANGER_WITH_DETAILS,
+  RAW_MULTIPLE_P_DANGER_WITH_DETAILS,
   BOILING_POINT_IDENTIFIER,
   BOILING_POINT_VALUE,
   RAW_PRODUCT_IDENTIFIER_WITH_COLON,
@@ -38,10 +38,9 @@ describe('ExtractionRulesService tests', () => {
       ${RAW_PRODUCT_NAME}
       ${RAW_PRODUCER_IDENTIFIER_WITH_COLON}
       ${RAW_PRODUCER_NAME}
-      // TODO: replace all with "raw" constants
-      ${H_DANGER_WITH_DETAILS}
-      ${MULTIPLE_P_DANGER_WITH_DETAILS}
-      ${MULTIPLE_P_DANGER}
+      ${RAW_H_DANGER_WITH_DETAILS}
+      ${RAW_MULTIPLE_P_DANGER_WITH_DETAILS}
+      ${RAW_MULTIPLE_P_DANGER}
       ${RAW_CAS_NUMBER_TEXT}
       ${RAW_CE_NUMBER_TEXT}
       ${RAW_CONCENTRATION_VALUE}
@@ -59,9 +58,9 @@ describe('ExtractionRulesService tests', () => {
         product: { name: RAW_PRODUCT_NAME, metaData },
         producer: { name: RAW_PRODUCER_NAME, metaData },
         dangers: [
-          { code: H_DANGER, metaData },
-          { code: P_DANGER, metaData },
-          { code: MULTIPLE_P_DANGER, metaData },
+          { code: RAW_H_DANGER, metaData },
+          { code: RAW_P_DANGER, metaData },
+          { code: RAW_MULTIPLE_P_DANGER, metaData },
         ],
         substances: [aSubstance().properties],
         physicalState: { value: RAW_PHYSICAL_STATE_VALUE, metaData },
