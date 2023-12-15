@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import type { IExtractedDanger } from '@padoa/chemical-risk';
 
-import type { IFdsTree, IExtractedDanger } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 
 export class DangersRulesService {
   private static readonly CUSTOM_HAZARDS_REGEX = ['h\\s*350i', 'h\\s*360f[d]?', 'h\\s*360d[f]?', 'h\\s*361f[d]?', 'h\\s*361d'];

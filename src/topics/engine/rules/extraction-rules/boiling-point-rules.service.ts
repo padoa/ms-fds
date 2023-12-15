@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import type { IExtractedBoilingPoint } from '@padoa/chemical-risk';
 
-import type { IExtractedBoilingPoint, IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 
 export class BoilingPointRulesService {

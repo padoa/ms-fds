@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import _ from 'lodash';
+import type { IExtractedSubstance } from '@padoa/chemical-risk';
 
 import { aLineWithCasAndCeNumberIn2Texts, aLineWithCeNumber, aLineWithCasNumber, aLine } from '@topics/engine/__fixtures__/line.mother.js';
-import type { IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
+import type { ILine } from '@topics/engine/model/fds.model.js';
 import { aText } from '@topics/engine/__fixtures__/text.mother.js';
 import { CasAndCeRulesService } from '@topics/engine/rules/extraction-rules/substance/cas-and-ce-rules.service.js';
 import {

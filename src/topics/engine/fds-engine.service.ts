@@ -1,4 +1,5 @@
-import type { IExtractedData } from '@topics/engine/model/fds.model.js';
+import type { IExtractedData } from '@padoa/chemical-risk';
+
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { PdfParserService } from '@topics/engine/pdf-parser/pdf-parser.service.js';
 import { FdsTreeBuilderService } from '@topics/engine/transformer/fds-tree-builder.service.js';

@@ -6,8 +6,9 @@ import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
 import type { Options } from 'pdf2pic/dist/types/options.js';
 import { fromPath } from 'pdf2pic';
+import type { IPosition } from '@padoa/chemical-risk';
 
-import type { ILine, IPageDimension, IPosition, IText } from '@topics/engine/model/fds.model.js';
+import type { ILine, IPageDimension, IText } from '@topics/engine/model/fds.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class PdfImageTextExtractorService {

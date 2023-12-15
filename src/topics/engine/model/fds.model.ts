@@ -1,6 +1,4 @@
-//----------------------------------------------------------------------------------------------
-//------------------------------------ RAW DATA TYPES ------------------------------------------
-//----------------------------------------------------------------------------------------------
+import type { IBox, IMetaData, IPosition } from '@padoa/chemical-risk';
 
 export type IPdfData = {
   Pages: Array<{
@@ -38,17 +36,6 @@ export type IRawElement = IPosition & {
   text?: string;
 };
 
-export type IPosition = {
-  pageNumber: number;
-  xPositionProportion: number;
-  yPositionProportion: number;
-};
-
-export type IBox = {
-  startBox: IPosition;
-  endBox?: IPosition;
-};
-
 export type IPageDimension = {
   width: number;
   height: number;
@@ -72,52 +59,9 @@ export type ILine = IMetaData & {
   texts: IText[];
 };
 
-export type IMetaData = IBox;
-
 export type IText = IPosition & {
   rawContent: string;
   cleanContent: string;
 };
 
 export type IXCounts = { [xPosition: number]: number };
-
-//----------------------------------------------------------------------------------------------
-//--------------------------------- EXTRACTED DATA TYPES ---------------------------------------
-//----------------------------------------------------------------------------------------------
-
-export type IExtractedDate = { formattedDate: string; inTextDate: string };
-
-export type IExtractedProduct = { name: string; metaData: IMetaData };
-
-export type IExtractedProducer = { name: string; metaData: IMetaData };
-
-export type IExtractedDanger = { code: string; metaData: IMetaData };
-
-export type IExtractedCasNumber = { value: string; metaData: IMetaData };
-
-export type IExtractedCeNumber = { value: string; metaData: IMetaData };
-
-export type IExtractedConcentration = { value: string; metaData: IMetaData };
-
-export type IExtractedSubstance = {
-  casNumber: IExtractedCasNumber;
-  ceNumber: IExtractedCeNumber;
-  concentration?: IExtractedConcentration;
-};
-
-export type IExtractedPhysicalState = { value: string; metaData: IMetaData };
-
-export type IExtractedVaporPressure = { pressure?: string; temperature?: string; metaData: IMetaData };
-
-export type IExtractedBoilingPoint = { value: string; metaData: IMetaData };
-
-export type IExtractedData = {
-  date: IExtractedDate;
-  product: IExtractedProduct;
-  producer: IExtractedProducer;
-  dangers: IExtractedDanger[];
-  substances: IExtractedSubstance[];
-  physicalState: IExtractedPhysicalState;
-  vaporPressure: IExtractedVaporPressure;
-  boilingPoint: IExtractedBoilingPoint;
-};

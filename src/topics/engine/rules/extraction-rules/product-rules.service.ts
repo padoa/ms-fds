@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import type { IExtractedProduct } from '@padoa/chemical-risk';
 
-import type { IFdsTree, IExtractedProduct, ILine } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class ProductRulesService {

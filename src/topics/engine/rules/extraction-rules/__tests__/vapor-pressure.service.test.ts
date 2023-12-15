@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import type { IExtractedVaporPressure, IMetaData } from '@padoa/chemical-risk';
 
 import { VaporPressureService } from '@topics/engine/rules/extraction-rules/vapor-pressure.service.js';
-import type { IExtractedVaporPressure, IFdsTree, IMetaData } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { aFdsTree, aFdsTreeWithAllSectionsWithoutUsefulInfo, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';

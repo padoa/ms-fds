@@ -1,7 +1,8 @@
 import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { IExtractedConcentration, IExtractedSubstance } from '@padoa/chemical-risk';
 
-import type { IExtractedConcentration, IExtractedSubstance, IFdsTree, ILine, IStroke } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, ILine, IStroke } from '@topics/engine/model/fds.model.js';
 import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
 import { CONCENTRATION_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import {

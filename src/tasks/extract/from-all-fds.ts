@@ -6,8 +6,8 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { promiseMapSeries } from '@padoa/promise';
 import _ from 'lodash';
+import type { IExtractedData } from '@padoa/chemical-risk';
 
-import type { IExtractedData } from '@topics/engine/model/fds.model.js';
 import { FdsEngineService } from '@topics/engine/fds-engine.service.js';
 
 const logger = console;
