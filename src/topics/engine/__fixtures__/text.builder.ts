@@ -8,11 +8,21 @@ import {
   RAW_TEXT_CONTENT,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { IText } from '@topics/engine/model/fds.model.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class TextBuilder extends BaseBuilder<IText> {
   public withXPositionProportion = this.withValueFor('xPositionProportion');
   public withYPositionProportion = this.withValueFor('yPositionProportion');
-  public withRawContent = this.withValueFor('rawContent');
+
+  public withContent = (rawContent: string): TextBuilder => {
+    this.withValueFor('rawContent')(rawContent);
+    return this.withValueFor('cleanContent')(TextCleanerService.cleanRawText(rawContent));
+  };
+
+  /**
+   * @deprecated Use `withContent`
+   * Please reconsider using this, it will be removed when the raw text is applied on all rules
+   */
   public withCleanContent = this.withValueFor('cleanContent');
 
   protected getDefaultValues(): IText {

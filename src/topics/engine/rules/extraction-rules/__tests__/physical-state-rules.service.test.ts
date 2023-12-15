@@ -7,7 +7,6 @@ import {
   aLineWithPhysicalStateValue,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import {
-  CLEAN_PHYSICAL_STATE_IDENTIFIER,
   CLEAN_PHYSICAL_STATE_VALUE,
   RAW_PHYSICAL_STATE_IDENTIFIER,
   RAW_PHYSICAL_STATE_VALUE,
@@ -97,21 +96,15 @@ describe('PhysicalStateRulesService tests', () => {
       },
       {
         message: 'should return physical state value when a text contains the identifier and the value separated by a colon',
-        lines: [
-          aLine().withTexts([
-            aText()
-              .withRawContent(`${RAW_PHYSICAL_STATE_VALUE}:${RAW_PHYSICAL_STATE_VALUE}`)
-              .withCleanContent(`${CLEAN_PHYSICAL_STATE_IDENTIFIER}:${CLEAN_PHYSICAL_STATE_VALUE}`).properties,
-          ]).properties,
-        ],
+        lines: [aLine().withTexts([aText().withContent(`${RAW_PHYSICAL_STATE_IDENTIFIER}:${RAW_PHYSICAL_STATE_VALUE}`).properties]).properties],
         expected: CLEAN_PHYSICAL_STATE_VALUE,
       },
       {
         message: 'should clean the trailing dot of a value',
         lines: [
           aLine().withTexts([
-            aText().withRawContent(`${RAW_PHYSICAL_STATE_IDENTIFIER}`).withCleanContent(`${CLEAN_PHYSICAL_STATE_IDENTIFIER}`).properties,
-            aText().withRawContent(`${RAW_PHYSICAL_STATE_VALUE}`).withCleanContent(`${CLEAN_PHYSICAL_STATE_VALUE}. `).properties,
+            aText().withContent(`${RAW_PHYSICAL_STATE_IDENTIFIER}`).properties,
+            aText().withContent(`${RAW_PHYSICAL_STATE_VALUE}. `).properties,
           ]).properties,
         ],
         expected: CLEAN_PHYSICAL_STATE_VALUE,
@@ -136,10 +129,7 @@ describe('PhysicalStateRulesService tests', () => {
       { message: 'should return null when no line matches PHYSICAL_STATE_VALUES_REGEX', lines: [aLine().properties], expected: null },
       {
         message: 'should clean the trailing dot of a value',
-        lines: [
-          aLine().withTexts([aText().withRawContent(`${RAW_PHYSICAL_STATE_VALUE}`).withCleanContent(`${CLEAN_PHYSICAL_STATE_VALUE}. `).properties])
-            .properties,
-        ],
+        lines: [aLine().withTexts([aText().withContent(`${RAW_PHYSICAL_STATE_VALUE}. `).properties]).properties],
         expected: CLEAN_PHYSICAL_STATE_VALUE,
       },
     ])('$message', ({ lines, expected }) => {
@@ -159,7 +149,7 @@ describe('PhysicalStateRulesService tests', () => {
         fdsTree: aFdsTree().withSection9(
           aSection().withSubsections({
             1: aSubSection().withLines([
-              aLine().withTexts([aText().withRawContent('SOLIDE').withCleanContent('solide').properties]).properties,
+              aLine().withTexts([aText().withContent('SOLIDE').properties]).properties,
               aLineWithPhysicalStateIdentifierAndValue().properties,
             ]).properties,
           }).properties,
@@ -170,8 +160,7 @@ describe('PhysicalStateRulesService tests', () => {
         message: 'should use the rule by value if there is not matching text',
         fdsTree: aFdsTree().withSection9(
           aSection().withSubsections({
-            1: aSubSection().withLines([aLine().withTexts([aText().withRawContent('SOLIDE').withCleanContent('solide').properties]).properties])
-              .properties,
+            1: aSubSection().withLines([aLine().withTexts([aText().withContent('SOLIDE').properties]).properties]).properties,
           }).properties,
         ).properties,
         expected: 'solide',

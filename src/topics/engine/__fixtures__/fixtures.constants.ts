@@ -39,7 +39,6 @@ export const CLEAN_PLACEHOLDER_TEXT_3 = TextCleanerService.cleanRawText(RAW_PLAC
 export const RAW_PRODUCT_IDENTIFIER_WITH_COLON = ' Blabla Nom du produit : ';
 export const RAW_PRODUCT_IDENTIFIER = ' Blabla: Nom du produit';
 export const RAW_PRODUCT_NAME = 'JEFFACLEAN';
-export const CLEAN_PRODUCT_IDENTIFIER_WITH_COLON = TextCleanerService.cleanRawText(RAW_PRODUCT_IDENTIFIER_WITH_COLON);
 export const CLEAN_PRODUCT_IDENTIFIER = TextCleanerService.cleanRawText(RAW_PRODUCT_IDENTIFIER);
 export const CLEAN_PRODUCT_NAME = TextCleanerService.cleanRawText(RAW_PRODUCT_NAME);
 

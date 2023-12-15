@@ -2,13 +2,6 @@ import {
   INCREMENT_VALUE,
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
-  CLEAN_PRODUCT_NAME,
-  CLEAN_PRODUCT_IDENTIFIER_WITH_COLON,
-  CLEAN_PRODUCT_IDENTIFIER,
-  CLEAN_PLACEHOLDER_TEXT_1,
-  CLEAN_PLACEHOLDER_TEXT_2,
-  CLEAN_PLACEHOLDER_TEXT_3,
-  CLEAN_TEXT_CONTENT,
   PRODUCER_IDENTIFIER_WITH_COLON,
   PRODUCER_NAME_WITH_DOT,
   PRODUCER_NAME_ENDING_WITH_DOT,
@@ -22,8 +15,6 @@ import {
   H_DANGER_WITH_DETAILS,
   P_DANGER_WITH_DETAILS,
   MULTIPLE_P_DANGER_WITH_DETAILS,
-  CLEAN_PHYSICAL_STATE_IDENTIFIER,
-  CLEAN_PHYSICAL_STATE_VALUE,
   PRODUCER_IDENTIFIER,
   VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
   VAPOR_PRESSURE_VALUE,
@@ -49,9 +40,9 @@ export const aText = (): TextBuilder => new TextBuilder();
 //----------------------------------------- BASICS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithRandomContent1 = (): TextBuilder => aText().withRawContent(RAW_PLACEHOLDER_TEXT_1).withCleanContent(CLEAN_PLACEHOLDER_TEXT_1);
-export const aTextWithRandomContent2 = (): TextBuilder => aText().withRawContent(RAW_PLACEHOLDER_TEXT_2).withCleanContent(CLEAN_PLACEHOLDER_TEXT_2);
-export const aTextWithRandomContent3 = (): TextBuilder => aText().withRawContent(RAW_PLACEHOLDER_TEXT_3).withCleanContent(CLEAN_PLACEHOLDER_TEXT_3);
+export const aTextWithRandomContent1 = (): TextBuilder => aText().withContent(RAW_PLACEHOLDER_TEXT_1);
+export const aTextWithRandomContent2 = (): TextBuilder => aText().withContent(RAW_PLACEHOLDER_TEXT_2);
+export const aTextWithRandomContent3 = (): TextBuilder => aText().withContent(RAW_PLACEHOLDER_TEXT_3);
 export const aTextWithPosition = (): TextBuilder =>
   aText().withXPositionProportion(POSITION_PROPORTION_X).withYPositionProportion(POSITION_PROPORTION_Y);
 
@@ -69,8 +60,7 @@ export const aTextWithContentAndPositionXYIncrementedTwice = (): TextBuilder => 
 
 const buildTextWithContentAndPositionIncrementedTimes = (multiplyXBy: number, multiplyYBy: number): TextBuilder =>
   aText()
-    .withRawContent(RAW_TEXT_CONTENT)
-    .withCleanContent(CLEAN_TEXT_CONTENT)
+    .withContent(RAW_TEXT_CONTENT)
     .withXPositionProportion(POSITION_PROPORTION_X + multiplyXBy * INCREMENT_VALUE)
     .withYPositionProportion(POSITION_PROPORTION_Y + multiplyYBy * INCREMENT_VALUE);
 
@@ -78,15 +68,11 @@ const buildTextWithContentAndPositionIncrementedTimes = (multiplyXBy: number, mu
 //----------------------------------------- PRODUCT_NAME ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithProductNameIdentifierWithColon = (): TextBuilder =>
-  aText().withRawContent(RAW_PRODUCT_IDENTIFIER_WITH_COLON).withCleanContent(CLEAN_PRODUCT_IDENTIFIER_WITH_COLON);
-export const aTextWithProductNameIdentifier = (): TextBuilder =>
-  aText().withRawContent(RAW_PRODUCT_IDENTIFIER).withCleanContent(CLEAN_PRODUCT_IDENTIFIER);
-export const aTextWithProductName = (): TextBuilder => aText().withRawContent(RAW_PRODUCT_NAME).withCleanContent(CLEAN_PRODUCT_NAME);
+export const aTextWithProductNameIdentifierWithColon = (): TextBuilder => aText().withContent(RAW_PRODUCT_IDENTIFIER_WITH_COLON);
+export const aTextWithProductNameIdentifier = (): TextBuilder => aText().withContent(RAW_PRODUCT_IDENTIFIER);
+export const aTextWithProductName = (): TextBuilder => aText().withContent(RAW_PRODUCT_NAME);
 export const aTextWithProductIdentifierWithColonAndName = (): TextBuilder =>
-  aText()
-    .withRawContent(`${RAW_PRODUCT_IDENTIFIER_WITH_COLON}${RAW_PRODUCT_NAME}`)
-    .withCleanContent(`${CLEAN_PRODUCT_IDENTIFIER_WITH_COLON}${CLEAN_PRODUCT_NAME}`);
+  aText().withContent(`${RAW_PRODUCT_IDENTIFIER_WITH_COLON}${RAW_PRODUCT_NAME}`);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- PRODUCER_NAME --------------------------------------
@@ -129,10 +115,8 @@ export const aTextWithConcentration = (): TextBuilder => aText().withCleanConten
 //--------------------------------------- PHYSICAL_STATE ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithPhysicalStateIdentifier = (): TextBuilder =>
-  aText().withRawContent(RAW_PHYSICAL_STATE_IDENTIFIER).withCleanContent(CLEAN_PHYSICAL_STATE_IDENTIFIER);
-export const aTextWithPhysicalStateValue = (): TextBuilder =>
-  aText().withRawContent(RAW_PHYSICAL_STATE_VALUE).withCleanContent(CLEAN_PHYSICAL_STATE_VALUE);
+export const aTextWithPhysicalStateIdentifier = (): TextBuilder => aText().withContent(RAW_PHYSICAL_STATE_IDENTIFIER);
+export const aTextWithPhysicalStateValue = (): TextBuilder => aText().withContent(RAW_PHYSICAL_STATE_VALUE);
 
 //----------------------------------------------------------------------------------------------
 //--------------------------------------- VAPOR_PRESSURE ---------------------------------------

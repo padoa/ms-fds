@@ -55,7 +55,7 @@ export class FdsTreeCleanerService {
               ...cleanedLine.slice(0, cleanedLine.length - 1),
               {
                 ..._.last(cleanedLine),
-                rawContent: `${_.last(cleanedLine).rawContent}${text.rawContent}`,
+                rawContent: `${_.last(cleanedLine).rawContent}${joinWithSpace ? ' ' : ''}${text.rawContent}`,
                 cleanContent: `${_.last(cleanedLine).cleanContent}${joinWithSpace ? ' ' : ''}${text.cleanContent}`,
               },
             ];

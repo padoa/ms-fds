@@ -8,6 +8,7 @@ describe('TextCleanerService tests', () => {
       { input: undefined, expected: undefined },
       { input: 'FDS-ARGON', expected: 'fds-argon' },
       { input: 'Évaporation', expected: 'évaporation' },
+      { input: 'lowercase', expected: 'lowercase' },
     ])('should return $expected with input $input', ({ input, expected }) => {
       expect(TextCleanerService.cleanRawText(input)).toEqual(expected);
     });
@@ -30,6 +31,7 @@ describe('TextCleanerService tests', () => {
       { input: 'text ', expected: 'text' },
       { input: ' text', expected: 'text' },
       { input: ' text ', expected: 'text' },
+      { input: '  two spaces   ', expected: 'twospaces' },
       { input: ' there is a lot of spaces here but there wont be any left ', expected: 'thereisalotofspacesherebuttherewontbeanyleft' },
     ])('should return $expected with input $input', ({ input, expected }) => {
       expect(TextCleanerService.cleanSpaces(input)).toEqual(expected);
@@ -41,6 +43,7 @@ describe('TextCleanerService tests', () => {
       { input: '', expected: '' },
       { input: ' ', expected: '' },
       { input: ' text ', expected: 'text' },
+      { input: 'two  consecutives spaces  to clean ', expected: 'two consecutives spaces to clean' },
       { input: 'tab\t', expected: 'tab' },
       { input: ' \t \t ', expected: '' },
       { input: ' text with spaces ', expected: 'text with spaces' },

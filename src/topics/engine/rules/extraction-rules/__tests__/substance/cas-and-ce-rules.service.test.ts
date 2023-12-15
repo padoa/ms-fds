@@ -139,7 +139,7 @@ describe('CasAndCeRulesService tests', () => {
       },
       {
         message: 'it should return substances without spaces',
-        lines: [aLine().withTexts([aText().withRawContent(' 123546 - 78 - 9 ').withCleanContent(' 123546 - 78 - 9 ').properties]).properties],
+        lines: [aLine().withTexts([aText().withContent(' 123546 - 78 - 9 ').properties]).properties],
         expected: [aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withValue('123546-78-9').properties).properties],
       },
     ])('$message', ({ lines, expected }) => {
