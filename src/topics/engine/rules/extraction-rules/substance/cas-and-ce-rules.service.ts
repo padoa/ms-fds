@@ -43,8 +43,8 @@ export class CasAndCeRulesService {
   }
 
   private static readonly SEPARATOR_REGEX = `${CommonRegexRulesService.SPACE_REGEX}-${CommonRegexRulesService.SPACE_REGEX}`;
-  private static readonly NEGATIVE_LOOK_BEHIND_REGEX = `(?<!([-/•]${CommonRegexRulesService.SPACE_REGEX}|\\d)+)`;
-  private static readonly NEGATIVE_LOOK_AHEAD_REGEX = `(?!(${CommonRegexRulesService.SPACE_REGEX}[-/•]|\\d)+)`;
+  private static readonly NEGATIVE_LOOK_BEHIND_REGEX = `(?<!(-|\\d)+)`;
+  private static readonly NEGATIVE_LOOK_AHEAD_REGEX = `(?!(-|\\d)+)`;
   public static readonly CAS_NUMBER_REGEX = new RegExp(
     `${this.NEGATIVE_LOOK_BEHIND_REGEX}(\\d{1,7}${this.SEPARATOR_REGEX}\\d{2}${this.SEPARATOR_REGEX}\\d{1})${this.NEGATIVE_LOOK_AHEAD_REGEX}`,
   );
