@@ -30,6 +30,7 @@ import {
   RAW_PRODUCER_NAME,
   RAW_PRODUCER_NAME_WITH_DOT,
   RAW_PRODUCER_NAME_ENDING_WITH_DOT,
+  RAW_PRODUCER_IDENTIFIER,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
@@ -78,7 +79,7 @@ export const aTextWithProductIdentifierWithColonAndName = (): TextBuilder =>
 //----------------------------------------------------------------------------------------------
 
 export const aTextWithProducerIdentifierWithColon = (): TextBuilder => aText().withContent(RAW_PRODUCER_IDENTIFIER_WITH_COLON);
-export const aTextWithProducerIdentifier = (): TextBuilder => aText().withContent(RAW_PRODUCT_IDENTIFIER);
+export const aTextWithProducerIdentifier = (): TextBuilder => aText().withContent(RAW_PRODUCER_IDENTIFIER);
 export const aTextWithProducerName = (): TextBuilder => aText().withContent(RAW_PRODUCER_NAME);
 export const aTextWithProducerNameWithDot = (): TextBuilder => aText().withContent(RAW_PRODUCER_NAME_WITH_DOT);
 export const aTextWithProducerNameEndingWithDot = (): TextBuilder => aText().withContent(RAW_PRODUCER_NAME_ENDING_WITH_DOT);

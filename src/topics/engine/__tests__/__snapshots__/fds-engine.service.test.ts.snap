@@ -371,7 +371,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "yPositionProportion": 0.5764309764309764,
         },
       },
-      "name": "HYPREDSAS",
+      "name": "HYPRED SAS",
     },
     "product": null,
     "substances": [

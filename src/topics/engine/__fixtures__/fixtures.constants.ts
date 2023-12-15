@@ -23,14 +23,9 @@ export const PAGE_HEIGHT = 55;
 export const SPACE_TEXT = ' ';
 
 export const RAW_TEXT_CONTENT = 'CONTENT';
-export const CLEAN_TEXT_CONTENT = TextCleanerService.cleanRawText(RAW_TEXT_CONTENT);
-
 export const RAW_PLACEHOLDER_TEXT_1 = 'Abc';
 export const RAW_PLACEHOLDER_TEXT_2 = 'Def';
 export const RAW_PLACEHOLDER_TEXT_3 = 'Ghi';
-export const CLEAN_PLACEHOLDER_TEXT_1 = TextCleanerService.cleanRawText(RAW_PLACEHOLDER_TEXT_1);
-export const CLEAN_PLACEHOLDER_TEXT_2 = TextCleanerService.cleanRawText(RAW_PLACEHOLDER_TEXT_2);
-export const CLEAN_PLACEHOLDER_TEXT_3 = TextCleanerService.cleanRawText(RAW_PLACEHOLDER_TEXT_3);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- PRODUCT_NAME ---------------------------------------
@@ -39,8 +34,6 @@ export const CLEAN_PLACEHOLDER_TEXT_3 = TextCleanerService.cleanRawText(RAW_PLAC
 export const RAW_PRODUCT_IDENTIFIER_WITH_COLON = ' Blabla Nom du produit : ';
 export const RAW_PRODUCT_IDENTIFIER = ' Blabla: Nom du produit';
 export const RAW_PRODUCT_NAME = 'JEFFACLEAN';
-export const CLEAN_PRODUCT_IDENTIFIER = TextCleanerService.cleanRawText(RAW_PRODUCT_IDENTIFIER);
-export const CLEAN_PRODUCT_NAME = TextCleanerService.cleanRawText(RAW_PRODUCT_NAME);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- PRODUCER -------------------------------------------
@@ -51,11 +44,6 @@ export const RAW_PRODUCER_IDENTIFIER = ' Blabla 1.3 Fournisseur ';
 export const RAW_PRODUCER_NAME = 'PADOA';
 export const RAW_PRODUCER_NAME_WITH_DOT = `${RAW_PRODUCER_NAME}.RC`;
 export const RAW_PRODUCER_NAME_ENDING_WITH_DOT = `${RAW_PRODUCER_NAME}.`;
-export const CLEAN_PRODUCER_IDENTIFIER_WITH_COLON = TextCleanerService.cleanRawText(RAW_PRODUCER_IDENTIFIER_WITH_COLON);
-export const CLEAN_PRODUCER_IDENTIFIER = TextCleanerService.cleanRawText(RAW_PRODUCER_IDENTIFIER);
-export const CLEAN_PRODUCER_NAME = TextCleanerService.cleanRawText(RAW_PRODUCER_NAME);
-export const CLEAN_PRODUCER_NAME_WITH_DOT = TextCleanerService.cleanRawText(RAW_PRODUCER_NAME_WITH_DOT);
-export const CLEAN_PRODUCER_NAME_ENDING_WITH_DOT = TextCleanerService.cleanRawText(RAW_PRODUCER_NAME_ENDING_WITH_DOT);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- DANGERS --------------------------------------------

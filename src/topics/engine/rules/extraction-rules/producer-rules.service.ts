@@ -10,30 +10,30 @@ export class ProducerRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { cleanProductText, rawProductText } = this.extractRawAndCleanProductText(line);
-      if (!cleanProductText) continue;
+      const { cleanProducerText, rawProducerText } = this.extractRawAndCleanProductText(line);
+      if (!cleanProducerText) continue;
 
       if (
-        _.includes(cleanProductText, 'fournisseur') ||
-        _.includes(cleanProductText, '1.3') ||
-        _.includes(cleanProductText, '1. 3') ||
-        _.includes(cleanProductText, 'société') ||
-        _.includes(cleanProductText, 'données de sécurité') ||
-        _.includes(cleanProductText, 'raison sociale')
+        _.includes(cleanProducerText, 'fournisseur') ||
+        _.includes(cleanProducerText, '1.3') ||
+        _.includes(cleanProducerText, '1. 3') ||
+        _.includes(cleanProducerText, 'société') ||
+        _.includes(cleanProducerText, 'données de sécurité') ||
+        _.includes(cleanProducerText, 'raison sociale')
       ) {
         continue;
       }
 
-      return { name: TextCleanerService.trimAndCleanTrailingDot(rawProductText), metaData: { startBox: line.startBox, endBox: line.endBox } };
+      return { name: TextCleanerService.trimAndCleanTrailingDot(rawProducerText), metaData: { startBox: line.startBox, endBox: line.endBox } };
     }
     return null;
   }
 
-  private static extractRawAndCleanProductText(line: ILine): { cleanProductText: string; rawProductText: string } {
+  private static extractRawAndCleanProductText(line: ILine): { cleanProducerText: string; rawProducerText: string } {
     const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
     return {
-      cleanProductText: this.extractProductText(cleanContent),
-      rawProductText: this.extractProductText(rawContent),
+      cleanProducerText: this.extractProductText(cleanContent),
+      rawProducerText: this.extractProductText(rawContent),
     };
   }
 
