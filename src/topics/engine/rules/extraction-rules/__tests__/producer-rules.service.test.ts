@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { aFdsTree, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
-import { PRODUCER_NAME, PRODUCER_NAME_WITH_DOT } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { RAW_PRODUCER_NAME, RAW_PRODUCER_NAME_WITH_DOT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import {
   aLineWithUndefinedText,
   aLineWithProducerIdentifierOnly,
@@ -54,7 +54,7 @@ describe('ProducerRulesService tests', () => {
               3: aSubSection().withLines([aLineWithProducerIn1Text().properties]).properties,
             }).properties,
           ).properties,
-          expected: { name: PRODUCER_NAME, metaData },
+          expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
@@ -65,7 +65,7 @@ describe('ProducerRulesService tests', () => {
               3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerIn1Text().properties]).properties,
             }).properties,
           ).properties,
-          expected: { name: PRODUCER_NAME, metaData },
+          expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
@@ -76,7 +76,7 @@ describe('ProducerRulesService tests', () => {
               3: aSubSection().withLines([aLineWithProducerIn2Texts().properties]).properties,
             }).properties,
           ).properties,
-          expected: { name: PRODUCER_NAME, metaData },
+          expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
@@ -87,7 +87,7 @@ describe('ProducerRulesService tests', () => {
               3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon().properties, aLineWithProducerNameOnly().properties]).properties,
             }).properties,
           ).properties,
-          expected: { name: PRODUCER_NAME, metaData },
+          expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       // entering cleanProducer
@@ -99,18 +99,18 @@ describe('ProducerRulesService tests', () => {
               3: aSubSection().withLines([aLineWithProducerEndingWithDotIn1Text().properties]).properties,
             }).properties,
           ).properties,
-          expected: { name: PRODUCER_NAME, metaData },
+          expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
         {
-          message: 'it should return producer name when providing producer ending with dot',
+          message: 'it should return producer name when providing producer with dot in his name',
           fdsTree: aFdsTree().withSection1(
             aSection().withSubsections({
               3: aSubSection().withLines([aLineWithProducerWithDotIn1Text().properties]).properties,
             }).properties,
           ).properties,
-          expected: { name: PRODUCER_NAME_WITH_DOT, metaData },
+          expected: { name: RAW_PRODUCER_NAME_WITH_DOT, metaData },
         },
       ],
     ])('$message', ({ fdsTree, expected }) => {

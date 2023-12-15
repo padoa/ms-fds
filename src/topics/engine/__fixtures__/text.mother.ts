@@ -2,10 +2,6 @@ import {
   INCREMENT_VALUE,
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
-  PRODUCER_IDENTIFIER_WITH_COLON,
-  PRODUCER_NAME_WITH_DOT,
-  PRODUCER_NAME_ENDING_WITH_DOT,
-  PRODUCER_NAME,
   H_DANGER,
   EUH_DANGER,
   P_DANGER,
@@ -15,7 +11,6 @@ import {
   H_DANGER_WITH_DETAILS,
   P_DANGER_WITH_DETAILS,
   MULTIPLE_P_DANGER_WITH_DETAILS,
-  PRODUCER_IDENTIFIER,
   VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
   VAPOR_PRESSURE_VALUE,
   VAPOR_PRESSURE_IDENTIFIER,
@@ -31,6 +26,11 @@ import {
   RAW_PRODUCT_NAME,
   RAW_PHYSICAL_STATE_IDENTIFIER,
   RAW_PHYSICAL_STATE_VALUE,
+  RAW_PRODUCER_IDENTIFIER_WITH_COLON,
+  RAW_PRODUCER_NAME,
+  RAW_PRODUCER_NAME_WITH_DOT,
+  RAW_PRODUCER_NAME_ENDING_WITH_DOT,
+  RAW_PRODUCER_IDENTIFIER,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
@@ -78,12 +78,12 @@ export const aTextWithProductIdentifierWithColonAndName = (): TextBuilder =>
 //----------------------------------------- PRODUCER_NAME --------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithProducerIdentifierWithColon = (): TextBuilder => aText().withCleanContent(PRODUCER_IDENTIFIER_WITH_COLON);
-export const aTextWithProducerIdentifier = (): TextBuilder => aText().withCleanContent(PRODUCER_IDENTIFIER);
-export const aTextWithProducerName = (): TextBuilder => aText().withCleanContent(PRODUCER_NAME);
-export const aTextWithProducerNameWithDot = (): TextBuilder => aText().withCleanContent(PRODUCER_NAME_WITH_DOT);
-export const aTextWithProducerNameEndingWithDot = (): TextBuilder => aText().withCleanContent(PRODUCER_NAME_ENDING_WITH_DOT);
-export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().withCleanContent(`${PRODUCER_IDENTIFIER_WITH_COLON}${PRODUCER_NAME}`);
+export const aTextWithProducerIdentifierWithColon = (): TextBuilder => aText().withContent(RAW_PRODUCER_IDENTIFIER_WITH_COLON);
+export const aTextWithProducerIdentifier = (): TextBuilder => aText().withContent(RAW_PRODUCER_IDENTIFIER);
+export const aTextWithProducerName = (): TextBuilder => aText().withContent(RAW_PRODUCER_NAME);
+export const aTextWithProducerNameWithDot = (): TextBuilder => aText().withContent(RAW_PRODUCER_NAME_WITH_DOT);
+export const aTextWithProducerNameEndingWithDot = (): TextBuilder => aText().withContent(RAW_PRODUCER_NAME_ENDING_WITH_DOT);
+export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().withContent(`${RAW_PRODUCER_IDENTIFIER_WITH_COLON}${RAW_PRODUCER_NAME}`);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- DANGERS --------------------------------------------
