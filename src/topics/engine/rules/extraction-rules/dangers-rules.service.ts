@@ -12,7 +12,7 @@ export class DangersRulesService {
   public static getDangers(fdsTree: IFdsTree): IExtractedDanger[] {
     const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
     const infoInEachLine = _.map(linesToSearchIn, ({ texts, startBox, endBox }) => {
-      const textContent = _.map(texts, (text) => text.content).join('');
+      const textContent = _.map(texts, (text) => text.cleanContent).join('');
       return { text: textContent, startBox, endBox };
     });
 

@@ -11,7 +11,7 @@ import {
   aLineWithTwoTextsAndPositionYIncremented,
   aLineWithTwoTextsAndPositionYIncrementedTwice,
 } from '@topics/engine/__fixtures__/line.mother.js';
-import { INCREMENT_VALUE, PAGE_NUMBER, POSITION_PROPORTION_X, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { INCREMENT_VALUE, PAGE_NUMBER, POSITION_PROPORTION_X, RAW_TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { IFdsTree, IStroke } from '@topics/engine/model/fds.model.js';
 import { aFdsTree, anEmptyFdsTreeWithAllSections } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aStroke } from '@topics/engine/__fixtures__/stroke.mother.js';
@@ -64,7 +64,7 @@ describe('FdsTreeBuilderService tests', () => {
         const expected = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
-          fullText: TEXT_CONTENT.repeat(2),
+          fullText: RAW_TEXT_CONTENT.repeat(2),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes([line])).toEqual(expected);
       });
@@ -75,7 +75,7 @@ describe('FdsTreeBuilderService tests', () => {
         const expected = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1, [POSITION_PROPORTION_X]: 2 },
-          fullText: TEXT_CONTENT.repeat(3),
+          fullText: RAW_TEXT_CONTENT.repeat(3),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes(lines)).toEqual(expected);
       });
@@ -100,7 +100,7 @@ describe('FdsTreeBuilderService tests', () => {
             },
           },
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
-          fullText: TEXT_CONTENT.repeat(2),
+          fullText: RAW_TEXT_CONTENT.repeat(2),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes([line])).toEqual(expected);
       });
@@ -121,7 +121,7 @@ describe('FdsTreeBuilderService tests', () => {
             },
           },
           xCounts: { [POSITION_PROPORTION_X]: 2 },
-          fullText: TEXT_CONTENT.repeat(2),
+          fullText: RAW_TEXT_CONTENT.repeat(2),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes(lines)).toEqual(expected);
       });
@@ -152,7 +152,7 @@ describe('FdsTreeBuilderService tests', () => {
             },
           },
           xCounts: { [POSITION_PROPORTION_X]: 2, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
-          fullText: TEXT_CONTENT.repeat(3),
+          fullText: RAW_TEXT_CONTENT.repeat(3),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes([...sectionLines, ...subSectionLines])).toEqual(expected);
       });
@@ -179,7 +179,7 @@ describe('FdsTreeBuilderService tests', () => {
             },
           },
           xCounts: { [POSITION_PROPORTION_X]: 3, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1, [POSITION_PROPORTION_X + 2 * INCREMENT_VALUE]: 1 },
-          fullText: TEXT_CONTENT.repeat(5),
+          fullText: RAW_TEXT_CONTENT.repeat(5),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes([...sectionLines, ...subSectionsLines])).toEqual(expected);
       });
@@ -199,7 +199,7 @@ describe('FdsTreeBuilderService tests', () => {
         const expected = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
-          fullText: TEXT_CONTENT.repeat(2),
+          fullText: RAW_TEXT_CONTENT.repeat(2),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes(lines)).toEqual(expected);
       });
@@ -219,7 +219,7 @@ describe('FdsTreeBuilderService tests', () => {
         const expected = {
           fdsTree: {},
           xCounts: { [POSITION_PROPORTION_X]: 1, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
-          fullText: TEXT_CONTENT.repeat(2),
+          fullText: RAW_TEXT_CONTENT.repeat(2),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes(lines)).toEqual(expected);
       });
@@ -251,7 +251,7 @@ describe('FdsTreeBuilderService tests', () => {
             },
           },
           xCounts: { [POSITION_PROPORTION_X]: 3, [POSITION_PROPORTION_X + INCREMENT_VALUE]: 1 },
-          fullText: TEXT_CONTENT.repeat(4),
+          fullText: RAW_TEXT_CONTENT.repeat(4),
         };
         expect(FdsTreeBuilderService.buildFdsTreeWithoutStrokes([sectionLine, subSectionLine, extraSubSectionLine])).toEqual(expected);
       });

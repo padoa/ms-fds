@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import type { IExtractedCasNumber, IExtractedCeNumber, IExtractedSubstance, ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
-import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class CasAndCeRulesService {
   public static getSubstancesCasAndCe(linesToSearchIn: ILine[]): Array<Pick<IExtractedSubstance, 'casNumber' | 'ceNumber'>> {
@@ -10,14 +10,16 @@ export class CasAndCeRulesService {
     let previousLineSubstance: Partial<IExtractedSubstance> = {};
 
     for (const line of linesToSearchIn) {
-      const textCleaned = _.map(line.texts, 'content').join(' ');
+      const textCleaned = _(line.texts)
+        .map(({ cleanContent }) => cleanContent)
+        .join(' ');
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
       const casNumberValue = this.getCasNumber(textCleaned);
       const ceNumberValue = this.getCeNumber(textCleaned);
 
-      const casNumber = casNumberValue ? { value: ExtractionCleanerService.cleanSpaces(casNumberValue), metaData } : undefined;
-      const ceNumber = ceNumberValue ? { value: ExtractionCleanerService.cleanSpaces(ceNumberValue), metaData } : undefined;
+      const casNumber = casNumberValue ? { value: TextCleanerService.cleanSpaces(casNumberValue), metaData } : undefined;
+      const ceNumber = ceNumberValue ? { value: TextCleanerService.cleanSpaces(ceNumberValue), metaData } : undefined;
 
       const substanceDefinitionHasNotStarted = !casNumber && !ceNumber && !_.last(substances);
       if (substanceDefinitionHasNotStarted) continue;

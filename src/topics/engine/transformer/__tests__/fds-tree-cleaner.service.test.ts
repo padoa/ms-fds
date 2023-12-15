@@ -1,11 +1,10 @@
 import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import _ from 'lodash';
 
 import { aFdsTree } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
-import { INCREMENT_VALUE, POSITION_PROPORTION_X, TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { INCREMENT_VALUE, POSITION_PROPORTION_X, RAW_TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import type { ILine, IXCounts } from '@topics/engine/model/fds.model.js';
 import { aLineWithOneText, aLineWithOneTextAndPositionYIncremented, aLine, aLineWithTwoTexts } from '@topics/engine/__fixtures__/line.mother.js';
 import {
@@ -56,14 +55,14 @@ describe('FdsTreeCleanerService Tests', () => {
         line: aLineWithTwoTexts().properties,
         xCounts: xCountsToShrinkTexts,
         joinWithSpace: false,
-        expected: aLine().withTexts([aTextWithPosition().withContent(TEXT_CONTENT.repeat(2)).properties]).properties,
+        expected: aLine().withTexts([aTextWithPosition().withContent(RAW_TEXT_CONTENT.repeat(2)).properties]).properties,
       },
       {
         message: 'should shrink with previous text when xcount is above computedXHighestAlignmentValue and joinWithSpace is true',
         line: aLineWithTwoTexts().properties,
         xCounts: xCountsToShrinkTexts,
         joinWithSpace: true,
-        expected: aLine().withTexts([aTextWithPosition().withContent(`${TEXT_CONTENT} ${TEXT_CONTENT}`).properties]).properties,
+        expected: aLine().withTexts([aTextWithPosition().withContent(`${RAW_TEXT_CONTENT} ${RAW_TEXT_CONTENT}`).properties]).properties,
       },
     ])('$message', ({ line, xCounts, joinWithSpace, expected }) => {
       expect(FdsTreeCleanerService.cleanLine(line, { xCounts, joinWithSpace })).toEqual(expected);
@@ -103,7 +102,7 @@ describe('FdsTreeCleanerService Tests', () => {
         aSection().withSubsections({
           1: aSubSection().withLines([
             aLine().withTexts([
-              aTextWithContentAndPosition().withContent(`${TEXT_CONTENT.repeat(3)}`).properties,
+              aTextWithContentAndPosition().withContent(`${RAW_TEXT_CONTENT.repeat(3)}`).properties,
               aTextWithContentAndPosition().properties,
             ]).properties,
           ]).properties,
@@ -123,7 +122,7 @@ describe('FdsTreeCleanerService Tests', () => {
         aSection().withSubsections({
           1: aSubSection().withLines([
             aLine().withTexts([
-              aTextWithContentAndPosition().withContent(`${_.times(3, () => TEXT_CONTENT).join(' ')}`).properties,
+              aTextWithContentAndPosition().withContent(`${RAW_TEXT_CONTENT} ${RAW_TEXT_CONTENT} ${RAW_TEXT_CONTENT}`).properties,
               aTextWithContentAndPosition().properties,
             ]).properties,
           ]).properties,

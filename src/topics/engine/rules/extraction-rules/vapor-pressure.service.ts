@@ -22,7 +22,7 @@ export class VaporPressureService {
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
-      const lineText = texts.map(({ content }) => content).join('');
+      const lineText = texts.map(({ cleanContent }) => cleanContent).join('');
       const vaporPressureInLine = !!lineText.match(this.VAPOR_PRESSURE_IDENTIFIER_REGEX);
       if (!vaporPressureInLine) continue;
 

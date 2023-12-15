@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 import type { IExtractedPhysicalState, IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
-import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class PhysicalStateRulesService {
   public static getPhysicalState(fdsTree: IFdsTree): IExtractedPhysicalState {
@@ -16,11 +16,11 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByText(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const lineText = line.texts.map(({ content }) => content).join(' ');
+      const lineText = line.texts.map(({ cleanContent }) => cleanContent).join(' ');
       const physicalStateTextInLine = !!lineText?.replaceAll(' ', '').match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
 
-      const { content } = _.last(line.texts) || { content: '' };
-      const expectedText = _(content).split(':').last().trim();
+      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
+      const expectedText = _(cleanContent).split(':').last().trim();
       const expectedTextIsNotAPhysicalStateIdentifier = !expectedText
         ?.replaceAll(' ', '')
         .match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
@@ -28,7 +28,7 @@ export class PhysicalStateRulesService {
       if (expectedText && physicalStateTextInLine && expectedTextIsNotAPhysicalStateIdentifier) {
         const { startBox, endBox } = line;
         const metaData = { startBox, endBox };
-        return { value: ExtractionCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
+        return { value: TextCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
       }
     }
     return null;
@@ -38,14 +38,14 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByValue(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const { content } = _.last(line.texts) || { content: '' };
-      const expectedText = _(content).split(':').last().trim();
+      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
+      const expectedText = _(cleanContent).split(':').last().trim();
       const expectedTextIsAPhysicalState = expectedText.match(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX);
 
       if (expectedTextIsAPhysicalState) {
         const { startBox, endBox } = line;
         const metaData = { startBox, endBox };
-        return { value: ExtractionCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
+        return { value: TextCleanerService.trimAndCleanTrailingDot(expectedText), metaData };
       }
     }
     return null;

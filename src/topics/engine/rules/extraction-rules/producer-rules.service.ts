@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 import type { IFdsTree, IExtractedProducer } from '@topics/engine/model/fds.model.js';
-import { ExtractionCleanerService } from '@topics/engine/rules/extraction-cleaner.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 export class ProducerRulesService {
   public static getProducer(fdsTree: IFdsTree): IExtractedProducer | null {
@@ -10,8 +10,8 @@ export class ProducerRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { content } = _.last(line.texts) || { content: '' };
-      const text = _(content).split(':').last().trim();
+      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
+      const text = _(cleanContent).split(':').last().trim();
       if (!text) continue;
 
       if (
@@ -27,7 +27,7 @@ export class ProducerRulesService {
 
       const { startBox, endBox } = line;
 
-      return { name: ExtractionCleanerService.trimAndCleanTrailingDot(text), metaData: { startBox, endBox } };
+      return { name: TextCleanerService.trimAndCleanTrailingDot(text), metaData: { startBox, endBox } };
     }
     return null;
   }

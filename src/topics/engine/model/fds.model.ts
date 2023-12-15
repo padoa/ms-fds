@@ -75,7 +75,8 @@ export type ILine = IMetaData & {
 export type IMetaData = IBox;
 
 export type IText = IPosition & {
-  content: string;
+  rawContent: string;
+  cleanContent: string;
 };
 
 export type IXCounts = { [xPosition: number]: number };

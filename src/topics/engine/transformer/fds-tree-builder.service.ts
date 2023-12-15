@@ -3,6 +3,7 @@ import _ from 'lodash';
 import type { IBox, IFdsTree, ILine, IPosition, IStroke, ISubsection, IXCounts } from '@topics/engine/model/fds.model.js';
 import { SectionRulesService } from '@topics/engine/rules/section-rules.service.js';
 import type { IBuildTree, IFdsTreeResult } from '@topics/engine/transformer/fds-tree-builder.model.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
 
 type IFdsTreeWithoutStrokes = {
   [section: number]: IBox & {
@@ -24,11 +25,13 @@ export class FdsTreeBuilderService {
       lines,
       ({ fdsTree, currentSection, currentSubSection, xCounts: XCountsBeforeUpdate, fullText: fullTextBeforeUpdate }: IBuildTree, line) => {
         const xCounts = this.updateXCounts(XCountsBeforeUpdate, line);
-        const fullTextLine = line.texts.map((t) => t.content).join('');
-        const fullText = `${fullTextBeforeUpdate}${fullTextLine}`;
+
+        const rawFullTextLine = line.texts.map((t) => t.rawContent).join('');
+        const cleanedFullTextLine = TextCleanerService.cleanRawText(rawFullTextLine);
+        const fullText = `${fullTextBeforeUpdate}${rawFullTextLine}`;
 
         // SECTION
-        const newSection = SectionRulesService.computeNewSection(fullTextLine, { currentSection });
+        const newSection = SectionRulesService.computeNewSection(cleanedFullTextLine, { currentSection });
         const sectionChanged = newSection !== currentSection;
         if (sectionChanged) {
           let newFdsTree = this.setFdsTreeEndBoxSection(fdsTree, { position: line.startBox, sectionNumber: currentSection });
@@ -40,7 +43,7 @@ export class FdsTreeBuilderService {
         }
 
         // SUBSECTION
-        const newSubSection = SectionRulesService.computeNewSubSection(fullTextLine, { currentSection, currentSubSection });
+        const newSubSection = SectionRulesService.computeNewSubSection(cleanedFullTextLine, { currentSection, currentSubSection });
         const subSectionChanged = newSubSection !== currentSubSection;
         if (subSectionChanged) {
           let newFdsTree = this.setFdsTreeEndBoxSubSection(fdsTree, {

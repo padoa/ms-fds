@@ -1,11 +1,13 @@
 import _ from 'lodash';
 
-import type { IFdsTree, IExtractedProduct } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree, IExtractedProduct, ILine } from '@topics/engine/model/fds.model.js';
 
 export class ProductRulesService {
   public static getProduct(fdsTree: IFdsTree, { fullText }: { fullText: string }): IExtractedProduct | null {
     return this.getProductByText(fdsTree) || this.getProductByLineOrder(fdsTree, { fullText });
   }
+
+  private static PRODUCT_IDENTIFIER = 'nomduproduit';
 
   public static getProductByText(fdsTree: IFdsTree): IExtractedProduct | null {
     const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
@@ -14,22 +16,34 @@ export class ProductRulesService {
 
     let nameInCurrentLine = false;
     for (const line of linesToSearchIn) {
-      const { startBox, endBox } = line;
-      const metaData = { startBox, endBox };
-      const lineText = _.map(line.texts, ({ content }) => content).join(' ');
-      const { content } = _.last(line.texts) || { content: '' };
-      const text = _(content).split(':').last().trim();
-      if (nameInCurrentLine) return { name: text, metaData };
+      const metaData = { startBox: line.startBox, endBox: line.endBox };
 
-      if (_.includes(lineText.replaceAll(' ', ''), 'nomduproduit')) {
-        if (_.includes(text.replaceAll(' ', ''), 'nomduproduit')) {
+      const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join(' ');
+      const { cleanProductText, rawProductText } = this.extractRawAndCleanProductText(line);
+
+      if (nameInCurrentLine) return { name: rawProductText, metaData };
+
+      if (_.includes(lineCleanText.replaceAll(' ', ''), this.PRODUCT_IDENTIFIER)) {
+        if (_.includes(cleanProductText.replaceAll(' ', ''), this.PRODUCT_IDENTIFIER)) {
           nameInCurrentLine = true;
           continue;
         }
-        return { name: text, metaData };
+        return { name: rawProductText, metaData };
       }
     }
     return null;
+  }
+
+  private static extractRawAndCleanProductText(line: ILine): { cleanProductText: string; rawProductText: string } {
+    const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
+    return {
+      cleanProductText: this.extractProductText(cleanContent),
+      rawProductText: this.extractProductText(rawContent),
+    };
+  }
+
+  private static extractProductText(productText: string): string {
+    return _(productText).split(':').last().trim();
   }
 
   public static getProductByLineOrder(fdsTree: IFdsTree, { fullText }: { fullText: string }): IExtractedProduct | null {
@@ -39,9 +53,9 @@ export class ProductRulesService {
 
     for (const line of linesToSearchIn) {
       const { startBox, endBox } = line;
-      const lineText = _.map(line.texts, ({ content }) => content).join('');
-      const { content } = _.last(line.texts) || { content: '' };
-      const text = _(content).split(':').last().trim();
+      const lineText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
+      const { cleanContent } = _.last(line.texts) || { cleanContent: '' };
+      const text = _(cleanContent).split(':').last().trim();
       if (
         !text ||
         _.includes(text, '1.1') ||
