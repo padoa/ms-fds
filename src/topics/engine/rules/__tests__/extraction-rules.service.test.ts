@@ -3,13 +3,13 @@ import type { IExtractedData, IMetaData } from '@padoa/chemical-risk';
 
 import { aFdsTreeWithAllSectionsWithUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
-  H_DANGER,
-  P_DANGER,
-  MULTIPLE_P_DANGER,
-  H_DANGER_WITH_DETAILS,
-  MULTIPLE_P_DANGER_WITH_DETAILS,
-  BOILING_POINT_IDENTIFIER,
-  BOILING_POINT_VALUE,
+  RAW_H_DANGER,
+  RAW_P_DANGER,
+  RAW_MULTIPLE_P_DANGER,
+  RAW_H_DANGER_WITH_DETAILS,
+  RAW_MULTIPLE_P_DANGER_WITH_DETAILS,
+  RAW_BOILING_POINT_IDENTIFIER,
+  RAW_BOILING_POINT_VALUE,
   RAW_PRODUCT_IDENTIFIER_WITH_COLON,
   RAW_PRODUCT_NAME,
   RAW_PRODUCER_NAME,
@@ -38,10 +38,9 @@ describe('ExtractionRulesService tests', () => {
       ${RAW_PRODUCT_NAME}
       ${RAW_PRODUCER_IDENTIFIER_WITH_COLON}
       ${RAW_PRODUCER_NAME}
-      // TODO: replace all with "raw" constants
-      ${H_DANGER_WITH_DETAILS}
-      ${MULTIPLE_P_DANGER_WITH_DETAILS}
-      ${MULTIPLE_P_DANGER}
+      ${RAW_H_DANGER_WITH_DETAILS}
+      ${RAW_MULTIPLE_P_DANGER_WITH_DETAILS}
+      ${RAW_MULTIPLE_P_DANGER}
       ${RAW_CAS_NUMBER_TEXT}
       ${RAW_CE_NUMBER_TEXT}
       ${RAW_CONCENTRATION_VALUE}
@@ -49,9 +48,8 @@ describe('ExtractionRulesService tests', () => {
       ${RAW_PHYSICAL_STATE_VALUE}
       ${RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE}
       ${RAW_VAPOR_PRESSURE_VALUE}
-      // TODO: replace all with "raw" constants
-      ${BOILING_POINT_IDENTIFIER}
-      ${BOILING_POINT_VALUE}
+      ${RAW_BOILING_POINT_IDENTIFIER}
+      ${RAW_BOILING_POINT_VALUE}
     `;
 
       const expected: IExtractedData = {
@@ -59,14 +57,14 @@ describe('ExtractionRulesService tests', () => {
         product: { name: RAW_PRODUCT_NAME, metaData },
         producer: { name: RAW_PRODUCER_NAME, metaData },
         dangers: [
-          { code: H_DANGER, metaData },
-          { code: P_DANGER, metaData },
-          { code: MULTIPLE_P_DANGER, metaData },
+          { code: RAW_H_DANGER, metaData },
+          { code: RAW_P_DANGER, metaData },
+          { code: RAW_MULTIPLE_P_DANGER, metaData },
         ],
         substances: [aSubstance().properties],
         physicalState: { value: RAW_PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
-        boilingPoint: { value: BOILING_POINT_VALUE, metaData },
+        boilingPoint: { value: RAW_BOILING_POINT_VALUE, metaData },
       };
 
       await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(

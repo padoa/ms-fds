@@ -12,11 +12,11 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "yPositionProportion": 0.33943367540858993,
         },
       },
-      "value": "> 160°c",
+      "value": "> 160°C",
     },
     "dangers": [
       {
-        "code": "h304",
+        "code": "H304",
         "metaData": {
           "endBox": undefined,
           "startBox": {
@@ -27,7 +27,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p301 + p 310",
+        "code": "P301 + P 310",
         "metaData": {
           "endBox": undefined,
           "startBox": {
@@ -38,7 +38,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p331",
+        "code": "P331",
         "metaData": {
           "endBox": undefined,
           "startBox": {
@@ -49,7 +49,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p 501",
+        "code": "P 501",
         "metaData": {
           "endBox": undefined,
           "startBox": {
@@ -203,7 +203,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
     "boilingPoint": null,
     "dangers": [
       {
-        "code": "h314",
+        "code": "H314",
         "metaData": {
           "endBox": {
             "pageNumber": 2,
@@ -218,7 +218,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "h412",
+        "code": "H412",
         "metaData": {
           "endBox": {
             "pageNumber": 2,
@@ -233,7 +233,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p273",
+        "code": "P273",
         "metaData": {
           "endBox": {
             "pageNumber": 3,
@@ -248,7 +248,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p280",
+        "code": "P280",
         "metaData": {
           "endBox": {
             "pageNumber": 3,
@@ -263,7 +263,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p301 + p330 + p331",
+        "code": "P301 + P330 + P331",
         "metaData": {
           "endBox": {
             "pageNumber": 3,
@@ -278,7 +278,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p303 + p361 + p353",
+        "code": "P303 + P361 + P353",
         "metaData": {
           "endBox": {
             "pageNumber": 3,
@@ -293,7 +293,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p304 + p340",
+        "code": "P304 + P340",
         "metaData": {
           "endBox": {
             "pageNumber": 3,
@@ -308,7 +308,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p305 + p351 + p338",
+        "code": "P305 + P351 + P338",
         "metaData": {
           "endBox": {
             "pageNumber": 3,
@@ -323,7 +323,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p310",
+        "code": "P310",
         "metaData": {
           "endBox": {
             "pageNumber": 3,
@@ -338,7 +338,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
       },
       {
-        "code": "p501",
+        "code": "P501",
         "metaData": {
           "endBox": {
             "pageNumber": 3,

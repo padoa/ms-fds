@@ -8,7 +8,7 @@ import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { aLine, aLineWithBoilingPointIdentifierAndValue } from '@topics/engine/__fixtures__/line.mother.js';
-import { BOILING_POINT_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { RAW_BOILING_POINT_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 import { aTextWithBoilingPointIdentifier } from '@topics/engine/__fixtures__/text.mother.js';
 
@@ -91,7 +91,7 @@ describe('BoilingPointRulesService tests', () => {
               1: aSubSection().withLines([aLineWithBoilingPointIdentifierAndValue().properties]).properties,
             }).properties,
           ).properties,
-          expected: { value: BOILING_POINT_VALUE, metaData },
+          expected: { value: RAW_BOILING_POINT_VALUE, metaData },
         },
       ],
       [
@@ -105,7 +105,7 @@ describe('BoilingPointRulesService tests', () => {
               ]).properties,
             }).properties,
           ).properties,
-          expected: { value: BOILING_POINT_VALUE, metaData },
+          expected: { value: RAW_BOILING_POINT_VALUE, metaData },
         },
       ],
     ])('$message', ({ fdsTree, expected }) => {

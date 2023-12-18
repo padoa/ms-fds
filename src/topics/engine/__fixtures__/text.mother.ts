@@ -2,15 +2,15 @@ import {
   INCREMENT_VALUE,
   POSITION_PROPORTION_X,
   POSITION_PROPORTION_Y,
-  H_DANGER,
-  EUH_DANGER,
-  P_DANGER,
-  MULTIPLE_P_DANGER,
-  H_DANGER_WITH_DETAILS,
-  P_DANGER_WITH_DETAILS,
-  MULTIPLE_P_DANGER_WITH_DETAILS,
-  BOILING_POINT_IDENTIFIER,
-  BOILING_POINT_VALUE,
+  RAW_H_DANGER,
+  RAW_EUH_DANGER,
+  RAW_P_DANGER,
+  RAW_MULTIPLE_P_DANGER,
+  RAW_H_DANGER_WITH_DETAILS,
+  RAW_P_DANGER_WITH_DETAILS,
+  RAW_MULTIPLE_P_DANGER_WITH_DETAILS,
+  RAW_BOILING_POINT_IDENTIFIER,
+  RAW_BOILING_POINT_VALUE,
   RAW_PLACEHOLDER_TEXT_1,
   RAW_PLACEHOLDER_TEXT_2,
   RAW_PLACEHOLDER_TEXT_3,
@@ -89,14 +89,14 @@ export const aTextWithProducerIdentifierAndName = (): TextBuilder => aText().wit
 //----------------------------------------- DANGERS --------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithHDanger = (): TextBuilder => aText().withCleanContent(H_DANGER);
-export const aTextWithEuhDanger = (): TextBuilder => aText().withCleanContent(EUH_DANGER);
-export const aTextWithPDanger = (): TextBuilder => aText().withCleanContent(P_DANGER);
-export const aTextWithMultiplePDanger = (): TextBuilder => aText().withCleanContent(MULTIPLE_P_DANGER);
+export const aTextWithHDanger = (): TextBuilder => aText().withContent(RAW_H_DANGER);
+export const aTextWithEuhDanger = (): TextBuilder => aText().withContent(RAW_EUH_DANGER);
+export const aTextWithPDanger = (): TextBuilder => aText().withContent(RAW_P_DANGER);
+export const aTextWithMultiplePDanger = (): TextBuilder => aText().withContent(RAW_MULTIPLE_P_DANGER);
 
-export const aTextWithHDangerWithDetails = (): TextBuilder => aText().withCleanContent(H_DANGER_WITH_DETAILS);
-export const aTextWithDangerWithDetails = (): TextBuilder => aText().withCleanContent(P_DANGER_WITH_DETAILS);
-export const aTextWithMultiplePDangerWithDetails = (): TextBuilder => aText().withCleanContent(MULTIPLE_P_DANGER_WITH_DETAILS);
+export const aTextWithHDangerWithDetails = (): TextBuilder => aText().withContent(RAW_H_DANGER_WITH_DETAILS);
+export const aTextWithDangerWithDetails = (): TextBuilder => aText().withContent(RAW_P_DANGER_WITH_DETAILS);
+export const aTextWithMultiplePDangerWithDetails = (): TextBuilder => aText().withContent(RAW_MULTIPLE_P_DANGER_WITH_DETAILS);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- SUBSTANCES -----------------------------------------
@@ -130,5 +130,5 @@ export const aTextWithVaporPressureValue = (): TextBuilder => aText().withConten
 //--------------------------------------- BOILING_POINT ----------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aTextWithBoilingPointIdentifier = (): TextBuilder => aText().withCleanContent(BOILING_POINT_IDENTIFIER);
-export const aTextWithBoilingPointValue = (): TextBuilder => aText().withCleanContent(BOILING_POINT_VALUE);
+export const aTextWithBoilingPointIdentifier = (): TextBuilder => aText().withContent(RAW_BOILING_POINT_IDENTIFIER);
+export const aTextWithBoilingPointValue = (): TextBuilder => aText().withContent(RAW_BOILING_POINT_VALUE);

@@ -130,7 +130,7 @@ describe('VaporPressureService tests', () => {
               ]).properties,
             }).properties,
           ).properties,
-          expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: undefined, metaData },
+          expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: null, metaData },
         },
       ],
       [

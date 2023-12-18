@@ -47,13 +47,13 @@ export const RAW_PRODUCER_NAME_ENDING_WITH_DOT = `${RAW_PRODUCER_NAME}.`;
 //----------------------------------------- DANGERS --------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const H_DANGER = 'h350i';
-export const H_DANGER_WITH_DETAILS = `${H_DANGER} - peut provoquer le cancer`;
-export const EUH_DANGER = 'euh212';
-export const P_DANGER = 'p 331';
-export const P_DANGER_WITH_DETAILS = `${P_DANGER} - peut provoquer la mort`;
-export const MULTIPLE_P_DANGER = 'p301 + p310';
-export const MULTIPLE_P_DANGER_WITH_DETAILS = `${MULTIPLE_P_DANGER} - peut provoquer des douleurs`;
+export const RAW_H_DANGER = 'H350i';
+export const RAW_H_DANGER_WITH_DETAILS = `${RAW_H_DANGER} - Peut provoquer le CANCER`;
+export const RAW_EUH_DANGER = 'EUH212';
+export const RAW_P_DANGER = 'P 331';
+export const RAW_P_DANGER_WITH_DETAILS = `${RAW_P_DANGER} - Peut provoquer la MORT`;
+export const RAW_MULTIPLE_P_DANGER = 'P301 + P310';
+export const RAW_MULTIPLE_P_DANGER_WITH_DETAILS = `${RAW_MULTIPLE_P_DANGER} - Peut provoquer des DOULEURS`;
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- SUBSTANCES -----------------------------------------
@@ -82,13 +82,13 @@ export const RAW_PHYSICAL_STATE_VALUE = 'Liquide';
 //----------------------------------------------------------------------------------------------
 
 export const RAW_VAPOR_PRESSURE_TEMPERATURE = '50°C';
-export const RAW_VAPOR_PRESSURE_IDENTIFIER = 'pression de vapeur';
+export const RAW_VAPOR_PRESSURE_IDENTIFIER = 'Pression de Vapeur';
 export const RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE = `${RAW_VAPOR_PRESSURE_IDENTIFIER} (${RAW_VAPOR_PRESSURE_TEMPERATURE})`;
-export const RAW_VAPOR_PRESSURE_VALUE = '3 bar';
+export const RAW_VAPOR_PRESSURE_VALUE = '3 kPa';
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- BOILING_POINT --------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const BOILING_POINT_IDENTIFIER = 'ébullition';
-export const BOILING_POINT_VALUE = '120 °c';
+export const RAW_BOILING_POINT_IDENTIFIER = 'Ébullition';
+export const RAW_BOILING_POINT_VALUE = '120 °C';

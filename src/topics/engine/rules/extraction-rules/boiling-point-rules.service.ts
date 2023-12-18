@@ -3,6 +3,7 @@ import type { IExtractedBoilingPoint } from '@padoa/chemical-risk';
 
 import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class BoilingPointRulesService {
   private static readonly OPTIONAL_NEGATIVE_NUMBER_WITH_OPTIONAL_DECIMAL_REGEX = `(-${CommonRegexRulesService.SPACE_REGEX})?\\d+${CommonRegexRulesService.SPACE_REGEX}((\\.|,)${CommonRegexRulesService.SPACE_REGEX}\\d+${CommonRegexRulesService.SPACE_REGEX})?`;
@@ -18,19 +19,31 @@ export class BoilingPointRulesService {
   }
 
   private static getBoilingPointByValue(linesToSearchIn: ILine[]): IExtractedBoilingPoint | null {
+    const boilingPointRegex = new RegExp(this.BOILING_POINT_VALUE_REGEX);
+
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
-      const lineText = texts.map(({ cleanContent }) => cleanContent).join('');
-      const boilingPointInLine = !!lineText.match(this.BOILING_POINT_IDENTIFIER_REGEX);
+      const { cleanLineText, rawLineText } = texts.reduce(
+        (joinedTexts, { cleanContent, rawContent }) => ({
+          cleanLineText: joinedTexts.cleanLineText + cleanContent,
+          rawLineText: joinedTexts.rawLineText + rawContent,
+        }),
+        { cleanLineText: '', rawLineText: '' },
+      );
+
+      const boilingPointInLine = !!cleanLineText.match(this.BOILING_POINT_IDENTIFIER_REGEX);
       if (!boilingPointInLine) continue;
 
-      const boilingPoint = lineText.match(this.BOILING_POINT_VALUE_REGEX) || [];
-
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      if (_.isEmpty(boilingPoint)) continue;
+      const boilingPoint = ExtractionToolsService.getRawTextMatchingRegExp({
+        rawText: rawLineText,
+        cleanText: cleanLineText,
+        regExp: boilingPointRegex,
+      });
+      if (!boilingPoint) continue;
 
-      return { value: _.first(boilingPoint), metaData: { startBox, endBox } };
+      return { value: boilingPoint, metaData: { startBox, endBox } };
     }
 
     return null;
