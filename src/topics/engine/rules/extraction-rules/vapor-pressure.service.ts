@@ -39,15 +39,15 @@ export class VaporPressureService {
       if (!vaporPressureInLine) continue;
 
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      const pressure = ExtractionToolsService.getRawTextMatchingRegExp({ rawText: rawLineText, cleanText: cleanLineText, regExp: pressureRegex });
+      const pressure = ExtractionToolsService.getTextMatchingRegExp({ rawText: rawLineText, cleanText: cleanLineText, regExp: pressureRegex });
       if (!pressure) continue;
 
-      const temperature = ExtractionToolsService.getRawTextMatchingRegExp({
+      const temperature = ExtractionToolsService.getTextMatchingRegExp({
         rawText: rawLineText,
         cleanText: cleanLineText,
         regExp: temperatureRegex,
       });
-      return { pressure, temperature, metaData: { startBox, endBox } };
+      return { pressure: pressure.rawText, temperature: temperature ? temperature.rawText : null, metaData: { startBox, endBox } };
     }
 
     return null;

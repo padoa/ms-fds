@@ -1,16 +1,16 @@
 import _ from 'lodash';
 
-import type { IGetRawTextMatchingRegExp } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
+import type { IGetRawTextMatchingRegExp, IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
 
 export class ExtractionToolsService {
   public static MAX_MATCH_ITERATIONS: number = 50;
 
-  public static getAllRawTextMatchingRegExp({ rawText, cleanText, regExp }: IGetRawTextMatchingRegExp): string[] {
+  public static getAllTextsMatchingRegExp({ rawText, cleanText, regExp, capturingGroup }: IGetRawTextMatchingRegExp): IMatchedText[] {
     if (!regExp.global) throw new Error('RegExp must be global');
 
-    const matches: string[] = [];
+    const matches: IMatchedText[] = [];
     for (let i = 0; i < this.MAX_MATCH_ITERATIONS; i += 1) {
-      const match = this.getRawTextMatchingRegExp({ rawText, cleanText, regExp });
+      const match = this.getTextMatchingRegExp({ rawText, cleanText, regExp, capturingGroup });
       if (!match) return matches;
 
       matches.push(match);
@@ -19,10 +19,23 @@ export class ExtractionToolsService {
     return matches;
   }
 
-  public static getRawTextMatchingRegExp({ rawText, cleanText, regExp }: IGetRawTextMatchingRegExp): string | null {
+  public static getTextMatchingRegExp({ rawText, cleanText, regExp, capturingGroup }: IGetRawTextMatchingRegExp): IMatchedText | null {
     const regExpMatch = regExp.exec(cleanText);
     if (!regExpMatch) return null;
 
-    return _.trim(rawText.substring(regExpMatch.index, regExpMatch.index + regExpMatch[0].length));
+    const startIndex = regExpMatch.index;
+    const endIndex = startIndex + regExpMatch[0].length;
+
+    if (!capturingGroup) {
+      return { rawText: _.trim(rawText.substring(startIndex, endIndex)), cleanText: _.trim(regExpMatch[0]) };
+    }
+
+    if (!regExpMatch[capturingGroup]) throw new Error(`RegExp match has no capturing group ${capturingGroup}`);
+
+    const startOffset = regExpMatch.slice(1, capturingGroup).reduce((offset, match) => offset + match.length, 0);
+    return {
+      rawText: _.trim(rawText.substring(startIndex + startOffset, endIndex)),
+      cleanText: _.trim(regExpMatch[capturingGroup]),
+    };
   }
 }
