@@ -118,13 +118,13 @@ describe('RevisionDateRulesService tests', () => {
 
     describe('GetDateByMostFrequent tests', () => {
       it.each<[string, string | undefined | null]>([
-        ['text not matching any regex', undefined],
-        ['only number regex match 1 occurence 01/02/2022', null],
-        ['only number regex match 2 occ 01/02/2022 and 01/02/2022', null],
-        ['only number regex match 3 occ 01/02/2022 and 01/02/2022 and 01/02/2022', '01/02/2022'],
-        ['regex match 3 occ each take biggest 01/02/2022 and 01/02/2022 and 01/02/2022 or 18janv2040 and 18janv2040 and 18janv2040', '18janv2040'],
-      ])('"%s" input should return %s', (text, expected) => {
-        expect(RevisionDateRulesService.getDateByMostFrequent(text)).toEqual(expected);
+        ['Text not Matching any REGEX', null],
+        ['Only Number REGEX match 1 occurence 01/02/2022', null],
+        ['Only Number REGEX match 2 occ 01/02/2022 and 01/02/2022', null],
+        ['Only Number REGEX match 3 occ 01/02/2022 and 01/02/2022 and 01/02/2022', '01/02/2022'],
+        ['regex match 3 occ each take biggest 01/02/2022 and 01/02/2022 and 01/02/2022 or 18JANV2040 and 18janv2040 and 18janv2040', '18JANV2040'],
+      ])('"%s" input should return %s', (rawText, expected) => {
+        expect(RevisionDateRulesService.getDateByMostFrequent(rawText, TextCleanerService.cleanRawText(rawText))).toEqual(expected);
       });
     });
 
@@ -164,7 +164,7 @@ describe('RevisionDateRulesService tests', () => {
         // enters getDateByRevisionText
         ['révision 15 AOÛT 2023', { formattedDate: '2023/08/15', inTextDate: '15 AOÛT 2023' }],
         // enters getDateByMostFrequent
-        ['abbcdef 15 aout 2023 et 20/01/2000 et 20/01/2000 et 20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
+        ['abbcdef 15 AOÛT 2023 et 20/01/2000 et 20/01/2000 et 20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
         // enters getDateByMostRecent
         ['abbcdef 15 août 2023 et 20/01/2000 et 20/01/2000', { formattedDate: '2023/08/15', inTextDate: '15 août 2023' }],
         // invalid cases
