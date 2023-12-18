@@ -48,10 +48,9 @@ export class RevisionDateRulesService {
     const revisionDateRegex = `(r[é|e]vision${CommonRegexRulesService.SPACE_REGEX}.?${CommonRegexRulesService.SPACE_REGEX})`;
 
     for (const dateRegex of this.DATE_REGEXPS) {
-      const date = ExtractionToolsService.getTextMatchingRegExp({
+      const date = ExtractionToolsService.getTextMatchingRegExp(new RegExp(revisionDateRegex + dateRegex), {
         rawText: rawFullText,
         cleanText: cleanFullText,
-        regExp: new RegExp(revisionDateRegex + dateRegex),
         capturingGroup: 2,
       });
       if (!date) continue;

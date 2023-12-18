@@ -1,16 +1,16 @@
 import _ from 'lodash';
 
-import type { IGetRawTextMatchingRegExp, IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
+import type { IGetTextMatchingRegExpOptions, IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
 
 export class ExtractionToolsService {
   public static MAX_MATCH_ITERATIONS: number = 50;
 
-  public static getAllTextsMatchingRegExp({ rawText, cleanText, regExp, capturingGroup }: IGetRawTextMatchingRegExp): IMatchedText[] {
+  public static getAllTextsMatchingRegExp(regExp: RegExp, { rawText, cleanText, capturingGroup }: IGetTextMatchingRegExpOptions): IMatchedText[] {
     if (!regExp.global) throw new Error('RegExp must be global');
 
     const matches: IMatchedText[] = [];
     for (let i = 0; i < this.MAX_MATCH_ITERATIONS; i += 1) {
-      const match = this.getTextMatchingRegExp({ rawText, cleanText, regExp, capturingGroup });
+      const match = this.getTextMatchingRegExp(regExp, { rawText, cleanText, capturingGroup });
       if (!match) return matches;
 
       matches.push(match);
@@ -19,7 +19,14 @@ export class ExtractionToolsService {
     return matches;
   }
 
-  public static getTextMatchingRegExp({ rawText, cleanText, regExp, capturingGroup }: IGetRawTextMatchingRegExp): IMatchedText | null {
+  /**
+   * Returns the raw and cleaned text matching specified regExp.
+   *
+   * @param regExp - The regExp to match
+   * @param options - The options to pass
+   * @returns The raw and cleaned text matching specified regExp
+   */
+  public static getTextMatchingRegExp(regExp: RegExp, { rawText, cleanText, capturingGroup }: IGetTextMatchingRegExpOptions): IMatchedText | null {
     const regExpMatch = regExp.exec(cleanText);
     if (!regExpMatch) return null;
 

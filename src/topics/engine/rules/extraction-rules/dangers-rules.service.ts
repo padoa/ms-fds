@@ -29,7 +29,7 @@ export class DangersRulesService {
       .map((lineInfo) => {
         const { cleanLineText, rawLineText, startBox, endBox } = lineInfo;
 
-        const matches = ExtractionToolsService.getAllTextsMatchingRegExp({ rawText: rawLineText, cleanText: cleanLineText, regExp: dangersRegex });
+        const matches = ExtractionToolsService.getAllTextsMatchingRegExp(dangersRegex, { rawText: rawLineText, cleanText: cleanLineText });
         return matches.map((match) => ({ code: match.rawText, metaData: { startBox, endBox } }));
       })
       .flatMap()

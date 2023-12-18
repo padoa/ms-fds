@@ -36,10 +36,9 @@ export class BoilingPointRulesService {
       if (!boilingPointInLine) continue;
 
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      const boilingPoint = ExtractionToolsService.getTextMatchingRegExp({
+      const boilingPoint = ExtractionToolsService.getTextMatchingRegExp(boilingPointRegex, {
         rawText: rawLineText,
         cleanText: cleanLineText,
-        regExp: boilingPointRegex,
       });
       if (!boilingPoint) continue;
 
