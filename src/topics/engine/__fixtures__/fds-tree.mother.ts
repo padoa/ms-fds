@@ -1,6 +1,5 @@
 import { FdsTreeBuilder } from '@topics/engine/__fixtures__/fds-tree.builder.js';
 import {
-  aLineWithCasAndCeNumberAndConcentrationIn3Texts,
   aLineWithProducerIdentifierOnlyWithColon,
   aLineWithProducerNameOnly,
   aLineWithProductIn1Text,
@@ -8,9 +7,11 @@ import {
   aLineWithThreeDangersAndTheirDetails,
   aLineWithPhysicalStateIdentifierAndValue,
   aLineWithBoilingPointIdentifierAndValue,
+  aLine,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWithContent } from '@topics/engine/__fixtures__/sub-section.mother.js';
+import { aTextWithCasNumber, aTextWithCeNumber, aTextWithConcentration, aTextWithHDanger } from '@topics/engine/__fixtures__/text.mother.js';
 
 export const aFdsTree = (): FdsTreeBuilder => new FdsTreeBuilder();
 
@@ -41,7 +42,14 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
     )
     .withSection3(
       aSection().withSubsections({
-        2: aSubSection().withLines([aLineWithCasAndCeNumberAndConcentrationIn3Texts().properties]).properties,
+        2: aSubSection().withLines([
+          aLine().withTexts([
+            aTextWithCasNumber().properties,
+            aTextWithCeNumber().properties,
+            aTextWithConcentration().properties,
+            aTextWithHDanger().properties,
+          ]).properties,
+        ]).properties,
       }).properties,
     )
     .withSection9(

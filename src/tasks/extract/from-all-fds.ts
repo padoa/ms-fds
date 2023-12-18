@@ -99,6 +99,7 @@ const saveInCsv = async (
         casNumber: substance.casNumber?.value,
         ceNumber: substance.ceNumber?.value,
         concentration: substance.concentration?.value,
+        hazards: _.map(substance.hazards, 'code'),
       })),
     ),
     physicalState?.value,

@@ -30,6 +30,7 @@ const main = async (): Promise<void> => {
       casNumber: substance.casNumber?.value,
       ceNumber: substance.ceNumber?.value,
       concentration: substance.concentration?.value,
+      hazards: JSON.stringify(_.map(substance.hazards, 'code')),
     })),
     physicalState: data.dataExtracted?.physicalState?.value,
     vaporPressure: _.pick(data.dataExtracted?.vaporPressure, ['pressure', 'temperature']),

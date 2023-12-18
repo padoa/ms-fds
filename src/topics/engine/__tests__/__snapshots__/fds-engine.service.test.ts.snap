@@ -165,6 +165,18 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           },
           "value": "> 10 - < 30",
         },
+        "hazards": [
+          {
+            "code": "H304",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 2,
+                "xPositionProportion": 0.6398355192431735,
+                "yPositionProportion": 0.6648422652983657,
+              },
+            },
+          },
+        ],
       },
       {
         "casNumber": undefined,
@@ -410,6 +422,38 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "value": "08062-26-4",
         },
         "ceNumber": undefined,
+        "hazards": [
+          {
+            "code": "H315",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 4,
+                "xPositionProportion": 0.09047619047619047,
+                "yPositionProportion": 0.38922558922558925,
+              },
+            },
+          },
+          {
+            "code": "H400",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 4,
+                "xPositionProportion": 0.7542857142857143,
+                "yPositionProportion": 0.40606060606060607,
+              },
+            },
+          },
+          {
+            "code": "H411",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 4,
+                "xPositionProportion": 0.7542857142857143,
+                "yPositionProportion": 0.41414141414141414,
+              },
+            },
+          },
+        ],
       },
       {
         "casNumber": undefined,
@@ -428,6 +472,28 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           },
           "value": "219-145-8",
         },
+        "hazards": [
+          {
+            "code": "H410",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 4,
+                "xPositionProportion": 0.09142857142857143,
+                "yPositionProportion": 0.45521885521885525,
+              },
+            },
+          },
+          {
+            "code": "H301",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 4,
+                "xPositionProportion": 0.5085714285714286,
+                "yPositionProportion": 0.4653198653198653,
+              },
+            },
+          },
+        ],
       },
     ],
     "vaporPressure": null,
