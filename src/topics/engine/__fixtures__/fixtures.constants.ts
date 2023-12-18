@@ -81,10 +81,10 @@ export const RAW_PHYSICAL_STATE_VALUE = 'Liquide';
 //----------------------------------------- VAPOR_PRESSURE -------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const VAPOR_PRESSURE_TEMPERATURE = '50°c';
-export const VAPOR_PRESSURE_IDENTIFIER = 'pression de vapeur';
-export const VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE = `${VAPOR_PRESSURE_IDENTIFIER} (${VAPOR_PRESSURE_TEMPERATURE})`;
-export const VAPOR_PRESSURE_VALUE = '3 bar';
+export const RAW_VAPOR_PRESSURE_TEMPERATURE = '50°C';
+export const RAW_VAPOR_PRESSURE_IDENTIFIER = 'pression de vapeur';
+export const RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE = `${RAW_VAPOR_PRESSURE_IDENTIFIER} (${RAW_VAPOR_PRESSURE_TEMPERATURE})`;
+export const RAW_VAPOR_PRESSURE_VALUE = '3 bar';
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- BOILING_POINT --------------------------------------

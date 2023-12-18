@@ -20,20 +20,35 @@ export class VaporPressureService {
   }
 
   private static getVaporPressureByValue(linesToSearchIn: ILine[]): IExtractedVaporPressure | null {
+    const pressureRegex = new RegExp(this.VAPOR_PRESSURE_VALUE_REGEX);
+    const temperatureRegex = new RegExp(this.TEMPERATURE_VALUE_REGEX);
+
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
-      const lineText = texts.map(({ cleanContent }) => cleanContent).join('');
-      const vaporPressureInLine = !!lineText.match(this.VAPOR_PRESSURE_IDENTIFIER_REGEX);
+      const { cleanLineText, rawLineText } = texts.reduce(
+        (joinedTexts, { cleanContent, rawContent }) => ({
+          cleanLineText: joinedTexts.cleanLineText + cleanContent,
+          rawLineText: joinedTexts.rawLineText + rawContent,
+        }),
+        { cleanLineText: '', rawLineText: '' },
+      );
+
+      const vaporPressureInLine = !!cleanLineText.match(this.VAPOR_PRESSURE_IDENTIFIER_REGEX);
       if (!vaporPressureInLine) continue;
 
-      const pressure = lineText.match(this.VAPOR_PRESSURE_VALUE_REGEX) || [];
-      const temperature = lineText.match(this.TEMPERATURE_VALUE_REGEX) || [];
-
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      if (_.isEmpty(pressure)) continue;
+      const pressureMatch = pressureRegex.exec(cleanLineText);
+      if (!pressureMatch) continue;
 
-      return { pressure: _.first(pressure), temperature: _.first(temperature), metaData: { startBox, endBox } };
+      const pressure = rawLineText.substring(pressureMatch.index, pressureMatch.index + pressureMatch[0].length);
+
+      const temperatureMatch = temperatureRegex.exec(cleanLineText);
+      const temperature = temperatureMatch
+        ? rawLineText.substring(temperatureMatch.index, temperatureMatch.index + temperatureMatch[0].length)
+        : undefined;
+
+      return { pressure, temperature, metaData: { startBox, endBox } };
     }
 
     return null;

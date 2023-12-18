@@ -38,7 +38,7 @@ export class ProducerRulesService {
     };
   }
 
-  private static extractProducerText(productText: string): string {
-    return _(productText).split(':').last().trim();
+  private static extractProducerText(text: string): string {
+    return _(text).split(':').last().trim();
   }
 }

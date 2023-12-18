@@ -60,7 +60,7 @@ export class PhysicalStateRulesService {
     };
   }
 
-  private static extractPhysicalStateText(productText: string): string {
-    return _(productText).split(':').last().trim();
+  private static extractPhysicalStateText(text: string): string {
+    return _(text).split(':').last().trim();
   }
 }
