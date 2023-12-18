@@ -5,6 +5,9 @@ import type { IGetTextMatchingRegExpOptions, IMatchedText } from '@topics/engine
 export class ExtractionToolsService {
   public static MAX_MATCH_ITERATIONS: number = 50;
 
+  /**
+   * capturingGroup starts at 1
+   */
   public static getAllTextsMatchingRegExp(regExp: RegExp, { rawText, cleanText, capturingGroup }: IGetTextMatchingRegExpOptions): IMatchedText[] {
     if (!regExp.global) throw new Error('RegExp must be global');
 
@@ -20,11 +23,7 @@ export class ExtractionToolsService {
   }
 
   /**
-   * Returns the raw and cleaned text matching specified regExp.
-   *
-   * @param regExp - The regExp to match
-   * @param options - The options to pass
-   * @returns The raw and cleaned text matching specified regExp
+   * capturingGroup starts at 1
    */
   public static getTextMatchingRegExp(regExp: RegExp, { rawText, cleanText, capturingGroup }: IGetTextMatchingRegExpOptions): IMatchedText | null {
     const regExpMatch = regExp.exec(cleanText);

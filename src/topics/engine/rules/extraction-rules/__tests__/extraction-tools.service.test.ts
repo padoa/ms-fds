@@ -79,6 +79,12 @@ describe('ExtractionToolsService tests', () => {
         input: { rawText: 'AbCd', capturingGroup: 2 },
         expectedRawText: 'Cd',
       },
+      {
+        message: 'should return null when capturing group does not match',
+        regExp: /(ab)(cd)/,
+        input: { rawText: 'TextText', capturingGroup: 2 },
+        expectedRawText: null,
+      },
     ])('$message', ({ regExp, input, expectedRawText }) => {
       const payload: IGetTextMatchingRegExpOptions = { ...input, cleanText: TextCleanerService.cleanRawText(input.rawText) };
       const expected: IMatchedText = expectedRawText
