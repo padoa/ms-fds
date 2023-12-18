@@ -167,7 +167,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
         "hazards": [
           {
-            "code": "h304",
+            "code": "H304",
             "metaData": {
               "startBox": {
                 "pageNumber": 2,
@@ -424,7 +424,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         "ceNumber": undefined,
         "hazards": [
           {
-            "code": "h315",
+            "code": "H315",
             "metaData": {
               "startBox": {
                 "pageNumber": 4,
@@ -434,7 +434,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
             },
           },
           {
-            "code": "h400",
+            "code": "H400",
             "metaData": {
               "startBox": {
                 "pageNumber": 4,
@@ -444,7 +444,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
             },
           },
           {
-            "code": "h411",
+            "code": "H411",
             "metaData": {
               "startBox": {
                 "pageNumber": 4,
@@ -474,7 +474,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
         },
         "hazards": [
           {
-            "code": "h410",
+            "code": "H410",
             "metaData": {
               "startBox": {
                 "pageNumber": 4,
@@ -484,7 +484,7 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
             },
           },
           {
-            "code": "h301",
+            "code": "H301",
             "metaData": {
               "startBox": {
                 "pageNumber": 4,
