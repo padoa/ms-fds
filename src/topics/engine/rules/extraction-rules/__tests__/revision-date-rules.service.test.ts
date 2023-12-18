@@ -130,11 +130,11 @@ describe('RevisionDateRulesService tests', () => {
 
     describe('GetDateByMostRecent tests', () => {
       it.each<[string, string | undefined]>([
-        ['abc 01/02/2022 def 8 janvier 2023 ghj', '8 janvier 2023'],
-        ['random text before 11.08.25 and this date 06 mars 1920', '11.08.25'],
-        ['some text not matching any regex', undefined],
-      ])('"%s" input should return %s', (text, expected) => {
-        expect(RevisionDateRulesService.getDateByMostRecent(text)).toEqual(expected);
+        ['ABC 01/02/2022 def 8 JANVIER 2023 ghj', '8 JANVIER 2023'],
+        ['random text before 11.08.25 and this date 06 MARS 1920', '11.08.25'],
+        ['some text not matching any regex', null],
+      ])('"%s" input should return %s', (rawText, expected) => {
+        expect(RevisionDateRulesService.getDateByMostRecent(rawText, TextCleanerService.cleanRawText(rawText))).toEqual(expected);
       });
     });
 
@@ -166,7 +166,7 @@ describe('RevisionDateRulesService tests', () => {
         // enters getDateByMostFrequent
         ['abbcdef 15 AOÛT 2023 et 20/01/2000 et 20/01/2000 et 20/01/2000', { formattedDate: '2000/01/20', inTextDate: '20/01/2000' }],
         // enters getDateByMostRecent
-        ['abbcdef 15 août 2023 et 20/01/2000 et 20/01/2000', { formattedDate: '2023/08/15', inTextDate: '15 août 2023' }],
+        ['abbcdef 15 AOÛT 2023 et 20/01/2000 et 20/01/2000', { formattedDate: '2023/08/15', inTextDate: '15 AOÛT 2023' }],
         // invalid cases
         ['', { formattedDate: null, inTextDate: null }],
         ['missing mapping month 20xyz2023', { formattedDate: null, inTextDate: '20xyz2023' }],
