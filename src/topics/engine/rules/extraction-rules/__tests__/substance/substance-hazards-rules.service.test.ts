@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import type { IExtractedDanger } from '@padoa/chemical-risk';
 
-import type { IExtractedDanger, IText } from '@topics/engine/model/fds.model.js';
+import type { IText } from '@topics/engine/model/fds.model.js';
 import { aText, aTextWithEuhDanger, aTextWithHDanger, aTextWithPDanger } from '@topics/engine/__fixtures__/text.mother.js';
 import { aDanger, aHDanger } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/danger.mother.js';
 import { SubstanceHazardsRulesService } from '@topics/engine/rules/extraction-rules/substance/substance-hazards-rules.service.js';
@@ -40,13 +41,13 @@ describe('SubstanceHazardsRulesService tests', () => {
       },
       {
         message: 'should return multiple hazards if multiple lines have a hazard',
-        lines: [[aTextWithHDanger().properties], [aText().withContent('h300').properties]],
-        expected: [aHDanger().properties, aDanger().withCode('h300').properties],
+        lines: [[aTextWithHDanger().properties], [aText().withContent('H300').properties]],
+        expected: [aHDanger().properties, aDanger().withCode('H300').properties],
       },
       {
         message: 'should return multiple hazards if a text has multiple hazards',
-        lines: [[aText().withContent('h300 and some other text h400').properties], []],
-        expected: [aDanger().withCode('h300').properties, aDanger().withCode('h400').properties],
+        lines: [[aText().withContent('H300 and some other text H400').properties], []],
+        expected: [aDanger().withCode('H300').properties, aDanger().withCode('H400').properties],
       },
     ])('$message', ({ lines, expected }) => {
       expect(SubstanceHazardsRulesService.getHazardsInColumn(lines)).toEqual(expected);
@@ -68,10 +69,10 @@ describe('SubstanceHazardsRulesService tests', () => {
       {
         message: 'should return hazards found in the column with most hazards',
         linesSplittedByColumns: [
-          [[aText().withContent('h200').properties]],
-          [[aTextWithHDanger().properties], [aText().withContent('h300').properties]],
+          [[aText().withContent('H200').properties]],
+          [[aTextWithHDanger().properties], [aText().withContent('H300').properties]],
         ],
-        expected: [aHDanger().properties, aDanger().withCode('h300').properties],
+        expected: [aHDanger().properties, aDanger().withCode('H300').properties],
       },
     ])('$message', ({ linesSplittedByColumns, expected }) => {
       expect(SubstanceHazardsRulesService.getHazards(linesSplittedByColumns)).toEqual(expected);
