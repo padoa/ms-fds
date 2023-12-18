@@ -79,7 +79,7 @@
     "@padoa/csv-tools": "^2.0.4",
     "@padoa/database": "^26.2.0",
     "@padoa/express": "^15.0.2",
-    "@padoa/file-system": "^5.3.3",
+    "@padoa/file-system": "5.4.0-be22dca7d0d7bb089311d4155f83766698a56dd9",
     "@padoa/joi": "^5.0.2",
     "@padoa/logger": "^3.0.2",
     "@padoa/meta": "5.1.0-0c9276fbf3c6ccebca81a4cfab7592c0d082b484",
