@@ -10,14 +10,14 @@ export enum ModelName {
   ProductDanger = 'productDanger',
 }
 
-export enum TableName {
-  Danger = 'danger',
-  File = 'file',
-  FdsFile = 'fds_file',
-  Substance = 'substance',
-  SubstanceDanger = 'substance_danger',
-  Product = 'product',
-  ProductSubstance = 'product_substance',
-  ProductSubstanceDanger = 'product_substance_danger',
-  ProductDanger = 'product_danger',
-}
+export const TableName = {
+  [ModelName.Danger]: 'danger',
+  [ModelName.File]: 'file',
+  [ModelName.FdsFile]: 'fds_file',
+  [ModelName.Substance]: 'substance',
+  [ModelName.SubstanceDanger]: 'substance_danger',
+  [ModelName.Product]: 'product',
+  [ModelName.ProductSubstance]: 'product_substance',
+  [ModelName.ProductSubstanceDanger]: 'product_substance_danger',
+  [ModelName.ProductDanger]: 'product_danger',
+};

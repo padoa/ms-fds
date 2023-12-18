@@ -7,16 +7,16 @@ import { ProductOrigin, ProductWarningNotice } from '@padoa/chemical-risk';
 import { ModelName, TableName } from '@src/orm/model.js';
 
 class Product extends Model {
-  public declare fdsFileId?: number;
-  public declare name?: string;
-  public declare producer?: string;
+  public declare fdsFileId: number;
+  public declare name: string;
+  public declare producer: string;
   public declare origin: ProductOrigin;
-  public declare physicalState?: string;
-  public declare boilingPoint?: string;
-  public declare vaporPressure?: string;
-  public declare vaporPressureTemperature?: string;
-  public declare warningNotice?: ProductWarningNotice;
-  public declare revisionDate?: Date;
+  public declare physicalState: string;
+  public declare boilingPoint: string;
+  public declare vaporPressure: string;
+  public declare vaporPressureTemperature: string;
+  public declare warningNotice: ProductWarningNotice;
+  public declare revisionDate: Date;
 }
 
 const initProduct = (sequelize: Sequelize): void => {
@@ -71,7 +71,7 @@ const initProduct = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.Product,
-      tableName: TableName.Product,
+      tableName: TableName[ModelName.Product],
       tableOwner: Team.RC,
     },
   );

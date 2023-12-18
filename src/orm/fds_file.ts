@@ -28,7 +28,7 @@ const initFdsFile = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.FdsFile,
-      tableName: TableName.FdsFile,
+      tableName: TableName[ModelName.FdsFile],
       tableOwner: Team.RC,
     },
   );

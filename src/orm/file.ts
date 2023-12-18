@@ -7,7 +7,7 @@ import { ModelName, TableName } from '@src/orm/model.js';
 class File extends FileBase {}
 
 const initFile = (sequelize: Sequelize): void => {
-  initFileBase(File, {}, { sequelize, modelName: ModelName.File, tableName: TableName.File, tableOwner: Team.RC });
+  initFileBase(File, {}, { sequelize, modelName: ModelName.File, tableName: TableName[ModelName.File], tableOwner: Team.RC });
 };
 
 export { initFile, File };

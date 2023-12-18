@@ -16,7 +16,7 @@ const initProductDanger = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.ProductDanger,
-      tableName: TableName.ProductDanger,
+      tableName: TableName[ModelName.ProductDanger],
       tableOwner: Team.RC,
     },
   );

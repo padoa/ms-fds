@@ -16,7 +16,7 @@ const initSubstanceDanger = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.SubstanceDanger,
-      tableName: TableName.SubstanceDanger,
+      tableName: TableName[ModelName.SubstanceDanger],
       tableOwner: Team.RC,
     },
   );

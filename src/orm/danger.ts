@@ -33,7 +33,7 @@ const initDanger = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.Danger,
-      tableName: TableName.Danger,
+      tableName: TableName[ModelName.Danger],
       tableOwner: Team.RC,
     },
   );

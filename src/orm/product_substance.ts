@@ -8,7 +8,7 @@ import { ModelName, TableName } from '@src/orm/model.js';
 class ProductSubstance extends Model {
   public declare productId: number;
   public declare substanceId: number;
-  public declare concentration?: string;
+  public declare concentration: string;
 }
 
 const initProductSubstance = (sequelize: Sequelize): void => {
@@ -23,7 +23,7 @@ const initProductSubstance = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.ProductSubstance,
-      tableName: TableName.ProductSubstance,
+      tableName: TableName[ModelName.ProductSubstance],
       tableOwner: Team.RC,
     },
   );
