@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import type { IGetRawTextMatchingRegExp } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
 
 export class ExtractionToolsService {
@@ -18,6 +20,6 @@ export class ExtractionToolsService {
     const regExpMatch = regExp.exec(cleanText);
     if (!regExpMatch) return null;
 
-    return rawText.substring(regExpMatch.index, regExpMatch.index + regExpMatch[0].length);
+    return _.trim(rawText.substring(regExpMatch.index, regExpMatch.index + regExpMatch[0].length));
   }
 }
