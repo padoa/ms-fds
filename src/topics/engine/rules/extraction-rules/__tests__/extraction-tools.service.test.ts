@@ -26,6 +26,11 @@ describe('ExtractionToolsService tests', () => {
         input: { rawText: 'abc...FoO...DEF...FOO...foo...', regExp: /foo/g },
         expected: ['FoO', 'FOO', 'foo'],
       },
+      {
+        message: 'should end the loop and return all matches when MAX_MATCH_ITERATIONS is reached',
+        input: { rawText: '...FOO...'.repeat(200), regExp: /foo/g },
+        expected: Array(ExtractionToolsService.MAX_MATCH_ITERATIONS).fill('FOO'),
+      },
     ])('$message', ({ input, expected }) => {
       expect(ExtractionToolsService.getAllRawTextMatchingRegExp({ ...input, cleanText: TextCleanerService.cleanRawText(input.rawText) })).toEqual(
         expected,
@@ -49,6 +54,11 @@ describe('ExtractionToolsService tests', () => {
         message: 'should return rawText when regExp matches clean text',
         input: { rawText: 'abc...FoO...DEF', regExp: /foo/ },
         expected: 'FoO',
+      },
+      {
+        message: 'should return rawText of first match',
+        input: { rawText: 'FOO...FoO...foo', regExp: /foo/ },
+        expected: 'FOO',
       },
     ])('$message', ({ input, expected }) => {
       expect(ExtractionToolsService.getRawTextMatchingRegExp({ ...input, cleanText: TextCleanerService.cleanRawText(input.rawText) })).toEqual(

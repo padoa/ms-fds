@@ -3,17 +3,20 @@ import _ from 'lodash';
 import type { IGetRawTextMatchingRegExp } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
 
 export class ExtractionToolsService {
+  public static MAX_MATCH_ITERATIONS: number = 50;
+
   public static getAllRawTextMatchingRegExp({ rawText, cleanText, regExp }: IGetRawTextMatchingRegExp): string[] {
     if (!regExp.global) throw new Error('RegExp must be global');
 
     const matches: string[] = [];
-    // eslint-disable-next-line no-constant-condition
-    while (true) {
+    for (let i = 0; i < this.MAX_MATCH_ITERATIONS; i += 1) {
       const match = this.getRawTextMatchingRegExp({ rawText, cleanText, regExp });
       if (!match) return matches;
 
       matches.push(match);
     }
+
+    return matches;
   }
 
   public static getRawTextMatchingRegExp({ rawText, cleanText, regExp }: IGetRawTextMatchingRegExp): string | null {
