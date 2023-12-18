@@ -24,8 +24,8 @@ export class DangersRulesService {
       .map((lineInfo) => {
         const { cleanLineText, rawLineText, startBox, endBox } = lineInfo;
 
-        const matches = ExtractionToolsService.getAllRawTextMatchingRegExp({ rawText: rawLineText, cleanText: cleanLineText, regExp: dangersRegex });
-        return matches.map((code) => ({ code, metaData: { startBox, endBox } }));
+        const matches = ExtractionToolsService.getAllTextsMatchingRegExp(dangersRegex, { rawText: rawLineText, cleanText: cleanLineText });
+        return matches.map((match) => ({ code: match.rawText, metaData: { startBox, endBox } }));
       })
       .flatMap()
       .compact()

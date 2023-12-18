@@ -1,5 +1,8 @@
-export type IGetRawTextMatchingRegExp = {
+export type IMatchedText = {
   rawText: string;
   cleanText: string;
-  regExp: RegExp;
+};
+
+export type IGetTextMatchingRegExpOptions = IMatchedText & {
+  capturingGroup?: number;
 };

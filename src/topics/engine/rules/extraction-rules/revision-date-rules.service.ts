@@ -3,6 +3,8 @@ import _ from 'lodash';
 import type { IExtractedDate } from '@padoa/chemical-risk';
 
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
+import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class RevisionDateRulesService {
   private static readonly MONTH_MAPPING = {
@@ -25,24 +27,36 @@ export class RevisionDateRulesService {
 
   private static readonly DATE_REGEXPS = [this.NUMBER_DATE_REGEX, this.STRING_DATE_REGEX, this.ENGLISH_NUMBER_DATE_REGEX];
 
-  public static getDate(fullText: string): IExtractedDate {
-    const inTextDate = this.getDateByRevisionText(fullText) || this.getDateByMostFrequent(fullText) || this.getDateByMostRecent(fullText);
-    if (!inTextDate) return { formattedDate: null, inTextDate: null };
-    const parsedDate = this.parseDate(inTextDate);
+  public static getDate(rawFullText: string): IExtractedDate {
+    const cleanedFullText = TextCleanerService.cleanRawText(rawFullText);
 
+    const inTextDate =
+      this.getDateByRevisionText(rawFullText, cleanedFullText) ||
+      this.getDateByMostFrequent(cleanedFullText) ||
+      this.getDateByMostRecent(cleanedFullText);
+    if (!inTextDate) return { formattedDate: null, inTextDate: null };
+    const parsedDate = this.parseDate(TextCleanerService.cleanRawText(inTextDate));
+
+    // TODO: return inTextDate as raw text not formatted through many functions
     return {
       formattedDate: parsedDate && !Number.isNaN(parsedDate.getTime()) ? format(parsedDate, 'yyyy/MM/dd') : null,
       inTextDate,
     };
   }
 
-  public static getDateByRevisionText(fullText: string): string | null {
-    const revisionDateRegex = `[R|r][é|e]vision${CommonRegexRulesService.SPACE_REGEX}.?${CommonRegexRulesService.SPACE_REGEX}`;
+  public static getDateByRevisionText(rawFullText: string, cleanFullText: string): string | null {
+    const revisionDateRegex = `(r[é|e]vision${CommonRegexRulesService.SPACE_REGEX}.?${CommonRegexRulesService.SPACE_REGEX})`;
 
     for (const dateRegex of this.DATE_REGEXPS) {
-      const revisionDateMatch = fullText.match(new RegExp(revisionDateRegex + dateRegex));
-      if (revisionDateMatch?.length) return revisionDateMatch[1];
+      const date = ExtractionToolsService.getTextMatchingRegExp(new RegExp(revisionDateRegex + dateRegex), {
+        rawText: rawFullText,
+        cleanText: cleanFullText,
+        capturingGroup: 2,
+      });
+      if (!date) continue;
+      return date.rawText;
     }
+
     return null;
   }
 
@@ -50,6 +64,7 @@ export class RevisionDateRulesService {
     const numberDates = fullText.match(new RegExp(this.NUMBER_DATE_REGEX, 'g')) || [];
     const stringDates = fullText.match(new RegExp(this.STRING_DATE_REGEX, 'g')) || [];
     const dates = [...numberDates, ...stringDates];
+
     const dateCounts = _.reduce(
       dates,
       (counts, date) => {
@@ -66,6 +81,7 @@ export class RevisionDateRulesService {
     );
     const maxCount = _.max(Object.values(dateCounts).map(({ count }) => count));
     if (maxCount < 3) return null;
+
     const mostUsedDates = _.filter(dates, (date) => dateCounts[date].count === maxCount);
     return _.maxBy(mostUsedDates, (date) => this.parseDate(date));
   }
@@ -81,7 +97,6 @@ export class RevisionDateRulesService {
     return this.parseDateFromNumberRegex(date) || this.parseDateFromStringRegex(date) || this.parseDateFromEnglishNumberRegex(date);
   }
 
-  // TODO: refacto these blocs to avoid code duplication
   private static parseDateFromNumberRegex(date: string): Date | null {
     const regexMatches = date.match(new RegExp(this.NUMBER_DATE_REGEX));
     if (!regexMatches) return null;
