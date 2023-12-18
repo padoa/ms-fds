@@ -9,12 +9,6 @@ enum ProductOrigin {
   CLIENT = 'client',
 }
 
-enum ProductPhysicalState {
-  SOLID = 'solid',
-  LIQUID = 'liquid',
-  GAS = 'gas',
-}
-
 enum ProductWarningNotice {
   DANGER = 'danger',
   WARNING = 'warning',
@@ -38,12 +32,11 @@ const productFields = {
   origin: {
     type: DataTypes.ENUM,
     values: Object.values(ProductOrigin),
-    allowNull: true,
+    allowNull: false,
   },
   physicalState: {
     field: 'physical_state',
-    type: DataTypes.ENUM,
-    values: Object.values(ProductPhysicalState),
+    type: DataTypes.STRING,
     allowNull: true,
   },
   boilingPoint: {
@@ -53,6 +46,11 @@ const productFields = {
   },
   vaporPressure: {
     field: 'vapor_pressure',
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  vaporPressureTemperature: {
+    field: 'vapor_pressure_temperature',
     type: DataTypes.STRING,
     allowNull: true,
   },

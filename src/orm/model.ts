@@ -9,3 +9,15 @@ export enum ModelName {
   ProductSubstanceDanger = 'ProductSubstanceDanger',
   ProductDanger = 'productDanger',
 }
+
+export enum TableName {
+  Danger = 'danger',
+  File = 'file',
+  FdsFile = 'fds_file',
+  Substance = 'substance',
+  SubstanceDanger = 'substance_danger',
+  Product = 'product',
+  ProductSubstance = 'product_substance',
+  ProductSubstanceDanger = 'product_substance_danger',
+  ProductDanger = 'product_danger',
+}

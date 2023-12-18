@@ -2,7 +2,7 @@ import { initModel, makeOneToMany, Model } from '@padoa/database';
 import type { Sequelize } from 'sequelize';
 import { Team } from '@padoa/meta';
 
-import { ModelName } from '@src/orm/model.js';
+import { ModelName, TableName } from '@src/orm/model.js';
 
 class ProductSubstanceDanger extends Model {
   public declare productSubstanceId: number;
@@ -16,7 +16,7 @@ const initProductSubstanceDanger = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.ProductSubstanceDanger,
-      tableName: 'substance_danger',
+      tableName: TableName.ProductSubstanceDanger,
       tableOwner: Team.RC,
     },
   );

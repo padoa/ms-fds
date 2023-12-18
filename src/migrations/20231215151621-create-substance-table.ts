@@ -1,4 +1,4 @@
-import { AddSetUpdatedAtTrigger, createTable, wrapCommands } from '@padoa/database';
+import { AddSetUpdatedAtTrigger, AddUniqueIndex, createTable, wrapCommands } from '@padoa/database';
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '@helpers/database/index.js';
@@ -22,5 +22,8 @@ const substanceFields = {
 
 export async function up(): Promise<void> {
   await createTable(sequelize, 'substance', substanceFields);
-  await wrapCommands(sequelize, 'substance', [new AddSetUpdatedAtTrigger()]);
+  await wrapCommands(sequelize, 'substance', [
+    new AddSetUpdatedAtTrigger(),
+    new AddUniqueIndex('index_substance_numbers', ['cas_number', 'ce_number']),
+  ]);
 }

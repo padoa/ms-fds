@@ -4,7 +4,7 @@ import { initModel, Model } from '@padoa/database';
 import { Team } from '@padoa/meta';
 import { DangerType } from '@padoa/chemical-risk';
 
-import { ModelName } from '@src/orm/model.js';
+import { ModelName, TableName } from '@src/orm/model.js';
 
 class Danger extends Model {
   public declare code: string;
@@ -22,7 +22,7 @@ const initDanger = (sequelize: Sequelize): void => {
       },
       description: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       type: {
         type: DataTypes.ENUM,
@@ -33,7 +33,7 @@ const initDanger = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.Danger,
-      tableName: 'danger',
+      tableName: TableName.Danger,
       tableOwner: Team.RC,
     },
   );

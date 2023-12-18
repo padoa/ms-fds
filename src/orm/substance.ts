@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 import { initModel, Model } from '@padoa/database';
 import { Team } from '@padoa/meta';
 
-import { ModelName } from '@src/orm/model.js';
+import { ModelName, TableName } from '@src/orm/model.js';
 
 class Substance extends Model {
   public declare name: string;
@@ -33,7 +33,7 @@ const initSubstance = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.Substance,
-      tableName: 'substance',
+      tableName: TableName.Substance,
       tableOwner: Team.RC,
     },
   );

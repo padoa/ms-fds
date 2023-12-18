@@ -1,10 +1,11 @@
-import { AddSetUpdatedAtTrigger, createTable, wrapCommands } from '@padoa/database';
+import { AddSetUpdatedAtTrigger, AddUniqueIndex, createTable, wrapCommands } from '@padoa/database';
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '@helpers/database/index.js';
 
 enum DangerType {
   HAZARD = 'hazard',
+  EUH_HAZARD = 'euh_hazard',
   PRECAUTION = 'precaution',
 }
 
@@ -15,7 +16,7 @@ const dangerFields = {
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   type: {
     type: DataTypes.ENUM,
@@ -26,5 +27,5 @@ const dangerFields = {
 
 export async function up(): Promise<void> {
   await createTable(sequelize, 'danger', dangerFields);
-  await wrapCommands(sequelize, 'danger', [new AddSetUpdatedAtTrigger()]);
+  await wrapCommands(sequelize, 'danger', [new AddSetUpdatedAtTrigger(), new AddUniqueIndex('index_danger_code', ['code'])]);
 }

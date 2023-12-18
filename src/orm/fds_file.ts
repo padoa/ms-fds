@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 import { initModel, makeOneToMany, Model } from '@padoa/database';
 import { Team } from '@padoa/meta';
 
-import { ModelName } from '@src/orm/model.js';
+import { ModelName, TableName } from '@src/orm/model.js';
 
 class FdsFile extends Model {
   public declare fileId: number;
@@ -18,19 +18,17 @@ const initFdsFile = (sequelize: Sequelize): void => {
       parsable: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
       },
       frenchFile: {
         field: 'french_file',
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
       },
     },
     {
       sequelize,
       modelName: ModelName.FdsFile,
-      tableName: 'fds_file',
+      tableName: TableName.FdsFile,
       tableOwner: Team.RC,
     },
   );

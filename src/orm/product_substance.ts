@@ -3,7 +3,7 @@ import type { Sequelize } from 'sequelize';
 import { Team } from '@padoa/meta';
 import { DataTypes } from 'sequelize';
 
-import { ModelName } from '@src/orm/model.js';
+import { ModelName, TableName } from '@src/orm/model.js';
 
 class ProductSubstance extends Model {
   public declare productId: number;
@@ -23,7 +23,7 @@ const initProductSubstance = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.ProductSubstance,
-      tableName: 'product_substance',
+      tableName: TableName.ProductSubstance,
       tableOwner: Team.RC,
     },
   );

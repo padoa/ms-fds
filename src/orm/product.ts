@@ -2,18 +2,19 @@ import type { Sequelize } from 'sequelize';
 import { DataTypes } from 'sequelize';
 import { initModel, makeOneToMany, Model } from '@padoa/database';
 import { Team } from '@padoa/meta';
-import { ProductOrigin, ProductPhysicalState, ProductWarningNotice } from '@padoa/chemical-risk';
+import { ProductOrigin, ProductWarningNotice } from '@padoa/chemical-risk';
 
-import { ModelName } from '@src/orm/model.js';
+import { ModelName, TableName } from '@src/orm/model.js';
 
 class Product extends Model {
   public declare fdsFileId?: number;
   public declare name?: string;
   public declare producer?: string;
-  public declare origin?: ProductOrigin;
-  public declare physicalState?: ProductPhysicalState;
+  public declare origin: ProductOrigin;
+  public declare physicalState?: string;
   public declare boilingPoint?: string;
   public declare vaporPressure?: string;
+  public declare vaporPressureTemperature?: string;
   public declare warningNotice?: ProductWarningNotice;
   public declare revisionDate?: Date;
 }
@@ -33,12 +34,11 @@ const initProduct = (sequelize: Sequelize): void => {
       origin: {
         type: DataTypes.ENUM,
         values: Object.values(ProductOrigin),
-        allowNull: true,
+        allowNull: false,
       },
       physicalState: {
         field: 'physical_state',
-        type: DataTypes.ENUM,
-        values: Object.values(ProductPhysicalState),
+        type: DataTypes.STRING,
         allowNull: true,
       },
       boilingPoint: {
@@ -48,6 +48,11 @@ const initProduct = (sequelize: Sequelize): void => {
       },
       vaporPressure: {
         field: 'vapor_pressure',
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      vaporPressureTemperature: {
+        field: 'vapor_pressure_temperature',
         type: DataTypes.STRING,
         allowNull: true,
       },
@@ -66,7 +71,7 @@ const initProduct = (sequelize: Sequelize): void => {
     {
       sequelize,
       modelName: ModelName.Product,
-      tableName: 'product',
+      tableName: TableName.Product,
       tableOwner: Team.RC,
     },
   );

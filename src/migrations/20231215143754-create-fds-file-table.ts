@@ -12,13 +12,11 @@ const fdsFileFields = {
   parsable: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: true,
   },
   frenchFile: {
     field: 'french_file',
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: true,
   },
 };
 
