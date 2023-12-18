@@ -3,6 +3,7 @@ import type { IExtractedBoilingPoint } from '@padoa/chemical-risk';
 
 import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class BoilingPointRulesService {
   private static readonly OPTIONAL_NEGATIVE_NUMBER_WITH_OPTIONAL_DECIMAL_REGEX = `(-${CommonRegexRulesService.SPACE_REGEX})?\\d+${CommonRegexRulesService.SPACE_REGEX}((\\.|,)${CommonRegexRulesService.SPACE_REGEX}\\d+${CommonRegexRulesService.SPACE_REGEX})?`;
@@ -35,10 +36,13 @@ export class BoilingPointRulesService {
       if (!boilingPointInLine) continue;
 
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      const boilingPointMatch = boilingPointRegex.exec(cleanLineText);
-      if (!boilingPointMatch) continue;
+      const boilingPoint = ExtractionToolsService.getRawTextMatchingRegExp({
+        rawText: rawLineText,
+        cleanText: cleanLineText,
+        regExp: boilingPointRegex,
+      });
+      if (!boilingPoint) continue;
 
-      const boilingPoint = rawLineText.substring(boilingPointMatch.index, boilingPointMatch.index + boilingPointMatch[0].length);
       return { value: boilingPoint, metaData: { startBox, endBox } };
     }
 

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import type { IExtractedDanger } from '@padoa/chemical-risk';
 
 import type { IFdsTree } from '@topics/engine/model/fds.model.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class DangersRulesService {
   private static readonly CUSTOM_HAZARDS_REGEX = ['h\\s*350i', 'h\\s*360f[d]?', 'h\\s*360d[f]?', 'h\\s*361f[d]?', 'h\\s*361d'];
@@ -28,16 +29,8 @@ export class DangersRulesService {
       .map((lineInfo) => {
         const { cleanLineText, rawLineText, startBox, endBox } = lineInfo;
 
-        const matches: IExtractedDanger[] = [];
-        let match: RegExpExecArray | null;
-        do {
-          match = dangersRegex.exec(cleanLineText);
-          if (!match) continue;
-
-          const code = _.trim(rawLineText.substring(match.index, match.index + match[0].length));
-          matches.push({ code, metaData: { startBox, endBox } });
-        } while (match !== null);
-        return matches;
+        const matches = ExtractionToolsService.getAllRawTextMatchingRegExp({ rawText: rawLineText, cleanText: cleanLineText, regExp: dangersRegex });
+        return matches.map((code) => ({ code, metaData: { startBox, endBox } }));
       })
       .flatMap()
       .compact()

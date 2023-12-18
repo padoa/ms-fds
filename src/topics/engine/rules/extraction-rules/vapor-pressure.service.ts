@@ -3,6 +3,7 @@ import type { IExtractedVaporPressure } from '@padoa/chemical-risk';
 
 import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class VaporPressureService {
   private static readonly PRESSURE_UNITS_REGEX = '(kpa|hpa|pa|mbar|bar|atm)';
@@ -38,16 +39,14 @@ export class VaporPressureService {
       if (!vaporPressureInLine) continue;
 
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      const pressureMatch = pressureRegex.exec(cleanLineText);
-      if (!pressureMatch) continue;
+      const pressure = ExtractionToolsService.getRawTextMatchingRegExp({ rawText: rawLineText, cleanText: cleanLineText, regExp: pressureRegex });
+      if (!pressure) continue;
 
-      const pressure = rawLineText.substring(pressureMatch.index, pressureMatch.index + pressureMatch[0].length);
-
-      const temperatureMatch = temperatureRegex.exec(cleanLineText);
-      const temperature = temperatureMatch
-        ? rawLineText.substring(temperatureMatch.index, temperatureMatch.index + temperatureMatch[0].length)
-        : undefined;
-
+      const temperature = ExtractionToolsService.getRawTextMatchingRegExp({
+        rawText: rawLineText,
+        cleanText: cleanLineText,
+        regExp: temperatureRegex,
+      });
       return { pressure, temperature, metaData: { startBox, endBox } };
     }
 
