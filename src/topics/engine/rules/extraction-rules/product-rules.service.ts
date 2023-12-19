@@ -22,7 +22,7 @@ export class ProductRulesService {
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
       const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
-      const { cleanText: cleanProductText, rawText: rawProductText } = ExtractionToolsService.getTextValueByText(line);
+      const { cleanText: cleanProductText, rawText: rawProductText } = ExtractionToolsService.getLastTextBlockOfLine(line);
 
       if (nameInCurrentLine) return { name: rawProductText, metaData };
 
@@ -44,7 +44,7 @@ export class ProductRulesService {
 
     for (const line of linesToSearchIn) {
       const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
-      const { rawText: rawProductText, cleanText: cleanProductText } = ExtractionToolsService.getTextValueByText(line);
+      const { rawText: rawProductText, cleanText: cleanProductText } = ExtractionToolsService.getLastTextBlockOfLine(line);
 
       // TODO: create an identifier RegExp
       if (

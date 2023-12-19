@@ -99,7 +99,7 @@ describe('ExtractionToolsService tests', () => {
     });
   });
 
-  describe('GetTextValueByText tests', () => {
+  describe('GetLastTextBlockOfLine tests', () => {
     const beforeColon = 'BEFORE Colon';
     const afterColon = 'AFTER Colon';
     const contentWithOneColon = `${beforeColon}: ${afterColon} `;
@@ -120,7 +120,7 @@ describe('ExtractionToolsService tests', () => {
       },
     ])('$message', ({ line, expectedRawText }) => {
       const expected: IMatchedText = { rawText: expectedRawText, cleanText: TextCleanerService.cleanRawText(expectedRawText) };
-      expect(ExtractionToolsService.getTextValueByText(line)).toEqual(expected);
+      expect(ExtractionToolsService.getLastTextBlockOfLine(line)).toEqual(expected);
     });
   });
 

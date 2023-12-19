@@ -12,7 +12,7 @@ export class ProducerRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { rawText: rawProducerText, cleanText: cleanProducerText } = ExtractionToolsService.getTextValueByText(line);
+      const { rawText: rawProducerText, cleanText: cleanProducerText } = ExtractionToolsService.getLastTextBlockOfLine(line);
       if (!cleanProducerText) continue;
 
       if (

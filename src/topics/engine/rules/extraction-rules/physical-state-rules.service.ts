@@ -19,7 +19,7 @@ export class PhysicalStateRulesService {
   public static getPhysicalStateByText(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
       const lineCleanText = line.texts.map(({ cleanContent }) => cleanContent).join('');
-      const { rawText: rawPhysicalStateText, cleanText: cleanPhysicalStateText } = ExtractionToolsService.getTextValueByText(line);
+      const { rawText: rawPhysicalStateText, cleanText: cleanPhysicalStateText } = ExtractionToolsService.getLastTextBlockOfLine(line);
 
       const physicalStateTextInLine = !!lineCleanText?.replaceAll(' ', '').match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
       const expectedTextIsNotAPhysicalStateIdentifier = !TextCleanerService.cleanSpaces(cleanPhysicalStateText)?.match(
@@ -40,7 +40,7 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByValue(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const { rawText: rawPhysicalStateText, cleanText: cleanPhysicalStateText } = ExtractionToolsService.getTextValueByText(line);
+      const { rawText: rawPhysicalStateText, cleanText: cleanPhysicalStateText } = ExtractionToolsService.getLastTextBlockOfLine(line);
       const expectedTextIsAPhysicalState = cleanPhysicalStateText.match(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX);
 
       if (expectedTextIsAPhysicalState) {

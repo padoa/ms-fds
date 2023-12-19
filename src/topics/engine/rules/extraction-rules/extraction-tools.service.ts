@@ -46,7 +46,7 @@ export class ExtractionToolsService {
     };
   }
 
-  public static getTextValueByText(line: ILine): IMatchedText {
+  public static getLastTextBlockOfLine(line: ILine): IMatchedText {
     const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
     return {
       rawText: _(rawContent).split(':').last().trim(),
