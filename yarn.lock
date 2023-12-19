@@ -842,10 +842,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@padoa/chemical-risk@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@padoa/chemical-risk@npm:1.3.0"
-  checksum: abbbec36c52a727245b2b6be50e5c9e1959286268d2dc6ebe9811b509cc756d659dab5f4d18026db574ab8a6471826ced0e7c569307ea9503c2e79312f01ede6
+"@padoa/chemical-risk@npm:1.3.0-71c19a50f34993163dd34de4e0d3fb61c57357d8":
+  version: 1.3.0-71c19a50f34993163dd34de4e0d3fb61c57357d8
+  resolution: "@padoa/chemical-risk@npm:1.3.0-71c19a50f34993163dd34de4e0d3fb61c57357d8"
+  checksum: 928c8e326fbea9afc16b9c680c8347308664b024eb58de8f05adf44fd82f0705b91e7ac864d15a79bd01a84969fea52d95f88220661675698c1cf10dc699b2f4
   languageName: node
   linkType: hard
 
@@ -5887,7 +5887,7 @@ __metadata:
   dependencies:
     "@padoa/async-local-storage": ^2.0.2
     "@padoa/axios": ^5.0.4
-    "@padoa/chemical-risk": ^1.3.0
+    "@padoa/chemical-risk": 1.3.0-71c19a50f34993163dd34de4e0d3fb61c57357d8
     "@padoa/csv-tools": ^2.0.4
     "@padoa/database": ^26.2.0
     "@padoa/eslint-plugin": ^2.0.11
