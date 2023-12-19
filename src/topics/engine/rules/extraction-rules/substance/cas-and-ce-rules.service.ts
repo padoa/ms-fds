@@ -4,6 +4,7 @@ import type { IExtractedCasNumber, IExtractedCeNumber, IExtractedSubstance, IMet
 import type { ILine } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class CasAndCeRulesService {
   public static getSubstancesCasAndCe(linesToSearchIn: ILine[]): Array<Pick<IExtractedSubstance, 'casNumber' | 'ceNumber'>> {
@@ -11,13 +12,17 @@ export class CasAndCeRulesService {
     let previousLineSubstance: Partial<IExtractedSubstance> = {};
 
     for (const line of linesToSearchIn) {
-      const textCleaned = _(line.texts)
-        .map(({ cleanContent }) => cleanContent)
-        .join(' ');
+      const { cleanText, rawText } = line.texts.reduce(
+        (joinedTexts, { cleanContent, rawContent }) => ({
+          cleanText: joinedTexts.cleanText + cleanContent,
+          rawText: joinedTexts.rawText + rawContent,
+        }),
+        { cleanText: '', rawText: '' },
+      );
       const metaData: IMetaData = { startBox: line.startBox, endBox: line.endBox };
 
-      const casNumberValue = this.getCasNumber(textCleaned);
-      const ceNumberValue = this.getCeNumber(textCleaned);
+      const casNumberValue = this.getCasNumber(rawText, cleanText);
+      const ceNumberValue = this.getCeNumber(rawText, cleanText);
 
       const casNumber = casNumberValue ? { value: TextCleanerService.cleanSpaces(casNumberValue), metaData } : undefined;
       const ceNumber = ceNumberValue ? { value: TextCleanerService.cleanSpaces(ceNumberValue), metaData } : undefined;
@@ -50,20 +55,18 @@ export class CasAndCeRulesService {
     `${this.NEGATIVE_LOOK_BEHIND_REGEX}(\\d{1,7}${this.SEPARATOR_REGEX}\\d{2}${this.SEPARATOR_REGEX}\\d{1})${this.NEGATIVE_LOOK_AHEAD_REGEX}`,
   );
 
-  public static getCasNumber(text: string): string {
-    // TODO: rule with cas
-    const match = text.match(this.CAS_NUMBER_REGEX);
-    return match?.[2];
+  public static getCasNumber(rawText: string, cleanText: string): string {
+    const casNumber = ExtractionToolsService.getTextMatchingRegExp(this.CAS_NUMBER_REGEX, { cleanText, rawText });
+    return casNumber ? casNumber.rawText : null;
   }
 
   public static readonly CE_NUMBER_REGEX = new RegExp(
     `${this.NEGATIVE_LOOK_BEHIND_REGEX}(\\d{3}${this.SEPARATOR_REGEX}\\d{3}${this.SEPARATOR_REGEX}\\d{1})${this.NEGATIVE_LOOK_AHEAD_REGEX}`,
   );
 
-  public static getCeNumber(text: string): string {
-    // TODO: rule with ce
-    const match = text.match(this.CE_NUMBER_REGEX);
-    return match?.[2];
+  public static getCeNumber(rawText: string, cleanText: string): string {
+    const ceNumber = ExtractionToolsService.getTextMatchingRegExp(this.CE_NUMBER_REGEX, { cleanText, rawText });
+    return ceNumber ? ceNumber.rawText : null;
   }
 
   private static isSameSubstance(
