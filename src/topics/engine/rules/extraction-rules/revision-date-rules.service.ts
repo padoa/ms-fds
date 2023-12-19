@@ -32,12 +32,11 @@ export class RevisionDateRulesService {
 
     const inTextDate =
       this.getDateByRevisionText(rawFullText, cleanedFullText) ||
-      this.getDateByMostFrequent(cleanedFullText) ||
-      this.getDateByMostRecent(cleanedFullText);
+      this.getDateByMostFrequent(rawFullText, cleanedFullText) ||
+      this.getDateByMostRecent(rawFullText, cleanedFullText);
     if (!inTextDate) return { formattedDate: null, inTextDate: null };
     const parsedDate = this.parseDate(TextCleanerService.cleanRawText(inTextDate));
 
-    // TODO: return inTextDate as raw text not formatted through many functions
     return {
       formattedDate: parsedDate && !Number.isNaN(parsedDate.getTime()) ? format(parsedDate, 'yyyy/MM/dd') : null,
       inTextDate,
@@ -60,19 +59,25 @@ export class RevisionDateRulesService {
     return null;
   }
 
-  public static getDateByMostFrequent(fullText: string): string | undefined | null {
-    const numberDates = fullText.match(new RegExp(this.NUMBER_DATE_REGEX, 'g')) || [];
-    const stringDates = fullText.match(new RegExp(this.STRING_DATE_REGEX, 'g')) || [];
-    const dates = [...numberDates, ...stringDates];
+  public static getDateByMostFrequent(rawFullText: string, cleanFullText: string): string | null {
+    const numberDatesMatches = ExtractionToolsService.getAllTextsMatchingRegExp(new RegExp(this.NUMBER_DATE_REGEX, 'g'), {
+      rawText: rawFullText,
+      cleanText: cleanFullText,
+    });
+    const stringDatesMatches = ExtractionToolsService.getAllTextsMatchingRegExp(new RegExp(this.STRING_DATE_REGEX, 'g'), {
+      rawText: rawFullText,
+      cleanText: cleanFullText,
+    });
+    const datesMatches = [...numberDatesMatches, ...stringDatesMatches];
 
     const dateCounts = _.reduce(
-      dates,
-      (counts, date) => {
-        const count = counts?.[date]?.count || 0;
+      datesMatches,
+      (counts, dateMatch) => {
+        const count = counts?.[dateMatch.cleanText]?.count || 0;
         return {
           ...counts,
-          [date]: {
-            date,
+          [dateMatch.cleanText]: {
+            date: dateMatch.cleanText,
             count: count + 1,
           },
         };
@@ -82,15 +87,24 @@ export class RevisionDateRulesService {
     const maxCount = _.max(Object.values(dateCounts).map(({ count }) => count));
     if (maxCount < 3) return null;
 
-    const mostUsedDates = _.filter(dates, (date) => dateCounts[date].count === maxCount);
-    return _.maxBy(mostUsedDates, (date) => this.parseDate(date));
+    const mostMatchedDates = _.filter(datesMatches, (dateMatch) => dateCounts[dateMatch.cleanText].count === maxCount);
+    const mostMatchedDate = _.maxBy(mostMatchedDates, (dateMatch) => this.parseDate(dateMatch.cleanText));
+    return mostMatchedDate ? mostMatchedDate.rawText : null;
   }
 
-  public static getDateByMostRecent = (fullText: string): string | undefined => {
-    const numberDates = fullText.match(new RegExp(this.NUMBER_DATE_REGEX, 'g')) || [];
-    const stringDates = fullText.match(new RegExp(this.STRING_DATE_REGEX, 'g')) || [];
-    const dates = [...numberDates, ...stringDates];
-    return _.maxBy(dates, (date) => this.parseDate(date));
+  public static getDateByMostRecent = (rawFullText: string, cleanFullText: string): string | null => {
+    const numberDatesMatches = ExtractionToolsService.getAllTextsMatchingRegExp(new RegExp(this.NUMBER_DATE_REGEX, 'g'), {
+      rawText: rawFullText,
+      cleanText: cleanFullText,
+    });
+    const stringDatesMatches = ExtractionToolsService.getAllTextsMatchingRegExp(new RegExp(this.STRING_DATE_REGEX, 'g'), {
+      rawText: rawFullText,
+      cleanText: cleanFullText,
+    });
+    const datesMatches = [...numberDatesMatches, ...stringDatesMatches];
+
+    const mostMatchedDate = _.maxBy(datesMatches, (dateMatch) => this.parseDate(dateMatch.cleanText));
+    return mostMatchedDate ? mostMatchedDate.rawText : null;
   };
 
   public static parseDate(date: string): Date | null {
