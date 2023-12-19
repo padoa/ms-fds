@@ -46,25 +46,20 @@ export class ExtractionToolsService {
     };
   }
 
-  // TODO: add tests
   public static getTextValueByText(line: ILine): IMatchedText {
     const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
     return {
-      cleanText: this.extractValueFromText(cleanContent),
-      rawText: this.extractValueFromText(rawContent),
+      rawText: _(rawContent).split(':').last().trim(),
+      cleanText: _(cleanContent).split(':').last().trim(),
     };
   }
 
-  private static extractValueFromText(text: string): string {
-    return _(text).split(':').last().trim();
-  }
-
-  // TODO: add tests
   public static getJoinedTexts(texts: IText[]): IJoinedTexts {
-    return texts.reduce(
+    return _.reduce(
+      texts,
       (joinedTexts, { cleanContent, rawContent }) => ({
-        cleanText: joinedTexts.cleanText + cleanContent,
-        rawText: joinedTexts.rawText + rawContent,
+        cleanText: joinedTexts.cleanText + (cleanContent || ''),
+        rawText: joinedTexts.rawText + (rawContent || ''),
       }),
       { cleanText: '', rawText: '' },
     );

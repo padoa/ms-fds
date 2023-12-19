@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
 import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
-import type { IGetTextMatchingRegExpOptions, IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
+import type { IGetTextMatchingRegExpOptions, IJoinedTexts, IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+import type { ILine, IText } from '@topics/engine/model/fds.model.js';
+import { aText, aTextWithRandomContent1 } from '@topics/engine/__fixtures__/text.mother.js';
+import { RAW_PLACEHOLDER_TEXT_1, RAW_TEXT_CONTENT } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import { aLine, aLineWithOneText } from '@topics/engine/__fixtures__/line.mother.js';
 
 describe('ExtractionToolsService tests', () => {
   describe('GetAllRawTextMatchingRegExp tests', () => {
@@ -92,6 +96,51 @@ describe('ExtractionToolsService tests', () => {
         : null;
 
       expect(ExtractionToolsService.getTextMatchingRegExp(regExp, payload)).toEqual(expected);
+    });
+  });
+
+  describe('GetTextValueByText tests', () => {
+    const beforeColon = 'BEFORE Colon';
+    const afterColon = 'AFTER Colon';
+    const contentWithOneColon = `${beforeColon}: ${afterColon} `;
+    const contentWithMultipleColon = `${beforeColon}: ${beforeColon}: ${beforeColon}: ${beforeColon}: ${afterColon}`;
+
+    it.each<{ message: string; line: ILine; expectedRawText: string }>([
+      { message: 'should return empty strings when line has no texts', line: aLine().properties, expectedRawText: '' },
+      { message: 'should return last and only element of list', line: aLineWithOneText().properties, expectedRawText: RAW_TEXT_CONTENT },
+      {
+        message: 'should return last element of list, split it by colon and trim it',
+        line: aLine().withTexts([aText().withContent(contentWithOneColon).properties]).properties,
+        expectedRawText: afterColon,
+      },
+      {
+        message: 'should return last element of list, split it by last colon and trim it',
+        line: aLine().withTexts([aText().withContent(contentWithMultipleColon).properties]).properties,
+        expectedRawText: afterColon,
+      },
+    ])('$message', ({ line, expectedRawText }) => {
+      const expected: IMatchedText = { rawText: expectedRawText, cleanText: TextCleanerService.cleanRawText(expectedRawText) };
+      expect(ExtractionToolsService.getTextValueByText(line)).toEqual(expected);
+    });
+  });
+
+  describe('GetJoinedTexts tests', () => {
+    it.each<{ message: string; texts: IText[]; expectedRawText: string }>([
+      { message: 'should return empty strings when texts is undefined', texts: undefined, expectedRawText: '' },
+      { message: 'should return empty strings when texts is an empty list', texts: [], expectedRawText: '' },
+      {
+        message: 'should return joined strings',
+        texts: [aText().properties, aTextWithRandomContent1().properties],
+        expectedRawText: `${RAW_TEXT_CONTENT}${RAW_PLACEHOLDER_TEXT_1}`,
+      },
+      {
+        message: 'should return joined strings and skip undefined text',
+        texts: [aText().properties, aText().withContent(undefined).properties, aTextWithRandomContent1().properties],
+        expectedRawText: `${RAW_TEXT_CONTENT}${RAW_PLACEHOLDER_TEXT_1}`,
+      },
+    ])('$message', ({ texts, expectedRawText }) => {
+      const expected: IJoinedTexts = { rawText: expectedRawText, cleanText: TextCleanerService.cleanRawText(expectedRawText) };
+      expect(ExtractionToolsService.getJoinedTexts(texts)).toEqual(expected);
     });
   });
 });

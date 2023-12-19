@@ -46,6 +46,7 @@ export class ProductRulesService {
       const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
       const { rawText: rawProductText, cleanText: cleanProductText } = ExtractionToolsService.getTextValueByText(line);
 
+      // TODO: create an identifier RegExp
       if (
         !cleanProductText ||
         _.includes(cleanProductText, '1.1') ||
