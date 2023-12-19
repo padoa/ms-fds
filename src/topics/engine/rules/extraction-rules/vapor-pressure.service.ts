@@ -27,24 +27,18 @@ export class VaporPressureService {
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
-      const { cleanLineText, rawLineText } = texts.reduce(
-        (joinedTexts, { cleanContent, rawContent }) => ({
-          cleanLineText: joinedTexts.cleanLineText + cleanContent,
-          rawLineText: joinedTexts.rawLineText + rawContent,
-        }),
-        { cleanLineText: '', rawLineText: '' },
-      );
+      const { rawText, cleanText } = ExtractionToolsService.getJoinedTexts(texts);
 
-      const vaporPressureInLine = !!cleanLineText.match(this.VAPOR_PRESSURE_IDENTIFIER_REGEX);
+      const vaporPressureInLine = !!cleanText.match(this.VAPOR_PRESSURE_IDENTIFIER_REGEX);
       if (!vaporPressureInLine) continue;
 
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
-      const pressure = ExtractionToolsService.getTextMatchingRegExp(pressureRegex, { rawText: rawLineText, cleanText: cleanLineText });
+      const pressure = ExtractionToolsService.getTextMatchingRegExp(pressureRegex, { rawText, cleanText });
       if (!pressure) continue;
 
       const temperature = ExtractionToolsService.getTextMatchingRegExp(temperatureRegex, {
-        rawText: rawLineText,
-        cleanText: cleanLineText,
+        rawText,
+        cleanText,
       });
       return { pressure: pressure.rawText, temperature: temperature ? temperature.rawText : null, metaData: { startBox, endBox } };
     }

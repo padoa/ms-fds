@@ -24,21 +24,15 @@ export class BoilingPointRulesService {
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
-      const { cleanLineText, rawLineText } = texts.reduce(
-        (joinedTexts, { cleanContent, rawContent }) => ({
-          cleanLineText: joinedTexts.cleanLineText + cleanContent,
-          rawLineText: joinedTexts.rawLineText + rawContent,
-        }),
-        { cleanLineText: '', rawLineText: '' },
-      );
+      const { rawText, cleanText } = ExtractionToolsService.getJoinedTexts(texts);
 
-      const boilingPointInLine = !!cleanLineText.match(this.BOILING_POINT_IDENTIFIER_REGEX);
+      const boilingPointInLine = !!cleanText.match(this.BOILING_POINT_IDENTIFIER_REGEX);
       if (!boilingPointInLine) continue;
 
       // TODO: handle "non applicable, non disponible" in order to return null and cancel loop
       const boilingPoint = ExtractionToolsService.getTextMatchingRegExp(boilingPointRegex, {
-        rawText: rawLineText,
-        cleanText: cleanLineText,
+        rawText,
+        cleanText,
       });
       if (!boilingPoint) continue;
 

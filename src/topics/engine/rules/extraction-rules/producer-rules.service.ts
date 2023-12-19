@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import type { IExtractedProducer } from '@padoa/chemical-risk';
 
-import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class ProducerRulesService {
   public static getProducer(fdsTree: IFdsTree): IExtractedProducer | null {
@@ -11,7 +12,7 @@ export class ProducerRulesService {
     if (_.isEmpty(linesToSearchIn)) return null;
 
     for (const line of linesToSearchIn) {
-      const { cleanProducerText, rawProducerText } = this.extractRawAndCleanProducerText(line);
+      const { rawText: rawProducerText, cleanText: cleanProducerText } = ExtractionToolsService.getTextValueByText(line);
       if (!cleanProducerText) continue;
 
       if (
@@ -28,17 +29,5 @@ export class ProducerRulesService {
       return { name: TextCleanerService.trimAndCleanTrailingDot(rawProducerText), metaData: { startBox: line.startBox, endBox: line.endBox } };
     }
     return null;
-  }
-
-  private static extractRawAndCleanProducerText(line: ILine): { cleanProducerText: string; rawProducerText: string } {
-    const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
-    return {
-      cleanProducerText: this.extractProducerText(cleanContent),
-      rawProducerText: this.extractProducerText(rawContent),
-    };
-  }
-
-  private static extractProducerText(text: string): string {
-    return _(text).split(':').last().trim();
   }
 }

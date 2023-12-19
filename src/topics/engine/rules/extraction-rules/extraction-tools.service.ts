@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
-import type { IGetTextMatchingRegExpOptions, IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
+import type { IGetTextMatchingRegExpOptions, IJoinedTexts, IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
+import type { ILine, IText } from '@topics/engine/model/fds.model.js';
 
 export class ExtractionToolsService {
   public static MAX_MATCH_ITERATIONS: number = 50;
@@ -43,5 +44,29 @@ export class ExtractionToolsService {
       rawText: _.trim(rawText.substring(startIndex + startOffset, endIndex)),
       cleanText: _.trim(regExpMatch[capturingGroup]),
     };
+  }
+
+  // TODO: add tests
+  public static getTextValueByText(line: ILine): IMatchedText {
+    const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
+    return {
+      cleanText: this.extractValueFromText(cleanContent),
+      rawText: this.extractValueFromText(rawContent),
+    };
+  }
+
+  private static extractValueFromText(text: string): string {
+    return _(text).split(':').last().trim();
+  }
+
+  // TODO: add tests
+  public static getJoinedTexts(texts: IText[]): IJoinedTexts {
+    return texts.reduce(
+      (joinedTexts, { cleanContent, rawContent }) => ({
+        cleanText: joinedTexts.cleanText + cleanContent,
+        rawText: joinedTexts.rawText + rawContent,
+      }),
+      { cleanText: '', rawText: '' },
+    );
   }
 }

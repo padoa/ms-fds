@@ -3,6 +3,7 @@ import type { IExtractedPhysicalState } from '@padoa/chemical-risk';
 
 import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class PhysicalStateRulesService {
   public static getPhysicalState(fdsTree: IFdsTree): IExtractedPhysicalState {
@@ -18,7 +19,7 @@ export class PhysicalStateRulesService {
   public static getPhysicalStateByText(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
       const lineCleanText = line.texts.map(({ cleanContent }) => cleanContent).join('');
-      const { cleanPhysicalStateText, rawPhysicalStateText } = this.extractRawAndCleanPhysicalStateText(line);
+      const { rawText: rawPhysicalStateText, cleanText: cleanPhysicalStateText } = ExtractionToolsService.getTextValueByText(line);
 
       const physicalStateTextInLine = !!lineCleanText?.replaceAll(' ', '').match(PhysicalStateRulesService.PHYSICAL_STATE_IDENTIFIER_REGEX);
       const expectedTextIsNotAPhysicalStateIdentifier = !TextCleanerService.cleanSpaces(cleanPhysicalStateText)?.match(
@@ -39,7 +40,7 @@ export class PhysicalStateRulesService {
 
   public static getPhysicalStateByValue(linesToSearchIn: ILine[]): IExtractedPhysicalState {
     for (const line of linesToSearchIn) {
-      const { cleanPhysicalStateText, rawPhysicalStateText } = this.extractRawAndCleanPhysicalStateText(line);
+      const { rawText: rawPhysicalStateText, cleanText: cleanPhysicalStateText } = ExtractionToolsService.getTextValueByText(line);
       const expectedTextIsAPhysicalState = cleanPhysicalStateText.match(PhysicalStateRulesService.PHYSICAL_STATE_VALUES_REGEX);
 
       if (expectedTextIsAPhysicalState) {
@@ -50,17 +51,5 @@ export class PhysicalStateRulesService {
       }
     }
     return null;
-  }
-
-  private static extractRawAndCleanPhysicalStateText(line: ILine): { cleanPhysicalStateText: string; rawPhysicalStateText: string } {
-    const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
-    return {
-      cleanPhysicalStateText: this.extractPhysicalStateText(cleanContent),
-      rawPhysicalStateText: this.extractPhysicalStateText(rawContent),
-    };
-  }
-
-  private static extractPhysicalStateText(text: string): string {
-    return _(text).split(':').last().trim();
   }
 }

@@ -17,13 +17,7 @@ export class ConcentrationRulesService {
   public static getConcentrationsInColumn(lines: IText[][]): IExtractedConcentration[] {
     const concentrations = [];
     for (const texts of lines) {
-      const { cleanText, rawText } = texts.reduce(
-        (joinedTexts, { cleanContent, rawContent }) => ({
-          cleanText: joinedTexts.cleanText + cleanContent,
-          rawText: joinedTexts.rawText + rawContent,
-        }),
-        { cleanText: '', rawText: '' },
-      );
+      const { cleanText, rawText } = ExtractionToolsService.getJoinedTexts(texts);
 
       const concentration = this.getConcentration(rawText, cleanText);
       if (concentration)

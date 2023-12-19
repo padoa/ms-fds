@@ -9,22 +9,16 @@ export class DangersRulesService {
   public static getDangers(fdsTree: IFdsTree): IExtractedDanger[] {
     const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
     const infoInEachLine = _.map(linesToSearchIn, ({ texts, startBox, endBox }) => {
-      const { cleanLineText, rawLineText } = texts.reduce(
-        (joinedTexts, { cleanContent, rawContent }) => ({
-          cleanLineText: joinedTexts.cleanLineText + cleanContent,
-          rawLineText: joinedTexts.rawLineText + rawContent,
-        }),
-        { cleanLineText: '', rawLineText: '' },
-      );
-      return { cleanLineText, rawLineText, startBox, endBox };
+      const { rawText, cleanText } = ExtractionToolsService.getJoinedTexts(texts);
+      return { rawText, cleanText, startBox, endBox };
     });
 
     const dangersRegex = new RegExp(`${EUROPEAN_HAZARDS_REGEX}|${HAZARDS_REGEX}|${PRECAUTION_REGEX}`, 'g');
     return _(infoInEachLine)
       .map((lineInfo) => {
-        const { cleanLineText, rawLineText, startBox, endBox } = lineInfo;
+        const { cleanText, rawText, startBox, endBox } = lineInfo;
 
-        const matches = ExtractionToolsService.getAllTextsMatchingRegExp(dangersRegex, { rawText: rawLineText, cleanText: cleanLineText });
+        const matches = ExtractionToolsService.getAllTextsMatchingRegExp(dangersRegex, { rawText, cleanText });
         return matches.map((match) => ({ code: match.rawText, metaData: { startBox, endBox } }));
       })
       .flatMap()

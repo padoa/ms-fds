@@ -3,6 +3,8 @@ export type IMatchedText = {
   cleanText: string;
 };
 
+export type IJoinedTexts = IMatchedText;
+
 export type IGetTextMatchingRegExpOptions = IMatchedText & {
   capturingGroup?: number;
 };

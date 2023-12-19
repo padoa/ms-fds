@@ -12,13 +12,7 @@ export class CasAndCeRulesService {
     let previousLineSubstance: Partial<IExtractedSubstance> = {};
 
     for (const line of linesToSearchIn) {
-      const { cleanText, rawText } = line.texts.reduce(
-        (joinedTexts, { cleanContent, rawContent }) => ({
-          cleanText: joinedTexts.cleanText + cleanContent,
-          rawText: joinedTexts.rawText + rawContent,
-        }),
-        { cleanText: '', rawText: '' },
-      );
+      const { cleanText, rawText } = ExtractionToolsService.getJoinedTexts(line.texts);
       const metaData: IMetaData = { startBox: line.startBox, endBox: line.endBox };
 
       const casNumberValue = this.getCasNumber(rawText, cleanText);
