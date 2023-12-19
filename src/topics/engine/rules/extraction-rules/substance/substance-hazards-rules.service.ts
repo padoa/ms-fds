@@ -14,13 +14,7 @@ export class SubstanceHazardsRulesService {
   public static getHazardsInColumn(lines: IText[][]): IExtractedDanger[] {
     return _(lines)
       .map((texts) => {
-        const { cleanText, rawText } = texts.reduce(
-          (joinedTexts, { cleanContent, rawContent }) => ({
-            cleanText: joinedTexts.cleanText + cleanContent,
-            rawText: joinedTexts.rawText + rawContent,
-          }),
-          { cleanText: '', rawText: '' },
-        );
+        const { cleanText, rawText } = ExtractionToolsService.getJoinedTexts(texts);
         const hazardsCodes = ExtractionToolsService.getAllTextsMatchingRegExp(new RegExp(HAZARDS_REGEX, 'g'), { rawText, cleanText });
         return _.map(hazardsCodes, (code) => ({
           code: _.trim(code.rawText),

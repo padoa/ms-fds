@@ -4,6 +4,7 @@ import type { IExtractedConcentration } from '@padoa/chemical-risk';
 import type { IText } from '@topics/engine/model/fds.model.js';
 import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class ConcentrationRulesService {
   public static getConcentrations(linesSplittedByColumns: IText[][][]): IExtractedConcentration[] {
@@ -16,8 +17,9 @@ export class ConcentrationRulesService {
   public static getConcentrationsInColumn(lines: IText[][]): IExtractedConcentration[] {
     const concentrations = [];
     for (const texts of lines) {
-      const lineText = texts.map(({ cleanContent }) => cleanContent).join('');
-      const concentration = this.getConcentration(lineText);
+      const { cleanText, rawText } = ExtractionToolsService.getJoinedTexts(texts);
+
+      const concentration = this.getConcentration(rawText, cleanText);
       if (concentration)
         concentrations.push({
           value: concentration,
@@ -42,8 +44,8 @@ export class ConcentrationRulesService {
     `(${this.RANGE_CONCENTRATION_REGEX}|${this.RANGE_PERCENT_CONCENTRATION_REGEX}|${this.IN_BETWEEN_RANGE_CONCENTRATION_REGEX}|${this.PERCENT_CONCENTRATION_REGEX})`,
   );
 
-  public static getConcentration(text: string): string {
-    const match = text.match(this.CONCENTRATION_REGEX);
-    return match?.[0];
+  public static getConcentration(rawText: string, cleanText: string): string {
+    const concentration = ExtractionToolsService.getTextMatchingRegExp(this.CONCENTRATION_REGEX, { cleanText, rawText });
+    return concentration ? concentration.rawText : null;
   }
 }

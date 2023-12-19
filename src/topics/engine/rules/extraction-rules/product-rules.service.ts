@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import type { IExtractedProduct } from '@padoa/chemical-risk';
 
-import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
+import type { IFdsTree } from '@topics/engine/model/fds.model.js';
 import { TextCleanerService } from '@topics/engine/text-cleaner.service.js';
+import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
 
 export class ProductRulesService {
   public static getProduct(fdsTree: IFdsTree, { fullText }: { fullText: string }): IExtractedProduct | null {
@@ -21,7 +22,7 @@ export class ProductRulesService {
       const metaData = { startBox: line.startBox, endBox: line.endBox };
 
       const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
-      const { cleanProductText, rawProductText } = this.extractRawAndCleanProductText(line);
+      const { cleanText: cleanProductText, rawText: rawProductText } = ExtractionToolsService.getLastTextBlockOfLine(line);
 
       if (nameInCurrentLine) return { name: rawProductText, metaData };
 
@@ -36,18 +37,6 @@ export class ProductRulesService {
     return null;
   }
 
-  private static extractRawAndCleanProductText(line: ILine): { cleanProductText: string; rawProductText: string } {
-    const { cleanContent, rawContent } = _.last(line.texts) || { cleanContent: '', rawContent: '' };
-    return {
-      cleanProductText: this.extractProductText(cleanContent),
-      rawProductText: this.extractProductText(rawContent),
-    };
-  }
-
-  private static extractProductText(productText: string): string {
-    return _(productText).split(':').last().trim();
-  }
-
   public static getProductByLineOrder(fdsTree: IFdsTree, { fullText }: { fullText: string }): IExtractedProduct | null {
     const linesToSearchIn = fdsTree[1]?.subsections?.[1]?.lines;
 
@@ -55,8 +44,9 @@ export class ProductRulesService {
 
     for (const line of linesToSearchIn) {
       const lineCleanText = _.map(line.texts, ({ cleanContent }) => cleanContent).join('');
-      const { rawProductText, cleanProductText } = this.extractRawAndCleanProductText(line);
+      const { rawText: rawProductText, cleanText: cleanProductText } = ExtractionToolsService.getLastTextBlockOfLine(line);
 
+      // TODO: create an identifier RegExp
       if (
         !cleanProductText ||
         _.includes(cleanProductText, '1.1') ||
