@@ -22,6 +22,8 @@ import {
   RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
   RAW_VAPOR_PRESSURE_VALUE,
   RAW_VAPOR_PRESSURE_TEMPERATURE,
+  RAW_WARNING_NOTICE_VALUE,
+  RAW_WARNING_NOTICE_IDENTIFIER,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { aSubstance } from '@topics/engine/rules/extraction-rules/__tests__/__fixtures__/substance.mother.js';
@@ -50,6 +52,8 @@ describe('ExtractionRulesService tests', () => {
       ${RAW_VAPOR_PRESSURE_VALUE}
       ${RAW_BOILING_POINT_IDENTIFIER}
       ${RAW_BOILING_POINT_VALUE}
+      ${RAW_WARNING_NOTICE_IDENTIFIER}
+      ${RAW_WARNING_NOTICE_VALUE}
     `;
 
       const expected: IExtractedData = {
@@ -65,6 +69,7 @@ describe('ExtractionRulesService tests', () => {
         physicalState: { value: RAW_PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
         boilingPoint: { value: RAW_BOILING_POINT_VALUE, metaData },
+        warningNotice: { value: RAW_WARNING_NOTICE_VALUE, metaData },
       };
 
       await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(

@@ -92,3 +92,10 @@ export const RAW_VAPOR_PRESSURE_VALUE = '3 kPa';
 
 export const RAW_BOILING_POINT_IDENTIFIER = 'Ébullition';
 export const RAW_BOILING_POINT_VALUE = '120 °C';
+
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- WARNING_NOTICE -------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const RAW_WARNING_NOTICE_IDENTIFIER = "mention d'avertissement";
+export const RAW_WARNING_NOTICE_VALUE = 'DANGER';

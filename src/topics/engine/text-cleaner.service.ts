@@ -1,6 +1,8 @@
 export class TextCleanerService {
   public static cleanRawText(text: string): string {
-    return text?.toLowerCase();
+    // TODO: normalization for apostrophes
+    const ticksRegex = /[’’ʼ]/g;
+    return text?.toLowerCase().replaceAll(ticksRegex, "'");
   }
 
   public static trimAndCleanTrailingDot(text: string): string {

@@ -62,6 +62,7 @@ const addColumnsToCsv = async (csvFile: string): Promise<void> => {
     'Pression de vapeur',
     'Température de la pression vapeur',
     "Point d'ébullition",
+    "Mention d'avertissement",
     'Image ?',
   ].join('\t');
   return fs.writeFile(csvFile, `${headers}\n`);
@@ -80,6 +81,7 @@ const saveInCsv = async (
       physicalState,
       vaporPressure,
       boilingPoint,
+      warningNotice,
     },
     fromImage,
   }: {
@@ -106,6 +108,7 @@ const saveInCsv = async (
     vaporPressure ? vaporPressure.pressure : null,
     vaporPressure ? vaporPressure.temperature : null,
     boilingPoint?.value,
+    warningNotice?.value,
     fromImage,
     // /!\ If you add a line here please add it in the header above as well /!\
   ].join('\t');
