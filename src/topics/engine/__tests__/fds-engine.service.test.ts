@@ -1,8 +1,8 @@
 import type { SpyInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/fixtures.constants.js';
 
 import { FdsEngineService } from '@topics/engine/fds-engine.service.js';
-import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/fixtures.constants.js';
 import { ExtractionRulesService } from '@topics/engine/rules/extraction-rules.service.js';
 import { FdsTreeCleanerService } from '@topics/engine/transformer/fds-tree-cleaner.service.js';
 import { FdsTreeBuilderService } from '@topics/engine/transformer/fds-tree-builder.service.js';
