@@ -842,10 +842,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@padoa/chemical-risk@npm:1.1.0-9b2eb2300541c2c8688ebad211586548b138d9bf":
-  version: 1.1.0-9b2eb2300541c2c8688ebad211586548b138d9bf
-  resolution: "@padoa/chemical-risk@npm:1.1.0-9b2eb2300541c2c8688ebad211586548b138d9bf"
-  checksum: e22fd85bd8846009b30c251c71171621ac8d4989e2d7177ff02193356bfc0f94d2477b14bb63b369223a8eb0a380b948119c2384c97bed4b2f39da30bc829f8d
+"@padoa/chemical-risk@npm:1.2.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b":
+  version: 1.2.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
+  resolution: "@padoa/chemical-risk@npm:1.2.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b"
+  checksum: d4ed9b5dc0656e1db90826c67bac71d422eacf9dd489a0eaa8c74795294f0b3e69ebe5470b844697319e128d0f89d77d283b618ba518d857eb28215ca2b030ba
   languageName: node
   linkType: hard
 
@@ -931,9 +931,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@padoa/file-system@npm:5.4.0-2a25063a3ec36e0a5156d729dfcb6013d232771a":
-  version: 5.4.0-2a25063a3ec36e0a5156d729dfcb6013d232771a
-  resolution: "@padoa/file-system@npm:5.4.0-2a25063a3ec36e0a5156d729dfcb6013d232771a"
+"@padoa/file-system@npm:5.4.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b":
+  version: 5.4.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
+  resolution: "@padoa/file-system@npm:5.4.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b"
   dependencies:
     file-type: ^18.5.0
     gm: ^1.25.0
@@ -953,7 +953,7 @@ __metadata:
     "@padoa/swagger": ^15.0.0
     joi: ^17.11.0
     sequelize: ^6.29.0
-  checksum: ac21ae5da8f427707c4db7f679e44f85ff077a481725bfc86cd8d5f54ae7c54743bc1f24734d9f395e31294777912daed125951eef98ec3b84de54d1c40695e9
+  checksum: 71042b94be02bdcbff77c51971749e2db09463e8c96ba0b9bada0e525fb773b4701927ac6f251d1d3f6136259c1c30833104c9b4d36ea0f85a84ccd067d45e47
   languageName: node
   linkType: hard
 
@@ -984,10 +984,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@padoa/meta@npm:5.1.0-2a25063a3ec36e0a5156d729dfcb6013d232771a":
-  version: 5.1.0-2a25063a3ec36e0a5156d729dfcb6013d232771a
-  resolution: "@padoa/meta@npm:5.1.0-2a25063a3ec36e0a5156d729dfcb6013d232771a"
-  checksum: a14c63a0ea92016b62cc5a422110eb81f06339d7ec73a73e8e0976cdd396feaa24f0524ecf224f1b4a780fa0f5b4a0eeac769379ba66ae6ec8a83b34a2b94845
+"@padoa/meta@npm:5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b":
+  version: 5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
+  resolution: "@padoa/meta@npm:5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b"
+  checksum: cf0c55a3960f09a5e0366796118a78c39b19bb9b9ad350488bf15cb622066b035152bfc5eba6e6d34d41cf9fabf12e14d9deba1200222dc3f0f45444cc748592
   languageName: node
   linkType: hard
 
@@ -5887,23 +5887,15 @@ __metadata:
   dependencies:
     "@padoa/async-local-storage": ^2.0.2
     "@padoa/axios": ^5.0.4
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@padoa/chemical-risk": 1.1.0-9b2eb2300541c2c8688ebad211586548b138d9bf
-=======
-    "@padoa/chemical-risk": 1.1.0-40e55cbd638ccd073261870838fc0cec6c711355
->>>>>>> dfda735 (orm v0)
-=======
-    "@padoa/chemical-risk": 1.1.0-2a25063a3ec36e0a5156d729dfcb6013d232771a
->>>>>>> dea85a5 (review)
+    "@padoa/chemical-risk": 1.2.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
     "@padoa/csv-tools": ^2.0.4
     "@padoa/database": ^26.2.0
     "@padoa/eslint-plugin": ^2.0.11
     "@padoa/express": ^15.0.2
-    "@padoa/file-system": 5.4.0-2a25063a3ec36e0a5156d729dfcb6013d232771a
+    "@padoa/file-system": 5.4.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
     "@padoa/joi": ^5.0.2
     "@padoa/logger": ^3.0.2
-    "@padoa/meta": 5.1.0-2a25063a3ec36e0a5156d729dfcb6013d232771a
+    "@padoa/meta": 5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
     "@padoa/prettier": ^2.0.2
     "@padoa/promise": ^3.0.3
     "@padoa/sanitizer": ^1.2.6
