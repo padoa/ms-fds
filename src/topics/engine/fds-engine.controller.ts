@@ -37,4 +37,4 @@ class FdsEngineController extends Controller {
   /* c8 ignore stop */
 }
 
-export const fdsEngineController = new FdsEngineController('/api/fds/fds-engine', 'fds', 'Routes pour lancer le moteur de fds');
+export const fdsEngineController = new FdsEngineController('/api/ms-fds/fds-engine', 'fds', 'Routes pour lancer le moteur de fds');
