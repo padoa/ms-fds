@@ -27,7 +27,7 @@ export class PdfImageTextExtractorService {
 
   private static pdfToImage = async (pathToFile: string, { numberOfPagesToParse }: { numberOfPagesToParse: number }): Promise<Options> => {
     const options = await this.getPdf2PicOptions();
-    await fromPath(pathToFile, options).bulk(_.range(1, numberOfPagesToParse + 2), { responseType: 'image' });
+    await fromPath(pathToFile, options).bulk(_.range(1, numberOfPagesToParse + 1), { responseType: 'image' });
     return options;
   };
 

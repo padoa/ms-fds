@@ -38,7 +38,7 @@ const main = async (): Promise<void> => {
   await promiseMapSeries(files, async (file) => {
     logger.info(`🔵  Extracting data from ${file}...`);
     const data = await FdsEngineService.extractDataFromFds(`${folder}/${file}`);
-    await saveInCsv(csvFile, file, data);
+    if (data.dataExtracted) await saveInCsv(csvFile, file, data);
   });
 
   logger.info(`✅  Toutes les données ont été correctement extraite`);

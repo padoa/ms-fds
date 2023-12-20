@@ -67,7 +67,7 @@ describe('SubstanceHazardsRulesService tests', () => {
         expected: [aHDanger().properties],
       },
       {
-        message: 'should return hazards found in the column with most hazards',
+        message: 'should return hazards found in the column with multiple hazards',
         linesSplittedByColumns: [
           [[aText().withContent('H200').properties]],
           [[aTextWithHDanger().properties], [aText().withContent('H300').properties]],
