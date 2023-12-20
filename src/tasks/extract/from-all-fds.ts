@@ -96,19 +96,21 @@ const saveInCsv = async (
     product?.name,
     producer?.name,
     dangers.map((danger) => danger.code).join(','),
-    JSON.stringify(
-      _.map(substances, (substance) => ({
-        casNumber: substance.casNumber?.value,
-        ceNumber: substance.ceNumber?.value,
-        concentration: substance.concentration?.value,
-        hazards: _.map(substance.hazards, 'code'),
-      })),
-    ),
+    !_.isEmpty(substances)
+      ? JSON.stringify(
+          _.map(substances, (substance) => ({
+            casNumber: substance.casNumber?.value,
+            ceNumber: substance.ceNumber?.value,
+            concentration: substance.concentration?.value,
+            hazards: _.map(substance.hazards, 'code'),
+          })),
+        )
+      : null,
     physicalState?.value,
     vaporPressure ? vaporPressure.pressure : null,
     vaporPressure ? vaporPressure.temperature : null,
     boilingPoint?.value,
-    warningNotice?.value,
+    warningNotice ? JSON.stringify({ rawValue: warningNotice?.rawValue, value: warningNotice?.value }) : null,
     fromImage,
     // /!\ If you add a line here please add it in the header above as well /!\
   ].join('\t');

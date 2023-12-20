@@ -10,7 +10,7 @@ export enum ModelName {
   ProductDanger = 'productDanger',
 }
 
-export const TableName = {
+export const TableName: { [model in ModelName]: string } = {
   [ModelName.Danger]: 'danger',
   [ModelName.File]: 'file',
   [ModelName.FdsFile]: 'fds_file',

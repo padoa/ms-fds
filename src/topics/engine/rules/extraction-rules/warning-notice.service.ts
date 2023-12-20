@@ -1,12 +1,26 @@
 import _ from 'lodash';
+import { ProductWarningNotice } from '@padoa/chemical-risk';
 import type { IExtractedWarningNotice } from '@padoa/chemical-risk';
 
 import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
 import { ExtractionToolsService } from '@topics/engine/rules/extraction-rules/extraction-tools.service.js';
+import type { IMatchedText } from '@topics/engine/rules/extraction-rules/extraction-rules.model.js';
+import { CommonRegexRulesService } from '@topics/engine/rules/extraction-rules/common-regex-rules.service.js';
 
 export class WarningNoticeService {
-  public static readonly WARNING_NOTICE_IDENTIFIER_REGEX: RegExp = /mention d'avertissement/; // TODO: improve identifier
-  public static readonly WARNING_NOTICE_VALUE_REGEX: RegExp = /(danger|attention)/; // TODO: improve identifier
+  private static readonly SPACE_REGEX = CommonRegexRulesService.SPACE_REGEX;
+
+  public static readonly WARNING_NOTICE_IDENTIFIER_REGEX: RegExp = new RegExp(
+    `mention[s]?${this.SPACE_REGEX}d${this.SPACE_REGEX}'${this.SPACE_REGEX}averti[s]?sem[ae]nt`,
+  );
+
+  public static readonly WARNING_NOTICE_VALUE_REGEX_MAPPING: { [warningNotice in ProductWarningNotice]: RegExp } = {
+    [ProductWarningNotice.DANGER]: /danger/,
+    [ProductWarningNotice.WARNING]: /a[t]?t[ae]ntion/,
+    [ProductWarningNotice.NONE]: new RegExp(`(aucun|n[eé]ant|pas${this.SPACE_REGEX}de${this.SPACE_REGEX}mention)`),
+  };
+
+  public static readonly DANGER_NOTICE_REGEX = new RegExp(`mention[s]?${this.SPACE_REGEX}de${this.SPACE_REGEX}danger`);
 
   public static getWarningNotice(fdsTree: IFdsTree): IExtractedWarningNotice | null {
     const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
@@ -25,13 +39,29 @@ export class WarningNoticeService {
       const warningNoticeInLine = !!cleanText.match(this.WARNING_NOTICE_IDENTIFIER_REGEX);
       if (!warningNoticeInLine && !warningNoticeInCurrentLine) continue;
 
-      const warningNotice = ExtractionToolsService.getTextMatchingRegExp(this.WARNING_NOTICE_VALUE_REGEX, { rawText, cleanText });
-      if (!warningNotice) {
+      const warningNotice = this.extractWarningNotice(rawText, cleanText);
+
+      if (!warningNotice || !!cleanText.match(this.DANGER_NOTICE_REGEX)) {
         warningNoticeInCurrentLine = warningNoticeInLine;
         continue;
       }
 
-      return { value: warningNotice.rawText, metaData: { startBox, endBox } };
+      return { rawValue: warningNotice.rawText, value: warningNotice.enumValue, metaData: { startBox, endBox } };
+    }
+
+    return null;
+  }
+
+  private static extractWarningNotice(rawText: string, cleanText: string): (IMatchedText & { enumValue: ProductWarningNotice }) | null {
+    for (const [warningNoticeValue, warningNoticeValueRegex] of Object.entries(this.WARNING_NOTICE_VALUE_REGEX_MAPPING)) {
+      const matchedWarningNotice = ExtractionToolsService.getTextMatchingRegExp(warningNoticeValueRegex, {
+        rawText,
+        cleanText,
+      });
+
+      if (matchedWarningNotice) {
+        return { ...matchedWarningNotice, enumValue: warningNoticeValue as ProductWarningNotice };
+      }
     }
 
     return null;

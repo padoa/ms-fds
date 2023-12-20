@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { IExtractedData, IMetaData } from '@padoa/chemical-risk';
+import { ProductWarningNotice, type IExtractedData, type IMetaData } from '@padoa/chemical-risk';
 
 import { aFdsTreeWithAllSectionsWithUsefulInfo } from '@topics/engine/__fixtures__/fds-tree.mother.js';
 import {
@@ -69,7 +69,7 @@ describe('ExtractionRulesService tests', () => {
         physicalState: { value: RAW_PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
         boilingPoint: { value: RAW_BOILING_POINT_VALUE, metaData },
-        warningNotice: { value: RAW_WARNING_NOTICE_VALUE, metaData },
+        warningNotice: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
       };
 
       await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(
