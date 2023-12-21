@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { type IMetaData, type IExtractedWarningNotice, ProductWarningNotice } from '@padoa/chemical-risk';
+import _ from 'lodash';
 
 import { WarningNoticeService } from '@topics/engine/rules/extraction-rules/warning-notice.service.js';
 import type { IFdsTree, ILine } from '@topics/engine/model/fds.model.js';
@@ -23,104 +24,80 @@ describe('WarningNoticeService tests', () => {
 
   describe('Regexps tests', () => {
     describe('WARNING_NOTICE_IDENTIFIER_REGEX', () => {
-      it.each<{ input: string; expected: boolean }>([
-        { input: "mentiond'avertissement", expected: true },
-        { input: "mention d ' avertissement", expected: true },
-        { input: "mention d'avertissement", expected: true },
-        { input: "mentions d'avertissement", expected: true },
-        { input: "mention d'avertisement", expected: true },
-        { input: "mention d'avertissemant", expected: true },
-        { input: 'mention', expected: false },
-        { input: 'avertissement', expected: false },
-        { input: 'mention davertissement', expected: false },
+      it.each<{ input: string; expected: string }>([
+        { input: "mentiond'avertissement", expected: "mentiond'avertissement" },
+        { input: "mention d ' avertissement", expected: "mention d ' avertissement" },
+        { input: "mention d'avertissement", expected: "mention d'avertissement" },
+        { input: "mentions d'avertissement", expected: "mentions d'avertissement" },
+        { input: "aa mention d'avertisement bb", expected: "mention d'avertisement" },
+        { input: "mention d'avertissemant", expected: "mention d'avertissemant" },
+        { input: 'mention davertissement', expected: 'mention davertissement' },
+        { input: 'mention d avertissement', expected: 'mention d avertissement' },
+        { input: 'abcdef mention mention d avertissement abcdef', expected: 'mention d avertissement' },
+        { input: 'mention', expected: undefined },
+        { input: 'avertissement', expected: undefined },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(WarningNoticeService.WARNING_NOTICE_IDENTIFIER_REGEX).test(input)).toEqual(expected);
-      });
-    });
-
-    describe('DANGER_NOTICE_REGEX', () => {
-      it.each<{ input: string; expected: boolean }>([
-        { input: 'mentiondedanger', expected: true },
-        { input: 'mention dedanger', expected: true },
-        { input: 'mention de danger', expected: true },
-        { input: 'mentions de danger', expected: true },
-        { input: 'mention', expected: false },
-        { input: 'de danger', expected: false },
-        { input: 'danger', expected: false },
-      ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(new RegExp(WarningNoticeService.DANGER_NOTICE_REGEX).test(input)).toEqual(expected);
+        expect(_.first(input.match(WarningNoticeService.WARNING_NOTICE_IDENTIFIER_REGEX))).toEqual(expected);
       });
     });
 
     describe('WARNING_NOTICE_VALUE_REGEX_MAPPING -> DANGER', () => {
-      it.each<{ input: string; expected: boolean }>([
-        { input: 'danger', expected: true },
-        { input: 'dangers', expected: true },
-        { input: 'denger', expected: false },
-        { input: 'dnger', expected: false },
-        { input: 'dangre', expected: false },
+      it.each<{ input: string; expected: string }>([
+        // Classic danger matches
+        { input: 'danger', expected: 'danger' },
+        { input: 'dangers', expected: 'danger' },
+        { input: 'abcdef le danger abcdef', expected: 'danger' },
+        { input: 'denger', expected: undefined },
+        { input: 'dnger', expected: undefined },
+        { input: 'dangre', expected: undefined },
+        // WithLookBehind danger matches
+        { input: 'mentiondedanger', expected: undefined },
+        { input: 'mention dedanger', expected: undefined },
+        { input: 'mention de danger', expected: undefined },
+        { input: 'mentions de danger', expected: undefined },
+        { input: 'une très grande mention de danger en effet', expected: undefined },
+        { input: 'mention danger', expected: 'danger' },
+        { input: 'de danger', expected: 'danger' },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(WarningNoticeService.WARNING_NOTICE_VALUE_REGEX_MAPPING.danger.test(input)).toEqual(expected);
+        expect(_.first(input.match(WarningNoticeService.WARNING_NOTICE_VALUE_REGEX_MAPPING[ProductWarningNotice.DANGER]))).toEqual(expected);
       });
     });
 
     describe('WARNING_NOTICE_VALUE_REGEX_MAPPING -> WARNING', () => {
-      it.each<{ input: string; expected: boolean }>([
-        { input: 'attention', expected: true },
-        { input: 'atention', expected: true },
-        { input: 'attantion', expected: true },
-        { input: 'attension', expected: false },
-        { input: 'attenzion', expected: false },
+      it.each<{ input: string; expected: string }>([
+        { input: 'attention', expected: 'attention' },
+        { input: 'atention', expected: 'atention' },
+        { input: 'attantion', expected: 'attantion' },
+        { input: 'bonjour attention à tous', expected: 'attention' },
+        { input: 'attension', expected: undefined },
+        { input: 'attenzion', expected: undefined },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(WarningNoticeService.WARNING_NOTICE_VALUE_REGEX_MAPPING.warning.test(input)).toEqual(expected);
+        expect(_.first(input.match(WarningNoticeService.WARNING_NOTICE_VALUE_REGEX_MAPPING[ProductWarningNotice.WARNING]))).toEqual(expected);
       });
     });
 
     describe('WARNING_NOTICE_VALUE_REGEX_MAPPING -> NONE', () => {
-      it.each<{ input: string; expected: boolean }>([
-        { input: 'aucun', expected: true },
-        { input: 'aucuns', expected: true },
-        { input: 'neant', expected: true },
-        { input: 'néant', expected: true },
-        { input: "pasdementiond'avertissement", expected: true },
-        { input: 'pasdemention', expected: true },
-        { input: 'pas demention', expected: true },
-        { input: 'pas de mention', expected: true },
-        { input: 'aukun', expected: false },
-        { input: 'nant', expected: false },
-        { input: 'de mention', expected: false },
-        { input: 'pa de mention', expected: false },
+      it.each<{ input: string; expected: string }>([
+        { input: 'aucun', expected: 'aucun' },
+        { input: 'aucuns', expected: 'aucun' },
+        { input: 'neant', expected: 'neant' },
+        { input: 'néant', expected: 'néant' },
+        { input: "pasdementiond'avertissement", expected: 'pasdemention' },
+        { input: 'pasdemention', expected: 'pasdemention' },
+        { input: 'pas demention', expected: 'pas demention' },
+        { input: 'pas de mention', expected: 'pas de mention' },
+        { input: "en effet il n'y a pas de mention ici", expected: 'pas de mention' },
+        { input: 'aukun', expected: undefined },
+        { input: 'nant', expected: undefined },
+        { input: 'de mention', expected: undefined },
+        { input: 'pa de mention', expected: undefined },
       ])('should return $expected with input $input', ({ input, expected }) => {
-        expect(WarningNoticeService.WARNING_NOTICE_VALUE_REGEX_MAPPING.none.test(input)).toEqual(expected);
+        expect(_.first(input.match(WarningNoticeService.WARNING_NOTICE_VALUE_REGEX_MAPPING[ProductWarningNotice.NONE]))).toEqual(expected);
       });
     });
   });
 
-  describe('GetWarningNotice tests', () => {
-    it.each<{ message: string; fdsTree: IFdsTree; expected: IExtractedWarningNotice }>([
-      {
-        message: 'should return null when providing an empty fdsTree',
-        fdsTree: anEmptyFdsTreeWithAllSections().properties,
-        expected: null,
-      },
-      {
-        message: 'should return null when providing a fdsTree without useful info',
-        fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
-        expected: null,
-      },
-      {
-        message: 'should return the warning notice when providing a fdsTree with a warning notice',
-        fdsTree: aFdsTree().withSection2(
-          aSection().withSubsections({ 2: aSubSection().withLines([aLineWithWarningNoticeIdentifierAndValue().properties]).properties }).properties,
-        ).properties,
-        expected: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
-      },
-    ])('$message', ({ fdsTree, expected }) => {
-      expect(WarningNoticeService.getWarningNotice(fdsTree)).toEqual(expected);
-    });
-  });
-
-  describe('GetWarningNoticeByValue tests', () => {
+  describe('getWarningNoticeByIdentifier tests', () => {
     it.each<{ message: string; lines: ILine[]; expected: IExtractedWarningNotice }>([
       { message: 'it should return null when providing an empty list', lines: [], expected: null },
       { message: 'it should return null when providing a line without useful texts', lines: [aLineWithTwoTexts().properties], expected: null },
@@ -152,7 +129,31 @@ describe('WarningNoticeService tests', () => {
         expected: null,
       },
     ])('$message', ({ lines, expected }) => {
-      expect(WarningNoticeService.getWarningNoticeByValue(lines)).toEqual(expected);
+      expect(WarningNoticeService.getWarningNoticeByIdentifier(lines)).toEqual(expected);
+    });
+  });
+
+  describe('GetWarningNotice tests', () => {
+    it.each<{ message: string; fdsTree: IFdsTree; expected: IExtractedWarningNotice }>([
+      {
+        message: 'should return null when providing an empty fdsTree',
+        fdsTree: anEmptyFdsTreeWithAllSections().properties,
+        expected: null,
+      },
+      {
+        message: 'should return null when providing a fdsTree without useful info',
+        fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+        expected: null,
+      },
+      {
+        message: 'should return the warning notice when providing a fdsTree with a warning notice',
+        fdsTree: aFdsTree().withSection2(
+          aSection().withSubsections({ 2: aSubSection().withLines([aLineWithWarningNoticeIdentifierAndValue().properties]).properties }).properties,
+        ).properties,
+        expected: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
+      },
+    ])('$message', ({ fdsTree, expected }) => {
+      expect(WarningNoticeService.getWarningNotice(fdsTree)).toEqual(expected);
     });
   });
 });

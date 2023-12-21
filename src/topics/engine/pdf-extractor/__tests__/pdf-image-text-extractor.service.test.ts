@@ -3,7 +3,7 @@ import fsPromises from 'fs/promises';
 import { describe, expect, it, vi } from 'vitest';
 
 import { PdfImageTextExtractorService } from '@topics/engine/pdf-extractor/pdf-image-text-extractor.service.js';
-import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/src-fixtures.constants.js';
+import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/fixtures.constants.js';
 
 describe('PdfImageTextExtractorService tests', () => {
   describe('getTextFromImagePdf tests', () => {

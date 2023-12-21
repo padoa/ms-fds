@@ -44,6 +44,13 @@ export const RAW_PRODUCER_NAME_WITH_DOT = `${RAW_PRODUCER_NAME}.RC`;
 export const RAW_PRODUCER_NAME_ENDING_WITH_DOT = `${RAW_PRODUCER_NAME}.`;
 
 //----------------------------------------------------------------------------------------------
+//----------------------------------------- WARNING_NOTICE -------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const RAW_WARNING_NOTICE_IDENTIFIER = "Mention d'Avertissement";
+export const RAW_WARNING_NOTICE_VALUE = 'DANGER';
+
+//----------------------------------------------------------------------------------------------
 //----------------------------------------- DANGERS --------------------------------------------
 //----------------------------------------------------------------------------------------------
 
@@ -92,10 +99,3 @@ export const RAW_VAPOR_PRESSURE_VALUE = '3 kPa';
 
 export const RAW_BOILING_POINT_IDENTIFIER = 'Ébullition';
 export const RAW_BOILING_POINT_VALUE = '120 °C';
-
-//----------------------------------------------------------------------------------------------
-//----------------------------------------- WARNING_NOTICE -------------------------------------
-//----------------------------------------------------------------------------------------------
-
-export const RAW_WARNING_NOTICE_IDENTIFIER = "mention d'avertissement";
-export const RAW_WARNING_NOTICE_VALUE = 'DANGER';

@@ -76,12 +76,12 @@ const saveInCsv = async (
       date: { formattedDate, inTextDate },
       product,
       producer,
+      warningNotice,
       dangers,
       substances,
       physicalState,
       vaporPressure,
       boilingPoint,
-      warningNotice,
     },
     fromImage,
   }: {
@@ -95,6 +95,7 @@ const saveInCsv = async (
     inTextDate,
     product?.name,
     producer?.name,
+    warningNotice?.value,
     dangers.map((danger) => danger.code).join(','),
     !_.isEmpty(substances)
       ? JSON.stringify(
@@ -110,7 +111,6 @@ const saveInCsv = async (
     vaporPressure ? vaporPressure.pressure : null,
     vaporPressure ? vaporPressure.temperature : null,
     boilingPoint?.value,
-    warningNotice ? JSON.stringify({ rawValue: warningNotice?.rawValue, value: warningNotice?.value }) : null,
     fromImage,
     // /!\ If you add a line here please add it in the header above as well /!\
   ].join('\t');

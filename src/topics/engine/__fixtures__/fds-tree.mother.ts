@@ -40,7 +40,7 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
     )
     .withSection2(
       aSection().withSubsections({
-        2: aSubSection().withLines([aLineWithThreeDangersAndTheirDetails().properties, aLineWithWarningNoticeIdentifierAndValue().properties])
+        2: aSubSection().withLines([aLineWithWarningNoticeIdentifierAndValue().properties, aLineWithThreeDangersAndTheirDetails().properties])
           .properties,
       }).properties,
     )

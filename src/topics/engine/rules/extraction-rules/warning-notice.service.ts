@@ -11,42 +11,39 @@ export class WarningNoticeService {
   private static readonly SPACE_REGEX = CommonRegexRulesService.SPACE_REGEX;
 
   public static readonly WARNING_NOTICE_IDENTIFIER_REGEX: RegExp = new RegExp(
-    `mention[s]?${this.SPACE_REGEX}d${this.SPACE_REGEX}'${this.SPACE_REGEX}averti[s]?sem[ae]nt`,
+    `mention[s]?${this.SPACE_REGEX}d${this.SPACE_REGEX}[']?${this.SPACE_REGEX}averti[s]?sem[ae]nt`,
   );
 
   public static readonly WARNING_NOTICE_VALUE_REGEX_MAPPING: { [warningNotice in ProductWarningNotice]: RegExp } = {
-    [ProductWarningNotice.DANGER]: /danger/,
+    [ProductWarningNotice.DANGER]: new RegExp(`(?<!mention[s]?${this.SPACE_REGEX}de${this.SPACE_REGEX})danger`),
     [ProductWarningNotice.WARNING]: /a[t]?t[ae]ntion/,
     [ProductWarningNotice.NONE]: new RegExp(`(aucun|n[eé]ant|pas${this.SPACE_REGEX}de${this.SPACE_REGEX}mention)`),
   };
-
-  public static readonly DANGER_NOTICE_REGEX = new RegExp(`mention[s]?${this.SPACE_REGEX}de${this.SPACE_REGEX}danger`);
 
   public static getWarningNotice(fdsTree: IFdsTree): IExtractedWarningNotice | null {
     const linesToSearchIn = fdsTree[2]?.subsections?.[2]?.lines;
     if (_.isEmpty(linesToSearchIn)) return null;
 
-    return this.getWarningNoticeByValue(linesToSearchIn);
+    return this.getWarningNoticeByIdentifier(linesToSearchIn);
   }
 
-  public static getWarningNoticeByValue(linesToSearchIn: ILine[]): IExtractedWarningNotice | null {
-    let warningNoticeInCurrentLine = false;
+  public static getWarningNoticeByIdentifier(linesToSearchIn: ILine[]): IExtractedWarningNotice | null {
+    let warningValueNoticeInCurrentLine = false;
     for (const line of linesToSearchIn) {
       const { texts, startBox, endBox } = line;
 
       const { rawText, cleanText } = ExtractionToolsService.getJoinedTexts(texts);
 
       const warningNoticeInLine = !!cleanText.match(this.WARNING_NOTICE_IDENTIFIER_REGEX);
-      if (!warningNoticeInLine && !warningNoticeInCurrentLine) continue;
+      if (!warningNoticeInLine && !warningValueNoticeInCurrentLine) continue;
 
       const warningNotice = this.extractWarningNotice(rawText, cleanText);
 
-      if (!warningNotice || !!cleanText.match(this.DANGER_NOTICE_REGEX)) {
-        warningNoticeInCurrentLine = warningNoticeInLine;
-        continue;
+      if (warningNotice) {
+        return { rawValue: warningNotice.rawText, value: warningNotice.enumValue, metaData: { startBox, endBox } };
       }
 
-      return { rawValue: warningNotice.rawText, value: warningNotice.enumValue, metaData: { startBox, endBox } };
+      warningValueNoticeInCurrentLine = warningNoticeInLine;
     }
 
     return null;

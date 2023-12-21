@@ -7,7 +7,7 @@ import type { IParseResult } from '@topics/engine/pdf-parser/pdf-parser.model.js
 import { PdfTextExtractorService } from '@topics/engine/pdf-extractor/pdf-text-extractor.service.js';
 import { PdfImageTextExtractorService } from '@topics/engine/pdf-extractor/pdf-image-text-extractor.service.js';
 import { aLineWithOneText } from '@topics/engine/__fixtures__/line.mother.js';
-import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/src-fixtures.constants.js';
+import { FDS_TEST_FILES_PATH } from '@src/__fixtures__/fixtures.constants.js';
 import { PdfStrokeExtractorService } from '@topics/engine/pdf-extractor/pdf-stroke-extractor.service.js';
 import { aStroke } from '@topics/engine/__fixtures__/stroke.mother.js';
 
