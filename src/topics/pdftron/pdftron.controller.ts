@@ -19,4 +19,4 @@ export class PdftronController extends Controller {
   }
 }
 
-export const pdftronController = new PdftronController('/api/pdftron', 'pdftron', 'Routes pour récupérer les informations PDFTron');
+export const pdftronController = new PdftronController('/api/ms-fds/pdftron', 'pdftron', 'Routes pour récupérer les informations PDFTron');
