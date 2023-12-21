@@ -8,6 +8,7 @@ import {
   aLineWithPhysicalStateIdentifierAndValue,
   aLineWithBoilingPointIdentifierAndValue,
   aLine,
+  aLineWithWarningNoticeIdentifierAndValue,
 } from '@topics/engine/__fixtures__/line.mother.js';
 import { aSection } from '@topics/engine/__fixtures__/section.mother.js';
 import { aSubSection, aSubSectionWithContent } from '@topics/engine/__fixtures__/sub-section.mother.js';
@@ -38,7 +39,10 @@ export const aFdsTreeWithAllSectionsWithUsefulInfo = (): FdsTreeBuilder =>
       }).properties,
     )
     .withSection2(
-      aSection().withSubsections({ 2: aSubSection().withLines([aLineWithThreeDangersAndTheirDetails().properties]).properties }).properties,
+      aSection().withSubsections({
+        2: aSubSection().withLines([aLineWithWarningNoticeIdentifierAndValue().properties, aLineWithThreeDangersAndTheirDetails().properties])
+          .properties,
+      }).properties,
     )
     .withSection3(
       aSection().withSubsections({

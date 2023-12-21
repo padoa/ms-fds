@@ -120,7 +120,7 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
-        "cleanContent": "rubrique 1 : identification de la substance/du mélange et de la société/l’entreprise",
+        "cleanContent": "rubrique 1 : identification de la substance/du mélange et de la société/l'entreprise",
         "pageNumber": 1,
         "rawContent": "RUBRIQUE 1 : IDENTIFICATION DE LA SUBSTANCE/DU MÉLANGE ET DE LA SOCIÉTÉ/L’ENTREPRISE",
         "xPositionProportion": 0.005193,
@@ -296,7 +296,7 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
-        "cleanContent": "1.4. numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
+        "cleanContent": "1.4. numéro d'appel d'urgence : +33 (0)1 45 42 59 59.",
         "pageNumber": 1,
         "rawContent": "1.4. Numéro d’appel d’urgence : +33 (0)1 45 42 59 59.",
         "xPositionProportion": 0.00564,
@@ -456,7 +456,7 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
-        "cleanContent": "2.2. éléments d’étiquetage",
+        "cleanContent": "2.2. éléments d'étiquetage",
         "pageNumber": 1,
         "rawContent": "2.2. Éléments d’étiquetage",
         "xPositionProportion": 0.00564,
@@ -536,7 +536,7 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
-        "cleanContent": "le mélange ne contient pas de 'substances extrêmement préoccupantes' (svhc)>= 0.1% publiées par l’agence européenne",
+        "cleanContent": "le mélange ne contient pas de 'substances extrêmement préoccupantes' (svhc)>= 0.1% publiées par l'agence européenne",
         "pageNumber": 1,
         "rawContent": "Le mélange ne contient pas de 'Substances extrêmement préoccupantes' (SVHC)>= 0.1% publiées par l’Agence Européenne",
         "xPositionProportion": 0.006006,
@@ -552,7 +552,7 @@ exports[`PdfTextExtractorService tests > getTextFromPdfData tests > should retur
     },
     "texts": [
       {
-        "cleanContent": "des produits chimiques (echa) selon l’article 57 du reach : http://echa.europa.eu/fr/candidate-list-table. se référer à la",
+        "cleanContent": "des produits chimiques (echa) selon l'article 57 du reach : http://echa.europa.eu/fr/candidate-list-table. se référer à la",
         "pageNumber": 1,
         "rawContent": "des Produits Chimiques (ECHA) selon l’article 57 du REACH : http://echa.europa.eu/fr/candidate-list-table. Se référer à la",
         "xPositionProportion": 0.006006,

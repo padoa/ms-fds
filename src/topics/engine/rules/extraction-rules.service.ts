@@ -9,6 +9,7 @@ import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dange
 import { SubstancesRulesService } from '@topics/engine/rules/extraction-rules/substances-rules.service.js';
 import { VaporPressureService } from '@topics/engine/rules/extraction-rules/vapor-pressure.service.js';
 import { BoilingPointRulesService } from '@topics/engine/rules/extraction-rules/boiling-point-rules.service.js';
+import { WarningNoticeService } from '@topics/engine/rules/extraction-rules/warning-notice.service.js';
 
 export class ExtractionRulesService {
   public static async extract({ fdsTreeCleaned, fullText }: { fdsTreeCleaned: IFdsTree; fullText: string }): Promise<IExtractedData> {
@@ -21,6 +22,7 @@ export class ExtractionRulesService {
       physicalState: PhysicalStateRulesService.getPhysicalState(fdsTreeCleaned),
       vaporPressure: VaporPressureService.getVaporPressure(fdsTreeCleaned),
       boilingPoint: BoilingPointRulesService.getBoilingPoint(fdsTreeCleaned),
+      warningNotice: WarningNoticeService.getWarningNotice(fdsTreeCleaned),
     };
   }
 }

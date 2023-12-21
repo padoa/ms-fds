@@ -75,7 +75,7 @@
   "dependencies": {
     "@padoa/async-local-storage": "^2.0.2",
     "@padoa/axios": "^5.0.4",
-    "@padoa/chemical-risk": "^1.3.0",
+    "@padoa/chemical-risk": "1.4.0-b84d11bc4fba6f54cd25dd91e6e177853007d355",
     "@padoa/csv-tools": "^2.0.4",
     "@padoa/database": "^26.2.0",
     "@padoa/express": "^15.0.2",

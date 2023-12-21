@@ -204,6 +204,18 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
       },
     ],
     "vaporPressure": null,
+    "warningNotice": {
+      "metaData": {
+        "endBox": undefined,
+        "startBox": {
+          "pageNumber": 1,
+          "xPositionProportion": 0.07815523543324017,
+          "yPositionProportion": 0.7471303686811099,
+        },
+      },
+      "rawValue": "Danger",
+      "value": "danger",
+    },
   },
   "fromImage": false,
 }
@@ -497,6 +509,22 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
       },
     ],
     "vaporPressure": null,
+    "warningNotice": {
+      "metaData": {
+        "endBox": {
+          "pageNumber": 2,
+          "xPositionProportion": 0.24857142857142858,
+          "yPositionProportion": 0.8430976430976431,
+        },
+        "startBox": {
+          "pageNumber": 2,
+          "xPositionProportion": 0.2019047619047619,
+          "yPositionProportion": 0.832996632996633,
+        },
+      },
+      "rawValue": "Danger",
+      "value": "danger",
+    },
   },
   "fromImage": true,
 }

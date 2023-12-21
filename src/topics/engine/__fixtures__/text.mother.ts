@@ -31,6 +31,8 @@ import {
   RAW_VAPOR_PRESSURE_IDENTIFIER,
   RAW_VAPOR_PRESSURE_IDENTIFIER_WITH_TEMPERATURE,
   RAW_VAPOR_PRESSURE_VALUE,
+  RAW_WARNING_NOTICE_IDENTIFIER,
+  RAW_WARNING_NOTICE_VALUE,
 } from '@topics/engine/__fixtures__/fixtures.constants.js';
 import { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
@@ -132,3 +134,10 @@ export const aTextWithVaporPressureValue = (): TextBuilder => aText().withConten
 
 export const aTextWithBoilingPointIdentifier = (): TextBuilder => aText().withContent(RAW_BOILING_POINT_IDENTIFIER);
 export const aTextWithBoilingPointValue = (): TextBuilder => aText().withContent(RAW_BOILING_POINT_VALUE);
+
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- WARNING_NOTICE -------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aTextWithWarningNoticeIdentifier = (): TextBuilder => aText().withContent(RAW_WARNING_NOTICE_IDENTIFIER);
+export const aTextWithWarningNoticeValue = (): TextBuilder => aText().withContent(RAW_WARNING_NOTICE_VALUE);

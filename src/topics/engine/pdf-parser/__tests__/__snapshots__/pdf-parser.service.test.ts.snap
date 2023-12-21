@@ -1235,7 +1235,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "1.4  numéro d’appel d’urgence",
+          "cleanContent": "1.4  numéro d'appel d'urgence",
           "pageNumber": 1,
           "rawContent": "1.4  Numéro d’appel d’urgence",
           "xPositionProportion": 0.08097720920232208,
@@ -1659,7 +1659,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.5652223489167617,
         },
         {
-          "cleanContent": "d’ingestion ",
+          "cleanContent": "d'ingestion ",
           "pageNumber": 1,
           "rawContent": "d’ingestion ",
           "xPositionProportion": 0.7794829069017416,
@@ -1760,7 +1760,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "2.2  eléments d’étiquetage",
+          "cleanContent": "2.2  eléments d'étiquetage",
           "pageNumber": 1,
           "rawContent": "2.2  Eléments d’étiquetage",
           "xPositionProportion": 0.08097720920232208,
@@ -1958,7 +1958,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.7471303686811099,
         },
         {
-          "cleanContent": "mention d’avertissement",
+          "cleanContent": "mention d'avertissement",
           "pageNumber": 1,
           "rawContent": "Mention d’avertissement",
           "xPositionProportion": 0.09084067942377984,
@@ -2074,7 +2074,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.7744963892056252,
         },
         {
-          "cleanContent": ": peut être mortel en cas d’ingestion et de pénétration dans les voies ",
+          "cleanContent": ": peut être mortel en cas d'ingestion et de pénétration dans les voies ",
           "pageNumber": 1,
           "rawContent": ": peut être mortel en cas d’ingestion et de pénétration dans les voies ",
           "xPositionProportion": 0.4293700279509783,
@@ -2618,7 +2618,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.19785252755606234,
         },
         {
-          "cleanContent": "d’étiquetage (suite)",
+          "cleanContent": "d'étiquetage (suite)",
           "pageNumber": 2,
           "rawContent": "d’étiquetage (suite)",
           "xPositionProportion": 0.1777574715115029,
@@ -2838,7 +2838,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.2658494868871152,
         },
         {
-          "cleanContent": "d’ingestion",
+          "cleanContent": "d'ingestion",
           "pageNumber": 2,
           "rawContent": "d’ingestion",
           "xPositionProportion": 0.5735056976994195,
@@ -3124,7 +3124,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "cette substance n’est pas classée pbt ou vpvb selon les critères ue en vigueur",
+          "cleanContent": "cette substance n'est pas classée pbt ou vpvb selon les critères ue en vigueur",
           "pageNumber": 2,
           "rawContent": "Cette substance n’est pas classée PBT ou vPvB selon les critères UE en vigueur",
           "xPositionProportion": 0.07974091593205762,
@@ -3925,7 +3925,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "esters d’acide gras ",
+          "cleanContent": "esters d'acide gras ",
           "pageNumber": 2,
           "rawContent": "Esters d’acide gras ",
           "xPositionProportion": 0.083799182971404,
@@ -4357,7 +4357,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.6771379703534778,
         },
         {
-          "cleanContent": "cas d’ingestion et de ",
+          "cleanContent": "cas d'ingestion et de ",
           "pageNumber": 2,
           "rawContent": "cas d’ingestion et de ",
           "xPositionProportion": 0.6398355192431735,
@@ -4674,7 +4674,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "la classification comme cancérigène r 45 ne doit pas s’appliquer car la substance contient moins de 3 % d’extraits de ",
+          "cleanContent": "la classification comme cancérigène r 45 ne doit pas s'appliquer car la substance contient moins de 3 % d'extraits de ",
           "pageNumber": 2,
           "rawContent": "La classification comme cancérigène R 45 ne doit pas s’appliquer car la substance contient moins de 3 % d’extraits de ",
           "xPositionProportion": 0.07974091593205762,
@@ -5517,7 +5517,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "rincer immédiatement avec beaucoup d’eau. ",
+          "cleanContent": "rincer immédiatement avec beaucoup d'eau. ",
           "pageNumber": 3,
           "rawContent": "Rincer immédiatement avec beaucoup d’eau. ",
           "xPositionProportion": 0.10379488282089874,
@@ -5683,7 +5683,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.38888255416191564,
         },
         {
-          "cleanContent": "vêtements contaminés et laver la peau à l’eau et au savon.",
+          "cleanContent": "vêtements contaminés et laver la peau à l'eau et au savon.",
           "pageNumber": 3,
           "rawContent": "vêtements contaminés et laver la peau à l’eau et au savon.",
           "xPositionProportion": 0.2916308320791228,
@@ -5810,7 +5810,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.4380653743823641,
         },
         {
-          "cleanContent": "éplacer immédiatement la personne touchée à l’air frais. ",
+          "cleanContent": "éplacer immédiatement la personne touchée à l'air frais. ",
           "pageNumber": 3,
           "rawContent": "éplacer immédiatement la personne touchée à l’air frais. ",
           "xPositionProportion": 0.11586218017630617,
@@ -5937,7 +5937,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.4926643861649563,
         },
         {
-          "cleanContent": "rincer soigneusement la bouche à l’eau. ",
+          "cleanContent": "rincer soigneusement la bouche à l'eau. ",
           "pageNumber": 3,
           "rawContent": "Rincer soigneusement la bouche à l’eau. ",
           "xPositionProportion": 0.10863255213932488,
@@ -5967,7 +5967,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.5063473964272139,
         },
         {
-          "cleanContent": "ne pas faire vomir. si le vomissement survient, garder la tête basse pour éviter une pénétration du contenu de l’estomac ",
+          "cleanContent": "ne pas faire vomir. si le vomissement survient, garder la tête basse pour éviter une pénétration du contenu de l'estomac ",
           "pageNumber": 3,
           "rawContent": "Ne pas faire vomir. Si le vomissement survient, garder la tête basse pour éviter une pénétration du contenu de l’estomac ",
           "xPositionProportion": 0.11003010105353689,
@@ -6168,7 +6168,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.5897377423033068,
         },
         {
-          "cleanContent": "peut être mortel en cas d’ingestion et de pénétration dans les voies respiratoires.",
+          "cleanContent": "peut être mortel en cas d'ingestion et de pénétration dans les voies respiratoires.",
           "pageNumber": 3,
           "rawContent": "Peut être mortel en cas d’ingestion et de pénétration dans les voies respiratoires.",
           "xPositionProportion": 0.10578370242958504,
@@ -7159,7 +7159,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.1934435575826682,
         },
         {
-          "cleanContent": "mesures de lutte contre l’incendie",
+          "cleanContent": "mesures de lutte contre l'incendie",
           "pageNumber": 4,
           "rawContent": "MESURES DE LUTTE CONTRE L’INCENDIE",
           "xPositionProportion": 0.14066867340356914,
@@ -7198,7 +7198,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "5.1  moyens d’extinction",
+          "cleanContent": "5.1  moyens d'extinction",
           "pageNumber": 4,
           "rawContent": "5.1  Moyens d’extinction",
           "xPositionProportion": 0.08097720920232208,
@@ -7251,7 +7251,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "moyens d’extinction appropriés",
+          "cleanContent": "moyens d'extinction appropriés",
           "pageNumber": 4,
           "rawContent": "Moyens d’extinction appropriés",
           "xPositionProportion": 0.11666845839604387,
@@ -7325,7 +7325,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.25771569745343975,
         },
         {
-          "cleanContent": "d’extinction ou eau pulvérisée avec additifs.",
+          "cleanContent": "d'extinction ou eau pulvérisée avec additifs.",
           "pageNumber": 4,
           "rawContent": "d’extinction ou eau pulvérisée avec additifs.",
           "xPositionProportion": 0.20476779187271554,
@@ -7348,7 +7348,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "combattre les foyers importants avec de l’eau pulvérisée ou de la mousse résistant à l’alcool.",
+          "cleanContent": "combattre les foyers importants avec de l'eau pulvérisée ou de la mousse résistant à l'alcool.",
           "pageNumber": 4,
           "rawContent": "Combattre les foyers importants avec de l’eau pulvérisée ou de la mousse résistant à l’alcool.",
           "xPositionProportion": 0.11666845839604387,
@@ -7387,7 +7387,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "moyens d’extinction inappropriés",
+          "cleanContent": "moyens d'extinction inappropriés",
           "pageNumber": 4,
           "rawContent": "Moyens d’extinction inappropriés",
           "xPositionProportion": 0.11666845839604387,
@@ -7424,7 +7424,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "ne pas utiliser de jets d’eau.",
+          "cleanContent": "ne pas utiliser de jets d'eau.",
           "pageNumber": 4,
           "rawContent": "Ne pas utiliser de jets d’eau.",
           "xPositionProportion": 0.11666845839604387,
@@ -7567,7 +7567,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’augmentation de pression résultant d’un incendie ou d’une exposition à des ",
+          "cleanContent": "l'augmentation de pression résultant d'un incendie ou d'une exposition à des ",
           "pageNumber": 4,
           "rawContent": "L’augmentation de pression résultant d’un incendie ou d’une exposition à des ",
           "xPositionProportion": 0.11666845839604387,
@@ -7590,7 +7590,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’explosion du conteneur.",
+          "cleanContent": "l'explosion du conteneur.",
           "pageNumber": 4,
           "rawContent": "l’explosion du conteneur.",
           "xPositionProportion": 0.11666845839604387,
@@ -7733,7 +7733,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "les containers qui se trouvent près du feu devront être enlevés ou rafraichis ave de l’eau.",
+          "cleanContent": "les containers qui se trouvent près du feu devront être enlevés ou rafraichis ave de l'eau.",
           "pageNumber": 4,
           "rawContent": "Les containers qui se trouvent près du feu devront être enlevés ou rafraichis ave de l’eau.",
           "xPositionProportion": 0.11666845839604387,
@@ -7763,7 +7763,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.45986316989737747,
         },
         {
-          "cleanContent": "d’extinction.",
+          "cleanContent": "d'extinction.",
           "pageNumber": 4,
           "rawContent": "d’extinction.",
           "xPositionProportion": 0.3168942162975704,
@@ -7809,7 +7809,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "equipement de protection spécial pour le personnel préposé à la lutte contre l’incendie",
+          "cleanContent": "equipement de protection spécial pour le personnel préposé à la lutte contre l'incendie",
           "pageNumber": 4,
           "rawContent": "Equipement de protection spécial pour le personnel préposé à la lutte contre l’incendie",
           "xPositionProportion": 0.11666845839604387,
@@ -7846,7 +7846,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "les pompiers devront porter un équipement de protection approprié ainsi qu’un appareil de protection respiratoire ",
+          "cleanContent": "les pompiers devront porter un équipement de protection approprié ainsi qu'un appareil de protection respiratoire ",
           "pageNumber": 4,
           "rawContent": "Les pompiers devront porter un équipement de protection approprié ainsi qu’un appareil de protection respiratoire ",
           "xPositionProportion": 0.11666845839604387,
@@ -8133,7 +8133,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "6.1  précautions individuelles, équipement de protection et procédures d’urgence",
+          "cleanContent": "6.1  précautions individuelles, équipement de protection et procédures d'urgence",
           "pageNumber": 4,
           "rawContent": "6.1  Précautions individuelles, équipement de protection et procédures d’urgence",
           "xPositionProportion": 0.08097720920232208,
@@ -8186,7 +8186,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "pour le personnel autre que le personnel d’intervention",
+          "cleanContent": "pour le personnel autre que le personnel d'intervention",
           "pageNumber": 4,
           "rawContent": "Pour le personnel autre que le personnel d’intervention",
           "xPositionProportion": 0.11666845839604387,
@@ -8230,7 +8230,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.6300646142151274,
         },
         {
-          "cleanContent": "qui implique un risque individuel ou en l’absence ",
+          "cleanContent": "qui implique un risque individuel ou en l'absence ",
           "pageNumber": 4,
           "rawContent": "qui implique un risque individuel ou en l’absence ",
           "xPositionProportion": 0.5888249838744356,
@@ -8246,7 +8246,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "de formation appropriée. evacuer les environs. empêcher l’accès aux personnes non requises et ne portant pas de ",
+          "cleanContent": "de formation appropriée. evacuer les environs. empêcher l'accès aux personnes non requises et ne portant pas de ",
           "pageNumber": 4,
           "rawContent": "de formation appropriée. Evacuer les environs. Empêcher l’accès aux personnes non requises et ne portant pas de ",
           "xPositionProportion": 0.11666845839604387,
@@ -8299,7 +8299,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "prenez soin d’éviter de tomber.  ne pas respirer les vapeurs ou le brouillard. bien aérer la pièce. porter un équipement ",
+          "cleanContent": "prenez soin d'éviter de tomber.  ne pas respirer les vapeurs ou le brouillard. bien aérer la pièce. porter un équipement ",
           "pageNumber": 4,
           "rawContent": "prenez soin d’éviter de tomber.  Ne pas respirer les vapeurs ou le brouillard. Bien aérer la pièce. Porter un équipement ",
           "xPositionProportion": 0.11666845839604387,
@@ -8368,7 +8368,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "pour les agents d’intervention",
+          "cleanContent": "pour les agents d'intervention",
           "pageNumber": 4,
           "rawContent": "Pour les agents d’intervention",
           "xPositionProportion": 0.11666845839604387,
@@ -8405,7 +8405,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’entrée dans un espace ",
+          "cleanContent": "l'entrée dans un espace ",
           "pageNumber": 4,
           "rawContent": "L’entrée dans un espace ",
           "xPositionProportion": 0.11666845839604387,
@@ -8428,7 +8428,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "extrêmement risquée sans le port d’un équipement de protection respiratoire et d’un système de travail sûr. porter un ",
+          "cleanContent": "extrêmement risquée sans le port d'un équipement de protection respiratoire et d'un système de travail sûr. porter un ",
           "pageNumber": 4,
           "rawContent": "extrêmement risquée sans le port d’un équipement de protection respiratoire et d’un système de travail sûr. Porter un ",
           "xPositionProportion": 0.11666845839604387,
@@ -8595,7 +8595,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "d’intervention",
+          "cleanContent": "d'intervention",
           "pageNumber": 4,
           "rawContent": "d’intervention",
           "xPositionProportion": 0.11666845839604387,
@@ -8662,7 +8662,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.8025655644241734,
         },
         {
-          "cleanContent": "précautions pour la protection de l’environnement",
+          "cleanContent": "précautions pour la protection de l'environnement",
           "pageNumber": 4,
           "rawContent": "Précautions pour la protection de l’environnement",
           "xPositionProportion": 0.11666845839604387,
@@ -8738,7 +8738,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "matériaux déversés, ainsi que leur écoulement et tout contact avec le sol, les cours d’eau, les égouts et conduits ",
+          "cleanContent": "matériaux déversés, ainsi que leur écoulement et tout contact avec le sol, les cours d'eau, les égouts et conduits ",
           "pageNumber": 4,
           "rawContent": "matériaux déversés, ainsi que leur écoulement et tout contact avec le sol, les cours d’eau, les égouts et conduits ",
           "xPositionProportion": 0.11666845839604387,
@@ -8754,14 +8754,14 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "d’évacuation.  informez les a",
+          "cleanContent": "d'évacuation.  informez les a",
           "pageNumber": 4,
           "rawContent": "d’évacuation.  Informez les a",
           "xPositionProportion": 0.11666845839604387,
           "yPositionProportion": 0.8514633219308249,
         },
         {
-          "cleanContent": "utorités compétentes en cas de pollution de l’environnement (égouts, voies d’eau, sol et ",
+          "cleanContent": "utorités compétentes en cas de pollution de l'environnement (égouts, voies d'eau, sol et ",
           "pageNumber": 4,
           "rawContent": "utorités compétentes en cas de pollution de l’environnement (égouts, voies d’eau, sol et ",
           "xPositionProportion": 0.31788862610191354,
@@ -8777,7 +8777,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "air) par le produit. matière propre à polluer l’eau. peut être nocif pour l’environnement en cas de déversement de ",
+          "cleanContent": "air) par le produit. matière propre à polluer l'eau. peut être nocif pour l'environnement en cas de déversement de ",
           "pageNumber": 4,
           "rawContent": "air) par le produit. Matière propre à polluer l’eau. Peut être nocif pour l’environnement en cas de déversement de ",
           "xPositionProportion": 0.11666845839604387,
@@ -9435,7 +9435,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.25416191562143675,
         },
         {
-          "cleanContent": "absorber avec une matière inerte et placer dans un récipient approprié pour l’élimination des déchets. ",
+          "cleanContent": "absorber avec une matière inerte et placer dans un récipient approprié pour l'élimination des déchets. ",
           "pageNumber": 5,
           "rawContent": "Absorber avec une matière inerte et placer dans un récipient approprié pour l’élimination des déchets. ",
           "xPositionProportion": 0.12959578585250484,
@@ -9620,7 +9620,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.31704675028506274,
         },
         {
-          "cleanContent": "ter immédiatement le personnel d’urgence. ",
+          "cleanContent": "ter immédiatement le personnel d'urgence. ",
           "pageNumber": 5,
           "rawContent": "ter immédiatement le personnel d’urgence. ",
           "xPositionProportion": 0.1769511932917652,
@@ -9694,7 +9694,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.3442797415431395,
         },
         {
-          "cleanContent": "ecarter les conteneurs de la zone de déversement accidentel. s’approcher des émanations suivant la même direction ",
+          "cleanContent": "ecarter les conteneurs de la zone de déversement accidentel. s'approcher des émanations suivant la même direction ",
           "pageNumber": 5,
           "rawContent": "Ecarter les conteneurs de la zone de déversement accidentel. S’approcher des émanations suivant la même direction ",
           "xPositionProportion": 0.12959578585250484,
@@ -9754,7 +9754,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.37164576206765493,
         },
         {
-          "cleanContent": "ns  les égouts, les cours d’eau, les caves ou les zones confinées. ",
+          "cleanContent": "ns  les égouts, les cours d'eau, les caves ou les zones confinées. ",
           "pageNumber": 5,
           "rawContent": "ns  les égouts, les cours d’eau, les caves ou les zones confinées. ",
           "xPositionProportion": 0.38077832724145344,
@@ -9791,7 +9791,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.3853287723299126,
         },
         {
-          "cleanContent": "contenir les fuites et les ramasser à l’aide de matières absorbantes non combustibles telles que le sable, la terre, la ",
+          "cleanContent": "contenir les fuites et les ramasser à l'aide de matières absorbantes non combustibles telles que le sable, la terre, la ",
           "pageNumber": 5,
           "rawContent": "Contenir les fuites et les ramasser à l’aide de matières absorbantes non combustibles telles que le sable, la terre, la ",
           "xPositionProportion": 0.12959578585250484,
@@ -10032,7 +10032,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.45359179019384266,
         },
         {
-          "cleanContent": "e sécurité à remettre au groupe d’intervention.",
+          "cleanContent": "e sécurité à remettre au groupe d'intervention.",
           "pageNumber": 5,
           "rawContent": "e sécurité à remettre au groupe d’intervention.",
           "xPositionProportion": 0.3457052246828639,
@@ -10101,7 +10101,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.4949448878753326,
         },
         {
-          "cleanContent": "référence à d’autres ",
+          "cleanContent": "référence à d'autres ",
           "pageNumber": 5,
           "rawContent": "Référence à d’autres ",
           "xPositionProportion": 0.11666845839604387,
@@ -10147,7 +10147,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "voir section 1 pour les coordonnées d’urgence.",
+          "cleanContent": "voir section 1 pour les coordonnées d'urgence.",
           "pageNumber": 5,
           "rawContent": "Voir section 1 pour les coordonnées d’urgence.",
           "xPositionProportion": 0.11666845839604387,
@@ -10193,7 +10193,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "voir section 5 pour connaître les mesures de lutte contre l’incendie.",
+          "cleanContent": "voir section 5 pour connaître les mesures de lutte contre l'incendie.",
           "pageNumber": 5,
           "rawContent": "Voir section 5 pour connaître les mesures de lutte contre l’incendie.",
           "xPositionProportion": 0.11666845839604387,
@@ -10486,7 +10486,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.6784302546560244,
         },
         {
-          "cleanContent": "au poste de travail, prévoir une ventilation suffisante afin d’éviter la formation excessive de vapeurs. ",
+          "cleanContent": "au poste de travail, prévoir une ventilation suffisante afin d'éviter la formation excessive de vapeurs. ",
           "pageNumber": 5,
           "rawContent": "Au poste de travail, prévoir une ventilation suffisante afin d’éviter la formation excessive de vapeurs. ",
           "xPositionProportion": 0.14066867340356914,
@@ -10673,7 +10673,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.7552451539338655,
         },
         {
-          "cleanContent": "conditions d’un stockage sûr, y compris d’éventuelles incompatibilités",
+          "cleanContent": "conditions d'un stockage sûr, y compris d'éventuelles incompatibilités",
           "pageNumber": 5,
           "rawContent": "Conditions d’un stockage sûr, y compris d’éventuelles incompatibilités",
           "xPositionProportion": 0.1469038916362073,
@@ -11068,7 +11068,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "pas d’autre information importante disponible.",
+          "cleanContent": "pas d'autre information importante disponible.",
           "pageNumber": 5,
           "rawContent": "Pas d’autre information importante disponible.",
           "xPositionProportion": 0.11666845839604387,
@@ -11530,7 +11530,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.18530976814899278,
         },
         {
-          "cleanContent": "controle de l’exposition / protection individuelle",
+          "cleanContent": "controle de l'exposition / protection individuelle",
           "pageNumber": 6,
           "rawContent": "CONTROLE DE L’EXPOSITION / PROTECTION INDIVIDUELLE",
           "xPositionProportion": 0.1120457966028811,
@@ -11870,7 +11870,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.29382364120106425,
         },
         {
-          "cleanContent": "esters d’acide gras linéaires saturés et insaturés",
+          "cleanContent": "esters d'acide gras linéaires saturés et insaturés",
           "pageNumber": 6,
           "rawContent": "Esters d’acide gras linéaires saturés et insaturés",
           "xPositionProportion": 0.15880993334766716,
@@ -12428,7 +12428,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.46214367160775377,
         },
         {
-          "cleanContent": "contrôle de l’exposition",
+          "cleanContent": "contrôle de l'exposition",
           "pageNumber": 6,
           "rawContent": "Contrôle de l’exposition",
           "xPositionProportion": 0.12857450010750376,
@@ -12539,7 +12539,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "une ventilation mécanique et un système d’extraction réduiront l’exposition à l’air.",
+          "cleanContent": "une ventilation mécanique et un système d'extraction réduiront l'exposition à l'air.",
           "pageNumber": 6,
           "rawContent": "Une ventilation mécanique et un système d’extraction réduiront l’exposition à l’air.",
           "xPositionProportion": 0.12857450010750376,
@@ -12562,7 +12562,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "utiliser des équipements de manutention conçus avec des matériaux résistant à l’huile.",
+          "cleanContent": "utiliser des équipements de manutention conçus avec des matériaux résistant à l'huile.",
           "pageNumber": 6,
           "rawContent": "Utiliser des équipements de manutention conçus avec des matériaux résistant à l’huile.",
           "xPositionProportion": 0.12857450010750376,
@@ -12585,7 +12585,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "stocker dans les conditions recommandées et s’il faut chauffer, un systè",
+          "cleanContent": "stocker dans les conditions recommandées et s'il faut chauffer, un systè",
           "pageNumber": 6,
           "rawContent": "Stocker dans les conditions recommandées et s’il faut chauffer, un systè",
           "xPositionProportion": 0.12857450010750376,
@@ -12714,7 +12714,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "mesures d’hygiène",
+          "cleanContent": "mesures d'hygiène",
           "pageNumber": 6,
           "rawContent": "Mesures d’hygiène",
           "xPositionProportion": 0.12857450010750376,
@@ -12802,7 +12802,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.6094070695553022,
         },
         {
-          "cleanContent": "d’aller aux toilettes ainsi qu’à la fin de la journée de travail.",
+          "cleanContent": "d'aller aux toilettes ainsi qu'à la fin de la journée de travail.",
           "pageNumber": 6,
           "rawContent": "d’aller aux toilettes ainsi qu’à la fin de la journée de travail.",
           "xPositionProportion": 0.2678456245968609,
@@ -12825,7 +12825,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "s’assurer ",
+          "cleanContent": "s'assurer ",
           "pageNumber": 6,
           "rawContent": "S’assurer ",
           "xPositionProportion": 0.12857450010750376,
@@ -12967,7 +12967,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’emplacement du poste de travail.",
+          "cleanContent": "l'emplacement du poste de travail.",
           "pageNumber": 6,
           "rawContent": "l’emplacement du poste de travail.",
           "xPositionProportion": 0.12857450010750376,
@@ -13066,7 +13066,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "s’il y a des risques d’éclaboussures, utiliser des lunettes de protection.",
+          "cleanContent": "s'il y a des risques d'éclaboussures, utiliser des lunettes de protection.",
           "pageNumber": 6,
           "rawContent": "S’il y a des risques d’éclaboussures, utiliser des lunettes de protection.",
           "xPositionProportion": 0.12857450010750376,
@@ -13239,7 +13239,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "porter des vêtements de protection s’il y a un risque de contact avec la peau.",
+          "cleanContent": "porter des vêtements de protection s'il y a un risque de contact avec la peau.",
           "pageNumber": 6,
           "rawContent": "Porter des vêtements de protection s’il y a un risque de contact avec la peau.",
           "xPositionProportion": 0.12857450010750376,
@@ -13459,7 +13459,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’opération ef",
+          "cleanContent": "l'opération ef",
           "pageNumber": 6,
           "rawContent": "l’opération ef",
           "xPositionProportion": 0.12857450010750376,
@@ -13473,7 +13473,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.819821360699354,
         },
         {
-          "cleanContent": "ectuée et des risques qu’elle implique, et qui devront être approuvées par un spécialiste avan",
+          "cleanContent": "ectuée et des risques qu'elle implique, et qui devront être approuvées par un spécialiste avan",
           "pageNumber": 6,
           "rawContent": "ectuée et des risques qu’elle implique, et qui devront être approuvées par un spécialiste avan",
           "xPositionProportion": 0.22712857450010754,
@@ -13503,7 +13503,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "manipulation de produit ainsi qu’une blouse.",
+          "cleanContent": "manipulation de produit ainsi qu'une blouse.",
           "pageNumber": 6,
           "rawContent": "manipulation de produit ainsi qu’une blouse.",
           "xPositionProportion": 0.12857450010750376,
@@ -13579,7 +13579,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "un équipement de protection respiratoire n’est pas indispensable en présence d’une ventilation naturelle ou locale ",
+          "cleanContent": "un équipement de protection respiratoire n'est pas indispensable en présence d'une ventilation naturelle ou locale ",
           "pageNumber": 6,
           "rawContent": "Un équipement de protection respiratoire n’est pas indispensable en présence d’une ventilation naturelle ou locale ",
           "xPositionProportion": 0.12857450010750376,
@@ -13595,7 +13595,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "adaptée qui contrôle l’exposition.",
+          "cleanContent": "adaptée qui contrôle l'exposition.",
           "pageNumber": 6,
           "rawContent": "adaptée qui contrôle l’exposition.",
           "xPositionProportion": 0.12857450010750376,
@@ -13690,7 +13690,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.9047890535917902,
         },
         {
-          "cleanContent": "l’environnement",
+          "cleanContent": "l'environnement",
           "pageNumber": 6,
           "rawContent": "l’environnement",
           "xPositionProportion": 0.3731186841539454,
@@ -13713,7 +13713,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "il importe de tester les émissions provenant des systèmes de ventilation ou du matériel de fabrication pour s’assurer ",
+          "cleanContent": "il importe de tester les émissions provenant des systèmes de ventilation ou du matériel de fabrication pour s'assurer ",
           "pageNumber": 6,
           "rawContent": "Il importe de tester les émissions provenant des systèmes de ventilation ou du matériel de fabrication pour s’assurer ",
           "xPositionProportion": 0.12857450010750376,
@@ -13729,7 +13729,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "qu’elles sont conformes aux exigences de la législation sur la protection de l’environnement.",
+          "cleanContent": "qu'elles sont conformes aux exigences de la législation sur la protection de l'environnement.",
           "pageNumber": 6,
           "rawContent": "qu’elles sont conformes aux exigences de la législation sur la protection de l’environnement.",
           "xPositionProportion": 0.12857450010750376,
@@ -14573,7 +14573,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.33943367540858993,
         },
         {
-          "cleanContent": "point d’ébullition initial et intervalle d’ébullition",
+          "cleanContent": "point d'ébullition initial et intervalle d'ébullition",
           "pageNumber": 7,
           "rawContent": "Point d’ébullition initial et intervalle d’ébullition",
           "xPositionProportion": 0.1535691249193722,
@@ -14710,7 +14710,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.3683580387685291,
         },
         {
-          "cleanContent": "taux d’évaporation",
+          "cleanContent": "taux d'évaporation",
           "pageNumber": 7,
           "rawContent": "Taux d’évaporation",
           "xPositionProportion": 0.1535691249193722,
@@ -14812,7 +14812,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.3974344355758267,
         },
         {
-          "cleanContent": "limites supérieures/inférieures d’inflammabilité",
+          "cleanContent": "limites supérieures/inférieures d'inflammabilité",
           "pageNumber": 7,
           "rawContent": "Limites supérieures/inférieures d’inflammabilité",
           "xPositionProportion": 0.1535691249193722,
@@ -14842,7 +14842,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "ou limites d’explosivité",
+          "cleanContent": "ou limites d'explosivité",
           "pageNumber": 7,
           "rawContent": "ou limites d’explosivité",
           "xPositionProportion": 0.1535691249193722,
@@ -15139,7 +15139,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.4828392246294185,
         },
         {
-          "cleanContent": "dans l’eau",
+          "cleanContent": "dans l'eau",
           "pageNumber": 7,
           "rawContent": "dans l’eau",
           "xPositionProportion": 0.5549612986454526,
@@ -15355,7 +15355,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.5254465982516154,
         },
         {
-          "cleanContent": "température d’auto",
+          "cleanContent": "température d'auto",
           "pageNumber": 7,
           "rawContent": "Température d’auto",
           "xPositionProportion": 0.1535691249193722,
@@ -15564,7 +15564,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.5689281641961232,
         },
         {
-          "cleanContent": "propriétés d’explosivité",
+          "cleanContent": "propriétés d'explosivité",
           "pageNumber": 7,
           "rawContent": "Propriétés d’explosivité",
           "xPositionProportion": 0.1535691249193722,
@@ -15931,7 +15931,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "produit stable en température usuelle de stockage, de manipulation et d’emploi.",
+          "cleanContent": "produit stable en température usuelle de stockage, de manipulation et d'emploi.",
           "pageNumber": 7,
           "rawContent": "Produit stable en température usuelle de stockage, de manipulation et d’emploi.",
           "xPositionProportion": 0.12615566544829068,
@@ -16021,7 +16021,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "dans des conditions normales de stockage et d’utilisation, aucune réaction dangereuse ne se produit.",
+          "cleanContent": "dans des conditions normales de stockage et d'utilisation, aucune réaction dangereuse ne se produit.",
           "pageNumber": 7,
           "rawContent": "Dans des conditions normales de stockage et d’utilisation, aucune réaction dangereuse ne se produit.",
           "xPositionProportion": 0.12615566544829068,
@@ -16104,7 +16104,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "eviter la chaleur, les flammes et toute autre source d’inflammation. prévenir l’électricité statique et la format",
+          "cleanContent": "eviter la chaleur, les flammes et toute autre source d'inflammation. prévenir l'électricité statique et la format",
           "pageNumber": 7,
           "rawContent": "Eviter la chaleur, les flammes et toute autre source d’inflammation. Prévenir l’électricité statique et la format",
           "xPositionProportion": 0.12615566544829068,
@@ -16127,7 +16127,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "d’étincelles.",
+          "cleanContent": "d'étincelles.",
           "pageNumber": 7,
           "rawContent": "d’étincelles.",
           "xPositionProportion": 0.12615566544829068,
@@ -16321,7 +16321,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "une décomposition thermique ou un brûlage peut libérer des oxydes de carbone et d’autres gaz ou vapeurs ",
+          "cleanContent": "une décomposition thermique ou un brûlage peut libérer des oxydes de carbone et d'autres gaz ou vapeurs ",
           "pageNumber": 7,
           "rawContent": "Une décomposition thermique ou un brûlage peut libérer des oxydes de carbone et d’autres gaz ou vapeurs ",
           "xPositionProportion": 0.12615566544829068,
@@ -17264,7 +17264,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "esters d’acides gras linéaires ",
+          "cleanContent": "esters d'acides gras linéaires ",
           "pageNumber": 8,
           "rawContent": "Esters d’acides gras linéaires ",
           "xPositionProportion": 0.10863255213932488,
@@ -17605,7 +17605,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "informations sur les voies d’exposition probables",
+          "cleanContent": "informations sur les voies d'exposition probables",
           "pageNumber": 8,
           "rawContent": "Informations sur les voies d’exposition probables",
           "xPositionProportion": 0.07896151365297786,
@@ -17658,7 +17658,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "voies d’entrées probables",
+          "cleanContent": "voies d'entrées probables",
           "pageNumber": 8,
           "rawContent": "Voies d’entrées probables",
           "xPositionProportion": 0.07896151365297786,
@@ -17801,7 +17801,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’inhalation des vapeurs dans des conditions ambiantes ne",
+          "cleanContent": "l'inhalation des vapeurs dans des conditions ambiantes ne",
           "pageNumber": 8,
           "rawContent": "L’inhalation des vapeurs dans des conditions ambiantes ne",
           "xPositionProportion": 0.09729090518168136,
@@ -17930,7 +17930,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "peut être mortel en cas d’ingestion et de pénétration dans les voies respirat",
+          "cleanContent": "peut être mortel en cas d'ingestion et de pénétration dans les voies respirat",
           "pageNumber": 8,
           "rawContent": "Peut être mortel en cas d’ingestion et de pénétration dans les voies respirat",
           "xPositionProportion": 0.09729090518168136,
@@ -18013,7 +18013,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’exposition répétée peut provoquer dessèchement ou gerçures de la peau.",
+          "cleanContent": "l'exposition répétée peut provoquer dessèchement ou gerçures de la peau.",
           "pageNumber": 8,
           "rawContent": "L’exposition répétée peut provoquer dessèchement ou gerçures de la peau.",
           "xPositionProportion": 0.09729090518168136,
@@ -18308,7 +18308,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "peut être mortel en cas d’ingestion et de pénétration dans les voies respiratoires.",
+          "cleanContent": "peut être mortel en cas d'ingestion et de pénétration dans les voies respiratoires.",
           "pageNumber": 8,
           "rawContent": "Peut être mortel en cas d’ingestion et de pénétration dans les voies respiratoires.",
           "xPositionProportion": 0.09729090518168136,
@@ -21353,7 +21353,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "d’expédition des ",
+          "cleanContent": "d'expédition des ",
           "pageNumber": 10,
           "rawContent": "d’expédition des ",
           "xPositionProportion": 0.08500860030101054,
@@ -21591,7 +21591,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "d’emballage",
+          "cleanContent": "d'emballage",
           "pageNumber": 10,
           "rawContent": "d’emballage",
           "xPositionProportion": 0.08500860030101054,
@@ -21695,7 +21695,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’environnement",
+          "cleanContent": "l'environnement",
           "pageNumber": 10,
           "rawContent": "l’environnement",
           "xPositionProportion": 0.08500860030101054,
@@ -21782,7 +21782,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’utilisateur",
+          "cleanContent": "l'utilisateur",
           "pageNumber": 10,
           "rawContent": "l’utilisateur",
           "xPositionProportion": 0.08500860030101054,
@@ -21842,7 +21842,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.47856328392246295,
         },
         {
-          "cleanContent": "transport en vrac conformément à l’annexe i de la convention marpol 73/78 et au recueil ibc",
+          "cleanContent": "transport en vrac conformément à l'annexe i de la convention marpol 73/78 et au recueil ibc",
           "pageNumber": 10,
           "rawContent": "Transport en vrac conformément à l’annexe I de la convention Marpol 73/78 et au recueil IBC",
           "xPositionProportion": 0.11365835304235648,
@@ -22033,7 +22033,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "d’environnement",
+          "cleanContent": "d'environnement",
           "pageNumber": 10,
           "rawContent": "d’environnement",
           "xPositionProportion": 0.07974091593205762,
@@ -22170,7 +22170,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.6048460661345496,
         },
         {
-          "cleanContent": "l’enregistrement, ",
+          "cleanContent": "l'enregistrement, ",
           "pageNumber": 10,
           "rawContent": "l’enregistrement, ",
           "xPositionProportion": 0.8007686519028167,
@@ -22186,7 +22186,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "l’évaluation et l’autorisation des substances chimiques, ainsi que les restriction",
+          "cleanContent": "l'évaluation et l'autorisation des substances chimiques, ainsi que les restriction",
           "pageNumber": 10,
           "rawContent": "l’évaluation et l’autorisation des substances chimiques, ainsi que les restriction",
           "xPositionProportion": 0.11545904106643734,
@@ -22232,7 +22232,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "ce produit, vendu dans l’u.e., est en accord avec les exigences actuelles du règlement reach",
+          "cleanContent": "ce produit, vendu dans l'u.e., est en accord avec les exigences actuelles du règlement reach",
           "pageNumber": 10,
           "rawContent": "Ce produit, vendu dans l’U.E., est en accord avec les exigences actuelles du Règlement REACH",
           "xPositionProportion": 0.11545904106643734,
@@ -22600,7 +22600,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "clp = règlement 1272/2008/ce relatif à la classification, à l’étiquetage et à l’emballage des substances et des mélanges.",
+          "cleanContent": "clp = règlement 1272/2008/ce relatif à la classification, à l'étiquetage et à l'emballage des substances et des mélanges.",
           "pageNumber": 10,
           "rawContent": "CLP = Règlement 1272/2008/CE relatif à la classification, à l’étiquetage et à l’emballage des substances et des mélanges.",
           "xPositionProportion": 0.07974091593205762,
@@ -23202,7 +23202,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "se = scénario d’exposition",
+          "cleanContent": "se = scénario d'exposition",
           "pageNumber": 11,
           "rawContent": "SE = Scénario d’exposition",
           "xPositionProportion": 0.08097720920232208,
@@ -23271,7 +23271,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "sgh = système général harmonisé de classification et d’étiquetage des produits chimiques",
+          "cleanContent": "sgh = système général harmonisé de classification et d'étiquetage des produits chimiques",
           "pageNumber": 11,
           "rawContent": "SGH = Système général harmonisé de classification et d’étiquetage des produits chimiques",
           "xPositionProportion": 0.08097720920232208,
@@ -23566,7 +23566,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
       },
       "texts": [
         {
-          "cleanContent": "rrn = numéro d’enregistrement reach",
+          "cleanContent": "rrn = numéro d'enregistrement reach",
           "pageNumber": 11,
           "rawContent": "RRN = Numéro d’enregistrement REACH",
           "xPositionProportion": 0.08097720920232208,
@@ -24019,7 +24019,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.6011402508551882,
         },
         {
-          "cleanContent": "mortel en cas d’ingestion et de pénétration dans les voies respiratoires",
+          "cleanContent": "mortel en cas d'ingestion et de pénétration dans les voies respiratoires",
           "pageNumber": 11,
           "rawContent": "mortel en cas d’ingestion et de pénétration dans les voies respiratoires",
           "xPositionProportion": 0.32917652117824125,
@@ -24176,7 +24176,7 @@ exports[`PdfParser tests > ParsePDF tests > should return the text contained in 
           "yPositionProportion": 0.6639870771569746,
         },
         {
-          "cleanContent": ": peut provoquer une atteinte des poumons en cas d’ingestion",
+          "cleanContent": ": peut provoquer une atteinte des poumons en cas d'ingestion",
           "pageNumber": 11,
           "rawContent": ": peut provoquer une atteinte des poumons en cas d’ingestion",
           "xPositionProportion": 0.30797140399913997,

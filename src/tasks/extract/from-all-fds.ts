@@ -62,6 +62,7 @@ const addColumnsToCsv = async (csvFile: string): Promise<void> => {
     'Pression de vapeur',
     'Température de la pression vapeur',
     "Point d'ébullition",
+    "Mention d'avertissement",
     'Image ?',
   ].join('\t');
   return fs.writeFile(csvFile, `${headers}\n`);
@@ -75,6 +76,7 @@ const saveInCsv = async (
       date: { formattedDate, inTextDate },
       product,
       producer,
+      warningNotice,
       dangers,
       substances,
       physicalState,
@@ -93,15 +95,18 @@ const saveInCsv = async (
     inTextDate,
     product?.name,
     producer?.name,
+    warningNotice?.value,
     dangers.map((danger) => danger.code).join(','),
-    JSON.stringify(
-      _.map(substances, (substance) => ({
-        casNumber: substance.casNumber?.value,
-        ceNumber: substance.ceNumber?.value,
-        concentration: substance.concentration?.value,
-        hazards: _.map(substance.hazards, 'code'),
-      })),
-    ),
+    !_.isEmpty(substances)
+      ? JSON.stringify(
+          _.map(substances, (substance) => ({
+            casNumber: substance.casNumber?.value,
+            ceNumber: substance.ceNumber?.value,
+            concentration: substance.concentration?.value,
+            hazards: _.map(substance.hazards, 'code'),
+          })),
+        )
+      : null,
     physicalState?.value,
     vaporPressure ? vaporPressure.pressure : null,
     vaporPressure ? vaporPressure.temperature : null,

@@ -25,13 +25,16 @@ const main = async (): Promise<void> => {
     date: data.dataExtracted?.date,
     product: data.dataExtracted?.product?.name,
     producer: data.dataExtracted?.producer?.name,
+    warningNotice: data.dataExtracted?.warningNotice?.value,
     dangers: _.map(data.dataExtracted?.dangers, 'code'),
-    substances: _.map(data.dataExtracted?.substances, (substance) => ({
-      casNumber: substance.casNumber?.value,
-      ceNumber: substance.ceNumber?.value,
-      concentration: substance.concentration?.value,
-      hazards: JSON.stringify(_.map(substance.hazards, 'code')),
-    })),
+    substances: !_.isEmpty(data.dataExtracted?.substances)
+      ? _.map(data.dataExtracted?.substances, (substance) => ({
+          casNumber: substance.casNumber?.value,
+          ceNumber: substance.ceNumber?.value,
+          concentration: substance.concentration?.value,
+          hazards: JSON.stringify(_.map(substance.hazards, 'code')),
+        }))
+      : null,
     physicalState: data.dataExtracted?.physicalState?.value,
     vaporPressure: _.pick(data.dataExtracted?.vaporPressure, ['pressure', 'temperature']),
     boilingPoint: data.dataExtracted?.boilingPoint?.value,

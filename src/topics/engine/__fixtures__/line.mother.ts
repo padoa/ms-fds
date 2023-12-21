@@ -32,6 +32,8 @@ import {
   aTextWithVaporPressureValue,
   aTextWithBoilingPointIdentifier,
   aTextWithBoilingPointValue,
+  aTextWithWarningNoticeIdentifier,
+  aTextWithWarningNoticeValue,
 } from '@topics/engine/__fixtures__/text.mother.js';
 
 export const aLine = (): LineBuilder => new LineBuilder();
@@ -138,3 +140,12 @@ export const aLineWithVaporPressureIdentifierAndValue = (): LineBuilder =>
 
 export const aLineWithBoilingPointIdentifierAndValue = (): LineBuilder =>
   aLine().withTexts([aTextWithBoilingPointIdentifier().properties, aTextWithBoilingPointValue().properties]);
+
+//----------------------------------------------------------------------------------------------
+//----------------------------------------- WARNING_NOTICE -------------------------------------
+//----------------------------------------------------------------------------------------------
+
+export const aLineWithWarningNoticeIdentifier = (): LineBuilder => aLine().withTexts([aTextWithWarningNoticeIdentifier().properties]);
+export const aLineWithWarningNoticeValue = (): LineBuilder => aLine().withTexts([aTextWithWarningNoticeValue().properties]);
+export const aLineWithWarningNoticeIdentifierAndValue = (): LineBuilder =>
+  aLine().withTexts([aTextWithWarningNoticeIdentifier().properties, aTextWithWarningNoticeValue().properties]);

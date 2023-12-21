@@ -9,6 +9,7 @@ describe('TextCleanerService tests', () => {
       { input: 'FDS-ARGON', expected: 'fds-argon' },
       { input: 'Évaporation', expected: 'évaporation' },
       { input: 'lowercase', expected: 'lowercase' },
+      { input: '’’ʼ et ’’ʼ', expected: "''' et '''" },
     ])('should return $expected with input $input', ({ input, expected }) => {
       expect(TextCleanerService.cleanRawText(input)).toEqual(expected);
     });
