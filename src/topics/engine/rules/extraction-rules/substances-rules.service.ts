@@ -38,7 +38,8 @@ export class SubstancesRulesService {
 
     _.forEach(hazards, (hazard) => {
       const closestSubstanceAboveHazard = _.findLast(substances, (substance) => this.isBelow(hazard, substance));
-      if (closestSubstanceAboveHazard) closestSubstanceAboveHazard.hazards = [...(closestSubstanceAboveHazard.hazards || []), hazard];
+      if (closestSubstanceAboveHazard)
+        closestSubstanceAboveHazard.hazards = _.uniqBy([...(closestSubstanceAboveHazard.hazards || []), hazard], 'code');
     });
     return substances;
   }
