@@ -22,7 +22,6 @@ export class SubstanceHazardsRulesService {
         }));
       })
       .flatten()
-      .uniqBy('code')
       .value();
   }
 }

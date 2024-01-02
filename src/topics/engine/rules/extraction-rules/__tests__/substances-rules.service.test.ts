@@ -92,6 +92,12 @@ describe('SubstancesRulesService tests', () => {
         expected: [aSubstance().withHazards([aHDanger().properties, aDanger().withCode('h300').properties]).properties],
       },
       {
+        message: 'should return substance with unique hazards',
+        substances: [aSubstanceWithoutHazards().properties],
+        hazards: [aHDanger().properties, aHDanger().properties],
+        expected: [aSubstance().withHazards([aHDanger().properties]).properties],
+      },
+      {
         message: 'should return substance with hazards affected to the correct substances when hazards are on multiple lines on the same page',
         substances: [aSubstanceWithoutHazards().properties, aSubstanceStarting1LineBelow().properties],
         hazards: [

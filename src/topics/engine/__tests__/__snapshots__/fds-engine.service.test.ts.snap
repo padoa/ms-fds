@@ -416,6 +416,18 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
           "value": "69011-36-5",
         },
         "ceNumber": undefined,
+        "hazards": [
+          {
+            "code": "H302",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 4,
+                "xPositionProportion": 0.09047619047619047,
+                "yPositionProportion": 0.3643097643097643,
+              },
+            },
+          },
+        ],
       },
       {
         "casNumber": {
@@ -502,6 +514,16 @@ exports[`FdsEngine tests > ExtractDataFromFds tests > should extract data from a
                 "pageNumber": 4,
                 "xPositionProportion": 0.5085714285714286,
                 "yPositionProportion": 0.4653198653198653,
+              },
+            },
+          },
+          {
+            "code": "H400",
+            "metaData": {
+              "startBox": {
+                "pageNumber": 4,
+                "xPositionProportion": 0.7542857142857143,
+                "yPositionProportion": 0.48013468013468014,
               },
             },
           },

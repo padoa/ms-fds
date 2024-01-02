@@ -49,6 +49,11 @@ describe('SubstanceHazardsRulesService tests', () => {
         lines: [[aText().withContent('H300 and some other text H400').properties], []],
         expected: [aDanger().withCode('H300').properties, aDanger().withCode('H400').properties],
       },
+      {
+        message: 'should return multiple identical hazards if a hazard appears on multiple lines',
+        lines: [[aTextWithHDanger().properties, aTextWithHDanger().properties], []],
+        expected: [aHDanger().properties, aHDanger().properties],
+      },
     ])('$message', ({ lines, expected }) => {
       expect(SubstanceHazardsRulesService.getHazardsInColumn(lines)).toEqual(expected);
     });
