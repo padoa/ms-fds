@@ -1,5 +1,5 @@
 import { joiObject } from '@padoa/swagger';
-import { ProductValidationSection } from '@padoa/chemical-risk';
+import { ProductValidationSection, ProductWarningNotice } from '@padoa/chemical-risk';
 
 import Joi from '@helpers/joi.js';
 
@@ -17,6 +17,10 @@ export const fdsEngineSaveSectionBody = joiObject({
     date: Joi.p_iso_date.allow(null).optional(),
     product: Joi.string().allow(null).optional(),
     producer: Joi.string().allow(null).optional(),
+    warningNotice: Joi.string()
+      .valid(...Object.values(ProductWarningNotice))
+      .allow(null)
+      .optional(),
     dangers: Joi.array().items(Joi.string()).optional(),
     substances: Joi.array()
       .items(
