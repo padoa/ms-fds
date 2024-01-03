@@ -1,3 +1,6 @@
 [submodule "ci-tools"]
 	path = ci-tools
 	url = git@github.com:padoa/ci-tools.git
+[submodule "k8s/ms-fds/templates/helpers"]
+	path = k8s/ms-fds/templates/helpers
+	url = git@github.com:padoa/helm-helpers.git

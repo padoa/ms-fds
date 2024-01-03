@@ -1,0 +1,136 @@
+global:
+  frontend_domain: toto # TODO: delete only for lsp
+
+nameOverride: ""
+fullnameOverride: ""
+
+# -----------------------------------------------------------------------------
+# Deployment
+# -----------------------------------------------------------------------------
+
+replicaCount: 1
+
+image:
+  repository: padoa.azurecr.io/ms/fds/backend-dist
+  tag: "{{ .Values.global.ms_fds_tag }}"
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 1000Mi
+  requests:
+    cpu: 500m
+    memory: 1000Mi
+
+annotations: {}
+
+labels: {}
+
+nodeSelector:
+  dedicated: "Memory"
+
+tolerations:
+  - key: "dedicated"
+    operator: "Equal"
+    value: "Memory"
+    effect: "NoSchedule"
+
+affinity: {}
+
+serviceAccount:
+  name: default
+
+probes: 
+  liveness:
+    initial_delay: 0
+    timeout: 2
+    failure_threshold: 5
+    period_seconds: 10
+
+  readiness:
+    initial_delay: 0
+    timeout: 2
+    failure_threshold: 1
+    period_seconds: 10
+
+  startup:
+    initial_delay: 30
+    timeout: 5
+    failure_threshold: 30
+    period_seconds: 1
+
+# -----------------------------------------------------------------------------
+# Service
+# -----------------------------------------------------------------------------
+
+service:
+  type: ClusterIP
+  port:
+    name: http
+    number: 14512
+    protocol: TCP
+
+# -----------------------------------------------------------------------------
+# Service
+# -----------------------------------------------------------------------------
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    #no middlewares in production
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  middlewares:
+    blockPath: false
+
+availableTraefikMiddlewares:
+  ipWhitelist:
+    name: ip-whitelist
+    namespace: ip-whitelist
+  forwardAuth:
+    name: sso-forward-auth
+    namespace: traefik-forward-auth
+  onDemand:
+    name: "{{ .Values.global.onDemandMiddlewareName }}"
+    namespace: "{{ .Values.global.namespace }}"
+  ipWhitelistOutsideCloudflare:
+    name: ip-whitelist
+    namespace: ip-whitelist-outside-cloudflare
+  blockPath:
+    name: back-block-paths
+    namespace: blockpath
+  authenticationATRT:
+    name: authentication-at-rt
+    namespace: "{{ .Values.global.namespace }}"
+
+startMiddlewares:
+  - ipWhitelist
+  - ipWhitelistOutsideCloudflare
+
+endMiddlewares:
+  - onDemand
+
+# -----------------------------------------------------------------------------
+# Variables
+# -----------------------------------------------------------------------------
+
+variables:
+  PDF_TOOLS_URL: '{{ printf "http://pdf-tools.%s:7272" .Values.global.clusterEndpoint }}'
+  PDF_TOOLS_LOAD_BALANCER: ''
+
+vault_secrets:
+  TRN_PDFNET_KEY: common/medical/pdftron#licenseKeyWebviewerFront
+
+# -----------------------------------------------------------------------------
+# Istio
+# -----------------------------------------------------------------------------
+
+istio:
+  enabled: true
+  rev: default
+
+  proxy:
+    config:
+      holdApplicationUntilProxyStarts: true
+      terminationDrainDuration: 15s
