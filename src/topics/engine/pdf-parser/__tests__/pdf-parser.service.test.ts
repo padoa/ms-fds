@@ -18,8 +18,8 @@ describe('PdfParser tests', () => {
     let getTextFromImagePdfSpy: SpyInstance<[string, { numberOfPagesToParse?: number }?], Promise<ILine[]>>;
     let getStrokesFromPdfDataSpy: SpyInstance<[pdfData: IPdfData], IStroke[]>;
 
-    const mockedLines: ILine[] = [aLineWithOneText().properties];
-    const mockedStrokes = [aStroke().properties];
+    const mockedLines: ILine[] = [aLineWithOneText().build()];
+    const mockedStrokes = [aStroke().build()];
 
     beforeEach(() => {
       isPdfParsableSpy = vi.spyOn(PdfTextExtractorService, 'isPdfParsable');

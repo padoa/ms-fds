@@ -88,23 +88,23 @@ describe('ConcentrationRulesService tests', () => {
         },
         {
           message: 'should not return anything if no text has concentrations',
-          lines: [[aText().properties], []],
+          lines: [[aText().build()], []],
           expected: [],
         },
         {
           message: 'should return a concentration if a line contains a concentration',
-          lines: [[aTextWithConcentration().properties], []],
-          expected: [aConcentration().properties],
+          lines: [[aTextWithConcentration().build()], []],
+          expected: [aConcentration().build()],
         },
         {
           message: 'should return a concentration if a text in a line contains a concentration',
-          lines: [[aText().properties, aTextWithConcentration().properties], []],
-          expected: [aConcentration().properties],
+          lines: [[aText().build(), aTextWithConcentration().build()], []],
+          expected: [aConcentration().build()],
         },
         {
           message: 'should return multiple concentration if multiple lines have a concentration even if it is the same',
-          lines: [[aTextWithConcentration().properties], [aTextWithConcentration().properties]],
-          expected: [aConcentration().properties, aConcentration().properties],
+          lines: [[aTextWithConcentration().build()], [aTextWithConcentration().build()]],
+          expected: [aConcentration().build(), aConcentration().build()],
         },
       ])('$message', ({ lines, expected }) => {
         expect(ConcentrationRulesService.getConcentrationsInColumn(lines)).toEqual(expected);
@@ -120,16 +120,16 @@ describe('ConcentrationRulesService tests', () => {
         },
         {
           message: 'should return concentrations of a column',
-          linesSplittedByColumns: [[[aTextWithConcentration().properties]], [[]]],
-          expected: [aConcentration().properties],
+          linesSplittedByColumns: [[[aTextWithConcentration().build()]], [[]]],
+          expected: [aConcentration().build()],
         },
         {
           message: 'should return concentrations found in the column with most concentrations',
           linesSplittedByColumns: [
-            [[aText().withContent('>10-60').properties]],
-            [[aTextWithConcentration().properties], [aTextWithConcentration().properties]],
+            [[aText().withContent('>10-60').build()]],
+            [[aTextWithConcentration().build()], [aTextWithConcentration().build()]],
           ],
-          expected: [aConcentration().properties, aConcentration().properties],
+          expected: [aConcentration().build(), aConcentration().build()],
         },
       ])('$message', ({ linesSplittedByColumns, expected }) => {
         expect(ConcentrationRulesService.getConcentrations(linesSplittedByColumns)).toEqual(expected);

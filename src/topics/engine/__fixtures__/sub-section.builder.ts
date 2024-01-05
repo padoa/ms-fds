@@ -1,21 +1,21 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import type { ISubsection } from '@topics/engine/model/fds.model.js';
+import type { LineBuilder } from '@topics/engine/__fixtures__/line.builder.js';
+import type { PositionBuilder } from '@topics/engine/__fixtures__/position.builder.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
+import type { StrokeBuilder } from '@topics/engine/__fixtures__/stroke.builder.js';
 
-export class SubSectionBuilder extends BaseBuilder<ISubsection> {
-  public withStartBox = this.withValueFor('startBox');
-  public withEndBox = this.withValueFor('endBox');
-  public withLines = this.withValueFor('lines');
-  public withStrokes = this.withValueFor('strokes');
+export type ISourceSubSectionProperties = { startBox: PositionBuilder; endBox?: PositionBuilder; lines: LineBuilder[]; strokes: StrokeBuilder[] };
 
-  protected getDefaultValues(): ISubsection {
+export class SubSectionBuilder extends BaseBuilder<ISourceSubSectionProperties> {
+  public withStartBox = this.withBuilderFor('startBox');
+  public withEndBox = this.withBuilderFor('endBox');
+  public withLines = this.withBuilderArrayFor('lines');
+  public withStrokes = this.withBuilderArrayFor('strokes');
+
+  protected getDefaultValues(): ISourceSubSectionProperties {
     return {
-      startBox: {
-        pageNumber: PAGE_NUMBER,
-        xPositionProportion: POSITION_PROPORTION_X,
-        yPositionProportion: POSITION_PROPORTION_Y,
-      },
+      startBox: aPosition(),
       lines: [],
       strokes: [],
     };

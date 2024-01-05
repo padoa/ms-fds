@@ -1,21 +1,22 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import type { IStroke } from '@topics/engine/model/fds.model.js';
+import { POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
+import type { PositionBuilder } from '@topics/engine/__fixtures__/position.builder.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 import { RAW_STROKE_MAX_WIDTH_IN_PROPORTION } from '@topics/engine/pdf-extractor/pdf-stroke-extractor.config.js';
 
-export class StrokeBuilder extends BaseBuilder<IStroke> {
-  public withStartBox = this.withValueFor('startBox');
-  public withEndBox = this.withValueFor('endBox');
+export type ISourceStrokeProperties = { startBox: PositionBuilder; endBox: PositionBuilder };
 
-  protected getDefaultValues(): IStroke {
+export class StrokeBuilder extends BaseBuilder<ISourceStrokeProperties> {
+  public withStartBox = this.withBuilderFor('startBox');
+  public withEndBox = this.withBuilderFor('endBox');
+
+  protected getDefaultValues(): ISourceStrokeProperties {
     return {
-      startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
-      endBox: {
-        pageNumber: PAGE_NUMBER,
-        xPositionProportion: POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION,
-        yPositionProportion: POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION,
-      },
+      startBox: aPosition(),
+      endBox: aPosition()
+        .withXPositionProportion(POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
+        .withYPositionProportion(POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION),
     };
   }
 }

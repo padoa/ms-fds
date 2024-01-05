@@ -1,14 +1,16 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import type { IFdsTree } from '@topics/engine/model/fds.model.js';
+import type { SectionBuilder } from '@topics/engine/__fixtures__/section.builder.js';
 
-export class FdsTreeBuilder extends BaseBuilder<IFdsTree> {
-  public withSection1 = this.withValueFor(1);
-  public withSection2 = this.withValueFor(2);
-  public withSection3 = this.withValueFor(3);
-  public withSection9 = this.withValueFor(9);
+export type ISourceFdsTreeProperties = { [section: number]: SectionBuilder };
 
-  protected getDefaultValues(): IFdsTree {
+export class FdsTreeBuilder extends BaseBuilder<ISourceFdsTreeProperties> {
+  public withSection1 = this.withBuilderFor(1);
+  public withSection2 = this.withBuilderFor(2);
+  public withSection3 = this.withBuilderFor(3);
+  public withSection9 = this.withBuilderFor(9);
+
+  protected getDefaultValues(): ISourceFdsTreeProperties {
     return {};
   }
 }

@@ -16,43 +16,43 @@ describe('SubstanceHazardsRulesService tests', () => {
       },
       {
         message: 'should not return anything if no text has dangers',
-        lines: [[aText().properties], []],
+        lines: [[aText().build()], []],
         expected: [],
       },
       {
         message: 'should return a hazard if a line contains a hazard',
-        lines: [[aTextWithHDanger().properties], []],
-        expected: [aHDanger().properties],
+        lines: [[aTextWithHDanger().build()], []],
+        expected: [aHDanger().build()],
       },
       {
         message: 'should not return a precaution if a line contains a precaution',
-        lines: [[aTextWithPDanger().properties], []],
+        lines: [[aTextWithPDanger().build()], []],
         expected: [],
       },
       {
         message: 'should not return an european hazard if a line contains an european hazard',
-        lines: [[aTextWithEuhDanger().properties], []],
+        lines: [[aTextWithEuhDanger().build()], []],
         expected: [],
       },
       {
         message: 'should return a hazard if a text in a line contains a hazard',
-        lines: [[aText().properties, aTextWithHDanger().properties], []],
-        expected: [aHDanger().properties],
+        lines: [[aText().build(), aTextWithHDanger().build()], []],
+        expected: [aHDanger().build()],
       },
       {
         message: 'should return multiple hazards if multiple lines have a hazard',
-        lines: [[aTextWithHDanger().properties], [aText().withContent('H300').properties]],
-        expected: [aHDanger().properties, aDanger().withCode('H300').properties],
+        lines: [[aTextWithHDanger().build()], [aText().withContent('H300').build()]],
+        expected: [aHDanger().build(), aDanger().withCode('H300').build()],
       },
       {
         message: 'should return multiple hazards if a text has multiple hazards',
-        lines: [[aText().withContent('H300 and some other text H400').properties], []],
-        expected: [aDanger().withCode('H300').properties, aDanger().withCode('H400').properties],
+        lines: [[aText().withContent('H300 and some other text H400').build()], []],
+        expected: [aDanger().withCode('H300').build(), aDanger().withCode('H400').build()],
       },
       {
         message: 'should return multiple identical hazards if a hazard appears on multiple lines',
-        lines: [[aTextWithHDanger().properties, aTextWithHDanger().properties], []],
-        expected: [aHDanger().properties, aHDanger().properties],
+        lines: [[aTextWithHDanger().build(), aTextWithHDanger().build()], []],
+        expected: [aHDanger().build(), aHDanger().build()],
       },
     ])('$message', ({ lines, expected }) => {
       expect(SubstanceHazardsRulesService.getHazardsInColumn(lines)).toEqual(expected);
@@ -68,16 +68,13 @@ describe('SubstanceHazardsRulesService tests', () => {
       },
       {
         message: 'should return hazards of a column',
-        linesSplittedByColumns: [[[aTextWithHDanger().properties]], [[]]],
-        expected: [aHDanger().properties],
+        linesSplittedByColumns: [[[aTextWithHDanger().build()]], [[]]],
+        expected: [aHDanger().build()],
       },
       {
         message: 'should return hazards found in the column with multiple hazards',
-        linesSplittedByColumns: [
-          [[aText().withContent('H200').properties]],
-          [[aTextWithHDanger().properties], [aText().withContent('H300').properties]],
-        ],
-        expected: [aHDanger().properties, aDanger().withCode('H300').properties],
+        linesSplittedByColumns: [[[aText().withContent('H200').build()]], [[aTextWithHDanger().build()], [aText().withContent('H300').build()]]],
+        expected: [aHDanger().build(), aDanger().withCode('H300').build()],
       },
     ])('$message', ({ linesSplittedByColumns, expected }) => {
       expect(SubstanceHazardsRulesService.getHazards(linesSplittedByColumns)).toEqual(expected);

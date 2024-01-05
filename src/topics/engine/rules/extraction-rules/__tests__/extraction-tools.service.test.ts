@@ -106,16 +106,20 @@ describe('ExtractionToolsService tests', () => {
     const contentWithMultipleColon = `${beforeColon}: ${beforeColon}: ${beforeColon}: ${beforeColon}: ${afterColon}`;
 
     it.each<{ message: string; line: ILine; expectedRawText: string }>([
-      { message: 'should return empty strings when line has no texts', line: aLine().properties, expectedRawText: '' },
-      { message: 'should return last and only element of list', line: aLineWithOneText().properties, expectedRawText: RAW_TEXT_CONTENT },
+      { message: 'should return empty strings when line has no texts', line: aLine().build(), expectedRawText: '' },
+      { message: 'should return last and only element of list', line: aLineWithOneText().build(), expectedRawText: RAW_TEXT_CONTENT },
       {
         message: 'should return last element of list, split it by colon and trim it',
-        line: aLine().withTexts([aText().withContent(contentWithOneColon).properties]).properties,
+        line: aLine()
+          .withTexts([aText().withContent(contentWithOneColon)])
+          .build(),
         expectedRawText: afterColon,
       },
       {
         message: 'should return last element of list, split it by last colon and trim it',
-        line: aLine().withTexts([aText().withContent(contentWithMultipleColon).properties]).properties,
+        line: aLine()
+          .withTexts([aText().withContent(contentWithMultipleColon)])
+          .build(),
         expectedRawText: afterColon,
       },
     ])('$message', ({ line, expectedRawText }) => {
@@ -130,12 +134,12 @@ describe('ExtractionToolsService tests', () => {
       { message: 'should return empty strings when texts is an empty list', texts: [], expectedRawText: '' },
       {
         message: 'should return joined strings',
-        texts: [aText().properties, aTextWithRandomContent1().properties],
+        texts: [aText().build(), aTextWithRandomContent1().build()],
         expectedRawText: `${RAW_TEXT_CONTENT}${RAW_PLACEHOLDER_TEXT_1}`,
       },
       {
         message: 'should return joined strings and skip undefined text',
-        texts: [aText().properties, aText().withContent(undefined).properties, aTextWithRandomContent1().properties],
+        texts: [aText().build(), aText().withContent(undefined).build(), aTextWithRandomContent1().build()],
         expectedRawText: `${RAW_TEXT_CONTENT}${RAW_PLACEHOLDER_TEXT_1}`,
       },
     ])('$message', ({ texts, expectedRawText }) => {

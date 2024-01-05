@@ -59,52 +59,53 @@ describe('BoilingPointRulesService tests', () => {
   });
 
   describe('GetBoilingPoint tests', () => {
-    const metaData: IMetaData = { startBox: aPosition().properties };
+    const metaData: IMetaData = { startBox: aPosition().build() };
 
     it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedBoilingPoint }]>([
       [
         {
           message: 'it should return null when given a fds tree without lines',
-          fdsTree: aFdsTree().properties,
+          fdsTree: aFdsTree().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'it should return null when given an empty fds tree',
-          fdsTree: anEmptyFdsTreeWithAllSections().properties,
+          fdsTree: anEmptyFdsTreeWithAllSections().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'it should return null when given a text without boiling point pressure',
-          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'it should return boiling point when it is contained in 2 texts',
-          fdsTree: aFdsTree().withSection9(
-            aSection().withSubsections({
-              1: aSubSection().withLines([aLineWithBoilingPointIdentifierAndValue().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection9(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithBoilingPointIdentifierAndValue()]),
+              }),
+            )
+            .build(),
           expected: { value: RAW_BOILING_POINT_VALUE, metaData },
         },
       ],
       [
         {
           message: 'it should skip first identifier if there is no vapor pressure value',
-          fdsTree: aFdsTree().withSection9(
-            aSection().withSubsections({
-              1: aSubSection().withLines([
-                aLine().withTexts([aTextWithBoilingPointIdentifier().properties]).properties,
-                aLineWithBoilingPointIdentifierAndValue().properties,
-              ]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection9(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLine().withTexts([aTextWithBoilingPointIdentifier()]), aLineWithBoilingPointIdentifierAndValue()]),
+              }),
+            )
+            .build(),
           expected: { value: RAW_BOILING_POINT_VALUE, metaData },
         },
       ],
