@@ -82,7 +82,7 @@
     "@padoa/file-system": "5.4.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b",
     "@padoa/joi": "^5.0.2",
     "@padoa/logger": "^3.0.2",
-    "@padoa/meta": "5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b",
+    "@padoa/meta": "^5.2.2",
     "@padoa/promise": "^3.0.3",
     "@padoa/sanitizer": "^1.2.6",
     "@padoa/spawn-director": "^4.0.4",
