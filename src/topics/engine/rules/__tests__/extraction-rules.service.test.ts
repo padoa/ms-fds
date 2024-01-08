@@ -30,7 +30,7 @@ import { aSubstance } from '@topics/engine/rules/extraction-rules/__tests__/__fi
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('ExtractionRulesService tests', () => {
-  const metaData: IMetaData = { startBox: aPosition().properties };
+  const metaData: IMetaData = { startBox: aPosition().build() };
 
   describe('ApplyExtractionRules tests', () => {
     it('Should extract all fields from fds', async () => {
@@ -65,14 +65,14 @@ describe('ExtractionRulesService tests', () => {
           { code: RAW_P_DANGER, metaData },
           { code: RAW_MULTIPLE_P_DANGER, metaData },
         ],
-        substances: [aSubstance().properties],
+        substances: [aSubstance().build()],
         physicalState: { value: RAW_PHYSICAL_STATE_VALUE, metaData },
         vaporPressure: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
         boilingPoint: { value: RAW_BOILING_POINT_VALUE, metaData },
         warningNotice: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
       };
 
-      await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().properties, fullText })).resolves.toEqual(
+      await expect(ExtractionRulesService.extract({ fdsTreeCleaned: aFdsTreeWithAllSectionsWithUsefulInfo().build(), fullText })).resolves.toEqual(
         expected,
       );
     });

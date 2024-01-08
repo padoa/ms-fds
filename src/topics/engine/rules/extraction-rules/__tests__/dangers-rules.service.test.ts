@@ -11,26 +11,28 @@ import { DangersRulesService } from '@topics/engine/rules/extraction-rules/dange
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('DangersRulesService tests', () => {
-  const metaData: IMetaData = { startBox: aPosition().properties };
+  const metaData: IMetaData = { startBox: aPosition().build() };
 
   describe('GetDangers tests', () => {
     it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedDanger[] }]>([
-      [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: [] }],
+      [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().build(), expected: [] }],
       [
         {
           message: 'it should return an empty list when providing texts without dangers',
-          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().build(),
           expected: [],
         },
       ],
       [
         {
           message: 'it should retrieve dangers contained in lines',
-          fdsTree: aFdsTree().withSection2(
-            aSection().withSubsections({
-              2: aSubSection().withLines([aLineWithHDanger().properties, aLineWithEuhDanger().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection2(
+              aSection().withSubsections({
+                2: aSubSection().withLines([aLineWithHDanger(), aLineWithEuhDanger()]),
+              }),
+            )
+            .build(),
           expected: [
             { code: RAW_H_DANGER, metaData },
             { code: RAW_EUH_DANGER, metaData },
@@ -40,11 +42,13 @@ describe('DangersRulesService tests', () => {
       [
         {
           message: 'it should retrieve dangers contained in texts and lines',
-          fdsTree: aFdsTree().withSection2(
-            aSection().withSubsections({
-              2: aSubSection().withLines([aLineWithTwoDangers().properties, aLineWithMultiplePDanger().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection2(
+              aSection().withSubsections({
+                2: aSubSection().withLines([aLineWithTwoDangers(), aLineWithMultiplePDanger()]),
+              }),
+            )
+            .build(),
           expected: [
             { code: RAW_H_DANGER, metaData },
             { code: RAW_P_DANGER, metaData },

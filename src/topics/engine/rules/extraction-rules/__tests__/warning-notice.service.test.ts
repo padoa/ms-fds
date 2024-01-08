@@ -20,7 +20,7 @@ import { aSubSection } from '@topics/engine/__fixtures__/sub-section.mother.js';
 import { aText } from '@topics/engine/__fixtures__/text.mother.js';
 
 describe('WarningNoticeService tests', () => {
-  const metaData: IMetaData = { startBox: aPosition().properties };
+  const metaData: IMetaData = { startBox: aPosition().build() };
 
   describe('Regexps tests', () => {
     describe('WARNING_NOTICE_IDENTIFIER_REGEX', () => {
@@ -100,32 +100,37 @@ describe('WarningNoticeService tests', () => {
   describe('getWarningNoticeByIdentifier tests', () => {
     it.each<{ message: string; lines: ILine[]; expected: IExtractedWarningNotice }>([
       { message: 'it should return null when providing an empty list', lines: [], expected: null },
-      { message: 'it should return null when providing a line without useful texts', lines: [aLineWithTwoTexts().properties], expected: null },
-      { message: 'it should return null when providing only an identifier', lines: [aLineWithWarningNoticeIdentifier().properties], expected: null },
-      { message: 'it should return null when providing only a value', lines: [aLineWithWarningNoticeValue().properties], expected: null },
+      { message: 'it should return null when providing a line without useful texts', lines: [aLineWithTwoTexts().build()], expected: null },
+      { message: 'it should return null when providing only an identifier', lines: [aLineWithWarningNoticeIdentifier().build()], expected: null },
+      { message: 'it should return null when providing only a value', lines: [aLineWithWarningNoticeValue().build()], expected: null },
       {
         message: 'it should return value when providing a line with identifier and value',
-        lines: [aLineWithWarningNoticeIdentifierAndValue().properties],
+        lines: [aLineWithWarningNoticeIdentifierAndValue().build()],
         expected: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
       },
       {
         message: 'it should return value when providing a line with identifier and a line with value',
-        lines: [aLineWithWarningNoticeIdentifier().properties, aLineWithWarningNoticeValue().properties],
+        lines: [aLineWithWarningNoticeIdentifier().build(), aLineWithWarningNoticeValue().build()],
         expected: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
       },
       {
         message: 'it should skip first lines and return value when providing a line with identifier and value',
-        lines: [aLineWithOneText().properties, aLineWithWarningNoticeIdentifier().properties, aLineWithWarningNoticeIdentifierAndValue().properties],
+        lines: [aLineWithOneText().build(), aLineWithWarningNoticeIdentifier().build(), aLineWithWarningNoticeIdentifierAndValue().build()],
         expected: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
       },
       {
         message: 'it should return null when given a line with identifier and a line with random text and a line with value',
-        lines: [aLineWithWarningNoticeIdentifier().properties, aLineWithOneText().properties, aLineWithWarningNoticeValue().properties],
+        lines: [aLineWithWarningNoticeIdentifier().build(), aLineWithOneText().build(), aLineWithWarningNoticeValue().build()],
         expected: null,
       },
       {
         message: 'it should return null when given a line with identifier a line and a line with "mentions de danger" text',
-        lines: [aLineWithWarningNoticeIdentifier().properties, aLine().withTexts([aText().withContent('Mentions de danger').properties]).properties],
+        lines: [
+          aLineWithWarningNoticeIdentifier().build(),
+          aLine()
+            .withTexts([aText().withContent('Mentions de danger')])
+            .build(),
+        ],
         expected: null,
       },
     ])('$message', ({ lines, expected }) => {
@@ -137,19 +142,19 @@ describe('WarningNoticeService tests', () => {
     it.each<{ message: string; fdsTree: IFdsTree; expected: IExtractedWarningNotice }>([
       {
         message: 'should return null when providing an empty fdsTree',
-        fdsTree: anEmptyFdsTreeWithAllSections().properties,
+        fdsTree: anEmptyFdsTreeWithAllSections().build(),
         expected: null,
       },
       {
         message: 'should return null when providing a fdsTree without useful info',
-        fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+        fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().build(),
         expected: null,
       },
       {
         message: 'should return the warning notice when providing a fdsTree with a warning notice',
-        fdsTree: aFdsTree().withSection2(
-          aSection().withSubsections({ 2: aSubSection().withLines([aLineWithWarningNoticeIdentifierAndValue().properties]).properties }).properties,
-        ).properties,
+        fdsTree: aFdsTree()
+          .withSection2(aSection().withSubsections({ 2: aSubSection().withLines([aLineWithWarningNoticeIdentifierAndValue()]) }))
+          .build(),
         expected: { rawValue: RAW_WARNING_NOTICE_VALUE, value: ProductWarningNotice.DANGER, metaData },
       },
     ])('$message', ({ fdsTree, expected }) => {

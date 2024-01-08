@@ -20,74 +20,86 @@ import { ProducerRulesService } from '@topics/engine/rules/extraction-rules/prod
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('ProducerRulesService tests', () => {
-  const metaData: IMetaData = { startBox: aPosition().properties };
+  const metaData: IMetaData = { startBox: aPosition().build() };
 
   describe('GetProducer tests', () => {
     it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedProducer | null }]>([
       [
         {
           message: 'should return null when providing a fdsTree with an undefined text',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithUndefinedText().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithUndefinedText()]),
+              }),
+            )
+            .build(),
           expected: null,
         },
       ],
-      [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().properties, expected: null }],
+      [{ message: 'it should return null when providing an empty fdsTree', fdsTree: anEmptyFdsTreeWithAllSections().build(), expected: null }],
       [
         {
           message: 'should skip lines containing only producer identifier',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnly()]),
+              }),
+            )
+            .build(),
           expected: null,
         },
       ],
       [
         {
           message: 'it should return producer name when providing a line with producer in 1 text',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithProducerIn1Text().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIn1Text()]),
+              }),
+            )
+            .build(),
           expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
         {
           message: 'it should skip first line containing producer identifer and return producer name when providing a line with producer in 1 text',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithProducerIdentifierOnly().properties, aLineWithProducerIn1Text().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnly(), aLineWithProducerIn1Text()]),
+              }),
+            )
+            .build(),
           expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
         {
           message: 'it should return producer name when providing a line with producer in 2 texts',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithProducerIn2Texts().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIn2Texts()]),
+              }),
+            )
+            .build(),
           expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
         {
           message: 'it should return producer name when providing producer in 2 lines',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon().properties, aLineWithProducerNameOnly().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerIdentifierOnlyWithColon(), aLineWithProducerNameOnly()]),
+              }),
+            )
+            .build(),
           expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
@@ -95,22 +107,26 @@ describe('ProducerRulesService tests', () => {
       [
         {
           message: 'it should return producer name when providing producer ending with dot',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithProducerEndingWithDotIn1Text().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerEndingWithDotIn1Text()]),
+              }),
+            )
+            .build(),
           expected: { name: RAW_PRODUCER_NAME, metaData },
         },
       ],
       [
         {
           message: 'it should return producer name when providing producer with dot in his name',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              3: aSubSection().withLines([aLineWithProducerWithDotIn1Text().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                3: aSubSection().withLines([aLineWithProducerWithDotIn1Text()]),
+              }),
+            )
+            .build(),
           expected: { name: RAW_PRODUCER_NAME_WITH_DOT, metaData },
         },
       ],

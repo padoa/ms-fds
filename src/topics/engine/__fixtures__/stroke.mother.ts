@@ -13,19 +13,19 @@ export const aStrokeEndingAtFillMaxWidth = (): StrokeBuilder =>
   aStroke().withEndBox(
     aPosition()
       .withXPositionProportion(POSITION_PROPORTION_X + FILL_MAX_WIDTH_IN_PROPORTION)
-      .withYPositionProportion(POSITION_PROPORTION_Y + FILL_MAX_WIDTH_IN_PROPORTION).properties,
+      .withYPositionProportion(POSITION_PROPORTION_Y + FILL_MAX_WIDTH_IN_PROPORTION),
   );
 
 export const aHorizontalStroke = (): StrokeBuilder =>
   aStroke().withEndBox(
     aPosition()
       .withXPositionProportion(POSITION_PROPORTION_X + HORIZONTAL_STROKE_MINIMAL_LENGTH)
-      .withYPositionProportion(POSITION_PROPORTION_Y).properties,
+      .withYPositionProportion(POSITION_PROPORTION_Y),
   );
 
 export const aVerticalStroke = (): StrokeBuilder =>
   aStroke().withEndBox(
     aPosition()
       .withXPositionProportion(POSITION_PROPORTION_X)
-      .withYPositionProportion(POSITION_PROPORTION_Y + VERTICAL_STROKE_MINIMAL_LENGTH).properties,
+      .withYPositionProportion(POSITION_PROPORTION_Y + VERTICAL_STROKE_MINIMAL_LENGTH),
   );

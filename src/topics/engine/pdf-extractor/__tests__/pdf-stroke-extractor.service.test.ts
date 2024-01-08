@@ -35,13 +35,13 @@ describe('PdfStrokeExtractorService tests', () => {
       },
       {
         message: 'should return an empty list if all hLines are too wide',
-        hLines: [aRawStrokeTooWide().properties, aRawStrokeTooWide().properties],
+        hLines: [aRawStrokeTooWide().build(), aRawStrokeTooWide().build()],
         expected: [],
       },
       {
         message: 'should return strokes that are not too wide',
-        hLines: [aHorizontalRawStroke().properties, aRawStrokeTooWide().properties],
-        expected: [aStroke().properties],
+        hLines: [aHorizontalRawStroke().build(), aRawStrokeTooWide().build()],
+        expected: [aStroke().build()],
       },
     ])('$message', ({ hLines, expected }) => {
       expect(PdfStrokeExtractorService.getStrokeFromHLines(hLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: PAGE_NUMBER })).toEqual(
@@ -64,13 +64,13 @@ describe('PdfStrokeExtractorService tests', () => {
       },
       {
         message: 'should return an empty list if all vLines are too wide',
-        vLines: [aRawStrokeTooWide().properties, aRawStrokeTooWide().properties],
+        vLines: [aRawStrokeTooWide().build(), aRawStrokeTooWide().build()],
         expected: [],
       },
       {
         message: 'should return strokes that are not too wide',
-        vLines: [aVerticalRawStroke().properties, aRawStrokeTooWide().properties],
-        expected: [aStroke().properties],
+        vLines: [aVerticalRawStroke().build(), aRawStrokeTooWide().build()],
+        expected: [aStroke().build()],
       },
     ])('$message', ({ vLines, expected }) => {
       expect(PdfStrokeExtractorService.getStrokeFromVLines(vLines, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: PAGE_NUMBER })).toEqual(
@@ -93,13 +93,13 @@ describe('PdfStrokeExtractorService tests', () => {
       },
       {
         message: 'should return an empty list if all fills are too wide',
-        fills: [aFillTooWide().properties, aFillTooWide().properties],
+        fills: [aFillTooWide().build(), aFillTooWide().build()],
         expected: [],
       },
       {
         message: 'should return strokes that are not too wide or too long',
-        fills: [aFill().properties, aFillTooWide().properties, aFillTooWide().properties],
-        expected: [aStrokeEndingAtFillMaxWidth().properties],
+        fills: [aFill().build(), aFillTooWide().build(), aFillTooWide().build()],
+        expected: [aStrokeEndingAtFillMaxWidth().build()],
       },
     ])('$message', ({ fills, expected }) => {
       expect(PdfStrokeExtractorService.getStrokeFromFills(fills, { width: PAGE_WIDTH, height: PAGE_HEIGHT, pageNumber: PAGE_NUMBER })).toEqual(
@@ -123,14 +123,14 @@ describe('PdfStrokeExtractorService tests', () => {
           Pages: [
             {
               ...pageMetaData,
-              HLines: [aHorizontalRawStroke().properties],
-              VLines: [aVerticalRawStroke().properties],
-              Fills: [aFill().properties],
+              HLines: [aHorizontalRawStroke().build()],
+              VLines: [aVerticalRawStroke().build()],
+              Fills: [aFill().build()],
               Texts: [],
             },
           ],
         },
-        expected: [aStroke().properties, aStroke().properties, aStrokeEndingAtFillMaxWidth().properties],
+        expected: [aStroke().build(), aStroke().build(), aStrokeEndingAtFillMaxWidth().build()],
       },
       {
         message: 'should return all strokes sortedByPage and by yPosition',
@@ -141,9 +141,10 @@ describe('PdfStrokeExtractorService tests', () => {
               HLines: [
                 aRawStroke()
                   .withX((POSITION_PROPORTION_X + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION) * PAGE_WIDTH)
-                  .withY((POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION) * PAGE_HEIGHT).properties,
+                  .withY((POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION) * PAGE_HEIGHT)
+                  .build(),
               ],
-              VLines: [aVerticalRawStroke().properties],
+              VLines: [aVerticalRawStroke().build()],
               Fills: [],
               Texts: [],
             },
@@ -152,7 +153,8 @@ describe('PdfStrokeExtractorService tests', () => {
               HLines: [
                 aRawStroke()
                   .withX((POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION) * PAGE_WIDTH)
-                  .withY((POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION) * PAGE_HEIGHT).properties,
+                  .withY((POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION) * PAGE_HEIGHT)
+                  .build(),
               ],
               VLines: [],
               Fills: [],
@@ -161,31 +163,33 @@ describe('PdfStrokeExtractorService tests', () => {
           ],
         },
         expected: [
-          aStroke().properties,
+          aStroke().build(),
           aStroke()
             .withStartBox(
               aPosition()
                 .withXPositionProportion(POSITION_PROPORTION_X + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
-                .withYPositionProportion(POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
+                .withYPositionProportion(POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION),
             )
             .withEndBox(
               aPosition()
                 .withXPositionProportion(POSITION_PROPORTION_X + 3 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
-                .withYPositionProportion(POSITION_PROPORTION_Y + 3 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
-            ).properties,
+                .withYPositionProportion(POSITION_PROPORTION_Y + 3 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION),
+            )
+            .build(),
           aStroke()
             .withStartBox(
               aPosition()
                 .withPageNumber(PAGE_NUMBER + 1)
                 .withXPositionProportion(POSITION_PROPORTION_X + RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
-                .withYPositionProportion(POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
+                .withYPositionProportion(POSITION_PROPORTION_Y + RAW_STROKE_MAX_WIDTH_IN_PROPORTION),
             )
             .withEndBox(
               aPosition()
                 .withPageNumber(PAGE_NUMBER + 1)
                 .withXPositionProportion(POSITION_PROPORTION_X + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION)
-                .withYPositionProportion(POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION).properties,
-            ).properties,
+                .withYPositionProportion(POSITION_PROPORTION_Y + 2 * RAW_STROKE_MAX_WIDTH_IN_PROPORTION),
+            )
+            .build(),
         ],
       },
     ])('$message', ({ pdfData, expected }) => {

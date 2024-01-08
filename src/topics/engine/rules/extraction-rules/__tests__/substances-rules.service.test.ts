@@ -36,28 +36,43 @@ describe('SubstancesRulesService tests', () => {
       },
       {
         message: 'should return substances without concentrations when there are substances but no concentration',
-        substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+        substances: [aSubstanceWithOnlyACasNumber().build(), aSubstanceWithOnlyACeNumber().build()],
         concentrations: [],
-        expected: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+        expected: [aSubstanceWithOnlyACasNumber().build(), aSubstanceWithOnlyACeNumber().build()],
       },
       {
         message: 'should return substances with concentrations',
-        substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
-        concentrations: [aConcentration().properties, aConcentration().withValue(RAW_CONCENTRATION_VALUE + 1).properties],
+        substances: [aSubstanceWithOnlyACasNumber().build(), aSubstanceWithOnlyACeNumber().build()],
+        concentrations: [
+          aConcentration().build(),
+          aConcentration()
+            .withValue(RAW_CONCENTRATION_VALUE + 1)
+            .build(),
+        ],
         expected: [
-          aSubstanceWithOnlyACasNumber().withConcentration(aConcentration().properties).properties,
-          aSubstanceWithOnlyACeNumber().withConcentration(aConcentration().withValue(RAW_CONCENTRATION_VALUE + 1).properties).properties,
+          aSubstanceWithOnlyACasNumber().withConcentration(aConcentration().build()).build(),
+          aSubstanceWithOnlyACeNumber()
+            .withConcentration(
+              aConcentration()
+                .withValue(RAW_CONCENTRATION_VALUE + 1)
+                .build(),
+            )
+            .build(),
         ],
       },
       {
         message: 'should return substances without concentrations when there is not exactly the same number of concentrations as substances',
-        substances: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+        substances: [aSubstanceWithOnlyACasNumber().build(), aSubstanceWithOnlyACeNumber().build()],
         concentrations: [
-          aConcentration().withValue(RAW_CONCENTRATION_VALUE).properties,
-          aConcentration().withValue(RAW_CONCENTRATION_VALUE + 1).properties,
-          aConcentration().withValue(RAW_CONCENTRATION_VALUE + 2).properties,
+          aConcentration().withValue(RAW_CONCENTRATION_VALUE).build(),
+          aConcentration()
+            .withValue(RAW_CONCENTRATION_VALUE + 1)
+            .build(),
+          aConcentration()
+            .withValue(RAW_CONCENTRATION_VALUE + 2)
+            .build(),
         ],
-        expected: [aSubstanceWithOnlyACasNumber().properties, aSubstanceWithOnlyACeNumber().properties],
+        expected: [aSubstanceWithOnlyACasNumber().build(), aSubstanceWithOnlyACeNumber().build()],
       },
     ])('$message', ({ substances, concentrations, expected }) => {
       expect(SubstancesRulesService.assignConcentrationsToSubstances(substances, concentrations)).toEqual(expected);
@@ -65,12 +80,20 @@ describe('SubstancesRulesService tests', () => {
   });
 
   describe('assignHazardsToSubstances tests', () => {
-    const aMetaData1LineBelow = { startBox: aPosition().withYPositionProportion(POSITION_PROPORTION_Y + INCREMENT_VALUE).properties };
-    const aMetaData1PageBelow = { startBox: aPosition().withPageNumber(PAGE_NUMBER + 1).properties };
+    const aMetaData1LineBelow = {
+      startBox: aPosition()
+        .withYPositionProportion(POSITION_PROPORTION_Y + INCREMENT_VALUE)
+        .build(),
+    };
+    const aMetaData1PageBelow = {
+      startBox: aPosition()
+        .withPageNumber(PAGE_NUMBER + 1)
+        .build(),
+    };
     const aSubstanceStarting1LineBelow = (): SubstanceBuilder =>
-      aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withMetaData(aMetaData1LineBelow).properties);
+      aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withMetaData(aMetaData1LineBelow).build());
     const aSubstanceStarting1PageBelow = (): SubstanceBuilder =>
-      aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withMetaData(aMetaData1PageBelow).properties);
+      aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withMetaData(aMetaData1PageBelow).build());
 
     it.each<{ message: string; substances: IExtractedSubstance[]; hazards: IExtractedDanger[]; expected: IExtractedSubstance[] }>([
       {
@@ -81,46 +104,50 @@ describe('SubstancesRulesService tests', () => {
       },
       {
         message: 'should return substances without hazards when there are substances but no hazards',
-        substances: [aSubstanceWithoutHazards().properties],
+        substances: [aSubstanceWithoutHazards().build()],
         hazards: [],
-        expected: [aSubstanceWithoutHazards().properties],
+        expected: [aSubstanceWithoutHazards().build()],
       },
       {
         message: 'should return substance with hazards',
-        substances: [aSubstanceWithoutHazards().properties],
-        hazards: [aHDanger().properties, aDanger().withCode('h300').properties],
-        expected: [aSubstance().withHazards([aHDanger().properties, aDanger().withCode('h300').properties]).properties],
+        substances: [aSubstanceWithoutHazards().build()],
+        hazards: [aHDanger().build(), aDanger().withCode('h300').build()],
+        expected: [
+          aSubstance()
+            .withHazards([aHDanger().build(), aDanger().withCode('h300').build()])
+            .build(),
+        ],
       },
       {
         message: 'should return substance with unique hazards',
-        substances: [aSubstanceWithoutHazards().properties],
-        hazards: [aHDanger().properties, aHDanger().properties],
-        expected: [aSubstance().withHazards([aHDanger().properties]).properties],
+        substances: [aSubstanceWithoutHazards().build()],
+        hazards: [aHDanger().build(), aHDanger().build()],
+        expected: [aSubstance().withHazards([aHDanger().build()]).build()],
       },
       {
         message: 'should return substance with hazards affected to the correct substances when hazards are on multiple lines on the same page',
-        substances: [aSubstanceWithoutHazards().properties, aSubstanceStarting1LineBelow().properties],
-        hazards: [
-          aHDanger().properties,
-          aDanger().withCode('h300').properties,
-          aDanger().withCode('h400').withMetaData(aMetaData1LineBelow).properties,
-        ],
+        substances: [aSubstanceWithoutHazards().build(), aSubstanceStarting1LineBelow().build()],
+        hazards: [aHDanger().build(), aDanger().withCode('h300').build(), aDanger().withCode('h400').withMetaData(aMetaData1LineBelow).build()],
         expected: [
-          aSubstance().withHazards([aHDanger().properties, aDanger().withCode('h300').properties]).properties,
-          aSubstanceStarting1LineBelow().withHazards([aDanger().withCode('h400').withMetaData(aMetaData1LineBelow).properties]).properties,
+          aSubstance()
+            .withHazards([aHDanger().build(), aDanger().withCode('h300').build()])
+            .build(),
+          aSubstanceStarting1LineBelow()
+            .withHazards([aDanger().withCode('h400').withMetaData(aMetaData1LineBelow).build()])
+            .build(),
         ],
       },
       {
         message: 'should return substance with hazards affected to the correct substances when hazards are on a different page',
-        substances: [aSubstanceWithoutHazards().properties, aSubstanceStarting1PageBelow().properties],
-        hazards: [
-          aHDanger().properties,
-          aDanger().withCode('h300').properties,
-          aDanger().withCode('h400').withMetaData(aMetaData1PageBelow).properties,
-        ],
+        substances: [aSubstanceWithoutHazards().build(), aSubstanceStarting1PageBelow().build()],
+        hazards: [aHDanger().build(), aDanger().withCode('h300').build(), aDanger().withCode('h400').withMetaData(aMetaData1PageBelow).build()],
         expected: [
-          aSubstance().withHazards([aHDanger().properties, aDanger().withCode('h300').properties]).properties,
-          aSubstanceStarting1PageBelow().withHazards([aDanger().withCode('h400').withMetaData(aMetaData1PageBelow).properties]).properties,
+          aSubstance()
+            .withHazards([aHDanger().build(), aDanger().withCode('h300').build()])
+            .build(),
+          aSubstanceStarting1PageBelow()
+            .withHazards([aDanger().withCode('h400').withMetaData(aMetaData1PageBelow).build()])
+            .build(),
         ],
       },
     ])('$message', ({ substances, hazards, expected }) => {
@@ -155,18 +182,18 @@ describe('SubstancesRulesService tests', () => {
     it.each<{ message: string; fdsTree: IFdsTree; expected: IExtractedSubstance[] }>([
       {
         message: 'should return an empty list when given an empty fdsTree',
-        fdsTree: aFdsTree().properties,
+        fdsTree: aFdsTree().build(),
         expected: [],
       },
       {
         message: 'should return an empty list when given a fdsTree without useful info',
-        fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+        fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().build(),
         expected: [],
       },
       {
         message: 'should return substances when given a fdsTree with substances and concentration',
-        fdsTree: aFdsTreeWithAllSectionsWithUsefulInfo().properties,
-        expected: [aSubstance().properties],
+        fdsTree: aFdsTreeWithAllSectionsWithUsefulInfo().build(),
+        expected: [aSubstance().build()],
       },
     ])('$message', ({ fdsTree, expected }) => {
       expect(SubstancesRulesService.getSubstances(fdsTree)).toEqual(expected);

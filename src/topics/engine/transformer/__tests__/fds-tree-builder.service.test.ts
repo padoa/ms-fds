@@ -59,7 +59,7 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return empty fds tree and concatenated texts when given one line with no section', () => {
-        const line = aLineWithTwoTexts().properties;
+        const line = aLineWithTwoTexts().build();
 
         const expected = {
           fdsTree: {},
@@ -70,7 +70,7 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return empty fds tree and concatenated texts when given two lines with no section', () => {
-        const lines = [aLineWithTwoTexts().properties, aLineWithOneTextAndPositionYIncremented().properties];
+        const lines = [aLineWithTwoTexts().build(), aLineWithOneTextAndPositionYIncremented().build()];
 
         const expected = {
           fdsTree: {},
@@ -90,7 +90,7 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when given a line with one section', () => {
-        const line = aLineWithTwoTexts().properties;
+        const line = aLineWithTwoTexts().build();
 
         const expected = {
           fdsTree: {
@@ -106,7 +106,7 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when given lines with two sections', () => {
-        const lines = [aLineWithOneText().properties, aLineWithOneTextAndPositionYIncremented().properties];
+        const lines = [aLineWithOneText().build(), aLineWithOneTextAndPositionYIncremented().build()];
 
         const expected = {
           fdsTree: {
@@ -136,8 +136,8 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when given lines with a section and subsection', () => {
-        const sectionLines = [aLineWithOneText().properties];
-        const subSectionLines = [aLineWithTwoTextsAndPositionYIncremented().properties];
+        const sectionLines = [aLineWithOneText().build()];
+        const subSectionLines = [aLineWithTwoTextsAndPositionYIncremented().build()];
 
         const expected = {
           fdsTree: {
@@ -158,8 +158,8 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when given lines with a section and two subsections', () => {
-        const sectionLines = [aLineWithOneText().properties];
-        const subSectionsLines = [aLineWithTwoTextsAndPositionYIncremented().properties, aLineWithTwoTextsAndPositionYIncrementedTwice().properties];
+        const sectionLines = [aLineWithOneText().build()];
+        const subSectionsLines = [aLineWithTwoTextsAndPositionYIncremented().build(), aLineWithTwoTextsAndPositionYIncrementedTwice().build()];
 
         const expected = {
           fdsTree: {
@@ -194,7 +194,7 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when switching section', () => {
-        const lines = [aLineWithTwoTexts().properties];
+        const lines = [aLineWithTwoTexts().build()];
 
         const expected = {
           fdsTree: {},
@@ -214,7 +214,7 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree when switching subSection', () => {
-        const lines = [aLineWithTwoTexts().properties];
+        const lines = [aLineWithTwoTexts().build()];
 
         const expected = {
           fdsTree: {},
@@ -234,9 +234,9 @@ describe('FdsTreeBuilderService tests', () => {
       });
 
       it('should return fds tree with line added to current subSection', () => {
-        const sectionLine = aLineWithOneText().properties;
-        const subSectionLine = aLineWithTwoTextsAndPositionYIncremented().properties;
-        const extraSubSectionLine = aLineWithOneTextAndPositionYIncrementedTwice().properties;
+        const sectionLine = aLineWithOneText().build();
+        const subSectionLine = aLineWithTwoTextsAndPositionYIncremented().build();
+        const extraSubSectionLine = aLineWithOneTextAndPositionYIncrementedTwice().build();
 
         const expected = {
           fdsTree: {
@@ -269,59 +269,60 @@ describe('FdsTreeBuilderService tests', () => {
       {
         message: 'should return an empty fds tree if the fds tree is empty even if there are strokes',
         fdsTree: {},
-        strokes: [aStroke().properties],
+        strokes: [aStroke().build()],
         expected: {},
       },
       {
         message: 'should return the given fds tree if there are no strokes',
-        fdsTree: anEmptyFdsTreeWithAllSections().properties,
+        fdsTree: anEmptyFdsTreeWithAllSections().build(),
         strokes: [],
-        expected: anEmptyFdsTreeWithAllSections().properties,
+        expected: anEmptyFdsTreeWithAllSections().build(),
       },
       {
         message: 'should add the strokes in the correct section',
         fdsTree: aFdsTree()
           .withSection1(
             aSection().withSubsections({
-              1: aSubSection().withStartBox(aPosition().properties).withEndBox(aPosition().withYPositionProportion(0.9).properties).properties,
-            }).properties,
+              1: aSubSection().withStartBox(aPosition()).withEndBox(aPosition().withYPositionProportion(0.9)),
+            }),
           )
           .withSection2(
             aSection().withSubsections({
               2: aSubSection()
-                .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties)
-                .withEndBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties,
-            }).properties,
-          ).properties,
-        strokes: [aStroke().properties],
+                .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1))
+                .withEndBox(aPosition().withPageNumber(PAGE_NUMBER + 1)),
+            }),
+          )
+          .build(),
+        strokes: [aStroke().build()],
         expected: aFdsTree()
           .withSection1(
             aSection().withSubsections({
-              1: aSubSection()
-                .withStartBox(aPosition().properties)
-                .withEndBox(aPosition().withYPositionProportion(0.9).properties)
-                .withStrokes([aStroke().properties]).properties,
-            }).properties,
+              1: aSubSection().withStartBox(aPosition()).withEndBox(aPosition().withYPositionProportion(0.9)).withStrokes([aStroke()]),
+            }),
           )
           .withSection2(
             aSection().withSubsections({
               2: aSubSection()
-                .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties)
-                .withEndBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties,
-            }).properties,
-          ).properties,
+                .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1))
+                .withEndBox(aPosition().withPageNumber(PAGE_NUMBER + 1)),
+            }),
+          )
+          .build(),
       },
       {
         message: 'should add the strokes in the correct section even if there is no end box',
-        fdsTree: aFdsTree().withSection1(
-          aSection().withSubsections({ 1: aSubSection().withStartBox(aPosition().properties).withEndBox(null).properties }).properties,
-        ).properties,
-        strokes: [aStroke().properties],
-        expected: aFdsTree().withSection1(
-          aSection().withSubsections({
-            1: aSubSection().withStartBox(aPosition().properties).withEndBox(null).withStrokes([aStroke().properties]).properties,
-          }).properties,
-        ).properties,
+        fdsTree: aFdsTree()
+          .withSection1(aSection().withSubsections({ 1: aSubSection().withStartBox(aPosition()).withEndBox(null) }))
+          .build(),
+        strokes: [aStroke().build()],
+        expected: aFdsTree()
+          .withSection1(
+            aSection().withSubsections({
+              1: aSubSection().withStartBox(aPosition()).withEndBox(null).withStrokes([aStroke()]),
+            }),
+          )
+          .build(),
       },
     ])('$message', ({ fdsTree, strokes, expected }) => {
       expect(FdsTreeBuilderService.addStrokesToFdsTreeInPlace(fdsTree, { strokes })).toEqual(expected);
@@ -331,7 +332,7 @@ describe('FdsTreeBuilderService tests', () => {
   describe('BuildFdsTree tests', () => {
     let buildFdsTreeWithoutStrokesSpy: SpyInstance;
     let addStrokesToFdsTreeInPlaceSpy: SpyInstance;
-    const fdsTree = aFdsTree().properties;
+    const fdsTree = aFdsTree().build();
     const fullText = 'blabla';
     const xCounts = { [POSITION_PROPORTION_X]: 10 };
 

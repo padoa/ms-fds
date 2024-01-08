@@ -7,11 +7,11 @@ export const aSubSection = (): SubSectionBuilder => new SubSectionBuilder();
 //----------------------------------------- BASICS ---------------------------------------------
 //----------------------------------------------------------------------------------------------
 
-export const aSubSectionWithContent = (): SubSectionBuilder => aSubSection().withLines([aLineWithTwoTexts().properties]);
+export const aSubSectionWithContent = (): SubSectionBuilder => aSubSection().withLines([aLineWithTwoTexts()]);
 
 //----------------------------------------------------------------------------------------------
 //----------------------------------------- PRODUCT_NAME ---------------------------------------
 //----------------------------------------------------------------------------------------------
 
 export const aSubSectionWith3LinesContainingProductName = (): SubSectionBuilder =>
-  aSubSection().withLines([aLineWithProductNameOnly().properties, aLineWithProductNameOnly().properties, aLineWithProductNameOnly().properties]);
+  aSubSection().withLines([aLineWithProductNameOnly(), aLineWithProductNameOnly(), aLineWithProductNameOnly()]);

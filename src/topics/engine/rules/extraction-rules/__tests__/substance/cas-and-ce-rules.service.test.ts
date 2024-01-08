@@ -92,48 +92,52 @@ describe('CasAndCeRulesService tests', () => {
       },
       {
         message: 'it should return an empty list when given a text without cas nor ce number',
-        lines: [aLine().properties],
+        lines: [aLine().build()],
         expected: [],
       },
       {
         message: 'it should return cas and ce number when it is contained in 2 texts',
-        lines: [aLineWithCasAndCeNumberIn2Texts().properties],
-        expected: [aSubstanceWithCasAndCeNumber().properties],
+        lines: [aLineWithCasAndCeNumberIn2Texts().build()],
+        expected: [aSubstanceWithCasAndCeNumber().build()],
       },
       {
         message: 'it should return ce number even when cas number is missing',
-        lines: [aLineWithCeNumber().properties],
-        expected: [aSubstanceWithOnlyACeNumber().properties],
+        lines: [aLineWithCeNumber().build()],
+        expected: [aSubstanceWithOnlyACeNumber().build()],
       },
       {
         message: 'it should return ce number even when it is contained in 2 lines',
-        lines: [aLineWithCasNumber().properties, aLineWithCeNumber().properties],
-        expected: [aSubstanceWithCasAndCeNumber().properties],
+        lines: [aLineWithCasNumber().build(), aLineWithCeNumber().build()],
+        expected: [aSubstanceWithCasAndCeNumber().build()],
       },
       {
         message: 'it should return cas number even when it is contained in 2 lines',
-        lines: [aLineWithCeNumber().properties, aLineWithCasNumber().properties],
-        expected: [aSubstanceWithCasAndCeNumber().properties],
+        lines: [aLineWithCeNumber().build(), aLineWithCasNumber().build()],
+        expected: [aSubstanceWithCasAndCeNumber().build()],
       },
       {
         message: 'it should not merge cas number and ce number if there are not on consecutive lines',
-        lines: [aLineWithCeNumber().properties, aLine().properties, aLineWithCasNumber().properties],
-        expected: [aSubstanceWithOnlyACeNumber().properties, aSubstanceWithOnlyACasNumber().properties],
+        lines: [aLineWithCeNumber().build(), aLine().build(), aLineWithCasNumber().build()],
+        expected: [aSubstanceWithOnlyACeNumber().build(), aSubstanceWithOnlyACasNumber().build()],
       },
       {
         message: 'it should not merge cas number and a line with both cas and ce number',
-        lines: [aLineWithCasAndCeNumberIn2Texts().properties, aLineWithCasNumber().properties],
-        expected: [aSubstanceWithCasAndCeNumber().properties, aSubstanceWithOnlyACasNumber().properties],
+        lines: [aLineWithCasAndCeNumberIn2Texts().build(), aLineWithCasNumber().build()],
+        expected: [aSubstanceWithCasAndCeNumber().build(), aSubstanceWithOnlyACasNumber().build()],
       },
       {
         message: 'it should return deduplicated substances',
-        lines: [aLineWithCasNumber().properties, aLineWithCasNumber().properties],
-        expected: [aSubstanceWithOnlyACasNumber().properties],
+        lines: [aLineWithCasNumber().build(), aLineWithCasNumber().build()],
+        expected: [aSubstanceWithOnlyACasNumber().build()],
       },
       {
         message: 'it should return substances without spaces',
-        lines: [aLine().withTexts([aText().withContent(' 123546 - 78 - 9 ').properties]).properties],
-        expected: [aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withValue('123546-78-9').properties).properties],
+        lines: [
+          aLine()
+            .withTexts([aText().withContent(' 123546 - 78 - 9 ')])
+            .build(),
+        ],
+        expected: [aSubstanceWithOnlyACasNumber().withCasNumber(aCasNumber().withValue('123546-78-9').build()).build()],
       },
     ])('$message', ({ lines, expected }) => {
       expect(CasAndCeRulesService.getSubstancesCasAndCe(lines)).toEqual(expected);

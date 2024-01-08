@@ -15,23 +15,33 @@ describe('TableExtractionService tests', () => {
       it.each<{ message: string; strokes: IStroke[]; expected: IStroke[] }>([
         {
           message: 'should return the given stroke if there is only one stroke',
-          strokes: [aStroke().properties],
-          expected: [aStroke().properties],
+          strokes: [aStroke().build()],
+          expected: [aStroke().build()],
         },
         {
           message: 'should return all the strokes if they are not on the same x position',
-          strokes: [aStroke().properties, aStroke().withStartBox(aPositionWithXIncremented().properties).properties],
-          expected: [aStroke().properties, aStroke().withStartBox(aPositionWithXIncremented().properties).properties],
+          strokes: [aStroke().build(), aStroke().withStartBox(aPositionWithXIncremented()).build()],
+          expected: [aStroke().build(), aStroke().withStartBox(aPositionWithXIncremented()).build()],
         },
         {
           message: 'should return only a stroke if they are on the same x position',
-          strokes: [aStroke().properties, aStroke().withEndBox(aPosition().withYPositionProportion(0.5).properties).properties],
-          expected: [aStroke().withEndBox(aPosition().withYPositionProportion(0.5).properties).properties],
+          strokes: [aStroke().build(), aStroke().withEndBox(aPosition().withYPositionProportion(0.5)).build()],
+          expected: [aStroke().withEndBox(aPosition().withYPositionProportion(0.5)).build()],
         },
         {
           message: 'should return all strokes if they are on the same x position but on another page',
-          strokes: [aStroke().properties, aStroke().withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties],
-          expected: [aStroke().properties, aStroke().withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1).properties).properties],
+          strokes: [
+            aStroke().build(),
+            aStroke()
+              .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1))
+              .build(),
+          ],
+          expected: [
+            aStroke().build(),
+            aStroke()
+              .withStartBox(aPosition().withPageNumber(PAGE_NUMBER + 1))
+              .build(),
+          ],
         },
       ])('$message', ({ strokes, expected }) => {
         expect(TableExtractionService.mergeStrokesVerticallyAligned(strokes)).toEqual(expected);
@@ -42,18 +52,18 @@ describe('TableExtractionService tests', () => {
       it.each<{ message: string; strokes: IStroke[]; expected: IStroke[] }>([
         {
           message: 'should return the given stroke if it is a vertical stroke',
-          strokes: [aVerticalStroke().properties],
-          expected: [aVerticalStroke().properties],
+          strokes: [aVerticalStroke().build()],
+          expected: [aVerticalStroke().build()],
         },
         {
           message: 'should not return horizontal strokes',
-          strokes: [aHorizontalStroke().properties],
+          strokes: [aHorizontalStroke().build()],
           expected: [],
         },
         {
           message: 'should filter horizontal strokes',
-          strokes: [aVerticalStroke().properties, aHorizontalStroke().properties],
-          expected: [aVerticalStroke().properties],
+          strokes: [aVerticalStroke().build(), aHorizontalStroke().build()],
+          expected: [aVerticalStroke().build()],
         },
       ])('$message', ({ strokes, expected }) => {
         expect(TableExtractionService.filterVerticalStrokes(strokes)).toEqual(expected);
@@ -69,32 +79,32 @@ describe('TableExtractionService tests', () => {
         },
         {
           message: 'should return the given stroke if there is only a stroke',
-          strokes: [aVerticalStroke().properties],
-          expected: [aVerticalStroke().properties],
+          strokes: [aVerticalStroke().build()],
+          expected: [aVerticalStroke().build()],
         },
         {
           message: 'should deduplicate strokes if they are too close',
           strokes: [
-            aVerticalStroke().properties,
-            aVerticalStroke().withStartBox(
-              aPosition().withXPositionProportion(POSITION_PROPORTION_X + TableExtractionService.CLOSE_VERTICAL_STROKE / 2).properties,
-            ).properties,
+            aVerticalStroke().build(),
+            aVerticalStroke()
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + TableExtractionService.CLOSE_VERTICAL_STROKE / 2))
+              .build(),
           ],
-          expected: [aVerticalStroke().properties],
+          expected: [aVerticalStroke().build()],
         },
         {
           message: 'should not deduplicate strokes if they are far enough',
           strokes: [
-            aVerticalStroke().properties,
-            aVerticalStroke().withStartBox(
-              aPosition().withXPositionProportion(POSITION_PROPORTION_X + TableExtractionService.CLOSE_VERTICAL_STROKE).properties,
-            ).properties,
+            aVerticalStroke().build(),
+            aVerticalStroke()
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + TableExtractionService.CLOSE_VERTICAL_STROKE))
+              .build(),
           ],
           expected: [
-            aVerticalStroke().properties,
-            aVerticalStroke().withStartBox(
-              aPosition().withXPositionProportion(POSITION_PROPORTION_X + TableExtractionService.CLOSE_VERTICAL_STROKE).properties,
-            ).properties,
+            aVerticalStroke().build(),
+            aVerticalStroke()
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + TableExtractionService.CLOSE_VERTICAL_STROKE))
+              .build(),
           ],
         },
       ])('$message', ({ strokes, expected }) => {
@@ -130,80 +140,88 @@ describe('TableExtractionService tests', () => {
         {
           message: 'should return table vertical strokes',
           strokes: [
-            aVerticalStroke().properties,
+            aVerticalStroke().build(),
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
           ],
           expected: [
-            aVerticalStroke().properties,
+            aVerticalStroke().build(),
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
           ],
         },
         {
           message: 'should return table vertical strokes sorted by x',
           strokes: [
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
-            aVerticalStroke().properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
+            aVerticalStroke().build(),
           ],
           expected: [
-            aVerticalStroke().properties,
+            aVerticalStroke().build(),
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
             aVerticalStroke()
-              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1).properties)
+              .withStartBox(aPosition().withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1))
               .withEndBox(
                 aPosition()
                   .withXPositionProportion(POSITION_PROPORTION_X + 2 * 0.1)
-                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1).properties,
-              ).properties,
+                  .withYPositionProportion(POSITION_PROPORTION_Y + 0.1),
+              )
+              .build(),
           ],
         },
         {
           message: 'should not return table vertical strokes if there is less than 2 column',
-          strokes: [aVerticalStroke().properties],
+          strokes: [aVerticalStroke().build()],
           expected: [],
         },
       ])('$message', ({ strokes, expected }) => {
@@ -221,32 +239,46 @@ describe('TableExtractionService tests', () => {
       it.each<{ message: string; line: ILine; tableVerticalStrokes: IStroke[]; expected: IText[][] }>([
         {
           message: 'should return the text before the first stroke',
-          line: aLineWithOneText().properties,
-          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5).properties).properties],
-          expected: [[aText().properties], []],
+          line: aLineWithOneText().build(),
+          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5)).build()],
+          expected: [[aText().build()], []],
         },
         {
           message: 'should return the text after the first stroke',
-          line: aLine().withTexts([aText().withXPositionProportion(1).properties]).properties,
-          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5).properties).properties],
-          expected: [[], [aText().withXPositionProportion(1).properties]],
+          line: aLine()
+            .withTexts([aText().withXPositionProportion(1)])
+            .build(),
+          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5)).build()],
+          expected: [[], [aText().withXPositionProportion(1).build()]],
         },
         {
           message: 'should split the text between the strokes',
-          line: aLine().withTexts([aText().properties, aText().withXPositionProportion(1).properties]).properties,
-          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5).properties).properties],
-          expected: [[aText().properties], [aText().withXPositionProportion(1).properties]],
+          line: aLine()
+            .withTexts([aText(), aText().withXPositionProportion(1)])
+            .build(),
+          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5)).build()],
+          expected: [[aText().build()], [aText().withXPositionProportion(1).build()]],
         },
         {
           message: 'should consider that the text is in the second half if the text starts slightly before the stroke',
-          line: aLine().withTexts([
-            aText().withXPositionProportion(0.5 - 2 * TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE).properties,
-            aText().withXPositionProportion(0.5 - TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE).properties,
-          ]).properties,
-          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5).properties).properties],
+          line: aLine()
+            .withTexts([
+              aText().withXPositionProportion(0.5 - 2 * TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE),
+              aText().withXPositionProportion(0.5 - TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE),
+            ])
+            .build(),
+          tableVerticalStrokes: [aStroke().withStartBox(aPosition().withXPositionProportion(0.5)).build()],
           expected: [
-            [aText().withXPositionProportion(0.5 - 2 * TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE).properties],
-            [aText().withXPositionProportion(0.5 - TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE).properties],
+            [
+              aText()
+                .withXPositionProportion(0.5 - 2 * TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE)
+                .build(),
+            ],
+            [
+              aText()
+                .withXPositionProportion(0.5 - TableExtractionService.COLUMN_ASSIGNMENT_TOLERANCE)
+                .build(),
+            ],
           ],
         },
       ])('$message', ({ line, tableVerticalStrokes, expected }) => {
@@ -257,19 +289,19 @@ describe('TableExtractionService tests', () => {
     describe('splitLinesInColumns tests', () => {
       let splitLineInColumnSpy: SpyInstance<[line: ILine, tableVerticalStrokes: IStroke[]], IText[][]>;
       const tableVerticalStrokes = [
-        aStroke().withStartBox(aPosition().withXPositionProportion(0.25).properties).properties,
-        aStroke().withStartBox(aPosition().withXPositionProportion(0.5).properties).properties,
-        aStroke().withStartBox(aPosition().withXPositionProportion(0.75).properties).properties,
+        aStroke().withStartBox(aPosition().withXPositionProportion(0.25)).build(),
+        aStroke().withStartBox(aPosition().withXPositionProportion(0.5)).build(),
+        aStroke().withStartBox(aPosition().withXPositionProportion(0.75)).build(),
       ];
 
       beforeEach(() => {
         splitLineInColumnSpy = vi
           .spyOn(TableExtractionService, 'splitLineInColumn')
           .mockImplementation(() => [
-            [aTextWithRandomContent1().properties],
+            [aTextWithRandomContent1().build()],
             [],
-            [aTextWithRandomContent2().properties],
-            [aTextWithRandomContent3().properties],
+            [aTextWithRandomContent2().build()],
+            [aTextWithRandomContent3().build()],
           ]);
       });
 
@@ -278,29 +310,24 @@ describe('TableExtractionService tests', () => {
       });
 
       it('should return the text in lines if there is no table vertical strokes', () => {
-        expect(TableExtractionService.splitLinesInColumns([aLineWithOneText().properties], [])).toEqual([[[aText().properties]]]);
+        expect(TableExtractionService.splitLinesInColumns([aLineWithOneText().build()], [])).toEqual([[[aText().build()]]]);
       });
 
       it('should correctly assign text to columns', () => {
-        const expected = [
-          [[aTextWithRandomContent1().properties]],
-          [[]],
-          [[aTextWithRandomContent2().properties]],
-          [[aTextWithRandomContent3().properties]],
-        ];
+        const expected = [[[aTextWithRandomContent1().build()]], [[]], [[aTextWithRandomContent2().build()]], [[aTextWithRandomContent3().build()]]];
 
-        expect(TableExtractionService.splitLinesInColumns([aLine().properties], tableVerticalStrokes)).toEqual(expected);
+        expect(TableExtractionService.splitLinesInColumns([aLine().build()], tableVerticalStrokes)).toEqual(expected);
       });
 
       it('should correctly assign lines to columns', () => {
         const expected = [
-          [[aTextWithRandomContent1().properties], [aTextWithRandomContent1().properties]],
+          [[aTextWithRandomContent1().build()], [aTextWithRandomContent1().build()]],
           [[], []],
-          [[aTextWithRandomContent2().properties], [aTextWithRandomContent2().properties]],
-          [[aTextWithRandomContent3().properties], [aTextWithRandomContent3().properties]],
+          [[aTextWithRandomContent2().build()], [aTextWithRandomContent2().build()]],
+          [[aTextWithRandomContent3().build()], [aTextWithRandomContent3().build()]],
         ];
 
-        expect(TableExtractionService.splitLinesInColumns([aLine().properties, aLine().properties], tableVerticalStrokes)).toEqual(expected);
+        expect(TableExtractionService.splitLinesInColumns([aLine().build(), aLine().build()], tableVerticalStrokes)).toEqual(expected);
       });
     });
   });

@@ -1,16 +1,19 @@
 import { BaseBuilder } from '@padoa/meta';
 
-import { PAGE_NUMBER, POSITION_PROPORTION_X, POSITION_PROPORTION_Y } from '@topics/engine/__fixtures__/fixtures.constants.js';
-import type { ILine } from '@topics/engine/model/fds.model.js';
+import type { PositionBuilder } from '@topics/engine/__fixtures__/position.builder.js';
+import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
+import type { TextBuilder } from '@topics/engine/__fixtures__/text.builder.js';
 
-export class LineBuilder extends BaseBuilder<ILine> {
-  public withStartBox = this.withValueFor('startBox');
-  public withEndBox = this.withValueFor('endBox');
-  public withTexts = this.withValueFor('texts');
+export type ISourceLineProperties = { startBox: PositionBuilder; endBox?: PositionBuilder; texts: TextBuilder[] };
 
-  protected getDefaultValues(): ILine {
+export class LineBuilder extends BaseBuilder<ISourceLineProperties> {
+  public withStartBox = this.withBuilderFor('startBox');
+  public withEndBox = this.withBuilderFor('endBox');
+  public withTexts = this.withBuilderArrayFor('texts');
+
+  protected getDefaultValues(): ISourceLineProperties {
     return {
-      startBox: { pageNumber: PAGE_NUMBER, xPositionProportion: POSITION_PROPORTION_X, yPositionProportion: POSITION_PROPORTION_Y },
+      startBox: aPosition(),
       texts: [],
     };
   }

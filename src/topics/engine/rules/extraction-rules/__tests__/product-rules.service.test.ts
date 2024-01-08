@@ -28,50 +28,52 @@ import { ProductRulesService } from '@topics/engine/rules/extraction-rules/produ
 import { aPosition } from '@topics/engine/__fixtures__/position.mother.js';
 
 describe('ProductRulesService tests', () => {
-  const metaData: IMetaData = { startBox: aPosition().properties };
+  const metaData: IMetaData = { startBox: aPosition().build() };
 
   describe('GetProductByText tests', () => {
     it.each<[{ message: string; fdsTree: IFdsTree; expected: IExtractedProduct | null }]>([
       [
         {
           message: 'should return null when providing a fdsTree with an undefined text',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSection().withLines([aLineWithUndefinedText().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithUndefinedText()]),
+              }),
+            )
+            .build(),
           expected: null,
         },
       ],
       [
         {
           message: 'should return null when providing a fdsTree with all subsections but all empty',
-          fdsTree: anEmptyFdsTreeWithAllSections().properties,
+          fdsTree: anEmptyFdsTreeWithAllSections().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'should return null when providing a fdsTree with all subsections filled without product name',
-          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'should return product name when it is contained in 1 text',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn1Text().properties]).properties }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn1Text()]) }))
+            .build(),
           expected: { name: RAW_PRODUCT_NAME, metaData },
         },
       ],
       [
         {
           message: 'should return product name when it is contained in 2 different texts of same line',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn2Texts().properties]).properties }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(aSection().withSubsections({ 1: aSubSection().withLines([aLineWithProductIn2Texts()]) }))
+            .build(),
           expected: { name: RAW_PRODUCT_NAME, metaData },
         },
       ],
@@ -85,11 +87,13 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should return null when providing a fdsTree with an undefined text',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSection().withLines([aLineWithUndefinedText().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithUndefinedText()]),
+              }),
+            )
+            .build(),
           fullText: '',
           expected: null,
         },
@@ -97,7 +101,7 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should return null when providing a fdsTree with all subsections but all empty',
-          fdsTree: anEmptyFdsTreeWithAllSections().properties,
+          fdsTree: anEmptyFdsTreeWithAllSections().build(),
           fullText: '',
           expected: null,
         },
@@ -105,14 +109,16 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should return null when providing a fdsTree with all subsections filled without product name',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSection().withLines([
-                aLine().withTexts([aTextWithRandomContent1().properties, aTextWithRandomContent2().properties]).properties,
-                aLine().withTexts([aTextWithRandomContent3().properties]).properties,
-              ]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([
+                  aLine().withTexts([aTextWithRandomContent1(), aTextWithRandomContent2()]),
+                  aLine().withTexts([aTextWithRandomContent3()]),
+                ]),
+              }),
+            )
+            .build(),
           fullText: `${RAW_PLACEHOLDER_TEXT_1}${RAW_PLACEHOLDER_TEXT_2}${RAW_PLACEHOLDER_TEXT_3}`,
           expected: null,
         },
@@ -120,11 +126,13 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should skip lines containing only product identifier',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithProductIdentifierOnly()]),
+              }),
+            )
+            .build(),
           fullText: RAW_PRODUCT_IDENTIFIER,
           expected: null,
         },
@@ -132,15 +140,13 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should return null when product name only appears twice in fullText',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSection().withLines([
-                aLineWithOneText().properties,
-                aLineWithProductNameOnly().properties,
-                aLineWithProductNameOnly().properties,
-              ]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithOneText(), aLineWithProductNameOnly(), aLineWithProductNameOnly()]),
+              }),
+            )
+            .build(),
           fullText: `${RAW_TEXT_CONTENT}${RAW_PRODUCT_NAME}${RAW_PRODUCT_NAME}`,
           expected: null,
         },
@@ -148,11 +154,13 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should return product name when it appears three times in fullText',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSectionWith3LinesContainingProductName().properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSectionWith3LinesContainingProductName(),
+              }),
+            )
+            .build(),
           fullText: `${RAW_PRODUCT_NAME.repeat(3)}`,
           expected: { name: RAW_PRODUCT_NAME, metaData },
         },
@@ -160,16 +168,18 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should skip first line containing product identifier and return product name when it appears three times in fullText',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSection().withLines([
-                aLineWithProductIdentifierOnly().properties,
-                aLineWithProductNameOnly().properties,
-                aLineWithProductNameOnly().properties,
-                aLineWithProductNameOnly().properties,
-              ]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([
+                  aLineWithProductIdentifierOnly(),
+                  aLineWithProductNameOnly(),
+                  aLineWithProductNameOnly(),
+                  aLineWithProductNameOnly(),
+                ]),
+              }),
+            )
+            .build(),
           fullText: `${RAW_PRODUCT_IDENTIFIER}${RAW_PRODUCT_NAME.repeat(3)}`,
           expected: { name: RAW_PRODUCT_NAME, metaData },
         },
@@ -184,7 +194,7 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'it should return null when providing an empty fdsTree',
-          fdsTree: anEmptyFdsTreeWithAllSections().properties,
+          fdsTree: anEmptyFdsTreeWithAllSections().build(),
           fullText: '',
           expected: null,
         },
@@ -193,11 +203,13 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'it should return product name when identifier is in one line and product in another line',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSection().withLines([aLineWithProductIdentifierOnly().properties, aLineWithProductNameOnly().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithProductIdentifierOnly(), aLineWithProductNameOnly()]),
+              }),
+            )
+            .build(),
           fullText: `${RAW_PRODUCT_IDENTIFIER_WITH_COLON}${RAW_PRODUCT_NAME}`,
           expected: { name: RAW_PRODUCT_NAME, metaData },
         },
@@ -206,11 +218,13 @@ describe('ProductRulesService tests', () => {
       [
         {
           message: 'should return product name when it appears three times or more in fullText',
-          fdsTree: aFdsTree().withSection1(
-            aSection().withSubsections({
-              1: aSubSectionWith3LinesContainingProductName().properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection1(
+              aSection().withSubsections({
+                1: aSubSectionWith3LinesContainingProductName(),
+              }),
+            )
+            .build(),
           fullText: `${RAW_PRODUCT_NAME.repeat(3)}`,
           expected: { name: RAW_PRODUCT_NAME, metaData },
         },

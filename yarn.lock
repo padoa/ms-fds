@@ -984,10 +984,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@padoa/meta@npm:5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b":
-  version: 5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
-  resolution: "@padoa/meta@npm:5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b"
-  checksum: cf0c55a3960f09a5e0366796118a78c39b19bb9b9ad350488bf15cb622066b035152bfc5eba6e6d34d41cf9fabf12e14d9deba1200222dc3f0f45444cc748592
+"@padoa/meta@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "@padoa/meta@npm:5.2.2"
+  checksum: 25764ea82df3161de84899acf5c34f67d9873be871fdd2a677d25312606011066c3709c6e2a4df1b3bb13a60e3f33486f72dc72e68f0e54bbb3b819ee954f6d8
   languageName: node
   linkType: hard
 
@@ -5895,7 +5895,7 @@ __metadata:
     "@padoa/file-system": 5.4.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
     "@padoa/joi": ^5.0.2
     "@padoa/logger": ^3.0.2
-    "@padoa/meta": 5.1.0-77c5a1d74b70a8e127b30f31714dfc8b1374838b
+    "@padoa/meta": ^5.2.2
     "@padoa/prettier": ^2.0.2
     "@padoa/promise": ^3.0.3
     "@padoa/sanitizer": ^1.2.6

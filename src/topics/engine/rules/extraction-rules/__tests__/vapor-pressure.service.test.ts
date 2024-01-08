@@ -12,7 +12,7 @@ import { aTextWithVaporPressureIdentifier, aTextWithVaporPressureValue } from '@
 import { RAW_VAPOR_PRESSURE_TEMPERATURE, RAW_VAPOR_PRESSURE_VALUE } from '@topics/engine/__fixtures__/fixtures.constants.js';
 
 describe('VaporPressureService tests', () => {
-  const metaData: IMetaData = { startBox: aPosition().properties };
+  const metaData: IMetaData = { startBox: aPosition().build() };
 
   describe('Regexps tests', () => {
     describe('VAPOR_PRESSURE_IDENTIFIER_REGEX tests', () => {
@@ -91,59 +91,60 @@ describe('VaporPressureService tests', () => {
       [
         {
           message: 'it should return null when given a fds tree without lines',
-          fdsTree: aFdsTree().properties,
+          fdsTree: aFdsTree().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'it should return null when given an empty fds tree',
-          fdsTree: anEmptyFdsTreeWithAllSections().properties,
+          fdsTree: anEmptyFdsTreeWithAllSections().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'it should return null when given a text without vapor pressure',
-          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().properties,
+          fdsTree: aFdsTreeWithAllSectionsWithoutUsefulInfo().build(),
           expected: null,
         },
       ],
       [
         {
           message: 'it should return vapor pressure when it is contained in 2 texts',
-          fdsTree: aFdsTree().withSection9(
-            aSection().withSubsections({
-              1: aSubSection().withLines([aLineWithVaporPressureIdentifierAndValue().properties]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection9(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLineWithVaporPressureIdentifierAndValue()]),
+              }),
+            )
+            .build(),
           expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
         },
       ],
       [
         {
           message: 'it should return vapor pressure even when temperature is missing',
-          fdsTree: aFdsTree().withSection9(
-            aSection().withSubsections({
-              1: aSubSection().withLines([
-                aLine().withTexts([aTextWithVaporPressureIdentifier().properties, aTextWithVaporPressureValue().properties]).properties,
-              ]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection9(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLine().withTexts([aTextWithVaporPressureIdentifier(), aTextWithVaporPressureValue()])]),
+              }),
+            )
+            .build(),
           expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: null, metaData },
         },
       ],
       [
         {
           message: 'it should skip first identifier if there is no vapor pressure value',
-          fdsTree: aFdsTree().withSection9(
-            aSection().withSubsections({
-              1: aSubSection().withLines([
-                aLine().withTexts([aTextWithVaporPressureIdentifier().properties]).properties,
-                aLineWithVaporPressureIdentifierAndValue().properties,
-              ]).properties,
-            }).properties,
-          ).properties,
+          fdsTree: aFdsTree()
+            .withSection9(
+              aSection().withSubsections({
+                1: aSubSection().withLines([aLine().withTexts([aTextWithVaporPressureIdentifier()]), aLineWithVaporPressureIdentifierAndValue()]),
+              }),
+            )
+            .build(),
           expected: { pressure: RAW_VAPOR_PRESSURE_VALUE, temperature: RAW_VAPOR_PRESSURE_TEMPERATURE, metaData },
         },
       ],
